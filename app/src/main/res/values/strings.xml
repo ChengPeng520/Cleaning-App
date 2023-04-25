@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">CleaningApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_order_finish_text">已完成</string>
+    <string name="btn_order_reserve_text">未完成</string>
+    <string name="tv_order_address_text">服務地址</string>
+    <string name="tv_order_price_text">訂單金額</string>
+    <string name="tv_order_subTotal_text">服務小計</string>
+    <string name="tv_order_discount_text">已使用賣場優惠劵</string>
+    <string name="iv_order_expand_description">展開明細</string>
+    <string name="iv_order_address_description">詳細地址</string>
+    <string name="tv_order_progress_text">查看進度</string>
+    <string name="tv_order_number_text">訂單編號: </string>
+    <string name="tv_order_date_text">服務時間: </string>
 </resources>

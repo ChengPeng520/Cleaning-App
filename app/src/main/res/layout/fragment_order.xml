@@ -83,7 +83,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_order_showOrder"
+            android:id="@+id/rv_order_order"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/rv_style"
@@ -93,4 +93,5 @@
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
