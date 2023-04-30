@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.R
 
-class ShoppingCartFragment : Fragment() {
+class ShoppingInfoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_shopping_cart, container, false)
+        return inflater.inflate(R.layout.fragment_shopping_info, container, false)
     }
 }
