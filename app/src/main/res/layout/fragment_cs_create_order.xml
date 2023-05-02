@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.fragment.CsCreateOrderFragment">
+
+    <LinearLayout
+        android:id="@+id/ll_timePicker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxt_address"
+        app:layout_constraintStart_toStartOf="@+id/edtTxt_address"
+        app:layout_constraintTop_toBottomOf="@+id/ll_datePicker">
+
+        <TextView
+            android:id="@+id/tv_timePicker"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_timePicker" />
+
+        <TextView
+            android:id="@+id/tv_timeBegin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/txt_timeBegin" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv_timeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/txt_timeEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/tv_csCreateOder_time"
+        app:layout_constraintTop_toBottomOf="@+id/tv_csCreateOder_time">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_date"
+            android:textColor="@color/clr_csOderOption"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_datePicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="datepicker" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_csCreateOder_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="@string/txt_csCreateOder_time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/edtTxt_address"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt_address" />
+
+    <TextView
+        android:id="@+id/tv_csCreateOder_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="@string/txt_csCreateOder_address"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cs_createOder" />
+
+    <ImageButton
+        android:id="@+id/btn_csOderConfirmed_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_cs_NavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#569DAA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/cs_bt_navbar">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/tv_cs_createOder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/txt_cs_createOder"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_csOderConfirmed_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_csOderConfirmed_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_csOderConfirmed_back" />
+
+    <LinearLayout
+        android:id="@+id/ll_csCreateOder_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_csCreateOder_address"
+        app:layout_constraintTop_toBottomOf="@+id/tv_csCreateOder_address">
+
+        <TextView
+            android:id="@+id/tv_csCreateOder_county"
+            android:layout_width="8dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_csCreateOder_county"
+            android:textColor="@color/clr_csOderOption"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spn_csCreateOder_conty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_csCreateOder_area"
+            android:layout_width="8dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_csCreateOder_area"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spn_csCreateOder_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtTxt_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/txt_address"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csCreateOder_address"
+        app:layout_constraintStart_toStartOf="@+id/ll_csCreateOder_address"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOder_address" />
+
+    <TextView
+        android:id="@+id/tv_cleanArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/txt_pickCleanArea"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/ll_timePicker"
+        app:layout_constraintTop_toBottomOf="@+id/ll_timePicker" />
+
+    <LinearLayout
+        android:id="@+id/ll_toolsAll"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/clr_cs_formBackground"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/tv_cleanArea"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox">
+
+        <EditText
+            android:id="@+id/tv_tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_tools"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/edtTxt_csTools"
+            android:layout_width="351dp"
+            android:layout_height="80dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/clr_cusCoupon_obtain"
+        android:text="@string/txt_next"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cs_NavView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:text="CheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cleanArea"
+        tools:layout_editor_absoluteX="138dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_coupon"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/clr_cs_formBackground"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/ll_cost"
+        app:layout_constraintTop_toBottomOf="@+id/ll_cost">
+
+        <TextView
+            android:id="@+id/tv_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_coupon"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtTxt_cost"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_cost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/clr_cs_formBackground"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/ll_toolsAll"
+        app:layout_constraintTop_toBottomOf="@+id/ll_toolsAll">
+
+        <TextView
+            android:id="@+id/tv_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_cost"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtTxt_cost"
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

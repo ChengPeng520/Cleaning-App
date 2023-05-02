@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="error">#E95E5E</color>
+    <color name="Secondary">#FBBC05</color>
+    <color name="noActionGray">#61A5E4</color>
+    <color name="BackGroundGray">#F0F0F0</color>
+    <color name="textPrimary">#414141</color>
+    <color name="textSecondary">#B8B8B9</color>
+    <color name="colorBottomBar">#569DAA</color>
+
+    //customer
+    <color name="customerPrimary">#6096B4</color>
+    <color name="customerPrimaryDeep">#577D86</color>
+    <color name="customerPrimaryLight">#87CBB9</color>
+    <color name="clr_cusCoupon_discount">#B9EDDD</color>
+    <color name="clr_cusCoupon_deadline">#FF0606</color>
+    <color name="clr_cusCoupon_obtain">#87CBB9</color>
+    <color name="clr_csOderOption">#8F9090</color>
+    <color name="clr_csTitle">#1D1B20</color>
+    <color name="clr_cs_formBackground">#D9D9D9</color>
+    <color name="clr_csProfile_title">#808080</color>
+
+    //cleaner
+    <color name="cleanerPrimary">#3D7EBB</color>
+    <color name="cleanerPrimaryDeep">#285E8E</color>
+    <color name="cleanerPrimaryLight">#61A5E4</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- /////////////////////////////////////////////// -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 </resources>

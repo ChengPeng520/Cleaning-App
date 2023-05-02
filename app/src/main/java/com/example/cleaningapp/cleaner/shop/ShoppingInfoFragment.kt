@@ -13,6 +13,6 @@ class ShoppingInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_shopping_info, container, false)
+        return inflater.inflate(R.layout.fragment_fatruei_shopping_info, container, false)
     }
 }

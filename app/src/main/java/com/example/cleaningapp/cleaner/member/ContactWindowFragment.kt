@@ -13,6 +13,6 @@ class ContactWindowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_contact_window, container, false)
+        return inflater.inflate(R.layout.fragment_fatruei_contact_window, container, false)
     }
 }

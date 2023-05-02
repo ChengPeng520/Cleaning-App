@@ -13,6 +13,6 @@ class CompletedPaymentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_completed_payment, container, false)
+        return inflater.inflate(R.layout.fragment_fatruei_completed_payment, container, false)
     }
 }

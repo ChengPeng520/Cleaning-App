@@ -13,6 +13,6 @@ class SendFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_send, container, false)
+        return inflater.inflate(R.layout.fragment_fatruei_send, container, false)
     }
 }

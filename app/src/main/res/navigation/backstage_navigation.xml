@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/backstage_navigation"
+    app:startDestination="@id/backstageAccountManageMainFragment">
+
+    <fragment
+        android:id="@+id/backstageAccountManageMainFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BackstageAccountManageMainFragment"
+        android:label="fragment_alb_backstage_account_manage_main"
+        tools:layout="@layout/fragment_alb_backstage_account_manage_main" >
+        <action
+            android:id="@+id/action_backstageAccountManageMainFragment_to_backstageAccountManageMainDetailFragment"
+            app:destination="@id/backstageAccountManageMainDetailFragment" />
+        <action
+            android:id="@+id/action_backstageAccountManageMainFragment_to_backstageAccountManageMainAddFragment"
+            app:destination="@id/backstageAccountManageMainAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backstageAccountManageMainDetailFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BackstageAccountManageMainDetailFragment"
+        android:label="fragment_alb_backstage_account_manage_main_detail"
+        tools:layout="@layout/fragment_alb_backstage_account_manage_main_detail" />
+    <fragment
+        android:id="@+id/backstageAccountManageMainAddFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BackstageAccountManageMainAddFragment"
+        android:label="fragment_alb_backstage_account_manage_main_add"
+        tools:layout="@layout/fragment_alb_backstage_account_manage_main_add" />
+    <fragment
+        android:id="@+id/orderManageFragment"
+        android:name="com.example.cleaningapp.backstage.order.OrderManageFragment"
+        android:label="fragment_ciyi_order_manage"
+        tools:layout="@layout/fragment_ciyi_order_manage" />
+    <fragment
+        android:id="@+id/backstageComplaintManageFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BackstageComplaintManageFragment"
+        android:label="fragment_alb_backstage_complaint_manage"
+        tools:layout="@layout/fragment_alb_backstage_complaint_manage" >
+        <action
+            android:id="@+id/action_backstageComplaintManageFragment_to_backstageComplaintManageDealingFragment"
+            app:destination="@id/backstageComplaintManageDealingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backstageComplaintManageDealingFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BackstageComplaintManageDealingFragment"
+        android:label="fragment_alb_backstage_complaint_manage_dealing"
+        tools:layout="@layout/fragment_alb_backstage_complaint_manage_dealing" >
+        <action
+            android:id="@+id/action_backstageComplaintManageDealingFragment_to_backstageComplaintManageDetailFragment"
+            app:destination="@id/backstageComplaintManageDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backstageComplaintManageDetailFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BackstageComplaintManageDetailFragment"
+        android:label="fragment_alb_backstage_complaint_manage_detail"
+        tools:layout="@layout/fragment_alb_backstage_complaint_manage_detail" />
+</navigation>

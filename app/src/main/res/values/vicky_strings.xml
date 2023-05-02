@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tv1">搜尋列表</string>
+    <string name="tv2">請篩選接單時段</string>
+    <string name="tv3">日期:</string>
+    <string name="tv4">時間:</string>
+    <string name="tv5">請篩選接單地區</string>
+    <string name="tv6">縣市:</string>
+    <string name="tv7">地區:</string>
+    <string name="tv8">訂單詳情</string>
+    <string name="bt1">確定接單</string>
+    <string-array name="spnAr_search_date_text">
+
+    </string-array>
+</resources>
