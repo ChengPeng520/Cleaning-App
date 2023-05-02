@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spn_csEditProfile_gender"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.fragment.CsEditProfileFragment">
+
+    <ImageButton
+        android:id="@+id/btn_csEditProfile_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_csEditProfile_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/txt_csEditProfile_editProfile"
+        android:textColor="@color/clr_csTitle"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_csEditProfile_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_csEditProfile_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_csEditProfile_back" />
+
+    <LinearLayout
+        android:id="@+id/ll_csEditProfile_name"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_csEditProfile_name"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/txt_csProfile_name"
+            android:textColor="@color/clr_csProfile_title"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edtTxt_csEditProfile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_csEditProfile_phoneNumber"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_name"
+        app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_name"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_name">>
+
+        <TextView
+            android:id="@+id/tv_csEditProfile_phoneNumber"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/txt_csProfile_phoneNumber"
+            android:textColor="@color/clr_csProfile_title" />
+
+        <EditText
+            android:id="@+id/edtPhone_csEditProfile_phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="phone" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_csEditProfile_address"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_phoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_phoneNumber">
+
+        <TextView
+            android:id="@+id/tv_csEditProfile_address"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/txt_csProfile_address" />
+
+        <EditText
+            android:id="@+id/edtTxt_csEditProfile_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_csEditProfile_gender"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_address"
+        app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_address"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_address">>
+
+        <TextView
+            android:id="@+id/tv_csEditProfile_gender"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/txt_csProfile_gender" />
+
+        <Spinner
+            android:id="@+id/sp_csEditProfile_gender"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_csEditProfile_selfIntro"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_gender"
+        app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_gender"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_gender">>
+        <TextView
+            android:id="@+id/tv_csEditProfile_selfIntro"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/txt_csProfile_selfIntro" />
+
+        <EditText
+            android:id="@+id/edtTxt_csEditProfile_selfIntro"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_cs_NavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#569DAA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/cs_bt_navbar">
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <Button
+        android:id="@+id/btn_csEditProfile_restore"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/clr_cusCoupon_obtain"
+        android:text="@string/txt_csEditProfile_restore"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cs_NavView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
