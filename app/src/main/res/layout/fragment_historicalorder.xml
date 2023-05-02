@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".fragment_checkout">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_cs_NavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#569DAA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/cs_bt_navbar">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -33,7 +46,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cs_NavView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
@@ -42,5 +55,6 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
