@@ -1,4 +1,4 @@
-package com.example.cleaningapp
+package com.example.cleaningapp.customer.ViewModel
 
 import androidx.lifecycle.ViewModel
 

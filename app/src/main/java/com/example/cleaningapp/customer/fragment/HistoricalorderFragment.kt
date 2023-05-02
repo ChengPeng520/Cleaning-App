@@ -1,4 +1,4 @@
-package com.example.cleaningapp
+package com.example.cleaningapp.customer.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.cleaningapp.customer.ViewModel.HistoricalorderViewModel
+import com.example.cleaningapp.R
 
 class HistoricalorderFragment : Fragment() {
 
@@ -19,7 +21,7 @@ class HistoricalorderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_historicalorder2, container, false)
+        return inflater.inflate(R.layout.fragment_historicalorder, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
