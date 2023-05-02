@@ -139,7 +139,7 @@
                 android:layout_width="49dp"
                 android:layout_height="26dp"
                 android:layout_margin="12dp"
-                android:background="@drawable/button_shape"
+                android:background="@drawable/ciyi_button_shape"
                 android:text="@string/btAdd" />
 
 
