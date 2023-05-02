@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/clr_cusCoupon_discount">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="100dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="95dp"
+        android:layout_height="120dp"
+        android:background="@color/clr_cusCoupon_discount"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/tv_discount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:text="8折" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_cusCoupon_limitedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:textColor=" #FF0808"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_lowConsump"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/txt_cusCoupon_limitedTime" />
+
+    <TextView
+        android:id="@+id/tv_cusCoupon_lowConsump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        tools:layout_editor_absoluteY="42dp"
+        tools:text="@string/txt_cusCoupon_lowConsump" />
+
+    <TextView
+        android:id="@+id/tv_cusCoupon_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tv_cusCoupon_deadline"
+        app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_lowConsump"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_lowConsump"
+        tools:text="@string/txt_cusCoupon_amount" />
+
+    <TextView
+        android:id="@+id/tv_cusCoupon_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/clr_cusCoupon_deadline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_amount"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_amount"
+        tools:text="@string/txt_cusCoupon_deadline" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
