@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="@string/txt_csHome_ObtainCoupon">
+    tools:context=".customer.fragment.CsCouponObtainFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btn_cs_NavView"
@@ -50,6 +50,5 @@
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

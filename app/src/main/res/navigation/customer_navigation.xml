@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customer_navigation"
+    app:startDestination="@id/csHomePageFragment">
+
+    <fragment
+        android:id="@+id/csHomePageFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsHomePageFragment"
+        android:label="fragment_cs_homepage"
+        tools:layout="@layout/fragment_cs_homepage" >
+        <action
+            android:id="@+id/action_csHomePageFragment_to_csCouponObtainFragment"
+            app:destination="@id/csCouponObtainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/csCouponObtainFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsCouponObtainFragment"
+        android:label="fragment_cs_coupon_obtain"
+        tools:layout="@layout/fragment_cs_coupon_obtain" />
+    <fragment
+        android:id="@+id/csCreateOrderFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsCreateOrderFragment"
+        android:label="fragment_cs_create_order"
+        tools:layout="@layout/fragment_cs_create_order" >
+        <action
+            android:id="@+id/action_csCreateOrderFragment_to_csCouponPickerFragment"
+            app:destination="@id/csCouponPickerFragment" />
+        <action
+            android:id="@+id/action_csCreateOrderFragment_to_csOderConfirmedFragment"
+            app:destination="@id/csOderConfirmedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/csServiceTermsFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsServiceTermsFragment"
+        android:label="fragment_cs_service_terms"
+        tools:layout="@layout/fragment_cs_service_terms" >
+        <action
+            android:id="@+id/action_csServiceTermsFragment_to_csCreateOrderFragment"
+            app:destination="@id/csCreateOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_historicalorder"
+        android:name="com.example.cleaningapp.customer.order.fragment_checkout"
+        android:label="fragment_victor_historicalorder"
+        tools:layout="@layout/fragment_victor_historicalorder" >
+        <action
+            android:id="@+id/action_fragment_checkout_to_csChooseCleanerFragment2"
+            app:destination="@id/csChooseCleanerFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/csUserFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsUserFragment"
+        android:label="fragment_cs_user"
+        tools:layout="@layout/fragment_cs_user" >
+        <action
+            android:id="@+id/action_csUserFragment_to_csProfileFragment"
+            app:destination="@id/csProfileFragment" />
+        <action
+            android:id="@+id/action_csUserFragment_to_csViewCouponFragment"
+            app:destination="@id/csViewCouponFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/csCouponPickerFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsCouponPickerFragment"
+        android:label="fragment_cs_coupon_picker"
+        tools:layout="@layout/fragment_cs_coupon_picker" />
+    <fragment
+        android:id="@+id/csOderConfirmedFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsOderConfirmedFragment"
+        android:label="fragment_cs_oder_confirmed"
+        tools:layout="@layout/fragment_cs_oder_confirmed" />
+    <fragment
+        android:id="@+id/csChooseCleanerFragment2"
+        android:name="com.example.cleaningapp.customer.fragment.CsChooseCleanerFragment"
+        android:label="fragment_cs_choose_cleaner"
+        tools:layout="@layout/fragment_cs_choose_cleaner" >
+        <action
+            android:id="@+id/action_csChooseCleanerFragment2_to_csViewCvFragment"
+            app:destination="@id/csViewCvFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/csViewCvFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsViewCvFragment"
+        android:label="fragment_cs_view_cv"
+        tools:layout="@layout/fragment_cs_view_cv" />
+    <fragment
+        android:id="@+id/csProfileFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsProfileFragment"
+        android:label="fragment_cs_profile"
+        tools:layout="@layout/fragment_cs_profile" >
+        <action
+            android:id="@+id/action_csProfileFragment_to_csEditProfileFragment2"
+            app:destination="@id/csEditProfileFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/csEditProfileFragment2"
+        android:name="com.example.cleaningapp.customer.fragment.CsEditProfileFragment"
+        android:label="fragment_cs_edit_profile"
+        tools:layout="@layout/fragment_cs_edit_profile" />
+    <fragment
+        android:id="@+id/csViewCouponFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsViewCouponFragment"
+        android:label="fragment_cs_view_coupon"
+        tools:layout="@layout/fragment_cs_view_coupon" />
+</navigation>

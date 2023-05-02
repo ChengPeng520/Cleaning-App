@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.cleaningapp.login.LoginFragment"
+        android:label="fragment_rona_login"
+        tools:layout="@layout/fragment_rona_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.cleaningapp.login.SignupFragment"
+        android:label="fragment_rona_signup"
+        tools:layout="@layout/fragment_rona_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_signupContractFragment"
+            app:destination="@id/signupContractFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupContractFragment"
+        android:name="com.example.cleaningapp.login.SignupContractFragment"
+        android:label="fragment_rona_signup_contract"
+        tools:layout="@layout/fragment_rona_signup_contract" >
+        <action
+            android:id="@+id/action_signupContractFragment_to_signupApplyInfoFragment"
+            app:destination="@id/signupApplyInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupApplyInfoFragment"
+        android:name="com.example.cleaningapp.login.SignupApplyInfoFragment"
+        android:label="fragment_rona_signup_apply_info"
+        tools:layout="@layout/fragment_rona_signup_apply_info" />
+</navigation>

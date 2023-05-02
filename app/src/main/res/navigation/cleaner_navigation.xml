@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cleaner_navigation"
+    app:startDestination="@id/cleanerFrontFragment">
+
+    <fragment
+        android:id="@+id/cleanerFrontFragment"
+        android:name="com.example.cleaningapp.cleaner.front.CleanerFrontFragment"
+        android:label="fragment_vicky_cleaner_front_"
+        tools:layout="@layout/fragment_vicky_cleaner_front_" >
+        <action
+            android:id="@+id/action_cleanerFrontFragment_to_cleanerFrontOrderDetailFragment"
+            app:destination="@id/cleanerFrontOrderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cleanerFrontOrderDetailFragment"
+        android:name="com.example.cleaningapp.cleaner.front.CleanerFrontOrderDetailFragment"
+        android:label="fragment_vicky_cleaner_front_order_detail"
+        tools:layout="@layout/fragment_vicky_cleaner_front_order_detail" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.cleaningapp.cleaner.shop.ShopFragment"
+        android:label="fragment_fatruei_shop"
+        tools:layout="@layout/fragment_fatruei_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_shoppingInfoFragment"
+            app:destination="@id/shoppingInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberFragment"
+        android:name="com.example.cleaningapp.cleaner.member.MemberFragment"
+        android:label="fragment_fatruei_member"
+        tools:layout="@layout/fragment_fatruei_member" >
+        <action
+            android:id="@+id/action_memberFragment_to_memberInfoFragment"
+            app:destination="@id/memberInfoFragment" />
+        <action
+            android:id="@+id/action_memberFragment_to_contactWindowFragment"
+            app:destination="@id/contactWindowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.shop.ShoppingInfoFragment"
+        android:label="fragment_fatruei_shopping_info"
+        tools:layout="@layout/fragment_fatruei_shopping_info" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.cleaningapp.cleaner.shop.ProductDetailFragment"
+        android:label="fragment_fatruei_product_detail"
+        tools:layout="@layout/fragment_fatruei_product_detail" >
+        <action
+            android:id="@+id/action_productDetailFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.example.cleaningapp.cleaner.shop.ShoppingCartFragment"
+        android:label="fragment_fatruei_shopping_cart"
+        tools:layout="@layout/fragment_fatruei_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_sendFragment"
+            app:destination="@id/sendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendFragment"
+        android:name="com.example.cleaningapp.cleaner.shop.SendFragment"
+        android:label="fragment_fatruei_send"
+        tools:layout="@layout/fragment_fatruei_send" >
+        <action
+            android:id="@+id/action_sendFragment_to_completedPaymentFragment"
+            app:destination="@id/completedPaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedPaymentFragment"
+        android:name="com.example.cleaningapp.cleaner.shop.CompletedPaymentFragment"
+        android:label="fragment_fatruei_completed_payment"
+        tools:layout="@layout/fragment_fatruei_completed_payment" />
+    <fragment
+        android:id="@+id/memberInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.member.MemberInfoFragment"
+        android:label="fragment_fatruei_member_info"
+        tools:layout="@layout/fragment_fatruei_member_info" />
+    <fragment
+        android:id="@+id/contactWindowFragment"
+        android:name="com.example.cleaningapp.cleaner.member.ContactWindowFragment"
+        android:label="fragment_fatruei_contact_window"
+        tools:layout="@layout/fragment_fatruei_contact_window" />
+</navigation>
