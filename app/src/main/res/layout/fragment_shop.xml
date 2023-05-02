@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/sv_cleaner_shop_style"
+        android:background="@drawable/fatruei_sv_cleaner_shop_style"
         android:iconifiedByDefault="false"
         android:queryBackground="@null"
         android:queryHint="@string/sv_cleaner_shop_search"

@@ -135,7 +135,7 @@
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_product_detail_style"
+        android:background="@drawable/fatruei_btn_product_detail_style"
         android:text="@string/btn_send_submit"
         android:textColor="@color/white"
         android:textSize="24sp"
