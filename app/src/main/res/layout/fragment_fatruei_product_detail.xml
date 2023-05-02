@@ -49,7 +49,7 @@
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/fatruei_btn_product_detail_style2"
+        android:background="@drawable/fetruei_btn_product_detail_style2"
         android:text="@string/tv_product_detail_minus"
         android:textColor="#121212"
         android:textSize="16sp"
@@ -75,7 +75,7 @@
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginStart="16dp"
-        android:background="@drawable/fatruei_btn_product_detail_style2"
+        android:background="@drawable/fetruei_btn_product_detail_style2"
         android:text="@string/tv_product_detail_plus"
         android:textColor="#121212"
         android:textSize="16sp"
@@ -97,16 +97,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_product_detail_add"
+        style="@style/cleanerBtnSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/fatruei_btn_product_detail_style"
         android:text="@string/btn_product_detail_add"
-        android:textColor="@color/white"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iv_product_detail_picture"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/iv_product_detail_picture" />
 
     <androidx.constraintlayout.widget.Guideline

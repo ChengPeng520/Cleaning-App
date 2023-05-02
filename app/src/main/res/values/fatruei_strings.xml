@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="btn_order_finish_text">已完成</string>
-    <string name="btn_order_reserve_text">未完成</string>
-    <string name="tv_order_address_text">服務地址</string>
-    <string name="tv_order_price_text">訂單金額</string>
-    <string name="tv_order_subTotal_text">服務小計</string>
-    <string name="tv_order_discount_text">已使用賣場優惠劵</string>
-    <string name="iv_order_expand_description">展開明細</string>
-    <string name="iv_order_address_description">詳細地址</string>
-    <string name="tv_order_progress_text">查看進度</string>
-    <string name="tv_order_number_text">訂單編號: </string>
-    <string name="tv_order_date_text">服務時間: </string>
-
     //cleanerShopShare
     <string name="tv_cleaner_shop_product_name">商品名稱:</string>
 
-    //cleanerShop
+    //cleanerShop 商城首頁
     <string name="sv_cleaner_shop_search">搜尋商品</string>
 
     //cleanerShopProduct
@@ -24,11 +12,11 @@
     <string name="tv_product_detail_minus">-</string>
     <string name="btn_product_detail_add">加入購物車</string>
 
-    //shoppingCart
+    //shoppingCart 購物車
     <string name="tv_shopping_cart_price">總金額</string>
     <string name="tv_shopping_cart_send">宅配詳情</string>
 
-    //send
+    //send 宅配詳情
     <string name="tv_send_consignee">收件人:</string>
     <string name="tv_send_phone">連絡電話:</string>
     <string name="tv_send_address">宅配地址:</string>
@@ -37,10 +25,12 @@
     <string name="edtTxt_send_address">請輸入地址</string>
     <string name="btn_send_submit">確認</string>
 
-    //shoppingCartProduct
-    <string name="tv_shopping_cart_product_name">商品名稱:</string>
+    //shoppingInfoReceipt 歷史訂單
+    <string name="tv_shopping_info_receipt_finish">已完成</string>
+    <string name="tv_shopping_info_receipt_price">訂單金額:</string>
+    <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
 
-    //completed_payment
+    //completed_payment 付款完成
     <string name="tv_completed_payment_back">返回訂單列表</string>
     <string name="tv_completed_payment_txt">購買完成</string>
 
@@ -58,9 +48,4 @@
     <string name="edtTxt_member_hint">(必填)</string>
     <string name="btn_member_info_submit">完成</string>
     <string name="tv_member_identity">請上傳身分證</string>
-
-    //shoppingInfoReceipt
-    <string name="tv_shopping_info_receipt_finish">已完成</string>
-    <string name="tv_shopping_info_receipt_price">訂單金額:</string>
-    <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
 </resources>
