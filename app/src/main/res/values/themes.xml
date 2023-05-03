@@ -14,13 +14,19 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="loginBtnSubmitStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/login_btn_submit_shape</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="customerBtnSubmitStyle" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/customer_btn_submit_shape</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
 
     <style name="cleanerBtnSubmitStyle" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/cleaner_btn_submit_shape</item>
