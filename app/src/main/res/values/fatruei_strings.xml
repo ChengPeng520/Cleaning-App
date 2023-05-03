@@ -31,7 +31,7 @@
     <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
 
     //completed_payment 付款完成
-    <string name="tv_completed_payment_back">返回訂單列表</string>
+    <string name="tv_completed_payment_back"><u>返回訂單列表</u></string>
     <string name="tv_completed_payment_txt">購買完成</string>
 
     //member

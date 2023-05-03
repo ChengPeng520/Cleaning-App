@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="error">#E95E5E</color>
-    <color name="Secondary">#FBBC05</color>
+    <color name="Secondary">#CCFBBC05</color>
     <color name="noActionGray">#61A5E4</color>
     <color name="BackGroundGray">#F0F0F0</color>
     <color name="textPrimary">#414141</color>

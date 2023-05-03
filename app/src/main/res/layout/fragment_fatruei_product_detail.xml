@@ -87,7 +87,7 @@
         android:id="@+id/tv_product_detail_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#E95E5E"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_product_detail_plus"
@@ -97,7 +97,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_product_detail_add"
-        style="@style/cleanerBtnSubmit"
+        style="@style/cleanerBtnSubmitStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
