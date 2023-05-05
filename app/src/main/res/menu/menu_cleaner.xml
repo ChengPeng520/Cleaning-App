@@ -2,13 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/cleanerFrontFragment"
             android:checked="true"
             android:icon="@drawable/item_menu_search"
             android:title="@string/item_cleaner_search" />
         <item android:title="@string/item_cleaner_order" />
         <item
+            android:id="@+id/shopFragment"
             android:icon="@drawable/item_menu_store"
             android:title="@string/item_cleaner_shop" />
-        <item android:title="@string/item_cleaner_profile" />
+        <item
+            android:id="@+id/memberFragment"
+            android:title="@string/item_cleaner_profile" />
     </group>
 </menu>
