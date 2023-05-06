@@ -6,13 +6,16 @@
             android:checked="true"
             android:icon="@drawable/item_menu_search"
             android:title="@string/item_cleaner_search" />
-        <item android:title="@string/item_cleaner_order" />
+        <item
+            android:icon="@drawable/item_menu_order"
+            android:title="@string/item_cleaner_order" />
         <item
             android:id="@+id/shopFragment"
             android:icon="@drawable/item_menu_store"
             android:title="@string/item_cleaner_shop" />
         <item
             android:id="@+id/memberFragment"
+            android:icon="@drawable/item_menu_personal_info"
             android:title="@string/item_cleaner_profile" />
     </group>
 </menu>

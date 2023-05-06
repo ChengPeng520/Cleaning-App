@@ -90,4 +90,23 @@
         android:name="com.example.cleaningapp.cleaner.member.ContactWindowFragment"
         android:label="fragment_fatruei_contact_window"
         tools:layout="@layout/fragment_fatruei_contact_window" />
+    <fragment
+        android:id="@+id/orderStateFragment"
+        android:name="com.example.cleaningapp.cleaner.OrderStateFragment"
+        android:label="fragment_order_state"
+        tools:layout="@layout/fragment_order_state" />
+    <fragment
+        android:id="@+id/completeOrderInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.CompleteOrderInfoFragment"
+        android:label="fragment_complete_order_info"
+        tools:layout="@layout/fragment_complete_order_info" />
+    <fragment
+        android:id="@+id/notifyFragment"
+        android:name="com.example.cleaningapp.cleaner.NotifyFragment"
+        android:label="fragment_notify"
+        tools:layout="@layout/fragment_notify" >
+        <action
+            android:id="@+id/action_notifyFragment_to_contactWindowFragment"
+            app:destination="@id/contactWindowFragment" />
+    </fragment>
 </navigation>

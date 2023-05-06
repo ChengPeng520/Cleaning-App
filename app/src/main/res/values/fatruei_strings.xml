@@ -48,7 +48,8 @@
     <string name="edtTxt_member_hint">(必填)</string>
     <string name="btn_member_info_submit">完成</string>
     <string name="tv_member_identity">請上傳身分證</string>
-    
+    <string name="tv_member_criminal_record_certificate">請上傳良民證(檔案格式:PDF、JPG、PNG)</string>
+
     //item_notify 通知訊息
     <string name="tv_notify_window">前往客服聯繫</string>
 
@@ -57,7 +58,6 @@
     <string name="tv_order_state_ing">正進行中</string>
     <string name="tv_order_state_check">顧客確認</string>
     <string name="tv_order_state_over">打掃結束</string>
-
     <string name="tv_order_state_id">訂單編號:</string>
     <string name="tv_order_state_date">打掃日期:</string>
     <string name="tv_order_state_hours">打掃時數:</string>
@@ -67,4 +67,5 @@
     <string name="tv_order_state_price">總金額:</string>
     <string name="tv_order_state_comment">客戶評論</string>
     <string name="tv_order_state_picture">照片</string>
+
 </resources>
