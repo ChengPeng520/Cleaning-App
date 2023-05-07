@@ -25,18 +25,22 @@ class ShopFragment : Fragment() {
         binding = FragmentFatrueiShopBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        initRecycler()
+        return binding.root
+    }
 
-        binding.rvShopProducts.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvShopProducts.adapter = ShopAdapter()
-        viewModel.fetchProducts()
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
-                    (binding.rvShopProducts.adapter as ShopAdapter).submitList(it.products)
+    private fun initRecycler() {
+        with(binding) {
+            rvShopProducts.layoutManager = GridLayoutManager(requireContext(), 2)
+            rvShopProducts.adapter = ShopAdapter()
+            viewModel.fetchProducts()
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.uiState.collect {
+                        (rvShopProducts.adapter as ShopAdapter).submitList(it.products)
+                    }
                 }
             }
         }
-
-        return binding.root
     }
 }

@@ -1,5 +1,6 @@
 package com.example.cleaningapp.cleaner.view.shop
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -8,28 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
-import com.example.cleaningapp.cleaner.uistate.ProductsItemUiState
+import com.example.cleaningapp.cleaner.uistate.ProductItemUiState
 import com.example.cleaningapp.cleaner.viewmodel.shop.ShopViewModel
 import com.example.cleaningapp.databinding.ItemFatrueiShopProductBinding
 
-class ShopAdapter : ListAdapter<ProductsItemUiState, ShopAdapter.MyViewHodler>(DiffCallBack()) {
-
-    class DiffCallBack : DiffUtil.ItemCallback<ProductsItemUiState>() {
-        override fun areItemsTheSame(
-            oldItem: ProductsItemUiState,
-            newItem: ProductsItemUiState
-        ): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(
-            oldItem: ProductsItemUiState,
-            newItem: ProductsItemUiState
-        ): Boolean {
-            return oldItem == newItem
-        }
-    }
-
+class ShopAdapter : ListAdapter<ProductItemUiState, ShopAdapter.MyViewHodler>(DiffCallBack()) {
     class MyViewHodler(val binding: ItemFatrueiShopProductBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -47,7 +31,26 @@ class ShopAdapter : ListAdapter<ProductsItemUiState, ShopAdapter.MyViewHodler>(D
     override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
         holder.binding.viewModel?.itemUiState?.value = getItem(position)
         holder.binding.ivShopProductPicture.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_shopFragment_to_productDetailFragment)
+            val bundle = Bundle()
+            bundle.putInt("id", getItem(position).id)
+            Navigation.findNavController(it)
+                .navigate(R.id.action_shopFragment_to_productDetailFragment, bundle)
         }
+    }
+}
+
+class DiffCallBack : DiffUtil.ItemCallback<ProductItemUiState>() {
+    override fun areItemsTheSame(
+        oldItem: ProductItemUiState,
+        newItem: ProductItemUiState
+    ): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(
+        oldItem: ProductItemUiState,
+        newItem: ProductItemUiState
+    ): Boolean {
+        return oldItem == newItem
     }
 }
