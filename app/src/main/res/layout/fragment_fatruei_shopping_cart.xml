@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cleaner.shop.ShoppingCartFragment">
+    tools:context=".cleaner.view.shop.ShoppingCartFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_shopping_cart_product"

@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_vicky_cleaner_front_order_detail" />
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.cleaningapp.cleaner.shop.ShopFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.ShopFragment"
         android:label="fragment_fatruei_shop"
         tools:layout="@layout/fragment_fatruei_shop" >
         <action
@@ -45,12 +45,12 @@
     </fragment>
     <fragment
         android:id="@+id/shoppingInfoFragment"
-        android:name="com.example.cleaningapp.cleaner.shop.ShoppingInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.ShoppingInfoFragment"
         android:label="fragment_fatruei_shopping_info"
         tools:layout="@layout/fragment_fatruei_shopping_info" />
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.example.cleaningapp.cleaner.shop.ProductDetailFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.ProductDetailFragment"
         android:label="fragment_fatruei_product_detail"
         tools:layout="@layout/fragment_fatruei_product_detail" >
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/shoppingCartFragment"
-        android:name="com.example.cleaningapp.cleaner.shop.ShoppingCartFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.ShoppingCartFragment"
         android:label="fragment_fatruei_shopping_cart"
         tools:layout="@layout/fragment_fatruei_shopping_cart" >
         <action
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/sendFragment"
-        android:name="com.example.cleaningapp.cleaner.shop.SendFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.SendFragment"
         android:label="fragment_fatruei_send"
         tools:layout="@layout/fragment_fatruei_send" >
         <action
@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/completedPaymentFragment"
-        android:name="com.example.cleaningapp.cleaner.shop.CompletedPaymentFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.CompletedPaymentFragment"
         android:label="fragment_fatruei_completed_payment"
         tools:layout="@layout/fragment_fatruei_completed_payment" />
     <fragment
