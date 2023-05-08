@@ -6,28 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.ViewModel.CsChooseCleanerViewModel
 import com.example.cleaningapp.customer.ViewModel.CsEditProfileViewModel
+import com.example.cleaningapp.databinding.FragmentCsChooseCleanerBinding
+import com.example.cleaningapp.databinding.FragmentCsEditProfileBinding
 
 class CsEditProfileFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CsEditProfileFragment()
-    }
-
-    private lateinit var viewModel: CsEditProfileViewModel
+    private lateinit var binding:FragmentCsEditProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cs_edit_profile, container, false)
+        val viewModel: CsEditProfileViewModel by viewModels()
+        binding = FragmentCsEditProfileBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        // 設定lifecycleOwner方能監控LiveData資料變化
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CsEditProfileViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
