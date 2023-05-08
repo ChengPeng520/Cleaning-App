@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.ViewModel.CsCreateOrderViewModel
+import com.example.cleaningapp.customer.viewModel.CsCreateOrderViewModel
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
 
 class CsCreateOrderFragment : Fragment() {
@@ -17,7 +17,7 @@ class CsCreateOrderFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val viewModel:CsCreateOrderViewModel by viewModels()
         binding = FragmentCsCreateOrderBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

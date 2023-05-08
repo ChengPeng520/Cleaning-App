@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vicky_order_ordercheckFragment">
+    android:padding="16dp"
+    tools:context=".cleaner.view.order.OrderOrdercheckFragment">
 
     <TextView
         android:id="@+id/tv_order_ordernotready"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
         android:gravity="center"
         android:text="@string/tv_order_ordernotready"
         android:textSize="16sp"
@@ -19,34 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
-        android:text="@string/bt_order_startclear"
-        app:layout_constraintBottom_toTopOf="@+id/tv_order_cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_order_cancel"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/tv_order_cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button6"
-        app:layout_constraintStart_toStartOf="@+id/button6" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:background="@drawable/all_layout_light_gray_shape"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,35 +41,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/tv_order_checkcleanarea"
             app:layout_constraintStart_toEndOf="@+id/textView38"
-            app:layout_constraintTop_toTopOf="@+id/textView38" />
+            app:layout_constraintTop_toTopOf="@+id/textView38"
+            tools:text=" 房間5坪" />
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:src="@drawable/ic_ordernumber"
             app:layout_constraintBottom_toBottomOf="@+id/textView34"
+            app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView34" />
 
         <ImageView
             android:id="@+id/imageView24"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:src="@drawable/ic_calendar"
             app:layout_constraintBottom_toBottomOf="@+id/textView35"
+            app:layout_constraintDimensionRatio="h,1:1"
             app:layout_constraintEnd_toEndOf="@+id/imageView11"
             app:layout_constraintStart_toStartOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="@+id/textView35" />
 
         <ImageView
             android:id="@+id/imageView26"
-            android:layout_width="26dp"
-            android:layout_height="22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:src="@drawable/ic_time"
             app:layout_constraintBottom_toBottomOf="@+id/textView36"
+            app:layout_constraintDimensionRatio="h,1:1"
             app:layout_constraintEnd_toEndOf="@+id/imageView24"
             app:layout_constraintStart_toStartOf="@+id/imageView24"
             app:layout_constraintTop_toTopOf="@+id/textView36" />
@@ -93,9 +80,10 @@
         <ImageView
             android:id="@+id/imageView27"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:src="@drawable/ic_location"
             app:layout_constraintBottom_toBottomOf="@+id/textView37"
+            app:layout_constraintDimensionRatio="h,1:1"
             app:layout_constraintStart_toStartOf="@+id/imageView26"
             app:layout_constraintTop_toTopOf="@+id/textView37" />
 
@@ -104,7 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/tv_order_number_text"
+            android:text="@string/tv_order_detail_number_text"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView35"
             app:layout_constraintStart_toEndOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="parent" />
@@ -115,7 +104,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/tv_order_cleandate"
+            android:text="@string/tv_order_detail_date"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView36"
             app:layout_constraintStart_toStartOf="@+id/textView34"
             app:layout_constraintTop_toBottomOf="@+id/textView34" />
@@ -124,7 +114,8 @@
             android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_order_cleantime"
+            android:text="@string/tv_order_detail_hours"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView37"
             app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView35" />
@@ -135,7 +126,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/tv_backstage_account_manage_main_detail_address_title"
+            android:text="@string/tv_order_detail_address"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView38"
             app:layout_constraintStart_toStartOf="@+id/textView36"
             app:layout_constraintTop_toBottomOf="@+id/textView36" />
@@ -144,7 +136,8 @@
             android:id="@+id/textView38"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_order_cleanarea"
+            android:text="@string/tv_order_detail_area"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView43"
             app:layout_constraintStart_toStartOf="@+id/textView37"
             app:layout_constraintTop_toBottomOf="@+id/textView37" />
@@ -155,7 +148,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/tv_order_cleanother"
+            android:text="@string/tv_order_detail_other"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView44"
             app:layout_constraintStart_toStartOf="@+id/textView38"
             app:layout_constraintTop_toBottomOf="@+id/textView38" />
@@ -164,59 +158,69 @@
             android:id="@+id/textView44"
             android:layout_width="299dp"
             android:layout_height="wrap_content"
-            android:text="@string/tv_order_cleancsother"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView43"
-            app:layout_constraintTop_toBottomOf="@+id/textView43" />
-
+            app:layout_constraintTop_toBottomOf="@+id/textView43"
+            tools:text="工具:  吸塵器 、拖把 整理重點:  臥房、客房" />
 
         <TextView
             android:id="@+id/textView46"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/tv_order_cleannumbers"
             app:layout_constraintStart_toEndOf="@+id/textView34"
-            app:layout_constraintTop_toTopOf="@+id/textView34" />
+            app:layout_constraintTop_toTopOf="@+id/textView34"
+            tools:text="XXXXXXXXX" />
 
         <TextView
             android:id="@+id/textView55"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/tv_order_checkcleandate"
             app:layout_constraintStart_toEndOf="@+id/textView35"
-            app:layout_constraintTop_toTopOf="@+id/textView35" />
+            app:layout_constraintTop_toTopOf="@+id/textView35"
+            tools:text="2023年4月26日" />
 
         <TextView
             android:id="@+id/textView56"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/tv_oder_checkcleantime"
             app:layout_constraintStart_toEndOf="@+id/textView36"
-            app:layout_constraintTop_toTopOf="@+id/textView36" />
+            app:layout_constraintTop_toTopOf="@+id/textView36"
+            tools:text="12:00-14:00(2小時)" />
 
         <TextView
             android:id="@+id/textView57"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/tv_order_checkcleanlocaltion"
             android:textColor="#3D7EBB"
             app:layout_constraintStart_toEndOf="@+id/textView37"
-            app:layout_constraintTop_toTopOf="@+id/textView37" />
+            app:layout_constraintTop_toTopOf="@+id/textView37"
+            tools:text="台北市南京復興**********" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout18"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/all_layout_light_gray_shape"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+
+        <ImageView
+            android:id="@+id/imageView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_money"
+            app:layout_constraintBottom_toBottomOf="@+id/textView45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView45" />
 
         <TextView
             android:id="@+id/textView45"
@@ -224,6 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/tv_order_totalprice"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView36"
@@ -234,29 +239,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="@string/tv_order_checkprice"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView45"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView58"
-            app:layout_constraintTop_toTopOf="@+id/textView45" />
-
-        <ImageView
-            android:id="@+id/imageView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_money"
-            app:layout_constraintStart_toStartOf="@+id/imageView27"
-            app:layout_constraintTop_toTopOf="@+id/textView45" />
+            app:layout_constraintTop_toTopOf="@+id/textView45"
+            tools:text="$1000元" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline17"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button6"
+        style="@style/cleanerBtnSubmitStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/bt_order_startclear"
+        app:layout_constraintBottom_toTopOf="@+id/tv_order_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout18"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout18" />
+
+    <TextView
+        android:id="@+id/tv_order_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        android:text="@string/tv_order_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button6"
+        app:layout_constraintStart_toStartOf="@+id/button6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

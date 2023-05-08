@@ -4,7 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vicky_order_conductFragment">
+    tools:context=".cleaner.view.order.OrderConductFragment">
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:background="#FAFAFA"
+        android:drawableStart="@drawable/baseline_event_24"
+        android:gravity="center"
+        android:padding="16dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="進行中"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/imageButton4"
@@ -28,19 +45,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/tv_order_todaybooking"
+        android:text="@string/tv_order_conduct_today"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageButton4"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="77dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="375dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/tv_order_todaybooking"
         app:layout_constraintStart_toStartOf="@+id/tv_order_todaybooking"
         app:layout_constraintTop_toBottomOf="@+id/tv_order_todaybooking" />
@@ -50,41 +64,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/tv_order_booking"
+        android:text="@string/tv_order_conduct_booking"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tv_order_todaybooking"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_order_todaybooking"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView2"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_booking"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView62"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:background="#FAFAFA"
-        android:drawableStart="@drawable/baseline_event_24"
-        android:gravity="center"
-        android:padding="16dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:text="進行中"
-        android:textSize="20sp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_order_booking"
+        app:layout_constraintStart_toStartOf="@+id/tv_order_booking"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_booking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.databinding.FragmentCouponSearchBinding
-
+import com.example.cleaningapp.databinding.FragmentCiyiCouponSearchBinding
 
 class BackstageCouponSearchFragment : Fragment() {
 
-    private lateinit var binding: FragmentCouponSearchBinding
+    private lateinit var binding: FragmentCiyiCouponSearchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +20,7 @@ class BackstageCouponSearchFragment : Fragment() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         requireActivity().setTitle(R.string.menu_backstage_orderManage)
-       binding = FragmentCouponSearchBinding.inflate(inflater,container,false)
+       binding = FragmentCiyiCouponSearchBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -31,11 +30,8 @@ class BackstageCouponSearchFragment : Fragment() {
         with(binding){
             btCouponAdd.setOnClickListener{
                 Navigation.findNavController(it)
-                    .navigate((R.id.action_couponSearchFragment_to_backstageCouponCreatFragment))
-
+                    .navigate(R.id.action_backstageCouponSearchFragment_to_backstageCouponCreatFragment)
             }
         }
     }
-
-
 }

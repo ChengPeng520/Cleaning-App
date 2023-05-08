@@ -5,7 +5,6 @@
     tools:context=".backstage.shop.BsShopProductAddFragment">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.cleaningapp.backstage.shop.BsShopProductAddViewModel" />
@@ -65,8 +64,7 @@
                     android:id="@+id/iv_bs_shop_product_add_photo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/alb_photo_background"
-                    android:src="" />
+                    android:background="@drawable/alb_photo_background" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -2,7 +2,7 @@ package com.example.cleaningapp.backstage.order
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cleaningapp.databinding.BackstageOrderItemviewBinding
+import com.example.cleaningapp.databinding.ItemCiyiBackstageOrderBinding
 
 /**
  * 訂單列表所需的Adapter
@@ -19,7 +19,7 @@ class OrderAdapter(private var orders: List<Order>) :
     this.orders=orders
     notifyDataSetChanged()
   }
-      class OrderViewHolder(val itemViewBinding: BackstageOrderItemviewBinding):
+      class OrderViewHolder(itemViewBinding: ItemCiyiBackstageOrderBinding):
               RecyclerView.ViewHolder(itemViewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {

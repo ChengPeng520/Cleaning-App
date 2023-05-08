@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.order.fragment_checkout">
+    tools:context=".customer.order.CheckoutFragment">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_orderList_ing"

@@ -4,4 +4,15 @@
     <string name="item_cleaner_order">訂單</string>
     <string name="item_cleaner_shop">商城</string>
     <string name="item_cleaner_profile">個人</string>
+
+    <string name="item_nav_other">其他</string>
+    <string name="item_nav_main">主要管理</string>
+    <string name="menu_backstage_userManage">用戶管理</string>
+    <string name="menu_backstage_orderManage">訂單管理</string>
+    <string name="menu_backstage_complaint">客訴管理</string>
+    <string name="menu_backstage_financeManage">帳務管理</string>
+    <string name="menu_backstage_couponsMange">優惠管理</string>
+    <string name="menu_backstage_mallMange">商城管理</string>
+    <string name="menu_backstage_backHomepage">首頁</string>
+    <string name="menu_backstage_signup">登出</string>
 </resources>

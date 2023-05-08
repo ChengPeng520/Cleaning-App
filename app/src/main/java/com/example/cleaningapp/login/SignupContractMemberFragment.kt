@@ -20,7 +20,7 @@ class SignupContractMemberFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_signup_contract_member, container, false)
+        return inflater.inflate(R.layout.fragment_rona_signup_contract_member, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

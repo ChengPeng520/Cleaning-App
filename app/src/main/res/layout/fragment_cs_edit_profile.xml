@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.ViewModel.CsEditProfileViewModel" />
+            type="com.example.cleaningapp.customer.viewModel.CsEditProfileViewModel" />
 
     </data>
 

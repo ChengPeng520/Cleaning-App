@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.ViewModel.CsCouponPickerViewModel" />
+            type="com.example.cleaningapp.customer.viewModel.CsCouponPickerViewModel" />
 
     </data>
 

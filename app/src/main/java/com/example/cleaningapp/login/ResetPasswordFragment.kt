@@ -20,7 +20,7 @@ class ResetPasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_reset_password, container, false)
+        return inflater.inflate(R.layout.fragment_rona_reset_password, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

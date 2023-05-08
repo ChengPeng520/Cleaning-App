@@ -1,6 +1,5 @@
 package com.example.cleaningapp.backstage.coupon
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,7 +19,7 @@ class BackstageCouponCreatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_backstage_coupon_creat, container, false)
+        return inflater.inflate(R.layout.fragment_ciyi_backstage_coupon_creat, container, false)
     }
 
 

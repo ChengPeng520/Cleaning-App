@@ -192,13 +192,13 @@
         android:id="@+id/backstageCouponSearchFragment"
         android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponSearchFragment"
         android:label="fragment_coupon_search"
-        tools:layout="@layout/fragment_coupon_search" >
-        <action
-            android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponCreatFragment"
-            app:destination="@id/backstageCouponCreatFragment" />
+        tools:layout="@layout/fragment_ciyi_coupon_search" >
         <action
             android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponModifyFragment"
             app:destination="@id/backstageCouponModifyFragment" />
+        <action
+            android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponCreatFragment"
+            app:destination="@id/backstageCouponCreatFragment" />
     </fragment>
     <fragment
         android:id="@+id/backstageCouponModifyFragment"
@@ -208,5 +208,5 @@
         android:id="@+id/backstageCouponCreatFragment"
         android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponCreatFragment"
         android:label="fragment_backstage_coupon_creat"
-        tools:layout="@layout/fragment_backstage_coupon_creat" />
+        tools:layout="@layout/fragment_ciyi_backstage_coupon_creat" />
 </navigation>

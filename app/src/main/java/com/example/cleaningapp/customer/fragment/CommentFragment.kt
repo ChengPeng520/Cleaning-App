@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cleaningapp.customer.ViewModel.CommentViewModel
+import com.example.cleaningapp.customer.viewModel.CommentViewModel
 import com.example.cleaningapp.R
 
 class CommentFragment : Fragment() {

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cleaningapp.customer.ViewModel.OrderprogressViewModel
+import com.example.cleaningapp.customer.viewModel.OrderprogressViewModel
 import com.example.cleaningapp.R
 
 class OrderprogressFragment : Fragment() {

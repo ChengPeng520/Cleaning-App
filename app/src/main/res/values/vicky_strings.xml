@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tv_front_searchlist">搜尋列表</string>
-    <string name="tv_front_choosedate">請篩選接單時段</string>
+    //cleanerFront 搜尋列表
+    <string name="tv_front_choosedate">請選取打掃時間</string>
     <string name="tv_front_date">日期:</string>
     <string name="tv_front_time">時間:</string>
     <string name="tv_front_chooselocaltion">請篩選接單地區</string>
     <string name="tv_front_county">縣市:</string>
     <string name="tv_front_localtion">地區:</string>
-    <string name="tv_front_orderdetail">訂單詳情</string>
+    <string name="tv_order_localtiondetail">詳細地址:</string>
+
+    //OrderDetail 訂單詳情
+    <string name="tv_order_detail_number_text">訂單編號:</string>
+    <string name="tv_order_detail_date">打掃日期:</string>
+    <string name="tv_order_detail_hours">打掃時數:</string>
+    <string name="tv_order_detail_address">地址:</string>
+    <string name="tv_order_detail_area">打掃區域:</string>
+    <string name="tv_order_detail_other">清潔工具及其他需求:</string>
+    <string name="tv_order_price">報價費用:</string>
     <string name="tv_referphoto">參考環境照片</string>
     <string name="bt_order_check">確定接單</string>
-    <string name="tv_cleaner_add_referphoto">照片</string>
+    <string name="tv_order_cleanlocaltion">位置:</string>
+
+    //orderAccept 等待通知
     <string name="tv_order_accept">已向顧客通知您的接單</string>
     <string name="tv_order_accept_notice">成 功 接 單 將 會 送 出 系 統 通 知</string>
-    <string name="tv_order_accept_backhome">返回搜尋列表</string>
-    <string name="tv_order_orderlist">訂單列表</string>
-    <string name="tv_order_todaybooking">今日預約</string>
-    <string name="tv_order_booking">其它預約</string>
-    <string name="tv_order_cleantime">打掃時數:</string>
-    <string name="tv_order_cleanlocaltion">位置:</string>
-    <string name="tv_order_time">12:00-14:00 (2小時)</string>
-    <string name="tv_order_localtion">台北市松山區</string>
-    <string name="tv_order_orderstate">訂單狀況</string>
+    <string name="tv_order_accept_back">返回搜尋列表</string>
+
+    //orderConduct 訂單列表
+    <string name="tv_order_conduct_today">今日預約</string>
+    <string name="tv_order_conduct_booking">其它預約</string>
+
+    //orderCheck 訂單狀況
     <string name="tv_order_ordernotready">訂單尚未開始</string>
+    <string name="tv_order_totalprice">總金額:</string>
     <string name="bt_order_startclear">開始清潔</string>
-    <string name="tv_order_cancel">取消接單</string>
-    <string name="tv_order_clearphoto_before">清潔前照片</string>
-    <string name="tv_order_clearphoto_after">清潔後照片</string>
+    <string name="tv_order_cancel"><u>取消接單</u></string>
+
+    //orderCsSignCheck 顧客簽名檔
     <string name="tv_order_sign">顧客簽名檔</string>
     <string name="bt_order_sign_achieve">簽名完成</string>
-    <string name="tv_order_revise">修改</string>
-    <string name="tv_order_csname">吳XX</string>
-    <string name="tv_order_cleandate">打掃日期:</string>
-    <string name="tv_order_cleanarea">打掃區域:</string>
-    <string name="tv_order_cleanother">清潔工具及其他需求:</string>
-    <string name="tv_order_cleancsother">工具:  吸塵器 、拖把 整理重點:  臥房、客房 </string>
-    <string name="tv_order_price">報價費用:</string>
-    <string name="tv_order_cleannumbers">xxxxx01</string>
-    <string name="tv_order_checkcleandate">2023年4月26日</string>
-    <string name="tv_oder_checkcleantime">12:00-14:00 (2小時)</string>
-    <string name="tv_order_checkcleanlocaltion">台北市南京復興**********</string>
-    <string name="tv_order_checkprice">$1000元整</string>
-    <string name="tv_order_checkcleanarea">房間 5坪</string>
-    <string name="tv_order_totalprice">總金額:</string>
+    <string name="tv_order_revise"><u>修改</u></string>
 
+    //cleanerPhoto 清潔照片
+    <string name="tv_order_cleaner_photo_before">清潔前照片</string>
+    <string name="tv_order_cleaner_photo_after">清潔後照片</string>
+
+    <string name="tv_cleaner_add_referphoto">照片</string>
     <string-array name="spnAr_search_date_text">
-
     </string-array>
 </resources>

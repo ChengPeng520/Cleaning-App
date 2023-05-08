@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.ViewModel.CsCouponObtainViewModel
+import com.example.cleaningapp.customer.viewModel.CsCouponObtainViewModel
 
 class CsCouponObtainFragment : Fragment() {
 
