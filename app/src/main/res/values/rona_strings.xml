@@ -47,11 +47,47 @@
     <string name="edtTxt_suinfo_sex">性別:(必填)</string>
     <string name="edtTxt_suinfo_phone">手機號碼:(必填)</string>
     <string name="edtTxt_suinfo_intro">自我介紹:</string>
-    <string name="tv_applyinfo_uploadtxt">請上傳身分證</string>
+    <string name="tv_applyinfo_uploadtxtID">請上傳身分證正反面</string>
+    <string name="tv_applyinfo_uploadtxtGP">請上傳良民證(檔案格式:PDF、JPG、PNG) </string>
+    <string name="tv_suinfo_done"><u>完成</u></string>
+    <string name="tv_signup_txt_uploadSuccuess">審核資料上傳成功</string>
+    <string name="tv_signup_txt_checkingMSG">審核時間1-3週
+審核成功將訊息通知</string>
+    <string name="tv_signup_txt_checkingTitle">資料審核中</string>
+    <string name="tv_signup_logout"><u>登出</u></string>
+    <string name="tv_forgetPassword_title">忘記密碼</string>
+    <string name="tv_forgetPassword_PhoneMSG">請輸入您的手機號碼,寄送驗證碼</string>
+    <string name="tv_forgetPassword_EmailMSG">請輸入您的信箱,寄送驗證碼</string>
+    <string name="tv_forgetPassword_verifyMSG">請輸入您的驗證碼</string>
+    <string name="edtTxt_forgetPassword_Phone_hint">輸入手機號碼</string>
+    <string name="edtTxt_forgetPassword_verify_hint">輸入驗證碼</string>
+    <string name="edtTxt_forgetPassword_Email_hint">電子信箱</string>
+    <string name="btn_forgetPassword_send">寄送</string>
+    <string name="btn_forgetPassword_verify">驗證</string>
+    <string name="tv_forgetPassword_useEmail"><u>使用信箱驗證</u></string>
+    <string name="tv_forgetPassword_usePhone"><u>使用手機驗證</u></string>
+    <string name="tv_forgetPassword_resendEmail"><u>重新寄送信箱驗證碼</u></string>
+    <string name="tv_forgetPassword_resendPhone"><u>重新寄送簡訊驗證碼</u></string>
+    <string name="btn_resetPassword_confirm">確認</string>
+    <string name="tv_resetPassword_NP">輸入新密碼</string>
+    <string name="tv_resetPassword_checkNP">確認新密碼</string>
+    <string name="tv_resetPassword_title">更新密碼</string>
+    <string name="tv_ContractMember_title">申請條款</string>
+    <string name="rdoBtn_ContractMember_read">我已詳細閱讀規範內容</string>
+
+
     <string-array name="spnar_Login_Status">
         <item>一般會員</item>
         <item>清潔接案</item>
         <item>後臺管理</item>
     </string-array>
+
+    <string name="tv_ContractMember_text">1. 認知與接受條款
+「本網站」係依據本服務條款提供本網站旗下所有聯盟服務 (以下簡稱「本服務」)。當您使用本網站時，即表示您已閱讀、瞭解並同意接受本約定書之所有內容。本網站有權於任何時間修改或變更本約定書之內容，建議您隨時注意該等修改或變更。您於任何修改或變更後繼續使用本網站，視為您已閱讀、瞭解並同意接受該等修改或變更。如果您不同意本約定書的內容，或者您所屬的國家或地域排除本約定書內容之全部或一部時，您應立即停止使用本網站。
+若您為未滿十八歲，除應符合上述規定外，並應於您的家長（或監護人）閱讀、瞭解並同意本約定書之所有內容及其後修改變更後，方得使用或繼續使用本網站。當您使用或繼續使用本網站時，即表示您的家長（或監護人）已閱讀、瞭解並同意接受本約定書之所有內容及其後修改變更。
+2. 您的註冊義務
+為了能使用本服務，您同意以下事項：(a) 依本服務註冊表之提示提供您本人正確、最新及完整的資料，(b) 維持並更新您個人資料，確保其為正確、最新及完整。若您提供任何錯誤或不實的資料，本網站有權暫停或終止您的帳號，並拒絕您使用本服務之全部或一部。© 不論您是否註冊成會員，您同意完全遵守本同意書任何規範條款。
+3. 本網站隱私權政策</string>
+
 
 </resources>
