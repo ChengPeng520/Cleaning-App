@@ -1,77 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".customer.fragment.CsChooseCleanerFragment" >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/btn_csChooseCleaner_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <data>
+                <variable
+                    name="viewModel"
+                    type="com.example.cleaningapp.customer.ViewModel.CsChooseCleanerViewModel" />
 
-    <TextView
-        android:id="@+id/tv_csChooseCleaner_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/txt_CsChooseCleaner_title"
-        android:textColor="@color/clr_csTitle"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_csChooseCleaner_back"
-        app:layout_constraintStart_toEndOf="@+id/btn_csChooseCleaner_back"
-        app:layout_constraintTop_toTopOf="@+id/btn_csChooseCleaner_back" />
+        </data>
 
-    <TextView
-        android:id="@+id/tv_csChooseCleaner_chooseCleaner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/txt_csChooseCleaner_chooseCleaner"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/btn_csChooseCleaner_back"
-        app:layout_constraintTop_toBottomOf="@+id/tv_csChooseCleaner_title" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="24dp"
+            tools:context=".customer.fragment.CsChooseCleanerFragment">
 
-    <Button
-        android:id="@+id/btn_csChooseCleaner_cancelOrder"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/clr_cusCoupon_obtain"
-        android:text="@string/txt_csChooseCleaner_cancel"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cs_NavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/tv_csChooseCleaner_chooseCleaner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_csChooseCleaner_chooseCleaner"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_csChooseCleaner"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_csChooseCleaner_cancelOrder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_csChooseCleaner_chooseCleaner" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btn_cs_NavView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#569DAA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/cs_bt_navbar">
+                <Button
+                    android:id="@+id/btn_csChooseCleaner_cancelOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/customerPrimaryLight"
+                    android:text="@string/bt_cs_cancelOrder"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_csChooseCleaner"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_csChooseCleaner_chooseCleaner" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,4 +1,4 @@
-package com.example.cleaningapp.customer.fragment
+package com.example.cleaningapp.customer.csHomePage
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,26 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.ViewModel.CsCouponObtainViewModel
 
-class CsCouponObtainFragment : Fragment() {
+class CsHomePageFragment : Fragment() {
 
     companion object {
-        fun newInstance() = CsCouponObtainFragment()
+        fun newInstance() = CsHomePageFragment()
     }
 
-    private lateinit var viewModel: CsCouponObtainViewModel
+    private lateinit var viewModel: CustomerHomePageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cs_coupon_obtain, container, false)
+        return inflater.inflate(R.layout.fragment_cs_homepage, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CsCouponObtainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CustomerHomePageViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
