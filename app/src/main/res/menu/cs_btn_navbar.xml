@@ -2,15 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Home"
-        android:id="@+id/home"
+        android:id="@+id/csHomePageFragment"
         android:icon="@drawable/cs_btnavbar_ic_home"/>
     <item android:title="Create Order"
-        android:id="@+id/createOder"
+        android:id="@+id/csCreateOrderFragment"
         android:icon="@drawable/cs_btnavbar_ic_createorder"/>
-    <item android:title="Oder"
-        android:id="@+id/oder"
+
+    <!--待補!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <item android:title=""
+        android:id="@+id/order"
         android:icon="@drawable/cs_btnavbar_ic_order"/>
     <item android:title="Profile"
-        android:id="@+id/profile"
+        android:id="@+id/csUserFragment"
         android:icon="@drawable/cs_btnavbar_ic_profile"/>
 </menu>

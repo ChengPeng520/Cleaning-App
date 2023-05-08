@@ -9,20 +9,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.ViewModel.CsChooseCleanerViewModel
-import com.example.cleaningapp.customer.ViewModel.CsViewCouponViewModel
-import com.example.cleaningapp.customer.ViewModel.CsViewCvViewModel
+import com.example.cleaningapp.customer.ViewModel.CsOrderConfirmedViewModel
 import com.example.cleaningapp.databinding.FragmentCsChooseCleanerBinding
-import com.example.cleaningapp.databinding.FragmentCsViewCouponBinding
+import com.example.cleaningapp.databinding.FragmentCsOrderConfirmedBinding
 
-class CsViewCouponFragment : Fragment() {
-    private lateinit var binding:FragmentCsViewCouponBinding
+class CsOrderConfirmedFragment : Fragment() {
+    private lateinit var binding:FragmentCsOrderConfirmedBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel: CsViewCouponViewModel by viewModels()
-        binding = FragmentCsViewCouponBinding.inflate(inflater, container, false)
+        val viewModel: CsOrderConfirmedViewModel by viewModels()
+        binding = FragmentCsOrderConfirmedBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
