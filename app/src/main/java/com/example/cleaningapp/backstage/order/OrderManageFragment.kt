@@ -6,14 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.R
+import com.example.cleaningapp.databinding.FragmentOrderManageBinding
 
 class OrderManageFragment : Fragment() {
+    private lateinit var binding: FragmentOrderManageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_ciyi_order_manage, container, false)
+    ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+        requireActivity().setTitle(R.string.menu_backstage_orderManage)
+        binding= FragmentOrderManageBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle(R.string.menu_backstage_orderManage)
+
+    }
+
+
 
 }

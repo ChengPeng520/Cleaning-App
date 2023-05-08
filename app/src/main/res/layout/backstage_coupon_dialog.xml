@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="24dp"
+    android:layout_gravity="center"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_bs_dialog_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_weight="1"
+        android:text="@string/tv_bs_dialog_name"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_dialog_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_dialog_name" />
+
+    <TextView
+        android:id="@+id/tv_ti_bs_dialog_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/tv_ti_bs_dialog_name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_bs_dialog_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:text="@string/tv_bs_dialog_discount"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_dialog_discount"
+        app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_dialog_discount"
+        app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_dialog_discount" />
+
+    <TextView
+        android:id="@+id/tv_ti_bs_dialog_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/tv_ti_bs_dialog_discount"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_dialog_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_dialog_name" />
+
+
+    <TextView
+        android:id="@+id/tv_ti_coupon_piece"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_ti_coupon_piece"
+        app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_dialog_discount"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_dialog_discount" />
+
+    <TextView
+        android:id="@+id/tv_coupon_piece"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:text="@string/tv_coupon_piece"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_piece"
+        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_piece"
+        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_piece" />
+
+
+    <TextView
+        android:id="@+id/tv_ti_coupon_timelimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_ti_coupon_timelimit"
+        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_piece"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_piece" />
+
+    <TextView
+        android:id="@+id/tv_coupon_timelimit"
+        android:layout_width="70dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:text="@string/tv_coupon_timelimit"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_timelimit"
+        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_timelimit"
+        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_timelimit" />
+
+
+    <TextView
+        android:id="@+id/tv_ti_coupon_minimum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_ti_coupon_minimum"
+        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_timelimit"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_timelimit" />
+
+    <TextView
+        android:id="@+id/tv_coupon_minimum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:text="@string/tv_coupon_minimum"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_minimum"
+        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_minimum"
+        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_minimum"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/tv_ti_coupon_already"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_ti_coupon_already"
+        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_minimum"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_minimum" />
+
+    <TextView
+        android:id="@+id/tv_coupon_already"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:text="@string/tv_coupon_already"
+        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_already"
+        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_already" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_coupon_dialog_close"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/btn_coupon_dialog_close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_coupon_already" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

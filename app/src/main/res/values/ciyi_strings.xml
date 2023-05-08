@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    //orderSearch
+    <string name="btn_backstage_user">用戶</string>
+    <string name="btn_backstage_check">審核</string>
+    <string name="btn_backstage_suspended">停權</string>
+    <string name="btn_backstage_service">客服</string>
+    <string name="tv_ti_order_num">訂單編號</string>
+    <string name="tv_ti_order_status">訂單狀態</string>
+    <string name="tv_ti_order_date">時間</string>
+    <string name="tv_order_num">1234566</string>
+    <string name="tv_order_status">將執行</string>
+    <string name="tv_order_date" tools:ignore="TypographyDashes">2023-03-08</string>
+    <string name="btn_add">新增</string>
+    <string name="app_name">CleaningApp</string>
+    <string name="tv_bs_orderlist_noresult">查無資料</string>
+    //orderdatil
+    <string name="tv_ti_bs_orderdatil_cleandate">打掃時間:</string>
+    <string name="tv_bs_orderdatil_cleandate" tools:ignore="TypographyDashes">2023–04-25 </string>
+    <string name="tv_ti_bs_orderdatil_cleantime">打掃時數:</string>
+    <string name="tv_bs_orderdatil_cleantime" tools:ignore="TypographyDashes">12:00-14:00 </string>
+    <string name="tv_bs_orderdatil_cleantimetotal">2小時</string>
+    <string name="tv_ti_bs_order_address">地址:</string>
+    <string name="tv_bs_orderdatil_address">台北市南京復興區嘿嘿路嘿嘿巷12號3樓</string>
+    <string name="tv_ti_bs_order_cleanarea">打掃區域:</string>
+    <string name="tv_bs_order_cleanarea_">房間5坪</string>
+    <string name="tv_ti_bs_order_clean_tools_and_ask">清潔工具及其他需求:</string>
+    <string name="tv_ti_bs_tools">工具:</string>
+    <string name="tv_bs_order_tools">吸塵器 、拖把</string>
+    <string name="tv_ti_bs_order_clean_focus">整理重點:</string>
+    <string name="tv_bs_order_clean_focus">臥房、客房</string>
+    <string name="tv_bs_order_pay">5000元</string>
+    <string name="tv_ti_bs_order_pay">金額:</string>
+    <string name="tv_bs_order_booking_fee">平台費:</string>
+    <string name="tv_ti_bs_order_booking_fee">30元</string>
+    <string name="tv_ti_bs_order_coupon">優惠券:</string>
+    <string name="tv_bs_order_coupon">-30元</string>
+    <string name="tv_ti_bs_order_total">總金額:</string>
+    <string name="tv_bs_order_total">5000元</string>
+    <string name="tv_ti_bs_order_cs_pic">顧客需求照片</string>
+    <string name="tv_ti_bs_orderdatil_cleaner_pic">工作人員完成照片:</string>
+
+    //coupon
+    <string name="tv_ti_coupon_num" >優惠券編號</string>
+    <string name="tv_ti_coupon_name">名稱</string>
+    <string name="tv_ti_coupon_editing">編輯</string>
+    <string name="btn_coupon_add">建立</string>
+    <string name="btn_coupon_modify">保存</string>
+    <string name="tv_coupon_num">1234546563</string>
+    <string name="tv_coupon_name">跳樓折100</string>
+    <string name="btn_coupon_edit_add">修改</string>
+    <string name="btn_coupon_edit_delete">刪除</string>
+
+    //dialog
+
+    <string name="tv_ti_bs_dialog_name">名稱:</string>
+    <string name="tv_bs_dialog_name">跳樓大骨折70%off優惠券</string>
+    <string name="tv_ti_bs_dialog_discount">折數:</string>
+    <string name="tv_bs_dialog_discount">30%折扣</string>
+    <string name="tv_ti_coupon_piece">張數:</string>
+    <string name="tv_coupon_piece">30張</string>
+    <string name="tv_ti_coupon_timelimit">期限:</string>
+    <string name="tv_coupon_timelimit">2023–11–03</string>
+    <string name="tv_ti_coupon_minimum">低消:</string>
+    <string name="tv_coupon_minimum">2000</string>
+    <string name="tv_ti_coupon_already">上架:</string>
+    <string name="tv_coupon_already">是</string>
+    <string name="btn_coupon_dialog_close">關閉</string>
+    //coupon title
+    <string name="tv_ti_coupon_creat_name">名稱:</string>
+    <string name="tv_ti_coupon_percentage">折數:</string>
+    <string name="tv_ti_coupon_discount">折抵:</string>
+    <string name="tv_coupon_modify_discount" >100</string>
+    <string name="tv_ti_coupon_quantity">張數:</string>
+
+    //新增coupn
+    <string name="editText_coupon_creat_name" />
+    <string name="editText_coupon_creat_percentage" />
+    <string name="editText_coupon_creat_discount" />
+    <string name="editText_coupon_creat_quantity" />
+    <string name="editText_coupon_creat_minimum" />
+    //修改coupon
+    <string name="editText_coupon_modify_name">跳樓大骨折</string>
+    <string name="editText_bs_coupon_modify_limit" tools:ignore="TypographyDashes">2023-09-09</string>
+    <string name="editText_coupon_modify_quantity" >100</string>
+    <string name="editText_coupon_modify_minimum" >3000</string>
+    <string name="editText_coupon_modify_percentage" >22%</string>
+    <string name="checkbox_coupon_already">上架</string>
+    
+    //navigation drawer
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="item_nav_other">其他</string>
+    <string name="item_nav_main">主要管理</string>
     <string name="menu_bs_usermanage">用戶管理</string>
     <string name="menu_backstage_orderManage">訂單管理</string>
     <string name="menu_backstage_Complaint">客訴管理</string>
@@ -8,17 +100,6 @@
     <string name="menu_backstage_mallMange">商城管理</string>
     <string name="menu_backstage_backHomepage">首頁</string>
     <string name="menu_backstage_Signup">登出</string>
-    <string name="toolbar_backstage">BackstageToolbar</string>
-    <string name="ti_toolbar_name">AccountName</string>
-    <string name="btn_backstage_user">用戶</string>
-    <string name="btn_backstage_check">審核</string>
-    <string name="btn_backstage_suspended">停權</string>
-    <string name="btn_backstage_service">客服</string>
-    <string name="orderNum">訂單編號</string>
-    <string name="orderStatus">訂單狀態</string>
-    <string name="orderTime">時間</string>
-    <string name="orderNumList">1234566</string>
-    <string name="orderStatusList">將執行</string>
-    <string name="date">2023-03-08</string>
-    <string name="btAdd">新增</string>
+
+
 </resources>

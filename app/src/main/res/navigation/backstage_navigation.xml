@@ -3,56 +3,210 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/backstage_navigation"
-    app:startDestination="@id/backstageAccountManageMainFragment">
-
-    <fragment
-        android:id="@+id/backstageAccountManageMainFragment"
-        android:name="com.example.cleaningapp.backstage.usermanage.BackstageAccountManageMainFragment"
-        android:label="fragment_alb_backstage_account_manage_main"
-        tools:layout="@layout/fragment_alb_backstage_account_manage_main" >
+    app:startDestination="@id/bsUserMainFragment">
+        <fragment
+        android:id="@+id/bsUserMainFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserMainFragment"
+        android:label="fragment_alb_bs_user_main"
+        tools:layout="@layout/fragment_alb_bs_user_main" >
         <action
-            android:id="@+id/action_backstageAccountManageMainFragment_to_backstageAccountManageMainDetailFragment"
-            app:destination="@id/backstageAccountManageMainDetailFragment" />
+            android:id="@+id/action_bsAccountManageMainFragment_to_bsAccountManageMainDetailFragment"
+            app:destination="@id/bsUserMainDetailFragment" />
         <action
-            android:id="@+id/action_backstageAccountManageMainFragment_to_backstageAccountManageMainAddFragment"
-            app:destination="@id/backstageAccountManageMainAddFragment" />
+            android:id="@+id/action_bsAccountManageMainFragment_to_bsAccountManageMainAddFragment"
+            app:destination="@id/bsUserMainAddFragment" />
+        <action
+            android:id="@+id/action_bsAccountManageMainFragment_to_albBsUserVerifyFragment"
+            app:destination="@id/bsUserVerifyFragment" />
+        <action
+            android:id="@+id/action_bsUserMainFragment_to_bsUserSuspendFragment"
+            app:destination="@id/bsUserSuspendFragment" />
+        <action
+            android:id="@+id/action_bsUserMainFragment_to_bsUserServiceFragment"
+            app:destination="@id/bsUserServiceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/backstageAccountManageMainDetailFragment"
-        android:name="com.example.cleaningapp.backstage.usermanage.BackstageAccountManageMainDetailFragment"
-        android:label="fragment_alb_backstage_account_manage_main_detail"
-        tools:layout="@layout/fragment_alb_backstage_account_manage_main_detail" />
+        android:id="@+id/bsUserMainDetailFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserMainDetailFragment"
+        android:label="fragment_alb_bs_user_main_detail"
+        tools:layout="@layout/fragment_alb_bs_user_main_detail" >
+        <action
+            android:id="@+id/action_bsUserMainDetailFragment_to_bsUserMainModifyFragment"
+            app:destination="@id/bsUserMainModifyFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/backstageAccountManageMainAddFragment"
-        android:name="com.example.cleaningapp.backstage.usermanage.BackstageAccountManageMainAddFragment"
-        android:label="fragment_alb_backstage_account_manage_main_add"
-        tools:layout="@layout/fragment_alb_backstage_account_manage_main_add" />
+        android:id="@+id/bsUserMainAddFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserMainAddFragment"
+        android:label="fragment_alb_bs_user_main_add"
+        tools:layout="@layout/fragment_alb_bs_user_main_add" />
     <fragment
-        android:id="@+id/orderManageFragment"
+        android:id="@+id/bsCompMainFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BsCompMainFragment"
+        android:label="fragment_alb_bs_comp_main"
+        tools:layout="@layout/fragment_alb_bs_comp_main">
+        <action
+            android:id="@+id/action_bsCompFragment_to_bsCompDealingFragment"
+            app:destination="@id/bsCompDealingFragment" />
+        <action
+            android:id="@+id/action_bsCompMainFragment_to_bsCompDoneFragment"
+            app:destination="@id/bsCompDoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsCompDealingFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BsCompDealingFragment"
+        android:label="fragment_alb_bs_comp_dealing"
+        tools:layout="@layout/fragment_alb_bs_comp_dealing" >
+        <action
+            android:id="@+id/action_bsCompDealingFragment_to_bsCompDetailFragment"
+            app:destination="@id/bsCompDetailFragment" />
+        <action
+            android:id="@+id/action_bsCompDealingFragment_to_bsCompDoneFragment"
+            app:destination="@id/bsCompDoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsCompDetailFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BsCompDetailFragment"
+        android:label="fragment_alb_bs_comp_detail"
+        tools:layout="@layout/fragment_alb_bs_comp_detail" >
+        <action
+            android:id="@+id/action_bsCompDetailFragment_to_bsCompDoneFragment"
+            app:destination="@id/bsCompDoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsUserVerifyFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserVerifyFragment"
+        android:label="fragment_alb_bs_user_verify"
+        tools:layout="@layout/fragment_alb_bs_user_verify" >
+        <action
+            android:id="@+id/action_bsUserVerifyFragment_to_bsUserVerifyDetailFragment"
+            app:destination="@id/bsUserVerifyDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsUserSuspendFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserSuspendFragment"
+        android:label="fragment_alb_bs_user_suspend"
+        tools:layout="@layout/fragment_alb_bs_user_suspend" />
+    <fragment
+        android:id="@+id/bsUserServiceFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserServiceFragment"
+        android:label="fragment_alb_bs_user_service"
+        tools:layout="@layout/fragment_alb_bs_user_service" >
+        <action
+            android:id="@+id/action_bsUserServiceFragment_to_bsUserServiceChatFragment"
+            app:destination="@id/bsUserServiceChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsUserServiceChatFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserServiceChatFragment"
+        android:label="fragment_alb_bs_user_service_chat"
+        tools:layout="@layout/fragment_alb_bs_user_service_chat" />
+    <fragment
+        android:id="@+id/bsUserMainModifyFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserMainModifyFragment"
+        android:label="fragment_alb_bs_user_main_modify"
+        tools:layout="@layout/fragment_alb_bs_user_main_modify" />
+    <fragment
+        android:id="@+id/bsShopMainFragment"
+        android:name="com.example.cleaningapp.backstage.shop.BsShopMainFragment"
+        android:label="fragment_alb_bs_shop_main"
+        tools:layout="@layout/fragment_alb_bs_shop_main" >
+        <action
+            android:id="@+id/action_bsShopMainFragment_to_bsShopProductFragment"
+            app:destination="@id/bsShopProductFragment" />
+        <action
+            android:id="@+id/action_bsShopMainFragment_to_bsShopProductAddFragment"
+            app:destination="@id/bsShopProductAddFragment" />
+        <action
+            android:id="@+id/action_bsShopMainFragment_to_bsShopOrderFragment"
+            app:destination="@id/bsShopOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsShopProductFragment"
+        android:name="com.example.cleaningapp.backstage.shop.BsShopProductFragment"
+        android:label="fragment_alb_bs_shop_product"
+        tools:layout="@layout/fragment_alb_bs_shop_product" >
+        <action
+            android:id="@+id/action_bsShopProductFragment_to_bsShopProductModifyFragment"
+            app:destination="@id/bsShopProductModifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsShopProductModifyFragment"
+        android:name="com.example.cleaningapp.backstage.shop.BsShopProductModifyFragment"
+        android:label="fragment_alb_bs_shop_product_modify"
+        tools:layout="@layout/fragment_alb_bs_shop_product_modify" />
+    <fragment
+        android:id="@+id/bsShopProductAddFragment"
+        android:name="com.example.cleaningapp.backstage.shop.BsShopProductAddFragment"
+        android:label="fragment_alb_bs_shop_product_add"
+        tools:layout="@layout/fragment_alb_bs_shop_product_add" >
+        <action
+            android:id="@+id/action_bsShopProductAddFragment_to_bsShopProductFragment"
+            app:destination="@id/bsShopProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsShopOrderFragment"
+        android:name="com.example.cleaningapp.backstage.shop.BsShopOrderFragment"
+        android:label="fragment_alb_bs_shop_order"
+        tools:layout="@layout/fragment_alb_bs_shop_order" >
+        <action
+            android:id="@+id/action_bsShopOrderFragment_to_bsShopOrderDetailFragment"
+            app:destination="@id/bsShopOrderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsShopOrderDetailFragment"
+        android:name="com.example.cleaningapp.backstage.shop.BsShopOrderDetailFragment"
+        android:label="fragment_alb_bs_shop_order_detail"
+        tools:layout="@layout/fragment_alb_bs_shop_order_detail" />
+    <fragment
+        android:id="@+id/bsUserVerifyDetailFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserVerifyDetailFragment"
+        android:label="fragment_alb_bs_user_verify_detail"
+        tools:layout="@layout/fragment_alb_bs_verify_detail" >
+        <action
+            android:id="@+id/action_bsUserVerifyDetailFragment_to_bsUserVerifyDeclineFragment"
+            app:destination="@id/bsUserVerifyDeclineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bsUserVerifyDeclineFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.BsUserVerifyDeclineFragment"
+        android:label="fragment_alb_bs_user_verify_decline"
+        tools:layout="@layout/fragment_alb_bs_user_verify_decline" />
+    <fragment
+        android:id="@+id/bsCompDoneFragment"
+        android:name="com.example.cleaningapp.backstage.complaint.BsCompDoneFragment"
+        android:label="fragment_alb_bs_comp_done"
+        tools:layout="@layout/fragment_alb_bs_comp_done" />
+    <fragment
+        android:id="@+id/backstageOrderDetail"
+        android:name="com.example.cleaningapp.backstage.order.BackstageOrderDetail"
+        android:label="BackstageOrderDetail" />
+    <fragment
+        android:id="@+id/orderManageFragment2"
         android:name="com.example.cleaningapp.backstage.order.OrderManageFragment"
-        android:label="fragment_ciyi_order_manage"
-        tools:layout="@layout/fragment_ciyi_order_manage" />
-    <fragment
-        android:id="@+id/backstageComplaintManageFragment"
-        android:name="com.example.cleaningapp.backstage.complaint.BackstageComplaintManageFragment"
-        android:label="fragment_alb_backstage_complaint_manage"
-        tools:layout="@layout/fragment_alb_backstage_complaint_manage" >
+        android:label="OrderManageFragment" >
         <action
-            android:id="@+id/action_backstageComplaintManageFragment_to_backstageComplaintManageDealingFragment"
-            app:destination="@id/backstageComplaintManageDealingFragment" />
+            android:id="@+id/action_orderManageFragment2_to_backstageOrderDetail"
+            app:destination="@id/backstageOrderDetail" />
     </fragment>
     <fragment
-        android:id="@+id/backstageComplaintManageDealingFragment"
-        android:name="com.example.cleaningapp.backstage.complaint.BackstageComplaintManageDealingFragment"
-        android:label="fragment_alb_backstage_complaint_manage_dealing"
-        tools:layout="@layout/fragment_alb_backstage_complaint_manage_dealing" >
+        android:id="@+id/backstageCouponSearchFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponSearchFragment"
+        android:label="fragment_coupon_search"
+        tools:layout="@layout/fragment_coupon_search" >
         <action
-            android:id="@+id/action_backstageComplaintManageDealingFragment_to_backstageComplaintManageDetailFragment"
-            app:destination="@id/backstageComplaintManageDetailFragment" />
+            android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponCreatFragment"
+            app:destination="@id/backstageCouponCreatFragment" />
+        <action
+            android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponModifyFragment"
+            app:destination="@id/backstageCouponModifyFragment" />
     </fragment>
     <fragment
-        android:id="@+id/backstageComplaintManageDetailFragment"
-        android:name="com.example.cleaningapp.backstage.complaint.BackstageComplaintManageDetailFragment"
-        android:label="fragment_alb_backstage_complaint_manage_detail"
-        tools:layout="@layout/fragment_alb_backstage_complaint_manage_detail" />
+        android:id="@+id/backstageCouponModifyFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponModifyFragment"
+        android:label="BackstageCouponModifyFragment" />
+    <fragment
+        android:id="@+id/backstageCouponCreatFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponCreatFragment"
+        android:label="fragment_backstage_coupon_creat"
+        tools:layout="@layout/fragment_backstage_coupon_creat" />
 </navigation>

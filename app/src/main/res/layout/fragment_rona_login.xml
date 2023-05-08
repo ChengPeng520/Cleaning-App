@@ -119,7 +119,7 @@
         android:id="@+id/iv_login_arrow"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:src="@drawable/icon_arrow"
+        android:src="@drawable/rona_icon_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/spn_login_status"
         app:layout_constraintEnd_toEndOf="@+id/spn_login_status"
         app:layout_constraintHorizontal_bias="0.9"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/csHomePageFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsHomePageFragment"
+        android:name="com.example.cleaningapp.customer.csHomePage.CsHomePageFragment"
         android:label="fragment_cs_homepage"
         tools:layout="@layout/fragment_cs_homepage" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/csCouponObtainFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsCouponObtainFragment"
+        android:name="com.example.cleaningapp.customer.csHomePage.CsCouponObtainFragment"
         android:label="fragment_cs_coupon_obtain"
         tools:layout="@layout/fragment_cs_coupon_obtain" />
     <fragment
@@ -28,8 +28,8 @@
             android:id="@+id/action_csCreateOrderFragment_to_csCouponPickerFragment"
             app:destination="@id/csCouponPickerFragment" />
         <action
-            android:id="@+id/action_csCreateOrderFragment_to_csOderConfirmedFragment"
-            app:destination="@id/csOderConfirmedFragment" />
+            android:id="@+id/action_csCreateOrderFragment_to_csOrderConfirmedFragment"
+            app:destination="@id/csOrderConfirmedFragment" />
     </fragment>
     <fragment
         android:id="@+id/csServiceTermsFragment"
@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_csUserFragment_to_csViewCouponFragment"
             app:destination="@id/csViewCouponFragment" />
+        <action
+            android:id="@+id/action_csUserFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/csCouponPickerFragment"
@@ -67,10 +70,10 @@
         android:label="fragment_cs_coupon_picker"
         tools:layout="@layout/fragment_cs_coupon_picker" />
     <fragment
-        android:id="@+id/csOderConfirmedFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsOderConfirmedFragment"
+        android:id="@+id/csOrderConfirmedFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CsOrderConfirmedFragment"
         android:label="fragment_cs_oder_confirmed"
-        tools:layout="@layout/fragment_cs_oder_confirmed" />
+        tools:layout="@layout/fragment_cs_order_confirmed" />
     <fragment
         android:id="@+id/csChooseCleanerFragment2"
         android:name="com.example.cleaningapp.customer.fragment.CsChooseCleanerFragment"
@@ -91,11 +94,11 @@
         android:label="fragment_cs_profile"
         tools:layout="@layout/fragment_cs_profile" >
         <action
-            android:id="@+id/action_csProfileFragment_to_csEditProfileFragment2"
-            app:destination="@id/csEditProfileFragment2" />
+            android:id="@+id/action_csProfileFragment_to_csEditProfileFragment"
+            app:destination="@id/csEditProfileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/csEditProfileFragment2"
+        android:id="@+id/csEditProfileFragment"
         android:name="com.example.cleaningapp.customer.fragment.CsEditProfileFragment"
         android:label="fragment_cs_edit_profile"
         tools:layout="@layout/fragment_cs_edit_profile" />
@@ -104,4 +107,9 @@
         android:name="com.example.cleaningapp.customer.fragment.CsViewCouponFragment"
         android:label="fragment_cs_view_coupon"
         tools:layout="@layout/fragment_cs_view_coupon" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.example.cleaningapp.login.LoginFragment"
+        android:label="fragment_rona_login"
+        tools:layout="@layout/fragment_rona_login" />
 </navigation>

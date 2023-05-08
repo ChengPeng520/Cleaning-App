@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.fragment.PaymentFragment">
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#87CBB9"
+        android:gravity="center"
+        android:text="信用卡資料填寫"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#B9EDDD"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/text_view"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/text_view"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
+        tools:text="NT $ X,XXX 元" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:text="其他付款方式"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="65dp"
+        android:backgroundTint="#87CBB9"
+        android:text="確認付款"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/custom_shape"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="*"
+                android:textColor="@color/clr_cusCoupon_deadline"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="信用卡交易資訊"
+                android:textColor="@color/clr_cusCoupon_deadline" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="*"
+                android:textColor="@color/clr_cusCoupon_deadline"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="信用卡號"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number" />
+
+            <View
+                android:id="@+id/divider12"
+                android:layout_width="6dp"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
+            <EditText
+                android:id="@+id/editTextNumber3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number" />
+
+            <View
+                android:id="@+id/divider13"
+                android:layout_width="6dp"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
+            <EditText
+                android:id="@+id/editTextNumber4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number" />
+
+            <View
+                android:id="@+id/divider14"
+                android:layout_width="6dp"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
+            <EditText
+                android:id="@+id/editTextNumber5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="*"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="352dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="有效期限"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextNumber6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number"
+                tools:text="MM" />
+
+            <EditText
+                android:id="@+id/editTextNumber9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number"
+                tools:text="YY" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="177dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="末三碼" />
+
+            <EditText
+                android:id="@+id/editTextNumber7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="*"
+                android:textColor="@color/clr_cusCoupon_deadline"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="持卡人資料持卡人資料"
+                android:textColor="@color/clr_cusCoupon_deadline"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="*"
+                android:textColor="@color/clr_cusCoupon_deadline"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="持卡人姓名"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editTextNumber10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="number"
+                android:textSize="16sp"
+                tools:text="請輸入卡片上的姓名" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="*"
+                android:textColor="@color/clr_cusCoupon_deadline" />
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="手機號碼"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="phone"
+                android:textSize="16sp"
+                tools:text="手機號碼(台灣請輸入09開頭)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:padding="8dp"
+                android:text="電子信箱"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_shape"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp"
+                tools:text="欲接收交易通知請輸入電子信箱" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/victor_pay_2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+        app:layout_constraintStart_toEndOf="@+id/imageButton4"
+        app:layout_constraintTop_toTopOf="@+id/imageButton4" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/victor_pay_line"
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
