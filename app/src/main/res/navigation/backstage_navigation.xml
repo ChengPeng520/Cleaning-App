@@ -2,10 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bs_navigation"
+    android:id="@+id/backstage_navigation"
     app:startDestination="@id/bsUserMainFragment">
-
-    <fragment
+        <fragment
         android:id="@+id/bsUserMainFragment"
         android:name="com.example.cleaningapp.backstage.usermanage.BsUserMainFragment"
         android:label="fragment_alb_bs_user_main"
@@ -40,11 +39,6 @@
         android:name="com.example.cleaningapp.backstage.usermanage.BsUserMainAddFragment"
         android:label="fragment_alb_bs_user_main_add"
         tools:layout="@layout/fragment_alb_bs_user_main_add" />
-    <fragment
-        android:id="@+id/orderManageFragment"
-        android:name="com.example.cleaningapp.bs.order.OrderManageFragment"
-        android:label="fragment_ciyi_order_manage"
-        tools:layout="@layout/fragment_ciyi_order_manage" />
     <fragment
         android:id="@+id/bsCompMainFragment"
         android:name="com.example.cleaningapp.backstage.complaint.BsCompMainFragment"
@@ -139,11 +133,7 @@
         android:id="@+id/bsShopProductModifyFragment"
         android:name="com.example.cleaningapp.backstage.shop.BsShopProductModifyFragment"
         android:label="fragment_alb_bs_shop_product_modify"
-        tools:layout="@layout/fragment_alb_bs_shop_product_modify" >
-        <action
-            android:id="@+id/action_bsShopProductModifyFragment_to_bsShopProductFragment"
-            app:destination="@id/bsShopProductFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_alb_bs_shop_product_modify" />
     <fragment
         android:id="@+id/bsShopProductAddFragment"
         android:name="com.example.cleaningapp.backstage.shop.BsShopProductAddFragment"
@@ -186,4 +176,37 @@
         android:name="com.example.cleaningapp.backstage.complaint.BsCompDoneFragment"
         android:label="fragment_alb_bs_comp_done"
         tools:layout="@layout/fragment_alb_bs_comp_done" />
+    <fragment
+        android:id="@+id/backstageOrderDetail"
+        android:name="com.example.cleaningapp.backstage.order.BackstageOrderDetail"
+        android:label="BackstageOrderDetail" />
+    <fragment
+        android:id="@+id/orderManageFragment2"
+        android:name="com.example.cleaningapp.backstage.order.OrderManageFragment"
+        android:label="OrderManageFragment" >
+        <action
+            android:id="@+id/action_orderManageFragment2_to_backstageOrderDetail"
+            app:destination="@id/backstageOrderDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/backstageCouponSearchFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponSearchFragment"
+        android:label="fragment_coupon_search"
+        tools:layout="@layout/fragment_coupon_search" >
+        <action
+            android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponCreatFragment"
+            app:destination="@id/backstageCouponCreatFragment" />
+        <action
+            android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponModifyFragment"
+            app:destination="@id/backstageCouponModifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backstageCouponModifyFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponModifyFragment"
+        android:label="BackstageCouponModifyFragment" />
+    <fragment
+        android:id="@+id/backstageCouponCreatFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponCreatFragment"
+        android:label="fragment_backstage_coupon_creat"
+        tools:layout="@layout/fragment_backstage_coupon_creat" />
 </navigation>
