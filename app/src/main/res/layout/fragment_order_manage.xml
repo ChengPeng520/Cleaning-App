@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".backstage.order.OrderManageFragment">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/search"
+            android:layout_width="369dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <SearchView
+                android:id="@+id/bt_bs_order_search"
+                android:layout_width="289dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ciyi_shape_search"
+                android:gravity="center"
+                android:queryBackground="@android:color/transparent" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <LinearLayout
+            android:id="@+id/textSearchResultTitle"
+            android:layout_width="369dp"
+            android:layout_height="40dp"
+            android:background="@color/cardview_shadow_end_color"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/search"
+            app:layout_constraintStart_toStartOf="@+id/search"
+            app:layout_constraintTop_toBottomOf="@+id/search"
+            tools:ignore="UnknownId">
+
+
+            <TextView
+                android:id="@+id/ti_bs_order_num"
+                android:layout_width="134dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/tv_ti_order_num"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/orderStatus"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/tv_ti_order_status"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/orderTime"
+                android:layout_width="89dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/tv_ti_order_date"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="369dp"
+            android:layout_height="498dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/textSearchResultTitle"
+            app:layout_constraintStart_toStartOf="@+id/textSearchResultTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textSearchResultTitle">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_bs_orderlist_noresult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_bs_orderlist_noresult"
+                tools:gravity="center" />
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="search"
+            tools:layout_editor_absoluteY="122dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
