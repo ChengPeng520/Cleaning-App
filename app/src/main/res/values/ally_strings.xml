@@ -56,4 +56,9 @@
     <string name="tv_csChooseCleaner_chooseCleaner">請選擇清潔人員：</string> /v
     <string name="txt_csViewCv_title">查看履歷</string>
     <string name="txt_csViewCv_confirmPay">確認並付款</string>
+    <string name="chk_csCreateOrder_livingroom">客廳</string> /v
+    <string name="chk_csCreateOrder_kitchen">廚房</string> /v
+    <string name="chk_csCreateOrder_bathroom">廁所</string> /v
+    <string name="chk_csCreateOrder_bedroom">房間</string> /v
+    <string name="ht_csCreateOrder_enterSize">請輸入坪數</string> /v
 </resources>
