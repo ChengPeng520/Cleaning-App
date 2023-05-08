@@ -1,4 +1,4 @@
-package com.example.cleaningapp.customer.fragment
+package com.example.cleaningapp.customer.csHomePage
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
