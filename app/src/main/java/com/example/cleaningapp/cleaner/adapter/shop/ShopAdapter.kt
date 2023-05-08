@@ -1,4 +1,4 @@
-package com.example.cleaningapp.cleaner.view.shop
+package com.example.cleaningapp.cleaner.adapter.shop
 
 import android.os.Bundle
 import android.view.LayoutInflater

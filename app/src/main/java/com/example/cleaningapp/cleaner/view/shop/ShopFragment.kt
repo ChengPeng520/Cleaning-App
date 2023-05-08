@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.cleaningapp.cleaner.adapter.shop.ShopAdapter
 import com.example.cleaningapp.cleaner.viewmodel.shop.ShopViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiShopBinding
 import kotlinx.coroutines.launch
