@@ -1,32 +1,37 @@
 package com.example.cleaningapp.customer.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.ViewModel.CsCreateOrderViewModel
+import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
 
 class CsCreateOrderFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CsCreateOrderFragment()
-    }
-
-    private lateinit var viewModel: CreateOrderViewModel
+    private lateinit var binding: FragmentCsCreateOrderBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cs_create_order, container, false)
+        val viewModel:CsCreateOrderViewModel by viewModels()
+        binding = FragmentCsCreateOrderBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        // 設定lifecycleOwner方能監控LiveData資料變化
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateOrderViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        with(binding) {
+            Navigation.findNavController(binding.tvCsCreateOrderCoupon).navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
+            Navigation.findNavController(binding.btnCsCreateOrderNext).navigate(R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment)
+        }
     }
+
 
 }

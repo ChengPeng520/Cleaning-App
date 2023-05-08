@@ -1,76 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".customer.fragment.CsUserFragment" >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/btn_csUserPage_profile"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/txt_profile"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:icon="@drawable/cs_btnavbar_ic_profile"
-        app:iconSize="30sp"
-        app:iconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.customer.ViewModel.CsUserViewModel" />
 
-    <Button
-        android:id="@+id/btn_csUserPage_logOut"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/txt_csUserPage_logOut"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:icon="@drawable/ic_logout"
-        app:iconSize="30sp"
-        app:iconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_csUserPage_profile"
-        app:layout_constraintStart_toStartOf="@+id/btn_csUserPage_profile"
-        app:layout_constraintTop_toBottomOf="@+id/btn_csUserPage_discount" />
+    </data>
 
-    <Button
-        android:id="@+id/btn_csUserPage_discount"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/txt_seeCoupon"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:icon="@drawable/ic_discount"
-        app:iconSize="30sp"
-        app:iconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/btn_csUserPage_profile"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_csUserPage_profile"
-        app:layout_constraintTop_toBottomOf="@+id/btn_csUserPage_profile" />
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btn_cs_NavView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#569DAA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/cs_bt_navbar">
+        android:layout_height="match_parent"
+        android:layout_margin="24dp"
+        tools:context=".customer.fragment.CsUserFragment">
 
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <Button
+            android:id="@+id/btn_csUserPage_profile"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/txt_profile"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:icon="@drawable/cs_btnavbar_ic_profile"
+            app:iconSize="30sp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_csUserPage_logOut"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/txt_csUserPage_logOut"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_logout"
+            app:iconSize="30sp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_csUserPage_profile"
+            app:layout_constraintStart_toStartOf="@+id/btn_csUserPage_profile"
+            app:layout_constraintTop_toBottomOf="@+id/btn_csUserPage_discount" />
+
+        <Button
+            android:id="@+id/btn_csUserPage_discount"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/txt_seeCoupon"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:icon="@drawable/ic_discount"
+            app:iconSize="30sp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_csUserPage_profile"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_csUserPage_profile"
+            app:layout_constraintTop_toBottomOf="@+id/btn_csUserPage_profile" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline19"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 

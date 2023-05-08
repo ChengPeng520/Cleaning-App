@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".backstage.usermanage.BsUserMainModifyFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.usermanage.BsUserMainModifyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_bs_user_main_modify_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+
+        <ScrollView
+            android:id="@+id/sclVi_bs_user_main_modify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="80dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/iv_bs_user_main_modify_avatar"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/fatruei_my_image" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_email_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_email_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_bs_user_main_modify_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:text="@string/tv_bs_user_main_detail_email_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_password_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_password_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_bs_user_main_modify_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:text="@string/tv_bs_user_main_detail_password_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_name_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_name_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_bs_user_main_modify_mane"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@string/tv_bs_user_main_detail_mane_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_phone_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_phone_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_bs_user_main_modify_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_address_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_address_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_bs_user_main_modify_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_gender_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_gender_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_bs_user_main_modify_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_createtime_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_createtime_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_createtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_updatetime_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_updatetime_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_updatetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_role_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_role_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_role"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_permission_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_permission_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_permission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_bs_user_main_modify_intro_ti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_bs_user_main_detail_intro_ti"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+
+
+                <EditText
+                    android:id="@+id/edtTxt_bs_user_main_modify_intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_bs_user_main_detail_intro_ex"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_main_modify_submit"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/textPrimary"
+            android:text="@string/btn_bs_user_main_modify_submit"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.97" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

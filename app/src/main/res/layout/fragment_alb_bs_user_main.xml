@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".backstage.usermanage.BsUserMainFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.usermanage.BsUserMainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_main_user"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/textPrimary"
+            android:text="@string/btn_bs_user_main_user"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_main_verify"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/btn_bs_user_main_check"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_main_user"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_user_main_user"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_user_main_user" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_main_suspend"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/btn_bs_user_main_suspend"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_main_verify"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_user_main_verify"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_user_main_verify" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_main_service"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/btn_bs_user_main_service"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_main_suspend"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_user_main_suspend"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_user_main_suspend" />
+
+        <LinearLayout
+            android:id="@+id/ll_bs_user_main_base"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_bs_user_main_user">
+
+            <LinearLayout
+                android:id="@+id/ll_bs_user_main_searchbar"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:orientation="horizontal">
+
+                <SearchView
+                    android:id="@+id/sv_bs_user_main"
+                    android:layout_width="235dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    app:iconifiedByDefault="false" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_bs_user_main_add"
+                    android:layout_width="54dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="40dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_bs_user_main_add"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider10"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <LinearLayout
+                android:id="@+id/ll_bs_user_main_ti"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_bs_user_main_email_ti"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tv_bs_user_main_email_ti"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_bs_user_main_name_ti"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tv_bs_user_main_name_ti"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_bs_user_main_time_ti"
+                    android:layout_width="49dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tv_bs_user_main_time_ti"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider11"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/tv_bs_user_main_no_data"
+                android:layout_width="64dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_main_no_data" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_bs_user_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

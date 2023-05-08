@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".backstage.usermanage.BsUserServiceFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.usermanage.BsUserServiceViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_serv_user"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/btn_bs_user_main_user"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_serv_verify"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/btn_bs_user_main_check"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_serv_user"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_user_serv_user"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_user_serv_user" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_serv_suspend"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/btn_bs_user_main_suspend"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_serv_verify"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_user_serv_verify"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_user_serv_verify" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_serv_service"
+            android:layout_width="55dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/textPrimary"
+            android:text="@string/btn_bs_user_main_service"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_serv_suspend"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_user_serv_suspend"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_user_serv_suspend" />
+
+        <LinearLayout
+            android:id="@+id/ll_bs_user_serv_base"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_bs_user_serv_user">
+
+            <SearchView
+                android:id="@+id/sv_bs_user_serv_main"
+                android:layout_width="235dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                app:iconifiedByDefault="false" />
+
+            <View
+                android:id="@+id/divider10"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/tv_bs_user_serv_nodata"
+                android:layout_width="64dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_main_no_data"
+                android:textColor="@color/textSecondary" />
+
+            <TextView
+                android:id="@+id/tv_bs_user_serv_querynodata"
+                android:layout_width="80dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_serv_querynodata"
+                android:textColor="@color/textSecondary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_bs_user_serv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
