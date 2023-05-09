@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.cleaningapp.login.LoginFragment"
+        android:name="com.example.cleaningapp.login.Controller.LoginFragment"
         android:label="fragment_rona_login"
         tools:layout="@layout/fragment_rona_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.cleaningapp.login.SignupFragment"
+        android:name="com.example.cleaningapp.login.Controller.SignupFragment"
         android:label="fragment_rona_signup"
         tools:layout="@layout/fragment_rona_signup" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupContractFragment"
-        android:name="com.example.cleaningapp.login.SignupContractFragment"
+        android:name="com.example.cleaningapp.login.Controller.SignupContractFragment"
         android:label="fragment_rona_signup_contract"
         tools:layout="@layout/fragment_rona_signup_contract" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupApplyInfoFragment"
-        android:name="com.example.cleaningapp.login.SignupApplyInfoFragment"
+        android:name="com.example.cleaningapp.login.Controller.SignupApplyInfoFragment"
         android:label="fragment_rona_signup_apply_info"
         tools:layout="@layout/fragment_rona_signup_apply_info" />
 </navigation>
