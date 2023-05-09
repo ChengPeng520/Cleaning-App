@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cleaner.shop.ShoppingCartFragment">
+    tools:context=".cleaner.view.shop.ShoppingCartFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_shopping_cart_product"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <TextView
         android:id="@+id/textView5"
@@ -87,13 +87,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.7" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_pay1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/fatruei_btn_shopping_cart_style"
+        android:background="@drawable/all_layout_gray_frame_shape"
         android:text="街口支付"
         android:textColor="#414141"
         android:textSize="24sp"
@@ -106,7 +106,7 @@
         android:id="@+id/btn_pay2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/fatruei_btn_shopping_cart_style"
+        android:background="@drawable/all_layout_gray_frame_shape"
         android:text="LINEPAY"
         android:textColor="#414141"
         android:textSize="24sp"
@@ -120,7 +120,7 @@
         android:id="@+id/btn_pay3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/fatruei_btn_shopping_cart_style"
+        android:background="@drawable/all_layout_gray_frame_shape"
         android:text="綠界支付"
         android:textColor="#414141"
         android:textSize="24sp"

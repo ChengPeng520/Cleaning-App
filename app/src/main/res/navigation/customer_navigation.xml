@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_historicalorder"
-        android:name="com.example.cleaningapp.customer.order.fragment_checkout"
+        android:name="com.example.cleaningapp.customer.order.CheckoutFragment"
         android:label="fragment_victor_historicalorder"
         tools:layout="@layout/fragment_victor_historicalorder" >
         <action
@@ -109,7 +109,7 @@
         tools:layout="@layout/fragment_cs_view_coupon" />
     <fragment
         android:id="@+id/loginFragment2"
-        android:name="com.example.cleaningapp.login.Controller.LoginFragment"
+        android:name="com.example.cleaningapp.login.controller.LoginFragment"
         android:label="fragment_rona_login"
         tools:layout="@layout/fragment_rona_login" />
 </navigation>

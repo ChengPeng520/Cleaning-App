@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cleaner.shop.CompletedPaymentFragment">
+    tools:context=".cleaner.view.shop.CompletedPaymentFragment">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -64,10 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_completed_payment_back"
-        android:textColor="#CCFBBC05"
+        android:textColor="@color/Secondary"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

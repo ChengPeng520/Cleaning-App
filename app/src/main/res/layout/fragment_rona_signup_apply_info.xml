@@ -1,277 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".login.Controller.SignupApplyInfoFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.controller.SignupApplyInfoFragment">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.example.cleaningapp.login.ViewModel.SignupApplyInfoViewModel" />
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.Controller.SignupApplyInfoFragment">
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:fillViewport="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/tv_applyinfo_uploadtxtID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_applyinfo_uploadtxtID"
+                android:textColor="@color/material_dynamic_neutral10"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:layout_constraintVertical_bias="0.08" />
+
+            <TextView
+                android:id="@+id/tv_applyinfo_uploadtxtGP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_applyinfo_uploadtxtGP"
+                android:textColor="@color/material_dynamic_neutral10"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.31"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline4"
+                app:layout_constraintVertical_bias="0.08" />
+
+            <ImageView
+                android:id="@+id/iv_applyinfo_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/ic_back" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.94" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.65" />
+
+            <TextView
+                android:id="@+id/tv_suinfo_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_suinfo_done"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline6"
+                app:layout_constraintVertical_bias="0.937" />
+
+            <EditText
+                android:id="@+id/edtTxt_applyinfo_intro"
+                android:layout_width="327dp"
+                android:layout_height="158dp"
+                android:ems="10"
+                android:hint="@string/edtTxt_suinfo_intro"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:paddingBottom="120dp"
+                android:textColorHint="@color/material_dynamic_neutral60"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/edtTxt_applyinfo_phone"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/tv_applyinfo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_suinfo_title"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <EditText
+                android:id="@+id/edtTxt_applyinfo_name"
+                android:layout_width="327dp"
+                android:layout_height="56dp"
+                android:ems="10"
+                android:hint="@string/edtTxt_suinfo_name"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/material_dynamic_neutral60"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline7"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05109489" />
+
+            <EditText
+                android:id="@+id/edtTxt_applyinfo_sex"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/rona_field_style"
+                android:ems="10"
+                android:hint="@string/edtTxt_suinfo_sex"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/material_dynamic_neutral60"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/edtTxt_applyinfo_name"
+                app:layout_constraintVertical_bias="0.02" />
 
-                <TextView
-                    android:id="@+id/tv_applyinfo_uploadtxtID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_applyinfo_uploadtxtID"
-                    android:textColor="@color/material_dynamic_neutral10"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline4"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline5"
-                    app:layout_constraintVertical_bias="0.08" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.25" />
 
-                <TextView
-                    android:id="@+id/tv_applyinfo_uploadtxtGP"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_applyinfo_uploadtxtGP"
-                    android:textColor="@color/material_dynamic_neutral10"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline6"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.31"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline4"
-                    app:layout_constraintVertical_bias="0.08" />
+            <EditText
+                android:id="@+id/edtTxt_applyinfo_phone"
+                android:layout_width="327dp"
+                android:layout_height="56dp"
+                android:ems="10"
+                android:hint="@string/edtTxt_suinfo_phone"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/material_dynamic_neutral60"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/edtTxt_applyinfo_sex"
+                app:layout_constraintVertical_bias="0.02" />
 
-                <ImageView
-                    android:id="@+id/iv_applyinfo_back"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/ic_back" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.82" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.94" />
+            <ImageView
+                android:id="@+id/iv_applyinfo_personalPhoto"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline7"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                app:layout_constraintVertical_bias="0.6"
+                app:srcCompat="@drawable/rona_icon_personalphoto" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.65" />
+            <ImageView
+                android:id="@+id/iv_applyinfo_camera"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_applyinfo_personalPhoto"
+                app:layout_constraintEnd_toEndOf="@+id/iv_applyinfo_personalPhoto"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="@+id/iv_applyinfo_personalPhoto"
+                app:layout_constraintTop_toTopOf="@+id/iv_applyinfo_personalPhoto"
+                app:layout_constraintVertical_bias="0.9"
+                app:srcCompat="@drawable/rona_icon_camera" />
 
-                <TextView
-                    android:id="@+id/tv_suinfo_done"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_suinfo_done"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline6"
-                    app:layout_constraintVertical_bias="0.937" />
+            <ImageView
+                android:id="@+id/iv_applyinfo_identify1"
+                android:layout_width="157dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.07"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:layout_constraintVertical_bias="1.0"
+                tools:src="@drawable/rona_uploadimage_id" />
 
-                <EditText
-                    android:id="@+id/edtTxt_applyinfo_intro"
-                    android:layout_width="327dp"
-                    android:layout_height="158dp"
-                    android:background="@drawable/field_style"
-                    android:ems="10"
-                    android:hint="@string/edtTxt_suinfo_intro"
-                    android:inputType="textPersonName"
-                    android:paddingStart="10dp"
-                    android:paddingBottom="120dp"
-                    android:textColorHint="@color/material_dynamic_neutral60"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline5"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toBottomOf="@+id/edtTxt_applyinfo_phone"
-                    app:layout_constraintVertical_bias="1.0" />
+            <ImageView
+                android:id="@+id/iv_applyinfo_identify2"
+                android:layout_width="157dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.93"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:layout_constraintVertical_bias="1.0"
+                tools:src="@drawable/rona_uploadimage_id" />
 
-                <TextView
-                    android:id="@+id/tv_applyinfo_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_suinfo_title"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+            <ImageView
+                android:id="@+id/iv_applyinfo_goodpeople"
+                android:layout_width="372dp"
+                android:layout_height="60dp"
+                android:src="@drawable/rona_uploadimage_gp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.26"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/guideline4"
+                app:layout_constraintVertical_bias="1.0" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.1" />
-
-                <EditText
-                    android:id="@+id/edtTxt_applyinfo_name"
-                    android:layout_width="327dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/field_style"
-                    android:ems="10"
-                    android:hint="@string/edtTxt_suinfo_name"
-                    android:inputType="textPersonName"
-                    android:paddingStart="10dp"
-                    android:textColorHint="@color/material_dynamic_neutral60"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline5"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline7"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.95" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.05109489" />
-
-                <EditText
-                    android:id="@+id/edtTxt_applyinfo_sex"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rona_field_style"
-                    android:ems="10"
-                    android:hint="@string/edtTxt_suinfo_sex"
-                    android:inputType="textPersonName"
-                    android:paddingStart="10dp"
-                    android:textColorHint="@color/material_dynamic_neutral60"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline5"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toBottomOf="@+id/edtTxt_applyinfo_name"
-                    app:layout_constraintVertical_bias="0.02" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.25" />
-
-                <EditText
-                    android:id="@+id/edtTxt_applyinfo_phone"
-                    android:layout_width="327dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/field_style"
-                    android:ems="10"
-                    android:hint="@string/edtTxt_suinfo_phone"
-                    android:inputType="textPersonName"
-                    android:paddingStart="10dp"
-                    android:textColorHint="@color/material_dynamic_neutral60"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline5"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toBottomOf="@+id/edtTxt_applyinfo_sex"
-                    app:layout_constraintVertical_bias="0.02" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.82" />
-
-                <ImageView
-                    android:id="@+id/iv_applyinfo_personalPhoto"
-                    android:layout_width="104dp"
-                    android:layout_height="104dp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline7"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline"
-                    app:layout_constraintVertical_bias="0.6"
-                    app:srcCompat="@drawable/rona_icon_personalphoto" />
-
-                <ImageView
-                    android:id="@+id/iv_applyinfo_camera"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_applyinfo_personalPhoto"
-                    app:layout_constraintEnd_toEndOf="@+id/iv_applyinfo_personalPhoto"
-                    app:layout_constraintHorizontal_bias="0.9"
-                    app:layout_constraintStart_toStartOf="@+id/iv_applyinfo_personalPhoto"
-                    app:layout_constraintTop_toTopOf="@+id/iv_applyinfo_personalPhoto"
-                    app:layout_constraintVertical_bias="0.9"
-                    app:srcCompat="@drawable/rona_icon_camera" />
-
-                <ImageView
-                    android:id="@+id/iv_applyinfo_identify1"
-                    android:layout_width="157dp"
-                    android:layout_height="100dp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline4"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.07"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline5"
-                    app:layout_constraintVertical_bias="1.0"
-                    tools:src="@drawable/rona_uploadimage_id" />
-
-                <ImageView
-                    android:id="@+id/iv_applyinfo_identify2"
-                    android:layout_width="157dp"
-                    android:layout_height="100dp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline4"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.93"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline5"
-                    app:layout_constraintVertical_bias="1.0"
-                    tools:src="@drawable/rona_uploadimage_id" />
-
-                <ImageView
-                    android:id="@+id/iv_applyinfo_goodpeople"
-                    android:layout_width="372dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/rona_uploadimage_gp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline6"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintHorizontal_bias="0.26"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toTopOf="@+id/guideline4"
-                    app:layout_constraintVertical_bias="1.0" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

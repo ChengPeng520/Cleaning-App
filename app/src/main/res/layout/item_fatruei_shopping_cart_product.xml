@@ -35,7 +35,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_shopping_cart_product_name"
+        android:text="@string/tv_cleaner_shop_product_name"
         android:textColor="#121212"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView19"

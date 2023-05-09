@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.ViewModel.CsProfileViewModel
+import com.example.cleaningapp.customer.viewModel.CsProfileViewModel
 import com.example.cleaningapp.databinding.FragmentCsProfileBinding
 
 class CsProfileFragment : Fragment() {
@@ -17,7 +17,7 @@ class CsProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val viewModel: CsProfileViewModel by viewModels()
         binding = FragmentCsProfileBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
@@ -31,6 +31,4 @@ class CsProfileFragment : Fragment() {
             Navigation.findNavController(binding.btnCsProfileModify).navigate(R.id.action_csProfileFragment_to_csEditProfileFragment)
         }
     }
-
-
 }

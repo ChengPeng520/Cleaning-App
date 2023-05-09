@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.ViewModel.CsCreateOrderViewModel" />
+            type="com.example.cleaningapp.customer.viewModel.CsCreateOrderViewModel" />
 
     </data>
 
@@ -64,7 +64,6 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/tv_csCreateOrder_county"
                     android:textAlignment="inherit"
-                    android:textColor="@color/clr_csOrderOption"
                     android:textSize="16sp" />
 
                 <Spinner
@@ -127,7 +126,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/txt_date"
-                    android:textColor="@color/clr_csOrderOption"
                     android:textSize="16sp" />
 
                 <TextView
@@ -191,6 +189,7 @@
                     android:gravity="center_vertical"
                     android:textSize="16sp"
                     tools:text="timepicker" />
+
             </LinearLayout>
 
             <TextView
@@ -280,9 +279,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center_horizontal"
-                    android:inputType="numberDecimal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
+                    android:inputType="numberDecimal"
                     android:textSize="16sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -308,8 +308,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center_horizontal"
-                    android:inputType="numberDecimal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
+                    android:inputType="numberDecimal"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -325,8 +325,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center_horizontal"
-                    android:inputType="numberDecimal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
+                    android:inputType="numberDecimal"
                     android:textSize="16sp" />
             </LinearLayout>
 

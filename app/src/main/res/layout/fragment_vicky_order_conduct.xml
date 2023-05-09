@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cleaner.view.order.OrderConductFragment">
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:background="#FAFAFA"
+        android:drawableStart="@drawable/baseline_event_24"
+        android:gravity="center"
+        android:padding="16dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="進行中"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/imageButton4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FAFAFA"
+        android:drawableStart="@drawable/vicky_baseline_check_box_24"
+        android:gravity="center"
+        android:padding="16dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="已結束"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView62"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView62"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_order_todaybooking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/tv_order_conduct_today"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tv_order_todaybooking"
+        app:layout_constraintStart_toStartOf="@+id/tv_order_todaybooking"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_todaybooking" />
+
+    <TextView
+        android:id="@+id/tv_order_booking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_order_conduct_booking"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView2"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_order_booking"
+        app:layout_constraintStart_toStartOf="@+id/tv_order_booking"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_booking" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".login.Controller.SignupContractFragment">
+    tools:context=".login.controller.SignupContractFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.login.ViewModel.SignupContractViewModel" />
+            type="com.example.cleaningapp.login.viewModel.SignupContractViewModel" />
 
     </data>
 

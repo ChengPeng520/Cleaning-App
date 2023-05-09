@@ -2,19 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".login.Controller.SignupFragment">
+    tools:context=".login.controller.SignupFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.login.ViewModel.SignupViewModel" />
+            type="com.example.cleaningapp.login.viewModel.SignupViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".login.Controller.SignupFragment">
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/edtTxt_signup_password"
