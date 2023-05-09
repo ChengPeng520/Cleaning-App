@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.usermanage.BsUserServiceChatFragment">
+    tools:context=".backstage.usermanage.controller.BsUserServiceChatFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.BsUserServiceChatViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
