@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserVerifyDetailViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsVerifyDetailBinding
 
 class BsUserVerifyDetailFragment : Fragment() {
-private lateinit var binding: FragmentAlbBsVerifyDetailBinding
+    private lateinit var binding: FragmentAlbBsVerifyDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,18 +26,19 @@ private lateinit var binding: FragmentAlbBsVerifyDetailBinding
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            btnBsUserVerifyDetailPass.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.bsUserVerifyDetailFragment)
+        arguments?.let { bundle ->
+            bundle.getSerializable("user")?.let {
+                binding.viewModel?.user?.value = it as User
             }
-            btnBsUserVerifyDetailDecline.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.bsUserVerifyDeclineFragment)
-            }
-            ivBsUserVerifyDetailBack.setOnClickListener{
-                Navigation.findNavController(view).popBackStack()
+            with(binding) {
+                btnBsUserVerifyDetailDecline.setOnClickListener {
+                    Navigation.findNavController(view).navigate(R.id.bsUserVerifyDeclineFragment)
+                }
+                ivBsUserVerifyDetailBack.setOnClickListener {
+                    Navigation.findNavController(view).navigate(R.id.bsUserVerifyFragment)
+                }
             }
         }
-    }
 
+    }
 }

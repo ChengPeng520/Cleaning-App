@@ -9,7 +9,6 @@ import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserMainBinding
@@ -33,9 +32,9 @@ class BsUserMainFragment : Fragment() {
             viewModel?.users?.observe(viewLifecycleOwner){ users ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBsUserMain.adapter == null) {
-                    rvBsUserMain.adapter = UserAdapter(users)
+                    rvBsUserMain.adapter = UserMainAdapter(users)
                 } else {
-                    (rvBsUserMain.adapter as UserAdapter).updateUsers(users)
+                    (rvBsUserMain.adapter as UserMainAdapter).updateUsers(users)
                 }
             }
 

@@ -45,7 +45,7 @@ class BsUserMainViewModel : ViewModel() {
         val userList = mutableListOf<User>()
         userList.add(
             User(
-                "rona87@gmail.com", "P@ssw0rd", "Rona",
+                R.drawable.alb_account_avatar,"rona87@gmail.com", "P@ssw0rd", "Rona",
                 "0987487487", "高雄市南投區中山路12號8樓", "女",
                 "2023-05-09 02:13", "2023-05-09 09:13", "一般用戶", "開通中",
                 "我是一名熱愛閱讀和旅行的年輕人，喜歡在不同的地方體驗當地文化和風俗習慣，同時也享受與書本相伴的寧靜時光。",
@@ -58,7 +58,7 @@ class BsUserMainViewModel : ViewModel() {
         )
         userList.add(
             User(
-                "ally87@gmail.com", "password", "Ally",
+                R.drawable.alb_account_avatar,"ally87@gmail.com", "password", "Ally",
                 "0987987987", "台北市中山區中山路12號8樓", "女", "2023-05-09 02:20",
                 "2023-05-09 09:13", "清潔人員", "開通中",
                 "我是一位熱衷於技術創新的工程師，擅長將複雜的問題簡化成易於理解和實現的方案，並善於團隊合作實現目標。",
@@ -71,7 +71,7 @@ class BsUserMainViewModel : ViewModel() {
         )
         userList.add(
             User(
-                "ciyi87@gmail.com", "PASSWORD", "Ciyi",
+                R.drawable.alb_account_avatar,"ciyi87@gmail.com", "PASSWORD", "Ciyi",
                 "0987087087", "台中市豐原區中山路12號8樓", "女", "2023-05-09 02:30",
                 "2023-05-09 09:13", "一般用戶", "開通中",
                 "我是一名喜愛運動和音樂的青年，平時喜歡打籃球、游泳和跑步，同時也熱愛彈奏吉他和創作音樂，享受在運動和音樂中放鬆身心。",

@@ -9,41 +9,43 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel
+import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserVerifyDetailViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsUserMainDataboxBinding
+import com.example.cleaningapp.databinding.ItemAlbBsUserVerifyDataboxBinding
 
 /**
  * 使用者列表所需的Adapter
  */
-class UserAdapter(private var users: List<User>) :
-    RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserVerifyAdapter(private var users: List<User>) :
+    RecyclerView.Adapter<UserVerifyAdapter.UserVerifyViewHolder>() {
 
     /**
      * 更新使用者列表內容
-     * @param friends 新的好友列表
+     * @param users 新的好友列表
      */
     fun updateUsers(users: List<User>) {
         this.users = users
         notifyDataSetChanged()
     }
 
-    class UserViewHolder(val itemViewBinding: ItemAlbBsUserMainDataboxBinding) :
+    class UserVerifyViewHolder(val itemViewBinding: ItemAlbBsUserVerifyDataboxBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root)
 
     override fun getItemCount(): Int {
         return users.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val itemViewBinding = ItemAlbBsUserMainDataboxBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserVerifyViewHolder {
+        val itemViewBinding = ItemAlbBsUserVerifyDataboxBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BsUserMainDetailViewModel()
+        itemViewBinding.viewModel = BsUserVerifyDetailViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
-        return UserViewHolder(itemViewBinding)
+        return UserVerifyViewHolder(itemViewBinding)
     }
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserVerifyViewHolder, position: Int) {
         val user = users[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
@@ -52,7 +54,7 @@ class UserAdapter(private var users: List<User>) :
             bundle.putSerializable("user", user)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_bsAccountManageMainFragment_to_bsAccountManageMainDetailFragment, bundle)
+                    .navigate(R.id.action_bsUserVerifyFragment_to_bsUserVerifyDetailFragment, bundle)
             }
         }
     }

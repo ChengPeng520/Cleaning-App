@@ -56,7 +56,7 @@
                     android:layout_width="86dp"
                     android:layout_height="86dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/fatruei_my_image" />
+                    android:src="@{viewModel.user.avatar}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,10 +74,12 @@
 
                     <EditText
                         android:id="@+id/edtTxt_bs_user_main_modify_email"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="textEmailAddress"
-                        android:text="@string/tv_bs_user_main_detail_email_ex"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.user.email}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -97,10 +99,12 @@
 
                     <EditText
                         android:id="@+id/edtTxt_bs_user_main_modify_password"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="textPassword"
-                        android:text="@string/tv_bs_user_main_detail_password_ex"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.user.password}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -120,10 +124,12 @@
 
                     <EditText
                         android:id="@+id/edtTxt_bs_user_main_modify_mane"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="textPersonName"
-                        android:text="@string/tv_bs_user_main_detail_mane_ex"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.user.name}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -143,10 +149,12 @@
 
                     <EditText
                         android:id="@+id/edtTxt_bs_user_main_modify_phone"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="phone"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.user.phone}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -166,10 +174,12 @@
 
                     <EditText
                         android:id="@+id/edtTxt_bs_user_main_modify_address"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="text"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.user.address}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -189,10 +199,12 @@
 
                     <EditText
                         android:id="@+id/edtTxt_bs_user_main_modify_gender"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="text"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.user.gender}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -214,7 +226,8 @@
                         android:id="@+id/tv_bs_user_main_modify_createtime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.user.createTime}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -236,7 +249,8 @@
                         android:id="@+id/tv_bs_user_main_modify_updatetime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.user.updateTime}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -258,7 +272,8 @@
                         android:id="@+id/tv_bs_user_main_modify_role"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.user.role}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -280,7 +295,8 @@
                         android:id="@+id/tv_bs_user_main_modify_permission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.user.authority}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -296,9 +312,10 @@
 
                 <EditText
                     android:id="@+id/edtTxt_bs_user_main_modify_intro"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_bs_user_main_detail_intro_ex"
+                    android:minHeight="48dp"
+                    android:text="@={viewModel.user.intro}"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
 
