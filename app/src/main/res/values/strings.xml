@@ -4,6 +4,7 @@
     <string name="item_cleaner_order">訂單</string>
     <string name="item_cleaner_shop">商城</string>
     <string name="item_cleaner_profile">個人</string>
+    <string name="item_cleaner_shopping_cart">購物車</string>
 
     <string name="item_nav_other">其他</string>
     <string name="item_nav_main">主要管理</string>
