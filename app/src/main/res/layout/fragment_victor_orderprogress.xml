@@ -195,7 +195,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/textView111"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -262,8 +262,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView35"
-            app:layout_constraintTop_toBottomOf="@+id/textView35"
+            app:layout_constraintStart_toStartOf="@+id/textView111"
+            app:layout_constraintTop_toBottomOf="@+id/textView111"
             tools:text="我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註" />
 
         <TextView

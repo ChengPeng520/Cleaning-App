@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/tv_order_demands"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -112,8 +112,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView35"
-            app:layout_constraintTop_toBottomOf="@+id/textView35"
+            app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_demands"
             tools:text="我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註" />
 
         <TextView
@@ -184,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="清潔人員:"
-            app:layout_constraintStart_toStartOf="@+id/textView35"
+            app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
             app:layout_constraintTop_toBottomOf="@+id/tv_order_remark" />
 
         <TextView
