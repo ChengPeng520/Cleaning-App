@@ -20,7 +20,7 @@ class LoginForgetPasswordEmailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login_forget_password_email, container, false)
+        return inflater.inflate(R.layout.fragment_rona_login_forget_password_email, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.viewModel.CsHomePageViewModel
 
 class CsHomePageFragment : Fragment() {
 
@@ -14,7 +15,7 @@ class CsHomePageFragment : Fragment() {
         fun newInstance() = CsHomePageFragment()
     }
 
-    private lateinit var viewModel: CustomerHomePageViewModel
+    private lateinit var viewModel: CsHomePageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +24,8 @@ class CsHomePageFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_cs_homepage, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CustomerHomePageViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[CsHomePageViewModel::class.java]
     }
-
 }

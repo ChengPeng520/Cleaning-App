@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.ViewModel.CsChooseCleanerViewModel
-import com.example.cleaningapp.customer.ViewModel.CsHomePageViewModel
-import com.example.cleaningapp.databinding.FragmentCsChooseCleanerBinding
+import com.example.cleaningapp.customer.viewModel.CsHomePageViewModel
 import com.example.cleaningapp.databinding.FragmentCsHomepageBinding
 
 class CsHomePageFragment : Fragment() {

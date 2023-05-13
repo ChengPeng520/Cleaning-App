@@ -5,7 +5,7 @@
     android:id="@+id/btn_send_submit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cleaner.shop.SendFragment">
+    tools:context=".cleaner.view.shop.SendFragment">
 
     <TextView
         android:id="@+id/textView6"
@@ -124,24 +124,15 @@
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
+        style="@style/cleanerBtnSubmitStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/fatruei_btn_product_detail_style"
+        android:layout_marginBottom="16dp"
         android:text="@string/btn_send_submit"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/edtTxt_send_address"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+        app:layout_constraintStart_toStartOf="@+id/textView13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

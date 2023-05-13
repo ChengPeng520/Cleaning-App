@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.ViewModel.CsViewCvViewModel" />
+            type="com.example.cleaningapp.customer.viewModel.CsViewCvViewModel" />
 
     </data>
 
@@ -88,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/cs_btn_navbar">
+            app:menu="@menu/menu_customer">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 

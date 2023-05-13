@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".backstage.usermanage.BsUserServiceChatFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.usermanage.BsUserServiceChatViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_bs_user_serv_chat_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <LinearLayout
+            android:id="@+id/ll_bs_user_serv_chat_ti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02">
+
+            <ImageView
+                android:id="@+id/iv_bs_user_serv_chat_avatar"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="9dp"
+                app:srcCompat="@drawable/alb_account_avatar" />
+
+            <LinearLayout
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_bs_user_serv_chat_email_ex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/tv_bs_user_serv_databox_email_ex"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_bs_user_serv_chat_name_ex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/tv_bs_user_serv_chat_name_ex"
+                    android:textColor="@color/textPrimary" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bs_user_serv_chat_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:text="@string/tv_bs_user_serv_chat_query"
+            android:textColor="@color/noActionGray"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_bs_user_serv_chat_modify"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bs_user_serv_chat_modify"
+            app:layout_constraintTop_toTopOf="@+id/tv_bs_user_serv_chat_modify" />
+
+        <TextView
+            android:id="@+id/tv_bs_user_serv_chat_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:text="@string/tv_bs_user_serv_chat_modify"
+            android:textColor="@color/Secondary"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_bs_user_serv_chat_close"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bs_user_serv_chat_close"
+            app:layout_constraintTop_toTopOf="@+id/tv_bs_user_serv_chat_close" />
+
+        <TextView
+            android:id="@+id/tv_bs_user_serv_chat_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@string/tv_bs_user_serv_chat_close"
+            android:textColor="@color/colorBottomBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_bs_user_serv_chat_ti" />
+
+        <View
+            android:id="@+id/divider12"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bs_user_serv_chat_query" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="277dp"
+                android:layout_height="34dp"
+                android:layout_marginLeft="19dp"
+                android:layout_weight="1"
+                android:background="@drawable/alb_chat_text_background"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_bs_user_serv_chat_send"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@drawable/alb_msg_send" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

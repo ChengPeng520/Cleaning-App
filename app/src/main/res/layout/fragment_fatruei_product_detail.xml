@@ -1,119 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".cleaner.shop.ProductDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/iv_product_detail_picture"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/fatruei_iv_replace_style"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/tv_cleaner_shop_product_name"
-        android:textColor="#121212"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/iv_product_detail_picture"
-        app:layout_constraintTop_toBottomOf="@+id/iv_product_detail_picture" />
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.cleaner.viewmodel.shop.ProductDetailViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/tv_product_detail_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#121212"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        tools:text="夾子" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".cleaner.view.shop.ProductDetailFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_product_detail_minus"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/fatruei_btn_product_detail_style2"
-        android:text="@string/tv_product_detail_minus"
-        android:textColor="#121212"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_product_detail_add"
-        app:layout_constraintEnd_toStartOf="@+id/tv_product_detail_count"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/textView4" />
+        <ImageView
+            android:id="@+id/iv_product_detail_picture"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:imageResource="@{viewModel.uiState.image}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline10"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_product_detail_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textColor="#121212"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_product_detail_minus"
-        app:layout_constraintStart_toEndOf="@+id/btn_product_detail_minus"
-        app:layout_constraintTop_toTopOf="@+id/btn_product_detail_minus"
-        tools:text="01" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_product_detail_plus"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/fatruei_btn_product_detail_style2"
-        android:text="@string/tv_product_detail_plus"
-        android:textColor="#121212"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_product_detail_count"
-        app:layout_constraintStart_toEndOf="@+id/tv_product_detail_count"
-        app:layout_constraintTop_toTopOf="@+id/tv_product_detail_count" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tv_cleaner_shop_product_name"
+            android:textColor="#121212"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/iv_product_detail_picture"
+            app:layout_constraintTop_toBottomOf="@+id/iv_product_detail_picture" />
 
-    <TextView
-        android:id="@+id/tv_product_detail_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#E95E5E"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_product_detail_plus"
-        app:layout_constraintEnd_toEndOf="@+id/iv_product_detail_picture"
-        app:layout_constraintTop_toTopOf="@+id/btn_product_detail_plus"
-        tools:text="$50" />
+        <TextView
+            android:id="@+id/tv_product_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.uiState.name}"
+            android:textColor="#121212"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            tools:text="夾子" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_product_detail_add"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/fatruei_btn_product_detail_style"
-        android:text="@string/btn_product_detail_add"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/iv_product_detail_picture"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/iv_product_detail_picture" />
+        <TextView
+            android:id="@+id/tv_product_detail_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.uiState.description}"
+            app:layout_constraintEnd_toEndOf="@+id/iv_product_detail_picture"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_product_detail_minus"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/fetruei_btn_product_detail_style2"
+            android:onClick="@{viewModel::updateCount}"
+            android:text="@string/tv_product_detail_minus"
+            android:textColor="#121212"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_product_detail_add"
+            app:layout_constraintEnd_toStartOf="@+id/tv_product_detail_count"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/textView4" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_product_detail_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{String.valueOf(viewModel.uiState.count)}"
+            android:textColor="#121212"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_product_detail_minus"
+            app:layout_constraintStart_toEndOf="@+id/btn_product_detail_minus"
+            app:layout_constraintTop_toTopOf="@+id/btn_product_detail_minus"
+            tools:text="01" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_product_detail_plus"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/fetruei_btn_product_detail_style2"
+            android:onClick="@{viewModel::updateCount}"
+            android:text="@string/tv_product_detail_plus"
+            android:textColor="#121212"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_product_detail_count"
+            app:layout_constraintStart_toEndOf="@+id/tv_product_detail_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_product_detail_count" />
+
+        <TextView
+            android:id="@+id/tv_product_detail_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.uiState.totalPrice)}"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_product_detail_plus"
+            app:layout_constraintEnd_toEndOf="@+id/iv_product_detail_picture"
+            app:layout_constraintTop_toTopOf="@+id/btn_product_detail_plus"
+            tools:text="$50" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_product_detail_add"
+            style="@style/cleanerBtnSubmitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/btn_product_detail_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_product_detail_picture"
+            app:layout_constraintStart_toStartOf="@+id/iv_product_detail_picture" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

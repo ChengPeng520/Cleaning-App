@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.ViewModel.CsChooseCleanerViewModel
-import com.example.cleaningapp.customer.ViewModel.CsUserViewModel
-import com.example.cleaningapp.databinding.FragmentCsChooseCleanerBinding
+import com.example.cleaningapp.customer.viewModel.CsUserViewModel
 import com.example.cleaningapp.databinding.FragmentCsUserBinding
 
 class CsUserFragment : Fragment() {
@@ -20,7 +17,7 @@ class CsUserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val viewModel: CsUserViewModel by viewModels()
         binding = FragmentCsUserBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

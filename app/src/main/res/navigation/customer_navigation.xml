@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_historicalorder"
-        android:name="com.example.cleaningapp.customer.order.fragment_checkout"
+        android:name="com.example.cleaningapp.customer.order.CheckoutFragment"
         android:label="fragment_victor_historicalorder"
         tools:layout="@layout/fragment_victor_historicalorder" >
         <action

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".CustomerActivity">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -28,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/cs_bt_navbar">
+        app:menu="@menu/menu_customer">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

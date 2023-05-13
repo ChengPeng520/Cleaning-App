@@ -20,7 +20,7 @@ class SignupCheckApplyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_signup_check_apply, container, false)
+        return inflater.inflate(R.layout.fragment_rona_signup_check_apply, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
