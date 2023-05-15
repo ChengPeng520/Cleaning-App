@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.R
-import com.example.cleaningapp.cleaner.viewmodel.order.OrderOrdercheckViewModel
+import com.example.cleaningapp.cleaner.viewmodel.order.OrderOrdermatchViewModel
 
-class OrderOrdercheckFragment : Fragment() {
+class OrderOrdermatchFragment : Fragment() {
 
     companion object {
-        fun newInstance() = OrderOrdercheckFragment()
+        fun newInstance() = OrderOrdermatchFragment()
     }
 
-    private lateinit var viewModel: OrderOrdercheckViewModel
+    private lateinit var viewModel: OrderOrdermatchViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_vicky_order_ordercheck, container, false)
+        return inflater.inflate(R.layout.fragment_vicky_order_ordermatch, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OrderOrdercheckViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(OrderOrdermatchViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

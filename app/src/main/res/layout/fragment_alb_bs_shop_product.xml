@@ -5,10 +5,13 @@
     tools:context=".backstage.shop.controller.BsShopProductFragment">
 
     <data>
-
         <variable
             name="viewModel"
+<<<<<<< HEAD
             type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel" />
+=======
+            type="com.example.cleaningapp.backstage.shop.ProductViewModel" />
+>>>>>>> main
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

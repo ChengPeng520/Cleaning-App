@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //cleanerFront 搜尋列表
-    <string name="tv_front_choosedate">請選取打掃時間</string>
+    <string name="tv_front_choosedate">請選取打掃時間:</string>
     <string name="tv_front_date">日期:</string>
     <string name="tv_front_time">時間:</string>
-    <string name="tv_front_chooselocaltion">請篩選接單地區</string>
+    <string name="tv_front_chooselocaltion">請篩選接單地區:</string>
     <string name="tv_front_county">縣市:</string>
     <string name="tv_front_localtion">地區:</string>
     <string name="tv_order_localtiondetail">詳細地址:</string>
+    <string name="tv_order_timestrat">起始時間:</string>
+    <string name="tv_order_timeend">結束時間:</string>
 
     //OrderDetail 訂單詳情
     <string name="tv_order_detail_number_text">訂單編號:</string>
@@ -28,7 +30,8 @@
 
     //orderConduct 訂單列表
     <string name="tv_order_conduct_today">今日預約</string>
-    <string name="tv_order_conduct_booking">其它預約</string>
+    <string name="tv_order_conduct_booking">所有預約時間</string>
+    <string name="tv_order_conduct_otherbooking">其它預約</string>
 
     //orderCheck 訂單狀況
     <string name="tv_order_ordernotready">訂單尚未開始</string>
@@ -44,8 +47,34 @@
     //cleanerPhoto 清潔照片
     <string name="tv_order_cleaner_photo_before">清潔前照片</string>
     <string name="tv_order_cleaner_photo_after">清潔後照片</string>
-
     <string name="tv_cleaner_add_referphoto">照片</string>
+
+    // spinner 下拉選單選項
+    <string name="textNothingSelected">尚未選擇!</string>
     <string-array name="spnAr_search_date_text">
+    </string-array>
+    <string-array name="tv_front_countyArray">
+        <item>臺北市</item>
+        <item>新北市</item>
+        <item>桃園市</item>
+        <item>臺中市</item>
+        <item>臺南市</item>
+        <item>高雄市</item>
+        <item>新竹縣</item>
+        <item>苗栗縣</item>
+        <item>彰化縣</item>
+        <item>南投縣</item>
+        <item>雲林縣</item>
+        <item>嘉義縣</item>
+        <item>屏東縣</item>
+        <item>宜蘭縣</item>
+        <item>花蓮縣</item>
+        <item>臺東縣</item>
+        <item>澎湖縣</item>
+        <item>金門縣</item>
+        <item>連江縣</item>
+        <item>基隆市</item>
+        <item>新竹市</item>
+        <item>嘉義市</item>
     </string-array>
 </resources>
