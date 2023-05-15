@@ -1,6 +1,5 @@
 package com.example.cleaningapp.backstage.shop
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.databinding.FragmentAlbBsShopMainBinding
+import com.example.cleaningapp.backstage.shop.BsShopProductAddViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductAddBinding
 
 class BsShopProductAddFragment : Fragment() {

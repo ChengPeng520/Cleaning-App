@@ -1,7 +1,9 @@
 package com.example.cleaningapp.backstage.shop
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class BsShopOrderDetailViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
 }

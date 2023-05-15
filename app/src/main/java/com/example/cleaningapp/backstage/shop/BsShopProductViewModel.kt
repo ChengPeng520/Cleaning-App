@@ -1,7 +1,13 @@
 package com.example.cleaningapp.backstage.shop
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.backstage.shop.Product
 
-class BsShopProductViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+open  class BsShopProductViewModel : ViewModel() {
+    val product:MutableLiveData<Product> by lazy { MutableLiveData<Product>() }
+
+
 }
+
+//單一商品畫面的viewmodel
