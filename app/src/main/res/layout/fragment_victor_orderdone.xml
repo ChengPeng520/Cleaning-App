@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.customer.viewModel.OrderdoneViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer.fragment.OrderdoneFragment">
@@ -22,7 +30,7 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="訂單已完成"
+        android:text="@string/tv_order_done"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -129,7 +137,7 @@
             android:id="@+id/textView37"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="確認接單"
+            android:text="@string/tv_order_confirmOrder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/divider10"
             app:layout_constraintStart_toStartOf="@+id/iv_order_confirmOrder"
@@ -139,7 +147,7 @@
             android:id="@+id/textView43"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="進行中"
+            android:text="@string/tv_order_ing"
             app:layout_constraintBottom_toBottomOf="@+id/textView37"
             app:layout_constraintEnd_toStartOf="@+id/divider14"
             app:layout_constraintStart_toEndOf="@+id/divider10"
@@ -149,7 +157,7 @@
             android:id="@+id/textView44"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="顧客確認"
+            android:text="@string/tv_order_clientConfirmation"
             app:layout_constraintBottom_toBottomOf="@+id/textView43"
             app:layout_constraintEnd_toStartOf="@+id/divider13"
             app:layout_constraintStart_toEndOf="@+id/divider14"
@@ -159,7 +167,7 @@
             android:id="@+id/textView47"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="打掃結束"
+            android:text="@string/tv_order_end"
             app:layout_constraintBottom_toBottomOf="@+id/textView44"
             app:layout_constraintEnd_toEndOf="@+id/iv_order_end"
             app:layout_constraintStart_toEndOf="@+id/divider13"
@@ -175,3 +183,4 @@
         app:layout_constraintGuide_percent="0.18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

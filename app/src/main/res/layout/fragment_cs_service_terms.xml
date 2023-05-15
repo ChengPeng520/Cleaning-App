@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.viewModel.CsServiceTermsViewModel" />
+            type="com.example.cleaningapp.customer.csCreateOrder.CsServiceTermsViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="24dp"
-        tools:context=".customer.fragment.CsServiceTermsFragment">
+        tools:context=".customer.csCreateOrder.CsServiceTermsFragment">
 
         <ScrollView
             android:id="@+id/sclvi_csServiceTerms"

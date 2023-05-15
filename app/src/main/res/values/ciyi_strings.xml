@@ -7,7 +7,7 @@
     <string name="btn_backstage_service">客服</string>
     <string name="tv_ti_order_num">訂單編號</string>
     <string name="tv_ti_order_status">訂單狀態</string>
-    <string name="tv_ti_order_date">時間</string>
+    <string name="tv_ti_order_date">訂單時間</string>
     <string name="tv_order_num">1234566</string>
     <string name="tv_order_status">將執行</string>
     <string name="tv_order_date" tools:ignore="TypographyDashes">2023-03-08</string>
@@ -36,7 +36,7 @@
     <string name="tv_ti_bs_order_coupon">優惠券:</string>
     <string name="tv_bs_order_coupon">-30元</string>
     <string name="tv_ti_bs_order_total">總金額:</string>
-    <string name="tv_bs_order_total">5000元</string>
+    <string name="tv_bs_order_money">5000元</string>
     <string name="tv_ti_bs_order_cs_pic">顧客需求照片</string>
     <string name="tv_ti_bs_orderdatil_cleaner_pic">工作人員完成照片:</string>
 
@@ -49,7 +49,6 @@
     <string name="tv_coupon_num">1234546563</string>
     <string name="tv_coupon_name">跳樓折100</string>
     <string name="btn_coupon_edit_add">修改</string>
-    <string name="btn_coupon_edit_delete">刪除</string>
 
     //dialog
     <string name="tv_ti_bs_dialog_name">名稱:</string>
@@ -73,22 +72,19 @@
     <string name="tv_coupon_modify_discount">100</string>
     <string name="tv_ti_coupon_quantity">張數:</string>
 
-    //新增coupn
-    <string name="editText_coupon_creat_name" />
-    <string name="editText_coupon_creat_percentage" />
-    <string name="editText_coupon_creat_discount" />
-    <string name="editText_coupon_creat_quantity" />
-    <string name="editText_coupon_creat_minimum" />
-
-    //修改coupon
-    <string name="editText_coupon_modify_name">跳樓大骨折</string>
-    <string name="editText_bs_coupon_modify_limit" tools:ignore="TypographyDashes">2023-09-09</string>
-    <string name="editText_coupon_modify_quantity">100</string>
-    <string name="editText_coupon_modify_minimum">3000</string>
-    <string name="editText_coupon_modify_percentage">22%</string>
-    <string name="checkbox_coupon_already">上架</string>
-
     //navigation drawer
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="onSale">上架</string>
+
+    //editText coupon
+    <string name="editText_coupon_percentage" >22%</string>
+    <string name="editText_coupon_name">跳樓大骨折</string>
+    <string name="editText_coupon_discount">30</string>
+    <string name="editText_coupon_quantity">100</string>
+    <string name="editText_coupon_limit" tools:ignore="TypographyDashes">2023–09-09</string>
+    <string name="editText_coupon_minimum">3000</string>
+    <string name="editText_coupon_modify_percentage">22%</string>
+
+
 </resources>

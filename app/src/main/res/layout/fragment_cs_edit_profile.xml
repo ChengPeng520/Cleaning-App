@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.viewModel.CsEditProfileViewModel" />
+            type="com.example.cleaningapp.customer.csUserPage.CsEditProfileViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="24dp"
-        tools:context=".customer.fragment.CsEditProfileFragment">
+        tools:context=".customer.csUserPage.CsEditProfileFragment">
 
         <LinearLayout
             android:id="@+id/ll_csEditProfile_name"

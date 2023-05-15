@@ -13,7 +13,7 @@ class BackstageCouponCreatFragment : Fragment() {
         fun newInstance() = BackstageCouponCreatFragment()
     }
 
-    private lateinit var viewModel: BackstageCouponCreatViewModel
+    private lateinit var viewModel: BackstageCouponViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

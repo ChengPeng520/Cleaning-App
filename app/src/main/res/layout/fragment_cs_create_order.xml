@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.viewModel.CsCreateOrderViewModel" />
+            type="com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderViewModel" />
 
     </data>
 
@@ -19,9 +19,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ConstraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            tools:context=".customer.fragment.CsCreateOrderFragment">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="12dp"
+            tools:context=".customer.csCreateOrder.CsCreateOrderFragment">
 
             <EditText
                 android:id="@+id/edtTxt_address"
@@ -171,8 +174,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_timeBegin"
-                tools:layout_editor_absoluteX="52dp">
+                app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_timeBegin">
 
                 <TextView
                     android:id="@+id/tv_csCreateOrder_timeEnd"
@@ -229,18 +231,6 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_csCreateOrder_next"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/customerPrimaryLight"
-                android:text="@string/btn_cs_next"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_coupon" />
-
             <LinearLayout
                 android:id="@+id/ll_csCreateOrder_checkbox1"
                 android:layout_width="match_parent"
@@ -252,7 +242,7 @@
                     android:id="@+id/chk_csCreateOrder_livingroom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
+                    android:layout_weight="1.4"
                     android:text="@string/chk_csCreateOrder_livingroom" />
 
                 <EditText
@@ -270,7 +260,7 @@
                     android:id="@+id/chk_csCreateOrder_kitchen"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
+                    android:layout_weight="1.4"
                     android:text="@string/chk_csCreateOrder_kitchen" />
 
                 <EditText
@@ -289,7 +279,6 @@
                 android:id="@+id/ll_csCreateOrder_checkbox2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -299,7 +288,7 @@
                     android:id="@+id/chk_csCreateOrder_bathroom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
+                    android:layout_weight="1.4"
                     android:text="@string/chk_csCreateOrder_bathroom" />
 
                 <EditText
@@ -316,7 +305,7 @@
                     android:id="@+id/chk_csCreateOrder_bedroom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
+                    android:layout_weight="1.4"
                     android:text="@string/chk_csCreateOrder_bedroom" />
 
                 <EditText
@@ -333,8 +322,8 @@
             <LinearLayout
                 android:id="@+id/ll_coupon"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="@color/clr_cs_formBackground"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -345,7 +334,7 @@
                     android:id="@+id/tv_csCreateOrder_coupon"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="2.5"
                     android:text="@string/tv_csOrder_coupon"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -374,7 +363,7 @@
                     android:id="@+id/tv_cost"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="2.5"
                     android:text="@string/txt_cost"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -388,8 +377,23 @@
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btn_csCreateOrder_next"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/customerPrimaryLight"
+                android:text="@string/btn_cs_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_coupon" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+
 </layout>
 
 

@@ -6,10 +6,12 @@
     <string name="tv_csHome_specialOffer">限時優惠</string> /v
     <string name="tv_csHome_comment">口碑好評</string> /v
     <string name="txt_cusCoupon_limitedTime">限時</string>
-    <string name="txt_cusCoupon_lowConsump">低消   500  元才可適用</string>
-    <string name="txt_cusCoupon_amount">剩餘張數  :   195 / 200</string>
-    <string name="txt_cusCoupon_deadline">即將失效  :    剩下 1 天</string>
+    <string name="txt_cusCoupon_lowConsump">低消 %d 元才可適用</string>
+    <string name="txt_cusCoupon_lowConsumpToUse">XXX</string>
+    <string name="txt_cusCoupon_amount">剩餘張數: %d</string>
+    <string name="txt_cusCoupon_deadline">即將失效:  %S 到期</string>
     <string name="txt_cusCoupon_obtain">領取</string>
+    <string name="txt_cusCoupon_notObtain">已領取</string>
     <string name="txt_csServiceTerms_title">服務條款</string>
     <string name="tv_csServiceTerms_agreement">我已閱讀了解並接受上述服務條例內容</string> /v
     <string name="btn_cs_next">下一步</string> /v
@@ -61,4 +63,9 @@
     <string name="chk_csCreateOrder_bathroom">廁所</string> /v
     <string name="chk_csCreateOrder_bedroom">房間</string> /v
     <string name="ht_csCreateOrder_enterSize">請輸入坪數</string> /v
+    <string name="toast_csCreateOrder_orderEstablished">訂單建立完成</string> /v
+    <string name="toast_csCouponItem_couponObtained">領取成功</string>
+    <string name="tv_item_csPickCleaner_nameGender">%s / %s</string>
+    <string name="tv_item_csPickCleaner_orderCount">已完成 %d 筆訂單</string>
+
 </resources>

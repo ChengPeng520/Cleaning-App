@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.shop.BsShopOrderDetailFragment">
+    tools:context=".backstage.shop.controller.BsShopOrderDetailFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.BsShopOrderDetailViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopOrderDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

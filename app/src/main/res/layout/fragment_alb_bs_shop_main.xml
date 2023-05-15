@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.shop.BsShopMainFragment">
+    tools:context=".backstage.shop.controller.BsShopMainFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.BsShopMainViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopMainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,18 +61,21 @@
                 <SearchView
                     android:id="@+id/sv_bs_shop_main"
                     android:layout_width="235dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="37dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="12dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginBottom="12dp"
+                    android:minHeight="42dp"
+                    android:background="@drawable/ciyi_shape_search"
                     app:iconifiedByDefault="false">
 
                 </SearchView>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_bs_shop_main_add"
-                    android:layout_width="54dp"
-                    android:layout_height="38dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="40dp"
                     android:backgroundTint="@color/white"
