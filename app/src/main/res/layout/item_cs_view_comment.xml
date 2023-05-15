@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.customer.recyclerView.CsCommentViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+<!--        tools:srcCompat="@{viewModel.commentItem.csImg}"-->
+
+        <TextView
+            android:id="@+id/tv_csViewCleanerCv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_csViewCleanerCv_comment"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent" />
+<!--                    android:text="@{viewModel.commentItem.name}" -->
+
+<!--星等dataBinding???-->
+        <RatingBar
+            android:id="@+id/rb_item_csViewCleaner"
+            style="?attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            app:layout_constraintBottom_toTopOf="@+id/tv_csViewCleanerCv_comment"
+            app:layout_constraintStart_toStartOf="@+id/tv_csViewCleanerCv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_csViewCleanerCv_name" />
+
+        <TextView
+            android:id="@+id/tv_csViewCleanerCv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/rb_item_csViewCleaner"
+            app:layout_constraintTop_toBottomOf="@+id/rb_item_csViewCleaner" />
+<!--                    android:text="@{viewModel.commentItem.comment}" -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

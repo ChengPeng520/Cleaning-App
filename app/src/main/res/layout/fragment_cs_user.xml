@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.viewModel.CsUserViewModel" />
+            type="com.example.cleaningapp.customer.csUserPage.CsUserPageViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="24dp"
-        tools:context=".customer.fragment.CsUserFragment">
+        tools:context=".customer.csUserPage.CsUserPageFragment">
 
 
         <Button

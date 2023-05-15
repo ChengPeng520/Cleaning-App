@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.viewModel.CsCouponObtainViewModel" />
+            type="com.example.cleaningapp.customer.csHomePage.CsCouponObtainViewModel" />
 
     </data>
 
@@ -26,4 +26,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

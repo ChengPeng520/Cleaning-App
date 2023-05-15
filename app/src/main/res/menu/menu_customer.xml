@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:title="Home"
         android:id="@+id/csHomePageFragment"
         android:icon="@drawable/cs_btnavbar_ic_home"/>
     <item android:title="Create Order"
-        android:id="@+id/csCreateOrderFragment"
+        android:id="@+id/csServiceTermsFragment"
         android:icon="@drawable/cs_btnavbar_ic_createorder"/>
 
     <!--待補!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-    <item android:title=""
-        android:id="@+id/order"
+    <item android:title="History"
+        android:id="@+id/csChooseCleanerFragment2"
         android:icon="@drawable/cs_btnavbar_ic_order"/>
     <item android:title="Profile"
         android:id="@+id/csUserFragment"
         android:icon="@drawable/cs_btnavbar_ic_profile"/>
 </menu>
+
+<!--android:id="@+id/fragment_historicalorder"-->
