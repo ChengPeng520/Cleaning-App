@@ -5,6 +5,7 @@
     tools:context=".login.controller.SignupContractMemberFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.login.viewModel.SignupContractMemberViewModel" />
@@ -24,7 +25,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_back" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -69,58 +70,33 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="1.0" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
-
         <ScrollView
-            android:layout_width="370dp"
-            android:layout_height="510dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/guideline7">
+            app:layout_constraintTop_toTopOf="@+id/guideline">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_sucontract_text"
-                    android:layout_width="370dp"
-                    android:layout_height="510dp"
-                    android:background="@drawable/rona_textbg_shape"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/tv_ContractMember_text"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_sucontract_text"
+                android:layout_width="370dp"
+                android:layout_height="510dp"
+                android:background="@drawable/rona_textbg_shape"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:text="@{viewModel.contractMember}}"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </ScrollView>
-
-        <TextView
-            android:id="@+id/tv_ContractMember_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_ContractMember_title"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
 
         <RadioButton
             android:id="@+id/rdoBtn_ContractMember_read"
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_height="0dp"
             android:text="@string/rdoBtn_ContractMember_read"
             android:textColor="@color/textPrimary"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"

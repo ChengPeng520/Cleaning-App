@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/signupFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginForgetPasswordPhoneFragment"
+            app:destination="@id/loginForgetPasswordPhoneFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signupCheckingFragment"
+            app:destination="@id/signupCheckingFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -22,19 +28,117 @@
         <action
             android:id="@+id/action_signupFragment_to_signupContractFragment"
             app:destination="@id/signupContractFragment" />
+        <action
+            android:id="@+id/action_signupFragment_to_signupContractMemberFragment"
+            app:destination="@id/signupContractMemberFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupContractFragment"
         android:name="com.example.cleaningapp.login.controller.SignupContractFragment"
-        android:label="fragment_rona_signup_contract"
-        tools:layout="@layout/fragment_rona_signup_contract" >
+        android:label="合約條款"
+        tools:layout="@layout/fragment_rona_signup_contract">
         <action
             android:id="@+id/action_signupContractFragment_to_signupApplyInfoFragment"
             app:destination="@id/signupApplyInfoFragment" />
     </fragment>
     <fragment
+        android:id="@+id/logoStartFragment"
+        android:name="com.example.cleaningapp.login.controller.LogoStartFragment"
+        android:label="fragment_logo_start"
+        tools:layout="@layout/fragment_logo_start" >
+        <action
+            android:id="@+id/action_logoStartFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupCheckApplyFragment"
+        android:name="com.example.cleaningapp.login.controller.SignupCheckApplyFragment"
+        android:label="fragment_rona_signup_check_apply"
+        tools:layout="@layout/fragment_rona_signup_check_apply" >
+        <action
+            android:id="@+id/action_signupCheckApplyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupCheckingFragment"
+        android:name="com.example.cleaningapp.login.controller.SignupCheckingFragment"
+        android:label="fragment_rona_signup_checking"
+        tools:layout="@layout/fragment_rona_signup_checking" >
+        <action
+            android:id="@+id/action_signupCheckingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupContractMemberFragment"
+        android:name="com.example.cleaningapp.login.controller.SignupContractMemberFragment"
+        android:label="fragment_rona_signup_contract_member"
+        tools:layout="@layout/fragment_rona_signup_contract_member" >
+        <action
+            android:id="@+id/action_signupContractMemberFragment_to_signupMemberInfoFragment"
+            app:destination="@id/signupMemberInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordPhoneVFragment"
+        android:name="com.example.cleaningapp.login.controller.ForgetPasswordPhoneVFragment"
+        android:label="fragment_forget_password_phone_v"
+        tools:layout="@layout/fragment_forget_password_phone_v" >
+        <action
+            android:id="@+id/action_forgetPasswordPhoneVFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordEmailVFragment"
+        android:name="com.example.cleaningapp.login.controller.ForgetPasswordEmailVFragment"
+        android:label="fragment_rona_forget_password_email_v"
+        tools:layout="@layout/fragment_rona_forget_password_email_v" >
+        <action
+            android:id="@+id/action_forgetPasswordEmailVFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginForgetPasswordPhoneFragment"
+        android:name="com.example.cleaningapp.login.controller.LoginForgetPasswordPhoneFragment"
+        android:label="fragment_rona_login_forget_password_phone"
+        tools:layout="@layout/fragment_rona_login_forget_password_phone" >
+        <action
+            android:id="@+id/action_loginForgetPasswordPhoneFragment_to_forgetPasswordPhoneVFragment"
+            app:destination="@id/forgetPasswordPhoneVFragment" />
+        <action
+            android:id="@+id/action_loginForgetPasswordPhoneFragment_to_loginForgetPasswordEmailFragment"
+            app:destination="@id/loginForgetPasswordEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginForgetPasswordEmailFragment"
+        android:name="com.example.cleaningapp.login.controller.LoginForgetPasswordEmailFragment"
+        android:label="LoginForgetPasswordEmailFragment" >
+        <action
+            android:id="@+id/action_loginForgetPasswordEmailFragment_to_forgetPasswordEmailVFragment"
+            app:destination="@id/forgetPasswordEmailVFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.example.cleaningapp.login.controller.ResetPasswordFragment"
+        android:label="fragment_rona_reset_password"
+        tools:layout="@layout/fragment_rona_reset_password" >
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/signupApplyInfoFragment"
         android:name="com.example.cleaningapp.login.controller.SignupApplyInfoFragment"
-        android:label="fragment_rona_signup_apply_info"
-        tools:layout="@layout/fragment_rona_signup_apply_info" />
+        android:label="SignupApplyInfoFragment" >
+        <action
+            android:id="@+id/action_signupApplyInfoFragment_to_signupCheckApplyFragment"
+            app:destination="@id/signupCheckApplyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupMemberInfoFragment"
+        android:name="com.example.cleaningapp.login.controller.signupMemberInfoFragment"
+        android:label="fragment_signup_member_info"
+        tools:layout="@layout/fragment_signup_member_info" >
+        <action
+            android:id="@+id/action_signupMemberInfoFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

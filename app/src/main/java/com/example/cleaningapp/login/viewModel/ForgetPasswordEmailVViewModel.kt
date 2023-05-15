@@ -1,7 +1,8 @@
 package com.example.cleaningapp.login.viewModel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ForgetPasswordEmailVViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val email: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 }
