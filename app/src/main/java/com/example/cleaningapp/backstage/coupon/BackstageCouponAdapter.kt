@@ -61,7 +61,7 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
         val coupon = coupons[position]
         holder.itemViewBinding.viewModel?.coupon?.value = coupon
         holder.itemViewBinding.btnCouponEdit.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_backstageCouponSearchFragment_to_backstageCouponModifyFragment)
+            Navigation.findNavController(it).navigate(R.id.action_orderManageFragment2_to_backstageOrderDetail)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.cleaningapp.backstage.shop
 
+
 import java.io.Serializable
 
 class Product(

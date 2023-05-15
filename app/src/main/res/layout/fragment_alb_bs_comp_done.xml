@@ -2,66 +2,72 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.complaint.BsCompDoneFragment">
+    tools:context=".backstage.complaint.controller.BsCompDoneFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.complaint.BsCompDoneViewModel" />
+            type="com.example.cleaningapp.backstage.complaint.viewModel.BsCompDoneViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="24dp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_comp_done_dealing"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_comp_dealing"
             android:textColor="@color/textPrimary"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintVertical_bias="0" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_comp_done_done"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_comp_done_dealing"
-            app:layout_constraintStart_toEndOf="@+id/btn_bs_comp_done_dealing"
-            app:layout_constraintTop_toTopOf="@+id/btn_bs_comp_done_dealing"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/textPrimary"
             android:text="@string/btn_bs_comp_done"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_bs_comp_done_dealing"
+            app:layout_constraintStart_toEndOf="@+id/btn_bs_comp_done_dealing"
+            app:layout_constraintTop_toTopOf="@+id/btn_bs_comp_done_dealing" />
 
         <LinearLayout
             android:id="@+id/ll_bs_comp_done"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bs_comp_done_done"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:orientation="vertical">
+            app:layout_constraintTop_toBottomOf="@+id/btn_bs_comp_done_done">
 
-            <SearchView
-                android:id="@+id/sv_bs_comp_done"
-                app:iconifiedByDefault="false"
-                android:layout_width="235dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
 
-            </SearchView>
+                <SearchView
+                    android:id="@+id/sv_bs_comp_done"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ciyi_shape_search"
+                    app:iconifiedByDefault="false">
+
+                </SearchView>
+            </LinearLayout>
 
             <View
                 android:id="@+id/divider11"
@@ -72,32 +78,36 @@
             <LinearLayout
                 android:id="@+id/ll_bs_comp_done_ti"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
 
                 <TextView
                     android:id="@+id/tv_bs_comp_done_order_ti"
-                    android:layout_width="7dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:text="@string/tv_bs_comp_databox_orderid_ti"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_done_applier_ti"
-                    android:layout_width="0dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="@string/tv_bs_comp_databox_applier_ti"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_done_time_ti"
-                    android:layout_width="70dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="4"
                     android:text="@string/tv_bs_user_main_time_ti"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <View

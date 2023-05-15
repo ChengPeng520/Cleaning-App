@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.usermanage.BsUserServiceChatFragment">
+    tools:context=".backstage.usermanage.controller.BsUserServiceChatFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.BsUserServiceChatViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +47,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="9dp"
-                app:srcCompat="@drawable/alb_account_avatar" />
+                app:imageResource="@{viewModel.chat.avatar}" />
 
             <LinearLayout
                 android:layout_width="197dp"
@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/tv_bs_user_serv_databox_email_ex"
+                    android:text="@{viewModel.chat.email}"
                     android:textColor="@color/textPrimary" />
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/tv_bs_user_serv_chat_name_ex"
+                    android:text="@{viewModel.chat.name}"
                     android:textColor="@color/textPrimary" />
             </LinearLayout>
 

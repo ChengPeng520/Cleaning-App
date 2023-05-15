@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+// order 訂單
+    <string name="tv_order_orderId">訂單編號：</string>
+    <string name="tv_customer_order_date">打掃日期：</string>
+    <string name="tv_order_time">打掃時數：</string>
+    <string name="tv_order_adress">地址：</string>
+    <string name="tv_order_range">打掃區域：</string>
+    <string name="tv_order_remark">清潔工具及其他需求：</string>
+    <string name="tv_order_cleaner">清潔人員：</string>
+    <string name="tv_order_total">總金額：</string>
+    <string name="tv_order_money">金額：</string>
+    <string name="tv_order_platformFee">平台費：</string>
+    <string name="tv_order_coupon">優惠卷：</string>
+    <string name="btn_orderBox_detailed">展開訂單詳情</string>
 
+// 訂單進度
+    <string name="tv_order_confirmOrder">確認接單</string>
+    <string name="tv_order_ing">進行中</string>
+    <string name="tv_order_clientConfirmation">顧客確認</string>
+    <string name="tv_order_end">打掃結束</string>
+    <string name="tv_order_done">訂單已完成</string>
+    <string name="tv_order_over">打掃完畢囉！</string>
+    <string name="tv_order_check">請與清潔人員簽名確認</string>
+
+// payDone 付款成功
+    <string name="tv_payDone">付款成功通知</string>
+    <string name="tv_payDone_content">您好，您已交易成功 ! 以下是您的交易資訊</string>
+    <string name="tv_payDone_cardNumber">信用卡號：</string>
+    <string name="tv_payDone_orderId">訂單編號：</string>
+    <string name="tv_payDone_project">項目：</string>
+    <string name="tv_payDone_total">總金額：</string>
+
+// historicalorder 歷史訂單列表
+    <string name="btn_orderList_ing">刊登中</string>
+    <string name="btn_orderList_established">已成立</string>
+    <string name="btn_orderList_done">已結束</string>
+
+//客訴
+    <string name="bnt_applyComplaint">申請客訴</string>
+    <string name="bnt_applyComplaint_cs">聯繫客服</string>
+    <string name="tv_complaintContent">客訴內容：</string>
+    <string name="edtTxt_comment_content">詳細說明您的親身體驗</string>
 </resources>

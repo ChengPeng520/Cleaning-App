@@ -4,19 +4,19 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.cleaningapp.R
+import com.example.cleaningapp.databinding.FragmentAlbBsShopProductBinding
 import com.example.cleaningapp.databinding.ItemAlbBsShopDataboxBinding
 
 class BackstageShopProductAdapter(private var products: List<Product>) :
     RecyclerView.Adapter<BackstageShopProductAdapter.ProductViewHolder>() {
 
 
-    class ProductViewHolder(val ItemViewBinding: ItemAlbBsShopDataboxBinding) :
+    class ProductViewHolder(val ItemViewBinding:ItemAlbBsShopDataboxBinding) :
         ViewHolder(ItemViewBinding.root)
 
 
