@@ -15,11 +15,9 @@ import androidx.navigation.ui.NavigationUI
 
 import com.example.cleaningapp.databinding.ActivityBackstageBinding
 
-
 class BackstageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBackstageBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +29,12 @@ class BackstageActivity : AppCompatActivity() {
 
         val navHostFragment =
             //讓nav_host_fragment支援像NavHostFragment 的導航功能
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         //可以配合點選抽屜項目切換頁面
         NavigationUI.setupWithNavController(
             binding.backstageNavigationView,
             navHostFragment.navController
         )
-
-
     }
 
     @SuppressLint("RestrictedApi")
@@ -79,10 +75,7 @@ class BackstageActivity : AppCompatActivity() {
         }
         // 如果不是點選回主屏幕圖標,則返回onOptionItemSelected處理其他點選項目操作
         return super.onOptionsItemSelected(item)
-
     }
-
-
 }
 
 
