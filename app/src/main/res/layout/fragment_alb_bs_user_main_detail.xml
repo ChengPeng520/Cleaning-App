@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.usermanage.BsUserMainDetailFragment">
+    tools:context=".backstage.usermanage.controller.BsUserMainDetailFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.BsUserMainDetailViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
                     android:layout_width="86dp"
                     android:layout_height="86dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/fatruei_my_image" />
+                    android:imageResource="@{viewModel.user.avatar}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                         android:id="@+id/tv_bs_user_main_detail_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_email_ex"
+                        android:text="@{viewModel.user.email}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -98,7 +98,7 @@
                         android:id="@+id/tv_bs_user_main_detail_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_password_ex"
+                        android:text="@{viewModel.user.password}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -120,7 +120,7 @@
                         android:id="@+id/tv_bs_user_main_detail_mane"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_mane_ex"
+                        android:text="@{viewModel.user.name}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -142,7 +142,7 @@
                         android:id="@+id/tv_bs_user_main_detail_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.phone}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -164,7 +164,7 @@
                         android:id="@+id/tv_bs_user_main_detail_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.address}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -186,7 +186,7 @@
                         android:id="@+id/tv_bs_user_main_detail_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.gender}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -208,7 +208,7 @@
                         android:id="@+id/tv_bs_user_main_detail_createtime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.createTime}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -230,7 +230,7 @@
                         android:id="@+id/tv_bs_user_main_detail_updatetime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.updateTime}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -252,7 +252,7 @@
                         android:id="@+id/tv_bs_user_main_detail_role"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.role}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -274,7 +274,7 @@
                         android:id="@+id/tv_bs_user_main_detail_permission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.verify}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -292,7 +292,7 @@
                     android:id="@+id/tv_bs_user_main_detail_intro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_bs_user_main_detail_intro_ex"
+                    android:text="@{viewModel.user.intro}"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
 
@@ -314,7 +314,7 @@
                         android:id="@+id/tv_bs_user_main_detail_idnum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.idNum}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -336,7 +336,7 @@
                         android:id="@+id/tv_bs_user_main_detail_bank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ex"
+                        android:text="@{viewModel.user.bank}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -355,7 +355,7 @@
                     android:id="@+id/iv_bs_user_main_detail_idfront"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:background="@color/clr_cs_formBackground" />
+                    android:imageResource="@{viewModel.user.idCardFront}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_main_detail_idback_ti"
@@ -370,7 +370,7 @@
                     android:id="@+id/iv_bs_user_main_detail_idback"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:background="@color/clr_cs_formBackground" />
+                    android:imageResource="@{viewModel.user.idCardBack}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_main_detail_criminalrecord_ti"
@@ -385,7 +385,7 @@
                     android:id="@+id/iv_bs_user_main_detail_criminalrecord"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:background="@color/clr_cs_formBackground" />
+                    android:imageResource="@{viewModel.user.criminalRecord}"/>
 
             </LinearLayout>
         </ScrollView>

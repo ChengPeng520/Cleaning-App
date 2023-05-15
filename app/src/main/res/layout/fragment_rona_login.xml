@@ -1,158 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".login.LoginFragment">
+    tools:context=".login.controller.LoginFragment">
 
-    <EditText
-        android:id="@+id/edtTxt_login_password"
-        android:layout_width="210dp"
-        android:layout_height="30dp"
-        android:background="@drawable/rona_field_style"
-        android:ems="10"
-        android:hint="@string/edtTxt_login_password_hint"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:textColorHint="@color/customerPrimary"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/edtTxt_login_account"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_account"
-        app:layout_constraintVertical_bias="0.04"
-        tools:ignore="MissingConstraints" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.login.viewModel.LoginViewModel" />
 
-    <ImageView
-        android:id="@+id/iv_login_logo"
-        android:layout_width="123dp"
-        android:layout_height="135dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        tools:src="@drawable/logo" />
+    </data>
 
-    <Spinner
-        android:id="@+id/spn_login_status"
-        android:layout_width="214dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="100dp"
-        android:background="@drawable/rona_spinner_style"
-        android:entries="@array/spnar_Login_Status"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-    <EditText
-        android:id="@+id/edtTxt_login_account"
-        android:layout_width="210dp"
-        android:layout_height="32dp"
-        android:background="@drawable/rona_field_style"
-        android:ems="10"
-        android:hint="@string/edtTxt_login_account_hint"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:textColorHint="@color/customerPrimary"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spn_login_status"
-        app:layout_constraintVertical_bias="0.08"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/edtTxt_login_password"
+            android:layout_width="210dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rona_field_style"
+            android:ems="10"
+            android:hint="@string/edtTxt_login_password_hint"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:text="@={viewModel.password}"
+            android:textColorHint="@color/customerPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/edtTxt_login_account"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_account"
+            app:layout_constraintVertical_bias="0.04"
+            tools:ignore="MissingConstraints,TextFields" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_login_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
-        app:layout_constraintVertical_bias="0.24000001" />
+        <ImageView
+            android:id="@+id/iv_login_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="150dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="400dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.051" />
 
-    <TextView
-        android:id="@+id/tv_login_signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/tv_login_signUp"
-        android:textColor="#FBBC05"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login_login" />
+        <Spinner
+            android:id="@+id/spn_login_status"
+            android:layout_width="214dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/rona_spinner_style"
+            android:entries="@{viewModel.status}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
 
-    <ImageView
-        android:id="@+id/iv_login_googleLogo"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/googlelogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_signUp"
-        app:layout_constraintVertical_bias="0.2
+        <EditText
+            android:id="@+id/edtTxt_login_account"
+            android:layout_width="210dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rona_field_style"
+            android:ems="10"
+            android:hint="@string/edtTxt_login_account_hint"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.account}"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/customerPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spn_login_status"
+            app:layout_constraintVertical_bias="0.08"
+             />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_login_login"
+            android:textColor="@color/white"
+            android:background="@drawable/rona_btn_primarylight"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
+            app:layout_constraintVertical_bias="0.24000001" />
+
+        <TextView
+            android:id="@+id/tv_login_signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/tv_login_signUp"
+            android:textColor="#FBBC05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login_login"
+            app:layout_constraintVertical_bias="0.16" />
+
+        <ImageView
+            android:id="@+id/iv_login_googleLogo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/googlelogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.433"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_signUp"
+            app:layout_constraintVertical_bias="0.5
 " />
 
-    <ImageView
-        android:id="@+id/iv_login_fbLogo"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/fblogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toEndOf="@+id/iv_login_googleLogo"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_signUp"
-        app:layout_constraintVertical_bias="0.2" />
+        <ImageView
+            android:id="@+id/iv_login_fbLogo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/fblogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.139"
+            app:layout_constraintStart_toEndOf="@+id/iv_login_googleLogo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_signUp"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <ImageView
-        android:id="@+id/iv_login_arrow"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:src="@drawable/rona_icon_arrow"
-        app:layout_constraintBottom_toBottomOf="@+id/spn_login_status"
-        app:layout_constraintEnd_toEndOf="@+id/spn_login_status"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="@+id/spn_login_status"
-        app:layout_constraintTop_toTopOf="@+id/spn_login_status"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/iv_login_arrow"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/rona_icon_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/spn_login_status"
+            app:layout_constraintEnd_toEndOf="@+id/spn_login_status"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="@+id/spn_login_status"
+            app:layout_constraintTop_toTopOf="@+id/spn_login_status"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/tv_login_forgetPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_login_forgetPassword"
-        android:textColor="@color/material_dynamic_neutral80"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.693"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
-        app:layout_constraintVertical_bias="0.02" />
+        <TextView
+            android:id="@+id/tv_login_forgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_login_forgetPassword"
+            android:textColor="@color/textSecondary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.693"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
+            app:layout_constraintVertical_bias="0.02" />
 
-    <TextView
-        android:id="@+id/tv_login_errMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_login_errMsg"
-        android:textColor="@color/error"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
-        app:layout_constraintVertical_bias="0.02" />
+        <TextView
+            android:id="@+id/tv_login_errMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/error"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/edtTxt_login_password"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
+            app:layout_constraintVertical_bias="0.02"
+            tools:text="@string/tv_login_empty" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

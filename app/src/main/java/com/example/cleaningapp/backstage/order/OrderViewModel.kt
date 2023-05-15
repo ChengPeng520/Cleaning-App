@@ -7,6 +7,6 @@ import com.example.cleaningapp.backstage.order.Order
 /**
  * 單一訂單資料處理
  */
-class OrderViewModel:ViewModel() {
-    val order:MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
+class OrderViewModel : ViewModel() {
+    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
 }

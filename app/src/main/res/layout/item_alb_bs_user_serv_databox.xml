@@ -1,84 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="324dp"
-    android:layout_height="67dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/ll_bs_user_serv_databox"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_bs_user_serv_databox_unread"
-            android:layout_width="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_height="8dp"
-            android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/alb_unread_circle" />
-
-        <ImageView
-            android:id="@+id/iv_bs_user_serv_databox_avatar"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="9dp"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/alb_account_avatar" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="197dp"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/ll_bs_user_serv_databox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_bs_user_serv_databox_email_ex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textPrimary"
+            <ImageView
+                android:id="@+id/iv_bs_user_serv_databox_unread"
+                android:layout_width="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="8dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/tv_bs_user_serv_databox_email_ex" />
+                app:srcCompat="@drawable/alb_unread_circle" />
 
-            <TextView
-                android:id="@+id/tv_bs_user_serv_databox_text_ex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textPrimary"
+            <ImageView
+                android:id="@+id/iv_bs_user_serv_databox_avatar"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="9dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/tv_bs_user_serv_databox_text_ex" />
+                app:imageResource="@{viewModel.chat.avatar}" />
+
+            <LinearLayout
+                android:layout_width="197dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_bs_user_serv_databox_email_ex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textPrimary"
+                    android:layout_gravity="center_vertical"
+                    android:text="@{viewModel.chat.email}" />
+
+                <TextView
+                    android:id="@+id/tv_bs_user_serv_databox_text_ex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textPrimary"
+                    android:layout_gravity="center_vertical"
+                    android:text="@{viewModel.chat.text}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_bs_user_serv_databox_time_ex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/textPrimary"
+                    android:text="@{viewModel.chat.createTime}" />
+
+                <TextView
+                    android:id="@+id/tv_bs_user_serv_databox_closed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/tv_bs_user_serv_databox_closed"
+                    android:textColor="@color/textPrimary" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_bs_user_serv_databox_time_ex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/textPrimary"
-                android:text="@string/tv_bs_user_serv_databox_time_ex" />
-            <TextView
-                android:id="@+id/tv_bs_user_serv_databox_closed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/tv_bs_user_serv_databox_closed"
-                android:textColor="@color/textPrimary"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
