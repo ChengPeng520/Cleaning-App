@@ -1,47 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+<!--   login-->
     <string name="edtTxt_login_account_hint">帳號:</string>
     <string name="edtTxt_login_password_hint">密碼:</string>
     <string name="btn_login_login">登入</string>
     <string name="tv_login_signUp"><u>點此註冊帳號</u></string>
     <string name="tv_login_forgetPassword">忘記密碼</string>
-    <string name="tv_login_errMsg">請重新輸入</string>
+    <string name="tv_login_errMsg">帳號或密碼錯誤</string>
+    <string name="tv_login_empty">帳號或密碼不可空白</string>
+
+<!--    signup-->
     <string name="edtTxt_signup_passwordcfm_hint">確認密碼:</string>
     <string name="btn_signup_signup">註冊</string>
+    <string name="edtTxt_signup_cancel"><u>取消</u></string>
     <string name="tv_signup_statusHint">選擇註冊用戶</string>
+    <string name="tv_signup_wrongPW">密碼不一致</string>
+
+
+<!--    contract-->
     <string name="tv_sucontrsct_title">合約條款</string>
-    <string name="tv_sucontract_text">清潔服務定型化契約 本契約於甲方預約清潔服務，並且經乙方承攬後開始生效。
-        顧客 (以下簡稱甲方)，清潔人（清潔服務提供平台） (以下簡稱乙方)，茲經乙方事先於官網上公佈定型化契約書，
-        並經雙方同意根據本契約內容，方可使用乙方提供之清潔各項服務，訂立清潔服務契約條款列明如下：
-        第一條 清潔服務時間：依甲方自行預約時間而定。
-        第二條 清潔地址： 依照甲方自行填寫至乙方平台上之地址。
-        第三條 清潔服務費： 將以甲方上傳之平台報價為準,乙方可以自行挑選報價符合需求之甲方。
-        第四條 乙方應依本契約甲方所約定之方式收費，不得藉故加價或要求任何附加費用。
-        清潔期間，乙方人員餐飲差旅費、過橋費、通行費、油費等均由乙方負擔。
-        第五條 清潔服務繳付方式： 將由平台暫收甲方支清潔費用,後續無任何清潔客訴問題將會在隔月統一匯入乙方戶頭。
-        第六條 如甲方於一天之內客訴乙方清潔上之不完善問題,經平台核對狀況將提供甲方退款申請,
-        客訴問題也會另行通知乙方 。
-        第七條 乙方對於因清潔服務過程所致甲方物品之毀損、滅失或致生其他損害者，應負賠償責任。
-        但乙方能證明毀損係因不可抗力，或因清潔使用清潔劑之性質，或因甲方或其受僱人之過失所造成者，不在此限。
-        前項情形，甲方應於清潔服務完成後三日內告知乙方；
-        如物品有毀損滅失不易發現者，應於清潔服務完成後十日內，將其情事告知乙方。
-        第八條 甲方提交乙方清潔服務之地點，若有現金、有價證券、珠寶、貴重金屬、美術品、古董或其他貴重物品時，
-        除甲方於清潔服務時報明其性質及價值者外，乙方對於其毀損或滅失，不負責任。但乙方有故意或過失者，不在此限。
-        第九條 乙方因清潔服務對第三人所發生之責任概由乙方負責。
-        第十條 甲方委託清潔服務之地點應無違禁品及危險物品。
-        第十一條 甲方如需變更清潔服務時間者，應於約定清潔服務日期前1日通知乙方，
-        否則甲方應另行支付乙方已到達之清潔人員車馬費。
-        甲方如於約定清潔服務時間，無法聯繫，以致未能完成清潔服務者，甲方應另行支付乙方到達之清潔人員車馬費。
-        第十二條 乙方應於約定時間內抵達甲方指定清潔之地點，
-        乙方若未能於約定時間內開始清潔，甲方得請求延後時數或解除契約。
-        第十三條 清潔服務作業進行中，因颳風、下雨、路況等因素以致未能完成者，由甲乙雙方另定時間繼續完成。
-        第十四條 管轄法院：就本契約所生之爭執，雙方同意以台灣桃園地方法院為第一審管轄法院。
-        惟不得排除消費者保護法及民事訴訟法有關法院管轄之規定。
-        第十五條 本契約單一式兩份，甲乙雙方各執一份，乙方不得藉故收回。
-        第十六條 如需退費，統一收取退費總金額5%，手續費由乙方代為繳納給刷卡銀行及其網路經銷商，
-        本契約未定事項，依政府相關法令規章辦理。</string>
     <string name="rdoBtn_signup_read">請詳細閱讀規範內容, 同意請打勾點選下一步</string>
     <string name="tv_signup_next"><u>下一步</u></string>
+    <string name="tv_ContractMember_title">申請條款</string>
+    <string name="rdoBtn_ContractMember_read">我已詳細閱讀規範內容</string>
+
+
+<!--    cleanerApplyInfo-->
     <string name="tv_suinfo_title">申請資料</string>
     <string name="edtTxt_suinfo_name">姓名:(必填)</string>
     <string name="edtTxt_suinfo_sex">性別:(必填)</string>
@@ -50,11 +35,15 @@
     <string name="tv_applyinfo_uploadtxtID">請上傳身分證正反面</string>
     <string name="tv_applyinfo_uploadtxtGP">請上傳良民證(檔案格式:PDF、JPG、PNG) </string>
     <string name="tv_suinfo_done"><u>完成</u></string>
+
+
+
+<!--    toCheck-->
     <string name="tv_signup_txt_uploadSuccuess">審核資料上傳成功</string>
     <string name="tv_signup_txt_checkingMSG">審核時間1-3週
 審核成功將訊息通知</string>
     <string name="tv_signup_txt_checkingTitle">資料審核中</string>
-    <string name="tv_signup_logout"><u>登出</u></string>
+    <string name="tv_signup_back"><u>返回</u></string>
     <string name="tv_forgetPassword_title">忘記密碼</string>
     <string name="tv_forgetPassword_PhoneMSG">請輸入您的手機號碼,寄送驗證碼</string>
     <string name="tv_forgetPassword_EmailMSG">請輸入您的信箱,寄送驗證碼</string>
@@ -72,22 +61,5 @@
     <string name="tv_resetPassword_NP">輸入新密碼</string>
     <string name="tv_resetPassword_checkNP">確認新密碼</string>
     <string name="tv_resetPassword_title">更新密碼</string>
-    <string name="tv_ContractMember_title">申請條款</string>
-    <string name="rdoBtn_ContractMember_read">我已詳細閱讀規範內容</string>
-
-
-    <string-array name="spnar_Login_Status">
-        <item>一般會員</item>
-        <item>清潔接案</item>
-        <item>後臺管理</item>
-    </string-array>
-
-    <string name="tv_ContractMember_text">1. 認知與接受條款
-「本網站」係依據本服務條款提供本網站旗下所有聯盟服務 (以下簡稱「本服務」)。當您使用本網站時，即表示您已閱讀、瞭解並同意接受本約定書之所有內容。本網站有權於任何時間修改或變更本約定書之內容，建議您隨時注意該等修改或變更。您於任何修改或變更後繼續使用本網站，視為您已閱讀、瞭解並同意接受該等修改或變更。如果您不同意本約定書的內容，或者您所屬的國家或地域排除本約定書內容之全部或一部時，您應立即停止使用本網站。
-若您為未滿十八歲，除應符合上述規定外，並應於您的家長（或監護人）閱讀、瞭解並同意本約定書之所有內容及其後修改變更後，方得使用或繼續使用本網站。當您使用或繼續使用本網站時，即表示您的家長（或監護人）已閱讀、瞭解並同意接受本約定書之所有內容及其後修改變更。
-2. 您的註冊義務
-為了能使用本服務，您同意以下事項：(a) 依本服務註冊表之提示提供您本人正確、最新及完整的資料，(b) 維持並更新您個人資料，確保其為正確、最新及完整。若您提供任何錯誤或不實的資料，本網站有權暫停或終止您的帳號，並拒絕您使用本服務之全部或一部。© 不論您是否註冊成會員，您同意完全遵守本同意書任何規範條款。
-3. 本網站隱私權政策</string>
-
 
 </resources>

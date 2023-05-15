@@ -104,7 +104,7 @@
         tools:layout="@layout/fragment_cs_view_coupon" />
     <fragment
         android:id="@+id/loginFragment2"
-        android:name="com.example.cleaningapp.login.LoginFragment"
+        android:name="com.example.cleaningapp.login.controller.LoginFragment"
         android:label="fragment_rona_login"
         tools:layout="@layout/fragment_rona_login" />
     <fragment

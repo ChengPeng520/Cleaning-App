@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".login.controller.signupMemberInfoFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.login.viewModel.SignupApplyInfoViewModel" />
+            type="com.example.cleaningapp.login.viewModel.SignupMemberInfoViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".login.controller.SignupApplyInfoFragment">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:id="@+id/scrollView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_suInfo_done"
+            app:layout_constraintBottom_toTopOf="@+id/tv_memInfo_done"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_suInfo_back">
+            app:layout_constraintTop_toBottomOf="@+id/iv_memInfo_back">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.example.cleaningapp.CircleImageView
-                    android:id="@+id/iv_suInfo_avatar"
+                    android:id="@+id/iv_memInfo_avatar"
                     android:layout_width="104dp"
                     android:layout_height="104dp"
                     android:imageResource="@={viewModel.avatar}"
@@ -50,7 +50,7 @@
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_suInfo_avatar">
+                    app:layout_constraintTop_toBottomOf="@id/iv_memInfo_avatar">
 
                     <TextView
                         android:id="@+id/tv_suInfo_name"
@@ -64,7 +64,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/edtTxt_suInfo_name"
+                        android:id="@+id/edtTxt_memInfo_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -106,7 +106,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Spinner
-                        android:id="@+id/spn_suInfo_gender"
+                        android:id="@+id/spn_memInfo_gender"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -141,7 +141,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/edtTxt_suInfo_phone"
+                        android:id="@+id/edtTxt_memInfo_phone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -181,7 +181,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/edtTxt_suInfo_intro"
+                        android:id="@+id/edtTxt_memInfo_intro"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -197,93 +197,12 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:text="@string/tv_member_identity"
-                    android:textColor="#808080"
-                    app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
-
-                <ImageView
-                    android:id="@+id/iv_suInfo_id1"
-                    android:layout_width="152dp"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/all_layout_dark_gray_shape"
-                    android:padding="25dp"
-                    android:imageResource="@={viewModel.id1}"
-                    android:src="@drawable/baseline_image_24"
-                    app:layout_constraintEnd_toStartOf="@+id/iv_suInfo_id2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-                <ImageView
-                    android:id="@+id/iv_suInfo_id2"
-                    android:layout_width="152dp"
-                    android:layout_height="90dp"
-                    android:background="@drawable/all_layout_dark_gray_shape"
-                    android:padding="25dp"
-                    android:imageResource="@={viewModel.id2}"
-                    android:src="@drawable/baseline_image_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_suInfo_id1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_suInfo_id1"
-                    app:layout_constraintTop_toTopOf="@+id/iv_suInfo_id1" />
-
-                <TextView
-                    android:id="@+id/textView58"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/tv_member_criminal_record_certificate"
-                    app:layout_constraintStart_toStartOf="@+id/textView21"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_suInfo_id1" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/all_layout_dark_gray_shape"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/iv_suInfo_id2"
-                    app:layout_constraintStart_toStartOf="@+id/iv_suInfo_id1"
-                    app:layout_constraintTop_toBottomOf="@id/textView58">
-
-                    <ImageView
-                        android:id="@+id/iv_suInfo_goodPerson"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="18dp"
-                        android:imageResource="@={viewModel.goodPerson}"
-                        android:src="@drawable/baseline_image_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_suInfo_goodPerson"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="良民證.jpg"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/iv_suInfo_goodPerson"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
 
-
         <ImageView
-            android:id="@+id/iv_suInfo_back"
+            android:id="@+id/iv_memInfo_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="24dp"
@@ -295,7 +214,7 @@
 
 
         <TextView
-            android:id="@+id/tv_suInfo_done"
+            android:id="@+id/tv_memInfo_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_suinfo_done"
@@ -305,7 +224,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

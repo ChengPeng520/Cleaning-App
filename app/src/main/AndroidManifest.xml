@@ -16,7 +16,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".BackstageActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
@@ -24,7 +24,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".BackstageActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
