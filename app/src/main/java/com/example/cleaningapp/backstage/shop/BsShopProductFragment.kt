@@ -1,6 +1,5 @@
 package com.example.cleaningapp.backstage.shop
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.R
-import com.example.cleaningapp.databinding.FragmentAlbBsShopMainBinding
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductBinding
 
 class BsShopProductFragment : Fragment() {
@@ -19,7 +18,8 @@ class BsShopProductFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: BsShopProductViewModel by viewModels()
+        (requireActivity() as BackstageActivity).supportActionBar?.show()
+        val viewModel: ProductViewModel by viewModels()
         binding = FragmentAlbBsShopProductBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -27,13 +27,18 @@ class BsShopProductFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            btnBsShopProductModify.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.bsShopProductModifyFragment)
+        arguments?.let { bundle ->
+            bundle.getSerializable("product")?.let {
+                binding.viewModel?.product?.value = it as Product
             }
-            ivBsShopProductBack.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.bsShopMainFragment)
+            super.onViewCreated(view, savedInstanceState)
+            with(binding) {
+                btnBsShopProductModify.setOnClickListener {
+                    Navigation.findNavController(view).navigate(R.id.bsShopProductModifyFragment)
+                }
+                ivBsShopProductBack.setOnClickListener {
+                    Navigation.findNavController(view).navigate(R.id.bsShopMainFragment)
+                }
             }
         }
     }

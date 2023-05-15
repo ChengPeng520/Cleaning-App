@@ -5,7 +5,6 @@
     tools:context=".cleaner.view.shop.search.CleanerFrontFragment">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel" />
@@ -14,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minHeight="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp">
@@ -26,6 +26,8 @@
             android:text="@string/tv_front_choosedate"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/all_spinner_gray_frame_shape"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:paddingStart="16sp"
+            android:paddingEnd="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,9 +59,10 @@
                 android:id="@+id/spn_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_front_date"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -80,7 +83,7 @@
                 android:id="@+id/tv_front_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_front_time"
+                android:text="@string/tv_order_timestrat"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/spn_time"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,11 +93,13 @@
                 android:id="@+id/spn_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/tv_front_time"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,8 +112,45 @@
             android:text="@string/tv_front_chooselocaltion"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout12" />
+            app:layout_constraintTop_toBottomOf="@+id/height" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/all_spinner_gray_frame_shape"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView65"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_order_timeend"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout13"
@@ -137,14 +179,15 @@
                 android:id="@+id/spn_county"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:entries="@{viewModel.county}"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_front_county"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout14"
@@ -172,40 +215,28 @@
                 android:id="@+id/spn_localtion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_front_localtion"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/all_spinner_gray_frame_shape"
-            android:ems="10"
-            android:hint="@string/tv_order_localtiondetail"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_searchlist"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
