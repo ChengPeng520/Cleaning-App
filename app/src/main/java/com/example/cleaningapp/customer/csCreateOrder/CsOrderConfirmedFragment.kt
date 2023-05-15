@@ -29,7 +29,7 @@ class CsOrderConfirmedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             btCsOderConfirmedSubmit.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.fragment_historicalorder)
+                Navigation.findNavController(view).navigate(R.id.action_csOrderConfirmedFragment_to_historicalorderFragment)
                 Toast.makeText(context,context?.getString(R.string.toast_csCreateOrder_orderEstablished),Toast.LENGTH_LONG).show()
             }
         }

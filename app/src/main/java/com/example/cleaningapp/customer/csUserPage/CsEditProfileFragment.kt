@@ -28,7 +28,7 @@ class CsEditProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             btnCsEditProfileRestore.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csEditProfileFragment_to_csProfileFragment)
+                Navigation.findNavController(view).navigate(R.id.action_csEditProfileFragment_to_csViewProfileFragment)
             }
         }
     }

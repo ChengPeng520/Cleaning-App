@@ -14,27 +14,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/clr_cusCoupon_discount">
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/customer_coupon_shape">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="100dp" />
+            app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.22" />
+            app:layout_constraintGuide_percent="0.25" />
 
         <FrameLayout
             android:id="@+id/fl_discount"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/clr_cusCoupon_discount"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +44,7 @@
                 android:id="@+id/tv_discount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/customer_coupon_dicount_shape"
                 android:gravity="center"
                 android:text="@{viewmodel.coupon.discountString}"
                 android:textAlignment="center"
@@ -56,21 +57,23 @@
             android:id="@+id/tv_cusCoupon_limitedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/txt_cusCoupon_limitedTime"
             android:textColor=" #FF0808"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@id/guideline3"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/txt_cusCoupon_limitedTime" />
 
         <TextView
             android:id="@+id/tv_cusCoupon_lowConsump"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:text="@{@string/txt_cusCoupon_lowConsump(viewmodel.coupon.minCost)}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_limitedTime"
             app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_limitedTime"
             tools:text="低消500元才可適用" />
@@ -78,13 +81,15 @@
 
         <TextView
             android:id="@+id/tv_cusCoupon_deadline"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:text="@{@string/txt_cusCoupon_deadline(viewmodel.coupon.exp)}"
             android:textColor="@color/clr_cusCoupon_deadline"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_lowConsump"
             app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_lowConsump"
             tools:text="即將消失: 剩下1天" />
@@ -93,8 +98,6 @@
             android:id="@+id/bt_cusCoupon_obtain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/white"
             android:enabled="@{viewmodel.coupon.obtained}"
             android:gravity="center"

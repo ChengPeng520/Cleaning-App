@@ -8,9 +8,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
-import com.example.cleaningapp.databinding.ItemCsObtainCouponBinding
 import com.example.cleaningapp.databinding.ItemCsPickCouponBinding
-import com.example.cleaningapp.databinding.ItemCsViewCouponBinding
 
 class CsCouponUseAdapter (private var coupons: List<Coupon>) :
     RecyclerView.Adapter<CsCouponUseAdapter.CsCouponUserViewHolder>() {

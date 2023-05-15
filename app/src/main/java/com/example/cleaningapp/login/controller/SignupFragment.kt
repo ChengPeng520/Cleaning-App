@@ -1,7 +1,6 @@
 package com.example.cleaningapp.login.controller
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,29 +23,28 @@ class SignupFragment : Fragment() {
     ): View {
         requireActivity().title = "會員註冊"
         val viewModel: SignupViewModel by viewModels()
-        binding = FragmentRonaSignupBinding.inflate(inflater,container,false)
+        binding = FragmentRonaSignupBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding){
-            tvSignupCancel.setOnClickListener(){
+        with(binding) {
+            tvSignupCancel.setOnClickListener() {
                 Navigation.findNavController(it).popBackStack()
             }
 
-            spnSignupStatus.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            spnSignupStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
                     id: Long
                 ) {
-
-                    if(position == 0) {
+                    if (position == 0) {
                         nextPage = R.id.action_signupFragment_to_signupContractMemberFragment
-                    }else{
+                    } else {
                         nextPage = R.id.action_signupFragment_to_signupContractFragment
                     }
                 }
@@ -59,12 +57,14 @@ class SignupFragment : Fragment() {
                 // some login code
 
                 // login success
-                if (!inputCheck()){ return@setOnClickListener }
+                if (!inputCheck()) {
+                    return@setOnClickListener
+                }
                 Navigation.findNavController(it).navigate(action)
-
             }
         }
     }
+
     @SuppressLint("ResourceType")
     private fun inputCheck(): Boolean {
         var check = true
@@ -86,7 +86,7 @@ class SignupFragment : Fragment() {
                 check = false
             }
 
-            if ( cPassword != password){
+            if (cPassword != password) {
                 tvSignupErrMsg.text = ""
                 edtTxtSignupPasswordcfm.error = "密碼不一致" // 抓不到string的值, 先以字串代替
             }
@@ -100,8 +100,8 @@ public enum class Identity { //用陣列約束
     Customer, Cleaner
 }
 
-public fun getIdentity(number: Int): Identity {
-    return when(number) {
+fun getIdentity(number: Int): Identity {
+    return when (number) {
         0 -> Identity.Customer
         1 -> Identity.Cleaner
         else -> throw Exception()

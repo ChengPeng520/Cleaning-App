@@ -115,21 +115,17 @@
             android:id="@+id/action_vicky_order_conductFragment_to_completeOrderInfoFragment"
             app:destination="@id/completeOrderInfoFragment" />
         <action
-            android:id="@+id/action_vicky_order_conductFragment_to_vicky_order_ordercheckFragment"
-            app:destination="@id/vicky_order_ordercheckFragment" />
-        <action
             android:id="@+id/action_vicky_order_conductFragment_to_notifyFragment"
             app:destination="@id/notifyFragment" />
+        <action
+            android:id="@+id/action_vicky_order_conductFragment_to_orderStateFragment"
+            app:destination="@id/orderStateFragment" />
     </fragment>
     <fragment
         android:id="@+id/vicky_order_ordercheckFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdercheckFragment"
         android:label="fragment_vicky_order_ordercheck"
-        tools:layout="@layout/fragment_vicky_order_ordercheck" >
-        <action
-            android:id="@+id/action_vicky_order_ordercheckFragment_to_orderStateFragment"
-            app:destination="@id/orderStateFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_vicky_order_ordercheck" />
     <fragment
         android:id="@+id/vicky_order_cssign_checkFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderCsSignCheckFragment"
@@ -164,5 +160,5 @@
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.OrderHistoryFragment"
-        android:label="OrderHistoryFragment" />
+        android:label="fragment_fatruei_order_history" />
 </navigation>

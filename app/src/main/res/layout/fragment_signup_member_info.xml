@@ -32,7 +32,7 @@
                     android:id="@+id/iv_memInfo_avatar"
                     android:layout_width="104dp"
                     android:layout_height="104dp"
-                    android:imageResource="@={viewModel.avatar}"
+                    android:imageResource="@{viewModel.avatar}"
                     android:src="@drawable/fatruei_my_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
