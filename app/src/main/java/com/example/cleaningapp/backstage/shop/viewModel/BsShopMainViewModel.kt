@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.shop.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.shop.Product
 
 class BsShopMainViewModel : ViewModel() {
     private var searchProductList = mutableListOf<Product>()

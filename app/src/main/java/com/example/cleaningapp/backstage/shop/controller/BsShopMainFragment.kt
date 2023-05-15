@@ -11,10 +11,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.R
-<<<<<<< HEAD:app/src/main/java/com/example/cleaningapp/backstage/shop/controller/BsShopMainFragment.kt
+import com.example.cleaningapp.backstage.shop.ProductAdapter
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopMainViewModel
-=======
->>>>>>> main:app/src/main/java/com/example/cleaningapp/backstage/shop/BsShopMainFragment.kt
 import com.example.cleaningapp.databinding.FragmentAlbBsShopMainBinding
 
 class BsShopMainFragment : Fragment() {
