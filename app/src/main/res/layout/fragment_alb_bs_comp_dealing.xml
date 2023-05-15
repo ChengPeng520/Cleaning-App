@@ -63,7 +63,7 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_orderid_ti"
                     app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_orderid_ti"
-                    tools:text="@string/tv_bs_comp_databox_orderid_ex" />
+                    android:text="@{viewModel.complaint.orderId}" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_applierti"
@@ -87,7 +87,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_comp_dealing_orderId"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_applierti"
                     app:layout_constraintTop_toTopOf="@+id/tv_bs_comp_dealing_orderId"
-                    tools:text="@string/tv_bs_comp_databox_applier_ex" />
+                    android:text="@{viewModel.complaint.applier}" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_timeti"
@@ -113,7 +113,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_comp_dealing_applier"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_timeti"
                     app:layout_constraintTop_toTopOf="@+id/tv_bs_comp_dealing_applier"
-                    tools:text="@string/tv_bs_comp_databox_time_ex" />
+                    android:text="@{viewModel.complaint.createTime}" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_cleanerti"
@@ -135,7 +135,7 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_cleanerti"
                     app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_cleanerti"
-                    tools:text="@string/tv_bs_comp_dealing_cleaner_ex" />
+                    android:text="@{viewModel.complaint.cleaner}" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_uploadPhototi"
@@ -159,24 +159,24 @@
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_dealing_uploadPhoto1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="132dp"
+                        android:layout_height="132dp"
                         android:layout_weight="1"
-                        tools:src="@tools:sample/avatars" />
+                        android:imageResource="@{viewModel.complaint.photo1}" />
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_dealing_uploadPhoto2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="132dp"
+                        android:layout_height="132dp"
                         android:layout_weight="1"
-                        tools:src="@tools:sample/avatars" />
+                        android:imageResource="@{viewModel.complaint.photo2}" />
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_dealing_uploadPhoto3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="132dp"
+                        android:layout_height="132dp"
                         android:layout_weight="1"
-                        tools:src="@tools:sample/avatars" />
+                        android:imageResource="@{viewModel.complaint.photo3}" />
                 </LinearLayout>
 
                 <TextView
@@ -198,7 +198,7 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_contentti"
                     app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_contentti"
-                    tools:text="@string/tv_bs_comp_dealing_content" />
+                    android:text="@{viewModel.complaint.content}" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_remarkti"

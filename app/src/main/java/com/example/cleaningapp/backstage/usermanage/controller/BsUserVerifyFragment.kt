@@ -19,7 +19,7 @@ private lateinit var binding: FragmentAlbBsUserVerifyBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val viewModel: BsUserVerifyViewModel by viewModels()
         binding = FragmentAlbBsUserVerifyBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

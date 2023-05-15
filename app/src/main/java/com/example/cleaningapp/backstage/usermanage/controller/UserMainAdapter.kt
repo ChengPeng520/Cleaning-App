@@ -1,5 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class UserMainAdapter(private var users: List<User>) :
      * 更新使用者列表內容
      * @param users 新的好友列表
      */
+    @SuppressLint("NotifyDataSetChanged")
     fun updateUsers(users: List<User>) {
         this.users = users
         notifyDataSetChanged()

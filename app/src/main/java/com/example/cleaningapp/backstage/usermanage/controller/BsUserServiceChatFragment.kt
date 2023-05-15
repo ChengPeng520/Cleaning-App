@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.usermanage.model.Chat
+import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserServiceChatBinding
 
 class BsUserServiceChatFragment : Fragment() {
-private lateinit var binding: FragmentAlbBsUserServiceChatBinding
+    private lateinit var binding: FragmentAlbBsUserServiceChatBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,14 +28,19 @@ private lateinit var binding: FragmentAlbBsUserServiceChatBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            tvBsUserServChatQuery.setOnClickListener{
+        arguments?.let { bundle ->
+            bundle.getSerializable("chat")?.let {
+                binding.viewModel?.chat?.value = it as Chat
+            }
+        }
+        with(binding) {
+            tvBsUserServChatQuery.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserMainDetailFragment)
             }
-            tvBsUserServChatModify.setOnClickListener{
+            tvBsUserServChatModify.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserMainModifyFragment)
             }
-            ivBsUserServChatBack.setOnClickListener{
+            ivBsUserServChatBack.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }
         }

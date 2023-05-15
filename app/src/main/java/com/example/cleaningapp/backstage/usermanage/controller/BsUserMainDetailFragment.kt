@@ -39,7 +39,7 @@ class BsUserMainDetailFragment : Fragment() {
                     Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
                 }
                 ivBsUserMainDetailBack.setOnClickListener {
-                    Navigation.findNavController(view).popBackStack()
+                    Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
                 }
             }
         }

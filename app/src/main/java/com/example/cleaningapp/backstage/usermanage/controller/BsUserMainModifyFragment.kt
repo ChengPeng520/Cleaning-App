@@ -31,7 +31,7 @@ private lateinit var binding: FragmentAlbBsUserMainModifyBinding
                 Navigation.findNavController(view).navigate(R.id.bsUserMainDetailFragment)
             }
             ivBsUserMainModifyBack.setOnClickListener {
-                Navigation.findNavController(view).popBackStack()
+                Navigation.findNavController(view).navigate(R.id.bsUserMainDetailFragment)
             }
         }
     }

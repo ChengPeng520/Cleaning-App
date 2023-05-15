@@ -56,7 +56,7 @@
                     android:layout_width="86dp"
                     android:layout_height="86dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@{viewModel.user.avatar}" />
+                    android:imageResource="@{viewModel.user.avatar}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -274,7 +274,7 @@
                         android:id="@+id/tv_bs_user_verify_detail_permission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.authority}"
+                        android:text="@{viewModel.user.verify}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -355,7 +355,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_idfront"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:src="@{viewModel.user.idCardFront}" />
+                    android:imageResource="@{viewModel.user.idCardFront}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_verify_detail_idback_ti"
@@ -370,7 +370,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_idback"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:src="@{viewModel.user.idCardBack}" />
+                    android:imageResource="@{viewModel.user.idCardBack}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_verify_detail_criminalrecord_ti"
@@ -385,7 +385,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_criminalrecord"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:src="@{viewModel.user.criminalRecord}" />
+                    android:imageResource="@{viewModel.user.criminalRecord}" />
 
             </LinearLayout>
         </ScrollView>

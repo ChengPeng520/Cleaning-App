@@ -8,9 +8,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.User
-import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserVerifyDetailViewModel
-import com.example.cleaningapp.databinding.ItemAlbBsUserMainDataboxBinding
 import com.example.cleaningapp.databinding.ItemAlbBsUserVerifyDataboxBinding
 
 /**

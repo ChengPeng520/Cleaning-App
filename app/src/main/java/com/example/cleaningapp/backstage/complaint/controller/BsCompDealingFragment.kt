@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.complaint.model.Complaint
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDealingViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsCompDealingBinding
 
@@ -26,15 +27,21 @@ class BsCompDealingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            btnBsCompDealingAgree.setOnClickListener{
+        arguments?.let { bundle ->
+            bundle.getSerializable("complaint")?.let {
+                binding.viewModel?.complaint?.value = it as Complaint
+            }
+        }
+        with(binding) {
+            btnBsCompDealingAgree.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsCompDetailFragment)
             }
 
-            btnBsCompDealingDecline.setOnClickListener{
+            btnBsCompDealingDecline.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsCompDoneFragment)
             }
-            ivBsCompDealingBack.setOnClickListener{
+
+            ivBsCompDealingBack.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsCompMainFragment)
             }
         }

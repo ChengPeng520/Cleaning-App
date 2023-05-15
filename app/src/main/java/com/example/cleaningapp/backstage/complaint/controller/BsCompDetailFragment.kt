@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.complaint.model.Complaint
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDetailViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsCompDetailBinding
 
@@ -26,6 +27,11 @@ class BsCompDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let { bundle ->
+            bundle.getSerializable("complaint")?.let {
+                binding.viewModel?.complaint?.value = it as Complaint
+            }
+        }
         with(binding){
             ivBsCompDetailBack.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.bsCompDoneFragment)

@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserServiceBinding
@@ -27,6 +29,26 @@ class BsUserServiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+            rvBsUserServ.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.chats?.observe(viewLifecycleOwner){ chats ->
+                if (rvBsUserServ.adapter == null) {
+                    rvBsUserServ.adapter = UserServiceAdapter(chats)
+                } else {
+                    (rvBsUserServ.adapter as UserServiceAdapter).updateChats(chats)
+                }
+            }
+
+            svBsUserServMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                // 輸入的文字改變時呼叫
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    viewModel?.search(newText)
+                    return true
+                }
+                // 點擊虛擬鍵盤上的提交鈕時呼叫
+                override fun onQueryTextSubmit(text: String): Boolean {
+                    return false
+                }
+            })
             btnBsUserServUser.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
             }

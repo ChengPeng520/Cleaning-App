@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.usermanage.model
 import java.io.Serializable
 
 class User(
+    var id: Int,
     var avatar: Int,
     var email: String,
     var password: String,
@@ -13,7 +14,8 @@ class User(
     var createTime: String,
     var updateTime: String,
     var role: String,
-    var authority: String,
+    var suspend: String,
+    var verify: String,
     var intro: String,
     var idNum: String,
     var bank: String,

@@ -56,7 +56,7 @@
                     android:layout_width="86dp"
                     android:layout_height="86dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@{viewModel.user.avatar}" />
+                    android:imageResource="@{viewModel.user.avatar}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -296,7 +296,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="@{viewModel.user.authority}"
+                        android:text="@{viewModel.user.verify}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
