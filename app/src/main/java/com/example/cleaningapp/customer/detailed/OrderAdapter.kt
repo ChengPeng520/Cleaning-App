@@ -6,22 +6,24 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.databinding.ItemVictorOrderboxBinding
 
-class OrderAdapter(val orderList: List<Order>) : RecyclerView.Adapter<OrderAdapter.MyViewHoder>() {
+class OrderAdapter(private val orderList: List<Order>) : RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
 
-    class MyViewHoder(val itemBinding: ItemVictorOrderboxBinding) : RecyclerView.ViewHolder(itemBinding.root)
+    class MyViewHolder(val itemBinding: ItemVictorOrderboxBinding) :
+        RecyclerView.ViewHolder(itemBinding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHoder {
-        val itemView = ItemVictorOrderboxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        itemView.viewModel = orederListViewModel()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView =
+            ItemVictorOrderboxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        itemView.viewModel = OrderListViewModel()
         itemView.lifecycleOwner = parent.findViewTreeLifecycleOwner()
-        return MyViewHoder(itemView)
+        return MyViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
         return orderList.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHoder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemBinding.viewModel?.orderItem?.value = orderList[position]
     }
 }

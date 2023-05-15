@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.Order
 
-class HistoricalorderViewModel : ViewModel() {
+class HistoricalOrderViewModel : ViewModel() {
     val orderList: MutableLiveData<List<Order>> by lazy { MutableLiveData<List<Order>>() }
 
-    fun fetchorders(){
+    fun fetchOrders(){
         val list = mutableListOf<Order>()
         list.add(Order(1, 1001, "2023-05-11", "10:00", "123 Street", "Small", "No special requests", "John Doe", 50))
         list.add(Order(2, 1002, "2023-05-12", "14:30", "456 Avenue", "Medium", "Need extra cleaning", "Jane Smith", 75))

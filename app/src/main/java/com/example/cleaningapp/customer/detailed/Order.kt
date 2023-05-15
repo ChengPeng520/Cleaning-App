@@ -5,8 +5,9 @@ data class Order(
     val orderId: Int,
     val date: String,
     val time: String,
-    val address:String,
+    val address: String,
     val size: String,
     val remark: String,
     val cleaner: String,
-    val total: Int)
+    val total: Int
+)

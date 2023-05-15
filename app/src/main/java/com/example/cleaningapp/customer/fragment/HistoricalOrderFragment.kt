@@ -1,23 +1,19 @@
 package com.example.cleaningapp.customer.fragment
 
-import android.os.Binder
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingComponent
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cleaningapp.customer.ViewModel.HistoricalorderViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.OrderAdapter
+import com.example.cleaningapp.customer.viewModel.HistoricalOrderViewModel
 import com.example.cleaningapp.databinding.FragmentVictorHistoricalorderBinding
 
-class HistoricalorderFragment : Fragment() {
+class HistoricalOrderFragment : Fragment() {
     private lateinit var binding: FragmentVictorHistoricalorderBinding
-    val viewModel: HistoricalorderViewModel by viewModels()
+    val viewModel: HistoricalOrderViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +26,7 @@ class HistoricalorderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchorders()
+        viewModel.fetchOrders()
         binding.rvOrderListList.layoutManager = LinearLayoutManager(requireContext())
         viewModel.orderList.observe(viewLifecycleOwner){
             if (binding.rvOrderListList.adapter == null){

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.detailed.orederListViewModel" />
-
+            type="com.example.cleaningapp.customer.detailed.OrderListViewModel" />
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="訂單編號:"
+            android:text="@string/tv_order_orderId"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/guideline25"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="打掃日期:"
+            android:text="@string/tv_customer_order_date"
             app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintStart_toStartOf="@+id/textView1"
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -42,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="打掃時數:"
+            android:text="@string/tv_order_time"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -52,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="打掃區域:"
+            android:text="@string/tv_order_range"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -62,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="清潔人員:"
+            android:text="@string/tv_order_cleaner"
             app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintStart_toStartOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -72,18 +68,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="總金額:"
+            android:text="@string/tv_order_total"
             app:layout_constraintBottom_toTopOf="@+id/btn_orderBox_detailed"
             app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/tv_orderId"
+            android:id="@+id/tv_order_orderId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:padding="8dp"
-            android:text="@{viewModel.orderItem.orderId}"
+            android:text="@{String.valueOf(viewModel.orderItem.orderId)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView1"
             app:layout_constraintStart_toEndOf="@+id/textView1"
             app:layout_constraintTop_toTopOf="@+id/textView1"
@@ -93,7 +88,6 @@
             android:id="@+id/tv_order_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:padding="8dp"
             android:text="@{viewModel.orderItem.date}"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
@@ -105,7 +99,6 @@
             android:id="@+id/tv_order_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:padding="8dp"
             android:text="@{viewModel.orderItem.time}"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
@@ -114,10 +107,9 @@
             tools:text="12:00-14:00 (2小時)" />
 
         <TextView
-            android:id="@+id/tv_order_size"
+            android:id="@+id/tv_order_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:padding="8dp"
             android:text="@{viewModel.orderItem.size}"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
@@ -126,10 +118,9 @@
             tools:text="房間5坪" />
 
         <TextView
-            android:id="@+id/item_order_cleaner"
+            android:id="@+id/tv_order_cleaner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:padding="8dp"
             android:text="@{viewModel.orderItem.cleaner}"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
@@ -141,12 +132,13 @@
             android:id="@+id/tv_order_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="14dp"
             android:padding="8dp"
-            android:text="@{viewModel.orderItem.total}"
+            android:text="@{String.valueOf(viewModel.orderItem.total)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="NT$X,XXX元" />
 
         <Button
@@ -155,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#EAEAEA"
-            android:text="展開訂單詳情"
+            android:text="@string/btn_orderBox_detailed"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -169,5 +161,36 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.10" />
 
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView1"
+            app:layout_constraintEnd_toStartOf="@+id/textView1"
+            app:layout_constraintTop_toTopOf="@+id/textView1"
+            app:srcCompat="@drawable/fatruei_baseline_list_alt_24" />
+
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
+            app:srcCompat="@drawable/fatruei_baseline_calendar_month_24" />
+
+        <ImageView
+            android:id="@+id/imageView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:srcCompat="@drawable/fatruei_baseline_access_time_24" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
