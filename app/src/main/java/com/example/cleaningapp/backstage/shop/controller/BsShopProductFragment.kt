@@ -9,10 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.R
-<<<<<<< HEAD:app/src/main/java/com/example/cleaningapp/backstage/shop/controller/BsShopProductFragment.kt
+import com.example.cleaningapp.backstage.shop.Product
+import com.example.cleaningapp.backstage.shop.ProductViewModel
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel
-=======
->>>>>>> main:app/src/main/java/com/example/cleaningapp/backstage/shop/BsShopProductFragment.kt
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductBinding
 
 class BsShopProductFragment : Fragment() {
@@ -23,7 +22,7 @@ class BsShopProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         (requireActivity() as BackstageActivity).supportActionBar?.show()
-        val viewModel: ProductViewModel by viewModels()
+        val viewModel: BsShopProductViewModel by viewModels()
         binding = FragmentAlbBsShopProductBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
