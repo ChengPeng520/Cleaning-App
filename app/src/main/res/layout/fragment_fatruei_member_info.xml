@@ -15,8 +15,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -227,12 +227,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout21"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
                     android:background="@drawable/all_layout_dark_gray_shape"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/imageView8"
                     app:layout_constraintStart_toStartOf="@+id/imageView7"
                     app:layout_constraintTop_toBottomOf="@id/textView58">
@@ -260,21 +259,25 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button2"
+                    style="@style/cleanerBtnSubmitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/btn_member_info_submit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout21" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="#3D7EBB"
-            android:text="@string/btn_member_info_submit"
-            android:textColor="#414141"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

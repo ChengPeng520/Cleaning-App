@@ -20,6 +20,20 @@ class ReceiverInfoFragment : Fragment() {
         binding = FragmentFatrueiReceiverInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = requireActivity()
+        isBtnEnable()
         return binding.root
+    }
+
+    private fun isBtnEnable() {
+        binding.btnReceiverInfoSave.isEnabled = false
+        viewModel.receiverName.observe(viewLifecycleOwner) { name ->
+            viewModel.receiverTelPhone.observe(viewLifecycleOwner) { telPhone ->
+                viewModel.receiverAddress.observe(viewLifecycleOwner) { address ->
+                    binding.btnReceiverInfoSave.isEnabled =
+                        ((name.isNotEmpty() || name == null) && telPhone.toString()
+                            .isNotEmpty() && (address.isNotEmpty() || name == null))
+                }
+            }
+        }
     }
 }

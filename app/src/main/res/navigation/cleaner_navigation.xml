@@ -23,8 +23,8 @@
             android:id="@+id/action_shopFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
         <action
-            android:id="@+id/action_shopFragment_to_shoppingInfoFragment"
-            app:destination="@id/shoppingInfoFragment" />
+            android:id="@+id/action_shopFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberFragment"
@@ -38,11 +38,6 @@
             android:id="@+id/action_memberFragment_to_contactWindowFragment"
             app:destination="@id/contactWindowFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/shoppingInfoFragment"
-        android:name="com.example.cleaningapp.cleaner.view.shop.ShoppingInfoFragment"
-        android:label="fragment_fatruei_shopping_info"
-        tools:layout="@layout/fragment_fatruei_shopping_info" />
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.ProductDetailFragment"
@@ -165,9 +160,9 @@
         android:id="@+id/receiverInfoFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.ReceiverInfoFragment"
         android:label="fragment_fatruei_receiver_info"
-        tools:layout="@layout/fragment_fatruei_receiver_info" >
-        <action
-            android:id="@+id/action_receiverInfoFragment_to_completedPaymentFragment"
-            app:destination="@id/completedPaymentFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_fatruei_receiver_info" />
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.OrderHistoryFragment"
+        android:label="OrderHistoryFragment" />
 </navigation>

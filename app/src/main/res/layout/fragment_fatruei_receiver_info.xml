@@ -11,10 +11,12 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_send_submit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="12dp"
         tools:context=".cleaner.view.shop.ReceiverInfoFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/all_layout_gray_frame_shape"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -34,10 +36,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_receiver_name"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtTxt_receiver_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/edtTxt_receiver_name"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <EditText
@@ -51,11 +53,12 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:text="@={viewModel.receiverName}"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                android:textColorHint="#DDDDDD"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,8 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/all_layout_gray_frame_shape"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout19">
@@ -77,10 +80,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_receiver_telphone"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtTxt_receiver_telphone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/edtTxt_receiver_telphone" />
 
             <EditText
                 android:id="@+id/edtTxt_receiver_telphone"
@@ -93,11 +96,12 @@
                 android:inputType="number"
                 android:minHeight="48dp"
                 android:text="@={viewModel.receiverTelPhone}"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                android:textColorHint="#DDDDDD"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView12"
-                app:layout_constraintTop_toTopOf="@+id/textView12" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -106,8 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/all_layout_gray_frame_shape"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout20">
@@ -118,10 +122,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_receiver_address"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/edtTxt_receiver_address"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/edtTxt_receiver_address" />
 
             <EditText
                 android:id="@+id/edtTxt_receiver_address"
@@ -134,11 +137,12 @@
                 android:inputType="textPostalAddress"
                 android:minHeight="48dp"
                 android:text="@={viewModel.receiverAddress}"
+                android:textColorHint="#DDDDDD"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView13"
-                app:layout_constraintTop_toTopOf="@+id/textView13" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -147,6 +151,7 @@
             style="@style/cleanerBtnSubmitStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:onClick="@{viewModel::onBtnClick}"
             android:text="@string/btn_receiver_info_save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

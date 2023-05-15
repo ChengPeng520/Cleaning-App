@@ -50,12 +50,14 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_shopping_cart_product_price"
             app:layout_constraintStart_toStartOf="@+id/guideline12"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/tv_shopping_cart_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="@{viewModel.adapterUiState.name}"
             android:textColor="#121212"
             android:textSize="16sp"
@@ -81,11 +83,12 @@
             android:id="@+id/tv_shopping_cart_product_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
             android:text="@{@string/tv_shopping_cart_number(viewModel.adapterUiState.number)}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_shopping_cart_product_price"
-            app:layout_constraintStart_toEndOf="@+id/tv_shopping_cart_product_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_shopping_cart_product_price"
             app:layout_constraintTop_toTopOf="@+id/tv_shopping_cart_product_price"
             tools:text="x1" />
 

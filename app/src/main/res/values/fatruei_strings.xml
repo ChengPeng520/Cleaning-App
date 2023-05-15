@@ -26,7 +26,7 @@
     <string name="edtTxt_receiver_address">請輸入地址</string>
     <string name="btn_receiver_info_save">保存</string>
 
-    //shoppingInfoReceipt 歷史訂單
+    //OrderHistory 歷史訂單
     <string name="tv_shopping_info_receipt_finish">已完成</string>
     <string name="tv_shopping_info_receipt_price">訂單金額:</string>
     <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
