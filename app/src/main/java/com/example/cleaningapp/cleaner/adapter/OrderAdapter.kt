@@ -48,8 +48,7 @@ class OrderAdapter(private var orders: List<Work>) :
             val bundle = Bundle()
             bundle.putSerializable("orders", order)
             itemView.setOnClickListener {
-                Navigation.findNavController(it).
-                navigate(R.id.action_vicky_order_conductFragment_to_vicky_order_ordercheckFragment,bundle)
+
             }
         }
     }
