@@ -13,5 +13,5 @@
         android:title="Order" />
     <item android:title="Profile"
         android:id="@+id/profile"
-        android:icon="@drawable/cs_btnavbar_ic_profile"/>
+        android:icon="@drawable/item_menu_personal_info"/>
 </menu>
