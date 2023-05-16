@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edtText_csProfile_selfIntro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.csUserPage.CsEditProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/ll_csProfile_name"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_csProfile_name"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/tv_csProfile_name"
+            android:textColor="@color/clr_csProfile_title"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_csProfile_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_csProfile_phoneNumber"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_name"
+        app:layout_constraintStart_toStartOf="@+id/ll_csProfile_name"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_name">
+
+        <TextView
+            android:id="@+id/tv_csProfile_phoneNumber"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/tv_csProfile_phoneNumber"
+            android:textColor="@color/clr_csProfile_title" />
+
+        <TextView
+            android:id="@+id/tv_Phone_csProfile_phoneNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="phone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_csProfile_address"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_phoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/ll_csProfile_phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_phoneNumber">
+
+        <TextView
+            android:id="@+id/tv_csProfile_address"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/tv_csProfile_address" />
+
+        <TextView
+            android:id="@+id/tv_csProfile_address2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_csProfile_gender"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_address"
+        app:layout_constraintStart_toStartOf="@+id/ll_csProfile_address"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_address">
+
+        <TextView
+            android:id="@+id/tv_csProfile_gender"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/tv_csProfile_gender" />
+
+        <TextView
+            android:id="@+id/tv_csProfile_gender2"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_csProfile_selfIntro"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_gender"
+        app:layout_constraintStart_toStartOf="@+id/ll_csProfile_gender"
+        app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_gender">
+
+        <TextView
+            android:id="@+id/tv_csProfile_selfIntro"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="@string/tv_csProfile_selfIntro" />
+
+        <TextView
+            android:id="@+id/tv_csProfile_selfIntro2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_cs_NavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#569DAA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/cs_bt_navbar">
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <Button
+        android:id="@+id/btn_csProfile_summit"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/clr_cusCoupon_obtain"
+        android:text="@string/btn_cs_modify"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cs_NavView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_csProfile_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_csProfile_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/txt_profile"
+        android:textColor="@color/clr_csTitle"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_csProfile_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_csProfile_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_csProfile_back" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
