@@ -30,6 +30,7 @@
     <string name="tv_shopping_info_receipt_finish">已完成</string>
     <string name="tv_shopping_info_receipt_price">訂單金額:</string>
     <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
+    <string name="tv_shopping_info_gross_price">$%d元整</string>
 
     //completed_payment 付款完成
     <string name="tv_completed_payment_back"><u>返回訂單列表</u></string>
@@ -44,6 +45,10 @@
     //memberInfo
     <string name="tv_member_info_name">姓名:</string>
     <string name="tv_member_info_gender">性別:</string>
+    <string-array name="sp_member_info_gender">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
     <string name="tv_member_info_number">手機號碼:</string>
     <string name="tv_member_info_introduce">自我介紹:</string>
     <string name="edtTxt_member_hint">(必填)</string>

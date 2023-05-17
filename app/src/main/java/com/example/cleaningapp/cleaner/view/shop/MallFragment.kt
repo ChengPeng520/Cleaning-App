@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cleaningapp.R
-import com.example.cleaningapp.cleaner.adapter.ShopAdapter
+import com.example.cleaningapp.cleaner.adapter.MallAdapter
 import com.example.cleaningapp.cleaner.viewmodel.shop.MallViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiMallBinding
 import kotlinx.coroutines.launch
@@ -37,12 +37,12 @@ class MallFragment : Fragment() {
     private fun initRecycler() {
         with(binding) {
             rvMallProducts.layoutManager = GridLayoutManager(requireContext(), 2)
-            rvMallProducts.adapter = ShopAdapter()
+            rvMallProducts.adapter = MallAdapter()
             viewModel?.fetchProducts()
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
                     viewModel?.uiState?.collect {
-                        (rvMallProducts.adapter as ShopAdapter).submitList(it.productItems)
+                        (rvMallProducts.adapter as MallAdapter).submitList(it.productItems)
                     }
                 }
             }

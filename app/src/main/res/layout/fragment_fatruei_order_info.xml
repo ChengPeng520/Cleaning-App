@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.cleaner.viewmodel.shop.OrderInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        tools:context=".cleaner.view.shop.OrderInfoFragment">
+
+        <TextView
+            android:id="@+id/tv_order_info_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.uiState.date}"
+            android:textColor="#8F9090"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2023/4/26" />
+
+        <TextView
+            android:id="@+id/tv_order_info_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.uiState.state}"
+            android:textColor="#3D7EBB"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_order_info_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_order_info_date"
+            tools:text="已到貨" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_order_info_products"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_info_date" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_shopping_info_receipt_price"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_order_info_gross_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_order_info_gross_price" />
+
+        <TextView
+            android:id="@+id/tv_order_info_gross_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/tv_shopping_info_gross_price(viewModel.uiState.grossPrice)}"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_order_info_products"
+            tools:text="$2000元整" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

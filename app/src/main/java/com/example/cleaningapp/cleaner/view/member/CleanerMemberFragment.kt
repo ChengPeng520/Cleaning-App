@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberBinding
 
-class MemberFragment : Fragment(), OnClickListener {
+class CleanerMemberFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentFatrueiMemberBinding
 
     override fun onCreateView(

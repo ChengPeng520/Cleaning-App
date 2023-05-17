@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberInfoBinding
 
-class MemberInfoFragment : Fragment() {
+class CleanerMemberInfoFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiMemberInfoBinding
 
     override fun onCreateView(

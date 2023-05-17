@@ -11,7 +11,9 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductItemUiState
 import com.example.cleaningapp.databinding.ItemFatrueiShopProductBinding
 
-class ShopAdapter : ListAdapter<ProductItemUiState, ShopAdapter.MyViewHodler>(DiffCallBack()) {
+class MallAdapter : ListAdapter<ProductItemUiState, MallAdapter.MyViewHodler>(DiffCallBack()) {
+    private var itemWidth: Int = 178
+
     class DiffCallBack : DiffUtil.ItemCallback<ProductItemUiState>() {
         override fun areItemsTheSame(
             oldItem: ProductItemUiState,
@@ -30,8 +32,9 @@ class ShopAdapter : ListAdapter<ProductItemUiState, ShopAdapter.MyViewHodler>(Di
 
     class MyViewHodler(val binding: ItemFatrueiShopProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(id: Int, product: ProductItemUiState) {
+        fun onBind(id: Int, product: ProductItemUiState, itemWidth: Int) {
             with(binding) {
+                clMall.maxWidth = itemWidth
                 ivShopProductPicture.setImageResource(product.image)
                 tvShopProductName.text = product.name
                 tvShopProductPrice.text = product.price.toString()
@@ -46,6 +49,7 @@ class ShopAdapter : ListAdapter<ProductItemUiState, ShopAdapter.MyViewHodler>(Di
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
+        this.itemWidth = parent.width / 2
         return MyViewHodler(
             ItemFatrueiShopProductBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -56,6 +60,6 @@ class ShopAdapter : ListAdapter<ProductItemUiState, ShopAdapter.MyViewHodler>(Di
     }
 
     override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
-        holder.onBind(getItem(position).id, getItem(position))
+        holder.onBind(getItem(position).id, getItem(position), itemWidth)
     }
 }
