@@ -7,13 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.CleanerChatroomAdapter
 import com.example.cleaningapp.cleaner.viewmodel.member.CleanerChatroomViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiChatroomBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CleanerChatroomFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiChatroomBinding
     private val viewModel: CleanerChatroomViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
+            View.GONE
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

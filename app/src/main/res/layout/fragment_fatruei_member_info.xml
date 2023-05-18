@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,18 +62,19 @@
                         android:id="@+id/edtTxt_member_info_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
                         android:ems="10"
-                        android:gravity="center|end"
                         android:hint="@string/edtTxt_member_hint"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
+                        android:text="@={viewModel.name}"
+                        android:textAlignment="textEnd"
                         android:textColorHint="#DDDDDD"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView9"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/textView9"
                         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
@@ -101,14 +105,60 @@
                         android:id="@+id/spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:entries="@array/sp_member_info_gender"
                         android:minHeight="48dp"
-                        android:textAlignment="textEnd"
+                        android:selectedItemPosition="@={viewModel.gender}"
+                        android:textAlignment="textStart"
                         app:layout_constraintBottom_toBottomOf="@+id/textView10"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView10"
                         app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/all_layout_gray_frame_shape"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <TextView
+                        android:id="@+id/textView49"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/tv_member_info_identity"
+                        android:textColor="#808080"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_member_info_identity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="@string/edtTxt_member_hint"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.identity}"
+                        android:textAlignment="textEnd"
+                        android:textColorHint="#DDDDDD"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView49"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -120,7 +170,7 @@
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout23">
 
                     <TextView
                         android:id="@+id/textView15"
@@ -134,22 +184,26 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editTextNumber"
+                        android:id="@+id/edtTxt_member_info_phone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
                         android:ems="10"
-                        android:gravity="center|end"
                         android:hint="@string/edtTxt_member_hint"
-                        android:inputType="number"
+                        android:inputType="phone"
+                        android:maxLength="10"
                         android:minHeight="48dp"
+                        android:text="@={viewModel.phone}"
+                        android:textAlignment="textEnd"
                         android:textColorHint="#DDDDDD"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView15"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView15"
                         app:layout_constraintTop_toTopOf="@+id/textView15" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -173,7 +227,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/edtTxt_member_info_introduction"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginEnd="16dp"
@@ -181,6 +235,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:textSize="14sp"
+                        android:text="@={viewModel.introduction}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView16"

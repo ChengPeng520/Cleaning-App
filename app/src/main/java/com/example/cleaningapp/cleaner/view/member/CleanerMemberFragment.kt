@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CleanerMemberFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentFatrueiMemberBinding
@@ -30,5 +31,11 @@ class CleanerMemberFragment : Fragment(), OnClickListener {
             R.id.cl_member_window -> Navigation.findNavController(v)
                 .navigate(R.id.action_memberFragment_to_contactWindowFragment)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
+            View.VISIBLE
     }
 }

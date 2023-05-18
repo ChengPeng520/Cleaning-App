@@ -49,17 +49,19 @@
         <item>男</item>
         <item>女</item>
     </string-array>
+    <string name="tv_member_info_identity">身分證字號:</string>
     <string name="tv_member_info_number">手機號碼:</string>
     <string name="tv_member_info_introduce">自我介紹:</string>
     <string name="edtTxt_member_hint">(必填)</string>
-    <string name="btn_member_info_submit">完成</string>
-    <string name="tv_member_identity">請上傳身分證</string>
-    <string name="tv_member_criminal_record_certificate">請上傳良民證(檔案格式:PDF、JPG、PNG)</string>
+    <string name="tv_member_identity">身分證</string>
+    <string name="tv_member_criminal_record_certificate">良民證</string>
+    <string name="btn_member_info_submit">確認</string>
 
     //item_notify 通知訊息
     <string name="tv_notify_window">前往客服聯繫</string>
 
     //order_state共用
+    <string name="tv_order_state_not_start">訂單尚未開始</string>
     <string name="tv_order_state_applied">接單成功</string>
     <string name="tv_order_state_ing">正進行中</string>
     <string name="tv_order_state_check">顧客確認</string>
@@ -73,4 +75,9 @@
     <string name="tv_order_state_price">總金額:</string>
     <string name="tv_order_state_comment">客戶評論</string>
     <string name="tv_order_state_picture">照片</string>
+    <string name="btn_order_state_start_cleaning">開始清潔</string>
+    <string name="tv_order_state_cancel"><u>取消接單</u></string>
+    <string name="btn_order_state_add_picture">新增照片</string>
+    <string name="btn_order_state_sign">顧客簽名</string>
+    <string name="tv_order_state_view_picture"><u>查看照片</u></string>
 </resources>

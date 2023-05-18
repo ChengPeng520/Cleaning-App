@@ -10,12 +10,13 @@ import com.example.cleaningapp.databinding.ActivityCleanerBinding
 
 class CleanerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCleanerBinding
+    private lateinit var navHostFragment: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cleaner)
 
-        val navHostFragment =
+        navHostFragment =
             supportFragmentManager.findFragmentById(R.id.cleaner_nav_host_fragment) as NavHostFragment
         val configuration = AppBarConfiguration(binding.bvnCleaner.menu)
 
@@ -29,5 +30,10 @@ class CleanerActivity : AppCompatActivity() {
             binding.bvnCleaner,
             navHostFragment.navController
         )
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        navHostFragment.navController.navigateUp()
+        return super.onSupportNavigateUp()
     }
 }
