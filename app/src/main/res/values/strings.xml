@@ -10,6 +10,7 @@
     // menu_cleaner
     <string name="item_cleaner_shopping_cart">購物車</string>
     <string name="item_cleaner_order_history">歷史訂單</string>
+    <string name="item_cleaner_notify">通知訊息</string>
 
     // nav_cleaner
     <string name="item_cleaner_search">搜尋</string>

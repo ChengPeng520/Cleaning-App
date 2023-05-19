@@ -11,8 +11,38 @@ import com.example.cleaningapp.cleaner.uistate.OrderInfoItemUiState
 import com.example.cleaningapp.databinding.ItemFatrueiOrderInfoProudctsBinding
 
 class OrderInfoAdapter :
-    ListAdapter<OrderInfoItemUiState, OrderInfoAdapter.MyViewHodler>(DiffCallBack()) {
+    ListAdapter<OrderInfoItemUiState, OrderInfoAdapter.ItemViewHodler>(DiffCallBack()) {
     private lateinit var context: Context
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHodler {
+        this.context = parent.context
+        return ItemViewHodler(
+            ItemFatrueiOrderInfoProudctsBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ItemViewHodler, position: Int) {
+        holder.onBind(getItem(position), context)
+    }
+
+    class ItemViewHodler(private val itemBinding: ItemFatrueiOrderInfoProudctsBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
+        fun onBind(orderInfoItem: OrderInfoItemUiState, context: Context) {
+            with(itemBinding) {
+                ivOrderInfoImage.setImageResource(orderInfoItem.image)
+                tvOrdreInfoName.text = orderInfoItem.name
+                tvOrderInfoUnitPrice.text = orderInfoItem.unitPrice.toString()
+                tvOrderInfoNumber.text = String.format(
+                    context.getString(R.string.tv_shopping_info_number),
+                    orderInfoItem.number
+                )
+            }
+        }
+    }
 
     class DiffCallBack : DiffUtil.ItemCallback<OrderInfoItemUiState>() {
         override fun areItemsTheSame(
@@ -28,35 +58,5 @@ class OrderInfoAdapter :
         ): Boolean {
             return oldItem == newItem
         }
-    }
-
-    class MyViewHodler(private val itemBinding: ItemFatrueiOrderInfoProudctsBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
-        fun onBind(orderInfoItem: OrderInfoItemUiState, context: Context) {
-            with(itemBinding) {
-                ivOrderInfoImage.setImageResource(orderInfoItem.image)
-                tvOrdreInfoName.text = orderInfoItem.name
-                tvOrderInfoUnitPrice.text = orderInfoItem.unitPrice.toString()
-                tvOrderInfoNumber.text = String.format(
-                    context.getString(R.string.tv_shopping_cart_number),
-                    orderInfoItem.number
-                )
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
-        this.context = parent.context
-        return MyViewHodler(
-            ItemFatrueiOrderInfoProudctsBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
-        holder.onBind(getItem(position), context)
     }
 }

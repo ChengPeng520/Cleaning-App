@@ -15,7 +15,7 @@
     //shoppingCart 購物車
     <string name="tv_shopping_cart_gross_price">總金額</string>
     <string name="tv_shopping_cart_send">宅配詳情</string>
-    <string name="tv_shopping_cart_number">x%s</string>
+    <string name="tv_shopping_cart_error_send">請填寫宅配資料</string>
 
     //receiver_info 宅配詳情
     <string name="tv_receiver_name">收件人:</string>
@@ -30,7 +30,8 @@
     <string name="tv_shopping_info_receipt_finish">已完成</string>
     <string name="tv_shopping_info_receipt_price">訂單金額:</string>
     <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
-    <string name="tv_shopping_info_gross_price">$%d元整</string>
+    <string name="tv_shopping_info_gross_price">$%d元</string>
+    <string name="tv_shopping_info_number">x%s</string>
 
     //completed_payment 付款完成
     <string name="tv_completed_payment_back"><u>返回訂單列表</u></string>

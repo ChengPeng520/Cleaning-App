@@ -32,7 +32,7 @@ class CleanerMemberInfoFragment : Fragment() {
                     else View.TEXT_ALIGNMENT_TEXT_START
             }
 
-            viewModel?.identity?.observe(viewLifecycleOwner) {
+            viewModel?.identityNumber?.observe(viewLifecycleOwner) {
                 edtTxtMemberInfoIdentity.textAlignment =
                     if (it == null || it.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
                     else View.TEXT_ALIGNMENT_TEXT_START

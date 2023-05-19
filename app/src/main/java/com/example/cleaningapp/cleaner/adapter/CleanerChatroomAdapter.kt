@@ -10,10 +10,40 @@ import com.example.cleaningapp.cleaner.uistate.ChatroomItemUiState
 import com.example.cleaningapp.databinding.ItemFatrueiChatroomTxtBinding
 
 class CleanerChatroomAdapter :
-    ListAdapter<ChatroomItemUiState, CleanerChatroomAdapter.MyViewHodler>(ChatroomDiffCallBack()) {
+    ListAdapter<ChatroomItemUiState, CleanerChatroomAdapter.ItemViewHodler>(DiffCallBack()) {
     private var layoutWidth: Int = 0
 
-    class ChatroomDiffCallBack : DiffUtil.ItemCallback<ChatroomItemUiState>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHodler {
+        this.layoutWidth = parent.width / 3 * 2
+        return ItemViewHodler(
+            ItemFatrueiChatroomTxtBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ItemViewHodler, position: Int) {
+        holder.bind(getItem(position), layoutWidth)
+    }
+
+    class ItemViewHodler(private val itemBinding: ItemFatrueiChatroomTxtBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
+        fun bind(item: ChatroomItemUiState, layoutWidth: Int) {
+            if (item.fromId == 0) {
+                itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
+                itemBinding.tvChatroomTalkTo.text = item.text
+                itemBinding.tvChatroomTalkTo.maxWidth = layoutWidth
+            } else {
+                itemBinding.tvChatroomTalkFrom.visibility = View.VISIBLE
+                itemBinding.tvChatroomTalkFrom.text = item.text
+                itemBinding.tvChatroomTalkFrom.maxWidth = layoutWidth
+            }
+        }
+    }
+
+    class DiffCallBack : DiffUtil.ItemCallback<ChatroomItemUiState>() {
         override fun areItemsTheSame(
             oldItem: ChatroomItemUiState,
             newItem: ChatroomItemUiState
@@ -27,35 +57,5 @@ class CleanerChatroomAdapter :
         ): Boolean {
             return oldItem == newItem
         }
-    }
-
-    class MyViewHodler(private val itemBinding: ItemFatrueiChatroomTxtBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
-        fun onBind(chatroomItem: ChatroomItemUiState, layoutWidth: Int) {
-            if (chatroomItem.fromId == 0) {
-                itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
-                itemBinding.tvChatroomTalkTo.text = chatroomItem.text
-                itemBinding.tvChatroomTalkTo.maxWidth = layoutWidth
-            } else {
-                itemBinding.tvChatroomTalkFrom.visibility = View.VISIBLE
-                itemBinding.tvChatroomTalkFrom.text = chatroomItem.text
-                itemBinding.tvChatroomTalkFrom.maxWidth = layoutWidth
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
-        this.layoutWidth = parent.width / 3 * 2
-        return MyViewHodler(
-            ItemFatrueiChatroomTxtBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
-        holder.onBind(getItem(position), layoutWidth)
     }
 }

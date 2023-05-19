@@ -12,26 +12,25 @@ import com.example.cleaningapp.cleaner.uistate.OrderHistoryItemUiState
 import com.example.cleaningapp.databinding.ItemFatrueiOrderHistoryOrderBinding
 
 class OrderHistoryAdapter :
-    ListAdapter<OrderHistoryItemUiState, OrderHistoryAdapter.MyViewHolder>(DiffCallBack()) {
+    ListAdapter<OrderHistoryItemUiState, OrderHistoryAdapter.ItemViewHolder>(DiffCallBack()) {
     private lateinit var context: Context
 
-    class DiffCallBack : DiffUtil.ItemCallback<OrderHistoryItemUiState>() {
-        override fun areItemsTheSame(
-            oldItem: OrderHistoryItemUiState,
-            newItem: OrderHistoryItemUiState
-        ): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(
-            oldItem: OrderHistoryItemUiState,
-            newItem: OrderHistoryItemUiState
-        ): Boolean {
-            return oldItem == newItem
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        this.context = parent.context
+        return ItemViewHolder(
+            ItemFatrueiOrderHistoryOrderBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    class MyViewHolder(private val itemBinding: ItemFatrueiOrderHistoryOrderBinding) :
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        holder.onBind(getItem(position), context)
+    }
+
+    class ItemViewHolder(private val itemBinding: ItemFatrueiOrderHistoryOrderBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         fun onBind(orderHistoryItem: OrderHistoryItemUiState, context: Context) {
@@ -42,7 +41,7 @@ class OrderHistoryAdapter :
                 tvOrderHistoryName.text = orderHistoryItem.name
                 tvOrderHistoryUnitPrice.text = orderHistoryItem.unitPrice.toString()
                 tvOrderHistoryNumber.text = String.format(
-                    context.getString(R.string.tv_shopping_cart_number),
+                    context.getString(R.string.tv_shopping_info_number),
                     orderHistoryItem.number
                 )
                 tvOrderHistoryGrossPrice.text = String.format(
@@ -59,18 +58,19 @@ class OrderHistoryAdapter :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        this.context = parent.context
-        return MyViewHolder(
-            ItemFatrueiOrderHistoryOrderBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
+    class DiffCallBack : DiffUtil.ItemCallback<OrderHistoryItemUiState>() {
+        override fun areItemsTheSame(
+            oldItem: OrderHistoryItemUiState,
+            newItem: OrderHistoryItemUiState
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.onBind(getItem(position), context)
+        override fun areContentsTheSame(
+            oldItem: OrderHistoryItemUiState,
+            newItem: OrderHistoryItemUiState
+        ): Boolean {
+            return oldItem == newItem
+        }
     }
 }

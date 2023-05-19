@@ -2,14 +2,15 @@ package com.example.cleaningapp.cleaner.view.order
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.Navigation
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.order.OrderStateViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiOrderStateBinding
 import kotlinx.coroutines.launch
@@ -85,5 +86,18 @@ class OrderStateFragment : Fragment() {
                 }
             }
         }
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_cleaner_notify, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return if (menuItem.itemId == R.id.notifyFragment) {
+                    Navigation.findNavController(requireActivity(), R.id.cleaner_nav_host_fragment)
+                        .navigate(R.id.notifyFragment)
+                    true
+                } else false
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

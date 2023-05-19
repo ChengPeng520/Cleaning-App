@@ -20,7 +20,8 @@ class ProductDetailViewModel : ViewModel() {
                 image = R.drawable.fatruei_test1,
                 name = "掃把",
                 description = "這是飛天掃把",
-                price = 50
+                price = 50,
+                totalPrice = 50 * uiState.value.count
             )
         }
     }

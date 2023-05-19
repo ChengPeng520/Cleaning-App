@@ -85,11 +85,8 @@
             android:background="@drawable/fetruei_btn_product_detail_style2"
             android:onClick="@{viewModel::updateCount}"
             android:text="@string/tv_product_detail_minus"
-            android:textColor="#121212"
-            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_product_detail_add"
             app:layout_constraintEnd_toStartOf="@+id/tv_product_detail_count"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/textView4" />
 
         <TextView
@@ -113,8 +110,6 @@
             android:background="@drawable/fetruei_btn_product_detail_style2"
             android:onClick="@{viewModel::updateCount}"
             android:text="@string/tv_product_detail_plus"
-            android:textColor="#121212"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_product_detail_count"
             app:layout_constraintStart_toEndOf="@+id/tv_product_detail_count"
             app:layout_constraintTop_toTopOf="@+id/tv_product_detail_count" />

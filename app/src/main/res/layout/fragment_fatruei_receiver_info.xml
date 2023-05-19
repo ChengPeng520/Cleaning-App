@@ -149,7 +149,7 @@
             style="@style/cleanerBtnSubmitStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{viewModel::onBtnClick}"
+            android:onClick="@{viewModel::saveSharePreferences}"
             android:text="@string/btn_receiver_info_save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
@@ -21,6 +22,7 @@ class CleanerChatroomFragment : Fragment() {
         super.onCreate(savedInstanceState)
         requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
             View.GONE
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
     }
 
     override fun onCreateView(
@@ -35,11 +37,22 @@ class CleanerChatroomFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        binding.rvContactWindowTalk.adapter = CleanerChatroomAdapter()
-        binding.rvContactWindowTalk.layoutManager = LinearLayoutManager(requireContext())
-        viewModel.fetchChatRoomTalkList()
-        viewModel.uiState.observe(viewLifecycleOwner) {
-            (binding.rvContactWindowTalk.adapter as CleanerChatroomAdapter).submitList(it.chatroomItems)
+        with(binding) {
+            rvContactWindowTalk.adapter = CleanerChatroomAdapter()
+            rvContactWindowTalk.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            (rvContactWindowTalk.layoutManager as LinearLayoutManager).stackFromEnd = true
+            rvContactWindowTalk.setItemViewCacheSize(500)
+            viewModel?.fetchChatRoomTalkList()
+            viewModel?.uiState?.observe(viewLifecycleOwner) {
+                (rvContactWindowTalk.adapter as CleanerChatroomAdapter).submitList(it.chatroomItems.toMutableList())
+                rvContactWindowTalk.smoothScrollToPosition((rvContactWindowTalk.adapter as CleanerChatroomAdapter).itemCount)
+            }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 }
