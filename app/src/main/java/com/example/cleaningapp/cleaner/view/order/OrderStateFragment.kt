@@ -82,10 +82,15 @@ class OrderStateFragment : Fragment() {
                                 this.tvOrderStateOver.setTextColor(Color.BLACK)
                             }
                         }
+                        this.ivOrderStateChatroom.setOnClickListener {
+                            Navigation.findNavController(it)
+                                .navigate(R.id.action_orderStateFragment_to_cleanerOrderChatroomFragment)
+                        }
                     }
                 }
             }
         }
+
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_cleaner_notify, menu)

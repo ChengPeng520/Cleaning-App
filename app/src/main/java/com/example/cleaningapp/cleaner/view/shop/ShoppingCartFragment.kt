@@ -9,13 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
-import com.example.cleaningapp.cleaner.adapter.MyCallInterface
 import com.example.cleaningapp.cleaner.adapter.ShoppingCartAdapter
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.cleaner.viewmodel.shop.ShoppingCartViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiShoppingCartBinding
 
-class ShoppingCartFragment : Fragment(), MyCallInterface {
+class ShoppingCartFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiShoppingCartBinding
     private val viewModel: ShoppingCartViewModel by viewModels()
 
@@ -42,14 +41,21 @@ class ShoppingCartFragment : Fragment(), MyCallInterface {
         with(binding) {
             viewModel?.fetchShopOrderList()
             rvShoppingCartProduct.layoutManager = LinearLayoutManager(requireContext())
-            rvShoppingCartProduct.adapter = ShoppingCartAdapter(this@ShoppingCartFragment)
+            rvShoppingCartProduct.adapter = ShoppingCartAdapter()
             viewModel?.uiState?.observe(viewLifecycleOwner) {
                 (rvShoppingCartProduct.adapter as ShoppingCartAdapter).submitList(it.shoppingCartItems.toList())
             }
-        }
-    }
 
-    override fun onClick(productId: ShoppingCartItemUiState) {
-        viewModel.deleteProduct(productId)
+            rvShoppingCartProduct.post {
+                kotlin.run {
+                    (rvShoppingCartProduct.adapter as ShoppingCartAdapter).setOnclick(object :
+                        ShoppingCartAdapter.ClickInterface {
+                        override fun onBtnClick(productId: ShoppingCartItemUiState) {
+                            viewModel.deleteProduct(productId)
+                        }
+                    })
+                }
+            }
+        }
     }
 }

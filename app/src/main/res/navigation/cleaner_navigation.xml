@@ -93,6 +93,9 @@
         <action
             android:id="@+id/action_orderStateFragment_to_vicky_clear_photoFragment"
             app:destination="@id/vicky_clear_photoFragment" />
+        <action
+            android:id="@+id/action_orderStateFragment_to_cleanerOrderChatroomFragment"
+            app:destination="@id/cleanerOrderChatroomFragment" />
     </fragment>
     <fragment
         android:id="@+id/completeOrderInfoFragment"
@@ -103,7 +106,7 @@
         android:id="@+id/notifyFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.NotifyFragment"
         android:label="fragment_notify"
-        tools:layout="@layout/fragment_fatruei_notify"/>
+        tools:layout="@layout/fragment_fatruei_notify" />
     <fragment
         android:id="@+id/order_acceptFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderAcceptFragment"
@@ -175,4 +178,9 @@
         android:name="com.example.cleaningapp.cleaner.view.shop.OrderInfoFragment"
         android:label="OrderInfoFragment"
         tools:layout="@layout/fragment_fatruei_order_info" />
+    <fragment
+        android:id="@+id/cleanerOrderChatroomFragment"
+        android:name="com.example.cleaningapp.cleaner.view.order.CleanerOrderChatroomFragment"
+        android:label="CleanerOrderChatroomFragment"
+        tools:layout="@layout/fragment_cleaner_order_chatroom" />
 </navigation>

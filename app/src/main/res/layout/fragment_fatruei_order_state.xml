@@ -358,6 +358,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView55"
                 tools:text="工具: 吸塵器、拖把 重點整理: 臥房、客房" />
 
+            <ImageView
+                android:id="@+id/iv_order_state_chatroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/baseline_chat_bubble_outline_24" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

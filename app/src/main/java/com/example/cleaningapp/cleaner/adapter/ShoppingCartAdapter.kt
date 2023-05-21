@@ -10,16 +10,16 @@ import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.cleaner.viewmodel.shop.ShoppingCartViewModel
 import com.example.cleaningapp.databinding.ItemFatrueiShoppingCartProductBinding
 
-interface MyCallInterface {
-    fun onClick(productId: ShoppingCartItemUiState)
-}
+class ShoppingCartAdapter :
+    ListAdapter<ShoppingCartItemUiState, ShoppingCartAdapter.ItemViewHolder>(DiffCallBack()) {
+    private lateinit var clickInterface: ClickInterface
 
-class ShoppingCartAdapter(myCallInterface: MyCallInterface) :
-    ListAdapter<ShoppingCartItemUiState, ShoppingCartAdapter.ItemViewHolder>(ShoppingCartDiffCallBack()) {
-    private val myCallInterface: MyCallInterface
+    interface ClickInterface {
+        fun onBtnClick(productId: ShoppingCartItemUiState)
+    }
 
-    init {
-        this.myCallInterface = myCallInterface
+    fun setOnclick(clickInterface: ClickInterface) {
+        this.clickInterface = clickInterface
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -34,16 +34,18 @@ class ShoppingCartAdapter(myCallInterface: MyCallInterface) :
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.itemBinding.viewModel?.adapterUiState?.value = getItem(position)
-        holder.itemBinding.ivShoppingCartProductDelete.setOnClickListener {
-            myCallInterface.onClick(getItem(position))
+        with(holder.itemBinding) {
+            viewModel?.adapterUiState?.value = getItem(position)
+            ivShoppingCartProductDelete.setOnClickListener {
+                clickInterface.onBtnClick(getItem(position))
+            }
         }
     }
 
     class ItemViewHolder(val itemBinding: ItemFatrueiShoppingCartProductBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
-    class ShoppingCartDiffCallBack : DiffUtil.ItemCallback<ShoppingCartItemUiState>() {
+    class DiffCallBack : DiffUtil.ItemCallback<ShoppingCartItemUiState>() {
         override fun areItemsTheSame(
             oldItem: ShoppingCartItemUiState,
             newItem: ShoppingCartItemUiState
