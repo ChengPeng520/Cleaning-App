@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.cleaningapp.customer.viewModel.ComplaintdetailsViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentVictorComplaintdetailsBinding
 
-class complaintdetailsFragment : Fragment() {
+class ComplaintDetailsFragment : Fragment() {
     private lateinit var binding: FragmentVictorComplaintdetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
