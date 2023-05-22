@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_payMent_ok"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -236,8 +236,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_shape"
                 android:ems="10"
-                android:inputType="number"
-                tools:text="MM" />
+                android:hint="MM"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/editTextNumber9"
@@ -247,8 +247,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_shape"
                 android:ems="10"
-                android:inputType="number"
-                tools:text="YY" />
+                android:hint="YY"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView50"
@@ -324,9 +324,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_shape"
                 android:ems="10"
+                android:hint="請輸入卡片上的姓名"
                 android:inputType="number"
-                android:textSize="16sp"
-                tools:text="請輸入卡片上的姓名" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -360,9 +360,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_shape"
                 android:ems="10"
+                android:hint="手機號碼(台灣請輸入09開頭)"
                 android:inputType="phone"
-                android:textSize="16sp"
-                tools:text="手機號碼(台灣請輸入09開頭)" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -388,9 +388,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_shape"
                 android:ems="10"
+                android:hint="欲接收交易通知請輸入電子信箱"
                 android:inputType="textEmailAddress"
-                android:textSize="16sp"
-                tools:text="欲接收交易通知請輸入電子信箱" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 

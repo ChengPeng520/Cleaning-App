@@ -9,11 +9,11 @@ class HistoricalOrderViewModel : ViewModel() {
 
     fun fetchOrders(){
         val list = mutableListOf<Order>()
-        list.add(Order(1, 1001, "2023-05-11", "10:00", "123 Street", "Small", "No special requests", "John Doe", 50))
-        list.add(Order(2, 1002, "2023-05-12", "14:30", "456 Avenue", "Medium", "Need extra cleaning", "Jane Smith", 75))
-        list.add(Order(3, 1003, "2023-05-13", "09:00", "789 Road", "Large", "Pet-friendly cleaning", "Mike Johnson", 35))
-        list.add(Order(1, 1004, "2023-05-14", "12:00", "321 Lane", "Small", "No special requests", "Sarah Davis", 60))
-        list.add(Order(2, 1005, "2023-05-15", "15:30", "654 Court", "Medium", "Need deep cleaning", "Chris Wilson", 80))
+        list.add(Order(1, 1001, "2023-05-11", "10:00", "台北市信義區", "100坪", "什麼都有，人來就好", "John Doe", 50))
+        list.add(Order(2, 1002, "2023-05-12", "14:30", "新北市蘆洲區", "40坪", "路上注意安全", "Jane Smith", 75))
+        list.add(Order(3, 1003, "2023-05-13", "09:00", "新北市三重區", "50坪", "可以順便幫我買飲料嗎", "Mike Johnson", 35))
+        list.add(Order(1, 1004, "2023-05-14", "12:00", "新北市泰山區", "30坪", "來包菸吧", "Sarah Davis", 60))
+        list.add(Order(2, 1005, "2023-05-15", "15:30", "台北市天母區", "200坪", "應有盡有", "Chris Wilson", 80))
         orderList.value = list
     }
 }

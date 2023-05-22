@@ -29,26 +29,38 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
                 android:id="@+id/btn_orderList_ing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/btn_orderList_ing" />
+                android:drawableStart="@drawable/baseline_event_24"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/btn_orderList_ing"
+                android:textSize="20sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
                 android:id="@+id/btn_orderList_established"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/btn_orderList_established" />
+                android:drawableStart="@drawable/victor_established"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/btn_orderList_established"
+                android:textSize="20sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
                 android:id="@+id/btn_orderList_done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/btn_orderList_done" />
+                android:drawableStart="@drawable/vicky_baseline_check_box_24"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/btn_orderList_done"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
