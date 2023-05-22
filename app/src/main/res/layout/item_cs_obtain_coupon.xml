@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.example.cleaningapp.customer.recyclerView.CouponViewModel" />
+            type="com.example.cleaningapp.customer.csHomePage.CsCouponObtainViewModel" />
 
     </data>
 
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/customer_coupon_dicount_shape"
                 android:gravity="center"
-                android:text="@{viewmodel.coupon.discountString}"
+                android:text='@{viewmodel.coupon.type ? "$"+ viewmodel.coupon.moneyString : viewmodel.coupon.discountString+"折"}'
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -55,10 +55,12 @@
 
         <TextView
             android:id="@+id/tv_cusCoupon_limitedTime"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_cs_coupon_limitedtime_transparent"
+            android:gravity="center"
             android:text="@string/txt_cusCoupon_limitedTime"
             android:textColor=" #FF0808"
             android:textSize="12sp"
@@ -92,12 +94,14 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_lowConsump"
             app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_lowConsump"
-            tools:text="即將消失: 剩下1天" />
+            tools:text="即將失效： 2023/5/31到期" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_cusCoupon_obtain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/customer_coupon_shape_buttom"
             android:backgroundTint="@color/white"
             android:enabled="@{viewmodel.coupon.obtained}"
             android:gravity="center"
@@ -105,7 +109,30 @@
             android:textColor="@color/clr_cusCoupon_obtain"
             app:layout_constraintBottom_toBottomOf="@+id/tv_cusCoupon_deadline"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:strokeWidth="1dp"
+            tools:text="領取" />
+
+<!--        android:enabled="@{viewmodel.coupon.obtained}"-->
+<!--        android:backgroundTint="@color/white"-->
+<!--        app:strokeColor="@color/customerPrimaryLight"-->
+
+        <TextView
+            android:id="@+id/tv_csCoupon_new"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/shape_cs_coupon_new"
+            android:gravity="center_vertical|end"
+            android:paddingEnd="4dp"
+            android:paddingBottom="25dp"
+            android:text="NEW"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

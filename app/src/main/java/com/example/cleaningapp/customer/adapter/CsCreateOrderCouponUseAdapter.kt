@@ -1,4 +1,4 @@
-package com.example.cleaningapp.customer.recyclerView
+package com.example.cleaningapp.customer.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.ItemCsPickCouponBinding
 
-class CsCouponUseAdapter (private var coupons: List<Coupon>) :
-    RecyclerView.Adapter<CsCouponUseAdapter.CsCouponUserViewHolder>() {
+class CsCreateOrderCouponUseAdapter (private var coupons: List<Coupon>) :
+    RecyclerView.Adapter<CsCreateOrderCouponUseAdapter.CsCouponUserViewHolder>() {
 
     /**
      * 更新列表內容
@@ -33,7 +33,7 @@ class CsCouponUseAdapter (private var coupons: List<Coupon>) :
         val itemViewBinding = ItemCsPickCouponBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = CouponViewModel()
+        itemViewBinding.viewModel = CsCreateOrderViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return CsCouponUserViewHolder(itemViewBinding)
@@ -46,9 +46,8 @@ class CsCouponUseAdapter (private var coupons: List<Coupon>) :
             itemViewBinding.viewModel?.coupon?.value = coupon
             val bundle = Bundle()
             bundle.putSerializable("coupon", coupon)
-            itemViewBinding.btCusCouponObtain.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_csViewCouponFragment_to_csServiceTermsFragment, bundle)
+            itemViewBinding.btCusCouponPick.setOnClickListener {
+                Navigation.findNavController(it).popBackStack()
             }
         }
     }

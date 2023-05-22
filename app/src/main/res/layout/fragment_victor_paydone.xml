@@ -53,7 +53,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="#87CBB9"
         android:padding="8dp"
-        android:text="完成"
+        android:text="@string/btn_paydone_ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

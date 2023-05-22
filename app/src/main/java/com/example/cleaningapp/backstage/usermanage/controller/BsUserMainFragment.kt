@@ -30,13 +30,19 @@ class BsUserMainFragment : Fragment() {
         with(binding) {
             rvBsUserMain.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.users?.observe(viewLifecycleOwner){ users ->
-                // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
+                // adapter為null要建立新的adapter；之後只要呼叫updateUsers(users)即可
                 if (rvBsUserMain.adapter == null) {
                     rvBsUserMain.adapter = UserMainAdapter(users)
                 } else {
                     (rvBsUserMain.adapter as UserMainAdapter).updateUsers(users)
                 }
             }
+//TODO
+//            if (rvBsUserMain.adapter != null){
+//                tvBsUserMainNoData.visibility = View.INVISIBLE
+//            } else{
+//                tvBsUserMainNoData.visibility = View.VISIBLE
+//            }
 
             svBsUserMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 // 輸入的文字改變時呼叫

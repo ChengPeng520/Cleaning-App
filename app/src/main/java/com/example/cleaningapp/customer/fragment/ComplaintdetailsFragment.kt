@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.cleaningapp.customer.viewModel.ComplaintdetailsViewModel
 import com.example.cleaningapp.databinding.FragmentVictorComplaintdetailsBinding
 
-class ComplaintDetailsFragment : Fragment() {
+class ComplaintdetailsFragment : Fragment() {
     private lateinit var binding: FragmentVictorComplaintdetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,8 +18,6 @@ class ComplaintDetailsFragment : Fragment() {
         val viewModel: ComplaintdetailsViewModel by viewModels()
         binding = FragmentVictorComplaintdetailsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
         return binding.root
     }
-
 }

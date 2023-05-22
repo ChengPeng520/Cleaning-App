@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customer_navigation"
-    app:startDestination="@id/csHomePageFragment">
+    app:startDestination="@id/historicalorderFragment">
 
     <fragment
         android:id="@+id/csHomePageFragment"
@@ -183,7 +183,11 @@
         android:id="@+id/commentFragment"
         android:name="com.example.cleaningapp.customer.fragment.CommentFragment"
         android:label="CommentFragment"
-        tools:layout="@layout/fragment_victor_comment" />
+        tools:layout="@layout/fragment_victor_comment" >
+        <action
+            android:id="@+id/action_commentFragment_to_commentDoneFragment"
+            app:destination="@id/commentDoneFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailedOrderFragment"
         android:name="com.example.cleaningapp.customer.fragment.DetailedOrderFragment"
@@ -203,11 +207,6 @@
             app:destination="@id/complaintdetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/complaintdetailsFragment"
-        android:name="com.example.cleaningapp.customer.fragment.complaintdetailsFragment"
-        android:label="complaintdetailsFragment"
-        tools:layout="@layout/fragment_victor_complaintdetails" />
-    <fragment
         android:id="@+id/csViewProfileFragment"
         android:name="com.example.cleaningapp.customer.csUserPage.CsViewProfileFragment"
         android:label="CsViewProfileFragment"
@@ -216,4 +215,13 @@
             android:id="@+id/action_csViewProfileFragment_to_csEditProfileFragment"
             app:destination="@id/csEditProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/commentDoneFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CommentDoneFragment"
+        android:label="fragment_victor_comment_done"
+        tools:layout="@layout/fragment_victor_comment_done" />
+    <fragment
+        android:id="@+id/complaintdetailsFragment"
+        android:name="com.example.cleaningapp.customer.fragment.ComplaintdetailsFragment"
+        android:label="ComplaintdetailsFragment" />
 </navigation>

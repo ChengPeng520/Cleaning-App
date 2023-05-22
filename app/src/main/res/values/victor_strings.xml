@@ -36,9 +36,22 @@
     <string name="btn_orderList_established">已成立</string>
     <string name="btn_orderList_done">已結束</string>
 
-//客訴
+// 客訴
     <string name="bnt_applyComplaint">申請客訴</string>
     <string name="bnt_applyComplaint_cs">聯繫客服</string>
+    <string name="bnt_applyComplaint_ok">確認提交</string>
+    <string name="bnt_applyComplaint_cancel">取消</string>
     <string name="tv_complaintContent">客訴內容：</string>
+    <string name="tv_complaintContent_detailed">客訴內容詳細說明:：</string>
     <string name="edtTxt_comment_content">詳細說明您的親身體驗</string>
+
+// 評論
+    <string name="btn_comment_ok">送出</string>
+    <string name="tv_comment_done">感謝您的評論</string>
+
+// Pay
+    <string name="btn_payment_ok">確認付款</string>
+    <string name="btn_paydone_ok">完成</string>
+
+
 </resources>

@@ -1,12 +1,15 @@
 package com.example.cleaningapp.customer.detailed
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.ItemVictorOrderboxBinding
 
-class OrderAdapter(private val orderList: List<Order>) : RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
+class OrderAdapter(private val orders: List<Order>) : RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
 
     class MyViewHolder(val itemBinding: ItemVictorOrderboxBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
@@ -20,10 +23,17 @@ class OrderAdapter(private val orderList: List<Order>) : RecyclerView.Adapter<Or
     }
 
     override fun getItemCount(): Int {
-        return orderList.size
+        return orders.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemBinding.viewModel?.orderItem?.value = orderList[position]
+        val orderList = orders[position]
+        holder.itemBinding.viewModel?.orderItem?.value = orderList
+        val bundle = Bundle()
+        bundle.putSerializable("orderItem", orderList)
+        holder.itemBinding.btnOrderBoxDetailed.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_historicalorderFragment_to_detailedOrderFragment, bundle)
+        }
     }
 }
