@@ -21,7 +21,7 @@ class ProductDetailFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiProductDetailBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initAppBarMenu()
         return binding.root
     }

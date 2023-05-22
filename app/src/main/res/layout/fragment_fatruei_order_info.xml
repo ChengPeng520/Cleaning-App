@@ -12,9 +12,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="12dp"
+        android:background="@drawable/all_layout_gray_frame_shape"
+        android:padding="8dp"
         tools:context=".cleaner.view.shop.OrderInfoFragment">
 
         <TextView
@@ -24,6 +26,7 @@
             android:text="@{viewModel.uiState.date}"
             android:textColor="#8F9090"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2023/4/26" />
@@ -44,6 +47,7 @@
             android:id="@+id/rv_order_info_products"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_order_info_date" />
@@ -62,12 +66,23 @@
             android:id="@+id/tv_order_info_gross_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@{@string/tv_shopping_info_gross_price(viewModel.uiState.grossPrice)}"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_order_info_products"
             tools:text="$2000元整" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_order_info_products"
+            app:layout_constraintEnd_toEndOf="@+id/rv_order_info_products"
+            app:layout_constraintStart_toStartOf="@+id/rv_order_info_products"
+            app:layout_constraintTop_toBottomOf="@+id/rv_order_info_products" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -27,7 +27,7 @@ class MallFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiMallBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = this
         initAppBarMenu()
         initRecycler()
         onSearchInputChange()

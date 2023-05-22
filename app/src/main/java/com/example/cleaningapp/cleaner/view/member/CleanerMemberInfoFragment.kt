@@ -19,7 +19,7 @@ class CleanerMemberInfoFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiMemberInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initView()
         return binding.root
     }

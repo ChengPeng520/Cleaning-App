@@ -21,7 +21,7 @@ class NotifyFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiNotifyBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initView()
         return binding.root
     }

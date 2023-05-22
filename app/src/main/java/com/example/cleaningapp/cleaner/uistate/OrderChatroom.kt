@@ -1,10 +1,5 @@
 package com.example.cleaningapp.cleaner.uistate
 
-data class OrderChatroomUiState(
-    val orderInfo: OrderInfo = OrderInfo(),
-    val orderChatroomItems: List<OrderChatroomItemUiState> = listOf()
-)
-
 data class OrderInfo(
     val date: String = "",
     val hours: String = "",

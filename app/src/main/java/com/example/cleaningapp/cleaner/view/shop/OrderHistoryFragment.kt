@@ -21,7 +21,7 @@ class OrderHistoryFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiOrderHistoryBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         return binding.root
     }
 

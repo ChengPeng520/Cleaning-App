@@ -27,7 +27,7 @@ class ShoppingCartViewModel : ViewModel() {
         _uiState.value = ShoppingCartUiState(shoppingCartItems = list, 100)
     }
 
-    fun updateNumber(productId: Int) {
+    fun updateNumber(position: Int, state: Boolean) {
 
     }
 }

@@ -21,7 +21,7 @@ class OrderInfoFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiOrderInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initRecyclerView()
         return binding.root
     }
