@@ -5,7 +5,9 @@
     tools:context=".backstage.coupon.BackstageCouponModifyFragment">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.example.cleaningapp.backstage.coupon.BackstageCouponViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +27,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:paddingStart="50dp"
-            android:text=""
+            android:text="@{viewmodel.coupon.name}"
             android:textColorHint="@color/textSecondary"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_percentage"
@@ -57,7 +59,7 @@
             android:minHeight="48dp"
             android:padding="4dp"
             android:paddingStart="50dp"
-            android:text=""
+            android:text="@{viewmodel.coupon.percentage}"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_discount_discount"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +93,7 @@
             android:padding="4dp"
             android:textSize="14dp"
             android:paddingStart="50dp"
-            android:text=""
+            android:text="@{viewmodel.coupon.quantity}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_discount_discount" />
@@ -116,7 +118,7 @@
             android:ems="10"
             android:textSize="14sp"
             android:paddingStart="50dp"
-            android:text=""
+            android:text="@{viewmodel.coupon.limit}"
             android:inputType="number"
             android:minHeight="48dp"
             android:padding="4dp"
@@ -149,7 +151,7 @@
             android:minHeight="48dp"
             android:padding="4dp"
             android:paddingStart="50dp"
-            android:text=""
+            android:text="@{viewmodel.coupon.minimum}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_modify_limit"
@@ -172,7 +174,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/bs_order_shape"
             android:ems="4"
-            android:text=""
+            android:text="@{viewmodel.coupon.discount}"
             android:textSize="14sp"
             android:paddingStart="50dp"
             android:inputType="number"
@@ -198,7 +200,7 @@
             android:id="@+id/bt_coupon_modify_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/saveButton"
+            android:text="@string/editButton"
             android:textSize="16sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"

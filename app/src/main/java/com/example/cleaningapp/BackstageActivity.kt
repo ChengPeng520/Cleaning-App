@@ -39,7 +39,7 @@ class BackstageActivity : AppCompatActivity() {
     @SuppressLint("RestrictedApi")
     private fun setUpActionBar() {
         //設定ActionBar的標題列左上角可以加上按鈕
-        supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     //初始化抽梯的選單功能

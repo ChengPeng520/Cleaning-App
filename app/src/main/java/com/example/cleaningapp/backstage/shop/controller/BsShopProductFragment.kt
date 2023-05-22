@@ -22,7 +22,7 @@ class BsShopProductFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
 
-        (requireActivity() as BackstageActivity).supportActionBar?.show()
+    (requireActivity() as BackstageActivity).supportActionBar?.show()
         val viewModel: BsShopProductViewModel by viewModels()
 
         binding = FragmentAlbBsShopProductBinding.inflate(inflater, container, false)
@@ -32,8 +32,6 @@ class BsShopProductFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        super.onViewCreated(view, savedInstanceState)
         arguments?.let {
             val product =
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -48,24 +46,9 @@ class BsShopProductFragment : Fragment() {
             btnBsShopProductModify.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsShopProductModifyFragment)
             }
-            ivBsShopProductBack.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.bsShopMainFragment)
-
-                arguments?.let { bundle ->
-                    bundle.getSerializable("product")?.let {
-                        binding.viewModel?.product?.value = it as Product
-                    }
-                    super.onViewCreated(view, savedInstanceState)
-                    with(binding) {
-                        btnBsShopProductModify.setOnClickListener {
-                            Navigation.findNavController(view)
-                                .navigate(R.id.bsShopProductModifyFragment)
-                        }
-                        ivBsShopProductBack.setOnClickListener {
-                            Navigation.findNavController(view).navigate(R.id.bsShopMainFragment)
-                        }
-
-                    }
+            arguments?.let { bundle ->
+                bundle.getSerializable("product")?.let {
+                    binding.viewModel?.product?.value = it as Product
                 }
             }
         }

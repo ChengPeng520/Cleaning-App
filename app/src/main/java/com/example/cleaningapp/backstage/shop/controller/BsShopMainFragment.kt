@@ -16,13 +16,13 @@ import com.example.cleaningapp.backstage.shop.viewModel.BsShopMainViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopMainBinding
 
 class BsShopMainFragment : Fragment() {
-    private lateinit var binding: FragmentAlbBsShopMainBinding
+    private lateinit var binding:FragmentAlbBsShopMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as BackstageActivity).supportActionBar?.hide()
+//        (requireActivity() as BackstageActivity).supportActionBar?.hide()
         val viewModel: BsShopMainViewModel by viewModels()
         binding = FragmentAlbBsShopMainBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.shop.BsShopProductViewModel
+import com.example.cleaningapp.backstage.shop.Product
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopProductModifyViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductModifyBinding
 
 class BsShopProductModifyFragment : Fragment() {
-private lateinit var binding: FragmentAlbBsShopProductModifyBinding
+    private lateinit var binding: FragmentAlbBsShopProductModifyBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
-        val viewModel: BsShopProductModifyViewModel by viewModels()
+        val viewModel:com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel by viewModels()
         binding = FragmentAlbBsShopProductModifyBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -26,14 +28,18 @@ private lateinit var binding: FragmentAlbBsShopProductModifyBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            btnBsShopProductModifySubmit.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.bsShopProductFragment)
-            }
-            ivBsShopProductModifyBack.setOnClickListener{
+        with(binding) {
+            btnBsShopProductModifySubmit.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }
+            arguments?.let { bundle ->
+                bundle?.getSerializable("product")?.let {
+                    binding.viewModel?.product?.value = it as Product
+                }
+            }
+
+
         }
     }
-
 }
+

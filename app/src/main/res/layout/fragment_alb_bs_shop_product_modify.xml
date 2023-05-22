@@ -8,25 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductModifyViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_bs_shop_product_modify_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
 
         <TextView
             android:id="@+id/tv_bs_shop_product_modify"
@@ -70,13 +58,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="120dp">
+                    >
 
                     <TextView
                         android:id="@+id/tv_bs_shop_modify_name_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="16dp"
                         android:text="@string/tv_bs_shop_name_ti"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -85,9 +73,13 @@
                         android:id="@+id/edtTxt_bs_shop_modify_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/all_layout_black_frame_shape"
                         android:inputType="text"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:padding="4dp"
+                        android:text="@{viewModel.product.productname}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -97,7 +89,7 @@
                     android:id="@+id/tv_bs_shop_modify_describe_ti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/tv_bs_shop_describe_ti"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -106,22 +98,29 @@
                     android:id="@+id/edtTxt_bs_shop_modify_describe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:minHeight="80dp"
+                    android:padding="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="20"
+                    android:gravity="start"
+                    android:background="@drawable/all_layout_black_frame_shape"
                     android:inputType="text"
-                    android:text=""
+                    android:text="@{viewModel.product.description}"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="120dp">
+                    >
 
                     <TextView
                         android:id="@+id/tv_bs_shop_modify_price_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="16dp"
                         android:text="@string/tv_bs_shop_price_ti"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -130,9 +129,13 @@
                         android:id="@+id/edtTxt_bs_shop_modify_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/all_layout_black_frame_shape"
+                        android:padding="4dp"
                         android:inputType="text"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text="@{viewModel.product.productname}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -141,13 +144,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="120dp">
+                    >
 
                     <TextView
                         android:id="@+id/tv_bs_shop_modify_storage_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="16dp"
                         android:text="@string/tv_bs_shop_storage_ti"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -156,8 +159,12 @@
                         android:id="@+id/edtTxt_bs_shop_modify_storage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/all_layout_black_frame_shape"
+                        android:padding="4dp"
+                        android:text="@{viewModel.product.inventory}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -168,9 +175,10 @@
                     android:id="@+id/switch_bs_shop_product_modify"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_shop_isonsale_ti"
+                    android:checked="true"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -183,7 +191,7 @@
             android:layout_width="75dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/textPrimary"
-            android:text="@string/btn_bs_shop_product_modify_submit"
+            android:text="@string/btn_bs_shop_product_modify"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

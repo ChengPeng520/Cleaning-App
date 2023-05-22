@@ -9,7 +9,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.cleaningapp.R
-import com.example.cleaningapp.databinding.FragmentAlbBsShopProductBinding
 import com.example.cleaningapp.databinding.ItemAlbBsShopDataboxBinding
 
 class BackstageShopProductAdapter(private var products: List<Product>) :

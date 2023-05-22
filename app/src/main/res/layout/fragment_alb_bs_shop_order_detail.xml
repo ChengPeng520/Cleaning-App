@@ -2,31 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.shop.controller.BsShopOrderDetailFragment">
+    tools:context=".backstage.shop.controller.BsShopOrderDetailFragment"
+    android:layout_margin="24dp">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopOrderDetailViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopOrdersDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_bs_shop_order_detail_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
+
 
         <TextView
             android:id="@+id/tv_bs_shop_order_detail"
@@ -78,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tv_bs_shop_order_detail_price_ti"
                         android:textColor="@color/black"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -91,13 +81,23 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:layout_marginEnd="5dp"
-                            android:text="$12314"
+                            android:text="@string/tv_order_detail_product_total_price"
                             android:textColor="@color/black"
-                            android:textSize="24sp" />
+                            android:textSize="28sp" />
 
                     </LinearLayout>
 
                 </LinearLayout>
+                <View
+                    android:id="@+id/divider15"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/ll_bs_shop_order_detail_status"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -107,19 +107,20 @@
                         android:id="@+id/tv_bs_shop_order_detail_receiver_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/tv_bs_shop_order_detail_receiver_ti"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_bs_shop_order_detail_receiver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/tv_order_detail_product_recipient"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -131,19 +132,18 @@
                         android:id="@+id/tv_bs_shop_order_detail_phone_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_shop_order_detail_phone_ti"
+                        android:layout_marginTop="8dp"                        android:text="@string/tv_bs_shop_order_detail_phone_ti"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_bs_shop_order_detail_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="0913281461"
+                        android:layout_marginTop="8dp"                        android:layout_marginStart="8dp"
+                        android:text="@string/tv_order_product_detail_number"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -152,18 +152,18 @@
                     android:id="@+id/tv_bs_shop_order_detail_address_ti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/tv_bs_shop_order_detail_address_ti"
+                    android:layout_marginTop="8dp"                    android:text="@string/tv_bs_shop_order_detail_address_ti"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_shop_order_detail_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_bs_user_serv_databox_text_ex"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/tv_order_detail_recipient_address"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -193,27 +193,16 @@
             app:layout_constraintTop_toBottomOf="@+id/sclVi_bs_shop_order_detail"
             app:layout_constraintVertical_bias="1">
 
-            <TextView
-                android:id="@+id/tv_bs_shop_order_detail_shipped"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/tv_bs_shop_order_detail_shipped"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_bs_shop_order_detail_ship"
-                android:layout_width="75dp"
+                android:layout_width="90dp"
                 android:layout_height="50dp"
-                android:backgroundTint="@color/textPrimary"
                 android:text="@string/btn_bs_shop_order_detail_ship"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp"
+                android:background="@drawable/ciyi_button_shape"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

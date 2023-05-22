@@ -37,13 +37,13 @@ class ProductAdapter(private var products: List<Product>) :
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
         with(holder) {
-            // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
+            // 將欲顯示的product物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.product?.value = product
             val bundle = Bundle()
-            bundle.putSerializable("friend", product)
+            bundle.putSerializable("product", product)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_bsShopMainFragment_to_bsShopProductAddFragment, bundle)
+                    .navigate(R.id.action_bsShopMainFragment_to_bsShopProductFragment, bundle)
             }
         }
     }
