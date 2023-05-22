@@ -60,6 +60,7 @@ class SignupFragment : Fragment() {
 
                 // login success
                 if (!inputCheck()){ return@setOnClickListener }
+                viewModel?.signup()
                 Navigation.findNavController(it).navigate(action)
 
             }
@@ -70,7 +71,7 @@ class SignupFragment : Fragment() {
         var check = true
         with(binding) {
             val regex =
-                Regex("\"^\\w{1,63}@[a-zA-Z0-9]{2,63}\\.[a-zA-Z]{2,63}(\\.[a-zA-Z]{2,63})?\$\"")
+                Regex("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")
             val account = viewModel?.account?.value?.trim()
             val password = viewModel?.password?.value?.trim()
             val cPassword = viewModel?.cPassword?.value?.trim()
@@ -82,7 +83,7 @@ class SignupFragment : Fragment() {
                 tvSignupErrMsg.text = ""
             } else {
                 tvSignupErrMsg.text = ""
-                edtTxtSignupAccount.error = "帳號或密碼錯誤" // 抓不到string的值, 先以字串代替
+                edtTxtSignupAccount.error = "帳號格式錯誤" // 抓不到string的值, 先以字串代替
                 check = false
             }
 

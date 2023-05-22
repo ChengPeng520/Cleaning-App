@@ -32,7 +32,7 @@ class LoginForgetPasswordEmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
             ivApplyinfoBack.setOnClickListener {
-                Navigation.findNavController(it).popBackStack()
+                Navigation.findNavController(it).navigate(R.id.action_loginForgetPasswordEmailFragment_to_loginFragment)
             }
             tvForgetPasswordUsePhone.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_navigation"
-    app:startDestination="@id/signupFragment">
+    app:startDestination="@id/logoStartFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -110,10 +110,13 @@
     <fragment
         android:id="@+id/loginForgetPasswordEmailFragment"
         android:name="com.example.cleaningapp.login.controller.LoginForgetPasswordEmailFragment"
-        android:label="LoginForgetPasswordEmailFragment" >
+        android:label="fragment_rona_login_forget_password_email">
         <action
             android:id="@+id/action_loginForgetPasswordEmailFragment_to_forgetPasswordEmailVFragment"
             app:destination="@id/forgetPasswordEmailVFragment" />
+        <action
+            android:id="@+id/action_loginForgetPasswordEmailFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
@@ -127,7 +130,7 @@
     <fragment
         android:id="@+id/signupApplyInfoFragment"
         android:name="com.example.cleaningapp.login.controller.SignupApplyInfoFragment"
-        android:label="SignupApplyInfoFragment" >
+        android:label="fragment_rona_signup_apply_info">
         <action
             android:id="@+id/action_signupApplyInfoFragment_to_signupCheckApplyFragment"
             app:destination="@id/signupCheckApplyFragment" />
