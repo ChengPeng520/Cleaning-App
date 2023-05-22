@@ -1,55 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".cleaner.view.order.ClearPhotoFragment" >
+    tools:context=".cleaner.view.order.ClearPhotoFragment">
 
-    <TextView
-        android:id="@+id/tv_order_clearphoto_before"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.cleaner.viewmodel.order.ClearPhotoViewModel" />
+    </data>
 
-        android:layout_margin="16dp"
-        android:text="@string/tv_order_cleaner_photo_before"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_order_clearphoto_before"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+
+            android:layout_margin="24dp"
+            android:text="@string/tv_order_cleaner_photo_before"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
-    <TextView
-        android:id="@+id/tv_order_clearphoto_after"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/tv_order_cleaner_photo_after"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_order_clearphoto_before"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_order_clearphoto_before"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView3" />
+        <TextView
+            android:id="@+id/tv_order_clearphoto_after"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_order_cleaner_photo_after"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_order_clearphoto_before"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_order_clearphoto_before"
+            tools:layout_editor_absoluteY="262dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_order_clearphoto_before"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_order_clearphoto_before"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_clearphoto_before" />
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_margin="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_clearphoto_before"
+            tools:src="@tools:sample/avatars" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView3"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_clearphoto_after" />
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_margin="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView28"
+            app:layout_constraintStart_toEndOf="@+id/imageView28"
+            app:layout_constraintTop_toTopOf="@+id/imageView28"
+            tools:src="@tools:sample/avatars" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView39"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_margin="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+            app:layout_constraintStart_toEndOf="@+id/imageView33"
+            app:layout_constraintTop_toTopOf="@+id/imageView33"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView40"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_margin="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_clearphoto_after"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView41"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_margin="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView40"
+            app:layout_constraintStart_toEndOf="@+id/imageView40"
+            app:layout_constraintTop_toTopOf="@+id/imageView40"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView42"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_margin="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+            app:layout_constraintStart_toEndOf="@+id/imageView41"
+            app:layout_constraintTop_toTopOf="@+id/imageView41"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

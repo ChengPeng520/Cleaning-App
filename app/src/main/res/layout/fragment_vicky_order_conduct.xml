@@ -6,6 +6,7 @@
     tools:context=".cleaner.view.order.OrderConductFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.cleaner.viewmodel.order.OrderConductViewModel" />
@@ -17,7 +18,7 @@
 
         <TextView
             android:id="@+id/textView62"
-            android:layout_width="200dp"
+            android:layout_width="135dp"
             android:layout_height="60dp"
             android:background="#FAFAFA"
             android:drawableStart="@drawable/baseline_event_24"
@@ -25,16 +26,14 @@
             android:padding="16dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="進行中"
+            android:text="待確認"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/imageButton4"
-            android:layout_width="0dp"
+            android:layout_width="135dp"
             android:layout_height="0dp"
             android:background="#FAFAFA"
             android:drawableStart="@drawable/vicky_baseline_check_box_24"
@@ -46,8 +45,10 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView62"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView62"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView49"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tv_order_todaybooking"
@@ -69,6 +70,24 @@
             app:layout_constraintEnd_toEndOf="@+id/tv_order_todaybooking"
             app:layout_constraintStart_toStartOf="@+id/tv_order_todaybooking"
             app:layout_constraintTop_toBottomOf="@+id/tv_order_todaybooking" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="135dp"
+            android:layout_height="0dp"
+            android:background="#FAFAFA"
+            android:drawableStart="@drawable/vicky_baseline_found"
+            android:gravity="center"
+            android:padding="16dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="已成立"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView62"
+            app:layout_constraintStart_toEndOf="@+id/textView62"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
