@@ -21,7 +21,7 @@ class ForgetPasswordPhoneVFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         requireActivity().title = "忘記密碼"
-        val viewModel: ForgetPasswordPhoneVViewModel by viewModels()
+        val viewModel: ForgetPasswordPhoneVViewModel   by viewModels()
         binding = FragmentForgetPasswordPhoneVBinding.inflate(inflater,container,false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -49,7 +49,7 @@ class ForgetPasswordPhoneVFragment : Fragment() {
     private fun inputCheck(): Boolean {
         var check = true
         with(binding) {
-            val phone = viewModel?.phone?.value?.trim()
+            val phone = viewModel?.phoneVerify?.value?.trim()
 
             if (phone == null || phone.isEmpty()) {
                 edtTxtForgetPasswordVerifyHint.error = "不可空白"

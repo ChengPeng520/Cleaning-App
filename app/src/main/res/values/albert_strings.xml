@@ -10,12 +10,12 @@
     <string name="tv_bs_comp_databox_status_applied">已同意</string>
     <string name="tv_bs_comp_databox_status_denied">已拒絕</string>
     <string name="tv_bs_comp_databox_time_ti">時間</string>
-    <string name="tv_bs_comp_databox_time_ex">2023-04-18 23:00</string>
+    <string name="tv_bs_comp_databox_time_ex">2023–04-18 23:00</string>
     <string name="tv_bs_comp_dealing_cleaner_ti">被投訴人</string>
     <string name="tv_bs_comp_dealing_cleaner_ex">呂正芃</string>
     <string name="tv_bs_comp_detail_status_ti">處理狀態</string>
     <string name="tv_bs_comp_detail_status">同意</string>
-    <string name="tv_bs_comp_detail_updatetime_ex">2023-05-11 13:13</string>
+    <string name="tv_bs_comp_detail_updatetime_ex">2023–05-11 13:13</string>
     <string name="tv_bs_comp_detail_updatetime_ti">處理時間</string>
     <string name="tv_bs_comp_dealing_uploadphoto_ti">上傳照片</string>
     <string name="tv_bs_comp_dealing_content_ti">內容</string>

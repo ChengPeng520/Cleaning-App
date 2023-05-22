@@ -51,7 +51,7 @@ class ShoppingCartFragment : Fragment() {
                     (rvShoppingCartProduct.adapter as ShoppingCartAdapter).setOnclick(object :
                         ShoppingCartAdapter.ClickInterface {
                         override fun onBtnClick(productId: ShoppingCartItemUiState) {
-                            viewModel.deleteProduct(productId)
+                            viewModel?.deleteProduct(productId)
                         }
                     })
                 }

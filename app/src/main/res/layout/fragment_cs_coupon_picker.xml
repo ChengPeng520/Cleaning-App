@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csCreateOrder.CsCouponPickerViewModel" />
@@ -13,7 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="24dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
         tools:context=".customer.csCreateOrder.CsCouponPickerFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -25,6 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

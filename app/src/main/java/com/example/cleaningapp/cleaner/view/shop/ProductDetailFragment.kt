@@ -45,8 +45,7 @@ class ProductDetailFragment : Fragment() {
                         Navigation.findNavController(
                             requireActivity(),
                             R.id.cleaner_nav_host_fragment
-                        )
-                            .navigate(R.id.action_productDetailFragment_to_shoppingCartFragment)
+                        ).navigate(R.id.action_productDetailFragment_to_shoppingCartFragment)
                         true
                     }
                     else -> false

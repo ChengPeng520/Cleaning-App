@@ -49,7 +49,7 @@ class ForgetPasswordEmailVFragment : Fragment() {
     private fun inputCheck(): Boolean {
         var check = true
         with(binding) {
-            val email = viewModel?.email?.value?.trim()
+            val email = viewModel?.emailVerify?.value?.trim()
 
             if (email == null || email.isEmpty()) {
                 edtTxtForgetPasswordVerifyHint.error = "不可空白"

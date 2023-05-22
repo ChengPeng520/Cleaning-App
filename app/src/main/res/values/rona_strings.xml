@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-<!--   login-->
+    <!--   login-->
     <string name="edtTxt_login_account_hint">帳號:</string>
     <string name="edtTxt_login_password_hint">密碼:</string>
     <string name="btn_login_login">登入</string>
@@ -10,7 +9,7 @@
     <string name="tv_login_errMsg">帳號或密碼錯誤</string>
     <string name="tv_login_empty">帳號或密碼不可空白</string>
 
-<!--    signup-->
+    <!--    signup-->
     <string name="edtTxt_signup_passwordcfm_hint">確認密碼:</string>
     <string name="btn_signup_signup">註冊</string>
     <string name="edtTxt_signup_cancel"><u>取消</u></string>
@@ -18,7 +17,7 @@
     <string name="tv_signup_wrongPW">密碼不一致</string>
 
 
-<!--    contract-->
+    <!--    contract-->
     <string name="tv_sucontrsct_title">合約條款</string>
     <string name="rdoBtn_signup_read">請詳細閱讀規範內容, 同意請打勾點選下一步</string>
     <string name="tv_signup_next"><u>下一步</u></string>
@@ -26,7 +25,7 @@
     <string name="rdoBtn_ContractMember_read">我已詳細閱讀規範內容</string>
 
 
-<!--    cleanerApplyInfo-->
+    <!--    cleanerApplyInfo-->
     <string name="tv_suinfo_title">申請資料</string>
     <string name="edtTxt_suinfo_name">姓名:(必填)</string>
     <string name="edtTxt_suinfo_sex">性別:(必填)</string>
@@ -37,11 +36,9 @@
     <string name="tv_suinfo_done"><u>完成</u></string>
 
 
-
-<!--    toCheck-->
+    <!--    toCheck-->
     <string name="tv_signup_txt_uploadSuccuess">審核資料上傳成功</string>
-    <string name="tv_signup_txt_checkingMSG">審核時間1-3週
-審核成功將訊息通知</string>
+    <string name="tv_signup_txt_checkingMSG">審核時間1–3週\n審核成功將訊息通知</string>
     <string name="tv_signup_txt_checkingTitle">資料審核中</string>
     <string name="tv_signup_back"><u>返回</u></string>
     <string name="tv_forgetPassword_title">忘記密碼</string>
@@ -61,5 +58,4 @@
     <string name="tv_resetPassword_NP">輸入新密碼</string>
     <string name="tv_resetPassword_checkNP">確認新密碼</string>
     <string name="tv_resetPassword_title">更新密碼</string>
-
 </resources>

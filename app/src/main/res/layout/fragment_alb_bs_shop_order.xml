@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/fatruei_sv_cleaner_shop_style"
+            android:background="@drawable/sv_cleaner_shop_style"
             android:iconifiedByDefault="false"
             android:minHeight="48dp"
             android:queryBackground="@null"

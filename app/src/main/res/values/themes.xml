@@ -51,5 +51,4 @@
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">#E9ED32</item>
     </style>
-
 </resources>

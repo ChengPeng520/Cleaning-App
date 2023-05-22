@@ -126,12 +126,15 @@
         <action
             android:id="@+id/action_vicky_order_conductFragment_to_orderStateFragment"
             app:destination="@id/orderStateFragment" />
+        <action
+            android:id="@+id/action_vicky_order_conductFragment_to_vicky_order_ordermatchFragment"
+            app:destination="@id/vicky_order_ordermatchFragment" />
     </fragment>
     <fragment
-        android:id="@+id/vicky_order_ordercheckFragment"
-        android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdercheckFragment"
-        android:label="fragment_vicky_order_ordercheck"
-        tools:layout="@layout/fragment_vicky_order_ordercheck" />
+        android:id="@+id/vicky_order_ordermatchFragment"
+        android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdermatchFragment"
+        android:label="fragment_vicky_order_ordermatch"
+        tools:layout="@layout/fragment_vicky_order_ordermatch" />
     <fragment
         android:id="@+id/vicky_order_cssign_checkFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderCsSignCheckFragment"
