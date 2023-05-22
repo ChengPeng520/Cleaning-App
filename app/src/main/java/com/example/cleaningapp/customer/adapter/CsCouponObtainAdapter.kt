@@ -1,4 +1,4 @@
-package com.example.cleaningapp.customer.recyclerView
+package com.example.cleaningapp.customer.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.customer.csHomePage.CsCouponObtainViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.ItemCsObtainCouponBinding
 
@@ -32,7 +33,7 @@ class CsCouponObtainAdapter(private var coupons: List<Coupon>) :
         val itemViewBinding = ItemCsObtainCouponBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewmodel = CouponViewModel()
+        itemViewBinding.viewmodel = CsCouponObtainViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return CouponObtainViewHolder(itemViewBinding)

@@ -7,12 +7,12 @@
         android:icon="@drawable/cs_btnavbar_ic_home"
         android:title="@string/item_customer_home" />
     <item
-        android:id="@+id/csServiceTermsFragment"
+        android:id="@+id/csCreateOrderFragment"
         android:icon="@drawable/cs_btnavbar_ic_createorder"
         android:title="@string/item_customer_create_order" />
 
     <item
-        android:id="@+id/historicalorderFragment"
+        android:id="@+id/csChooseCleanerFragment2"
         android:icon="@drawable/cs_btnavbar_ic_order"
         android:title="@string/item_customer_history" />
 

@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cleaningapp.customer.recyclerView.CsCommentAdapter
+import com.example.cleaningapp.customer.model.Cleaner
+import com.example.cleaningapp.customer.adapter.CsCommentAdapter
 import com.example.cleaningapp.databinding.FragmentCsViewCvBinding
 
 
 class CsViewCvFragment : Fragment() {
     private lateinit var binding:FragmentCsViewCvBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +29,11 @@ class CsViewCvFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let { bundle ->
+            bundle.getSerializable("cleaner")?.let {
+                binding.viewModel?.cleaner?.value = it as Cleaner
+            }
+    }
         binding.rvCsViewComment.layoutManager = LinearLayoutManager(requireContext())
         binding.viewModel?.comments?.observe(viewLifecycleOwner) {  comments ->
             if (binding.rvCsViewComment.adapter == null) {

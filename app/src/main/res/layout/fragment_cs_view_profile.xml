@@ -9,185 +9,210 @@
             type="com.example.cleaningapp.customer.csUserPage.CsViewProfileViewModel" />
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="24dp"
-        tools:context=".customer.csUserPage.CsViewProfileFragment">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/ll_csProfile_name"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:paddingVertical="12dp"
+            tools:context=".customer.csUserPage.CsViewProfileFragment">
 
-            <TextView
-                android:id="@+id/tv_csProfile_name"
+            <com.example.cleaningapp.CircleImageView
+                android:id="@+id/iv_csProfile_pic"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="12dp"
+                android:imageResource="@{viewModel.profile.image}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_csProfile_name"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:background="@drawable/all_spinner_gray_frame_shape"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_csProfile_pic">
+
+                <TextView
+                    android:id="@+id/tv_csProfile_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_csProfile_name"
+                    android:textAlignment="inherit"
+                    android:textColor="@color/clr_csProfile_title"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_csProfile_name2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"
+                    android:text="@{viewModel.profile.name}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_csProfile_phoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:background="@drawable/all_spinner_gray_frame_shape"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_name">
+
+                <TextView
+                    android:id="@+id/tv_csProfile_phoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_csProfile_phoneNumber"
+                    android:textColor="@color/clr_csProfile_title" />
+
+                <TextView
+                    android:id="@+id/tv_Phone_csProfile_phoneNumber2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"
+                    android:text="@{viewModel.profile.phone}"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_csProfile_address"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:background="@drawable/all_spinner_gray_frame_shape"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_phoneNumber">
+
+                <TextView
+                    android:id="@+id/tv_csProfile_address"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_csProfile_address" />
+
+                <TextView
+                    android:id="@+id/tv_csProfile_address2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"
+                    android:text="@{viewModel.profile.address}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_csProfile_gender"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:background="@drawable/all_spinner_gray_frame_shape"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_address">
+
+                <TextView
+                    android:id="@+id/tv_csProfile_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_csProfile_gender" />
+
+                <TextView
+                    android:id="@+id/tv_csProfile_gender2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8dp"
+                    android:textSize="15sp"
+                    tools:text='@{viewModel.profile.gender ? "男":"女"}'/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_csProfile_selfIntro"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:text="@string/tv_csProfile_name"
-                android:textColor="@color/clr_csProfile_title"
-                android:textSize="16sp" />
+                android:layout_marginTop="8dp"
+                android:background="@drawable/all_spinner_gray_frame_shape"
+                android:orientation="vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@id/btn_csProfile_modify"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_gender">
 
-            <TextView
-                android:id="@+id/tv_csProfile_name2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tv_csProfile_selfIntro"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_csProfile_selfIntro" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_csProfile_phoneNumber"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_name"
-            app:layout_constraintStart_toStartOf="@+id/ll_csProfile_name"
-            app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_name">
-
-            <TextView
-                android:id="@+id/tv_csProfile_phoneNumber"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:text="@string/tv_csProfile_phoneNumber"
-                android:textColor="@color/clr_csProfile_title"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_Phone_csProfile_phoneNumber2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:ems="10"
-                android:inputType="phone"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_csProfile_address"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_phoneNumber"
-            app:layout_constraintStart_toStartOf="@+id/ll_csProfile_phoneNumber"
-            app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_phoneNumber">
-
-            <TextView
-                android:id="@+id/tv_csProfile_address"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:text="@string/tv_csProfile_address"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_csProfile_address2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_csProfile_gender"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_address"
-            app:layout_constraintStart_toStartOf="@+id/ll_csProfile_address"
-            app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_address">
-
-            <TextView
-                android:id="@+id/tv_csProfile_gender"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:text="@string/tv_csProfile_gender"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_csProfile_gender2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_csProfile_selfIntro2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lineSpacingExtra="30px"
+                    android:paddingBottom="12dp"
+                    android:text="@{viewModel.profile.intro}"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/tv_csProfile_selfIntro"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/tv_csProfile_selfIntro"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/ll_csProfile_gender"
-            app:layout_constraintStart_toStartOf="@+id/ll_csProfile_gender"
-            app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_gender" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_csProfile_modify"
+                style="@style/customerBtnSubmitStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_cs_modify"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_csProfile_modify"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_csProfile_selfIntro"
-            tools:text="帶入自我介紹" />
-
-        <Button
-            android:id="@+id/btn_csProfile_modify"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/customerPrimaryLight"
-            android:text="@string/btn_cs_modify"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
 
 

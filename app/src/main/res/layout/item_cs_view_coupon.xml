@@ -6,35 +6,34 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.recyclerView.CouponViewModel" />
+            type="com.example.cleaningapp.customer.csUserPage.CsViewCouponViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/clr_cusCoupon_discount">
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/customer_coupon_shape">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="100dp" />
+            app:layout_constraintGuide_percent="0.75" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.22" />
+            app:layout_constraintGuide_percent="0.25"  />
 
         <FrameLayout
             android:id="@+id/fl_discount"
-            android:layout_width="95dp"
-            android:layout_height="120dp"
-            android:layout_margin="4dp"
-            android:background="@color/clr_cusCoupon_discount"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +43,9 @@
                 android:id="@+id/tv_discount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/customer_coupon_dicount_shape"
                 android:gravity="center"
+                android:text='@{viewModel.coupon.type ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -53,39 +54,62 @@
 
         <TextView
             android:id="@+id/tv_cusCoupon_limitedTime"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
+            android:background="@drawable/shape_cs_coupon_limitedtime_transparent"
+            android:gravity="center"
             android:text="@string/txt_cusCoupon_limitedTime"
             android:textColor=" #FF0808"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/fl_discount"
-            app:layout_constraintTop_toTopOf="@+id/fl_discount" />
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/txt_cusCoupon_limitedTime" />
 
         <TextView
             android:id="@+id/tv_cusCoupon_lowConsump"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{@string/txt_cusCoupon_lowConsump(viewModel.Coupon.minCost)}"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            android:layout_marginEnd="8dp"
+            android:text="@{@string/txt_cusCoupon_lowConsump(viewModel.coupon.minCost)}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_limitedTime"
             app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_limitedTime"
             tools:text="低消500元才可適用" />
 
 
         <TextView
             android:id="@+id/tv_cusCoupon_deadline"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:text="@{@string/txt_cusCoupon_deadline(viewModel.Coupon.exp)}"
             android:textColor="@color/clr_cusCoupon_deadline"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_lowConsump"
-            app:layout_constraintTop_toBottomOf="@id/tv_cusCoupon_lowConsump"
-            tools:text="即將消失: 剩下1天" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_lowConsump"
+            tools:text="即將失效： 2023/5/31到期" />
+
+        <TextView
+            android:id="@+id/tv_csCoupon_new"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/shape_cs_coupon_new"
+            android:gravity="center_vertical|end"
+            android:paddingEnd="4dp"
+            android:paddingBottom="25dp"
+            android:text="NEW"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/bt_cusCoupon_use"
@@ -97,7 +121,10 @@
             android:textColor="@color/clr_cusCoupon_obtain"
             app:layout_constraintBottom_toBottomOf="@+id/tv_cusCoupon_deadline"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:strokeColor="@color/customerPrimaryLight"
+            app:strokeWidth="1dp"  />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
