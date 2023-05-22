@@ -1,69 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp">
 
-    <LinearLayout
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopOrderDetailViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <ImageView
             android:id="@+id/iv_bs_shop_order_detail_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_vertical"
+            android:src="@drawable/product1"
+            app:imageResource="@{viewModel.ordersDetail.orderImage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_ti_bs_shop_order_detail_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="18dp"
-            android:orientation="vertical">
+            android:layout_marginStart="16dp"
+            android:text="商品名稱:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bs_shop_order_detail_money"
+            app:layout_constraintStart_toEndOf="@+id/iv_bs_shop_order_detail_photo"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_bs_shop_order_detail_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="商品名稱"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_bs_shop_order_detail_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$8888"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_bs_shop_order_detail_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical">
+            android:layout_marginStart="8dp"
+            android:text="@{viewModel.ordersDetail.productName}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_shop_order_detail_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_shop_order_detail_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_shop_order_detail_name"
+            tools:text="掃把" />
 
-            <TextView
-                android:id="@+id/tv_bs_shop_order_detail_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="×1234"
-                android:textColor="@color/black"
-                android:textSize="22sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bs_shop_order_detail_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.ordersDetail.productPrice}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_shop_order_detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_shop_order_detail_name"
+            tools:text="100" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bs_shop_order_detail_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@{viewModel.ordersDetail.productSum}"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="x1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

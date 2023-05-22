@@ -12,7 +12,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
 
@@ -31,32 +31,28 @@
                 android:id="@+id/tv_coupon_num"
                 android:layout_width="138dp"
                 android:layout_height="match_parent"
-
                 android:gravity="center_vertical"
+                tools:text="1234567890"
                 android:text="@{viewModel.coupon.num}"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                 />
 
             <TextView
                 android:id="@+id/tv_coupon_name"
                 android:layout_width="138dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
-
                 android:gravity="center_vertical"
-                android:text="@{viewModel.coupon.name}"
-                android:textStyle="bold" />
+                tools:text="100跳樓大拍賣"
+                android:text="@{viewModel.coupon.name}" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_coupon_edit"
-                android:layout_width="50dp"
+            <TextView
+                android:id="@+id/tv_bs_coupon_modify_limit"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:minHeight="30dp"
-                android:background="@drawable/ciyi_button_shape"
-                android:text="@string/btn_coupon_edit_add" />
-
-
+                tools:text="2023-09-11"
+                android:layout_weight="1"
+                android:text="@{viewModel.coupon.limit}" />
 
 
         </LinearLayout>

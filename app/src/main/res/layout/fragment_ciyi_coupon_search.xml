@@ -92,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/tv_ti_coupon_editing"
+                android:text="@string/tv_ti_coupon_limit"
                 android:textStyle="bold" />
         </LinearLayout>
 

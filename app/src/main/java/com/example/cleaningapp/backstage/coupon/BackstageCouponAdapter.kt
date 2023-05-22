@@ -1,6 +1,7 @@
 package com.example.cleaningapp.backstage.coupon
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -59,11 +60,17 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
         position: Int,
     ) {
         val coupon = coupons[position]
-        holder.itemViewBinding.viewModel?.coupon?.value = coupon
-        holder.itemViewBinding.btnCouponEdit.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_orderManageFragment2_to_backstageOrderDetail)
+        with(holder){
+        itemViewBinding.viewModel?.coupon?.value = coupon
+
+            val bundle =Bundle()
+            bundle.putSerializable("coupon",coupon)
+            itemView.setOnClickListener{
+                Navigation.findNavController(it).navigate(R.id.action_backstageCouponSearchFragment_to_backstageCouponModifytFragment, bundle)
+            }
         }
     }
+
 
 
     override fun getItemCount(): Int {

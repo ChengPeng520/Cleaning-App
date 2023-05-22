@@ -5,191 +5,211 @@
     tools:context=".backstage.shop.controller.BsShopProductAddFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductAddViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
+        android:id="@+id/sclVi_bs_shop_product_add"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:windowSoftInputMode="adjustResize">
 
-        <ImageView
-            android:id="@+id/iv_bs_shop_product_add_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
-
-        <TextView
-            android:id="@+id/tv_bs_shop_product_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_bs_shop_product_add"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
-
-        <ScrollView
-            android:id="@+id/sclVi_bs_shop_product_add"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="80dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_bs_shop_product_add_submit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_product_add"
-            app:layout_constraintVertical_bias="0.0">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/iv_bs_shop_product_add_photo"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/alb_photo_background" />
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="120dp">
 
-                    <TextView
-                        android:id="@+id/tv_bs_shop_product_add_name_ti"
+                    <ImageView
+                        android:id="@+id/iv_bs_shop_product_add_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        tools:ignore="Suspicious0dp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_camera_product_add"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_shop_name_ti"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:layout_marginStart="300dp"
+                        android:layout_marginTop="250dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/product_add_camera_button"
+                        android:onClick="onCameraButtonClicked"
+                        android:padding="12dp"
+                        android:src="@drawable/baseline_camera_alt_24" />
 
-                    <EditText
-                        android:id="@+id/edtTxt_bs_shop_product_add_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:inputType="text"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tv_bs_shop_product_add_name_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:text="@string/tv_bs_shop_name_ti"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-                <TextView
-                    android:id="@+id/tv_bs_shop_product_add_describe_ti"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/tv_bs_shop_describe_ti"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edtTxt_bs_shop_product_add_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/all_layout_black_frame_shape"
+                android:inputType="text"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bs_shop_product_add_name_ti"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_bs_shop_product_add_name_ti"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-                <EditText
-                    android:id="@+id/edtTxt_bs_shop_product_add_describe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:inputType="text"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tv_bs_shop_product_add_describe_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/tv_bs_shop_describe_ti"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/tv_bs_shop_product_add_name_ti"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_product_add_name_ti" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="120dp">
+            <EditText
+                android:id="@+id/edit_bs_shop_product_add_describe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/all_layout_black_frame_shape"
+                android:ems="20"
+                android:minHeight="80dp"
+                android:padding="4dp"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:text=""
+                android:gravity="start"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_bs_shop_product_add_describe_ti"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_product_add_describe_ti" />
 
-                    <TextView
-                        android:id="@+id/tv_bs_shop_product_add_price_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_shop_price_ti"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tv_bs_shop_product_add_price_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_bs_shop_price_ti"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtTxt_bs_shop_product_add_price"
+                app:layout_constraintStart_toStartOf="@+id/edit_bs_shop_product_add_describe"
+                app:layout_constraintTop_toTopOf="@+id/edtTxt_bs_shop_product_add_price" />
 
-                    <EditText
-                        android:id="@+id/edtTxt_bs_shop_product_add_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:inputType="text"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edtTxt_bs_shop_product_add_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/all_layout_black_frame_shape"
+                android:inputType="text"
+                android:padding="4dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_bs_shop_product_add_price_ti"
+                app:layout_constraintTop_toBottomOf="@+id/edit_bs_shop_product_add_describe" />
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tv_bs_shop_product_add_storage_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="@string/tv_bs_shop_storage_ti"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtTxt_bs_shop_product_add_storage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/edtTxt_bs_shop_product_add_storage" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="120dp">
+            <EditText
+                android:id="@+id/edtTxt_bs_shop_product_add_storage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/all_layout_black_frame_shape"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_bs_shop_product_add_storage_ti"
+                app:layout_constraintTop_toBottomOf="@+id/edtTxt_bs_shop_product_add_price" />
 
-                    <TextView
-                        android:id="@+id/tv_bs_shop_product_add_storage_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_shop_storage_ti"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_bs_shop_product_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="@string/tv_bs_shop_isonsale_ti"
+                app:layout_constraintStart_toStartOf="@+id/tv_bs_shop_product_add_storage_ti"
+                app:layout_constraintTop_toBottomOf="@+id/edtTxt_bs_shop_product_add_storage" />
 
-                    <EditText
-                        android:id="@+id/edtTxt_bs_shop_product_add_storage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_product_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_add"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+                app:layout_constraintTop_toBottomOf="@+id/switch_bs_shop_product_add">
 
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
+            </androidx.appcompat.widget.AppCompatButton>
 
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_bs_shop_product_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:text="@string/tv_bs_shop_isonsale_ti"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-            </LinearLayout>
 
-        </ScrollView>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_bs_shop_product_add_submit"
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/textPrimary"
-            android:text="@string/btn_bs_shop_product_modify_submit"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

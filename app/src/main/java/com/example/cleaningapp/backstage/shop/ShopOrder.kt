@@ -1,12 +1,15 @@
 package com.example.cleaningapp.backstage.shop
 
-class Order(
+import java.io.Serializable
+
+class shopOrder(
     var num:String,
     var state:String,
     var time:String,
-    var totalMoney:String,
+    var productSum: String,
+    var totalmoney:String,
     var recipient:String,
     var phoneNumber:String,
-    var address:String,
+    var shopAddress:String?,
 
-)
+): Serializable
