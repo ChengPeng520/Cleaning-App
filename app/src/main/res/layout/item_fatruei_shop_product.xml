@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.cleaner.viewmodel.shop.ShopViewModel" />
+            type="com.example.cleaningapp.cleaner.viewmodel.shop.MallViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,6 @@
             android:id="@+id/iv_shop_product_picture"
             android:layout_width="178dp"
             android:layout_height="200dp"
-            app:imageResource="@{viewModel.itemUiState.image}"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +51,7 @@
             android:id="@+id/tv_shop_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.itemUiState.name}"
+            android:layout_marginStart="8dp"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView2"
@@ -64,7 +63,7 @@
             android:id="@+id/tv_shop_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(viewModel.itemUiState.price)}"
+            android:layout_marginStart="8dp"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"

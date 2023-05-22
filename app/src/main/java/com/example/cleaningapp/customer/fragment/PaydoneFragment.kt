@@ -6,28 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.viewModel.PaydoneViewModel
 import com.example.cleaningapp.R
+import com.example.cleaningapp.databinding.FragmentVictorPaydoneBinding
 
 class PaydoneFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = PaydoneFragment()
-    }
-
-    private lateinit var viewModel: PaydoneViewModel
-
+    private lateinit var binding: FragmentVictorPaydoneBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_victor_paydone, container, false)
+    ): View {
+        val viewModel: PaydoneViewModel by viewModels()
+        binding = FragmentVictorPaydoneBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PaydoneViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding){
+            btnPayDoneOk.setOnClickListener {
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_paydoneFragment_to_orderprogressFragment)
+            }
+        }
     }
-
 }

@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.coupon.BackstageCouponSearchFragment" />
+            type= "com.example.cleaningapp.backstage.coupon.BackstageCouponSearchViewModel" />
 
     </data>
 
@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="4dp"
+                android:minHeight="30dp"
                 android:padding="2dp"
                 android:background="@drawable/ciyi_button_shape"
                 android:text="@string/btn_coupon_add"
@@ -71,7 +72,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:text="@string/tv_ti_coupon_num"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -81,7 +82,7 @@
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:text="@string/tv_ti_coupon_name"
                 android:textStyle="bold" />
 
@@ -90,7 +91,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:text="@string/tv_ti_coupon_editing"
                 android:textStyle="bold" />
         </LinearLayout>

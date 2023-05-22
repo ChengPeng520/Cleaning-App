@@ -1,6 +1,7 @@
 package com.example.cleaningapp.cleaner.viewmodel.shop
 
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductDetailUiState
@@ -26,7 +27,7 @@ class ProductDetailViewModel : ViewModel() {
 
     fun updateCount(view: View) {
         val oldCount = uiState.value.count
-        when(view.id) {
+        when (view.id) {
             R.id.btn_product_detail_plus -> {
                 val newCount = uiState.value.count + 1
                 _uiState.update {
@@ -47,6 +48,12 @@ class ProductDetailViewModel : ViewModel() {
                     }
                 }
             }
+        }
+    }
+
+    fun putProductToCart(view: View) {
+        if (uiState.value.count > 0) {
+            Toast.makeText(view.context, "已將商品儲存至購物車內", Toast.LENGTH_SHORT).show()
         }
     }
 }

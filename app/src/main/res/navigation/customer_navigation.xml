@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customer_navigation"
-    app:startDestination="@id/csHomePageFragment">
+    app:startDestination="@id/historicalorderFragment">
 
     <fragment
         android:id="@+id/csHomePageFragment"
         android:name="com.example.cleaningapp.customer.csHomePage.CsHomePageFragment"
         android:label="fragment_cs_homepage"
-        tools:layout="@layout/fragment_cs_homepage" >
+        tools:layout="@layout/fragment_cs_homepage" >>
         <action
             android:id="@+id/action_csHomePageFragment_to_csCouponObtainFragment"
             app:destination="@id/csCouponObtainFragment" />
@@ -18,10 +18,14 @@
         android:id="@+id/csCouponObtainFragment"
         android:name="com.example.cleaningapp.customer.csHomePage.CsCouponObtainFragment"
         android:label="fragment_cs_coupon_obtain"
-        tools:layout="@layout/fragment_cs_coupon_obtain" />
+        tools:layout="@layout/fragment_cs_coupon_obtain" >
+        <action
+            android:id="@+id/action_csCouponObtainFragment_to_csHomePageFragment"
+            app:destination="@id/csHomePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/csCreateOrderFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsCreateOrderFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderFragment"
         android:label="fragment_cs_create_order"
         tools:layout="@layout/fragment_cs_create_order" >
         <action
@@ -33,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/csServiceTermsFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsServiceTermsFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsServiceTermsFragment"
         android:label="fragment_cs_service_terms"
         tools:layout="@layout/fragment_cs_service_terms" >
         <action
@@ -41,42 +45,41 @@
             app:destination="@id/csCreateOrderFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_historicalorder"
-        android:name="com.example.cleaningapp.customer.order.CheckoutFragment"
-        android:label="fragment_victor_historicalorder"
-        tools:layout="@layout/fragment_victor_historicalorder" >
-        <action
-            android:id="@+id/action_fragment_checkout_to_csChooseCleanerFragment2"
-            app:destination="@id/csChooseCleanerFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/csUserFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsUserFragment"
+        android:id="@+id/csUserPageFragment"
+        android:name="com.example.cleaningapp.customer.csUserPage.CsUserPageFragment"
         android:label="fragment_cs_user"
         tools:layout="@layout/fragment_cs_user" >
-        <action
-            android:id="@+id/action_csUserFragment_to_csProfileFragment"
-            app:destination="@id/csProfileFragment" />
         <action
             android:id="@+id/action_csUserFragment_to_csViewCouponFragment"
             app:destination="@id/csViewCouponFragment" />
         <action
             android:id="@+id/action_csUserFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_csUserPageFragment_to_csViewProfileFragment"
+            app:destination="@id/csViewProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/csCouponPickerFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsCouponPickerFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsCouponPickerFragment"
         android:label="fragment_cs_coupon_picker"
-        tools:layout="@layout/fragment_cs_coupon_picker" />
+        tools:layout="@layout/fragment_cs_coupon_picker" >
+        <action
+            android:id="@+id/action_csCouponPickerFragment_to_csCreateOrderFragment"
+            app:destination="@id/csCreateOrderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/csOrderConfirmedFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsOrderConfirmedFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsOrderConfirmedFragment"
         android:label="fragment_cs_oder_confirmed"
-        tools:layout="@layout/fragment_cs_order_confirmed" />
+        tools:layout="@layout/fragment_cs_order_confirmed" >
+        <action
+            android:id="@+id/action_csOrderConfirmedFragment_to_historicalorderFragment"
+            app:destination="@id/historicalorderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/csChooseCleanerFragment2"
-        android:name="com.example.cleaningapp.customer.fragment.CsChooseCleanerFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsChooseCleanerFragment"
         android:label="fragment_cs_choose_cleaner"
         tools:layout="@layout/fragment_cs_choose_cleaner" >
         <action
@@ -85,31 +88,140 @@
     </fragment>
     <fragment
         android:id="@+id/csViewCvFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsViewCvFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsViewCvFragment"
         android:label="fragment_cs_view_cv"
-        tools:layout="@layout/fragment_cs_view_cv" />
-    <fragment
-        android:id="@+id/csProfileFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsProfileFragment"
-        android:label="fragment_cs_profile"
-        tools:layout="@layout/fragment_cs_profile" >
+        tools:layout="@layout/fragment_cs_view_cv" >
         <action
-            android:id="@+id/action_csProfileFragment_to_csEditProfileFragment"
-            app:destination="@id/csEditProfileFragment" />
+            android:id="@+id/action_csViewCvFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/csEditProfileFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsEditProfileFragment"
+        android:name="com.example.cleaningapp.customer.csUserPage.CsEditProfileFragment"
         android:label="fragment_cs_edit_profile"
-        tools:layout="@layout/fragment_cs_edit_profile" />
+        tools:layout="@layout/fragment_cs_edit_profile" >
+        <action
+            android:id="@+id/action_csEditProfileFragment_to_csViewProfileFragment"
+            app:destination="@id/csViewProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/csViewCouponFragment"
-        android:name="com.example.cleaningapp.customer.fragment.CsViewCouponFragment"
+        android:name="com.example.cleaningapp.customer.csUserPage.CsViewCouponFragment"
         android:label="fragment_cs_view_coupon"
-        tools:layout="@layout/fragment_cs_view_coupon" />
+        tools:layout="@layout/fragment_cs_view_coupon" >
+        <action
+            android:id="@+id/action_csViewCouponFragment_to_csServiceTermsFragment"
+            app:destination="@id/csServiceTermsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment2"
         android:name="com.example.cleaningapp.login.controller.LoginFragment"
         android:label="fragment_rona_login"
         tools:layout="@layout/fragment_rona_login" />
+    <fragment
+        android:id="@+id/historicalorderFragment"
+        android:name="com.example.cleaningapp.customer.fragment.HistoricalOrderFragment"
+        android:label="HistoricalorderFragment"
+        tools:layout="@layout/fragment_victor_historicalorder">
+        <action
+            android:id="@+id/action_historicalorderFragment_to_csChooseCleanerFragment2"
+            app:destination="@id/csChooseCleanerFragment2" />
+        <action
+            android:id="@+id/action_historicalorderFragment_to_orderprogressFragment"
+            app:destination="@id/orderprogressFragment" />
+        <action
+            android:id="@+id/action_historicalorderFragment_to_detailedOrderFragment"
+            app:destination="@id/detailedOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.cleaningapp.customer.fragment.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/fragment_victor_payment">
+        <action
+            android:id="@+id/action_paymentFragment_to_paydoneFragment"
+            app:destination="@id/paydoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paydoneFragment"
+        android:name="com.example.cleaningapp.customer.fragment.PaydoneFragment"
+        android:label="PaydoneFragment"
+        tools:layout="@layout/fragment_victor_paydone">
+        <action
+            android:id="@+id/action_paydoneFragment_to_orderprogressFragment"
+            app:destination="@id/orderprogressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderprogressFragment"
+        android:name="com.example.cleaningapp.customer.fragment.OrderprogressFragment"
+        android:label="OrderprogressFragment"
+        tools:layout="@layout/fragment_victor_orderprogress" >
+
+        <action
+            android:id="@+id/action_orderprogressFragment_to_ordercompletedFragment"
+            app:destination="@id/ordercompletedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordercompletedFragment"
+        android:name="com.example.cleaningapp.customer.fragment.OrdercompletedFragment"
+        android:label="OrdercompletedFragment"
+        tools:layout="@layout/fragment_victor_ordercompleted" >
+        <action
+            android:id="@+id/action_ordercompletedFragment_to_orderdoneFragment"
+            app:destination="@id/orderdoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderdoneFragment"
+        android:name="com.example.cleaningapp.customer.fragment.OrderdoneFragment"
+        android:label="OrderdoneFragment"
+        tools:layout="@layout/fragment_victor_orderdone" >
+        <action
+            android:id="@+id/action_orderdoneFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CommentFragment"
+        android:label="CommentFragment"
+        tools:layout="@layout/fragment_victor_comment" >
+        <action
+            android:id="@+id/action_commentFragment_to_commentDoneFragment"
+            app:destination="@id/commentDoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedOrderFragment"
+        android:name="com.example.cleaningapp.customer.fragment.DetailedOrderFragment"
+        android:label="DetailedOrderFragment"
+        tools:layout="@layout/fragment_victor_detailedorder" >
+        <action
+            android:id="@+id/action_detailedOrderFragment_to_applycomplaintFragment"
+            app:destination="@id/applycomplaintFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/applycomplaintFragment"
+        android:name="com.example.cleaningapp.customer.fragment.ApplycomplaintFragment"
+        android:label="ApplycomplaintFragment"
+        tools:layout="@layout/fragment_victor_applycomplaint" >
+        <action
+            android:id="@+id/action_applycomplaintFragment_to_complaintdetailsFragment"
+            app:destination="@id/complaintdetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/csViewProfileFragment"
+        android:name="com.example.cleaningapp.customer.csUserPage.CsViewProfileFragment"
+        android:label="CsViewProfileFragment"
+        tools:layout="@layout/fragment_cs_view_profile">
+        <action
+            android:id="@+id/action_csViewProfileFragment_to_csEditProfileFragment"
+            app:destination="@id/csEditProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentDoneFragment"
+        android:name="com.example.cleaningapp.customer.fragment.CommentDoneFragment"
+        android:label="fragment_victor_comment_done"
+        tools:layout="@layout/fragment_victor_comment_done" />
+    <fragment
+        android:id="@+id/complaintdetailsFragment"
+        android:name="com.example.cleaningapp.customer.fragment.ComplaintdetailsFragment"
+        android:label="ComplaintdetailsFragment" />
 </navigation>

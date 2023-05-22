@@ -60,9 +60,9 @@
     <string name="tv_bs_user_main_add_password">密碼: </string>
     <string name="tv_bs_user_main_add_exist">此帳號已存在</string>
     <string name="tv_bs_user_verify_status_ti">狀態</string>
-    <string name="tv_bs_user_verify_status_unverified"><u>未審核</u></string>
+    <string name="tv_bs_user_verify_status_verify"><u>%S</u></string>
     <string name="tv_bs_user_susp_status_ti">狀態</string>
-    <string name="tv_bs_user_susp_status_suspended"><u>已停權</u></string>
+    <string name="tv_bs_user_susp_status_suspend"><u>%S</u></string>
     <string name="tv_bs_user_serv_databox_time_ex">19:30</string>
     <string name="tv_bs_user_serv_databox_closed">已結案</string>
     <string name="tv_bs_user_serv_databox_email_ex">rona87@gmail.com</string>

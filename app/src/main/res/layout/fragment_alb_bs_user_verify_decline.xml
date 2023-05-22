@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.usermanage.BsUserVerifyDeclineFragment">
+    tools:context=".backstage.usermanage.controller.BsUserVerifyDeclineFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.BsUserVerifyDeclineViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserVerifyDeclineViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

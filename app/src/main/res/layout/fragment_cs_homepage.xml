@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.viewModel.CsHomePageViewModel" />
+            type="com.example.cleaningapp.customer.csHomePage.CsHomePageViewModel" />
 
     </data>
 
@@ -20,66 +21,122 @@
             android:id="@+id/rv_csHomePage_comment"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_csHome_comment" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_csHome_comment">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_csServiceTerms"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+        <ImageView
+            android:id="@+id/imageView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/rv_csHomePage_comment"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/fl_csHome_coupon"
+            app:srcCompat="@drawable/shape_cs_title_bar" />
+
+        <ImageView
+            android:id="@+id/imageView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/fl_csHome_coupon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fl_csHome_orderTB"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/shape_cs_title_bar" />
 
         <TextView
             android:id="@+id/tv_csHome_coupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:text="@string/tv_csHome_specialOffer"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/fl_csHome_orderTB"
-            app:layout_constraintTop_toBottomOf="@+id/fl_csHome_orderTB" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+            app:layout_constraintStart_toEndOf="@+id/imageView41"
+            app:layout_constraintTop_toTopOf="@+id/imageView41"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/tv_csHome_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
             android:text="@string/tv_csHome_comment"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/fl_csHome_coupon"
-            app:layout_constraintTop_toBottomOf="@+id/fl_csHome_coupon" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView40"
+            app:layout_constraintStart_toEndOf="@+id/imageView40"
+            app:layout_constraintTop_toTopOf="@+id/imageView40"
+            app:layout_constraintVertical_bias="1.0" />
 
         <FrameLayout
             android:id="@+id/fl_csHome_orderTB"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_cs_graybackground_rectangle"
             app:layout_constraintBottom_toTopOf="@+id/tv_csHome_coupon"
-            app:layout_constraintEnd_toEndOf="@+id/vp_csServiceTerms"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/vp_csServiceTerms"
-            app:layout_constraintTop_toBottomOf="@+id/vp_csServiceTerms"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </FrameLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/fl_csHome_coupon"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/tv_csHome_coupon"
-            app:layout_constraintTop_toBottomOf="@+id/tv_csHome_coupon">
+            android:orientation="vertical"
+            android:background="@drawable/customer_btn_submit_shape"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_csHome_coupon" >
 
-        </FrameLayout>
+            <TextView
+                android:id="@+id/tv_csHomepage_couponLimitTime"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/shape_cs_coupon_limitedtime_white"
+                android:gravity="center"
+                android:text="@string/txt_cusCoupon_limitedTime"
+                android:textColor=" #FF0808"
+                android:textSize="12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="1dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:text="8折"/>
+
+            <TextView
+                android:id="@+id/tv_csHomepage_obtainLimited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="1dp"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:text="@string/tv_csHomepage_obtainLimited"/>
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

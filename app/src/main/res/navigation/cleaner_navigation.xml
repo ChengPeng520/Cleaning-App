@@ -16,15 +16,15 @@
     </fragment>
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.cleaningapp.cleaner.view.shop.ShopFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.MallFragment"
         android:label="fragment_fatruei_shop"
-        tools:layout="@layout/fragment_fatruei_shop" >
+        tools:layout="@layout/fragment_fatruei_mall" >
         <action
             android:id="@+id/action_shopFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
         <action
-            android:id="@+id/action_shopFragment_to_shoppingInfoFragment"
-            app:destination="@id/shoppingInfoFragment" />
+            android:id="@+id/action_shopFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberFragment"
@@ -38,11 +38,6 @@
             android:id="@+id/action_memberFragment_to_contactWindowFragment"
             app:destination="@id/contactWindowFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/shoppingInfoFragment"
-        android:name="com.example.cleaningapp.cleaner.view.shop.ShoppingInfoFragment"
-        android:label="fragment_fatruei_shopping_info"
-        tools:layout="@layout/fragment_fatruei_shopping_info" />
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.ProductDetailFragment"
@@ -58,17 +53,8 @@
         android:label="fragment_fatruei_shopping_cart"
         tools:layout="@layout/fragment_fatruei_shopping_cart" >
         <action
-            android:id="@+id/action_shoppingCartFragment_to_sendFragment"
-            app:destination="@id/sendFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/sendFragment"
-        android:name="com.example.cleaningapp.cleaner.view.shop.SendFragment"
-        android:label="fragment_fatruei_send"
-        tools:layout="@layout/fragment_fatruei_send" >
-        <action
-            android:id="@+id/action_sendFragment_to_completedPaymentFragment"
-            app:destination="@id/completedPaymentFragment" />
+            android:id="@+id/action_shoppingCartFragment_to_receiverInfoFragment"
+            app:destination="@id/receiverInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/completedPaymentFragment"
@@ -129,21 +115,17 @@
             android:id="@+id/action_vicky_order_conductFragment_to_completeOrderInfoFragment"
             app:destination="@id/completeOrderInfoFragment" />
         <action
-            android:id="@+id/action_vicky_order_conductFragment_to_vicky_order_ordercheckFragment"
-            app:destination="@id/vicky_order_ordercheckFragment" />
-        <action
             android:id="@+id/action_vicky_order_conductFragment_to_notifyFragment"
             app:destination="@id/notifyFragment" />
+        <action
+            android:id="@+id/action_vicky_order_conductFragment_to_orderStateFragment"
+            app:destination="@id/orderStateFragment" />
     </fragment>
     <fragment
         android:id="@+id/vicky_order_ordercheckFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdercheckFragment"
         android:label="fragment_vicky_order_ordercheck"
-        tools:layout="@layout/fragment_vicky_order_ordercheck" >
-        <action
-            android:id="@+id/action_vicky_order_ordercheckFragment_to_orderStateFragment"
-            app:destination="@id/orderStateFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_vicky_order_ordercheck" />
     <fragment
         android:id="@+id/vicky_order_cssign_checkFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderCsSignCheckFragment"
@@ -170,4 +152,13 @@
             android:id="@+id/action_cleanerFrontFragment2_to_cleanerFrontOrderDetailFragment"
             app:destination="@id/cleanerFrontOrderDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/receiverInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.ReceiverInfoFragment"
+        android:label="fragment_fatruei_receiver_info"
+        tools:layout="@layout/fragment_fatruei_receiver_info" />
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.OrderHistoryFragment"
+        android:label="fragment_fatruei_order_history" />
 </navigation>

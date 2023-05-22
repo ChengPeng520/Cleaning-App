@@ -6,7 +6,7 @@
         <data>
                 <variable
                     name="viewModel"
-                    type="com.example.cleaningapp.customer.viewModel.CsChooseCleanerViewModel" />
+                    type="com.example.cleaningapp.customer.csCreateOrder.CsChooseCleanerViewModel" />
 
         </data>
 
@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="24dp"
-            tools:context=".customer.fragment.CsChooseCleanerFragment">
+            tools:context=".customer.csCreateOrder.CsChooseCleanerFragment">
 
                 <TextView
                     android:id="@+id/tv_csChooseCleaner_chooseCleaner"
@@ -37,8 +37,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_csChooseCleaner_chooseCleaner" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_csChooseCleaner_cancelOrder"
+                    style="@style/customerBtnSubmitStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/customerPrimaryLight"

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.shop.BsShopProductFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.BsShopProductViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +66,11 @@
                     android:id="@+id/iv_bs_shop_product_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/fatruei_my_image" />
+                    android:layout_gravity="center"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/product1"
+                    app:imageResource="@{viewModel.product.image}" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -75,7 +80,7 @@
                         android:id="@+id/tv_bs_shop_name_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/tv_bs_shop_name_ti"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
@@ -85,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text="@{viewModel.product.productname}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -105,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@string/tv_bs_user_main_detail_intro_ex"
+                    android:text="@{viewModel.product.description}"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -127,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text="@{viewModel.product.pruductprice}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -151,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text="@{viewModel.product.inventory}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -175,7 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -199,7 +204,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text="@{viewModel.product.addDate}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -223,7 +228,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/tv_bs_user_serv_databox_text_ex"
+                        android:text="@{viewModel.product.upDate}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

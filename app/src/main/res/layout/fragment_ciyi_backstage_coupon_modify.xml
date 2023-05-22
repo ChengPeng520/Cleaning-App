@@ -1,206 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".backstage.coupon.BackstageCouponCreatFragment">
+    tools:context=".backstage.coupon.BackstageCouponModifyFragment">
 
-    <TextView
-        android:id="@+id/tv_ti_coupon_creat_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="4dp"
-        android:text="@string/tv_ti_coupon_create_name"
-        app:layout_constraintEnd_toStartOf="@+id/editText_coupon_edit_name"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <EditText
-        android:id="@+id/editText_coupon_edit_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:background="@drawable/bs_order_shape"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="4dp"
-        android:text="@string/editText_coupon_modify_name"
-        android:textColorHint="@color/textSecondary"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_creat_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_creat_name" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="24dp"
+       >
 
 
-    <TextView
-        android:id="@+id/tv_ti_coupon_percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="4dp"
-        android:layout_weight="1"
-        android:text="@string/tv_ti_coupon_percentage"
-        app:layout_constraintEnd_toStartOf="@+id/edText_bs_coupon_percentage"
-        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_creat_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_creat_name" />
+        <EditText
+            android:id="@+id/edText_bs_coupon_modify_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bs_order_shape"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:paddingStart="50dp"
+            android:text=""
+            android:textColorHint="@color/textSecondary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_percentage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.44"
+            tools:ignore="RtlSymmetry" />
 
-    <EditText
-        android:id="@+id/edText_bs_coupon_percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/bs_order_shape"
-        android:ems="4"
-        android:inputType="number"
-        android:padding="4dp"
-        android:text="@string/editText_coupon_modify_percentage"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_percentage"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_percentage"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_percentage" />
+        <TextView
+            android:id="@+id/tv_ti_coupon_modify_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/tv_ti_coupon_name"
+            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_name" />
 
-    <TextView
-        android:id="@+id/tv_ti_coupon_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/tv_ti_coupon_quantity"
-        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_percentage"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_percentage" />
-
-
-    <EditText
-        android:id="@+id/editText_coupon_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:background="@drawable/bs_order_shape"
-        android:ems="10"
-        android:inputType="number"
-        android:padding="4dp"
-        android:text="@string/editText_coupon_modify_quantity"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_quantity"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_quantity"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_quantity" />
-
-    <EditText
-        android:id="@+id/editText_coupon_limit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:background="@drawable/bs_order_shape"
-        android:ems="10"
-        android:inputType="number"
-        android:padding="4dp"
-        android:text="@string/editText_bs_coupon_modify_limit"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_timelimit"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_timelimit"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_timelimit" />
-
-    <TextView
-        android:id="@+id/tv_ti_coupon_timelimit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/tv_ti_coupon_timelimit"
-        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_quantity"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_quantity" />
-
-    <TextView
-        android:id="@+id/tv_ti_coupon_minimum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/tv_ti_coupon_minimum"
-        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_timelimit"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_timelimit" />
-
-    <EditText
-        android:id="@+id/editText_bs_coupon_minimum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:background="@drawable/bs_order_shape"
-        android:ems="10"
-        android:inputType="number"
-        android:padding="4dp"
-        android:text="@string/editText_coupon_modify_minimum"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_minimum"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_minimum"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_minimum" />
-
-    <TextView
-        android:id="@+id/tv_ti_bs_coupon_discount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="@string/tv_ti_coupon_discount"
-        app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_percentage"
-        app:layout_constraintStart_toEndOf="@+id/edText_bs_coupon_percentage"
-        app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_percentage" />
-
-    <EditText
-        android:id="@+id/edText_bs_coupont_discount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/bs_order_shape"
-        android:ems="4"
-        android:inputType="number"
-        android:padding="4dp"
-        android:text="@string/tv_coupon_modify_discount"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_coupon_discount"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_coupon_discount"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_coupon_discount" />
-
-    <TextView
-        android:id="@+id/tv_ti_coupon_already"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/tv_ti_coupon_already"
-        app:layout_constraintStart_toStartOf="@+id/tv_ti_coupon_minimum"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ti_coupon_minimum" />
-
-    <CheckBox
-        android:id="@+id/checkbox_coupon_already"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ti_coupon_already"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_already"
-        app:layout_constraintTop_toTopOf="@+id/tv_ti_coupon_already">
-
-    </CheckBox>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="24dp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_coupon_creat_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="記得補"
-        android:textSize="16dp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/editText_bs_coupon_minimum"
-        app:layout_constraintStart_toEndOf="@+id/tv_ti_coupon_minimum"
-        app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_minimum" />
+        <EditText
+            android:id="@+id/edText_bs_coupon_modify_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bs_order_shape"
+            android:ems="4"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="4dp"
+            android:paddingStart="50dp"
+            android:text=""
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_discount_discount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_name"
+            tools:ignore="RtlSymmetry" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_ti_coupon_modify_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="@string/tv_ti_coupon_percentage"
+            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_percentage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_percentage" />
+
+
+        <EditText
+            android:id="@+id/edText_bs_coupon_modify_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bs_order_shape"
+            android:ems="10"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="4dp"
+            android:textSize="14dp"
+            android:paddingStart="50dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_discount_discount" />
+
+        <TextView
+            android:id="@+id/tv_ti_coupon_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/tv_ti_coupon_quantity"
+            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_quantity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_quantity" />
+
+        <EditText
+            android:id="@+id/editText_bs_coupon_modify_limit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bs_order_shape"
+            android:ems="10"
+            android:textSize="14sp"
+            android:paddingStart="50dp"
+            android:text=""
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_quantity"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/tv_ti_coupon_timelimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/tv_ti_coupon_timelimit"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_bs_coupon_modify_limit"
+            app:layout_constraintStart_toStartOf="@+id/editText_bs_coupon_modify_limit"
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_quantity" />
+
+
+        <EditText
+            android:id="@+id/editText_bs_coupon_minimum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:background="@drawable/bs_order_shape"
+            android:ems="10"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="4dp"
+            android:paddingStart="50dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_modify_limit"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/tv_ti_coupon_minimum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/tv_ti_coupon_minimum"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_bs_coupon_minimum"
+            app:layout_constraintStart_toStartOf="@+id/editText_bs_coupon_minimum"
+            app:layout_constraintTop_toTopOf="@+id/editText_bs_coupon_minimum" />
+
+        <EditText
+            android:id="@+id/edText_bs_coupon_modify_discount_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bs_order_shape"
+            android:ems="4"
+            android:text=""
+            android:textSize="14sp"
+            android:paddingStart="50dp"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_percentage"
+            tools:ignore="RtlSymmetry" />
+
+
+        <TextView
+            android:id="@+id/tv_ti_bs_coupon_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/tv_ti_coupon_discount"
+            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_discount_discount"
+            app:layout_constraintStart_toStartOf="@+id/edText_bs_coupon_modify_discount_discount"
+            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_discount_discount" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_coupon_modify_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saveButton"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_minimum"
+            app:layout_constraintVertical_bias="0.53" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/onSale"
+            android:checked="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/editText_bs_coupon_minimum"
+            app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_minimum"
+            app:layout_constraintVertical_bias="0.16000003"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

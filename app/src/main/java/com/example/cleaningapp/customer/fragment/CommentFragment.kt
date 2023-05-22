@@ -6,28 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.viewModel.CommentViewModel
 import com.example.cleaningapp.R
+import com.example.cleaningapp.databinding.FragmentVictorCommentBinding
 
 class CommentFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CommentFragment()
-    }
-
-    private lateinit var viewModel: CommentViewModel
-
+    private lateinit var binding: FragmentVictorCommentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_victor_comment, container, false)
+    ): View {
+        val viewModel: CommentViewModel by viewModels()
+        binding = FragmentVictorCommentBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding){
+            btnCommentOk.setOnClickListener {
+                Navigation.findNavController(btnCommentOk)
+                    .navigate(R.id.action_commentFragment_to_commentDoneFragment)
+            }
+        }
     }
-
 }
