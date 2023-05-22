@@ -18,8 +18,8 @@ class CsCouponPickerViewModel : ViewModel() {
 
     fun loadCoupons() {
         val couponList = mutableListOf<Coupon>()
-        couponList.add(Coupon(1, 0, 0.80, 500, 300, "2023/5/31", true))
-        couponList.add(Coupon(2, 0, 0.90, 300, 500, "2023/5/31", true))
+        couponList.add(Coupon(1, false, 0.80, 500, 300, "2023/5/31", true))
+        couponList.add(Coupon(2, false, 0.90, 300, 500, "2023/5/31", true))
         this.couponList = couponList
         this.coupons.value = this.couponList
     }

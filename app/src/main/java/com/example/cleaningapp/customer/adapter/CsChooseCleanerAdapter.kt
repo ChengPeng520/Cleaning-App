@@ -1,4 +1,4 @@
-package com.example.cleaningapp.customer.recyclerView
+package com.example.cleaningapp.customer.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,15 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.csCreateOrder.CsViewCvViewModel
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.databinding.ItemCsPickCleanerBinding
 
-class CsChooseCleanerAdapter(var cleanerList: List<Cleaner>) :
+class CsChooseCleanerAdapter(var cleaners: List<Cleaner>) :
     RecyclerView.Adapter<CsChooseCleanerAdapter.CsChooseCleanerViewHolder>() {
 
     fun updateCleaners(cleaners: List<Cleaner>) {
-        this.cleanerList = cleaners
+        this.cleaners = cleaners
         notifyDataSetChanged()
     }
 
@@ -25,20 +26,20 @@ class CsChooseCleanerAdapter(var cleanerList: List<Cleaner>) :
         val itemView = ItemCsPickCleanerBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemView.viewmodel = CsCleanerViewModel()
+        itemView.viewmodel = CsViewCvViewModel()
         itemView.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return CsChooseCleanerViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
-        return cleanerList.size
+        return cleaners.size
     }
 
     override fun onBindViewHolder(holder: CsChooseCleanerViewHolder, position: Int) {
-        val cleaner = cleanerList[position]
+        val cleaner = cleaners[position]
         with(holder) {
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示
-            itemBinding.viewmodel?.cleanerItem?.value = cleaner
+            itemBinding.viewmodel?.cleaner?.value = cleaner
             val bundle = Bundle()
             bundle.putSerializable("cleaner", cleaner)
             itemView.setOnClickListener {

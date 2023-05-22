@@ -58,7 +58,7 @@
             android:text="@string/txt_seeCoupon"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:icon="@drawable/ic_discount"
+            app:icon="@drawable/ic_cs_coupon"
             app:iconSize="30sp"
             app:iconTint="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/btn_csUserPage_profile"
@@ -66,14 +66,14 @@
             app:layout_constraintStart_toStartOf="@+id/btn_csUserPage_profile"
             app:layout_constraintTop_toBottomOf="@+id/btn_csUserPage_profile" />
 
-        <ImageView
+        <com.example.cleaningapp.CircleImageView
             android:id="@+id/imageView12"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline19"
-            tools:src="@tools:sample/avatars" />
+            android:imageResource="@{viewModel.profile.image}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline19"

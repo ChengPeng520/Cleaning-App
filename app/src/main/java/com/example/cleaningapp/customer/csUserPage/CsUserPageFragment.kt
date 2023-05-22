@@ -28,7 +28,7 @@ class CsUserPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             btnCsUserPageProfile.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_csViewCouponFragment)
+                Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csViewProfileFragment)
             }
             btnCsUserPageDiscount.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_csViewCouponFragment)

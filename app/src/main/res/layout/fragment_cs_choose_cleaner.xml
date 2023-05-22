@@ -37,8 +37,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_csChooseCleaner_chooseCleaner" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_csChooseCleaner_cancelOrder"
+                    style="@style/customerBtnSubmitStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/customerPrimaryLight"
