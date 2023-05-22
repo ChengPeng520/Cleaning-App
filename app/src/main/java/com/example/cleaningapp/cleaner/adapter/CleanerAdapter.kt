@@ -8,7 +8,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.Job
-import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerViewModel
 import com.example.cleaningapp.databinding.ItemVickyCleanerFrontBinding
 
@@ -46,7 +45,8 @@ class CleanerAdapter(private var cleaners: List<Job>) :
             val bundle = Bundle()
             bundle.putSerializable("cleaner", cleaner)
             itemView.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_cleanerFrontFragment2_to_cleanerFrontOrderDetailFragment,bundle)
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_cleanerFrontFragment_to_cleanerFrontOrderDetailFragment,bundle)
             }
         }
     }

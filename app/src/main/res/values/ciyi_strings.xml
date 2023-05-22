@@ -43,7 +43,7 @@
     //coupon
     <string name="tv_ti_coupon_num">優惠券編號</string>
     <string name="tv_ti_coupon_name">名稱</string>
-    <string name="tv_ti_coupon_editing">編輯</string>
+    <string name="tv_ti_coupon_limit">期間</string>
     <string name="btn_coupon_add">建立</string>
     <string name="btn_coupon_modify">保存</string>
     <string name="tv_coupon_num">1234546563</string>
@@ -85,6 +85,15 @@
     <string name="editText_coupon_limit" tools:ignore="TypographyDashes">2023–09-09</string>
     <string name="editText_coupon_minimum">3000</string>
     <string name="editText_coupon_modify_percentage">22%</string>
+    //tv order_detail
+    <string name="tv_order_detail_product_total_price">400元</string>
+    <string name="tv_order_detail_product_recipient">呂正凡</string>
+    <string name="tv_order_product_detail_number">0912345678</string>
+    <string name="tv_order_detail_recipient_address">台北市南京復興區嘿嘿路嘿嘿巷12號3樓</string>
+    <string name="searchProduct">產品查詢</string>
+    <string name="product_add_camera_button">拍照</string>
+    <string name="editButton">修改</string>
 
 
+    <dimen name="button_corner_radius">6dp</dimen>
 </resources>

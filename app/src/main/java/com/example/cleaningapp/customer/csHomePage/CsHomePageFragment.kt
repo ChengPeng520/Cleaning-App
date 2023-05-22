@@ -9,9 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.csCreateOrder.CsChooseCleanerViewModel
-import com.example.cleaningapp.customer.recyclerView.CsChooseCleanerAdapter
-import com.example.cleaningapp.customer.recyclerView.CsHomePageCommentAdapter
+import com.example.cleaningapp.customer.adapter.CsHomePageCommentAdapter
 import com.example.cleaningapp.databinding.FragmentCsHomepageBinding
 
 class CsHomePageFragment : Fragment() {

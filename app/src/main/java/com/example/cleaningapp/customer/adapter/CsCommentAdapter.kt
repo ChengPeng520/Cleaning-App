@@ -1,10 +1,11 @@
-package com.example.cleaningapp.customer.recyclerView
+package com.example.cleaningapp.customer.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.customer.csCreateOrder.CsChooseCleanerViewModel
 import com.example.cleaningapp.customer.model.Comment
 import com.example.cleaningapp.databinding.ItemCsViewCommentBinding
 
@@ -22,7 +23,7 @@ class CsCommentAdapter (var comments: List<Comment>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CsCommentViewHolder {
         val itemView =
             ItemCsViewCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        itemView.viewModel = CsCommentViewModel()
+        itemView.viewModel = CsChooseCleanerViewModel()
         itemView.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return CsCommentViewHolder(itemView)
     }

@@ -32,7 +32,6 @@
                     android:id="@+id/iv_memInfo_avatar"
                     android:layout_width="104dp"
                     android:layout_height="104dp"
-                    android:imageResource="@{viewModel.avatar}"
                     android:src="@drawable/fatruei_my_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -183,17 +182,17 @@
                     <EditText
                         android:id="@+id/edtTxt_memInfo_intro"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
-                        android:inputType="textPersonName"
-                        android:textSize="14dp"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
                         android:text="@={viewModel.introduction}"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView16"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16"
-                        app:layout_constraintVertical_bias="0.05" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

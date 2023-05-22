@@ -4,5 +4,5 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ForgetPasswordEmailVViewModel : ViewModel() {
-    val email: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val emailVerify: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 }

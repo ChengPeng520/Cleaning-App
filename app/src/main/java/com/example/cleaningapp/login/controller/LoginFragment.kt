@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.CleanerActivity
 import com.example.cleaningapp.CustomerActivity
 import com.example.cleaningapp.R
@@ -50,8 +51,10 @@ class LoginFragment : Fragment() {
 //                    }
                     intent = if (position == 0) {
                         Intent(requireContext(), CustomerActivity::class.java)
-                    } else {
+                    } else if (position == 1){
                         Intent(requireContext(), CleanerActivity::class.java)
+                    }else {
+                        Intent(requireContext(), BackstageActivity::class.java)
                     }
                 }
 
@@ -87,7 +90,7 @@ class LoginFragment : Fragment() {
         var check = true
         with(binding) {
             val regex =
-                Regex("\"^\\w{1,63}@[a-zA-Z0-9]{2,63}\\.[a-zA-Z]{2,63}(\\.[a-zA-Z]{2,63})?\$\"")
+                Regex("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+\$")
             val account = viewModel?.account?.value?.trim()
             val password = viewModel?.password?.value?.trim()
             if (account == null || account.isEmpty() || password == null || password.isEmpty()) {

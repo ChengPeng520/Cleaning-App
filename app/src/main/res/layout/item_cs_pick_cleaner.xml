@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.cleaningapp.customer.recyclerView.CsCleanerViewModel" />
+            type="com.example.cleaningapp.customer.csCreateOrder.CsViewCvViewModel" />
 
     </data>
 
@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.example.cleaningapp.CircleImageView
             android:id="@+id/img_item_csPickCleaner"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:imageResource="@{viewmodel.cleanerItem.image}" />
+            android:imageResource="@{viewmodel.cleaner.image}" />
 
         <TextView
             android:id="@+id/tv_csPickCleaner_nameGender"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{@string/tv_item_csPickCleaner_nameGender(viewmodel.cleanerItem.name, viewmodel.cleanerItem.gender ? '男' : '女')}"
+            android:text="@{@string/tv_item_csPickCleaner_nameGender(viewmodel.cleaner.name, viewmodel.cleaner.gender ? '男' : '女')}"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/img_item_csPickCleaner"
@@ -42,6 +42,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:numStars="5"
+            android:rating="@{viewmodel.cleaner.averageStar}"
+            android:theme="@style/RatingBar"
             app:layout_constraintBottom_toTopOf="@+id/tv_csPickCleaner_orderQ"
             app:layout_constraintStart_toStartOf="@+id/tv_csPickCleaner_nameGender"
             app:layout_constraintTop_toBottomOf="@+id/tv_csPickCleaner_nameGender" />
@@ -51,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@{@string/tv_item_csPickCleaner_orderCount(viewmodel.cleanerItem.completedOrderCount)}"
+            android:text="@{@string/tv_item_csPickCleaner_orderCount(viewmodel.cleaner.completedOrderCount)}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/rb_csPickCleaner_averageStar"

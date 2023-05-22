@@ -11,7 +11,7 @@ class CleanerFrontViewModel : ViewModel() {
     private var cleanerList = mutableListOf<Job>()
 
     // 受監控的LiveData，一旦指派新值就會更新Cleaner列表畫面
-    val cleaner: MutableLiveData<List<Job>> by lazy { MutableLiveData<List<Job>>()}
+    val cleaner: MutableLiveData<List<Job>> by lazy { MutableLiveData<List<Job>>() }
 
     init {
         loadCleaners()
@@ -26,30 +26,23 @@ class CleanerFrontViewModel : ViewModel() {
         this.cleanerList = cleanerList
         this.cleaner.value = this.cleanerList
     }
-    val county: MutableLiveData<List<String>>
-            by lazy { MutableLiveData<List<String>>(listOf("臺北市",
-                    "新北市" ,
-                    "桃園市" ,
-                    "臺中市" ,
-                    "臺南市" ,
-                    "高雄市" ,
-                    "新竹縣" ,
-                    "苗栗縣" ,
-                    "彰化縣" ,
-                    "南投縣" ,
-                    "雲林縣" ,
-                    "嘉義縣" ,
-                    "屏東縣" ,
-                    "宜蘭縣" ,
-                    "花蓮縣" ,
-                    "臺東縣" ,
-                    "澎湖縣" ,
-                    "金門縣" ,
-                    "連江縣" ,
-                    "基隆市" ,
-                    "新竹市" ,
-                    "嘉義市")) }
-    val text:MutableLiveData<String> by lazy { MutableLiveData<String>()}
+ val county: MutableLiveData<List<String>>
+                by lazy {
+                    MutableLiveData<List<String>>(
+                        listOf(
+                            "臺北市", "新北市", "桃園市", "新竹市", "新竹縣", "苗栗縣",
+                            "臺中市", "南投縣", "彰化縣", "雲林縣", "嘉義市", "嘉義縣",
+                            "臺南市", "高雄市", "屏東縣", "臺東縣", "宜蘭縣", "花蓮縣", "基隆市",
+                        )
+                    )
+                }
+
+
+
+    val text: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val textTime: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val textTime2: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 }
 //by lazy 晚一點啟用
 //MutableLiveData<List<Job>>() 括弧為初始質

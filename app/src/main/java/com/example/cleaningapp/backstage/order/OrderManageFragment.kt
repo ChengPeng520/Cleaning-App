@@ -9,7 +9,6 @@ import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.order.OrderAdapter
 import com.example.cleaningapp.databinding.FragmentCiyiOrderManageBinding
 
 class OrderManageFragment : Fragment() {

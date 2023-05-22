@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.detailed.Order
+import com.example.cleaningapp.customer.detailed.OrderListViewModel
 import com.example.cleaningapp.customer.viewModel.DetailedOrderViewModel
 
 import com.example.cleaningapp.databinding.FragmentVictorDetailedorderBinding
@@ -19,7 +21,7 @@ class DetailedOrderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: DetailedOrderViewModel by viewModels()
+        val viewModel: OrderListViewModel by viewModels()
         binding = FragmentVictorDetailedorderBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -28,8 +30,14 @@ class DetailedOrderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
+            arguments?.let { bundle ->
+                bundle.getSerializable("orderItem")?.let {
+                    viewModel?.orderItem?.value = it as Order
+            }
+        }
             bntApplyComplaint.setOnClickListener {
-                Navigation.findNavController(bntApplyComplaint).navigate(R.id.action_detailedOrderFragment_to_applycomplaintFragment)
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_detailedOrderFragment_to_applycomplaintFragment, arguments)
             }
         }
     }
