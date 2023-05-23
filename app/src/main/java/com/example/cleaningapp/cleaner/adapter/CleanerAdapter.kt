@@ -46,7 +46,7 @@ class CleanerAdapter(private var cleaners: List<Job>) :
             bundle.putSerializable("cleaner", cleaner)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_cleanerFrontFragment_to_cleanerFrontOrderDetailFragment,bundle)
+                    .navigate(R.id.action_cleanerFrontFragment2_to_cleanerFrontOrderDetailFragment,bundle)
             }
         }
     }

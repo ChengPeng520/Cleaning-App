@@ -19,28 +19,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ConstraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
             tools:context=".customer.csCreateOrder.CsCreateOrderFragment">
-
-            <EditText
-                android:id="@+id/edtTxt_address"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/all_spinner_gray_frame_shape"
-                android:ems="10"
-                android:hint="@string/txt_address"
-                android:inputType="textPersonName"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/ll_csCreateOrder_district"
-                app:layout_constraintStart_toStartOf="@+id/ll_csCreateOrder_district"
-                app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_district" />
 
             <TextView
                 android:id="@+id/tv_csCreateOrder_address"
@@ -110,6 +92,22 @@
                     android:layout_weight="3" />
             </LinearLayout>
 
+            <EditText
+                android:id="@+id/edtTxt_address"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/all_spinner_gray_frame_shape"
+                android:ems="10"
+                android:hint="@string/txt_address"
+                android:inputType="textPersonName"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/ll_csCreateOrder_district"
+                app:layout_constraintStart_toStartOf="@+id/ll_csCreateOrder_district"
+                app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_district" />
+
             <TextView
                 android:id="@+id/tv_csCreateOrder_time"
                 android:layout_width="wrap_content"
@@ -138,10 +136,10 @@
 
                 <TextView
                     android:id="@+id/tv_date"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1.2"
+                    android:paddingEnd="8dp"
                     android:text="@string/txt_date"
                     android:textSize="16sp" />
 
@@ -151,8 +149,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:textSize="16sp"
                     android:text="@{viewModel.textDate}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     tools:text="datepicker" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -191,10 +190,11 @@
                     android:id="@+id/tv_csCreateOrder_timeBeginPicked"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
                     android:layout_weight="3"
-                    android:textSize="16sp"
+                    android:gravity="center_vertical"
                     android:text="@{viewModel.textTimeBegin}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     tools:text="timepicker" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -212,10 +212,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
-                android:paddingEnd="20dp"
                 android:background="@drawable/all_spinner_gray_frame_shape"
                 android:orientation="horizontal"
                 android:paddingStart="8dp"
+                android:paddingEnd="20dp"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_timeBegin">
 
                 <TextView
@@ -231,10 +231,11 @@
                     android:id="@+id/tv_csCreateOrder_timeEndPicked"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
                     android:layout_weight="3"
-                    android:textSize="16sp"
+                    android:gravity="center_vertical"
                     android:text="@{viewModel.textTimeEnd}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     tools:text="timepicker" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -395,15 +396,20 @@
                 <EditText
                     android:id="@+id/edtTxt_csTools"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@drawable/all_layout_light_gray_shape" />
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/all_layout_light_gray_shape"
+                    android:gravity="start"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_coupon"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/all_layout_light_gray_shape"
                 android:orientation="horizontal"
@@ -429,12 +435,13 @@
                     android:layout_weight="3.5"
                     android:ems="10"
                     android:inputType="textPersonName" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_cost"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/all_layout_light_gray_shape"
                 android:orientation="horizontal"
@@ -460,6 +467,7 @@
                     android:background="@null"
                     android:ems="10"
                     android:inputType="numberDecimal" />
+
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton

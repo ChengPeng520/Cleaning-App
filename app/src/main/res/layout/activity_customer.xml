@@ -29,13 +29,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#569DAA"
+            app:itemIconTint="@color/bvn_item_foreground"
+            app:itemTextColor="@color/bvn_item_foreground"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_customer">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

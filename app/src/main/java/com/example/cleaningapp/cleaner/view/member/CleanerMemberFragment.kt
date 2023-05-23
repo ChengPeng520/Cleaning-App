@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MemberFragment : Fragment(), OnClickListener {
+class CleanerMemberFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentFatrueiMemberBinding
 
     override fun onCreateView(
@@ -31,5 +31,11 @@ class MemberFragment : Fragment(), OnClickListener {
             R.id.cl_member_window -> Navigation.findNavController(v)
                 .navigate(R.id.action_memberFragment_to_contactWindowFragment)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
+            View.VISIBLE
     }
 }

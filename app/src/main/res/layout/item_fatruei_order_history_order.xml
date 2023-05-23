@@ -5,12 +5,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +19,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp">
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="12dp">
 
 
                 <TextView
@@ -35,7 +35,7 @@
                     tools:text="2023/4/26" />
 
                 <TextView
-                    android:id="@+id/tv_order_history_receipt_finish"
+                    android:id="@+id/tv_order_history_receipt_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_shopping_info_receipt_finish"
@@ -46,7 +46,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tv_order_history_receipt_date" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout23"
+                    android:id="@+id/cl_order_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -84,16 +84,17 @@
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
-                        android:id="@+id/tv_order_history_number"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_order_history_name"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
+                        android:layout_marginStart="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_order_history_unit_price"
-                        app:layout_constraintStart_toEndOf="@+id/tv_order_history_unit_price"
-                        app:layout_constraintTop_toTopOf="@+id/tv_order_history_unit_price"
-                        tools:text="x1" />
+                        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView18"
+                        app:layout_constraintTop_toTopOf="@+id/textView18"
+                        tools:text="掃把" />
 
                     <TextView
                         android:id="@+id/tv_order_history_unit_price"
@@ -108,17 +109,16 @@
                         tools:text="$100" />
 
                     <TextView
-                        android:id="@+id/tv_order_history_name"
-                        android:layout_width="0dp"
+                        android:id="@+id/tv_order_history_number"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="60dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView18"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView18"
-                        app:layout_constraintTop_toTopOf="@+id/textView18"
-                        tools:text="掃把" />
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_order_history_unit_price"
+                        app:layout_constraintStart_toEndOf="@+id/tv_order_history_unit_price"
+                        app:layout_constraintTop_toTopOf="@+id/tv_order_history_unit_price"
+                        tools:text="x1" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,7 +129,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout23">
+                    app:layout_constraintTop_toBottomOf="@+id/cl_order_history">
 
                     <TextView
                         android:id="@+id/textView25"

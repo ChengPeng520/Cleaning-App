@@ -78,7 +78,7 @@
     <string name="onSale">上架</string>
 
     //editText coupon
-    <string name="editText_coupon_percentage" >22%</string>
+    <string name="editText_coupon_percentage">22%</string>
     <string name="editText_coupon_name">跳樓大骨折</string>
     <string name="editText_coupon_discount">30</string>
     <string name="editText_coupon_quantity">100</string>
@@ -94,6 +94,6 @@
     <string name="product_add_camera_button">拍照</string>
     <string name="editButton">修改</string>
 
-
+    <string name="saveButton">保存</string>
     <dimen name="button_corner_radius">6dp</dimen>
 </resources>

@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline12"
@@ -21,19 +22,10 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.25" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.85" />
-
         <ImageView
             android:id="@+id/iv_shopping_cart_product_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
             android:imageResource="@{viewModel.adapterUiState.image}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -48,6 +40,7 @@
             android:text="@string/tv_cleaner_shop_product_name"
             android:textColor="#121212"
             android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/tv_shopping_cart_product_price"
             app:layout_constraintStart_toStartOf="@+id/guideline12"
             app:layout_constraintTop_toTopOf="parent"
@@ -55,15 +48,16 @@
 
         <TextView
             android:id="@+id/tv_shopping_cart_product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:text="@{viewModel.adapterUiState.name}"
             android:textColor="#121212"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView17"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/textView17"
+            app:layout_constraintBottom_toTopOf="@+id/tv_shopping_cart_product_price"
+            app:layout_constraintEnd_toStartOf="@+id/guideline27"
+            app:layout_constraintStart_toStartOf="@+id/guideline12"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="夾子" />
 
         <TextView
@@ -76,32 +70,67 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shopping_cart_product_name"
             tools:text="$100" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_shopping_cart_minus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/fetruei_btn_product_detail_style2"
+            android:text="@string/tv_product_detail_minus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_shopping_cart_product_number"
+            app:layout_constraintStart_toStartOf="@+id/guideline27"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_shopping_cart_product_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:text="@{@string/tv_shopping_cart_number(viewModel.adapterUiState.number)}"
+            android:text="@{String.valueOf(viewModel.adapterUiState.number)}"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_shopping_cart_product_price"
-            app:layout_constraintStart_toEndOf="@+id/tv_shopping_cart_product_price"
-            app:layout_constraintTop_toTopOf="@+id/tv_shopping_cart_product_price"
-            tools:text="x1" />
+            app:layout_constraintBottom_toBottomOf="@+id/btn_shopping_cart_minus"
+            app:layout_constraintEnd_toStartOf="@+id/btn_shopping_cart_plus"
+            app:layout_constraintStart_toEndOf="@+id/btn_shopping_cart_minus"
+            app:layout_constraintTop_toTopOf="@+id/btn_shopping_cart_minus"
+            tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_shopping_cart_plus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/fetruei_btn_product_detail_style2"
+            android:text="@string/tv_product_detail_plus"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_shopping_cart_minus"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13"
+            app:layout_constraintStart_toEndOf="@+id/tv_shopping_cart_product_number"
+            app:layout_constraintTop_toTopOf="@+id/btn_shopping_cart_minus" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
 
         <ImageButton
             android:id="@+id/iv_shopping_cart_product_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="#00000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fatruei_baseline_delete_24" />
+            app:srcCompat="@drawable/twotone_delete_outline_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,9 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.Work
 import com.example.cleaningapp.cleaner.viewmodel.order.OrdersViewModel
-
-import com.example.cleaningapp.cleaner.viewmodel.search.CleanerViewModel
-import com.example.cleaningapp.databinding.ItemVickyCleanerFrontBinding
 import com.example.cleaningapp.databinding.ItemVickyCleanerOrderConductBinding
 
 class OrderAdapter(private var orders: List<Work>) :
@@ -49,7 +46,10 @@ class OrderAdapter(private var orders: List<Work>) :
             bundle.putSerializable("orders", order)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_vicky_order_conductFragment_to_orderOrdermatchFragment,bundle)
+                    .navigate(
+                        R.id.action_vicky_order_conductFragment_to_vicky_order_ordermatchFragment,
+                        bundle
+                    )
             }
         }
     }

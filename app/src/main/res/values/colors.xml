@@ -21,6 +21,7 @@
     <color name="clr_csTitle">#1D1B20</color>
     <color name="clr_cs_formBackground">#D9D9D9</color>
     <color name="clr_csProfile_title">#808080</color>
+    <color name="clr_cs_date_time_picker">#6A6A6A</color>
 
     //cleaner
     <color name="cleanerPrimary">#3D7EBB</color>

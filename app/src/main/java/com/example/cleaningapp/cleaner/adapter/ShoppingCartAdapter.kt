@@ -11,7 +11,40 @@ import com.example.cleaningapp.cleaner.viewmodel.shop.ShoppingCartViewModel
 import com.example.cleaningapp.databinding.ItemFatrueiShoppingCartProductBinding
 
 class ShoppingCartAdapter :
-    ListAdapter<ShoppingCartItemUiState, ShoppingCartAdapter.MyViewHolder>(DiffCallBack()) {
+    ListAdapter<ShoppingCartItemUiState, ShoppingCartAdapter.ItemViewHolder>(DiffCallBack()) {
+    private lateinit var clickInterface: ClickInterface
+
+    interface ClickInterface {
+        fun onBtnClick(productId: ShoppingCartItemUiState)
+    }
+
+    fun setOnclick(clickInterface: ClickInterface) {
+        this.clickInterface = clickInterface
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        val itemView = ItemFatrueiShoppingCartProductBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        itemView.viewModel = ShoppingCartViewModel()
+        itemView.lifecycleOwner = parent.findViewTreeLifecycleOwner()
+        return ItemViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        with(holder.itemBinding) {
+            viewModel?.adapterUiState?.value = getItem(position)
+            ivShoppingCartProductDelete.setOnClickListener {
+                clickInterface.onBtnClick(getItem(position))
+            }
+        }
+    }
+
+    class ItemViewHolder(val itemBinding: ItemFatrueiShoppingCartProductBinding) :
+        RecyclerView.ViewHolder(itemBinding.root)
+
     class DiffCallBack : DiffUtil.ItemCallback<ShoppingCartItemUiState>() {
         override fun areItemsTheSame(
             oldItem: ShoppingCartItemUiState,
@@ -26,23 +59,5 @@ class ShoppingCartAdapter :
         ): Boolean {
             return oldItem == newItem
         }
-    }
-
-    class MyViewHolder(val itemBinding: ItemFatrueiShoppingCartProductBinding) :
-        RecyclerView.ViewHolder(itemBinding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = ItemFatrueiShoppingCartProductBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        itemView.viewModel = ShoppingCartViewModel()
-        itemView.lifecycleOwner = parent.findViewTreeLifecycleOwner()
-        return MyViewHolder(itemView)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemBinding.viewModel?.adapterUiState?.value = getItem(position)
     }
 }

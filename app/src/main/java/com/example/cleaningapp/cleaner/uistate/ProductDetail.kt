@@ -5,7 +5,7 @@ data class ProductDetailUiState(
     val image: Int = 0,
     val name: String = "",
     val description: String = "",
-    val count: Int = 0,
+    val count: Int = 1,
     val price: Int = 0,
-    val totalPrice: Int = 0,
+    val totalPrice: Int = 0
 )

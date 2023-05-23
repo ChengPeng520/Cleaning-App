@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentCsEditProfileBinding
 
 class CsEditProfileFragment : Fragment() {
-    private lateinit var binding:FragmentCsEditProfileBinding
+    private lateinit var binding: FragmentCsEditProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +26,8 @@ class CsEditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-            btnCsEditProfileRestore.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csEditProfileFragment_to_csViewProfileFragment)
+            btnCsEditProfileRestore.setOnClickListener {
+                Navigation.findNavController(view).popBackStack()
             }
         }
     }

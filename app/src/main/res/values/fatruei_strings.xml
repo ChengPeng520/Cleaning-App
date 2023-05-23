@@ -15,7 +15,7 @@
     //shoppingCart 購物車
     <string name="tv_shopping_cart_gross_price">總金額</string>
     <string name="tv_shopping_cart_send">宅配詳情</string>
-    <string name="tv_shopping_cart_number">x%s</string>
+    <string name="tv_shopping_cart_error_send">請填寫宅配資料</string>
 
     //receiver_info 宅配詳情
     <string name="tv_receiver_name">收件人:</string>
@@ -30,6 +30,8 @@
     <string name="tv_shopping_info_receipt_finish">已完成</string>
     <string name="tv_shopping_info_receipt_price">訂單金額:</string>
     <string name="tv_shopping_info_receipt_count">檢視其他商品</string>
+    <string name="tv_shopping_info_gross_price">$%d元</string>
+    <string name="tv_shopping_info_number">x%s</string>
 
     //completed_payment 付款完成
     <string name="tv_completed_payment_back"><u>返回訂單列表</u></string>
@@ -44,17 +46,23 @@
     //memberInfo
     <string name="tv_member_info_name">姓名:</string>
     <string name="tv_member_info_gender">性別:</string>
+    <string-array name="sp_member_info_gender">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+    <string name="tv_member_info_identity">身分證字號:</string>
     <string name="tv_member_info_number">手機號碼:</string>
     <string name="tv_member_info_introduce">自我介紹:</string>
     <string name="edtTxt_member_hint">(必填)</string>
-    <string name="btn_member_info_submit">完成</string>
-    <string name="tv_member_identity">請上傳身分證</string>
-    <string name="tv_member_criminal_record_certificate">請上傳良民證(檔案格式:PDF、JPG、PNG)</string>
+    <string name="tv_member_identity">身分證</string>
+    <string name="tv_member_criminal_record_certificate">良民證</string>
+    <string name="btn_member_info_submit">確認</string>
 
     //item_notify 通知訊息
     <string name="tv_notify_window">前往客服聯繫</string>
 
     //order_state共用
+    <string name="tv_order_state_not_start">訂單尚未開始</string>
     <string name="tv_order_state_applied">接單成功</string>
     <string name="tv_order_state_ing">正進行中</string>
     <string name="tv_order_state_check">顧客確認</string>
@@ -68,4 +76,9 @@
     <string name="tv_order_state_price">總金額:</string>
     <string name="tv_order_state_comment">客戶評論</string>
     <string name="tv_order_state_picture">照片</string>
+    <string name="btn_order_state_start_cleaning">開始清潔</string>
+    <string name="tv_order_state_cancel"><u>取消接單</u></string>
+    <string name="btn_order_state_add_picture">新增照片</string>
+    <string name="btn_order_state_sign">顧客簽名</string>
+    <string name="tv_order_state_view_picture"><u>查看照片</u></string>
 </resources>

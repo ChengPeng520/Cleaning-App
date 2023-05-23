@@ -5,12 +5,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".cleaner.view.member.MemberInfoFragment">
+        tools:context=".cleaner.view.member.CleanerMemberInfoFragment">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -21,26 +24,24 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="12dp">
 
                 <com.example.cleaningapp.CircleImageView
                     android:id="@+id/circleImageView2"
                     android:layout_width="104dp"
                     android:layout_height="104dp"
                     android:src="@drawable/fatruei_my_image"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.05" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="9dp"
-                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,17 +62,19 @@
                         android:id="@+id/edtTxt_member_info_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
                         android:ems="10"
-                        android:gravity="center|end"
                         android:hint="@string/edtTxt_member_hint"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
+                        android:text="@={viewModel.name}"
+                        android:textAlignment="textEnd"
                         android:textColorHint="#DDDDDD"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView9"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/textView9"
                         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
@@ -81,7 +84,7 @@
                     android:id="@+id/constraintLayout2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout"
@@ -102,8 +105,12 @@
                         android:id="@+id/spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
+                        android:entries="@array/sp_member_info_gender"
                         android:minHeight="48dp"
+                        android:selectedItemPosition="@={viewModel.gender}"
+                        android:textAlignment="textStart"
                         app:layout_constraintBottom_toBottomOf="@+id/textView10"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView10"
@@ -112,14 +119,58 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/all_layout_gray_frame_shape"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <TextView
+                        android:id="@+id/textView49"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/tv_member_info_identity"
+                        android:textColor="#808080"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_member_info_identity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="@string/edtTxt_member_hint"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.identityNumber}"
+                        android:textAlignment="textEnd"
+                        android:textColorHint="#DDDDDD"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView49"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout23">
 
                     <TextView
                         android:id="@+id/textView15"
@@ -133,28 +184,33 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editTextNumber"
+                        android:id="@+id/edtTxt_member_info_phone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
                         android:ems="10"
-                        android:gravity="center|end"
                         android:hint="@string/edtTxt_member_hint"
-                        android:inputType="number"
+                        android:inputType="phone"
+                        android:maxLength="10"
                         android:minHeight="48dp"
+                        android:text="@={viewModel.phone}"
+                        android:textAlignment="textEnd"
                         android:textColorHint="#DDDDDD"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView15"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView15"
                         app:layout_constraintTop_toTopOf="@+id/textView15" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout4"
                     android:layout_width="0dp"
                     android:layout_height="160dp"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
@@ -171,12 +227,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/edtTxt_member_info_introduction"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_marginEnd="16dp"
                         android:background="@null"
-                        android:inputType="textPersonName"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:text="@={viewModel.introduction}"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView16"
                         app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -187,7 +247,7 @@
                     android:id="@+id/textView21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/tv_member_identity"
                     android:textColor="#808080"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
@@ -197,12 +257,14 @@
                     android:id="@+id/imageView7"
                     android:layout_width="152dp"
                     android:layout_height="90dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_dark_gray_shape"
                     android:padding="25dp"
                     android:src="@drawable/baseline_image_24"
                     app:layout_constraintEnd_toStartOf="@+id/imageView8"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
                     app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
                 <ImageView
@@ -213,7 +275,7 @@
                     android:padding="25dp"
                     android:src="@drawable/baseline_image_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
                     app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
@@ -221,7 +283,7 @@
                     android:id="@+id/textView58"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/tv_member_criminal_record_certificate"
                     app:layout_constraintStart_toStartOf="@+id/textView21"
                     app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -230,7 +292,7 @@
                     android:id="@+id/constraintLayout21"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_dark_gray_shape"
                     app:layout_constraintEnd_toEndOf="@+id/imageView8"
                     app:layout_constraintStart_toStartOf="@+id/imageView7"
@@ -264,10 +326,8 @@
                     style="@style/cleanerBtnSubmitStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="12dp"
+                    android:onClick="@{viewModel::saveSharePreferences}"
                     android:text="@string/btn_member_info_submit"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

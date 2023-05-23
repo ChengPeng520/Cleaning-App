@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.ShoppingCartAdapter
+import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.cleaner.viewmodel.shop.ShoppingCartViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiShoppingCartBinding
 
@@ -28,10 +29,6 @@ class ShoppingCartFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     private fun initView() {
         binding.cLShoppingCartReceiverInfo.setOnClickListener {
             Navigation.findNavController(it)
@@ -42,12 +39,22 @@ class ShoppingCartFragment : Fragment() {
 
     private fun initRecyclerView() {
         with(binding) {
-            viewModel?.fetchCleanerShoppingCartInfo()
+            viewModel?.fetchShopOrderList()
             rvShoppingCartProduct.layoutManager = LinearLayoutManager(requireContext())
             rvShoppingCartProduct.adapter = ShoppingCartAdapter()
             viewModel?.uiState?.observe(viewLifecycleOwner) {
-                print(it.shoppingCartItems.size)
-                (rvShoppingCartProduct.adapter as ShoppingCartAdapter).submitList(it.shoppingCartItems)
+                (rvShoppingCartProduct.adapter as ShoppingCartAdapter).submitList(it.shoppingCartItems.toList())
+            }
+
+            rvShoppingCartProduct.post {
+                kotlin.run {
+                    (rvShoppingCartProduct.adapter as ShoppingCartAdapter).setOnclick(object :
+                        ShoppingCartAdapter.ClickInterface {
+                        override fun onBtnClick(productId: ShoppingCartItemUiState) {
+                            viewModel?.deleteProduct(productId)
+                        }
+                    })
+                }
             }
         }
     }

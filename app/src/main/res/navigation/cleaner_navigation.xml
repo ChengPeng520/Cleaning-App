@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cleaner_navigation"
-    app:startDestination="@id/cleanerFrontFragment">
+    app:startDestination="@id/orderStateFragment">
 
     <fragment
         android:id="@+id/cleanerFrontOrderDetailFragment"
-        android:name="com.example.cleaningapp.cleaner.view.shop.search.CleanerFrontOrderDetailFragment"
+        android:name="com.example.cleaningapp.cleaner.view.search.CleanerFrontOrderDetailFragment"
         android:label="fragment_vicky_cleaner_front_order_detail"
-        tools:layout="@layout/fragment_vicky_cleaner_front_order_detail" >
+        tools:layout="@layout/fragment_vicky_cleaner_front_order_detail">
         <action
             android:id="@+id/action_cleanerFrontOrderDetailFragment_to_order_acceptFragment"
             app:destination="@id/order_acceptFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/shopFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.MallFragment"
         android:label="fragment_fatruei_shop"
-        tools:layout="@layout/fragment_fatruei_mall" >
+        tools:layout="@layout/fragment_fatruei_mall">
         <action
             android:id="@+id/action_shopFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
@@ -28,21 +28,25 @@
     </fragment>
     <fragment
         android:id="@+id/memberFragment"
-        android:name="com.example.cleaningapp.cleaner.view.member.MemberFragment"
+        android:name="com.example.cleaningapp.cleaner.view.member.CleanerMemberFragment"
         android:label="fragment_fatruei_member"
-        tools:layout="@layout/fragment_fatruei_member" >
+        tools:layout="@layout/fragment_fatruei_member">
         <action
             android:id="@+id/action_memberFragment_to_memberInfoFragment"
             app:destination="@id/memberInfoFragment" />
         <action
             android:id="@+id/action_memberFragment_to_contactWindowFragment"
-            app:destination="@id/contactWindowFragment" />
+            app:destination="@id/contactWindowFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.ProductDetailFragment"
         android:label="fragment_fatruei_product_detail"
-        tools:layout="@layout/fragment_fatruei_product_detail" >
+        tools:layout="@layout/fragment_fatruei_product_detail">
         <action
             android:id="@+id/action_productDetailFragment_to_shoppingCartFragment"
             app:destination="@id/shoppingCartFragment" />
@@ -51,41 +55,47 @@
         android:id="@+id/shoppingCartFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.ShoppingCartFragment"
         android:label="fragment_fatruei_shopping_cart"
-        tools:layout="@layout/fragment_fatruei_shopping_cart" >
+        tools:layout="@layout/fragment_fatruei_shopping_cart">
         <action
             android:id="@+id/action_shoppingCartFragment_to_receiverInfoFragment"
             app:destination="@id/receiverInfoFragment" />
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_completedPaymentFragment"
+            app:destination="@id/completedPaymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/completedPaymentFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.CompletedPaymentFragment"
         android:label="fragment_fatruei_completed_payment"
-        tools:layout="@layout/fragment_fatruei_completed_payment" >
+        tools:layout="@layout/fragment_fatruei_completed_payment">
         <action
             android:id="@+id/action_completedPaymentFragment_to_shopFragment"
             app:destination="@id/shopFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberInfoFragment"
-        android:name="com.example.cleaningapp.cleaner.view.member.MemberInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.view.member.CleanerMemberInfoFragment"
         android:label="fragment_fatruei_member_info"
         tools:layout="@layout/fragment_fatruei_member_info" />
     <fragment
         android:id="@+id/contactWindowFragment"
-        android:name="com.example.cleaningapp.cleaner.view.member.ContactWindowFragment"
+        android:name="com.example.cleaningapp.cleaner.view.member.CleanerChatroomFragment"
         android:label="fragment_fatruei_contact_window"
-        tools:layout="@layout/fragment_fatruei_contact_window" />
+        tools:layout="@layout/fragment_fatruei_chatroom" />
     <fragment
         android:id="@+id/orderStateFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderStateFragment"
         android:label="fragment_order_state"
-        tools:layout="@layout/fragment_fatruei_order_state" >
+        tools:layout="@layout/fragment_fatruei_order_state">
         <action
             android:id="@+id/action_orderStateFragment_to_vicky_order_cssign_checkFragment"
             app:destination="@id/vicky_order_cssign_checkFragment" />
         <action
             android:id="@+id/action_orderStateFragment_to_vicky_clear_photoFragment"
             app:destination="@id/vicky_clear_photoFragment" />
+        <action
+            android:id="@+id/action_orderStateFragment_to_cleanerOrderChatroomFragment"
+            app:destination="@id/cleanerOrderChatroomFragment" />
     </fragment>
     <fragment
         android:id="@+id/completeOrderInfoFragment"
@@ -96,11 +106,7 @@
         android:id="@+id/notifyFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.NotifyFragment"
         android:label="fragment_notify"
-        tools:layout="@layout/fragment_fatruei_notify" >
-        <action
-            android:id="@+id/action_notifyFragment_to_contactWindowFragment"
-            app:destination="@id/contactWindowFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_fatruei_notify" />
     <fragment
         android:id="@+id/order_acceptFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderAcceptFragment"
@@ -110,7 +116,7 @@
         android:id="@+id/vicky_order_conductFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderConductFragment"
         android:label="fragment_vicky_order_conduct"
-        tools:layout="@layout/fragment_vicky_order_conduct" >
+        tools:layout="@layout/fragment_vicky_order_conduct">
         <action
             android:id="@+id/action_vicky_order_conductFragment_to_completeOrderInfoFragment"
             app:destination="@id/completeOrderInfoFragment" />
@@ -120,17 +126,20 @@
         <action
             android:id="@+id/action_vicky_order_conductFragment_to_orderStateFragment"
             app:destination="@id/orderStateFragment" />
+        <action
+            android:id="@+id/action_vicky_order_conductFragment_to_vicky_order_ordermatchFragment"
+            app:destination="@id/vicky_order_ordermatchFragment" />
     </fragment>
     <fragment
-        android:id="@+id/vicky_order_ordercheckFragment"
-        android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdercheckFragment"
-        android:label="fragment_vicky_order_ordercheck"
-        tools:layout="@layout/fragment_vicky_order_ordercheck" />
+        android:id="@+id/vicky_order_ordermatchFragment"
+        android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdermatchFragment"
+        android:label="fragment_vicky_order_ordermatch"
+        tools:layout="@layout/fragment_vicky_order_ordermatch" />
     <fragment
         android:id="@+id/vicky_order_cssign_checkFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderCsSignCheckFragment"
         android:label="fragment_vicky_order_cssign_check"
-        tools:layout="@layout/fragment_vicky_order_cssign_check" >
+        tools:layout="@layout/fragment_vicky_order_cssign_check">
         <action
             android:id="@+id/action_vicky_order_cssign_checkFragment_to_orderStateFragment2"
             app:destination="@id/orderStateFragment" />
@@ -139,7 +148,7 @@
         android:id="@+id/vicky_clear_photoFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.ClearPhotoFragment"
         android:label="fragment_vicky_clear_photo"
-        tools:layout="@layout/fragment_vicky_clear_photo" >
+        tools:layout="@layout/fragment_vicky_clear_photo">
         <action
             android:id="@+id/action_vicky_clear_photoFragment_to_orderStateFragment"
             app:destination="@id/orderStateFragment" />
@@ -147,7 +156,8 @@
     <fragment
         android:id="@+id/cleanerFrontFragment"
         android:name="com.example.cleaningapp.cleaner.view.search.CleanerFrontFragment"
-        android:label="CleanerFrontFragment" >
+        android:label="CleanerFrontFragment"
+        tools:layout="@layout/fragment_vicky_cleaner_front_">
         <action
             android:id="@+id/action_cleanerFrontFragment2_to_cleanerFrontOrderDetailFragment"
             app:destination="@id/cleanerFrontOrderDetailFragment" />
@@ -160,5 +170,20 @@
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.example.cleaningapp.cleaner.view.shop.OrderHistoryFragment"
-        android:label="fragment_fatruei_order_history" />
+        android:label="fragment_fatruei_order_history"
+        tools:layout="@layout/fragment_fatruei_order_history">
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderInfoFragment"
+            app:destination="@id/orderInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderInfoFragment"
+        android:name="com.example.cleaningapp.cleaner.view.shop.OrderInfoFragment"
+        android:label="OrderInfoFragment"
+        tools:layout="@layout/fragment_fatruei_order_info" />
+    <fragment
+        android:id="@+id/cleanerOrderChatroomFragment"
+        android:name="com.example.cleaningapp.cleaner.view.order.CleanerOrderChatroomFragment"
+        android:label="CleanerOrderChatroomFragment"
+        tools:layout="@layout/fragment_cleaner_order_chatroom" />
 </navigation>

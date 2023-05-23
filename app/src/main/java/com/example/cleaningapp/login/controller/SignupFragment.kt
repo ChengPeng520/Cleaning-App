@@ -57,14 +57,13 @@ class SignupFragment : Fragment() {
                 // some login code
 
                 // login success
-<<<<<<< HEAD
-                if (!inputCheck()){ return@setOnClickListener }
-                viewModel?.signup()
-=======
                 if (!inputCheck()) {
                     return@setOnClickListener
                 }
->>>>>>> main
+                viewModel?.signup()
+                if (!inputCheck()) {
+                    return@setOnClickListener
+                }
                 Navigation.findNavController(it).navigate(action)
             }
         }

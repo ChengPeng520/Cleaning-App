@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.detailed.OrderListViewModel" />
@@ -11,14 +12,57 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/btn_orderList_ing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/baseline_event_24"
+                android:gravity="center"
+                android:text="@string/btn_orderList_ing"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/btn_orderList_established"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/victor_established"
+                android:gravity="center"
+                android:text="@string/btn_orderList_established"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/btn_orderList_done"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/vicky_baseline_check_box_24"
+                android:gravity="center"
+                android:text="@string/btn_orderList_done"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:background="@drawable/all_layout_light_gray_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -228,74 +272,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:id="@+id/btn_orderList_ing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/baseline_event_24"
-                android:gravity="center"
-                android:text="@string/btn_orderList_ing"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/btn_orderList_established"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/victor_established"
-                android:gravity="center"
-                android:text="@string/btn_orderList_established"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/btn_orderList_done"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/vicky_baseline_check_box_24"
-                android:gravity="center"
-                android:text="@string/btn_orderList_done"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/bnt_applyComplaint"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#87CBB9"
-            android:text="@string/bnt_applyComplaint"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-        <LinearLayout
             android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="#D9D9D9"
+            android:background="@drawable/all_layout_light_gray_shape"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -327,7 +308,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="#D9D9D9"
+            android:background="@drawable/all_layout_light_gray_shape"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
             app:layout_constraintStart_toStartOf="@+id/linearLayout6"
@@ -359,7 +340,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="#D9D9D9"
+            android:background="@drawable/all_layout_light_gray_shape"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
             app:layout_constraintStart_toStartOf="@+id/linearLayout7"
@@ -391,7 +372,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="#D9D9D9"
+            android:background="@drawable/all_layout_light_gray_shape"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
             app:layout_constraintStart_toStartOf="@+id/linearLayout5"
@@ -417,6 +398,16 @@
                 tools:text="X,XXX元" />
 
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bnt_applyComplaint"
+            style="@style/customerBtnSubmitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bnt_applyComplaint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

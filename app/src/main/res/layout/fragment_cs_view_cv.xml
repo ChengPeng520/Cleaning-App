@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginBottom="12dp"
-    android:padding="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csCreateOrder.CsViewCvViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="12dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
         tools:context=".customer.csCreateOrder.CsViewCvFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout25"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/all_layout_light_gray_shape"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:paddingHorizontal="12dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_csViewCv_confirmPay"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -40,6 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.example.cleaningapp.CircleImageView
@@ -51,10 +47,9 @@
                     android:imageResource="@{viewModel.cleaner.image}"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     android:layout_weight="4"
                     android:orientation="vertical">
 
@@ -65,21 +60,26 @@
                         android:text="@{@string/tv_item_csPickCleaner_nameGender(viewModel.cleaner.name, viewModel.cleaner.gender ? '男' : '女')}"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="曾正凡/男" />
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:layout_marginEnd="12dp"
                         android:background="@drawable/cs_layout_light_white_shape"
                         android:padding="4dp"
-                        android:minLines="5"
                         android:text="@{viewModel.cleaner.intro}"
                         android:textColor="@color/black"
-                        tools:text="自我介紹" />
-                </LinearLayout>
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_csViewCv_nameGender"
+                        tools:text="我叫呂正凡，是補教業的名師，藝名是呂凡老師。我不教國中生，因為年紀太小了，我不喜歡被說老牛吃嫩草，被我教過的學生英文都考一百分。" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
@@ -93,6 +93,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -102,8 +103,9 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_csViewCv_confirmPay"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
