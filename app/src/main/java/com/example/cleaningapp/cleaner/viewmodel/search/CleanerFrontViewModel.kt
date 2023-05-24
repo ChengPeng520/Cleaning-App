@@ -26,16 +26,7 @@ class CleanerFrontViewModel : ViewModel() {
         this.cleanerList = cleanerList
         this.cleaner.value = this.cleanerList
     }
- val county: MutableLiveData<List<String>>
-                by lazy {
-                    MutableLiveData<List<String>>(
-                        listOf(
-                            "臺北市", "新北市", "桃園市", "新竹市", "新竹縣", "苗栗縣",
-                            "臺中市", "南投縣", "彰化縣", "雲林縣", "嘉義市", "嘉義縣",
-                            "臺南市", "高雄市", "屏東縣", "臺東縣", "宜蘭縣", "花蓮縣", "基隆市",
-                        )
-                    )
-                }
+
 
 
 

@@ -8,7 +8,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.Job
-import com.example.cleaningapp.cleaner.viewmodel.search.CleanerViewModel
 import com.example.cleaningapp.databinding.ItemVickyCleanerFrontBinding
 
 class CleanerAdapter(private var cleaners: List<Job>) :

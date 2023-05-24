@@ -6,7 +6,8 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerViewModel" />
+            type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontOrderDetailViewModel"
+            />
     </data>
 
     <ScrollView
