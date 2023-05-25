@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendDetailViewModel" />
@@ -10,44 +12,66 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
-            android:id="@+id/ll_bs_user_susp_databox"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_bs_user_susp_databox_email"
-                android:layout_width="84dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@{viewModel.user.email}"
-                android:textColor="@color/textPrimary" />
 
-            <TextView
-                android:id="@+id/tv_bs_user_susp_databox_name"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@{viewModel.user.name}"
-                android:textColor="@color/textPrimary" />
+            <LinearLayout
+                android:id="@+id/ll_bs_user_susp_databox"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_bs_user_susp_databox_status"
-                android:layout_width="49dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@string/tv_bs_user_susp_status_suspend"
-                android:textColor="@color/error" />
+                <TextView
+                    android:id="@+id/tv_bs_user_susp_databox_email"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@{viewModel.user.email}"
+                    android:textColor="@color/textPrimary"
+                    tools:text="Email帳號" />
+
+                <TextView
+                    android:id="@+id/tv_bs_user_susp_databox_name"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@{viewModel.user.name}"
+                    android:textColor="@color/textPrimary"
+                    tools:text="名稱" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_open_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/all_layout_black_frame_shape"
+                    android:text="@string/tv_bs_user_susp_status_suspend"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider13"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

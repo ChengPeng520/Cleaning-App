@@ -26,6 +26,7 @@ class BsUserVerifyDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().title ="審核管理"
         arguments?.let { bundle ->
             bundle.getSerializable("user")?.let {
                 binding.viewModel?.user?.value = it as User
@@ -36,6 +37,9 @@ class BsUserVerifyDetailFragment : Fragment() {
                 }
                 ivBsUserVerifyDetailBack.setOnClickListener {
                     Navigation.findNavController(view).navigate(R.id.bsUserVerifyFragment)
+                }
+                btnBsUserVerifyDetailPass.setOnClickListener{
+                    Navigation.findNavController(view).popBackStack()
                 }
             }
         }

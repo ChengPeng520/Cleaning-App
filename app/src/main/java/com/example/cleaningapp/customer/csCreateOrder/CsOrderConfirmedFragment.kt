@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.model.Order
 import com.example.cleaningapp.databinding.FragmentCsOrderConfirmedBinding
 
 class CsOrderConfirmedFragment : Fragment() {
@@ -28,9 +29,14 @@ class CsOrderConfirmedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
+            arguments?.let { bundle ->
+                bundle.getSerializable("order")?.let {
+                    viewModel?.order?.value = it as Order
+                }
+            }
             btCsOderConfirmedSubmit.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csOrderConfirmedFragment_to_historicalorderFragment)
-                Toast.makeText(context,context?.getString(R.string.toast_csCreateOrder_orderEstablished),Toast.LENGTH_LONG).show()
+                Navigation.findNavController(view).navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
+//                Toast.makeText(context,context?.getString(R.string.txt_csCreateOrder_orderEstablished),Toast.LENGTH_LONG).show()
             }
         }
     }

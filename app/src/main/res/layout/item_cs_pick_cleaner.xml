@@ -13,14 +13,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.example.cleaningapp.CircleImageView
-            android:id="@+id/img_item_csPickCleaner"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_item_csPickCleaner"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:foreground="?selectableItemBackground"
+            app:cardCornerRadius="150dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:imageResource="@{viewmodel.cleaner.image}" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_item_csPickCleaner"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:imageResource="@{viewmodel.cleaner.image}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_csPickCleaner_nameGender"
@@ -31,7 +43,7 @@
             android:text="@{@string/tv_item_csPickCleaner_nameGender(viewmodel.cleaner.name, viewmodel.cleaner.gender ? '男' : '女')}"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/img_item_csPickCleaner"
+            app:layout_constraintStart_toEndOf="@+id/cv_item_csPickCleaner"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RatingBar

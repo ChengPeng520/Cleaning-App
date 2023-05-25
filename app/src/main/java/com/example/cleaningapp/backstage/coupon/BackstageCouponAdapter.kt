@@ -66,7 +66,7 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
             val bundle =Bundle()
             bundle.putSerializable("coupon",coupon)
             itemView.setOnClickListener{
-                Navigation.findNavController(it).navigate(R.id.action_backstageCouponSearchFragment_to_bsUserMainModifyFragment2, bundle)
+                Navigation.findNavController(it).navigate(R.id.action_backstageCouponSearchFragment_to_BackstageCouponModifyFragment, bundle)
             }
         }
     }

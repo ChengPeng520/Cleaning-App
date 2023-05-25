@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
+                app:srcCompat="@drawable/alb_ic_camera"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView

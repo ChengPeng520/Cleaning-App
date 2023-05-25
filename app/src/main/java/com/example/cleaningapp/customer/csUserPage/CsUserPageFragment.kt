@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentCsUserBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CsUserPageFragment : Fragment() {
     private lateinit var binding:FragmentCsUserBinding
@@ -35,6 +36,8 @@ class CsUserPageFragment : Fragment() {
             }
             btnCsUserPageLogOut.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_loginFragment2)
+//                val bottomNavigationView = root.findViewById<BottomNavigationView>(R.id.loginFragment2)
+//                bottomNavigationView.visibility = View.GONE
             }
         }
     }

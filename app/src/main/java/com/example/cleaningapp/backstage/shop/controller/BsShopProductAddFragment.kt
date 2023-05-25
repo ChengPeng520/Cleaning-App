@@ -1,27 +1,23 @@
 package com.example.cleaningapp.backstage.shop.controller
 
-import android.app.Activity
+
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.ContactsContract.Data
-import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopProductAddViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductAddBinding
-import java.io.File
+
 
 class BsShopProductAddFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsShopProductAddBinding
+    private lateinit var showPictureDialog: ShowPictureDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -30,53 +26,32 @@ class BsShopProductAddFragment : Fragment() {
         binding = FragmentAlbBsShopProductAddBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        showPictureDialog = ShowPictureDialog(requireActivity(), binding.ivBsShopProductAddPhoto)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+
             btnProductAdd.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }
-//            btnCameraProductAdd.setOnClickListener{
-//
-//            }
+            btnCameraProductAdd.setOnClickListener {
+                showPictureDialog.showPictureDialog()
+
+            }
         }
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val image = showPictureDialog.handleCameraResult(resultCode,requestCode,data)
+        binding.ivBsShopProductAddPhoto.setImageBitmap(image)
+        binding.ivBsShopProductAddPhoto.scaleType = ImageView.ScaleType.CENTER_CROP
+    }
 
-//    private val takePictureSmallLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//        if (result.resultCode == Activity.RESULT_OK) {
-//            result.data?.extras?.let { bundle ->
-//                with(binding) {
-//                    val picture = bundle.get("data") as Bitmap
-//                    if (picture != null) {
-//                        ivBsShopProductAddPhoto.setImageBitmap(picture)
-//                    }
-//                }
-//            }
-//        }
-//    }
-
-
-
-
-
-
-//    private val takePictureSmallLauncher =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                result.data?.extras?.let { bundle ->
-//                    with(binding) {
-//                        val picture = bundle.get("data") as Bitmap
-//                        if (picture != null) {
-//                            ivBsShopProductAddPhoto.setImageBitmap(picture)
-//                        }
-//                    }
-//                }
-//            }
-//        }
 }
 
 

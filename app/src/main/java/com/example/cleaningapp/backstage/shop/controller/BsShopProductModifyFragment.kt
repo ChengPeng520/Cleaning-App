@@ -29,6 +29,9 @@ class BsShopProductModifyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+            btnCameraProductModify.setOnClickListener {
+
+            }
             btnBsShopProductModifySubmit.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }

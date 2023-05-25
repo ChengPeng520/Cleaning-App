@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
+import java.util.jar.Attributes.Name
 
 /**
  * 客服聊天室資料處理
@@ -44,23 +45,41 @@ class BsUserServiceViewModel : ViewModel() {
         val chatList = mutableListOf<Chat>()
         chatList.add(
             Chat(
-                0,"Rona",
-                R.drawable.alb_account_avatar, "rona87@gmail.com", "我是一名熱愛閱讀和旅行的年輕人",
-                "02:13", true, true,
+                chatId = 0,
+                cleanerId = 1,
+                name = "Rona",
+                avatar = R.drawable.alb_account_avatar,
+                email = "rona87@gmail.com",
+                text = "我是一名熱愛閱讀和旅行的年輕人",
+                createTime = "02:13",
+                read = true,
+                closed = true,
             )
         )
         chatList.add(
             Chat(
-                1,"Ally",
-                R.drawable.alb_account_avatar, "ally87@gmail.com", "我是一位熱衷於技術創新的工程師",
-                "09:13", true, true,
+                chatId = 1,
+                customerId = 1,
+                name = "Ally",
+                avatar = R.drawable.alb_account_avatar,
+                email = "ally87@gmail.com",
+                text = "我是一位熱衷於技術創新的工程師",
+                createTime = "09:13",
+                read = true,
+                closed = true,
             )
         )
         chatList.add(
             Chat(
-                2,"Ciyi",
-                R.drawable.alb_account_avatar, "ciyi87@gmail.com", "我是一名喜愛運動和音樂的青年",
-                "05-09", true, true,
+                chatId = 2,
+                customerId = 3,
+                name = "Ciyi",
+                avatar = R.drawable.alb_account_avatar,
+                email = "ciyi87@gmail.com",
+                text = "我是一名喜愛運動和音樂的青年",
+                createTime = "05-09",
+                read = true,
+                closed = true,
             )
         )
         this.chatList = chatList

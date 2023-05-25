@@ -25,7 +25,7 @@
             android:id="@+id/action_bsUserMainFragment_to_bsUserServiceFragment"
             app:destination="@id/bsUserServiceFragment" />
     </fragment>
-    <fragment
+     <fragment
         android:id="@+id/bsUserMainDetailFragment"
         android:name="com.example.cleaningapp.backstage.usermanage.controller.BsUserMainDetailFragment"
         android:label="fragment_alb_bs_user_main_detail"
@@ -82,7 +82,7 @@
         android:name="com.example.cleaningapp.backstage.usermanage.controller.BsUserSuspendFragment"
         android:label="fragment_alb_bs_user_suspend"
         tools:layout="@layout/fragment_alb_bs_user_suspend" />
-    <fragment
+     <fragment
         android:id="@+id/bsUserServiceFragment"
         android:name="com.example.cleaningapp.backstage.usermanage.controller.BsUserServiceFragment"
         android:label="fragment_alb_bs_user_service"
@@ -98,7 +98,7 @@
         tools:layout="@layout/fragment_alb_bs_user_service_chat" />
     <fragment
         android:id="@+id/bsUserMainModifyFragment"
-        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponModifyFragment"
+        android:name="com.example.cleaningapp.backstage.usermanage.controller.BsUserMainModifyFragment"
         android:label="fragment_alb_bs_user_main_modify"
         tools:layout="@layout/fragment_alb_bs_user_main_modify" />
     <fragment
@@ -153,7 +153,7 @@
         android:name="com.example.cleaningapp.backstage.shop.controller.BsShopOrderDetailFragment"
         android:label="fragment_alb_bs_shop_order_detail"
         tools:layout="@layout/fragment_alb_bs_shop_order_detail" />
-    <fragment
+     <fragment
         android:id="@+id/bsUserVerifyDetailFragment"
         android:name="com.example.cleaningapp.backstage.usermanage.controller.BsUserVerifyDetailFragment"
         android:label="fragment_alb_bs_user_verify_detail"
@@ -179,11 +179,13 @@
     <fragment
         android:id="@+id/backstageOrderDetail"
         android:name="com.example.cleaningapp.backstage.order.BackstageOrderDetailFragment"
-        android:label="BackstageOrderDetail" />
+        android:label="BackstageOrderDetail"
+        tools:layout="@layout/fragment_alb_bs_shop_order_detail"/>
     <fragment
         android:id="@+id/orderManageFragment2"
         android:name="com.example.cleaningapp.backstage.order.OrderManageFragment"
-        android:label="OrderManageFragment" >
+        android:label="OrderManageFragment"
+        tools:layout="@layout/fragment_ciyi_order_manage">
         <action
             android:id="@+id/action_orderManageFragment2_to_backstageOrderDetail"
             app:destination="@id/backstageOrderDetail" />
@@ -197,8 +199,8 @@
             android:id="@+id/action_backstageCouponSearchFragment_to_backstageCouponCreatFragment"
             app:destination="@id/backstageCouponCreatFragment" />
         <action
-            android:id="@+id/action_backstageCouponSearchFragment_to_bsUserMainModifyFragment2"
-            app:destination="@id/bsUserMainModifyFragment2" />
+            android:id="@+id/action_backstageCouponSearchFragment_to_BackstageCouponModifyFragment"
+            app:destination="@id/BackstageCouponModifyFragment" />
     </fragment>
     <fragment
         android:id="@+id/backstageCouponCreatFragment"
@@ -206,7 +208,10 @@
         android:label="fragment_backstage_coupon_creat"
         tools:layout="@layout/fragment_ciyi_backstage_coupon_creat" />
     <fragment
-        android:id="@+id/bsUserMainModifyFragment2"
-        android:name="com.example.cleaningapp.backstage.usermanage.controller.BsShopMainFragment.BsUserMainModifyFragment"
-        android:label="BsUserMainModifyFragment" />
+        android:id="@+id/BackstageCouponModifyFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponModifyFragment"
+        android:label="fragment_backstage_coupon_modify"
+        tools:layout="@layout/fragment_ciyi_backstage_coupon_modify"
+        />
+
 </navigation>
