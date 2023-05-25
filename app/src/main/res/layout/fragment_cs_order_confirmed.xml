@@ -5,11 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csCreateOrder.CsOrderConfirmedViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,127 +32,215 @@
                     android:id="@+id/ll_oderDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_light_gray_shape"
                     android:orientation="vertical"
                     android:padding="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
 
-                    <ImageView
-                        android:id="@+id/iv_calendar"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/ll_csOrderConfirmed_date"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_calendar"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_csOderConfirmed_date"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tv_csOderConfirmed_date" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iv_calendar"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_calendar" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_date"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csOrderConfirmed_date"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_date2"
+                            android:layout_width="0dp"
+                            android:layout_weight="8"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.order.date}"
+                            tools:text="TextView" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_csOrderConfirmed_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmed_date">
+
+                        <ImageView
+                            android:id="@+id/iv_time"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_time" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_time"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csOrderConfirmed_time"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_time2"
+                            android:layout_width="0dp"
+                            android:layout_weight="8"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="8dp"
+                            android:text='@{viewModel.order.timeBegin+"~"+viewModel.order.timeEnd}'
+                            tools:text="TextView" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_csOrderConfirmed_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmed_time">
+
+                        <ImageView
+                            android:id="@+id/iv_location"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_location" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_address"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csOrderConfirmed_address"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_address2"
+                            android:layout_width="0dp"
+                            android:layout_weight="8"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.order.address}"
+                            tools:text="TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmed_address">
+
+                        <ImageView
+                            android:id="@+id/iv_area"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_room" />
+
+                        <TextView
+                            android:id="@+id/tv_csOrderConfirmed_area"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/tv_csOrderConfirmed_area"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_csOrderConfirmed_area2"
+                            android:layout_width="0dp"
+                            android:layout_weight="8"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:inputType="textMultiLine"
+                            android:text="@{@string/tv_csOrderConfirmed_area2 (viewModel.order.livingRoomSizeString, viewModel.order.kitchenSizeString, viewModel.order.bathroomSizeString, viewModel.order.bedroomSizeString)}"
+                            tools:text="TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+                        <ImageView
+                            android:id="@+id/iv_tools"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_editnote" />
+
+                        <TextView
+                            android:id="@+id/tv_csOderConfirmed_tools"
+                            android:layout_width="0dp"
+                            android:layout_weight="11"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csOderConfirmedTools"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/tv_csOderConfirmed_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/tv_csOrderConfirmed_date"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_csOderconfirmed_time"
-                        app:layout_constraintStart_toEndOf="@+id/iv_calendar"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/iv_time"
+                        android:id="@+id/tv_csOrderConfirmed_note"
                         android:layout_width="0dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_time"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_csOderconfirmed_time"
-                        app:layout_constraintEnd_toEndOf="@+id/iv_calendar"
-                        app:layout_constraintStart_toStartOf="@+id/iv_calendar"
-                        app:layout_constraintTop_toTopOf="@+id/tv_csOderconfirmed_time" />
-
-                    <TextView
-                        android:id="@+id/tv_csOderconfirmed_time"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/tv_csOrderConfirmed_time"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_csOderConfirmed_address"
-                        app:layout_constraintStart_toStartOf="@+id/tv_csOderConfirmed_date"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_csOderConfirmed_date" />
-
-                    <ImageView
-                        android:id="@+id/iv_location"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_location"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_csOderConfirmed_address"
-                        app:layout_constraintEnd_toEndOf="@+id/iv_time"
-                        app:layout_constraintStart_toStartOf="@+id/iv_time"
-                        app:layout_constraintTop_toTopOf="@+id/tv_csOderConfirmed_address" />
-
-                    <TextView
-                        android:id="@+id/tv_csOderConfirmed_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_csOrderConfirmed_address"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_csOrderConfirmed_area"
-                        app:layout_constraintStart_toStartOf="@+id/tv_csOderconfirmed_time"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_csOderconfirmed_time" />
-
-                    <ImageView
-                        android:id="@+id/iv_area"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_room"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_csOrderConfirmed_area"
-                        app:layout_constraintEnd_toEndOf="@+id/iv_location"
-                        app:layout_constraintStart_toStartOf="@+id/iv_location"
-                        app:layout_constraintTop_toTopOf="@+id/tv_csOrderConfirmed_area" />
-
-                    <TextView
-                        android:id="@+id/tv_csOrderConfirmed_area"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/tv_csOrderConfirmed_area"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_csOderConfirmed_tools"
-                        app:layout_constraintStart_toStartOf="@+id/tv_csOderConfirmed_address"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_csOderConfirmed_address" />
-
-                    <ImageView
-                        android:id="@+id/iv_tools"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_editnote"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_csOderConfirmed_tools"
-                        app:layout_constraintEnd_toEndOf="@+id/iv_area"
-                        app:layout_constraintStart_toStartOf="@+id/iv_area"
-                        app:layout_constraintTop_toTopOf="@+id/tv_csOderConfirmed_tools" />
-
-                    <TextView
-                        android:id="@+id/tv_csOderConfirmed_tools"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:paddingTop="4sp"
-                        android:text="@string/tv_csOderConfirmedTools"
-                        android:textColor="@color/black"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginTop="8dp"
+                        android:inputType="textMultiLine"
+                        android:minLines="5"
+                        android:lineSpacingExtra="30px"
+                        android:text="@{viewModel.order.notes}"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tv_csOrderConfirmed_area"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_csOrderConfirmed_area" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+                        tools:text="TextView" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -171,7 +257,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/ll_oderDetail">
 
                     <ImageView
-                        android:id="@+id/iv_csOrderComfirmed_pic1"
+                        android:id="@+id/iv_csOrderConfirmed_pic1"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
                         android:layout_gravity="center_horizontal"
@@ -179,7 +265,7 @@
                         tools:src="@tools:sample/avatars" />
 
                     <ImageView
-                        android:id="@+id/iv_csOrderComfirmed_pic2"
+                        android:id="@+id/iv_csOrderConfirmed_pic2"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
                         android:layout_gravity="center_horizontal"
@@ -188,7 +274,7 @@
                         tools:src="@tools:sample/avatars" />
 
                     <ImageView
-                        android:id="@+id/iv_csOrderComfirmed_pic3"
+                        android:id="@+id/iv_csOrderConfirmed_pic3"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
                         android:layout_gravity="center_horizontal"
@@ -210,29 +296,29 @@
                     app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_pics">
 
                     <TextView
-                        android:id="@+id/tv_csOderConfirmed_cost"
+                        android:id="@+id/tv_csOrderConfirmed_cost"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|left"
                         android:text="@string/tv_csOrderConfirmed_cost"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/tv_csOderComfirmedCostFilled"
+                        android:id="@+id/tv_csOrderConfirmedCostFilled"
                         android:layout_width="250dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_csOderConfirmedCharge"
+                    android:id="@+id/ll_csOrderConfirmedCharge"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
@@ -245,29 +331,29 @@
                     app:layout_constraintTop_toBottomOf="@+id/ll_cost">
 
                     <TextView
-                        android:id="@+id/tv_csOderConfirmed_charge"
+                        android:id="@+id/tv_csOrderConfirmed_charge"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|left"
                         android:text="@string/tv_csOrderConfirmed_charge"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/tv_csOderComfirmedChargeFilled"
+                        android:id="@+id/tv_csOrderConfirmedChargeFilled"
                         android:layout_width="250dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_csOderConfirmedCoupon"
+                    android:id="@+id/ll_csOrderConfirmedCoupon"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
@@ -277,7 +363,7 @@
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ll_csOderConfirmedCharge">
+                    app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmedCharge">
 
                     <TextView
                         android:id="@+id/tv_csOderConfirmed_coupon"
@@ -287,16 +373,16 @@
                         android:gravity="center|left"
                         android:text="@string/tv_csOrder_coupon"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/tv_csOderConfirmedCouponFilled"
+                        android:id="@+id/tv_csOrderConfirmedCouponFilled"
                         android:layout_width="250dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
@@ -312,7 +398,7 @@
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ll_csOderConfirmedCoupon">
+                    app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmedCoupon">
 
                     <TextView
                         android:id="@+id/tv_csOderConfirmed_total"
@@ -322,16 +408,16 @@
                         android:gravity="center|left"
                         android:text="@string/tv_csOrderConfirmed_total"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/tv_csOderComfirmedTotalFilled"
+                        android:id="@+id/tv_csOrderConfirmedTotalFilled"
                         android:layout_width="250dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         tools:text="帶入金額" />
 
                 </LinearLayout>

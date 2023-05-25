@@ -16,27 +16,64 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/spn_csEditProfile_gender"
+            android:id="@+id/constraintLayout_csEditProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:paddingVertical="12dp"
             tools:context=".customer.csUserPage.CsEditProfileFragment">
 
-            <com.example.cleaningapp.CircleImageView
-                android:id="@+id/iv_csEditProfile_pic"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_marginTop="12dp"
-                android:imageResource="@{viewModel.profile.image}"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout_csEditProfile_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/guideline47">
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_csEditProfile_img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:foreground="?selectableItemBackground"
+                    app:cardCornerRadius="150dp"
+                    android:elevation="2dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_csEditProfile_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:imageResource="@{viewModel.profile.image}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_csEditProfile_editPic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/baseline_camera_alt_24"
+                    android:elevation="5dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/cv_csEditProfile_img" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_name"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/all_spinner_gray_frame_shape"
                 android:orientation="horizontal"
@@ -44,7 +81,7 @@
                 android:paddingEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_csEditProfile_pic">
+                app:layout_constraintTop_toBottomOf="@id/constraintLayout_csEditProfile_img">
 
                 <TextView
                     android:id="@+id/tv_csEditProfile_name"
@@ -74,7 +111,7 @@
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_phoneNumber"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/all_spinner_gray_frame_shape"
                 android:orientation="horizontal"
@@ -110,7 +147,7 @@
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_address"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/all_spinner_gray_frame_shape"
                 android:orientation="horizontal"
@@ -146,7 +183,7 @@
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_gender"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/all_spinner_gray_frame_shape"
                 android:orientation="horizontal"
@@ -193,7 +230,7 @@
                 <TextView
                     android:id="@+id/tv_csEditProfile_selfIntro"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="@string/tv_csProfile_selfIntro" />
 
@@ -206,6 +243,7 @@
                     android:ems="10"
                     android:inputType="textMultiLine"
                     android:lineSpacingExtra="30px"
+                    android:minLines="5"
                     android:paddingBottom="12dp"
                     android:text="@{viewModel.profile.intro}"
                     android:textSize="15sp" />
@@ -221,6 +259,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_selfIntro" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
