@@ -61,9 +61,6 @@ class SignupFragment : Fragment() {
                     return@setOnClickListener
                 }
                 viewModel?.signup()
-                if (!inputCheck()) {
-                    return@setOnClickListener
-                }
                 Navigation.findNavController(it).navigate(action)
             }
         }
