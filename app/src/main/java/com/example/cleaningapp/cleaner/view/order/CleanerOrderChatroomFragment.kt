@@ -1,20 +1,15 @@
 package com.example.cleaningapp.cleaner.view.order
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.cleaner.adapter.OrderChatroomAdapter
 import com.example.cleaningapp.cleaner.viewmodel.order.OrderChatroomViewModel
 import com.example.cleaningapp.databinding.FragmentCleanerOrderChatroomBinding
-import kotlinx.coroutines.launch
 
 class CleanerOrderChatroomFragment : Fragment() {
     private lateinit var binding: FragmentCleanerOrderChatroomBinding
@@ -26,7 +21,7 @@ class CleanerOrderChatroomFragment : Fragment() {
     ): View {
         binding = FragmentCleanerOrderChatroomBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initRecyclerView()
         return binding.root
     }
@@ -38,13 +33,9 @@ class CleanerOrderChatroomFragment : Fragment() {
             (rvOrderChatroom.layoutManager as LinearLayoutManager).stackFromEnd = true
             rvOrderChatroom.setItemViewCacheSize(500)
             viewModel?.fetchOrderTalk()
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel?.uiState?.collect {
-                        (rvOrderChatroom.adapter as OrderChatroomAdapter).submitList(it.orderChatroomItems.toList())
-                        rvOrderChatroom.smoothScrollToPosition((rvOrderChatroom.adapter as OrderChatroomAdapter).itemCount)
-                    }
-                }
+            viewModel?.chatroomUiState?.observe(viewLifecycleOwner) {
+                (rvOrderChatroom.adapter as OrderChatroomAdapter).submitList(it.toList())
+                rvOrderChatroom.smoothScrollToPosition((rvOrderChatroom.adapter as OrderChatroomAdapter).itemCount)
             }
         }
     }

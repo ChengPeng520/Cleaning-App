@@ -283,7 +283,6 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
                     android:inputType="numberDecimal"
-                    android:text="@={viewModel.livingroomSize}"
                     android:textSize="16sp" />
 
 
@@ -396,14 +395,54 @@
                 <EditText
                     android:id="@+id/edtTxt_csTools"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/all_layout_light_gray_shape"
                     android:gravity="start"
+                    android:inputType="textMultiLine"
+                    android:lineSpacingExtra="30px"
+                    android:minLines="5"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
                     android:textSize="16sp" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_csCreateOrder_pics"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_toolsAll">
+
+                    <ImageView
+                        android:id="@+id/iv_csCreateOrder_pic1"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_add"
+                        tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/iv_csCreateOrder_pic2"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/iv_csCreateOrder_pic3"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    tools:src="@tools:sample/avatars" />
             </LinearLayout>
 
             <LinearLayout
@@ -434,7 +473,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3.5"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:text="@{viewModel.tvCsCreateOrderChooseCoupon}"/>
 
             </LinearLayout>
 
@@ -448,12 +487,12 @@
                 android:paddingStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ll_toolsAll"
-                app:layout_constraintTop_toBottomOf="@+id/ll_toolsAll">
+                app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_pics">
 
                 <TextView
                     android:id="@+id/tv_cost"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:text="@string/txt_cost"
                     android:textColor="@color/black"

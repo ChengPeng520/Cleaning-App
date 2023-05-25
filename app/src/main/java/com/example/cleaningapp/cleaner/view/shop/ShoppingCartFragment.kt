@@ -24,7 +24,7 @@ class ShoppingCartFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiShoppingCartBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initView()
         return binding.root
     }

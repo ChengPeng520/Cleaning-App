@@ -31,7 +31,7 @@ class CleanerChatroomFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiChatroomBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initRecyclerView()
         return binding.root
     }

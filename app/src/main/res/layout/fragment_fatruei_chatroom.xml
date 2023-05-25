@@ -14,13 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp"
+        android:paddingBottom="8dp"
         tools:context=".cleaner.view.member.CleanerChatroomFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_contact_window_talk"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

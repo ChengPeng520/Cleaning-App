@@ -9,12 +9,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.Job
-import com.example.cleaningapp.cleaner.viewmodel.search.CleanerViewModel
+import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontOrderDetailViewModel
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontOrderDetailBinding
 
 class CleanerFrontOrderDetailFragment : Fragment() {
     private lateinit var binding: FragmentVickyCleanerFrontOrderDetailBinding
-    private val viewModel: CleanerViewModel by viewModels()
+    private val viewModel: CleanerFrontOrderDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

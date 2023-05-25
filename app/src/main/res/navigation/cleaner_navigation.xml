@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cleaner_navigation"
-    app:startDestination="@id/orderStateFragment">
+    app:startDestination="@id/cleanerFrontFragment">
 
     <fragment
         android:id="@+id/cleanerFrontOrderDetailFragment"
@@ -106,7 +106,14 @@
         android:id="@+id/notifyFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.NotifyFragment"
         android:label="fragment_notify"
-        tools:layout="@layout/fragment_fatruei_notify" />
+        tools:layout="@layout/fragment_fatruei_notify" >
+        <action
+            android:id="@+id/action_notifyFragment_to_contactWindowFragment"
+            app:destination="@id/contactWindowFragment" />
+        <action
+            android:id="@+id/action_notifyFragment_to_orderStateFragment"
+            app:destination="@id/orderStateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/order_acceptFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderAcceptFragment"

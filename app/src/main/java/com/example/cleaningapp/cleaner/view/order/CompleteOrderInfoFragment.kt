@@ -20,7 +20,7 @@ class CompleteOrderInfoFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiCompleteOrderInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         viewModel.fetchOrderInfo()
         return binding.root
     }

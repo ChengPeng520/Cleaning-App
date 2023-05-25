@@ -20,15 +20,27 @@
             android:paddingVertical="12dp"
             tools:context=".customer.csUserPage.CsViewProfileFragment">
 
-            <com.example.cleaningapp.CircleImageView
-                android:id="@+id/iv_csProfile_pic"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_marginTop="12dp"
-                android:imageResource="@{viewModel.profile.image}"
-                app:layout_constraintEnd_toEndOf="parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_csViewProfile_img"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="24dp"
+                android:foreground="?selectableItemBackground"
+                app:cardCornerRadius="150dp"
+                android:elevation="2dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline8">
+
+                <ImageView
+                    android:id="@+id/iv_csProfile_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imageResource="@{viewModel.profile.image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:id="@+id/ll_csProfile_name"
@@ -41,7 +53,7 @@
                 android:paddingEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_csProfile_pic">
+                app:layout_constraintTop_toBottomOf="@id/cv_csViewProfile_img">
 
                 <TextView
                     android:id="@+id/tv_csProfile_name"
@@ -181,7 +193,7 @@
                 <TextView
                     android:id="@+id/tv_csProfile_selfIntro"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="@string/tv_csProfile_selfIntro" />
 
@@ -192,6 +204,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textMultiLine"
+                    android:minLines="5"
                     android:lineSpacingExtra="30px"
                     android:paddingBottom="12dp"
                     android:text="@{viewModel.profile.intro}"
@@ -210,6 +223,13 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_selfIntro" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

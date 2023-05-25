@@ -49,7 +49,7 @@ class CsViewCouponCouponUseAdapter (private var coupons: List<Coupon>) :
             bundle.putSerializable("coupon", coupon)
             itemViewBinding.btCusCouponUse.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_csViewCouponFragment_to_csServiceTermsFragment, bundle)
+                    .navigate(R.id.action_csViewCouponFragment_to_csCreateOrderFragment2, bundle)
             }
         }
     }

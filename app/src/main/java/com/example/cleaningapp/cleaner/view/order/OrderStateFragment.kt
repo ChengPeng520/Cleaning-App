@@ -25,7 +25,7 @@ class OrderStateFragment : Fragment() {
     ): View {
         binding = FragmentFatrueiOrderStateBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         initView()
         return binding.root
     }

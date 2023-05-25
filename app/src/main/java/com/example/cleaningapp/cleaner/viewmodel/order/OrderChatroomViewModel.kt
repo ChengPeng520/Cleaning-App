@@ -1,19 +1,19 @@
 package com.example.cleaningapp.cleaner.viewmodel.order
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.*
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 class OrderChatroomViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(OrderChatroomUiState())
-    private var id = 0
-    private val talkList = mutableListOf<OrderChatroomItemUiState>()
-    val uiState: StateFlow<OrderChatroomUiState> = _uiState.asStateFlow()
+    private val _orderUiState: MutableLiveData<OrderInfo> by lazy { MutableLiveData<OrderInfo>() }
+    val orderUiState: LiveData<OrderInfo> by lazy { _orderUiState }
+    private val _chatroomUiState: MutableLiveData<List<OrderChatroomItemUiState>> by lazy { MutableLiveData<List<OrderChatroomItemUiState>>() }
+    val chatroomUiState: LiveData<List<OrderChatroomItemUiState>> by lazy { _chatroomUiState }
     val commitText = MutableLiveData("")
+
+    private val talkList = mutableListOf<OrderChatroomItemUiState>()
+    private var id = 0
 
     init {
         talkList.add(OrderChatroomItemUiState(id = id++, fromId = 9, text = "乾是不是我們班太毒阿"))
@@ -35,12 +35,8 @@ class OrderChatroomViewModel : ViewModel() {
     }
 
     fun fetchOrderTalk() {
-        _uiState.update {
-            it.copy(
-                orderInfo = OrderInfo("2023年4月25號", "12:00-14:00(2小時)", "房間5坪", 1000),
-                orderChatroomItems = talkList
-            )
-        }
+        _orderUiState.value = OrderInfo("2023年4月25號", "12:00-14:00(2小時)", "房間5坪", 1000)
+        _chatroomUiState.value = talkList
     }
 
     fun commitText() {
@@ -52,9 +48,7 @@ class OrderChatroomViewModel : ViewModel() {
                     text = commitText.value.toString()
                 )
             )
-            _uiState.update {
-                it.copy(orderChatroomItems = talkList)
-            }
+            _chatroomUiState.value = talkList
             commitText.value = ""
         }
     }

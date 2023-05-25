@@ -26,11 +26,7 @@ class CsServiceTermsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding) {
-            btnNext.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csServiceTermsFragment_to_csCreateOrderFragment)
-            }
-        }
+
     }
 
 

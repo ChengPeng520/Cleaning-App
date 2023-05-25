@@ -33,7 +33,9 @@
     <string name="chk_csCreateOrder_bathroom">廁所</string>
     <string name="chk_csCreateOrder_bedroom">房間</string>
     <string name="ht_csCreateOrder_enterSize">請輸入坪數</string>
-    <string name="toast_csCreateOrder_orderEstablished">訂單建立完成</string>
+    <string name="txt_csCreateOrder_orderEstablished">訂單建立完成</string>
+    <string name="tv_csCreateOrder_chooseCleanerAtHistory">請於刊登紀錄選擇清潔人員</string>
+    <string name="btn_csCreateOrder_checkHistory"><u>查看刊登紀錄</u></string>
 
     <!--    確認訂單    -->
     <string name="txt_oderConfirmed">確認訂單</string>
@@ -41,6 +43,7 @@
     <string name="tv_csOrderConfirmed_time">打掃時數：</string>
     <string name="tv_csOrderConfirmed_address">地址：</string>
     <string name="tv_csOrderConfirmed_area">打掃區域：</string>
+    <string name="tv_csOrderConfirmed_area2">客廳： %s坪\n廚房： %s坪\n廁所： %s坪\n房間： %s坪</string>
     <string name="tv_csOderConfirmedTools">清潔工具及其他需求：</string>
     <string name="btn_cs_confirmAndSubmit">確認送出</string>
     <string name="tv_csOrderConfirmed_cost">金額：</string>

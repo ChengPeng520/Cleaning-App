@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/victor_established"
+                android:drawableStart="@drawable/baseline_fact_check_24"
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/btn_orderList_established"

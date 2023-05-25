@@ -21,7 +21,7 @@
             android:id="@+id/btn_csUserPage_profile"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/white"
             android:text="@string/txt_profile"
             android:textColor="@color/black"
@@ -31,7 +31,7 @@
             app:iconTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/cv_csUser_img" />
 
         <Button
             android:id="@+id/btn_csUserPage_logOut"
@@ -66,14 +66,27 @@
             app:layout_constraintStart_toStartOf="@+id/btn_csUserPage_profile"
             app:layout_constraintTop_toBottomOf="@+id/btn_csUserPage_profile" />
 
-        <com.example.cleaningapp.CircleImageView
-            android:id="@+id/imageView12"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_csUser_img"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:foreground="?selectableItemBackground"
+            app:cardCornerRadius="150dp"
+            app:cardElevation="0dp"
+            android:layout_gravity="center"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            android:imageResource="@{viewModel.profile.image}" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline19">
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:imageResource="@{viewModel.profile.image}"
+                tools:srcCompat="@tools:sample/avatars"/>
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline19"
