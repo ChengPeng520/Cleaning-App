@@ -1,5 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,7 +31,7 @@ class BsUserSuspendFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvBsUserSusp.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.users?.observe(viewLifecycleOwner) { users ->
+                        viewModel?.users?.observe(viewLifecycleOwner) { users ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBsUserSusp.adapter == null) {
                     rvBsUserSusp.adapter = UserSuspendAdapter(users)
@@ -43,6 +44,13 @@ class BsUserSuspendFragment : Fragment() {
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
+
+                    //新增查無資料顯示
+                    if (rvBsUserSusp.adapter != null && rvBsUserSusp.adapter?.itemCount ==0 ){
+                        tvBsUserSuspNodata.visibility = View.VISIBLE
+                    }else{
+                        tvBsUserSuspNodata.visibility = View.INVISIBLE
+                    }
                     return true
                 }
 
@@ -64,4 +72,5 @@ class BsUserSuspendFragment : Fragment() {
 
         }
     }
+
 }

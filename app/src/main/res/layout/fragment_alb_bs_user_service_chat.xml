@@ -79,20 +79,9 @@
             android:id="@+id/tv_bs_user_serv_chat_query"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="9dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/tv_bs_user_serv_chat_query"
             android:textColor="@color/noActionGray"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_bs_user_serv_chat_modify"
-            app:layout_constraintEnd_toStartOf="@+id/tv_bs_user_serv_chat_modify"
-            app:layout_constraintTop_toTopOf="@+id/tv_bs_user_serv_chat_modify" />
-
-        <TextView
-            android:id="@+id/tv_bs_user_serv_chat_modify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="9dp"
-            android:text="@string/tv_bs_user_serv_chat_modify"
-            android:textColor="@color/Secondary"
             app:layout_constraintBottom_toBottomOf="@+id/tv_bs_user_serv_chat_close"
             app:layout_constraintEnd_toStartOf="@+id/tv_bs_user_serv_chat_close"
             app:layout_constraintTop_toTopOf="@+id/tv_bs_user_serv_chat_close" />

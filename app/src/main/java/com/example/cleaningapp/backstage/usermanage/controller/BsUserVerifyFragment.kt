@@ -44,6 +44,11 @@ private lateinit var binding: FragmentAlbBsUserVerifyBinding
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
+                    if (rvBsUserVerify.adapter != null && rvBsUserVerify.adapter?.itemCount ==0 ){
+                        tvBsUserVerifyNodata.visibility = View.VISIBLE
+                    }else{
+                        tvBsUserVerifyNodata.visibility = View.INVISIBLE
+                    }
                     return true
                 }
                 // 點擊虛擬鍵盤上的提交鈕時呼叫

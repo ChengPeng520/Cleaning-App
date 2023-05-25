@@ -117,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_user_verify_status_ti"
+                    android:gravity="center"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -128,10 +129,11 @@
 
             <TextView
                 android:id="@+id/tv_bs_user_verify_nodata"
-                android:layout_width="64dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/tv_bs_user_main_no_data" />
+                android:text="@string/tv_bs_user_main_no_search_data"
+                android:visibility="invisible" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_bs_user_verify"

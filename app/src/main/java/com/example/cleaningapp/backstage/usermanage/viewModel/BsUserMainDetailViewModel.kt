@@ -2,6 +2,7 @@ package com.example.cleaningapp.backstage.usermanage.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.backstage.usermanage.model.Chat
 import com.example.cleaningapp.backstage.usermanage.model.User
 
 /**
@@ -9,4 +10,9 @@ import com.example.cleaningapp.backstage.usermanage.model.User
  */
 class BsUserMainDetailViewModel : ViewModel() {
     val user: MutableLiveData<User> by lazy { MutableLiveData<User>() }
+
+    fun fetchMemberInfo(id: Int) {
+
+
+    }
 }

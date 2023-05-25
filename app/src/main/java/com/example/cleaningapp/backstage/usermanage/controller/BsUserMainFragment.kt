@@ -27,7 +27,9 @@ class BsUserMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().title ="用戶管理"
         with(binding) {
+
             rvBsUserMain.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.users?.observe(viewLifecycleOwner){ users ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateUsers(users)即可
@@ -37,17 +39,24 @@ class BsUserMainFragment : Fragment() {
                     (rvBsUserMain.adapter as UserMainAdapter).updateUsers(users)
                 }
             }
-//TODO
-//            if (rvBsUserMain.adapter != null){
-//                tvBsUserMainNoData.visibility = View.INVISIBLE
-//            } else{
+//                TODO 顯示尚無資料
+//            if (rvBsUserMain.adapter != null && rvBsUserMain.adapter?.itemCount == 0){
 //                tvBsUserMainNoData.visibility = View.VISIBLE
+//            } else{
+//                tvBsUserMainNoData.visibility = View.INVISIBLE
 //            }
 
             svBsUserMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
+
+                    //增加查無資料的判斷
+                    if (rvBsUserMain.adapter != null && rvBsUserMain.adapter?.itemCount == 0){
+                        tvBsUserMainNoData.visibility =View.VISIBLE
+                    }else{
+                        tvBsUserMainNoData.visibility = View.INVISIBLE
+                    }
                     return true
                 }
                 // 點擊虛擬鍵盤上的提交鈕時呼叫

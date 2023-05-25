@@ -23,7 +23,6 @@ class BackstageCouponSearchFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        requireActivity().setTitle(R.string.menu_backstage_orderManage)
         binding = FragmentCiyiCouponSearchBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = requireActivity()
