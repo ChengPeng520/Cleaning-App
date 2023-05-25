@@ -28,14 +28,48 @@
                 android:paddingHorizontal="24dp"
                 android:paddingVertical="12dp">
 
-                <com.example.cleaningapp.CircleImageView
-                    android:id="@+id/circleImageView2"
-                    android:layout_width="104dp"
-                    android:layout_height="104dp"
-                    android:src="@drawable/fatruei_my_image"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout_memberInfo_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_memberInfo_img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:elevation="2dp"
+                    android:foreground="?selectableItemBackground"
+                    app:cardCornerRadius="150dp"
+                    app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_memberInfo_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/cs_img_xxx"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_memberInfo_editPic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/baseline_camera_alt_24"
+                    android:elevation="5dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout_memberInfo_img" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
@@ -45,7 +79,7 @@
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/circleImageView2">
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout_memberInfo_img">
 
                     <TextView
                         android:id="@+id/textView9"

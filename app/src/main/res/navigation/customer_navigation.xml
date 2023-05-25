@@ -36,15 +36,6 @@
             app:destination="@id/csOrderConfirmedFragment" />
     </fragment>
     <fragment
-        android:id="@+id/csServiceTermsFragment"
-        android:name="com.example.cleaningapp.customer.csCreateOrder.CsServiceTermsFragment"
-        android:label="fragment_cs_service_terms"
-        tools:layout="@layout/fragment_cs_service_terms" >
-        <action
-            android:id="@+id/action_csServiceTermsFragment_to_csCreateOrderFragment"
-            app:destination="@id/csCreateOrderFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/csUserPageFragment"
         android:name="com.example.cleaningapp.customer.csUserPage.CsUserPageFragment"
         android:label="fragment_cs_user"
@@ -74,8 +65,8 @@
         android:label="fragment_cs_oder_confirmed"
         tools:layout="@layout/fragment_cs_order_confirmed" >
         <action
-            android:id="@+id/action_csOrderConfirmedFragment_to_historicalorderFragment"
-            app:destination="@id/historicalorderFragment" />
+            android:id="@+id/action_csOrderConfirmedFragment_to_csOrderEstablishedFragment"
+            app:destination="@id/csOrderEstablishedFragment" />
     </fragment>
     <fragment
         android:id="@+id/csChooseCleanerFragment2"
@@ -110,8 +101,8 @@
         android:label="fragment_cs_view_coupon"
         tools:layout="@layout/fragment_cs_view_coupon" >
         <action
-            android:id="@+id/action_csViewCouponFragment_to_csServiceTermsFragment"
-            app:destination="@id/csServiceTermsFragment" />
+            android:id="@+id/action_csViewCouponFragment_to_csCreateOrderFragment2"
+            app:destination="@id/csCreateOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"
@@ -223,5 +214,15 @@
     <fragment
         android:id="@+id/complaintdetailsFragment"
         android:name="com.example.cleaningapp.customer.fragment.ComplaintdetailsFragment"
-        android:label="ComplaintdetailsFragment" />
+        android:label="ComplaintdetailsFragment"
+        tools:layout="@layout/fragment_victor_complaintdetails"/>
+    <fragment
+        android:id="@+id/csOrderEstablishedFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsOrderEstablishedFragment"
+        android:label="CsOrderEstablishedFragment"
+        tools:layout="@layout/fragment_cs_order_established">
+        <action
+            android:id="@+id/action_csOrderEstablishedFragment_to_historicalorderFragment"
+            app:destination="@id/historicalorderFragment" />
+    </fragment>
 </navigation>
