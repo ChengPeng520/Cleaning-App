@@ -22,7 +22,10 @@
     <string name="tv_referphoto">參考環境照片</string>
     <string name="bt_order_check">確定接單</string>
     <string name="tv_order_cleanlocaltion">位置:</string>
+    <string name="tv_order_cleancheck">待確認</string>
     <string name="tv_order_cleanfound">已成立</string>
+    <string name="tv_order_cleanend">已結束</string>
+    <string name="tv_order_cleanwaitmatch">媒合中</string>
 
     //orderAccept 等待通知
     <string name="tv_order_accept">已向顧客通知您的接單</string>
