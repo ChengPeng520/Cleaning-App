@@ -7,8 +7,6 @@
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.viewModel.OrderprogressViewModel" />
-
-
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

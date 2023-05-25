@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customer_navigation"
-    app:startDestination="@id/csHomePageFragment">
+    app:startDestination="@id/historicalorderFragment">
 
     <fragment
         android:id="@+id/csHomePageFragment"
         android:name="com.example.cleaningapp.customer.csHomePage.CsHomePageFragment"
         android:label="fragment_cs_homepage"
-        tools:layout="@layout/fragment_cs_homepage" >>
+        tools:layout="@layout/fragment_cs_homepage" >
         <action
             android:id="@+id/action_csHomePageFragment_to_csCouponObtainFragment"
             app:destination="@id/csCouponObtainFragment" />
@@ -190,7 +190,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailedOrderFragment"
-        android:name="com.example.cleaningapp.customer.fragment.DetailedOrderFragment"
+        android:name="DetailedOrderFragment"
         android:label="DetailedOrderFragment"
         tools:layout="@layout/fragment_victor_detailedorder" >
         <action
@@ -199,7 +199,7 @@
     </fragment>
     <fragment
         android:id="@+id/applycomplaintFragment"
-        android:name="com.example.cleaningapp.customer.fragment.ApplycomplaintFragment"
+        android:name="ApplycomplaintFragment"
         android:label="ApplycomplaintFragment"
         tools:layout="@layout/fragment_victor_applycomplaint" >
         <action
