@@ -7,11 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberInfoViewModel
+import com.example.cleaningapp.data.datasource.MemberLocalDataSource
+import com.example.cleaningapp.data.datasource.api.impl.MemberApiImpl
+import com.example.cleaningapp.data.repository.impl.MemberRepositoryImpl
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberInfoBinding
 
 class CleanerMemberInfoFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiMemberInfoBinding
-    private val viewModel: CleanerMemberInfoViewModel by viewModels()
+    private val viewModel: CleanerMemberInfoViewModel by viewModels {
+        CleanerMemberInfoViewModel.provideFactory(
+            requireActivity().application, MemberRepositoryImpl(
+                MemberLocalDataSource(MemberApiImpl())
+            )
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,21 +35,17 @@ class CleanerMemberInfoFragment : Fragment() {
 
     private fun initView() {
         with(binding) {
-            viewModel?.name?.observe(viewLifecycleOwner) {
+            viewModel?.uiState?.observe(viewLifecycleOwner) {
                 edtTxtMemberInfoName.textAlignment =
-                    if (it == null || it.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
+                    if (it.name.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
                     else View.TEXT_ALIGNMENT_TEXT_START
-            }
 
-            viewModel?.identityNumber?.observe(viewLifecycleOwner) {
                 edtTxtMemberInfoIdentity.textAlignment =
-                    if (it == null || it.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
+                    if (it.identityNumber.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
                     else View.TEXT_ALIGNMENT_TEXT_START
-            }
 
-            viewModel?.phone?.observe(viewLifecycleOwner) {
                 edtTxtMemberInfoPhone.textAlignment =
-                    if (it == null || it.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
+                    if (it.phone.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
                     else View.TEXT_ALIGNMENT_TEXT_START
             }
         }

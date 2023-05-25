@@ -1,37 +1,61 @@
 package com.example.cleaningapp.cleaner.viewmodel.member
 
 import android.app.Application
-import android.content.Context
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
+import com.example.cleaningapp.cleaner.uistate.MemberInfoUiState
+import com.example.cleaningapp.data.IMemberRepository
+import kotlinx.coroutines.launch
 
-class CleanerMemberInfoViewModel(private val application: Application) :
+class CleanerMemberInfoViewModel(
+    private val application: Application,
+    private val IMemberRepository: IMemberRepository
+) :
     AndroidViewModel(application) {
-    val name: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val gender: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
-    val identityNumber: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val phone: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val introduction: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val uiState: MutableLiveData<MemberInfoUiState> by lazy { MutableLiveData<MemberInfoUiState>() }
 
     init {
-        val preferences = application.getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE)
-        name.value = preferences.getString("name", "")
-        gender.value = preferences.getInt("gender", 0)
-        identityNumber.value = preferences.getString("identityNumber", "")
-        phone.value = preferences.getString("phone", "")
-        introduction.value = preferences.getString("introduction", "")
+        fetchMemberInfo()
+    }
+
+    private fun fetchMemberInfo() {
+        viewModelScope.launch {
+            try {
+                val memberInfo = IMemberRepository.fetchMemberInfo(application = application)
+                uiState.value = memberInfo
+            } catch (ioe: Exception) {
+                ioe.printStackTrace()
+            }
+        }
     }
 
     fun saveSharePreferences(view: View) {
-        application.getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE).edit()
-            .putString("name", name.value)
-            .putInt("gender", gender.value!!)
-            .putString("identityNumber", identityNumber.value)
-            .putString("phone", phone.value)
-            .putString("introduction", introduction.value)
-            .apply()
-        Toast.makeText(view.context, "個人資料已儲存", Toast.LENGTH_SHORT).show()
+        if (uiState.value != null && uiState.value!!.name.isNotEmpty() && uiState.value!!.identityNumber.isNotEmpty() && uiState.value!!.phone.isNotEmpty()) {
+            val memberInfo = MemberInfoUiState(
+                uiState.value!!.name,
+                uiState.value!!.gender,
+                uiState.value!!.identityNumber,
+                uiState.value!!.phone,
+                uiState.value!!.introduction
+            )
+
+            viewModelScope.launch {
+                val resultText = IMemberRepository.saveMemberInfo(application, memberInfo)
+                Toast.makeText(view.context, resultText, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    companion object {
+        fun provideFactory(
+            application: Application,
+            IMemberRepository: IMemberRepository
+        ): ViewModelProvider.Factory =
+            object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    return CleanerMemberInfoViewModel(application, IMemberRepository) as T
+                }
+            }
     }
 }

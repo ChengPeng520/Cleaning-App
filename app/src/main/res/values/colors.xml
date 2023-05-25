@@ -28,6 +28,9 @@
     <color name="cleanerPrimaryDeep">#285E8E</color>
     <color name="cleanerPrimaryLight">#61A5E4</color>
 
+    // backstage
+    <color name="backstage_editText_color">#F0F0F0</color>
+
     <!-- /////////////////////////////////////////////// -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
