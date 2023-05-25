@@ -42,6 +42,11 @@ class BsUserServiceFragment : Fragment() {
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
+                    if (rvBsUserServ.adapter != null && rvBsUserServ.adapter?.itemCount == 0){
+                        tvBsUserServQuerynodata.visibility = View.VISIBLE
+                    }else{
+                        tvBsUserServQuerynodata.visibility = View.INVISIBLE
+                    }
                     return true
                 }
                 // 點擊虛擬鍵盤上的提交鈕時呼叫

@@ -18,6 +18,8 @@ import com.example.cleaningapp.databinding.ItemAlbBsUserMainDataboxBinding
 class UserMainAdapter(private var users: List<User>) :
     RecyclerView.Adapter<UserMainAdapter.UserMainViewHolder>() {
 
+
+
     /**
      * 更新使用者列表內容
      * @param users 新的好友列表
@@ -32,6 +34,7 @@ class UserMainAdapter(private var users: List<User>) :
         RecyclerView.ViewHolder(itemViewBinding.root)
 
     override fun getItemCount(): Int {
+        //根據 isEmpty 的值資料集是否為空
         return users.size
     }
 
@@ -46,6 +49,8 @@ class UserMainAdapter(private var users: List<User>) :
     }
 
     override fun onBindViewHolder(holder: UserMainViewHolder, position: Int) {
+
+
         val user = users[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示

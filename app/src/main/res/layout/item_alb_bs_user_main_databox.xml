@@ -9,53 +9,58 @@
             type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_bs_user_main_ti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:foreground="?selectableItemBackground"
-        app:cardBackgroundColor="#DDDDDD"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="6dp">
+        android:minHeight="48dp"
+        android:orientation="horizontal"
 
-            <LinearLayout
-                android:id="@+id/ll_bs_user_main_ti"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+        >
 
-                <TextView
-                    android:id="@+id/tv_bs_user_main_databox_email"
-                    android:layout_width="84dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@{viewModel.user.email}"
-                    android:textColor="#414141" />
+        <TextView
+            android:id="@+id/tv_bs_user_main_databox_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@{viewModel.user.email}"
+            android:textColor="#414141" />
 
-                <TextView
-                    android:id="@+id/tv_bs_user_main_databox_name"
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@{viewModel.user.name}"
-                    android:textColor="#414141" />
+        <TextView
+            android:id="@+id/tv_bs_user_main_databox_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@{viewModel.user.name}"
+            android:textColor="#414141" />
 
-                <TextView
-                    android:id="@+id/tv_bs_user_main_databox_time"
-                    android:layout_width="49dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@{viewModel.user.createTime}"
-                    android:textColor="#414141" />
-            </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bs_user_main_databox_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@{viewModel.user.createTime}"
+            android:textColor="#414141" />
 
-    </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider12"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    </LinearLayout>
 
 </layout>
