@@ -8,6 +8,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
+        android:name=".share.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,11 +23,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".CleanerActivity"
+            android:name=".CustomerActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".CustomerActivity"
+            android:name=".CleanerActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
