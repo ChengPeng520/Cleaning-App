@@ -30,11 +30,21 @@ class BsUserServiceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvBsUserServ.layoutManager = LinearLayoutManager(requireContext())
+            tvBsUserServQueryNoData.visibility = View.GONE
+            tvBsUserServQueryNoSearchData.visibility = View.GONE
+
             viewModel?.chats?.observe(viewLifecycleOwner){ chats ->
                 if (rvBsUserServ.adapter == null) {
                     rvBsUserServ.adapter = UserServiceAdapter(chats)
                 } else {
                     (rvBsUserServ.adapter as UserServiceAdapter).updateChats(chats)
+                }
+
+                // 顯示尚無資料的判斷
+                if (rvBsUserServ.adapter != null && rvBsUserServ.adapter?.itemCount == 0) {
+                    tvBsUserServQueryNoData.visibility = View.VISIBLE
+                } else {
+                    tvBsUserServQueryNoData.visibility = View.GONE
                 }
             }
 
@@ -43,9 +53,10 @@ class BsUserServiceFragment : Fragment() {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
                     if (rvBsUserServ.adapter != null && rvBsUserServ.adapter?.itemCount == 0){
-                        tvBsUserServQuerynodata.visibility = View.VISIBLE
+                        tvBsUserServQueryNoSearchData.visibility = View.VISIBLE
+                        tvBsUserServQueryNoData.visibility = View.GONE
                     }else{
-                        tvBsUserServQuerynodata.visibility = View.INVISIBLE
+                        tvBsUserServQueryNoSearchData.visibility = View.GONE
                     }
                     return true
                 }
