@@ -142,12 +142,18 @@
                 android:background="?android:attr/listDivider" />
 
             <TextView
+                android:id="@+id/tv_bs_user_main_no_search_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_main_no_search_data" />
+
+            <TextView
                 android:id="@+id/tv_bs_user_main_no_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/tv_bs_user_main_no_search_data"
-                android:visibility="invisible" />
+                android:text="@string/tv_bs_user_main_no_data"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_bs_user_main"

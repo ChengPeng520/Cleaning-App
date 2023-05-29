@@ -2,8 +2,6 @@ package com.example.cleaningapp.login.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.requestTask
-import com.google.gson.Gson
 
 data class Member(val username: String, val password: String)
 class SignupViewModel : ViewModel() {

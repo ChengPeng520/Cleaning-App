@@ -20,7 +20,6 @@ class CsViewProfileFragment : Fragment() {
         val viewModel: CsViewProfileViewModel by viewModels()
         binding = FragmentCsViewProfileBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
         return binding.root
     }

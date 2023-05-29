@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,22 +15,33 @@
         android:layout_height="match_parent"
         tools:context=".cleaner.view.member.CleanerMemberFragment">
 
-        <com.example.cleaningapp.CircleImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/circleImageView"
-            android:layout_width="104dp"
-            android:layout_height="104dp"
-            android:src="@drawable/fatruei_my_image"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            android:elevation="2dp"
+            android:foreground="?selectableItemBackground"
+            app:cardCornerRadius="150dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:imageBitmap="@{viewModel.photo}"
+                tools:src="@drawable/cs_img_xxx" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_member_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="35dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +80,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View

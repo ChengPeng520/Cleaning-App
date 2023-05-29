@@ -31,12 +31,22 @@ class BsUserSuspendFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvBsUserSusp.layoutManager = LinearLayoutManager(requireContext())
-                        viewModel?.users?.observe(viewLifecycleOwner) { users ->
+            tvBsUserSuspNoData.visibility = View.GONE
+            tvBsUserSuspNoSearchData.visibility = View.GONE
+
+            viewModel?.users?.observe(viewLifecycleOwner) { users ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBsUserSusp.adapter == null) {
                     rvBsUserSusp.adapter = UserSuspendAdapter(users)
                 } else {
                     (rvBsUserSusp.adapter as UserSuspendAdapter).updateUsers(users)
+                }
+
+                // 顯示尚無資料的判斷
+                if (rvBsUserSusp.adapter != null && rvBsUserSusp.adapter?.itemCount == 0) {
+                    tvBsUserSuspNoData.visibility = View.VISIBLE
+                } else {
+                    tvBsUserSuspNoData.visibility = View.GONE
                 }
             }
 
@@ -46,10 +56,11 @@ class BsUserSuspendFragment : Fragment() {
                     viewModel?.search(newText)
 
                     //新增查無資料顯示
-                    if (rvBsUserSusp.adapter != null && rvBsUserSusp.adapter?.itemCount ==0 ){
-                        tvBsUserSuspNodata.visibility = View.VISIBLE
-                    }else{
-                        tvBsUserSuspNodata.visibility = View.INVISIBLE
+                    if (rvBsUserSusp.adapter != null && rvBsUserSusp.adapter?.itemCount == 0) {
+                        tvBsUserSuspNoSearchData.visibility = View.VISIBLE
+                        tvBsUserSuspNoData.visibility = View.GONE
+                    } else {
+                        tvBsUserSuspNoSearchData.visibility = View.GONE
                     }
                     return true
                 }
