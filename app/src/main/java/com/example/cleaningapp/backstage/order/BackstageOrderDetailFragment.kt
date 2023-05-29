@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.cleaningapp.BackstageActivity
 
 import com.example.cleaningapp.databinding.FragmentBackstageOrderDetailBinding
@@ -29,6 +30,12 @@ class BackstageOrderDetailFragment : Fragment() {
 
     //用 onViewCreated 方法完成對視圖的初始化和設置
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        with(binding){
+            btnBsOrderDetailPopback.setOnClickListener {
+                Navigation.findNavController(it).popBackStack()
+            }
+        }
         // 透過 arguments 屬性來獲取傳遞給該 Fragment 或者 Activity 的 Bundle 對象,
         // 如果 Bundle 不為空，則調用 let 方法，這個方法用於執行一個 Lambda 函數
         arguments?.let { bundle ->

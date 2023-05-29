@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.shop.OrderDetailAdapter
@@ -30,8 +31,10 @@ class BsShopOrderDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         with(binding) {
+            btnBsShopOrderDetailPopback.setOnClickListener {
+                Navigation.findNavController(it).popBackStack()
+            }
             btnBsShopOrderDetailShip.setOnClickListener {
 
                 val radius = resources.getDimensionPixelSize(R.dimen.button_corner_radius).toFloat()

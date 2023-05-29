@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".backstage.shop.controller.BsShopProductFragment">
 
 
 
@@ -16,6 +17,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <ImageButton
+            android:id="@+id/btn_bs_shop_product_detail_popback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_bs_shop_product_detail"
+            app:layout_constraintStart_toStartOf="@+id/sclVi_bs_shop_product"
+            app:layout_constraintTop_toTopOf="@+id/tv_bs_shop_product_detail" />
 
 
         <TextView

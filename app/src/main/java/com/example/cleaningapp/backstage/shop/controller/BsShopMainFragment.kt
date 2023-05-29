@@ -31,6 +31,7 @@ class BsShopMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().title ="商城管理"
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvBsShop.layoutManager = GridLayoutManager(requireContext(), 2)

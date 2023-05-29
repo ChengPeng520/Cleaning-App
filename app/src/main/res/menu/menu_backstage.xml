@@ -27,7 +27,7 @@
     </item>
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/logout"
+            android:id="@+id/logOut"
             android:title="@string/menu_backstage_signup" />
 
     </group>
