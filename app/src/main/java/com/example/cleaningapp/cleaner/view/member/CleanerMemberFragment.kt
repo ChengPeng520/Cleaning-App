@@ -6,22 +6,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CleanerMemberFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentFatrueiMemberBinding
+    private val viewModel: CleanerMemberViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFatrueiMemberBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initView()
+    }
+
+    private fun initView() {
         binding.clMemberInfo.setOnClickListener(this::onClick)
         binding.clMemberWindow.setOnClickListener(this::onClick)
-        return binding.root
     }
 
     override fun onClick(v: View?) {
@@ -37,5 +49,6 @@ class CleanerMemberFragment : Fragment(), OnClickListener {
         super.onResume()
         requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
             View.VISIBLE
+        viewModel.fetchPhoto()
     }
 }
