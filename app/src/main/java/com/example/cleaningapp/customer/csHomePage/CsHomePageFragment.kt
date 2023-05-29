@@ -29,6 +29,7 @@ class CsHomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle(R.string.csTitle_homepage)
         with(binding) {
             flCsHomeCoupon.setOnClickListener {
                 Navigation.findNavController(it)

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--    ToolBar標題   -->
+    <string name="csTitle_chooseCleaner">選擇清潔人員</string>
+    <string name="csTitle_couponPicker">使用優惠券</string>
+    <string name="csTitle_createOrder">新建訂單</string>
+    <string name="csTitle_orderConfirmed">確認訂單</string>
+    <string name="csTitle_orderEstablished">訂單建立完成</string>
+    <string name="csTitle_serviceTerms">服務條款</string>
+    <string name="csTitle_viewCv">查看評價</string>
+    <string name="csTitle_couponObtain">領取優惠券</string>
+    <string name="csTitle_homepage">首頁</string>
+    <string name="csTitle_editProfile">修改個人資料</string>
+    <string name="csTitle_userPage">個人管理</string>
+    <string name="csTitle_viewCoupon">查看優惠券</string>
+    <string name="csTitle_viewProfile">查看個人資料</string>
+
     <!--    首頁      -->
     <string name="txt_cs_home">Home</string>
     <string name="tv_csHome_specialOffer">限時優惠</string>
@@ -33,6 +48,8 @@
     <string name="chk_csCreateOrder_bathroom">廁所</string>
     <string name="chk_csCreateOrder_bedroom">房間</string>
     <string name="ht_csCreateOrder_enterSize">請輸入坪數</string>
+    <string name="toast_csCreateOrder_notMeetMinCost">未達最低消費標準</string>
+    <string name="toast_csCreateOrder_keyInCost">請輸入正確金額</string>
     <string name="txt_csCreateOrder_orderEstablished">訂單建立完成</string>
     <string name="tv_csCreateOrder_chooseCleanerAtHistory">請於刊登紀錄選擇清潔人員</string>
     <string name="btn_csCreateOrder_checkHistory"><u>查看刊登紀錄</u></string>
@@ -82,11 +99,11 @@
 
     <!--    優惠券元素   -->
     <string name="txt_cusCoupon_limitedTime">限時</string>
-    <string name="txt_cusCoupon_lowConsump">低消 %d 元才可適用</string>
-    <string name="txt_cusCoupon_deadline">即將失效:  %S 到期</string>
-    <string name="txt_cusCoupon_amount">剩餘張數: %d</string>
+    <string name="txt_cusCoupon_lowConsump">低消 %d元才可適用</string>
+    <string name="txt_cusCoupon_deadline">到期日: %S</string>
     <string name="txt_cusCoupon_obtain">領取</string>
     <string name="txt_cusCoupon_notObtain">已領取</string>
     <string name="txt_use">使用</string>
-    <string name="toast_csCouponItem_couponObtained">領取成功</string>
+    <string name="toast_csHome_obtainSucceed">領取成功</string>
+
 </resources>

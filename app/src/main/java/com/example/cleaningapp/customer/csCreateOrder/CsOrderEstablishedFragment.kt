@@ -29,6 +29,7 @@ class CsOrderEstablishedFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
+        activity?.setTitle(R.string.csTitle_orderEstablished)
         with(binding) {
             btnCsCreateOrderCheckHistory.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csOrderEstablishedFragment_to_historicalorderFragment)

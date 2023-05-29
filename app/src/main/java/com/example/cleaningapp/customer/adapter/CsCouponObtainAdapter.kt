@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.csHomePage.CsCouponObtainViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.ItemCsObtainCouponBinding
@@ -47,7 +48,7 @@ class CsCouponObtainAdapter(private var coupons: List<Coupon>) :
             val bundle = Bundle()
             bundle.putSerializable("coupon", coupon)
             itemViewBinding.btCusCouponObtain.setOnClickListener() {
-                Toast.makeText(it.context, "領取成功", Toast.LENGTH_SHORT).show()
+                Toast.makeText(it.context, it.context.getString(R.string.toast_csHome_obtainSucceed), Toast.LENGTH_SHORT).show()
             }
         }
     }
