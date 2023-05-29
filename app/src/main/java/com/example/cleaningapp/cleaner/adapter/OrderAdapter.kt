@@ -2,6 +2,7 @@ package com.example.cleaningapp.cleaner.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
@@ -43,7 +44,7 @@ class OrderAdapter(private var orders: List<Work>) :
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.order?.value = order
             val bundle = Bundle()
-            bundle.putSerializable("orders", order)
+            bundle.putSerializable("order", order)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(
@@ -54,4 +55,3 @@ class OrderAdapter(private var orders: List<Work>) :
         }
     }
 }
-

@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="86dp"
                     android:layout_height="86dp"
@@ -57,19 +57,20 @@
                     app:cardCornerRadius="43dp">
 
 
-                <ImageView
-                    android:id="@+id/iv_bs_user_main_detail_avatar"
-                    android:layout_width="86dp"
-                    android:layout_height="86dp"
-                    android:layout_gravity="center_horizontal"
-                    android:scaleType="centerCrop"
-                    android:imageResource="@{viewModel.user.avatar}" />
+                    <ImageView
+                        android:id="@+id/iv_bs_user_main_detail_avatar"
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:layout_gravity="center_horizontal"
+                        android:imageResource="@{viewModel.user.avatar}"
+                        android:scaleType="centerCrop" />
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -92,28 +93,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_main_detail_password_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_password_ti"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_main_detail_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.password}"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -136,28 +116,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_main_detail_phone_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_phone_ti"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_main_detail_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.phone}"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -180,6 +139,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_detail_phone_ti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_bs_user_main_detail_phone_ti"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_detail_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.user.phone}"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -202,6 +185,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -224,6 +208,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -246,6 +231,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -268,6 +254,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -300,6 +287,7 @@
                     android:id="@+id/tv_bs_user_main_detail_intro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:text="@{viewModel.user.intro}"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
@@ -307,7 +295,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -330,6 +318,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -354,7 +343,6 @@
                     android:id="@+id/tv_bs_user_main_detail_idfront_ti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/tv_bs_user_main_detail_idfront_ti"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
@@ -363,13 +351,13 @@
                     android:id="@+id/iv_bs_user_main_detail_idfront"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
+                    android:layout_marginBottom="10dp"
                     android:imageResource="@{viewModel.user.idCardFront}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_main_detail_idback_ti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/tv_bs_user_main_detail_idback_ti"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
@@ -378,13 +366,13 @@
                     android:id="@+id/iv_bs_user_main_detail_idback"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
+                    android:layout_marginBottom="10dp"
                     android:imageResource="@{viewModel.user.idCardBack}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_main_detail_criminalrecord_ti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/tv_bs_user_main_detail_criminalrecord_ti"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
@@ -393,24 +381,11 @@
                     android:id="@+id/iv_bs_user_main_detail_criminalrecord"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:imageResource="@{viewModel.user.criminalRecord}"/>
+                    android:layout_marginBottom="10dp"
+                    android:imageResource="@{viewModel.user.criminalRecord}" />
 
             </LinearLayout>
         </ScrollView>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_bs_user_main_detail_delete"
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/error"
-            android:text="@string/btn_bs_user_main_detail_delete"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_detail_modify"
@@ -422,6 +397,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.97" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bs_user_main_detail_delete"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/error"
+            android:text="@string/btn_bs_user_main_detail_delete"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.97" />

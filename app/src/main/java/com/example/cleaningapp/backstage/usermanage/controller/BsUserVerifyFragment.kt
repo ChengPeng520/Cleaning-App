@@ -1,5 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +15,7 @@ import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserVerifyViewMo
 import com.example.cleaningapp.databinding.FragmentAlbBsUserVerifyBinding
 
 class BsUserVerifyFragment : Fragment() {
-private lateinit var binding: FragmentAlbBsUserVerifyBinding
+    private lateinit var binding: FragmentAlbBsUserVerifyBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,14 +30,23 @@ private lateinit var binding: FragmentAlbBsUserVerifyBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
+        with(binding) {
             rvBsUserVerify.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.users?.observe(viewLifecycleOwner){ users ->
+            tvBsUserVerifyNoSearchData.visibility = View.GONE
+
+            viewModel?.users?.observe(viewLifecycleOwner) { users ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBsUserVerify.adapter == null) {
                     rvBsUserVerify.adapter = UserVerifyAdapter(users)
                 } else {
                     (rvBsUserVerify.adapter as UserVerifyAdapter).updateUsers(users)
+                }
+
+                // 顯示尚無資料的判斷
+                if (rvBsUserVerify.adapter != null && rvBsUserVerify.adapter?.itemCount == 0) {
+                    tvBsUserVerifyNoData.visibility = View.VISIBLE
+                } else {
+                    tvBsUserVerifyNoData.visibility = View.GONE
                 }
             }
 
@@ -44,13 +54,15 @@ private lateinit var binding: FragmentAlbBsUserVerifyBinding
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
-                    if (rvBsUserVerify.adapter != null && rvBsUserVerify.adapter?.itemCount ==0 ){
-                        tvBsUserVerifyNodata.visibility = View.VISIBLE
-                    }else{
-                        tvBsUserVerifyNodata.visibility = View.INVISIBLE
+                    if (rvBsUserVerify.adapter != null && rvBsUserVerify.adapter?.itemCount == 0) {
+                        tvBsUserVerifyNoSearchData.visibility = View.VISIBLE
+                        tvBsUserVerifyNoData.visibility = View.GONE
+                    } else {
+                        tvBsUserVerifyNoSearchData.visibility = View.GONE
                     }
                     return true
                 }
+
                 // 點擊虛擬鍵盤上的提交鈕時呼叫
                 override fun onQueryTextSubmit(text: String): Boolean {
                     return false
@@ -58,13 +70,13 @@ private lateinit var binding: FragmentAlbBsUserVerifyBinding
             })
 
 
-            btnBsUserVerifyUser.setOnClickListener{
+            btnBsUserVerifyUser.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
             }
-            btnBsUserVerifySuspend.setOnClickListener{
+            btnBsUserVerifySuspend.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
             }
-            btnBsUserVerifyService.setOnClickListener{
+            btnBsUserVerifyService.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserServiceFragment)
             }
         }

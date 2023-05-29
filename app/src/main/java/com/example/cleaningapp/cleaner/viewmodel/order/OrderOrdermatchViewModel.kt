@@ -5,5 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.Work
 
 class OrderOrdermatchViewModel : ViewModel() {
+
     val order : MutableLiveData<Work> by lazy { MutableLiveData<Work>() }
+
 }

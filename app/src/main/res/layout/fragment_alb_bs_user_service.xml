@@ -100,13 +100,20 @@
 <!--                tools:visibility="invisible" />-->
 
             <TextView
-                android:id="@+id/tv_bs_user_serv_querynodata"
+                android:id="@+id/tv_bs_user_serv_query_no_search_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/tv_bs_user_serv_querynodata"
-                android:textColor="@color/textSecondary"
-                android:visibility="invisible" />
+                android:textColor="@color/textSecondary"/>
+
+            <TextView
+                android:id="@+id/tv_bs_user_serv_query_no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_main_no_data"
+                android:textColor="@color/textSecondary"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_bs_user_serv"
