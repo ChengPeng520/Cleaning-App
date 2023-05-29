@@ -31,6 +31,7 @@ class CsViewCvFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle(R.string.csTitle_viewCv)
         arguments?.let { bundle ->
             bundle.getSerializable("cleaner")?.let {
                 binding.viewModel?.cleaner?.value = it as Cleaner

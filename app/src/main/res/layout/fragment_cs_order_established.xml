@@ -18,7 +18,7 @@
             android:id="@+id/imageView10"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/gif_order_establish"
+            android:src="@drawable/checked"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"

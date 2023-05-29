@@ -25,4 +25,13 @@ class OrderprogressFragment : Fragment() {
         binding.lifecycleOwner = this
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding){
+            button.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.action_orderprogressFragment_to_orderingFragment)
+            }
+        }
+    }
 }

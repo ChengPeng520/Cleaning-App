@@ -6,54 +6,70 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.backstage.coupon.BackstageCouponViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-            <TextView
-                android:id="@+id/tv_coupon_num"
-                android:layout_width="138dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                tools:text="1234567890"
-                android:text="@{viewModel.coupon.num}"
-                android:textSize="16sp"
-                 />
-
-            <TextView
-                android:id="@+id/tv_coupon_name"
-                android:layout_width="138dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
-                android:gravity="center_vertical"
-                tools:text="100跳樓大拍賣"
-                android:text="@{viewModel.coupon.name}" />
-
-            <TextView
-                android:id="@+id/tv_bs_coupon_modify_limit"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="2023-09-11"
-                android:layout_weight="1"
-                android:text="@{viewModel.coupon.limit}" />
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+
+                <TextView
+                    android:id="@+id/tv_coupon_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.coupon.num}"
+                    android:textSize="16sp"
+                    tools:text="1234567890" />
+
+                <TextView
+                    android:id="@+id/tv_coupon_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.coupon.name}"
+                    tools:text="100跳樓大拍賣" />
+
+                <TextView
+                    android:id="@+id/tv_bs_coupon_modify_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@{viewModel.coupon.limit}"
+                    tools:text="2023-09-11" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider">
+
+            </View>
 
         </LinearLayout>
 

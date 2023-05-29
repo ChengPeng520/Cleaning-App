@@ -7,7 +7,7 @@ import com.example.cleaningapp.customer.detailed.Order
 class HistoricalOrderViewModel : ViewModel() {
     val orderList: MutableLiveData<List<Order>> by lazy { MutableLiveData<List<Order>>() }
 
-    fun fetchOrders(){
+    fun fetchOrders() {
         val list = mutableListOf<Order>()
         list.add(Order(1, 1001, "2023-05-11", "10:00", "台北市信義區", "100坪", "什麼都有，人來就好", "John Doe", 50))
         list.add(Order(2, 1002, "2023-05-12", "14:30", "新北市蘆洲區", "40坪", "路上注意安全", "Jane Smith", 75))

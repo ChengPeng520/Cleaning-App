@@ -26,6 +26,7 @@ class CsServiceTermsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.setTitle(R.string.csTitle_serviceTerms)
 
     }
 

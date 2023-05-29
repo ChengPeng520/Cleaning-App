@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.adapter.CsCouponObtainAdapter
 import com.example.cleaningapp.databinding.FragmentCsCouponObtainBinding
 
@@ -25,6 +26,7 @@ class CsCouponObtainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.setTitle(R.string.csTitle_couponObtain)
         with(binding) {
             rvCouponObtain.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.coupons?.observe(viewLifecycleOwner) { coupons ->

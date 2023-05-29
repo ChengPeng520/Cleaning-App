@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.CleanerActivity
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.OrderAdapter
@@ -21,6 +22,7 @@ import com.example.cleaningapp.databinding.FragmentVickyOrderConductBinding
 class OrderConductFragment : Fragment() {
     private lateinit var binding: FragmentVickyOrderConductBinding
     private val viewModel: OrderConductViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,10 +41,9 @@ class OrderConductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             viewModel?.selectedTab?.observe(viewLifecycleOwner) { tabNumber ->
-                // 当选项卡发生变化时执行相应的操作
-//            handleTabSelection(tabNumber)
+                // 當選項發生變化時執行相應的操作
+//            handleTabSelection(tabNumber: Int)
             }
-
             textView62.setOnClickListener {
                 viewModel?.onTabSelected(1)
                 textView62.setTextColor(Color.BLUE) // 更改字体颜色
@@ -51,6 +52,7 @@ class OrderConductFragment : Fragment() {
 //                setTextTintColor(textView62, Color.BLUE)
 //                setTextTintColor(textView49, Color.GRAY)
 //                setTextTintColor(imageButton4, Color.GRAY)
+
             }
 
             textView49.setOnClickListener {
@@ -61,6 +63,7 @@ class OrderConductFragment : Fragment() {
 //                setTextTintColor(textView49, Color.BLUE)
 //                setTextTintColor(textView62, Color.GRAY)
 //                setTextTintColor(imageButton4, Color.GRAY)
+
             }
 
             imageButton4.setOnClickListener {
@@ -71,6 +74,7 @@ class OrderConductFragment : Fragment() {
 //                setTextTintColor(imageButton4, Color.BLUE)
 //                setTextTintColor(textView49, Color.GRAY)
 //                setTextTintColor(textView62, Color.GRAY)
+
             }
 
             recyclerView2.layoutManager = LinearLayoutManager(requireContext())
@@ -112,3 +116,81 @@ class OrderConductFragment : Fragment() {
 //        )
 //    }
 }
+//●ヽ( ･ω･｀)ﾉ●
+//●ヽ(･ω･｀ﾉ●
+//　　(ω･｀●
+//　　(･｀●)
+//　　(●ヽ　)
+//　●ヽ　　)●
+//●ヽ(　　　)ﾉ●
+//●ヽ(　　　)ノ●
+//●ヽ(　　´)ﾉ●
+//　　(　´･●
+//　　(　ﾉ● )
+//　　( ●´･)
+//　　●ヽ´･)
+//　●ヽ´･ω)
+//`●ヽ´･ω･)
+//●ヽ(´･ω･`)●
+//●ヽ(´･ω･｀)ﾉ●
+//●ヽ( ･ω･｀)ﾉ●
+//●ヽ(･ω･｀ﾉ●
+//　　(ω･｀●
+//　　(･｀●)
+//　　(●ヽ　)
+//　●ヽ　　)●
+//●ヽ(　　　)ﾉ●
+//●ヽ(　　　)ノ●
+//●ヽ(　　´)ﾉ●
+//　　(　´･●
+//　　(　ﾉ● )
+//　　( ●´･)
+//　　●ヽ´･)
+//　●ヽ´･ω)
+//`●ヽ´･ω･)
+//●ヽ(´･ω･`)●
+//●ヽ(´･ω･｀)ﾉ●
+//●ヽ( ･ω･｀)ﾉ●
+//●ヽ(･ω･｀ﾉ●
+//　　(ω･｀●
+//　　(･｀●)
+//　　(●ヽ　)
+//　●ヽ　　)●
+//●ヽ(　　　)ﾉ●
+//●ヽ(　　　)ノ●
+//●ヽ(　　´)ﾉ●
+//　　(　´･●
+//　　(　ﾉ● )
+//　　( ●´･)
+//　　●ヽ´･)
+//　●ヽ´･ω)
+//`●ヽ´･ω･)
+//●ヽ(´･ω･`)●
+//●ヽ(´･ω･｀)ﾉ●
+//●ヽ( ･ω･｀)ﾉ●
+//●ヽ(･ω･｀ﾉ●
+//　　(ω･｀●
+//　　(･｀●)
+//　　(●ヽ　)
+//　●ヽ　　)●
+//●ヽ(　　　)ﾉ●
+//●ヽ(　　　)ノ●
+//●ヽ(　　´)ﾉ●
+//　　(　´･●
+//　　(　ﾉ● )
+//　　( ●´･)
+//　　●ヽ´･)
+//　●ヽ´･ω)
+//`●ヽ´･ω･)
+//●ヽ(´･ω･`)●
+//●ヽ(´･ω･｀)ﾉ●
+
+
+//.            🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣
+//🀥       🀗🀐🀏🀎🀍🀌🀋🀊🀉        🀥
+//🀖     🀗                    🀙      🀥
+//🀘     🀗                    🀙      🀔
+//🀕     🀡                    🀁      🀁
+//🀖     🀗                    🀁      🀁
+//🀘       🀎🀍🀌🀋🀊🀉🀇🀉🀇        🀁
+//🀐🀏🀎🀍🀌🀋🀊🀉🀇🀆🀅🀁

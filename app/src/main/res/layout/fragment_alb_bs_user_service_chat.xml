@@ -9,6 +9,9 @@
         <variable
             name="viewModel"
             type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel" />
+        <variable
+            name="userViewModel"
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,9 +48,9 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="9dp"
-                app:imageResource="@{viewModel.chat.avatar}" />
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="9dp"
+                app:imageResource="@{userViewModel.chat.avatar}" />
 
             <LinearLayout
                 android:layout_width="197dp"
@@ -60,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@{viewModel.chat.email}"
+                    android:text="@{userViewModel.chat.email}"
                     android:textColor="@color/textPrimary" />
 
                 <TextView
@@ -68,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@{viewModel.chat.name}"
+                    android:text="@{userViewModel.chat.name}"
                     android:textColor="@color/textPrimary" />
             </LinearLayout>
 
@@ -106,31 +109,50 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_bs_user_serv_chat_query" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_contact_window_talk"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider12" />
+
         <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
                 android:id="@+id/editTextTextPersonName2"
-                android:layout_width="277dp"
-                android:layout_height="34dp"
-                android:layout_marginLeft="19dp"
-                android:layout_weight="1"
-                android:background="@drawable/alb_chat_text_background"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:background="@drawable/all_layout_gray_frame_shape"
                 android:ems="10"
+                android:paddingHorizontal="16dp"
                 android:gravity="center_vertical"
                 android:inputType="text"
-                android:textSize="14sp" />
+                android:minHeight="48dp"
+                android:text="@={viewModel.commitText}"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_bs_user_serv_chat_send"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_bs_user_serv_chat_send"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="35dp"
+                android:onClick="@{() -> viewModel.commitText()}"
+                android:layout_marginStart="10dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:src="@drawable/alb_msg_send" />

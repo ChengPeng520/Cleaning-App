@@ -305,8 +305,8 @@
                         android:padding="8dp"
                         android:text="客訴內容:" />
 
-                    <Spinner
-                        android:id="@+id/spinner2"
+                    <TextView
+                        android:id="@+id/tv_complaintContent_content"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp" />
@@ -370,7 +370,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/bnt_applyComplaint_ok"
+                            android:id="@+id/bnt_applyComplaint_chat"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginStart="16dp"

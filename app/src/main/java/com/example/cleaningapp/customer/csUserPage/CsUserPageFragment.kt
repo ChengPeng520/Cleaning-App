@@ -1,5 +1,6 @@
 package com.example.cleaningapp.customer.csUserPage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.cleaningapp.LoginActivity
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentCsUserBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,6 +29,7 @@ class CsUserPageFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.setTitle(R.string.csTitle_userPage)
         with(binding) {
             btnCsUserPageProfile.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csViewProfileFragment)
@@ -35,9 +38,10 @@ class CsUserPageFragment : Fragment() {
                 Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_csViewCouponFragment)
             }
             btnCsUserPageLogOut.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_loginFragment2)
-//                val bottomNavigationView = root.findViewById<BottomNavigationView>(R.id.loginFragment2)
-//                bottomNavigationView.visibility = View.GONE
+                val intent = Intent(activity, LoginActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+
             }
         }
     }

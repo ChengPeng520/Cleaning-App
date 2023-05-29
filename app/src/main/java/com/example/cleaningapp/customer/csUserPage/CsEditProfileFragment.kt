@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentCsEditProfileBinding
 
 class CsEditProfileFragment : Fragment() {
@@ -29,6 +30,7 @@ class CsEditProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.setTitle(R.string.csTitle_editProfile)
         with(binding) {
             btnCsEditProfileRestore.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()

@@ -43,6 +43,9 @@ class BsShopProductFragment : Fragment() {
         }
 
         with(binding) {
+            btnBsShopProductDetailPopback.setOnClickListener {
+                Navigation.findNavController(it).popBackStack()
+            }
             btnBsShopProductModify.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsShopProductModifyFragment)
             }

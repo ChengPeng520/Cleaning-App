@@ -40,15 +40,14 @@
 
         <TextView
             android:id="@+id/tv_bs_shop_order_order_ti"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="21dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/tv_bs_shop_order_order_ti"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/rv_bs_shop_order"
             app:layout_constraintStart_toStartOf="@+id/guideline26"
-            app:layout_constraintTop_toBottomOf="@+id/sv_bs_shop_order"
-            app:layout_constraintVertical_bias="0.49" />
+            app:layout_constraintTop_toBottomOf="@+id/sv_bs_shop_order" />
 
         <TextView
             android:id="@+id/tv_bs_shop_order_status_ti"
@@ -88,16 +87,39 @@
 
         </SearchView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_bs_shop_order"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:visibility="visible"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline27"
             app:layout_constraintStart_toStartOf="@+id/guideline26"
-            app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_order_order_ti" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_order_status_ti">
+
+            <TextView
+                android:id="@+id/tv_bs_product_order_noResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_bs_orderlist_noresult"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bs_shop_order_time_ti"
+                app:layout_constraintStart_toStartOf="@+id/tv_bs_shop_order_status_ti"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_order_status_ti"
+                tools:visibility="visible">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_bs_shop_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline27"
+                app:layout_constraintStart_toStartOf="@+id/guideline26"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_order_order_ti" />
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline26"
@@ -127,14 +149,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.31" />
+            app:layout_constraintGuide_percent="0.36" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline43"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

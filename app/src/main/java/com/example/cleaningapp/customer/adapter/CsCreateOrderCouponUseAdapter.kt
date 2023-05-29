@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.ItemCsPickCouponBinding
@@ -44,9 +45,12 @@ class CsCreateOrderCouponUseAdapter (private var coupons: List<Coupon>) :
         with(holder) {
             // 將欲顯示的coupon物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.coupon?.value = coupon
-            val bundle = Bundle()
-            bundle.putSerializable("coupon", coupon)
+//            val bundle = Bundle()
+//            bundle.putSerializable("coupon", coupon)
             itemViewBinding.btCusCouponPick.setOnClickListener {
+//                Navigation.findNavController(it).navigate(R.id.csCreateOrderFragment,bundle)
+
+                Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set("coupon", coupon)
                 Navigation.findNavController(it).popBackStack()
             }
         }
