@@ -11,6 +11,7 @@
             type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -224,7 +225,9 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_front_localtion"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -238,6 +241,7 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>
 
