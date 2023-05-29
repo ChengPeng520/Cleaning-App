@@ -133,7 +133,7 @@
             android:id="@+id/tv_order_localtion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.order.localtion}"
+            android:text="@{viewModel.order.location}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline39"
             tools:text="台北市松山區" />

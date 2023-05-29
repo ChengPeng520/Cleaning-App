@@ -25,6 +25,9 @@ class BackstageCouponCreatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        with(binding){
+           btnBsCouponAddPopback.setOnClickListener {
+               Navigation.findNavController(it).popBackStack()
+           }
            btCouponCreatAdd.setOnClickListener{
                Navigation.findNavController(it).popBackStack()
            }

@@ -28,8 +28,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageButton2"
+        <com.example.cleaningapp.cleaner.view.order.SignatureView
+            android:id="@+id/signatureView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:text="@string/bt_order_sign_achieve"
             app:layout_constraintBottom_toTopOf="@+id/tv_order_revise"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-            app:layout_constraintStart_toStartOf="@+id/imageButton2" />
+            app:layout_constraintEnd_toEndOf="@+id/signatureView"
+            app:layout_constraintStart_toStartOf="@+id/signatureView" />
 
         <TextView
             android:id="@+id/tv_order_revise"

@@ -3,7 +3,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.coupon.BackstageCouponSearchFragment">
+    tools:context=".backstage.coupon.BackstageCouponSearchFragment"
+    >
 
     <data>
         <variable
@@ -18,51 +19,58 @@
         >
 
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_coupon_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ciyi_button_shape"
+            android:minHeight="40dp"
+            android:text="@string/btn_coupon_add"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/textSearchResultTitle"
+            app:layout_constraintEnd_toStartOf="@+id/guideline50"
+            app:layout_constraintStart_toEndOf="@+id/search"
+            app:layout_constraintTop_toTopOf="@+id/search"
+            app:layout_constraintVertical_bias="0.39" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/search"
-            android:layout_width="369dp"
+            android:layout_width="0dp"
             android:layout_height="62dp"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/bt_coupon_add"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <SearchView
-                android:id="@+id/bt_bs_coupon_search"
-                android:layout_width="289dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ciyi_shape_search"
-                android:gravity="center"
-                android:queryBackground="@android:color/transparent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_coupon_add"
-                android:layout_width="wrap_content"
+                android:id="@+id/sv_bs_coupon_search"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="4dp"
-                android:minHeight="30dp"
-                android:padding="2dp"
-                android:background="@drawable/ciyi_button_shape"
-                android:text="@string/btn_coupon_add"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:background="@drawable/sv_cleaner_shop_style"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:queryBackground="@android:color/transparent"
+                android:queryHint="@string/sv_backstage_coupon"
+                android:textSize="12sp"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <LinearLayout
             android:id="@+id/textSearchResultTitle"
-            android:layout_width="369dp"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/cardview_shadow_end_color"
+            android:minHeight="40dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/search"
-            app:layout_constraintStart_toStartOf="@+id/search"
+            app:layout_constraintEnd_toStartOf="@+id/guideline50"
+            app:layout_constraintStart_toStartOf="@+id/guideline51"
             app:layout_constraintTop_toBottomOf="@+id/search"
             tools:ignore="UnknownId">
 
@@ -72,7 +80,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="@string/tv_ti_coupon_num"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -82,7 +90,7 @@
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="@string/tv_ti_coupon_name"
                 android:textStyle="bold" />
 
@@ -91,33 +99,39 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="@string/tv_ti_coupon_limit"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="369dp"
-            android:layout_height="498dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/textSearchResultTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/guideline50"
             app:layout_constraintStart_toStartOf="@+id/textSearchResultTitle"
             app:layout_constraintTop_toBottomOf="@+id/textSearchResultTitle">
+
+            <TextView
+                android:id="@+id/tv_coupon_search_noResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/tv_coupon_search_noResult"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+            </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/coupon_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent">
 
             </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/tv_bs_couponList_noresult"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_bs_orderlist_noresult"
-                tools:gravity="center" />
 
 
         </LinearLayout>
@@ -129,6 +143,22 @@
             app:barrierDirection="top"
             app:constraint_referenced_ids="search"
             tools:layout_editor_absoluteY="122dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

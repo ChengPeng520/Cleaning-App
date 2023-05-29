@@ -30,37 +30,36 @@ class BsShopOrderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-            btnBsShopOrderProduct.setOnClickListener{
+                rvBsShopOrder.layoutManager = LinearLayoutManager(requireContext())
+                viewModel?.shopOrders?.observe(viewLifecycleOwner) {    //監控ordrerViewModel的週期,如果adapter沒有更新,就呈現orderList的資料,其他有更新的狀態就加上update方法
+                    if (rvBsShopOrder.adapter == null) {
+                        rvBsShopOrder.adapter = ShopOrderAdapter(it)
+                    } else {
+                        (rvBsShopOrder.adapter as ShopOrderAdapter).updateShopOrders(it)
+                    }
+                }
+                svBsShopOrder.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    // 輸入的文字改變時呼叫
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        if (newText != null) {
+                            viewModel?.search(newText)
+                        }
+                        if (rvBsShopOrder.adapter != null && rvBsShopOrder.adapter?.itemCount == 0) {
+                            tvBsProductOrderNoResult.visibility = View.VISIBLE
+                        }else{
+                            tvBsProductOrderNoResult.visibility = View.GONE
+                        }
+                        return true
+                    }
+                    // 點擊虛擬鍵盤上的提交鈕時呼叫
+                    override fun onQueryTextSubmit(text: String): Boolean {
+                        return false
+                    }
+                })
+            btnBsShopOrderProduct.setOnClickListener {
                 Navigation.findNavController(it).navigateUp()
-
             }
-
-            //建立recycleview 的布局,一條列的呈現內部內榮
-            rvBsShopOrder.layoutManager = LinearLayoutManager(requireContext())
-            //監控ordrerViewModel的週期,如果adapter沒有更新,就呈現orderList的資料,其他有更新的狀態就加上update方法
-            viewModel?.shopOrders?.observe(viewLifecycleOwner) {
-                if (rvBsShopOrder.adapter == null) {
-                    rvBsShopOrder.adapter = ShopOrderAdapter(it)
-                } else {
-                    (rvBsShopOrder.adapter as ShopOrderAdapter).updateShopOrders(it)
-                }
-            }
-            svBsShopOrder.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                // 輸入的文字改變時呼叫
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    viewModel?.search(netText = String())
-                    return true
-                }
-
-                // 點擊虛擬鍵盤上的提交鈕時呼叫
-                override fun onQueryTextSubmit(text: String): Boolean {
-                    return false
-                }
-            })
-
         }
-
-
     }
 }
 

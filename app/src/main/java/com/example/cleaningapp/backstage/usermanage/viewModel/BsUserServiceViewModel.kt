@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
+import com.example.cleaningapp.backstage.usermanage.model.Chatroom
 import java.util.jar.Attributes.Name
 
 /**
@@ -11,10 +12,10 @@ import java.util.jar.Attributes.Name
  */
 class BsUserServiceViewModel : ViewModel() {
     //原始聊天室列表
-    private var chatList = mutableListOf<Chat>()
+    private var chatList = mutableListOf<Chatroom>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
-    val chats: MutableLiveData<List<Chat>> by lazy { MutableLiveData<List<Chat>>() }
+    val chats: MutableLiveData<List<Chatroom>> by lazy { MutableLiveData<List<Chatroom>>() }
 
     init {
         loadChats()
@@ -28,7 +29,7 @@ class BsUserServiceViewModel : ViewModel() {
         if (newText == null || newText.isEmpty()) {
             chats.value = chatList
         } else {
-            val searchChatList = mutableListOf<Chat>()
+            val searchChatList = mutableListOf<Chatroom>()
             chatList.forEach { chat ->
                 if (chat.email.contains(newText, true) ||
                     chat.createTime.contains(newText, true)
@@ -42,9 +43,9 @@ class BsUserServiceViewModel : ViewModel() {
 
     /** 模擬取得遠端資料 */
     private fun loadChats() {
-        val chatList = mutableListOf<Chat>()
+        val chatList = mutableListOf<Chatroom>()
         chatList.add(
-            Chat(
+            Chatroom(
                 chatId = 0,
                 cleanerId = 1,
                 name = "Rona",
@@ -57,7 +58,7 @@ class BsUserServiceViewModel : ViewModel() {
             )
         )
         chatList.add(
-            Chat(
+            Chatroom(
                 chatId = 1,
                 customerId = 1,
                 name = "Ally",
@@ -70,7 +71,7 @@ class BsUserServiceViewModel : ViewModel() {
             )
         )
         chatList.add(
-            Chat(
+            Chatroom(
                 chatId = 2,
                 customerId = 3,
                 name = "Ciyi",

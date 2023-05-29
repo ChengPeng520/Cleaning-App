@@ -26,6 +26,7 @@
     <string name="tv_order_cleanfound">已成立</string>
     <string name="tv_order_cleanend">已結束</string>
     <string name="tv_order_cleanwaitmatch">媒合中</string>
+    <string name="tv_csOrderConfirmed_area3">客廳： %s坪\n廚房： %s坪\n廁所： %s坪\n房間： %s坪</string>
 
     //orderAccept 等待通知
     <string name="tv_order_accept">已向顧客通知您的接單</string>

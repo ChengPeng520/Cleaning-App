@@ -27,24 +27,28 @@ class BsUserMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        requireActivity().title ="用戶管理"
+        requireActivity().title = "用戶管理"
         with(binding) {
-
             rvBsUserMain.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.users?.observe(viewLifecycleOwner){ users ->
+            tvBsUserMainNoSearchData.visibility = View.GONE
+            tvBsUserMainNoData.visibility = View.GONE
+
+            viewModel?.users?.observe(viewLifecycleOwner) { users ->
+
                 // adapter為null要建立新的adapter；之後只要呼叫updateUsers(users)即可
                 if (rvBsUserMain.adapter == null) {
                     rvBsUserMain.adapter = UserMainAdapter(users)
                 } else {
                     (rvBsUserMain.adapter as UserMainAdapter).updateUsers(users)
                 }
+
+                // 顯示尚無資料的判斷
+                if (rvBsUserMain.adapter != null && rvBsUserMain.adapter?.itemCount == 0) {
+                    tvBsUserMainNoData.visibility = View.VISIBLE
+                } else {
+                    tvBsUserMainNoData.visibility = View.GONE
+                }
             }
-//                TODO 顯示尚無資料
-//            if (rvBsUserMain.adapter != null && rvBsUserMain.adapter?.itemCount == 0){
-//                tvBsUserMainNoData.visibility = View.VISIBLE
-//            } else{
-//                tvBsUserMainNoData.visibility = View.INVISIBLE
-//            }
 
             svBsUserMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 // 輸入的文字改變時呼叫
@@ -52,13 +56,15 @@ class BsUserMainFragment : Fragment() {
                     viewModel?.search(newText)
 
                     //增加查無資料的判斷
-                    if (rvBsUserMain.adapter != null && rvBsUserMain.adapter?.itemCount == 0){
-                        tvBsUserMainNoData.visibility =View.VISIBLE
-                    }else{
-                        tvBsUserMainNoData.visibility = View.INVISIBLE
+                    if (rvBsUserMain.adapter != null && rvBsUserMain.adapter?.itemCount == 0) {
+                        tvBsUserMainNoSearchData.visibility = View.VISIBLE
+                        tvBsUserMainNoData.visibility = View.GONE
+                    } else {
+                        tvBsUserMainNoSearchData.visibility = View.GONE
                     }
                     return true
                 }
+
                 // 點擊虛擬鍵盤上的提交鈕時呼叫
                 override fun onQueryTextSubmit(text: String): Boolean {
                     return false

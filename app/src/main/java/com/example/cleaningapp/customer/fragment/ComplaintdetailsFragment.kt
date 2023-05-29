@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.viewModel.ComplaintdetailsViewModel
 import com.example.cleaningapp.databinding.FragmentVictorComplaintdetailsBinding
@@ -44,6 +45,12 @@ class ComplaintdetailsFragment : Fragment() {
                 1 -> binding.imageView41.setImageURI(uri)
                 2 -> binding.imageView42.setImageURI(uri)
                 3 -> binding.imageView40.setImageURI(uri)
+            }
+        }
+        with(binding){
+            bntApplyComplaintChat.setOnClickListener {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_complaintdetailsFragment_to_chatRoomFragment)
             }
         }
     }

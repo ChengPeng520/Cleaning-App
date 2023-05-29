@@ -1,46 +1,42 @@
 package com.example.cleaningapp.cleaner.view.order
 
-import android.graphics.Color
-import androidx.lifecycle.ViewModelProvider
+import android.graphics.Bitmap
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import com.example.cleaningapp.R
+import androidx.core.view.drawToBitmap
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.cleaningapp.cleaner.viewmodel.order.OrderCssignCheckViewModel
-import com.example.cleaningapp.databinding.FragmentVickyOrderConductBinding
 import com.example.cleaningapp.databinding.FragmentVickyOrderCssignCheckBinding
 
 class OrderCsSignCheckFragment : Fragment() {
     private lateinit var binding: FragmentVickyOrderCssignCheckBinding
-    private lateinit var signatureViewModel: OrderCssignCheckViewModel
-
-
-    companion object {
-        fun newInstance() = OrderCsSignCheckFragment()
-    }
-
-    private lateinit var viewModel: OrderCssignCheckViewModel
+    private val viewModel: OrderCssignCheckViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_vicky_order_cssign_check, container, false)
+    ): View {
+        binding = FragmentVickyOrderCssignCheckBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        signatureViewModel = ViewModelProvider(this).get(OrderCssignCheckViewModel::class.java)
+        with(binding) {
+            tvOrderRevise.setOnClickListener {
+                signatureView.clean()
+            }
 
-    }
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
-            viewModel = ViewModelProvider(this).get(OrderCssignCheckViewModel::class.java)
-            // TODO: Use the ViewModel
+            button7.setOnClickListener {
+                val bitmap = signatureView.drawToBitmap(Bitmap.Config.ARGB_8888)
+                // bitmap 存入資料庫
+            }
         }
     }
+}
 
 

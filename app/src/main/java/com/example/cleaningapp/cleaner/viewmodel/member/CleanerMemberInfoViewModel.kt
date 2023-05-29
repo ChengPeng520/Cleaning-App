@@ -1,61 +1,44 @@
 package com.example.cleaningapp.cleaner.viewmodel.member
 
-import android.app.Application
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.*
-import com.example.cleaningapp.cleaner.uistate.MemberInfoUiState
-import com.example.cleaningapp.data.IMemberRepository
-import kotlinx.coroutines.launch
+import com.example.cleaningapp.cleaner.uistate.CleanerMemberInfoUiState
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.requestTask
 
-class CleanerMemberInfoViewModel(
-    private val application: Application,
-    private val IMemberRepository: IMemberRepository
-) :
-    AndroidViewModel(application) {
-    val uiState: MutableLiveData<MemberInfoUiState> by lazy { MutableLiveData<MemberInfoUiState>() }
+class CleanerMemberInfoViewModel : ViewModel() {
+    val uiState: MutableLiveData<CleanerMemberInfoUiState> by lazy {
+        MutableLiveData<CleanerMemberInfoUiState>(
+            CleanerMemberInfoUiState()
+        )
+    }
 
     init {
-        fetchMemberInfo()
-    }
-
-    private fun fetchMemberInfo() {
-        viewModelScope.launch {
-            try {
-                val memberInfo = IMemberRepository.fetchMemberInfo(application = application)
-                uiState.value = memberInfo
-            } catch (ioe: Exception) {
-                ioe.printStackTrace()
-            }
+        val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/kk0128k@gmail.com/kk0128k"
+        )
+        if (result != null) {
+            CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(result)
+            uiState.value =
+                CleanerSharedPreferencesUtils.fetchCleanerInfoFromPreferences<CleanerMemberInfoUiState>()
         }
     }
 
-    fun saveSharePreferences(view: View) {
-        if (uiState.value != null && uiState.value!!.name.isNotEmpty() && uiState.value!!.identityNumber.isNotEmpty() && uiState.value!!.phone.isNotEmpty()) {
-            val memberInfo = MemberInfoUiState(
-                uiState.value!!.name,
-                uiState.value!!.gender,
-                uiState.value!!.identityNumber,
-                uiState.value!!.phone,
-                uiState.value!!.introduction
+    fun saveMemberInfo(view: View) {
+        if (uiState.value?.name?.isNotEmpty() == true && uiState.value?.identifyNumber?.isNotEmpty() == true && uiState.value?.phone?.isNotEmpty() == true) {
+            val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(uiState.value!!)
+            val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer",
+                "POST",
+                uiState
             )
-
-            viewModelScope.launch {
-                val resultText = IMemberRepository.saveMemberInfo(application, memberInfo)
-                Toast.makeText(view.context, resultText, Toast.LENGTH_SHORT).show()
+            if (result != null) {
+                if (CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(result))
+                    Toast.makeText(view.context, "儲存成功", Toast.LENGTH_SHORT).show()
+                else
+                    Toast.makeText(view.context, "儲存失敗", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    companion object {
-        fun provideFactory(
-            application: Application,
-            IMemberRepository: IMemberRepository
-        ): ViewModelProvider.Factory =
-            object : ViewModelProvider.Factory {
-                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return CleanerMemberInfoViewModel(application, IMemberRepository) as T
-                }
-            }
     }
 }
