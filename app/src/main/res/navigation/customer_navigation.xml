@@ -147,10 +147,9 @@
         android:name="com.example.cleaningapp.customer.fragment.OrderprogressFragment"
         android:label="OrderprogressFragment"
         tools:layout="@layout/fragment_victor_orderprogress" >
-
         <action
-            android:id="@+id/action_orderprogressFragment_to_ordercompletedFragment"
-            app:destination="@id/ordercompletedFragment" />
+            android:id="@+id/action_orderprogressFragment_to_orderingFragment"
+            app:destination="@id/orderingFragment" />
     </fragment>
     <fragment
         android:id="@+id/ordercompletedFragment"
@@ -215,7 +214,11 @@
         android:id="@+id/complaintdetailsFragment"
         android:name="com.example.cleaningapp.customer.fragment.ComplaintdetailsFragment"
         android:label="ComplaintdetailsFragment"
-        tools:layout="@layout/fragment_victor_complaintdetails"/>
+        tools:layout="@layout/fragment_victor_complaintdetails">
+        <action
+            android:id="@+id/action_complaintdetailsFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+    </fragment>
     <fragment
         android:id="@+id/csOrderEstablishedFragment"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsOrderEstablishedFragment"
@@ -224,5 +227,17 @@
         <action
             android:id="@+id/action_csOrderEstablishedFragment_to_historicalorderFragment"
             app:destination="@id/historicalorderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        android:name="com.example.cleaningapp.customer.fragment.ChatRoomFragment"
+        android:label="ChatRoomFragment" />
+    <fragment
+        android:id="@+id/orderingFragment"
+        android:name="com.example.cleaningapp.customer.fragment.OrderingFragment"
+        android:label="OrderingFragment" >
+        <action
+            android:id="@+id/action_orderingFragment_to_ordercompletedFragment"
+            app:destination="@id/ordercompletedFragment" />
     </fragment>
 </navigation>
