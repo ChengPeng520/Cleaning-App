@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.example.cleaningapp.CircleImageView
+                <com.example.cleaningapp.share.CircleImageView
                     android:id="@+id/iv_suInfo_avatar"
                     android:layout_width="104dp"
                     android:layout_height="104dp"

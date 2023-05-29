@@ -1,4 +1,4 @@
-package com.example.cleaningapp
+package com.example.cleaningapp.share
 
 import android.annotation.SuppressLint
 import android.content.Context
