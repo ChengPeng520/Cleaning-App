@@ -1,5 +1,6 @@
 package com.example.cleaningapp.backstage.shop
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class ShopOrderAdapter(private var shopOrders: List<shopOrder>) :
     RecyclerView.Adapter<ShopOrderAdapter.OrderViewHolder>() {
 
     //更新資料列表內需要oderlist ,寫出這個方法內的oders 是哪邊的oders
+    @SuppressLint("NotifyDataSetChanged")
     fun updateShopOrders(orders: List<shopOrder>) {
         this.shopOrders = orders
         notifyDataSetChanged()

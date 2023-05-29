@@ -12,6 +12,4 @@ data class Cleaner(
     val phone: String,
     val address: String,
     val intro: String
-    ) : Serializable {
-
-}
+) : Serializable

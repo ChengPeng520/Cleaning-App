@@ -1,4 +1,4 @@
-package com.example.cleaningapp
+package com.example.cleaningapp.share
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -63,4 +63,4 @@ inline fun <reified T> request(
 
 val GSON: Gson = GsonBuilder()
     .setDateFormat("yyyy/MM/dd HH:mm:ss")
-    .create();
+    .create()

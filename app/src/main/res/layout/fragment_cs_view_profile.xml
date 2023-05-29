@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csUserPage.CsViewProfileViewModel" />
 
     </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,21 +27,22 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="24dp"
+                android:elevation="2dp"
                 android:foreground="?selectableItemBackground"
                 app:cardCornerRadius="150dp"
-                android:elevation="2dp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/guideline8">
 
                 <ImageView
                     android:id="@+id/iv_csProfile_pic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:imageResource="@{viewModel.profile.image}"
+                    app:imageBitmap="@{viewModel.profile.photo}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -141,7 +144,6 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textPersonName"
-                    android:text="@{viewModel.profile.address}"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -173,8 +175,8 @@
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
-                    android:textSize="15sp"
-                    tools:text='@{viewModel.profile.gender ? "男":"女"}' />
+                    android:textSize="15sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -204,10 +206,10 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textMultiLine"
-                    android:minLines="5"
                     android:lineSpacingExtra="30px"
+                    android:minLines="5"
                     android:paddingBottom="12dp"
-                    android:text="@{viewModel.profile.intro}"
+                    android:text="@{viewModel.profile.introduction}"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -232,7 +234,9 @@
                 app:layout_constraintGuide_percent="0.05" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+
 </layout>
 
 

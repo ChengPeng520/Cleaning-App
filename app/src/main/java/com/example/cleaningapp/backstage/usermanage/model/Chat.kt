@@ -1,17 +1,12 @@
 package com.example.cleaningapp.backstage.usermanage.model
 
-import java.sql.Timestamp
+data class Chat(
+    val chatItems: List<ChatItem> = listOf()
+)
 
-class Chat(
-    var chatId: Int,
-    //使用ID判斷不同用戶資料
-    var customerId: Int = 0,
-    var cleanerId: Int = 0,
-    var name: String,
-    var avatar: Int,
-    var email: String,
-    var text: String,
-    var createTime: String,
-    var read: Boolean,
-    var closed: Boolean,
-) : java.io.Serializable
+data class ChatItem(
+    val id: Int = 0,
+    val fromId: Int = 0,
+    val toId: Int = 0,
+    val text: String = ""
+)

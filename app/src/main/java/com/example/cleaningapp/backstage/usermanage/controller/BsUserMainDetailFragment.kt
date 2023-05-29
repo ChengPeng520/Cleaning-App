@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
+import com.example.cleaningapp.backstage.usermanage.model.Chatroom
 import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserMainDetailBinding
@@ -37,7 +38,7 @@ class BsUserMainDetailFragment : Fragment() {
             //新增從客服聊天室點選查詢,bundle customerId或cleanerId的會員資料解讀
             arguments?.let { chatBundle ->
                 chatBundle.getSerializable("chat")?.let {
-                    if ((it as Chat).customerId == 0) {
+                    if ((it as Chatroom).customerId == 0) {
                         viewModel.fetchMemberInfo(it.cleanerId)
                     } else {
                         viewModel.fetchMemberInfo(it.customerId)

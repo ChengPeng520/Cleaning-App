@@ -14,10 +14,14 @@ import androidx.core.content.ContextCompat
 import java.net.URI
 
 class ShowPictureDialog(private val activity: Activity, private val imageView: ImageView) {
-    private val REQUEST_CAMERA_PERMISSION = 1001
-    private val REQUEST_CAMERA = 1002
-    private val REQUEST_GALLERY = 1003
-    fun showPictureDialog() {
+    companion object {
+        const val REQUEST_CAMERA_PERMISSION = 1001
+        const val REQUEST_CAMERA = 1002
+        const val REQUEST_GALLERY = 1003
+    }
+
+
+   private fun showPictureDialog() {
         val option = arrayOf("開啟相機", "相簿選取")
         val build = AlertDialog.Builder(activity)
         build.setTitle("選擇照片來源")
@@ -30,17 +34,17 @@ class ShowPictureDialog(private val activity: Activity, private val imageView: I
         build.create().show()
     }
 
-    private fun openCamera() {
+     fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         activity.startActivityForResult(intent, REQUEST_CAMERA)
     }
 
-    private fun openGallery() {
+     fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         activity.startActivityForResult(intent, REQUEST_GALLERY)
     }
 
-    private fun checkPermission() {
+     fun checkPermission() {
         // 檢查權限並請求相機權限
         if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED
@@ -56,12 +60,32 @@ class ShowPictureDialog(private val activity: Activity, private val imageView: I
         }
     }
 
-    fun handleCameraResult(resultCode: Int, requestCode: Int, data: Intent?): Bitmap? {
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CAMERA) {
-            val image = data?.extras?.get("data") as Bitmap
-            imageView.setImageBitmap(image)
-            return image
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_CAMERA -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    handleCamResult(data)
+                }
+            }
+            REQUEST_GALLERY -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    handleGallery(data)
+                }
+            }
+
         }
-        return null
     }
+
+
+    fun handleCamResult(data: Intent?) {
+        val image = data?.extras?.get("data") as Bitmap
+        imageView.setImageBitmap(image)
+    }
+
+     fun handleGallery(data: Intent?) {
+        val imageURL = data?.data
+        imageView.setImageURI(imageURL)
+    }
+
+
 }

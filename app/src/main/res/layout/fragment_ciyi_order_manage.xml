@@ -67,7 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:layout_marginStart="8dp"
+                android:gravity="center_vertical"
                 android:text="@string/tv_ti_order_num"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -77,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="@string/tv_ti_order_status"
                 android:textStyle="bold" />
 
@@ -86,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="@string/tv_ti_order_date"
                 android:textStyle="bold" />
 
