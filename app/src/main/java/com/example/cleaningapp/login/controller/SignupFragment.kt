@@ -1,6 +1,7 @@
 package com.example.cleaningapp.login.controller
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaSignupBinding
 import com.example.cleaningapp.login.viewModel.SignupViewModel
@@ -60,10 +63,38 @@ class SignupFragment : Fragment() {
                 if (!inputCheck()) {
                     return@setOnClickListener
                 }
-                viewModel?.signup()
-                Navigation.findNavController(it).navigate(action)
+                val bundle = Bundle()
+                bundle.putString("emailAccount", viewModel?.account?.value)
+                bundle.putString("password", viewModel?.password?.value)
+
+                saveEncryptedPassword()
+                Navigation.findNavController(it).navigate(action,bundle)
+
             }
+
         }
+    }
+
+    fun saveEncryptedPassword() {
+        with(binding) {
+            getEncryptedPassword().edit()
+                .putString("password", viewModel?.password?.value)
+                .apply()
+        }
+    }
+
+     fun getEncryptedPassword(): SharedPreferences {
+        val masterKeyAlias = MasterKey.Builder(requireContext())
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
+
+        return EncryptedSharedPreferences.create(
+            requireContext(),
+            "encryptedPassword",
+            masterKeyAlias,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
     }
 
     @SuppressLint("ResourceType")

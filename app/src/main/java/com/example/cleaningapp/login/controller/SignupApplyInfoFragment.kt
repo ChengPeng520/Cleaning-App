@@ -16,18 +16,20 @@ import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaSignupApplyInfoBinding
 import com.example.cleaningapp.login.viewModel.SignupApplyInfoViewModel
+import com.example.cleaningapp.share.ImageUtils.uriToBitmap
 
 class SignupApplyInfoFragment : Fragment() {
     private lateinit var binding: FragmentRonaSignupApplyInfoBinding
+    val viewModel: SignupApplyInfoViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         requireActivity().title = "申請資料"
-        val viewModel: SignupApplyInfoViewModel by viewModels()
         binding = FragmentRonaSignupApplyInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
         return binding.root
     }
 
@@ -41,8 +43,29 @@ class SignupApplyInfoFragment : Fragment() {
                 if (!inputCheck()) {
                     return@setOnClickListener
                 }
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_signupApplyInfoFragment_to_signupCheckApplyFragment)
+                arguments?.let { bundle ->
+                    viewModel?.email = bundle.getString("emailAccount")
+                    viewModel?.password = bundle.getString("password")
+                    println(bundle.getString("emailAccount"))
+                }
+
+                viewModel?.register()?.let {
+                    if (it) {
+                        Navigation.findNavController(requireActivity(), R.id.fragmentContainerView3)
+                            .navigate(R.id.action_signupApplyInfoFragment_to_signupCheckApplyFragment)
+                    } else {
+                        Toast.makeText(context, "註冊失敗", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }
+
+            ivSuInfoAvatar.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                )
+                pickPictureLauncherAvatar.launch(intent)
             }
 
             ivSuInfoId1.setOnClickListener {
@@ -71,25 +94,39 @@ class SignupApplyInfoFragment : Fragment() {
         }
     }
 
+    private var pickPictureLauncherAvatar =
+        registerForActivityResult(StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.data?.let { uri ->
+                    viewModel.avatar.value = uriToBitmap(requireContext(), uri)
+                }
+            }
+        }
+
     private var pickPictureLauncherId1 =
         registerForActivityResult(StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri -> binding.ivSuInfoId1.setImageURI(uri) }
+                result.data?.data?.let { uri ->
+                    viewModel.id1.value = uriToBitmap(requireContext(), uri)
+                }
             }
         }
     private var pickPictureLauncherId2 =
         registerForActivityResult(StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri -> binding.ivSuInfoId2.setImageURI(uri) }
+                result.data?.data?.let { uri ->
+                    viewModel.id2.value = uriToBitmap(requireContext(), uri)
+                }
             }
         }
     private var pickPictureLauncherGP =
-        registerForActivityResult(StartActivityForResult()){ result ->
-            if (result.resultCode == Activity.RESULT_OK){
-                result.data?.data?.let { uri -> binding.ivSuInfoGoodPerson.setImageURI(uri) }
+        registerForActivityResult(StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.data?.let { uri ->
+                    viewModel.crc.value = uriToBitmap(requireContext(), uri)
+                }
             }
         }
-
 
     @SuppressLint("ResourceType")
     private fun inputCheck(): Boolean {

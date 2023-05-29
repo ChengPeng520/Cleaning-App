@@ -15,6 +15,10 @@
     <string name="edtTxt_signup_cancel"><u>取消</u></string>
     <string name="tv_signup_statusHint">選擇註冊用戶</string>
     <string name="tv_signup_wrongPW">密碼不一致</string>
+    <string-array name="sp_signup_info_gender">
+    <item>男</item>
+    <item>女</item>
+    </string-array>
 
 
     <!--    contract-->
@@ -31,6 +35,7 @@
     <string name="edtTxt_suinfo_sex">性別:(必填)</string>
     <string name="edtTxt_suinfo_phone">手機號碼:(必填)</string>
     <string name="edtTxt_suinfo_intro">自我介紹:</string>
+    <string name="tv_signup_idNumber">身分證號碼</string>
     <string name="tv_applyinfo_uploadtxtID">請上傳身分證正反面</string>
     <string name="tv_applyinfo_uploadtxtGP">請上傳良民證(檔案格式:PDF、JPG、PNG) </string>
     <string name="tv_suinfo_done"><u>完成</u></string>
