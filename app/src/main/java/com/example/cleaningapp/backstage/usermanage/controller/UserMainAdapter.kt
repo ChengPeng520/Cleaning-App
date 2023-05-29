@@ -49,8 +49,6 @@ class UserMainAdapter(private var users: List<User>) :
     }
 
     override fun onBindViewHolder(holder: UserMainViewHolder, position: Int) {
-
-
         val user = users[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
