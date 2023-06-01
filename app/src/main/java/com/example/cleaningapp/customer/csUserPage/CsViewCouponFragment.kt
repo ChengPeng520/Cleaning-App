@@ -30,6 +30,7 @@ class CsViewCouponFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle(R.string.csTitle_viewCoupon)
         viewModel.loadCoupons()
         binding.rvCsViewCoupon.layoutManager = LinearLayoutManager(requireContext())
         viewModel?.coupons?.observe(viewLifecycleOwner) { coupons ->

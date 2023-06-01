@@ -29,8 +29,8 @@ object CleanerSharedPreferencesUtils {
         val idCardBack: ByteArray?,
         val crc: ByteArray?,
         val certification: String? = null,
-        val suspend: Int = 0,
-        val verify: Int = 0
+        val suspend: Boolean = false,
+        val verify: Boolean = false
     ) {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true

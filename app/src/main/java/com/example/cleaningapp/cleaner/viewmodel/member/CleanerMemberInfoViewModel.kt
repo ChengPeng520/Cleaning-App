@@ -16,7 +16,7 @@ class CleanerMemberInfoViewModel : ViewModel() {
 
     init {
         val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/kk0128k@gmail.com/kk0128k"
+            "http://192.168.222.26:8080/javaweb-cleaningapp/AccountCustomer/kk0128k@gmail.com/123456"
         )
         if (result != null) {
             CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(result)
@@ -29,8 +29,8 @@ class CleanerMemberInfoViewModel : ViewModel() {
         if (uiState.value?.name?.isNotEmpty() == true && uiState.value?.identifyNumber?.isNotEmpty() == true && uiState.value?.phone?.isNotEmpty() == true) {
             val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(uiState.value!!)
             val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer",
-                "POST",
+                "http://192.168.222.26:8080/javaweb-cleaningapp/AccountCustomer",
+                "PUT",
                 uiState
             )
             if (result != null) {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.adapter.CsCreateOrderCouponUseAdapter
 import com.example.cleaningapp.databinding.FragmentCsCouponPickerBinding
 
@@ -28,9 +29,10 @@ class CsCouponPickerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.setTitle(R.string.csTitle_couponPicker)
         viewModel.loadCoupons()
         binding.rvCouponPicker.layoutManager = LinearLayoutManager(requireContext())
-        viewModel?.coupons?.observe(viewLifecycleOwner) { coupons ->
+        viewModel.coupons.observe(viewLifecycleOwner) { coupons ->
             if (binding.rvCouponPicker.adapter == null) {
                 binding.rvCouponPicker.adapter = CsCreateOrderCouponUseAdapter(coupons)
             } else {

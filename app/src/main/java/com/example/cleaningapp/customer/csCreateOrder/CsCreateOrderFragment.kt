@@ -13,23 +13,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.Coupon
-import com.example.cleaningapp.customer.model.Order
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
+import com.google.android.material.textview.MaterialTextView
 import java.util.*
+import kotlin.math.roundToInt
 
 class CsCreateOrderFragment : Fragment() {
     private lateinit var binding: FragmentCsCreateOrderBinding
-    private lateinit var countySpinner: Spinner
-    private lateinit var districtSpinner: Spinner
-
+    private val viewModel: CsCreateOrderViewModel by viewModels()
     private val countyList = arrayOf(
         "基隆市", "臺北市", "新北市",
         "桃園市", "新竹市", "新竹縣",
@@ -458,60 +457,66 @@ class CsCreateOrderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: CsCreateOrderViewModel by viewModels()
         binding = FragmentCsCreateOrderBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-//      縣市&鄉鎮連動的spinner
-        countySpinner = binding.root.findViewById(R.id.spn_csCreateOrder_county)
-        districtSpinner = binding.root.findViewById(R.id.spn_csCreateOrder_district)
+//  縣市&鄉鎮連動的spinner
         val countyAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countyList)
         countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        countySpinner.adapter = countyAdapter
-        countySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spnCsCreateOrderCounty.adapter = countyAdapter
+        binding.spnCsCreateOrderCounty.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val order = viewModel.order.value
+                    order?.areaCity = countyList[position]
+                    viewModel.order.value = order
+                    val selectedCounty = countyList[position]
+                    val districtArray = districtMap[selectedCounty]
+                    val districtAdapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_item,
+                        districtArray!!
+                    )
+                    districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    binding.spnCsCreateOrderDistrict.adapter = districtAdapter
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // 不執行任何操作
+                }
+            }
+
+        binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                val selectedCounty = countyList[position]
-                val districtArray = districtMap[selectedCounty]
-                val districtAdapter = ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_spinner_item,
-                    districtArray!!
-                )
-                districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                districtSpinner.adapter = districtAdapter
+                val order = viewModel.order.value
+                order?.areaDistrict = (view as MaterialTextView).text as String
+                viewModel.order.value = order
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // 不執行任何操作
             }
+
         }
         return binding.root
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.setTitle(R.string.csTitle_createOrder)
         with(binding) {
-            tvCsCreateOrderChooseCoupon.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
-            }
-            arguments?.let { bundle ->
-                bundle.getSerializable("coupon")?.let {
-                    viewModel?.coupon?.value = it as Coupon
-                }
-            }
-
-            btnCsCreateOrderNext.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment)
-            }
+//  選擇日期
             llDatePicker.setOnClickListener {
                 // calendar要宣告為此區域的變數，這樣每次點擊按鈕跳出的預選日期方能維持當下日期；
                 // 如果宣告在此區域外，下方程式calendar加一個月，會影響日期挑選器預選日期
@@ -521,7 +526,9 @@ class CsCreateOrderFragment : Fragment() {
                         requireContext(),
                         { _, year, month, day ->
                             // 一月的值是0而非1，所以「month + 1」後才顯示
-                            viewModel?.textDate?.value = "$year-${pad(month + 1)}-${pad(day)}"
+                            val order = viewModel?.order?.value
+                            order?.dateOrdered = "$year-${pad(month + 1)}-${pad(day)}"
+                            viewModel?.order?.value = order
                         },
                         calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
@@ -537,12 +544,15 @@ class CsCreateOrderFragment : Fragment() {
                 // 最後要呼叫show()方能顯示
                 datePickerDialog.show()
             }
+//  選擇時間
             llCsCreateOrderTimeBegin.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(
                     requireContext(),
                     { _, hour, minute ->
-                        viewModel?.textTimeBegin?.value = "${pad(hour)}:${pad(minute)}"
+                        val order = viewModel?.order?.value
+                        order?.timeOrderedStart = "${pad(hour)}:${pad(minute)}"
+                        viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
                     calendar.get(Calendar.MINUTE),
@@ -554,28 +564,92 @@ class CsCreateOrderFragment : Fragment() {
                 TimePickerDialog(
                     requireContext(),
                     { _, hour, minute ->
-                        viewModel?.textTimeEnd?.value = "${pad(hour)}:${pad(minute)}"
+                        val order = viewModel?.order?.value
+                        order?.timeOrderedEnd = "${pad(hour)}:${pad(minute)}"
+                        viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
                     calendar.get(Calendar.MINUTE),
                     false
                 ).show()
             }
-
+//  拍照
             llCsCreateOrderPics.setOnClickListener {
-                if (viewModel?.capturedCount!! < 3) {
+                if (viewModel?.photo3?.value == null) {
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     takePictureSmallLauncher.launch(intent)
                 }
             }
-//            val bundle = Bundle()
-//            bundle.putSerializable("order", viewModel?.order?.value)
-//            btnCsCreateOrderNext.setOnClickListener {
-//                Navigation.findNavController(it)
-//                    .navigate(R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment, bundle)
+//  選取優惠券
+//            if (binding.edtTxtCost.text.toString().toInt() == 0) {
+//                tvCsCreateOrderChooseCoupon.isEnabled = false
+//                tvCsCreateOrderChooseCoupon.isClickable = false
+//                Toast.makeText(
+//                    context,
+//                    getString(R.string.toast_csCreateOrder_keyInCost),
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            } else if (binding.edtTxtCost.text.toString().toInt() > 0) {
+//                tvCsCreateOrderChooseCoupon.setOnClickListener {
+//                    Navigation.findNavController(view)
+//                        .navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
+//                }
 //            }
+
+//  跳轉下一頁"
+            btnCsCreateOrderNext.setOnClickListener {
+//                val order = Order(
+//                    areaCity = countySpinner.selectedItem.toString(),
+//                    areaDistrict = "",
+//                    areaDetail = edtTxtAddress.text.toString(),
+//                    dateOrdered = tvDatePicked.text.toString(),
+//                    timeOrderedStart = tvCsCreateOrderTimeBeginPicked.text.toString(),
+//                    timeOrderedEnd = tvCsCreateOrderTimeEndPicked.text.toString(),
+//                    livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString(),
+//                    kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toDouble(),
+//                    bathroomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toDouble(),
+//                    roomSize = edtTxtCsCreateOrderBedroomSize.text.toString().toDouble(),
+//                    remark = edtTxtCsNotes.text.toString(),
+//                    photo1 = viewModel?.photo1?.value,
+//                    photo2 = viewModel?.photo2?.value,
+//                    photo3 = viewModel?.photo3?.value,
+//                    price = 800,
+//                    discount = tvCsCreateOrderChooseCoupon.text.toString().toInt(),
+//                )
+                val bundle = Bundle()
+                bundle.putSerializable("order", viewModel?.order?.value)
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment, bundle)
+            }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        Navigation.findNavController(
+            requireActivity(),
+            R.id.customer_nav_host_fragment
+        ).currentBackStackEntry?.savedStateHandle?.getLiveData<Coupon>("coupon")
+            ?.observe(viewLifecycleOwner) { coupon ->
+                viewModel.coupon.value = coupon
+                if (binding.edtTxtCost.text.toString().toInt() < coupon.minCost) {
+                    Toast.makeText(
+                        context,
+                        getString(R.string.toast_csCreateOrder_notMeetMinCost),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    viewModel.tvUseCoupon.value = "0"
+                } else if (coupon.type) {
+                    viewModel.tvUseCoupon.value = "-  $ " + coupon.moneyString
+                } else {
+                    val discount = coupon.discount
+                    val cost = binding.edtTxtCost.text.toString().toDouble()
+                    val calculatedValue = ((1 - discount) * (cost)).roundToInt()
+                    viewModel.tvUseCoupon.value = "- $calculatedValue"
+                }
+            }
+    }
+
     private fun pad(number: Int): String {
         return if (number >= 10) {
             number.toString()
@@ -590,15 +664,7 @@ class CsCreateOrderFragment : Fragment() {
                 result.data?.extras?.let { bundle ->
                     val picture = bundle["data"] as Bitmap?
                     picture?.let {
-                        if (!binding.viewModel?.isPhotoExists(it)!! && binding.viewModel?.capturedCount!! < 3) {
-                            binding.viewModel?.addCapturedPhoto(it)
-
-                            when (binding.viewModel?.capturedCount) {
-                                1 -> { binding.ivCsCreateOrderPic1.setImageBitmap(it); binding.ivCsCreateOrderPic2.setBackgroundResource(R.drawable.ic_add) }
-                                2 -> { binding.ivCsCreateOrderPic2.setImageBitmap(it); binding.ivCsCreateOrderPic3.setBackgroundResource(R.drawable.ic_add) }
-                                3 -> binding.ivCsCreateOrderPic3.setImageBitmap(it)
-                            }
-                        }
+                        viewModel.addCapturedPhoto(it)
                     }
                 }
             }

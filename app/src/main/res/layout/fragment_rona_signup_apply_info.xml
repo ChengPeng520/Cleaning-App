@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.login.viewModel.SignupApplyInfoViewModel" />
@@ -28,10 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.example.cleaningapp.share.CircleImageView
+                <ImageView
                     android:id="@+id/iv_suInfo_avatar"
                     android:layout_width="104dp"
                     android:layout_height="104dp"
+                    android:imageBitmap="@{viewModel.avatar}"
                     android:src="@drawable/fatruei_my_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -108,8 +110,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:entries="@{viewModel.gender}"
+                        android:entries="@array/sp_signup_info_gender"
                         android:minHeight="48dp"
+                        android:selectedItemPosition="@={viewModel.gender}"
                         app:layout_constraintBottom_toBottomOf="@+id/textView10"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView10"
@@ -159,14 +162,55 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout4"
+                    android:id="@+id/idConstraintLayout"
                     android:layout_width="0dp"
-                    android:layout_height="160dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+                    <TextView
+                        android:id="@+id/idNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/tv_signup_idNumber"
+                        android:textColor="#808080"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/edtTxt_suInfo_idNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:gravity="center|end"
+                        android:hint="@string/edtTxt_member_hint"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        android:text="@={viewModel.identifyNumber}"
+                        android:textColorHint="#DDDDDD"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/idNumber"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextFields" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout4"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/all_layout_gray_frame_shape"
+                    app:layout_constraintEnd_toEndOf="@+id/idConstraintLayout"
+                    app:layout_constraintStart_toStartOf="@+id/idConstraintLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/idConstraintLayout">
 
                     <TextView
                         android:id="@+id/textView16"
@@ -211,6 +255,7 @@
                     android:layout_width="170dp"
                     android:layout_height="115dp"
                     android:layout_marginTop="12dp"
+                    android:imageBitmap="@{viewModel.id1}"
                     android:src="@drawable/rona_upload_image"
                     app:layout_constraintStart_toStartOf="@+id/iv_suInfo_goodPerson"
                     app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -220,6 +265,7 @@
                     android:layout_width="170dp"
                     android:layout_height="115dp"
                     android:layout_marginTop="16dp"
+                    android:imageBitmap="@{viewModel.id2}"
                     android:src="@drawable/rona_upload_image"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_suInfo_id1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -244,6 +290,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="24dp"
                     android:cropToPadding="false"
+                    android:imageBitmap="@{viewModel.crc}"
                     android:scaleType="fitStart"
                     android:src="@drawable/rona_upload_goodperson"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -283,9 +330,9 @@
             android:id="@+id/tv_suInfo_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="24dp"
             android:text="@string/tv_suinfo_done"
             android:textColor="@color/black"
-            android:padding="24dp"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

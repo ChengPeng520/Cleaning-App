@@ -34,6 +34,7 @@ class ResetPasswordFragment : Fragment() {
                 if (!inputCheck()){
                     return@setOnClickListener
                 }
+                SignupFragment().saveEncryptedPassword()
                 Navigation.findNavController(it).navigate(R.id.action_resetPasswordFragment_to_loginFragment)
             }
         }

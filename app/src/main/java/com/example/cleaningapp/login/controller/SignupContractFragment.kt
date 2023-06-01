@@ -44,6 +44,8 @@ class SignupContractFragment : Fragment() {
 
             //下一步按鈕判斷
             tvSucontractNext.setOnClickListener {
+
+                val bundle = arguments
 //                val action = nextPage ?: return@setOnClickListener
 //                if (viewModel?.radioId?.value == R.id.rdoBtn_signup_read) {
 //                    Navigation.findNavController(it).navigate(action)
@@ -52,7 +54,7 @@ class SignupContractFragment : Fragment() {
 //                }
                 if (rdoBtnSignupRead.isChecked) {
                     Navigation.findNavController(it)
-                        .navigate(R.id.action_signupContractFragment_to_signupApplyInfoFragment)
+                        .navigate(R.id.action_signupContractFragment_to_signupApplyInfoFragment,bundle)
                 } else {
                     Toast.makeText(context, "尚未同意規範", Toast.LENGTH_SHORT).show()
                 }

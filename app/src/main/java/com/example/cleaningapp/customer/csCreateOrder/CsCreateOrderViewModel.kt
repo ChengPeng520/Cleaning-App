@@ -3,7 +3,6 @@ package com.example.cleaningapp.customer.csCreateOrder
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.customer.model.Order
 
@@ -13,24 +12,19 @@ class CsCreateOrderViewModel : ViewModel() {
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textTimeBegin: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textTimeEnd: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val tvCsCreateOrderChooseCoupon: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val tvUseCoupon: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
-    private val capturedPhotos: MutableList<Bitmap?> = mutableListOf()
-
-    val capturedCount: Int
-        get() = capturedPhotos.size
-
+//  拍照功能
+    val photo1: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
+    val photo2: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
+    val photo3: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
     fun addCapturedPhoto(photo: Bitmap?) {
-        capturedPhotos.add(photo)
-    }
-
-    fun isPhotoExists(photo: Bitmap?): Boolean {
-        for (capturedPhoto in capturedPhotos) {
-            if (capturedPhoto != null && capturedPhoto.sameAs(photo)) {
-                return true
-            }
+        if (photo1.value == null) {
+            photo1.value = photo
+        } else if (photo2.value == null) {
+            photo2.value = photo
+        } else if (photo3.value == null) {
+            photo3.value = photo
         }
-        return false
     }
-
 }

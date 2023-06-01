@@ -1,5 +1,6 @@
 package com.example.cleaningapp.share
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.*
@@ -8,6 +9,8 @@ import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.HttpURLConnection
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
 
 inline fun <reified T> requestTask(
     url: String,
@@ -24,6 +27,7 @@ inline fun <reified T> requestTask(
         }
     }
     deferred.await()
+
 }
 
 inline fun <reified T> request(

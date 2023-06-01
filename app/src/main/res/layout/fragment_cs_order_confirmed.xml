@@ -77,7 +77,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:layout_marginStart="8dp"
-                            android:text="@{viewModel.order.date}"
+                            android:text="@{viewModel.order.dateOrdered}"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -117,7 +117,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:layout_marginStart="8dp"
-                            android:text='@{viewModel.order.timeBegin+"~"+viewModel.order.timeEnd}'
+                            android:text='@{viewModel.order.timeOrderedStart+"~"+viewModel.order.timeOrderedEnd}'
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -157,7 +157,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:layout_marginStart="8dp"
-                            android:text="@{viewModel.order.address}"
+                            android:text="@{viewModel.order.areaDetail}"
                             tools:text="TextView" />
                     </LinearLayout>
 
@@ -194,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:inputType="textMultiLine"
-                            android:text="@{@string/tv_csOrderConfirmed_area2 (viewModel.order.livingRoomSizeString, viewModel.order.kitchenSizeString, viewModel.order.bathroomSizeString, viewModel.order.bedroomSizeString)}"
+                            android:text="@{@string/tv_csOrderConfirmed_area2 (viewModel.order.livingRoomSize, viewModel.order.kitchenSize, viewModel.order.bathroomSize, viewModel.order.roomSize)}"
                             tools:text="TextView" />
                     </LinearLayout>
 
@@ -235,7 +235,7 @@
                         android:inputType="textMultiLine"
                         android:minLines="5"
                         android:lineSpacingExtra="30px"
-                        android:text="@{viewModel.order.notes}"
+                        android:text="@{viewModel.order.remark}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -313,6 +313,7 @@
                         android:gravity="center|right"
                         android:textColor="@color/black"
                         android:textSize="14sp"
+                        android:text="@{viewModel.order.price}"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
@@ -348,6 +349,7 @@
                         android:gravity="center|right"
                         android:textColor="@color/black"
                         android:textSize="14sp"
+                        android:text="@{viewModel.order.charge}"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
