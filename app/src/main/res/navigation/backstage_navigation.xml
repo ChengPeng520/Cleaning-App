@@ -204,7 +204,7 @@
     </fragment>
     <fragment
         android:id="@+id/backstageCouponCreatFragment"
-        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponCreatFragment"
+        android:name="com.example.cleaningapp.backstage.coupon.BackstageCouponCreateFragment"
         android:label="fragment_backstage_coupon_creat"
         tools:layout="@layout/fragment_ciyi_backstage_coupon_creat" />
     <fragment

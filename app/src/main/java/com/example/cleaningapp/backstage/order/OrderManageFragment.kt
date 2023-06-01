@@ -49,6 +49,11 @@ class OrderManageFragment : Fragment() {
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText.toString())
+                    if (recyclerView.adapter != null && recyclerView.adapter?.itemCount ==0 ){
+                        tvBsOrderlistNoresult.visibility = View.VISIBLE
+                    }else{
+                        tvBsOrderlistNoresult.visibility =View.GONE
+                    }
                     return  true
                 }
             })

@@ -32,10 +32,10 @@ class BsShopMainViewModel : ViewModel() {
     /** 模擬取得遠端資料 */
     private fun loadProducts() {
         val productList = mutableListOf<Product>()
-        productList.add(Product(R.drawable.product1, "一掃極亮神奇掃把", "100",
-                "超好用", "100", "2022-09-09", "2023-09-09"))
-        productList.add(Product(R.drawable.product2, "一擦極亮神奇拖把", "100",
-            "超好用", "100", "2022-09-09", "2023-09-09"))
+        productList.add(Product(R.drawable.product1, "一掃極亮神奇掃把", 100,
+                "超好用", 100, "2022-09-09", "2023-09-09"))
+        productList.add(Product(R.drawable.product2, "一擦極亮神奇拖把", 100,
+            "超好用", 100, "2022-09-09", "2023-09-09"))
 
                 this.searchProductList = productList
                 this.products.value = this.searchProductList

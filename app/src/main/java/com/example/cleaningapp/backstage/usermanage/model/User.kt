@@ -14,7 +14,7 @@ class User(
     var createTime: String,
     var updateTime: String,
     var role: String,
-    var suspend: String,
+    var suspend:String,
     var verify: String,
     var intro: String,
     var idNum: String,

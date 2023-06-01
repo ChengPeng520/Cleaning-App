@@ -15,13 +15,13 @@ class BsShopMainViewModel : ViewModel() {
 
     private fun loadProducts() {
         val productList = mutableListOf<Product>()
-        productList.add(Product(R.drawable.product1, "掃把", "500",
-                "十分好用十分好用十分好用十分好用", "100",  "2020-05-10", "2020-05-11"
+        productList.add(Product(R.drawable.product1, "掃把", 500,
+                "十分好用十分好用十分好用十分好用", 100,  "2020-05-10", "2020-05-11"
             )
         )
         productList.add(
-            Product(R.drawable.product2,"拖把", "200",
-                "十分好用十分好用十分好用十分好用", "100",  "2020-05-10", "2020-05-11"
+            Product(R.drawable.product2,"拖把", 200,
+                "十分好用十分好用十分好用十分好用", 100,  "2020-05-10", "2020-05-11"
             )
         )
         this.productList = productList

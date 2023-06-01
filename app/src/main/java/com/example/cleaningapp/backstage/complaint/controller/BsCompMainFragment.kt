@@ -29,6 +29,7 @@ class BsCompMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().title ="客訴管理"
         super.onViewCreated(view, savedInstanceState)
     with(binding){
         rvBsCompMain.layoutManager = LinearLayoutManager(requireContext())

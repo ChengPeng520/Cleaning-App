@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BsUserServiceChatFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsUserServiceChatBinding
+    private val viewModel: BsUserServiceChatViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,6 @@ class BsUserServiceChatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val viewModel: BsUserServiceChatViewModel by viewModels()
         binding = FragmentAlbBsUserServiceChatBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -72,6 +72,15 @@ class BsUserServiceChatFragment : Fragment() {
             ivBsUserServChatBack.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }
+            tvBsUserServChatClose.setOnClickListener{
+                //TODO:已結案點選將傳回後端作標記,此Id已結案,再傳回到客服前台的recycle view項目標記已結案
+                val chatroom =binding.viewModel?.chatroom?.value
+                chatroom?.let{
+                    //傳送請求後端,標記chatroom已結案
+                }
+                Navigation.findNavController(it).popBackStack()
+            }
+
         }
     }
     override fun onDestroyView() {

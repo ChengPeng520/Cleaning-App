@@ -1,5 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,17 +48,39 @@ class BsUserMainDetailFragment : Fragment() {
             }
 
             with(binding) {
+
                 btnBsUserMainDetailModify.setOnClickListener {
                     Navigation.findNavController(view)
                         .navigate(R.id.action_bsUserMainDetailFragment_to_bsUserMainModifyFragment)
                 }
                 btnBsUserMainDetailDelete.setOnClickListener {
-                    Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
+                    showAlertDialog()
                 }
                 ivBsUserMainDetailBack.setOnClickListener {
                     Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
                 }
             }
+
+
         }
+    }
+
+    private fun showAlertDialog() {
+        val alertDialogBuilder = AlertDialog.Builder(requireContext())
+        alertDialogBuilder.setTitle("確定要停權此帳號?")
+        alertDialogBuilder.setMessage("將會通知訊息給使用者")
+
+        alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
+            dialog.dismiss()
+            Navigation.findNavController(binding.btnBsUserMainDetailDelete)
+                .navigate(R.id.bsUserMainFragment)
+        }
+        alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
+            dialog.dismiss()
+
+        }
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+
     }
 }

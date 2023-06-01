@@ -97,10 +97,19 @@
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="498dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="@+id/textSearchResultTitle"
             app:layout_constraintStart_toStartOf="@+id/textSearchResultTitle"
             app:layout_constraintTop_toBottomOf="@+id/textSearchResultTitle">
+
+            <TextView
+                android:id="@+id/tv_bs_orderlist_noresult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/tv_bs_orderlist_noresult"
+                tools:gravity="center" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -110,14 +119,6 @@
                 android:layout_marginStart="4dp">
 
             </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/tv_bs_orderlist_noresult"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/tv_bs_orderlist_noresult"
-                tools:gravity="center" />
 
 
         </LinearLayout>

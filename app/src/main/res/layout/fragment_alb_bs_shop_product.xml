@@ -142,7 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@{viewModel.product.pruductprice}"
+                        android:text="@{String.valueOf(viewModel.product.price)}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="100" />
@@ -167,7 +167,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.product.inventory}"
+                        android:text="@{String.valueOf(viewModel.product.inventory)}"
                         android:textColor="@color/black"
                         tools:text="100"
                         android:textSize="16sp" />

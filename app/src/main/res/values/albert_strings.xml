@@ -54,7 +54,7 @@
     <string name="tv_bs_user_main_detail_idfront_ti">身分證正面</string>
     <string name="tv_bs_user_main_detail_idback_ti">身分證反面</string>
     <string name="tv_bs_user_main_detail_criminalrecord_ti">良民證</string>
-    <string name="btn_bs_user_main_detail_delete">刪除</string>
+    <string name="btn_bs_user_main_detail_delete">停權</string>
     <string name="btn_bs_user_main_detail_revise">修改</string>
     <string name="btn_bs_user_main_save">儲存</string>
     <string name="tv_bs_user_main_add_account">帳號: </string>

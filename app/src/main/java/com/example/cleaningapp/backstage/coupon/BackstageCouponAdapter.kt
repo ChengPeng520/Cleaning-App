@@ -36,7 +36,6 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
         notifyDataSetChanged()
     }
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -47,12 +46,11 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
             parent,                 //parent：這是RecyclerView的父容器，即RecyclerView所在的布局容器。在創建ViewHolder時，我們需要提供父容器的參考，以便在後續的佈局中使用。
             false       //這是將創建的ViewHolder加入到父容器中的一個標誌。當設置為false時，表示不將ViewHolder自動添加到父容器中。
         )
-        itemCouponViewBinding.viewModel = BackstageCouponViewModel()    //跟單一筆的couponViewModel 畫面資料綁定
+        itemCouponViewBinding.viewModel =
+            BackstageCouponViewModel()    //跟單一筆的couponViewModel 畫面資料綁定
         itemCouponViewBinding.lifecycleOwner =
             parent.findViewTreeLifecycleOwner() //將ViewModel和生命周期所有者（LifecycleOwner）與項目視圖綁定對象關聯起來，以便在該項目的布局中使用ViewModel的數據綁定。
-
         return CouponViewHolder(itemCouponViewBinding)
-
     }
 
     override fun onBindViewHolder(
@@ -60,17 +58,19 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
         position: Int,
     ) {
         val coupon = coupons[position]
-        with(holder){
-        itemViewBinding.viewModel?.coupon?.value = coupon
+        with(holder) {
+            itemViewBinding.viewModel?.coupon?.value = coupon
 
-            val bundle =Bundle()
-            bundle.putSerializable("coupon",coupon)
-            itemView.setOnClickListener{
-                Navigation.findNavController(it).navigate(R.id.action_backstageCouponSearchFragment_to_BackstageCouponModifyFragment, bundle)
+            val bundle = Bundle()
+            bundle.putInt("couponId", coupon.couponId)
+            itemView.setOnClickListener {
+                Navigation.findNavController(it).navigate(
+                    R.id.action_backstageCouponSearchFragment_to_BackstageCouponModifyFragment,
+                    bundle
+                )
             }
         }
     }
-
 
 
     override fun getItemCount(): Int {

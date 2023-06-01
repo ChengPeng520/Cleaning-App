@@ -391,29 +391,23 @@
             android:id="@+id/btn_bs_user_main_detail_modify"
             android:layout_width="75dp"
             android:layout_height="50dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_detail_revise"
             android:textColor="@color/textPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97" />
+            app:layout_constraintEnd_toEndOf="@+id/sclVi_bs_user_main_detail"
+            app:layout_constraintTop_toBottomOf="@+id/sclVi_bs_user_main_detail" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_detail_delete"
             android:layout_width="75dp"
             android:layout_height="50dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/error"
             android:text="@string/btn_bs_user_main_detail_delete"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97" />
+            app:layout_constraintStart_toStartOf="@+id/sclVi_bs_user_main_detail"
+            app:layout_constraintTop_toBottomOf="@+id/sclVi_bs_user_main_detail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -39,7 +39,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.coupon.num}"
+                    android:text="@{String.valueOf(viewModel.coupon.couponId)}"
                     android:textSize="16sp"
                     tools:text="1234567890" />
 
@@ -50,17 +50,10 @@
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.coupon.name}"
+                    android:text="@{viewModel.coupon.couponName}"
                     tools:text="100跳樓大拍賣" />
 
-                <TextView
-                    android:id="@+id/tv_bs_coupon_modify_limit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@{viewModel.coupon.limit}"
-                    tools:text="2023-09-11" />
+
 
 
             </LinearLayout>
