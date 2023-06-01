@@ -2,21 +2,20 @@ package com.example.cleaningapp.backstage.coupon
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
 
-data class Member(val username: String, val password: String, val nickname: String)
-class BackstageCouponCreatViewModel:ViewModel() {
-    val coupon: MutableLiveData<Coupon> by lazy { MutableLiveData<Coupon>() }
+class BackstageCouponCreateViewModel : ViewModel() {
+    val coupon: MutableLiveData<Coupon> by lazy { MutableLiveData<Coupon>(Coupon()) }
 
-//    fun couponAdd(){
-//        val coupon = Member(
-//            username = coupon.value?.num ?:"",
-//            password = coupon.value?.name ?:"",
-//            nickname = coupon.value?.percentage ?:"",
-//        )
-//        val result = requestTask<Boolean>(
-//            "http://10.0.2.2:8080/javaweb-exercise-00/member/findAll",
-//            "POST",
-//            coupon
-//        )
-//        print(result)
+    fun couponAdd(): Boolean {
+        requestTask<JsonObject>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "POST",
+            coupon.value
+        )?.let {
+            return it.get("result").toString().toBoolean()
+        }
+        return false
     }
+}

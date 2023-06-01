@@ -24,7 +24,7 @@ class BackstageCouponSearchFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentCiyiCouponSearchBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -44,15 +44,15 @@ class BackstageCouponSearchFragment : Fragment() {
                     (binding.couponRecyclerView.adapter as BackstageCouponAdapter).updateCoupons(it)
                 }
             }
-            svBsCouponSearch.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            svBsCouponSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText != null) {
                         viewModel?.search(newText)
                     }
-                    if (couponRecyclerView.adapter != null && couponRecyclerView.adapter?.itemCount == 0){
+                    if (couponRecyclerView.adapter != null && couponRecyclerView.adapter?.itemCount == 0) {
                         tvCouponSearchNoResult.visibility = View.VISIBLE
-                    }else{
-                        tvCouponSearchNoResult.visibility =View.GONE
+                    } else {
+                        tvCouponSearchNoResult.visibility = View.GONE
                     }
                     return true
                 }
@@ -62,5 +62,10 @@ class BackstageCouponSearchFragment : Fragment() {
                 }
             })
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadCoupons()
     }
 }

@@ -206,7 +206,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/all_layout_black_frame_shape"
                         android:padding="4dp"
-                        android:text="@{viewModel.product.inventory}"
+                        android:text="@{String.valueOf(viewModel.product.inventory)}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

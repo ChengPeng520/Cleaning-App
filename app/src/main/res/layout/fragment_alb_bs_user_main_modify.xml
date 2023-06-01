@@ -174,18 +174,18 @@
                         android:id="@+id/tv_bs_user_main_modify_gender_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:text="@string/tv_bs_user_main_detail_gender_ti"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/edtTxt_bs_user_main_modify_gender"
+                    <Spinner
+                        android:id="@+id/spinner_bs_user_main_modify_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:inputType="text"
-                        android:minHeight="48dp"
-                        android:text="@={viewModel.user.gender}"
+                        android:minHeight="40dp"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>

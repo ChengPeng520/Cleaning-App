@@ -1,5 +1,7 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
+import android.provider.ContactsContract.Data
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +17,12 @@ import com.example.cleaningapp.cleaner.uistate.ChatroomUiState
 class BsUserServiceChatViewModel : ViewModel() {
     val chat: MutableLiveData<Chat> by lazy { MutableLiveData<Chat>() }
     val chatroom: MutableLiveData<Chatroom> by lazy { MutableLiveData<Chatroom>() }
+
+    /*TODO:如果聊天室使用firebase連線,先建立firebase的資料庫連線, 取的 database"chatroom"的路徑
+       private val database :FirebaseDataBase = FirebaseDataBase.getInstance()
+       private val chatroomRef :DatabaseReference = database.getReference("chatroom")
+     */
+
 
     private val _uiState = MutableLiveData<Chat>()
     private var id = 0
@@ -58,4 +66,19 @@ class BsUserServiceChatViewModel : ViewModel() {
             commitText.value = ""
         }
     }
+
+/*      TODO: 連線標記是否有成功的方法
+        fun  makeChatroomAsClosed(chatroomId:Int){
+        val chatroomRef =
+        val closeRef =chatroomRef.child(chatroomId).child("closed")
+        closeRef.setValue(true).addOnSuccessListener{
+            Toast.makeText(closeRef,"已成功標記",Toast.LENGTH_SHORT,).show()
+     }
+            .addOnFailureListener{  error->
+                Toast.makeText(closeRef,"標記失敗",Toast.LENGTH_SHORT,).show()
+     }
+ }
+ */
+
+
 }

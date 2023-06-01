@@ -1,7 +1,11 @@
 package com.example.cleaningapp.backstage.coupon
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
+
 
 class BackstageCouponSearchViewModel : ViewModel() {
     private var couponList = mutableListOf<Coupon>()
@@ -9,28 +13,20 @@ class BackstageCouponSearchViewModel : ViewModel() {
 
     init {
         loadCoupons()
-
     }
 
-    private fun loadCoupons() {
+    @SuppressLint("SimpleDateFormat")
+    fun loadCoupons() {
+        requestTask<List<Coupon>>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "GET",
+            respBodyType = object : TypeToken<List<Coupon>>() {}.type
+        )?.let {
 
-        val couponList = mutableListOf<Coupon>()
-        couponList.add(
-            Coupon(
-                "123456789", "跳樓折100", "30%折",
-                "30", "100","2023-09-09", "3000", true
-            )
-        )
-        couponList.add(
-            Coupon(
-                "123456666", "跳樓折200", "40%折",
-                "30", "200", "2023-09-09", "3000", true
-            )
-        )
 
-        this.couponList = couponList
-        this.coupons.value = this.couponList
 
+            coupons.value = it
+        }
     }
 
     fun search(netText: String) {
@@ -38,13 +34,15 @@ class BackstageCouponSearchViewModel : ViewModel() {
             coupons.value = couponList
         } else {
             val couponSearchList = mutableListOf<Coupon>()
-            couponSearchList.forEach { coupon ->
-                if (coupon.num.contains(netText, true) || coupon.name.contains(netText, true))
+            couponList.forEach { coupon ->
+                if (coupon.couponName.contains(netText, true) || coupon.couponName.contains(
+                        netText,
+                        true
+                    )
+                )
                     couponSearchList.add(coupon)
             }
             coupons.value = couponSearchList
         }
-
     }
-
 }

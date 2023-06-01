@@ -6,9 +6,9 @@ import java.io.Serializable
 class Product(
     var image: Int,
     var productname: String = "",
-    var pruductprice: String ="",
+    var price: Int = 0,
     var Description: String = "",
-    var inventory : String = "",
+    var inventory : Int = 0,
     var addDate:String ="",
     var upDate:String = "",
 ) : Serializable

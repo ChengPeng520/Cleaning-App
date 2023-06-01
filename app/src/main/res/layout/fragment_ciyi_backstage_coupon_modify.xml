@@ -5,9 +5,10 @@
     tools:context=".backstage.coupon.BackstageCouponModifyFragment">
 
     <data>
+        <import type="android.view.View"/>
         <variable
-            name="viewmodel"
-            type="com.example.cleaningapp.backstage.coupon.BackstageCouponViewModel" />
+            name="viewModel"
+            type="com.example.cleaningapp.backstage.coupon.BackstageCouponModifyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,10 +47,10 @@
             android:layout_weight="1"
             android:background="@drawable/bs_order_shape"
             android:ems="10"
+            android:text="@={viewModel.coupon.couponName}"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:paddingStart="50dp"
-            android:text="@{viewmodel.coupon.name}"
             android:textColorHint="@color/textSecondary"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_percentage"
@@ -69,6 +70,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_name" />
 
+
         <EditText
             android:id="@+id/edText_bs_coupon_modify_percentage"
             android:layout_width="match_parent"
@@ -80,14 +82,13 @@
             android:minHeight="48dp"
             android:padding="4dp"
             android:paddingStart="50dp"
-            android:text="@{viewmodel.coupon.percentage}"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_discount_discount"
+            app:layout_constraintBottom_toTopOf="@+id/edText_bs_coupon_modify_discount"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_name"
             tools:ignore="RtlSymmetry" />
-
 
         <TextView
             android:id="@+id/tv_ti_coupon_modify_percentage"
@@ -102,22 +103,23 @@
 
 
         <EditText
-            android:id="@+id/edText_bs_coupon_modify_quantity"
+            android:id="@+id/edText_bs_coupon_modify_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:background="@drawable/bs_order_shape"
             android:ems="10"
+            android:text="@{String.valueOf(viewModel.coupon.count)}"
             android:inputType="number"
             android:minHeight="48dp"
             android:padding="4dp"
-            android:textSize="14dp"
             android:paddingStart="50dp"
-            android:text="@{viewmodel.coupon.quantity}"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_discount_discount" />
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_discount" />
 
         <TextView
             android:id="@+id/tv_ti_coupon_quantity"
@@ -125,9 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/tv_ti_coupon_quantity"
-            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_quantity"
+            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_count"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_quantity" />
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_discount" />
 
         <EditText
             android:id="@+id/editText_bs_coupon_modify_limit"
@@ -138,14 +140,14 @@
             android:background="@drawable/bs_order_shape"
             android:ems="10"
             android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coupon.newDateFormat)}"
             android:paddingStart="50dp"
-            android:text="@{viewmodel.coupon.limit}"
-            android:inputType="number"
+            android:inputType="date"
             android:minHeight="48dp"
             android:padding="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_quantity"
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_count"
             tools:ignore="RtlSymmetry" />
 
         <TextView
@@ -156,7 +158,7 @@
             android:text="@string/tv_ti_coupon_timelimit"
             app:layout_constraintBottom_toBottomOf="@+id/editText_bs_coupon_modify_limit"
             app:layout_constraintStart_toStartOf="@+id/editText_bs_coupon_modify_limit"
-            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_quantity" />
+            app:layout_constraintTop_toBottomOf="@+id/edText_bs_coupon_modify_count" />
 
 
         <EditText
@@ -166,13 +168,13 @@
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:textSize="14sp"
+            android:text="@{String.valueOf(viewModel.coupon.minPrice)}"
             android:background="@drawable/bs_order_shape"
             android:ems="10"
             android:inputType="number"
             android:minHeight="48dp"
             android:padding="4dp"
             android:paddingStart="50dp"
-            android:text="@{viewmodel.coupon.minimum}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_modify_limit"
@@ -189,13 +191,12 @@
             app:layout_constraintTop_toTopOf="@+id/editText_bs_coupon_minimum" />
 
         <EditText
-            android:id="@+id/edText_bs_coupon_modify_discount_discount"
+            android:id="@+id/edText_bs_coupon_modify_discount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/bs_order_shape"
             android:ems="4"
-            android:text="@{viewmodel.coupon.discount}"
             android:textSize="14sp"
             android:paddingStart="50dp"
             android:inputType="number"
@@ -213,12 +214,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/tv_ti_coupon_discount"
-            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_discount_discount"
-            app:layout_constraintStart_toStartOf="@+id/edText_bs_coupon_modify_discount_discount"
-            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_discount_discount" />
+            app:layout_constraintBottom_toBottomOf="@+id/edText_bs_coupon_modify_discount"
+            app:layout_constraintStart_toStartOf="@+id/edText_bs_coupon_modify_discount"
+            app:layout_constraintTop_toTopOf="@+id/edText_bs_coupon_modify_discount" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_coupon_modify_add"
+            android:id="@+id/bt_coupon_modify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/editButton"
@@ -226,18 +227,16 @@
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_minimum"
-            app:layout_constraintVertical_bias="0.53" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_minimum" />
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/switch_modify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/onSale"
-            android:checked="true"
+            android:checked="@{viewModel.coupon.onUsed}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/editText_bs_coupon_minimum"
             app:layout_constraintTop_toBottomOf="@+id/editText_bs_coupon_minimum"
