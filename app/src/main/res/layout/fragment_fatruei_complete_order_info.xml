@@ -147,7 +147,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.uiState.dateOrdered}"
+                android:text="@{viewModel.uiState.cleaningDate}"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.uiState.orderedTime}"
+
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView24"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,6 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:text="@{viewModel.uiState.cleaningRange}"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView27"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -202,6 +203,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView28"
                 app:layout_constraintTop_toBottomOf="@+id/textView28"
                 tools:text="工具: 吸塵器、拖把 重點整理: 臥房、客房" />

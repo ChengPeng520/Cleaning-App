@@ -35,26 +35,7 @@ class CleanerMemberInfoFragment : Fragment() {
     }
 
     private fun initView() {
-        setObserve()
         setOnclick()
-    }
-
-    private fun setObserve() {
-        with(binding) {
-            viewModel?.uiState?.observe(viewLifecycleOwner) {
-                edtTxtMemberInfoName.textAlignment =
-                    if (it.name.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
-                    else View.TEXT_ALIGNMENT_TEXT_START
-
-                edtTxtMemberInfoIdentity.textAlignment =
-                    if (it.identifyNumber.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
-                    else View.TEXT_ALIGNMENT_TEXT_START
-
-                edtTxtMemberInfoPhone.textAlignment =
-                    if (it.phone.isEmpty()) View.TEXT_ALIGNMENT_TEXT_END
-                    else View.TEXT_ALIGNMENT_TEXT_START
-            }
-        }
     }
 
     private fun setOnclick() {
@@ -66,27 +47,6 @@ class CleanerMemberInfoFragment : Fragment() {
                 )
                 pickPictureLauncher.launch(intent)
             }
-            btMemberInfoEditPic.setOnClickListener {
-                val intent = Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                )
-                pickPictureLauncher.launch(intent)
-            }
-            ivMemberInfoIdCardFront.setOnClickListener {
-                val intent = Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                )
-                pickPictureLauncher2.launch(intent)
-            }
-            ivMemberInfoIdCardBack.setOnClickListener {
-                val intent = Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                )
-                pickPictureLauncher3.launch(intent)
-            }
         }
     }
 
@@ -96,28 +56,6 @@ class CleanerMemberInfoFragment : Fragment() {
                 result.data?.data?.let { uri ->
                     val currentState = viewModel.uiState.value ?: CleanerMemberInfoUiState()
                     currentState.photo = ImageUtils.uriToBitmap(requireContext(), uri)
-                    viewModel.uiState.value = currentState
-                }
-            }
-        }
-
-    private var pickPictureLauncher2 =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri ->
-                    val currentState = viewModel.uiState.value ?: CleanerMemberInfoUiState()
-                    currentState.idCardFront = ImageUtils.uriToBitmap(requireContext(), uri)
-                    viewModel.uiState.value = currentState
-                }
-            }
-        }
-
-    private var pickPictureLauncher3 =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri ->
-                    val currentState = viewModel.uiState.value ?: CleanerMemberInfoUiState()
-                    currentState.idCardBack = ImageUtils.uriToBitmap(requireContext(), uri)
                     viewModel.uiState.value = currentState
                 }
             }

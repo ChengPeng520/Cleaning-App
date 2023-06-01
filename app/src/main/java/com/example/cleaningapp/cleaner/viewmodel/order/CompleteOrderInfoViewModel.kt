@@ -4,22 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.CompleteOrderInfoUiState
+import com.example.cleaningapp.cleaner.uistate.InsertOrder
+import com.example.cleaningapp.share.requestTask
 
 class CompleteOrderInfoViewModel : ViewModel() {
     private val _uiState: MutableLiveData<CompleteOrderInfoUiState> by lazy { MutableLiveData<CompleteOrderInfoUiState>() }
     val uiState: LiveData<CompleteOrderInfoUiState> by lazy { _uiState }
 
     fun fetchOrderInfo() {
-        _uiState.value = CompleteOrderInfoUiState(
-            orderId = 10001,
-            dateOrdered = "2023年4月26日",
-            orderedTime = "12:00-14:00(2小時)",
-            address = "台北市中山區南京東路三段219號5樓",
-            livingRoomSize = 5,
-            remark = "工具:吸塵器、拖把\n整理重點:臥房、客房",
-            priceForCleaner = 1000,
-            stars = 4.0f,
-            commentCleaner = "提早到,整理得很細心"
-        )
+        requestTask<InsertOrder>(
+            "http://192.168.18.26:8080/javaweb-cleaningapp/clnOrder/info/1",
+            "GET"
+        )?.let {
+            _uiState.value = it.order
+        }
     }
 }
