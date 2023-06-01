@@ -16,54 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edtTxt_signup_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rona_field_style"
-            android:ems="12"
-            android:maxLength="12"
-            android:hint="@string/edtTxt_login_password_hint"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="10dp"
-            android:text="@={viewModel.password}"
-            android:textColorHint="@color/customerPrimary"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_account"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_account" />
-
-        <EditText
-            android:id="@+id/edtTxt_signup_passwordcfm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rona_field_style"
-            android:ems="12"
-            android:maxLength="12"
-            android:hint="@string/edtTxt_signup_passwordcfm_hint"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="10dp"
-            android:text="@={viewModel.cPassword}"
-            android:textColorHint="@color/customerPrimary"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_password"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_password" />
-
         <Spinner
             android:id="@+id/spn_signup_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginHorizontal="24dp"
             android:background="@drawable/rona_spinner_style"
             android:entries="@{viewModel.status}"
+            android:minHeight="48dp"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,46 +31,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.2" />
-
-        <EditText
-            android:id="@+id/edtTxt_signup_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rona_field_style"
-            android:ems="30"
-            android:maxLength="50"
-            android:hint="@string/edtTxt_login_account_hint"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="10dp"
-            android:text="@={viewModel.account}"
-            android:textColorHint="@color/customerPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spn_signup_status"
-            app:layout_constraintVertical_bias="0.10" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signup_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rona_btn_primarylight"
-            android:minHeight="48dp"
-            android:text="@string/btn_signup_signup"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_passwordcfm"
-            app:layout_constraintVertical_bias="0.168" />
 
         <ImageView
             android:id="@+id/iv_login_arrow"
@@ -129,11 +49,90 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_signup_statusHint"
-            android:textColor="@color/material_dynamic_neutral80"
+
             app:layout_constraintEnd_toEndOf="@+id/spn_signup_status"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spn_signup_status" />
+<!--        android:textColor="@color/material_dynamic_neutral80"-->
+
+        <EditText
+            android:id="@+id/edtTxt_signup_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rona_field_style"
+            android:ems="30"
+            android:hint="@string/edtTxt_login_account_hint"
+            android:inputType="textPersonName"
+            android:maxLength="50"
+            android:minHeight="48dp"
+            android:paddingStart="10dp"
+            android:text="@={viewModel.account}"
+            android:textColorHint="@color/customerPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spn_signup_status"
+            app:layout_constraintVertical_bias="0.10" />
+
+        <EditText
+            android:id="@+id/edtTxt_signup_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rona_field_style"
+            android:ems="12"
+            android:hint="@string/edtTxt_login_password_hint"
+            android:inputType="textPersonName"
+            android:maxLength="12"
+            android:minHeight="48dp"
+            android:paddingStart="10dp"
+            android:text="@={viewModel.password}"
+            android:textColorHint="@color/customerPrimary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_account"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_account" />
+
+        <EditText
+            android:id="@+id/edtTxt_signup_passwordcfm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rona_field_style"
+            android:ems="12"
+            android:hint="@string/edtTxt_signup_passwordcfm_hint"
+            android:inputType="textPersonName"
+            android:maxLength="12"
+            android:minHeight="48dp"
+            android:paddingStart="10dp"
+            android:text="@={viewModel.cPassword}"
+            android:textColorHint="@color/customerPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_password"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_password" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signup_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rona_btn_primarylight"
+            android:minHeight="48dp"
+            android:text="@string/btn_signup_signup"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_passwordcfm"
+            app:layout_constraintVertical_bias="0.168" />
 
         <TextView
             android:id="@+id/tv_signup_cancel"
@@ -157,10 +156,10 @@
             android:textColor="@color/error"
             app:layout_constraintBottom_toTopOf="@+id/btn_signup_signup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_passwordcfm"
             app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_passwordcfm"
             tools:text="TextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

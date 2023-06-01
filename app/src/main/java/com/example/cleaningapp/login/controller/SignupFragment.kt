@@ -17,20 +17,18 @@ import androidx.security.crypto.MasterKey
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaSignupBinding
 import com.example.cleaningapp.login.viewModel.SignupViewModel
-import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
 class SignupFragment : Fragment() {
     private lateinit var binding: FragmentRonaSignupBinding
-    private var nextPage: Int? = null
+    private val viewModel: SignupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         requireActivity().title = "會員註冊"
-        val viewModel: SignupViewModel by viewModels()
         binding = FragmentRonaSignupBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -67,18 +65,19 @@ class SignupFragment : Fragment() {
                 if (position == 0) {
                     val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
-                        if (it.get("result").asBoolean){
-                        tvSignupErrMsg.text = "此帳號已存在"
-
-                        }else{
+                        if (it.get("result").asBoolean) {
+                            tvSignupErrMsg.text = "此帳號已存在"
+                        } else {
                             saveEncryptedPassword()
                             val bundle = Bundle()
                             bundle.putString("emailAccount", viewModel?.account?.value)
                             bundle.putString("password", viewModel?.password?.value)
-                            findNavController().navigate(R.id.action_signupFragment_to_signupContractMemberFragment, bundle)
+                            findNavController().navigate(
+                                R.id.action_signupFragment_to_signupContractMemberFragment,
+                                bundle
+                            )
                         }
                     }
-
                 } else {
                     val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
@@ -90,7 +89,10 @@ class SignupFragment : Fragment() {
                             val bundle = Bundle()
                             bundle.putString("emailAccount", viewModel?.account?.value)
                             bundle.putString("password", viewModel?.password?.value)
-                            findNavController().navigate(R.id.action_signupFragment_to_signupContractFragment, bundle)
+                            findNavController().navigate(
+                                R.id.action_signupFragment_to_signupContractFragment,
+                                bundle
+                            )
                         }
                     }
                 }
@@ -106,7 +108,7 @@ class SignupFragment : Fragment() {
         }
     }
 
-    fun getEncryptedPassword(): SharedPreferences {
+    private fun getEncryptedPassword(): SharedPreferences {
         val masterKeyAlias = MasterKey.Builder(requireContext())
             .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
             .build()

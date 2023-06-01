@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.CleanerActivity
 import com.example.cleaningapp.CustomerActivity
@@ -81,8 +82,7 @@ class LoginFragment : Fragment() {
                         if (it.suspend) {
                             tvLoginErrMsg.text = "此帳號已停權"
                         } else if (!it.verify) {
-                            Navigation.findNavController(view)
-                                .navigate(R.id.action_loginFragment_to_signupCheckingFragment)
+                            findNavController().navigate(R.id.action_loginFragment_to_signupCheckingFragment)
                         } else {
                             val intent = Intent(requireContext(), CleanerActivity::class.java)
                             requireContext().startActivity(intent)
