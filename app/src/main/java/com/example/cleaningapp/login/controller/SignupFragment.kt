@@ -3,6 +3,7 @@ package com.example.cleaningapp.login.controller
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,15 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaSignupBinding
 import com.example.cleaningapp.login.viewModel.SignupViewModel
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
 
 class SignupFragment : Fragment() {
     private lateinit var binding: FragmentRonaSignupBinding
@@ -38,40 +43,58 @@ class SignupFragment : Fragment() {
                 Navigation.findNavController(it).popBackStack()
             }
 
-            spnSignupStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                @SuppressLint("SuspiciousIndentation")
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
                     id: Long
                 ) {
-                    if (position == 0) {
-                        nextPage = R.id.action_signupFragment_to_signupContractMemberFragment
-                    } else {
-                        nextPage = R.id.action_signupFragment_to_signupContractFragment
-                    }
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
-            btnSignupSignup.setOnClickListener {
-                val action = nextPage ?: return@setOnClickListener //?:是空值的時候
-                // some login code
-
-                // login success
+            btnSignupSignup.setOnClickListener { view ->
                 if (!inputCheck()) {
                     return@setOnClickListener
                 }
-                val bundle = Bundle()
-                bundle.putString("emailAccount", viewModel?.account?.value)
-                bundle.putString("password", viewModel?.password?.value)
+                spnSignupStatus.onItemSelectedListener = onItemSelectedListener
+                val position = spnSignupStatus.selectedItemPosition
 
-                saveEncryptedPassword()
-                Navigation.findNavController(it).navigate(action,bundle)
+                if (position == 0) {
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
+                    requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
+                        if (it.get("result").asBoolean){
+                        tvSignupErrMsg.text = "此帳號已存在"
 
+                        }else{
+                            saveEncryptedPassword()
+                            val bundle = Bundle()
+                            bundle.putString("emailAccount", viewModel?.account?.value)
+                            bundle.putString("password", viewModel?.password?.value)
+                            findNavController().navigate(R.id.action_signupFragment_to_signupContractMemberFragment, bundle)
+                        }
+                    }
+
+                } else {
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/"
+                    requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
+                        Log.d("result", it.get("result").asBoolean.toString())
+                        if (it.get("result").asBoolean) {
+                            tvSignupErrMsg.text = "此帳號已存在"
+                        } else {
+                            saveEncryptedPassword()
+                            val bundle = Bundle()
+                            bundle.putString("emailAccount", viewModel?.account?.value)
+                            bundle.putString("password", viewModel?.password?.value)
+                            findNavController().navigate(R.id.action_signupFragment_to_signupContractFragment, bundle)
+                        }
+                    }
+                }
             }
-
         }
     }
 
@@ -83,7 +106,7 @@ class SignupFragment : Fragment() {
         }
     }
 
-     fun getEncryptedPassword(): SharedPreferences {
+    fun getEncryptedPassword(): SharedPreferences {
         val masterKeyAlias = MasterKey.Builder(requireContext())
             .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
             .build()

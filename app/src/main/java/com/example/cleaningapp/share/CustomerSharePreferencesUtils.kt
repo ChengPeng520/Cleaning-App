@@ -26,7 +26,8 @@ object CustomerSharePreferencesUtils {
         val introduction: String?,
         val certification: String? = null,
         val suspend: Boolean = false,
-        val verify: Boolean = false
+        val verify: Boolean = false,
+        val token: String = ""
     ) {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
@@ -88,7 +89,7 @@ object CustomerSharePreferencesUtils {
         with(sharedPreferences) {
             val customer =
                 Customer(
-                    customerId = getInt("cleanerId", 0),
+                    customerId = getInt("customerId", 0),
                     email = getString("email", ""),
                     name = getString("name", ""),
                     photo = getString("photo", null)?.let {
@@ -116,7 +117,7 @@ object CustomerSharePreferencesUtils {
             ?.let { ImageUtils.bytesToBitmap(Base64.decode(it, Base64.DEFAULT)) }
     }
 
-    fun anyToApiCleanerModel(any: Any): ApiCustomerModel {
+    fun anyToApiCustomerModel(any: Any): ApiCustomerModel {
         val customer =
             Gson().fromJson(Gson().toJson(any), Customer::class.java)
         return ApiCustomerModel(
@@ -128,6 +129,7 @@ object CustomerSharePreferencesUtils {
             phone = customer.phone,
             gender = customer.gender,
             introduction = customer.introduction,
+
         )
     }
 }

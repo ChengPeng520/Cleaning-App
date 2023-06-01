@@ -14,14 +14,15 @@ import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.CleanerActivity
 import com.example.cleaningapp.CustomerActivity
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.csHomePage.CsHomePageFragment
+import com.example.cleaningapp.backstage.usermanage.model.AccountBackstage
 import com.example.cleaningapp.databinding.FragmentRonaLoginBinding
 import com.example.cleaningapp.login.viewModel.LoginViewModel
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
+import com.example.cleaningapp.share.requestTask
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentRonaLoginBinding
-    private var nextActivity: Intent? = null
-    private lateinit var intent: Intent
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,41 +39,73 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-            spnLoginStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            val onItemSelected = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
                     id: Long
                 ) {
-//                    nextActivity = when(getIdentity(position)){
-//                        Identity.Customer -> CustomerActivity.getIntent(context)
-//                        Identity.Cleaner -> CleanerActivity.getIntent(context)
-//                    }
-                    intent = if (position == 0) {
-                        Intent(requireContext(), CustomerActivity::class.java)
-                    } else if (position == 1){
-                        Intent(requireContext(), CleanerActivity::class.java)
-                    }else {
-                        Intent(requireContext(), BackstageActivity::class.java)
-                    }
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
-            btnLoginLogin.setOnClickListener {
-                if (!inputCheck()){
+            btnLoginLogin.setOnClickListener { view ->
+                if (!inputCheck()) {
                     return@setOnClickListener
                 }
-//                this@LoginFragment.startActivity(nextActivity)
-                requireContext().startActivity(intent)
+                spnLoginStatus.onItemSelectedListener = onItemSelected
+                val position = spnLoginStatus.selectedItemPosition
 
-                //缺: 如果申請未通過審核, 登入需呈現SignupCheckingFragment
-
+                if (position == 0) {
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
+                    requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+                        "$url${viewModel?.account?.value}/${viewModel?.password?.value}"
+                    )?.let {
+                        if (it.suspend) {
+                            tvLoginErrMsg.text = "此帳號已停權"
+                        } else {
+                            val intent = Intent(requireContext(), CustomerActivity::class.java)
+                            requireContext().startActivity(intent)
+                        }
+                        return@setOnClickListener
+                    }
+                    tvLoginErrMsg.text = "使用者帳號或密碼不正確"
+                } else if (position == 1) {
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/"
+                    requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+                        "$url${viewModel?.account?.value}/${viewModel?.password?.value}"
+                    )?.let {
+                        if (it.suspend) {
+                            tvLoginErrMsg.text = "此帳號已停權"
+                        } else if (!it.verify) {
+                            Navigation.findNavController(view)
+                                .navigate(R.id.action_loginFragment_to_signupCheckingFragment)
+                        } else {
+                            val intent = Intent(requireContext(), CleanerActivity::class.java)
+                            requireContext().startActivity(intent)
+                        }
+                        return@setOnClickListener
+                    }
+                    tvLoginErrMsg.text = "使用者帳號或密碼不正確"
+                } else {
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/"
+                    requestTask<AccountBackstage>(
+                        "$url${viewModel?.account?.value}/${viewModel?.password?.value}"
+                    )?.let {
+                        if (it.suspend) {
+                            tvLoginErrMsg.text = "此帳號已停權"
+                        } else {
+                            val intent = Intent(requireContext(), BackstageActivity::class.java)
+                            requireContext().startActivity(intent)
+                        }
+                        return@setOnClickListener
+                    }
+                    tvLoginErrMsg.text = "使用者帳號或密碼不正確"
+                }
             }
-
             tvLoginSignUp.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_loginFragment_to_signupFragment)

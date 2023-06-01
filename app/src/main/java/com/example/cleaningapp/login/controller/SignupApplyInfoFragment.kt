@@ -49,7 +49,7 @@ class SignupApplyInfoFragment : Fragment() {
                     println(bundle.getString("emailAccount"))
                 }
 
-                viewModel?.register()?.let {
+                viewModel?.cleanerRegister()?.let {
                     if (it) {
                         Navigation.findNavController(requireActivity(), R.id.fragmentContainerView3)
                             .navigate(R.id.action_signupApplyInfoFragment_to_signupCheckApplyFragment)

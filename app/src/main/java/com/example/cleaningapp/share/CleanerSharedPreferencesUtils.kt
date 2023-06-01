@@ -30,7 +30,8 @@ object CleanerSharedPreferencesUtils {
         val crc: ByteArray?,
         val certification: String? = null,
         val suspend: Boolean = false,
-        val verify: Boolean = false
+        val verify: Boolean = false,
+        val token: String = ""
     ) {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true

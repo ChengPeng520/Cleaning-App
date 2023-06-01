@@ -190,8 +190,8 @@
                         android:background="@null"
                         android:ems="10"
                         android:gravity="center|end"
+                        android:inputType="textPersonName"
                         android:hint="@string/edtTxt_member_hint"
-                        android:inputType="number"
                         android:minHeight="48dp"
                         android:text="@={viewModel.identifyNumber}"
                         android:textColorHint="#DDDDDD"
@@ -308,6 +308,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_suInfo_goodPerson"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

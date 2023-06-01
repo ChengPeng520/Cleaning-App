@@ -46,7 +46,9 @@ class SignupContractMemberFragment : Fragment() {
 
             btnContractMemberConfirm.setOnClickListener {
                 if (rdoBtnContractMemberRead.isChecked){
-                    Navigation.findNavController(it).navigate(R.id.action_signupContractMemberFragment_to_signupMemberInfoFragment)
+                    val bundle = arguments
+                    Navigation.findNavController(it)
+                        .navigate(R.id.action_signupContractMemberFragment_to_signupMemberInfoFragment, bundle)
                 } else {
                     Toast.makeText(context, "尚未同意規範", Toast.LENGTH_SHORT).show()
                 }

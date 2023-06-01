@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
 
 private data class Cleaner(
     val email: String?,
@@ -33,7 +34,7 @@ class SignupApplyInfoViewModel : ViewModel() {
     val id2: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>(null) }
     val crc: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>(null) }
 
-    fun register(): Boolean? {
+    fun cleanerRegister(): Boolean? {
         val member =
             Cleaner(
                 email = email,
@@ -49,10 +50,13 @@ class SignupApplyInfoViewModel : ViewModel() {
                 crc = crc.value
             )
         val apiCleanerModel = CleanerSharedPreferencesUtils.anyToApiCleanerModel(member)
-        return requestTask<Boolean>(
+        return requestTask<JsonObject>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/",
             "POST",
             apiCleanerModel
-        )
+        )?.let {
+            return it.get("result").toString().toBoolean()
+        }
+        return false
     }
 }

@@ -28,11 +28,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.example.cleaningapp.share.CircleImageView
+                <ImageView
                     android:id="@+id/iv_memInfo_avatar"
                     android:layout_width="104dp"
                     android:layout_height="104dp"
                     android:src="@drawable/fatruei_my_image"
+                    android:imageBitmap="@{viewModel.avatar}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +110,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:entries="@{viewModel.gender}"
+                        android:entries="@array/sp_signup_info_gender"
                         android:minHeight="48dp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView10"
                         app:layout_constraintEnd_toEndOf="parent"
