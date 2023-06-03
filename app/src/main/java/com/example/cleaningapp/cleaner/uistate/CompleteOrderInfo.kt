@@ -6,7 +6,7 @@ import java.sql.Timestamp
 data class CompleteOrderInfoUiState(
     val orderId: Int = 0,
     val dateOrdered: Timestamp,
-    val timeOrderStart: Timestamp,
+    val timeOrderedStart: Timestamp,
     val timeOrderedEnd: Timestamp,
     val areaCity: String,
     val areaDistrict: String,
@@ -46,6 +46,14 @@ data class CompleteOrderInfoUiState(
             )
             else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
             return stringBuilder.toString()
+        }
+    val cleaningTime: String
+        get() {
+            val sb = StringBuilder()
+            val dateFormat = SimpleDateFormat("HH:mm")
+            sb.append(dateFormat.format(timeOrderedStart)).append("-")
+                .append(dateFormat.format(timeOrderedEnd))
+            return sb.toString()
         }
 }
 

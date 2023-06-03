@@ -13,7 +13,7 @@ class CompleteOrderInfoViewModel : ViewModel() {
 
     fun fetchOrderInfo() {
         requestTask<InsertOrder>(
-            "http://192.168.18.26:8080/javaweb-cleaningapp/clnOrder/info/1",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/1",
             "GET"
         )?.let {
             _uiState.value = it.order
