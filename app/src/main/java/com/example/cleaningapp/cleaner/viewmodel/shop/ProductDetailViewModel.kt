@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductDetailUiState
+import com.example.cleaningapp.share.requestTask
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -14,15 +15,11 @@ class ProductDetailViewModel : ViewModel() {
     val uiState = _uiState.asStateFlow()
 
     fun fetchProductDetail(productId: Int) {
-        _uiState.update {
-            it.copy(
-                id = productId,
-                image = R.drawable.fatruei_test1,
-                name = "掃把",
-                description = "這是飛天掃把",
-                price = 50,
-                totalPrice = 50 * uiState.value.count
-            )
+        requestTask<ProductDetailUiState>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/$productId",
+            method = "GET",
+        )?.let {
+            _uiState.value = it
         }
     }
 
@@ -33,8 +30,7 @@ class ProductDetailViewModel : ViewModel() {
                 val newCount = uiState.value.count + 1
                 _uiState.update {
                     it.copy(
-                        count = newCount,
-                        totalPrice = uiState.value.price * newCount
+                        count = newCount
                     )
                 }
             }
@@ -43,8 +39,7 @@ class ProductDetailViewModel : ViewModel() {
                     val newCount = uiState.value.count - 1
                     _uiState.update {
                         it.copy(
-                            count = newCount,
-                            totalPrice = uiState.value.price * newCount
+                            count = newCount
                         )
                     }
                 }

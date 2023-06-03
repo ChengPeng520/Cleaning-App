@@ -29,7 +29,7 @@ class ProductDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            viewModel.fetchProductDetail(it.getInt("id"))
+            viewModel.fetchProductDetail(it.getInt("productId"))
         }
     }
 
