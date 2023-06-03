@@ -40,11 +40,9 @@ class OrderStateFragment : Fragment() {
                         this.clOrderStateProgressBar.visibility = View.GONE
                         this.btnOrderStateStartCleaning.visibility = View.VISIBLE
                         this.btnOrderStateStartCleaning.isEnabled = false
-                        this.tvOrderStateCancel.visibility = View.VISIBLE
                     }
                     1 -> {
                         this.btnOrderStateStartCleaning.visibility = View.VISIBLE
-                        this.tvOrderStateCancel.visibility = View.GONE
                         this.btnOrderStateStartCleaning.isEnabled = true
                         this.ivOrderStateApplied.isSelected = true
                         this.tvOrderStateApplied.setTextColor(Color.BLACK)

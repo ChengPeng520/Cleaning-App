@@ -465,25 +465,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
                     android:onClick="@{viewModel::startCleaning}"
                     android:text="@string/btn_order_state_start_cleaning"
                     android:visibility="gone"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_order_state_cancel"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
-
-                <TextView
-                    android:id="@+id/tv_order_state_cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_order_state_cancel"
-                    android:textColor="@color/black"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
