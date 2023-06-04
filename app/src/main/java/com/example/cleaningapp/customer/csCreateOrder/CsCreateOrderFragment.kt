@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
@@ -509,13 +510,12 @@ class CsCreateOrderFragment : Fragment() {
                 id: Long
             ) {
                 val order = viewModel.order.value
-                order?.areaDistrict = (view as MaterialTextView).text as String
+                order?.areaDistrict = (view as MaterialTextView).text.toString()
                 viewModel.order.value = order
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
-
         }
     }
 
@@ -587,34 +587,47 @@ class CsCreateOrderFragment : Fragment() {
         with(binding) {
             //  拍照
             llCsCreateOrderPics.setOnClickListener {
-                if (viewModel?.photo3?.value == null) {
+                if (viewModel?.photo?.value?.photo3 == null) {
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     takePictureSmallLauncher.launch(intent)
                 }
             }
+
             // 選取優惠券
             llCoupon.setOnClickListener {
-                if (viewModel?.order?.value?.priceForCustomer!! == 0) {
+                val originPrice = edtTxtCost.text.toString()
+                if (originPrice.isNotEmpty() && originPrice.toInt() == 0) {
                     tvCsCreateOrderChooseCoupon.isEnabled = false
-                    tvCsCreateOrderChooseCoupon.isClickable = false
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_keyInCost),
                         Toast.LENGTH_SHORT
                     ).show()
-                } else if (viewModel?.order?.value?.priceForCustomer!! > 0) {
+                } else {
+                    tvCsCreateOrderChooseCoupon.isEnabled = true
                     tvCsCreateOrderChooseCoupon.setOnClickListener {
-                        Navigation.findNavController(it)
-                            .navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
+                        findNavController().navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
                     }
                 }
             }
+
             //  跳轉下一頁
             btnCsCreateOrderNext.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putSerializable("order", viewModel?.order?.value)
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment, bundle)
+                viewModel?.order?.value?.let {
+                    it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
+                    it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
+                    it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                    it.roomSize = edtTxtCsCreateOrderBedroomSize.text.toString().toInt()
+                    it.originalPrice = edtTxtCost.text.toString().toInt()
+
+                    val bundle = Bundle()
+                    bundle.putSerializable("order", it)
+                    bundle.putSerializable("photos", viewModel?.photo?.value)
+                    findNavController().navigate(
+                        R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment,
+                        bundle
+                    )
+                }
             }
         }
     }
@@ -634,8 +647,8 @@ class CsCreateOrderFragment : Fragment() {
                         getString(R.string.toast_csCreateOrder_notMeetMinCost),
                         Toast.LENGTH_SHORT
                     ).show()
-                    order?.tvUseCoupon = "0"
                 } else if (coupon.discountType) {
+                    order?.tvUseCoupon = "0"
                     order?.tvUseCoupon = "-  $ " + coupon.moneyString
                 } else {
                     val discount = coupon._discount

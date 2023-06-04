@@ -49,7 +49,6 @@ class CsCreateOrderCouponUseAdapter (private var coupons: List<Coupon>) :
 //            val bundle = Bundle()
 //            bundle.putSerializable("coupon", coupon)
             itemViewBinding.btCusCouponPick.setOnClickListener {
-
                 Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set("coupon", coupon)
                 Navigation.findNavController(it).popBackStack()
             }
