@@ -1,10 +1,10 @@
 package com.example.cleaningapp.cleaner.uistate
 
-data class ChatroomUiState(val chatroomItems: List<ChatroomItemUiState> = listOf())
+data class ChatroomUiState(val chatroomItems: List<ChatroomItemUiState> = mutableListOf())
 
 data class ChatroomItemUiState(
-    val id: Int = 0,
-    val fromId: Int = 0,
-    val toId: Int = 0,
+    val msgClnBackId: Int = 0,
+    val cleanerId: Int = 0,
+    val backstageId: Int = 0,
     val text: String = ""
 )

@@ -11,15 +11,15 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductItemUiState
 import com.example.cleaningapp.databinding.ItemFatrueiShopProductBinding
 
-class MallAdapter : ListAdapter<ProductItemUiState, MallAdapter.MyViewHodler>(DiffCallBack()) {
-    private var itemWidth: Int = 178
+class MallAdapter : ListAdapter<ProductItemUiState, MallAdapter.MyViewHolder>(DiffCallBack()) {
+    private var itemWidth: Int = 0
 
     class DiffCallBack : DiffUtil.ItemCallback<ProductItemUiState>() {
         override fun areItemsTheSame(
             oldItem: ProductItemUiState,
             newItem: ProductItemUiState
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.productId == newItem.productId
         }
 
         override fun areContentsTheSame(
@@ -30,17 +30,17 @@ class MallAdapter : ListAdapter<ProductItemUiState, MallAdapter.MyViewHodler>(Di
         }
     }
 
-    class MyViewHodler(val binding: ItemFatrueiShopProductBinding) :
+    class MyViewHolder(val binding: ItemFatrueiShopProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(id: Int, product: ProductItemUiState, itemWidth: Int) {
+        fun onBind(productId: Int, product: ProductItemUiState, itemWidth: Int) {
             with(binding) {
                 clMall.maxWidth = itemWidth
-                ivShopProductPicture.setImageResource(product.image)
+                ivShopProductPicture.setImageBitmap(product.productPhoto)
                 tvShopProductName.text = product.name
                 tvShopProductPrice.text = product.price.toString()
                 ivShopProductPicture.setOnClickListener {
                     val bundle = Bundle()
-                    bundle.putInt("id", id)
+                    bundle.putInt("productId", productId)
                     Navigation.findNavController(it)
                         .navigate(R.id.action_shopFragment_to_productDetailFragment, bundle)
                 }
@@ -48,9 +48,9 @@ class MallAdapter : ListAdapter<ProductItemUiState, MallAdapter.MyViewHodler>(Di
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHodler {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         this.itemWidth = parent.width / 2
-        return MyViewHodler(
+        return MyViewHolder(
             ItemFatrueiShopProductBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -59,7 +59,7 @@ class MallAdapter : ListAdapter<ProductItemUiState, MallAdapter.MyViewHodler>(Di
         )
     }
 
-    override fun onBindViewHolder(holder: MyViewHodler, position: Int) {
-        holder.onBind(getItem(position).id, getItem(position), itemWidth)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.onBind(getItem(position).productId, getItem(position), itemWidth)
     }
 }

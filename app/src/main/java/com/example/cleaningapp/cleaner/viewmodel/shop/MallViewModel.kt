@@ -1,9 +1,10 @@
 package com.example.cleaningapp.cleaner.viewmodel.shop
 
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductItemUiState
 import com.example.cleaningapp.cleaner.uistate.ProductUiState
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,15 +16,18 @@ class MallViewModel : ViewModel() {
     val uiState: StateFlow<ProductUiState> by lazy { _uiState.asStateFlow() }
 
     fun fetchProducts() {
-        val productItems = mutableListOf<ProductItemUiState>()
-        productItems.add(ProductItemUiState(1, R.drawable.fatruei_test1, "掃把", 100))
-        productItems.add(ProductItemUiState(2, R.drawable.fatruei_test2, "抹布", 100))
-        productItems.add(ProductItemUiState(3, R.drawable.fatruei_test3, "拖把組", 100))
-        productItems.add(ProductItemUiState(4, R.drawable.fatruei_test4, "夾子", 50))
-        _uiState.update {
-            it.copy(productItems = productItems)
+        requestTask<List<ProductItemUiState>>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
+            method = "GET",
+            respBodyType = object : TypeToken<List<ProductItemUiState>>() {}.type
+        )?.let {
+            val filterList: MutableList<ProductItemUiState> = mutableListOf()
+            it.forEach { product ->
+                if (product.isOnSale) filterList.add(product)
+            }
+            _uiState.value = ProductUiState(filterList)
+            allProductItems = filterList
         }
-        allProductItems = productItems
     }
 
     fun onSearchInputChange(newText: String?) {
