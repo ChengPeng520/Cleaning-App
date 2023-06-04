@@ -4,6 +4,7 @@ import java.io.Serializable
 
     data class Work
         (
+        var status: Int,
         val imageId: Int = 0,
         val orderId: String = "",
         val date: String = "",

@@ -118,7 +118,11 @@
         android:id="@+id/order_acceptFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderAcceptFragment"
         android:label="fragment_vicky_order_accept"
-        tools:layout="@layout/fragment_vicky_order_accept" />
+        tools:layout="@layout/fragment_vicky_order_accept" >
+        <action
+            android:id="@+id/action_order_acceptFragment_to_cleanerFrontFragment"
+            app:destination="@id/cleanerFrontFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vicky_order_conductFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderConductFragment"
@@ -141,7 +145,11 @@
         android:id="@+id/vicky_order_ordermatchFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderOrdermatchFragment"
         android:label="fragment_vicky_order_ordermatch"
-        tools:layout="@layout/fragment_vicky_order_ordermatch" />
+        tools:layout="@layout/fragment_vicky_order_ordermatch" >
+        <action
+            android:id="@+id/action_vicky_order_ordermatchFragment_to_vicky_order_conductFragment"
+            app:destination="@id/vicky_order_conductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vicky_order_cssign_checkFragment"
         android:name="com.example.cleaningapp.cleaner.view.order.OrderCsSignCheckFragment"

@@ -34,7 +34,7 @@
             android:id="@+id/tv_order_clearphoto_after"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="64dp"
             android:text="@string/tv_order_cleaner_photo_after"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_order_clearphoto_before"
@@ -110,6 +110,18 @@
                 android:layout_height="110dp"
                 tools:src="@tools:sample/avatars" />
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_add_check"
+            style="@style/cleanerBtnSubmitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bt_photo_add_check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout5"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintVertical_bias="0.6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

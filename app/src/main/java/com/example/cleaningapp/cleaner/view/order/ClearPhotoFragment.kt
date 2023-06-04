@@ -7,13 +7,14 @@ import android.graphics.Bitmap
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.order.ClearPhotoViewModel
 import com.example.cleaningapp.databinding.FragmentVickyClearPhotoBinding
@@ -35,15 +36,8 @@ private lateinit var binding: FragmentVickyClearPhotoBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-//            imageView28.setOnClickListener {
-//                val intent = Intent(
-//                    Intent.ACTION_PICK,
-//                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-//                )
-//                imageView28Launcher.launch(intent)
-//            }
+
            linearLayout4.setOnClickListener {
-//               Toast.makeText(it.context, "領取成功", Toast.LENGTH_SHORT).show()
                 if (viewModel?.capturedCount!! < 3) {
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     takePictureSmallLauncher.launch(intent)
@@ -56,15 +50,13 @@ private lateinit var binding: FragmentVickyClearPhotoBinding
                     takePictureSmallLaunchers.launch(intent)
                 }
             }
+            btAddCheck.setOnClickListener {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_vicky_clear_photoFragment_to_orderStateFragment)
+            }
         }
     }
 
-//    private var imageView28Launcher =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                result.data?.data?.let { uri -> binding.imageView28.setImageURI(uri) }
-//            }
-//        }
     private var takePictureSmallLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
