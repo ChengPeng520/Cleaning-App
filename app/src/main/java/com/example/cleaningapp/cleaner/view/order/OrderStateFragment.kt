@@ -1,6 +1,8 @@
 package com.example.cleaningapp.cleaner.view.order
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -104,5 +106,19 @@ class OrderStateFragment : Fragment() {
                 } else false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.tvOrderStateAddress.setOnClickListener {
+            val address = binding.tvOrderStateAddress.text.toString()
+            googleMaps(address)
+        }
+    }
+
+    private fun googleMaps(address: String) {
+        val intentUri = Uri.parse("google.navigation:q=$address")
+        val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 }

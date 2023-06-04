@@ -1,6 +1,7 @@
 package com.example.cleaningapp.customer.csHomePage
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,8 +34,6 @@ class CsCouponObtainFragment : Fragment() {
                 // adapter為null要建立新的adapter；之後只要呼叫updateCoupons(coupons)即可
                 if (rvCouponObtain.adapter == null) {
                     rvCouponObtain.adapter = CsCouponObtainAdapter(coupons)
-                } else {
-                    (rvCouponObtain.adapter as CsCouponObtainAdapter).updateCoupons(coupons)
                 }
             }
         }

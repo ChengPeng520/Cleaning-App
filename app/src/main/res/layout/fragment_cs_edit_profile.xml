@@ -50,7 +50,7 @@
                         android:id="@+id/iv_csEditProfile_pic"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:imageResource="@{viewModel.profile.image}"
+                        app:imageBitmap="@{viewModel.profile.photo}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -144,41 +144,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_csEditProfile_address"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/all_spinner_gray_frame_shape"
-                android:orientation="horizontal"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_phoneNumber"
-                app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_phoneNumber"
-                app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_phoneNumber">
-
-                <TextView
-                    android:id="@+id/tv_csEditProfile_address"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/tv_csProfile_address" />
-
-                <EditText
-                    android:id="@+id/edtTxt_csEditProfile_address"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:background="@null"
-                    android:ems="10"
-                    android:gravity="center_vertical"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:text="@{viewModel.profile.address}"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_gender"
@@ -189,9 +154,9 @@
                 android:orientation="horizontal"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_address"
-                app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_address"
-                app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_address">
+                app:layout_constraintEnd_toEndOf="@+id/ll_csEditProfile_phoneNumber"
+                app:layout_constraintStart_toStartOf="@+id/ll_csEditProfile_phoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_phoneNumber">
 
                 <TextView
                     android:id="@+id/tv_csEditProfile_gender"
@@ -210,7 +175,7 @@
                     android:minHeight="48dp"
                     android:paddingStart="8dp"
                     android:textSize="15sp"
-                    tools:text='@{viewModel.profile.gender ? "男":"女"}' />
+                    tools:text='@{viewModel.profile.gender == 0 ? "男":"女"}' />
 
             </LinearLayout>
 
@@ -245,7 +210,7 @@
                     android:lineSpacingExtra="30px"
                     android:minLines="5"
                     android:paddingBottom="12dp"
-                    android:text="@{viewModel.profile.intro}"
+                    android:text="@{viewModel.profile.introduction}"
                     android:textSize="15sp" />
             </LinearLayout>
 

@@ -7,17 +7,15 @@ import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.customer.model.Order
 
 class CsCreateOrderViewModel : ViewModel() {
-    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
+    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>(Order()) }
     val coupon: MutableLiveData<Coupon> by lazy { MutableLiveData<Coupon>() }
-    val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val textTimeBegin: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val textTimeEnd: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val tvUseCoupon: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
-//  拍照功能
+    //  拍照功能
     val photo1: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
     val photo2: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
     val photo3: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
+
     fun addCapturedPhoto(photo: Bitmap?) {
         if (photo1.value == null) {
             photo1.value = photo

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderViewModel" />
+            type="com.example.cleaningapp.customer.csCreateOrder.CsCouponPickerViewModel" />
 
     </data>
 
@@ -23,7 +23,7 @@
             android:layout_height="0dp"
             android:background="@drawable/customer_coupon_dicount_shape"
             android:gravity="center"
-            android:text='@{viewModel.coupon.type ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
+            android:text='@{viewModel.coupon.discountType ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{@string/txt_cusCoupon_lowConsump(viewModel.coupon.minCost)}"
+            android:text="@{@string/txt_cusCoupon_lowConsump(viewModel.coupon.minPrice)}"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_limitedTime"
             app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_limitedTime"
@@ -74,7 +74,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="12dp"
-            android:text="@{@string/txt_cusCoupon_deadline(viewModel.Coupon.exp)}"
+            android:text="@{@string/txt_cusCoupon_deadline(viewModel.Coupon.expiredDate)}"
             android:textColor="@color/clr_cusCoupon_deadline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -121,6 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_csCoupon_new"
             app:strokeColor="@color/customerPrimaryLight"
             app:strokeWidth="1dp" />
+<!--        android:onClick="@{v -> viewModel.customerUseCoupon()}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

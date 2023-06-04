@@ -29,7 +29,7 @@ class CsChooseCleanerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.setTitle(R.string.csTitle_chooseCleaner)
-        viewModel.fetchCleaners()
+        viewModel.fetchCleanerApplied()
         binding.rvCsChooseCleaner.layoutManager = LinearLayoutManager(requireContext())
         viewModel?.cleanerList?.observe(viewLifecycleOwner) { cleaners ->
             if (binding.rvCsChooseCleaner.adapter == null) {

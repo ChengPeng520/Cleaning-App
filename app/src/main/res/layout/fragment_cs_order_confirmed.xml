@@ -313,7 +313,7 @@
                         android:gravity="center|right"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        android:text="@{viewModel.order.price}"
+                        android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
@@ -349,7 +349,7 @@
                         android:gravity="center|right"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        android:text="@{viewModel.order.charge}"
+                        android:text="@{String.valueOf(viewModel.order.charge)}"
                         tools:text="帶入金額" />
 
                 </LinearLayout>

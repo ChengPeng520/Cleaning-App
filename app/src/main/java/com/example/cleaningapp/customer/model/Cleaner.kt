@@ -1,15 +1,15 @@
 package com.example.cleaningapp.customer.model
 
+import android.graphics.Bitmap
 import java.io.Serializable
 
 data class Cleaner(
     val id: Int,
-    val image: Int,
+    val photo: Bitmap,
     val name: String,
-    val gender: Boolean,
-    val averageStar: Float,
+    val gender: Int,
+    val stars: Float,
     val completedOrderCount: Int,
     val phone: String,
-    val address: String,
-    val intro: String
+    val introduction: String
 ) : Serializable

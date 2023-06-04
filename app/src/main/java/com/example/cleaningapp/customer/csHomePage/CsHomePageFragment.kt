@@ -39,7 +39,7 @@ class CsHomePageFragment : Fragment() {
 
         viewModel.fetchCleaners()
         binding.rvCsHomePageComment.layoutManager = LinearLayoutManager(requireContext())
-        viewModel?.cleanerList?.observe(viewLifecycleOwner) { cleaners ->
+        viewModel?.cleaners?.observe(viewLifecycleOwner) { cleaners ->
             if (binding.rvCsHomePageComment.adapter == null) {
                 binding.rvCsHomePageComment.adapter = CsHomePageCommentAdapter(cleaners)
             } else {

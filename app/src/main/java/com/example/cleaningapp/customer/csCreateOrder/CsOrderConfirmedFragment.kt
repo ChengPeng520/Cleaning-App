@@ -37,7 +37,6 @@ class CsOrderConfirmedFragment : Fragment() {
             btCsOderConfirmedSubmit.setOnClickListener {
                 Navigation.findNavController(view)
                     .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
-//                Toast.makeText(context,context?.getString(R.string.txt_csCreateOrder_orderEstablished),Toast.LENGTH_LONG).show()
             }
         }
     }
