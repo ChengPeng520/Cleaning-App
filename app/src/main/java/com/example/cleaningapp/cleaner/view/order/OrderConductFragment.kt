@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.graphics.drawable.DrawableCompat.setTint
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.CleanerActivity
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.OrderAdapter
@@ -22,7 +21,7 @@ import com.example.cleaningapp.databinding.FragmentVickyOrderConductBinding
 class OrderConductFragment : Fragment() {
     private lateinit var binding: FragmentVickyOrderConductBinding
     private val viewModel: OrderConductViewModel by viewModels()
-
+    private var adapter: OrderAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,57 +34,6 @@ class OrderConductFragment : Fragment() {
         binding.lifecycleOwner = this
         initAppBarMenu()
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(binding) {
-            viewModel?.selectedTab?.observe(viewLifecycleOwner) { tabNumber ->
-                // 當選項發生變化時執行相應的操作
-//            handleTabSelection(tabNumber: Int)
-            }
-            textView62.setOnClickListener {
-                viewModel?.onTabSelected(1)
-                textView62.setTextColor(Color.BLUE) // 更改字体颜色
-                textView49.setTextColor(Color.GRAY)
-                imageButton4.setTextColor(Color.GRAY)
-//                setTextTintColor(textView62, Color.BLUE)
-//                setTextTintColor(textView49, Color.GRAY)
-//                setTextTintColor(imageButton4, Color.GRAY)
-
-            }
-
-            textView49.setOnClickListener {
-                viewModel?.onTabSelected(2)
-                textView49.setTextColor(Color.BLUE) // 更改字体颜色
-                textView62.setTextColor(Color.GRAY)
-                imageButton4.setTextColor(Color.GRAY)
-//                setTextTintColor(textView49, Color.BLUE)
-//                setTextTintColor(textView62, Color.GRAY)
-//                setTextTintColor(imageButton4, Color.GRAY)
-
-            }
-
-            imageButton4.setOnClickListener {
-                viewModel?.onTabSelected(3)
-                imageButton4.setTextColor(Color.BLUE) // 更改字体颜色
-                textView62.setTextColor(Color.GRAY)
-                textView49.setTextColor(Color.GRAY)
-//                setTextTintColor(imageButton4, Color.BLUE)
-//                setTextTintColor(textView49, Color.GRAY)
-//                setTextTintColor(textView62, Color.GRAY)
-
-            }
-
-            recyclerView2.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.order?.observe(viewLifecycleOwner) { orders ->
-                if (recyclerView2.adapter == null) {
-                    recyclerView2.adapter = OrderAdapter(orders)
-                } else {
-                    (recyclerView2.adapter as OrderAdapter).updateOrders(orders)
-                }
-            }
-        }
     }
 
     private fun initAppBarMenu() {
@@ -109,88 +57,127 @@ class OrderConductFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-//    private fun setTextTintColor(textView: TextView, color: Int) {
-//        DrawableCompat.setTint(
-//            DrawableCompat.wrap(textView.background).mutate(),
-//            ContextCompat.getColor(requireContext(), R.color.BackGroundGray)
-//        )
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val defaultTextColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
+        val defaultIconColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
+
+        with(binding) {
+            recyclerView2.layoutManager = LinearLayoutManager(requireContext())
+            adapter = OrderAdapter(emptyList())
+            recyclerView2.adapter = adapter
+
+            viewModel?.loadOrders()
+            viewModel?.order?.observe(viewLifecycleOwner) { orders ->
+                adapter?.updateOrders(orders)
+
+                // 當選項發生變化時執行相應的操作
+//            handleTabSelection(tabNumber: Int)
+//            }
+
+                textView62.setOnClickListener {
+                    viewModel?.onTabSelected(1)
+                    textView62.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.cleanerPrimary
+                        )
+                    )
+                    // 設置按鈕圖標颜色
+                    val drawable = textView62.compoundDrawablesRelative[0]
+                    drawable?.setTint(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.cleanerPrimary
+                        )
+                    )
+                    // 恢復其他按鈕颜色
+                    textView49.setTextColor(defaultTextColor)
+                    imageButton4.setTextColor(defaultTextColor)
+
+                    val processingDrawable = textView49.compoundDrawablesRelative[0]
+                    processingDrawable?.setTint(defaultIconColor)
+
+                    val completedDrawable = imageButton4.compoundDrawablesRelative[0]
+                    completedDrawable?.setTint(defaultIconColor)
+
+                    val orders = viewModel?.order?.value.orEmpty().filter { it.status == 1 }
+                    adapter?.updateOrders(orders)
+                }
+
+                textView49.setOnClickListener {
+                    viewModel?.onTabSelected(2)
+
+                    textView49.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.cleanerPrimary
+                        )
+                    )
+                    // 設置按鈕圖標颜色
+                    val drawable = textView49.compoundDrawablesRelative[0]
+                    drawable?.setTint(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.cleanerPrimary
+                        )
+                    )
+                    // 恢復其他按鈕颜色
+                    textView62.setTextColor(defaultTextColor)
+                    imageButton4.setTextColor(defaultTextColor)
+
+                    val processingDrawable = textView62.compoundDrawablesRelative[0]
+                    processingDrawable?.setTint(defaultIconColor)
+
+                    val completedDrawable = imageButton4.compoundDrawablesRelative[0]
+                    completedDrawable?.setTint(defaultIconColor)
+
+
+                    val orders = viewModel?.order?.value.orEmpty().filter { it.status == 2 }
+                    adapter?.updateOrders(orders)
+                }
+
+                imageButton4.setOnClickListener {
+                    viewModel?.onTabSelected(3)
+
+                    imageButton4.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.cleanerPrimary
+                        )
+                    )
+
+                    val drawable = imageButton4.compoundDrawablesRelative[0]
+                    drawable?.setTint(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.cleanerPrimary
+                        )
+                    )
+                    // 恢復其他按鈕颜色
+                    textView62.setTextColor(defaultTextColor)
+                    textView49.setTextColor(defaultTextColor)
+
+                    val processingDrawable = textView62.compoundDrawablesRelative[0]
+                    processingDrawable?.setTint(defaultIconColor)
+
+                    val completedDrawable = textView49.compoundDrawablesRelative[0]
+                    completedDrawable?.setTint(defaultIconColor)
+
+                    val orders = viewModel?.order?.value.orEmpty().filter { it.status == 3 }
+                    adapter?.updateOrders(orders)
+                }
+
+                recyclerView2.layoutManager = LinearLayoutManager(requireContext())
+                viewModel?.order?.observe(viewLifecycleOwner) { orders ->
+                    if (recyclerView2.adapter == null) {
+                        recyclerView2.adapter = OrderAdapter(orders)
+                    } else {
+                        (recyclerView2.adapter as OrderAdapter).updateOrders(orders)
+                    }
+                }
+            }
+        }
+    }
 }
-//●ヽ( ･ω･｀)ﾉ●
-//●ヽ(･ω･｀ﾉ●
-//　　(ω･｀●
-//　　(･｀●)
-//　　(●ヽ　)
-//　●ヽ　　)●
-//●ヽ(　　　)ﾉ●
-//●ヽ(　　　)ノ●
-//●ヽ(　　´)ﾉ●
-//　　(　´･●
-//　　(　ﾉ● )
-//　　( ●´･)
-//　　●ヽ´･)
-//　●ヽ´･ω)
-//`●ヽ´･ω･)
-//●ヽ(´･ω･`)●
-//●ヽ(´･ω･｀)ﾉ●
-//●ヽ( ･ω･｀)ﾉ●
-//●ヽ(･ω･｀ﾉ●
-//　　(ω･｀●
-//　　(･｀●)
-//　　(●ヽ　)
-//　●ヽ　　)●
-//●ヽ(　　　)ﾉ●
-//●ヽ(　　　)ノ●
-//●ヽ(　　´)ﾉ●
-//　　(　´･●
-//　　(　ﾉ● )
-//　　( ●´･)
-//　　●ヽ´･)
-//　●ヽ´･ω)
-//`●ヽ´･ω･)
-//●ヽ(´･ω･`)●
-//●ヽ(´･ω･｀)ﾉ●
-//●ヽ( ･ω･｀)ﾉ●
-//●ヽ(･ω･｀ﾉ●
-//　　(ω･｀●
-//　　(･｀●)
-//　　(●ヽ　)
-//　●ヽ　　)●
-//●ヽ(　　　)ﾉ●
-//●ヽ(　　　)ノ●
-//●ヽ(　　´)ﾉ●
-//　　(　´･●
-//　　(　ﾉ● )
-//　　( ●´･)
-//　　●ヽ´･)
-//　●ヽ´･ω)
-//`●ヽ´･ω･)
-//●ヽ(´･ω･`)●
-//●ヽ(´･ω･｀)ﾉ●
-//●ヽ( ･ω･｀)ﾉ●
-//●ヽ(･ω･｀ﾉ●
-//　　(ω･｀●
-//　　(･｀●)
-//　　(●ヽ　)
-//　●ヽ　　)●
-//●ヽ(　　　)ﾉ●
-//●ヽ(　　　)ノ●
-//●ヽ(　　´)ﾉ●
-//　　(　´･●
-//　　(　ﾉ● )
-//　　( ●´･)
-//　　●ヽ´･)
-//　●ヽ´･ω)
-//`●ヽ´･ω･)
-//●ヽ(´･ω･`)●
-//●ヽ(´･ω･｀)ﾉ●
-
-
-//.            🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣
-//🀥       🀗🀐🀏🀎🀍🀌🀋🀊🀉        🀥
-//🀖     🀗                    🀙      🀥
-//🀘     🀗                    🀙      🀔
-//🀕     🀡                    🀁      🀁
-//🀖     🀗                    🀁      🀁
-//🀘       🀎🀍🀌🀋🀊🀉🀇🀉🀇        🀁
-//🀐🀏🀎🀍🀌🀋🀊🀉🀇🀆🀅🀁
