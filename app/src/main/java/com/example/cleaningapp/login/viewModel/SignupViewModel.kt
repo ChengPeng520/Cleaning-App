@@ -14,7 +14,5 @@ class SignupViewModel : ViewModel() {
     }
     val account: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
     val password: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
-    val cPassword: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-
-
+    val cPassword: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
 }

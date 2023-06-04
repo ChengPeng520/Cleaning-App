@@ -26,6 +26,12 @@
     <string name="tv_order_cleanfound">已成立</string>
     <string name="tv_order_cleanend">已結束</string>
     <string name="tv_order_cleanwaitmatch">媒合中</string>
+    <string name="txtTitle">警示訊息</string>
+    <string name="txtMessage">確認是否取消接單</string>
+    <string name="txtYes">是</string>
+    <string name="txtNo">否</string>
+    <string name="txtCancel">取消</string>
+
     <string name="tv_csOrderConfirmed_area3">客廳： %s坪\n廚房： %s坪\n廁所： %s坪\n房間： %s坪</string>
 
     //orderAccept 等待通知
@@ -53,6 +59,7 @@
     <string name="tv_order_cleaner_photo_before">清潔前照片</string>
     <string name="tv_order_cleaner_photo_after">清潔後照片</string>
     <string name="tv_cleaner_add_referphoto">照片</string>
+    <string name="bt_photo_add_check">新增完成</string>
 
     // spinner 下拉選單選項
     <string name="textNothingSelected">尚未選擇!</string>

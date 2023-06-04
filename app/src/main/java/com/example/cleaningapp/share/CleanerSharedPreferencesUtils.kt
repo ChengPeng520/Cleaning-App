@@ -82,7 +82,10 @@ object CleanerSharedPreferencesUtils {
         return try {
             val apiCleanerModel = Gson().fromJson(Gson().toJson(any), ApiCleanerModel::class.java)
             sharedPreferences.edit()
-                .putInt("cleanerId", getCurrentCleanerId())
+                .putInt(
+                    "cleanerId",
+                    if (apiCleanerModel.cleanerId == 0) getCurrentCleanerId() else apiCleanerModel.cleanerId
+                )
                 .putString("email", apiCleanerModel.email)
                 .putString("name", apiCleanerModel.name)
                 .putString(

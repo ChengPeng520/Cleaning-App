@@ -5,15 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.OrderChatroomAdapter
 import com.example.cleaningapp.cleaner.viewmodel.order.OrderChatroomViewModel
 import com.example.cleaningapp.databinding.FragmentCleanerOrderChatroomBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CleanerOrderChatroomFragment : Fragment() {
     private lateinit var binding: FragmentCleanerOrderChatroomBinding
     private val viewModel: OrderChatroomViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
+            View.GONE
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,5 +48,10 @@ class CleanerOrderChatroomFragment : Fragment() {
                 rvOrderChatroom.smoothScrollToPosition((rvOrderChatroom.adapter as OrderChatroomAdapter).itemCount)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 }
