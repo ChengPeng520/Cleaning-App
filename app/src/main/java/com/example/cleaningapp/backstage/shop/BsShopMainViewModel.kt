@@ -1,32 +1,33 @@
 package com.example.cleaningapp.backstage.shop
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.shop.Product
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class BsShopMainViewModel : ViewModel() {
-    private var productList = mutableListOf<Product>()
+    var productList = listOf<Product>()
     val products: MutableLiveData<List<Product>> by lazy { MutableLiveData<List<Product>>() }
+
+
 
     init {
         loadProducts()
     }
 
-    private fun loadProducts() {
-        val productList = mutableListOf<Product>()
-        productList.add(Product(R.drawable.product1, "掃把", 500,
-                "十分好用十分好用十分好用十分好用", 100,  "2020-05-10", "2020-05-11"
-            )
-        )
-        productList.add(
-            Product(R.drawable.product2,"拖把", 200,
-                "十分好用十分好用十分好用十分好用", 100,  "2020-05-10", "2020-05-11"
-            )
-        )
-        this.productList = productList
-        this.products.value =this.productList
 
+        fun loadProducts() {
+            requestTask<List<Product>>(
+                "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
+                "GET",
+                respBodyType = object : TypeToken<List<Product>>() {}.type
+            )?.let {
+                    response ->
+                Log.d("API Response",response.toString())
+                products.value = response
+                productList= response
+            }
     }
 
     fun productSearch(newText: String) {
@@ -35,14 +36,16 @@ class BsShopMainViewModel : ViewModel() {
         } else {
             val searchProduct = mutableListOf<Product>()
             productList.forEach { product: Product ->
-                if (product.productname.contains(
+                if (product.name?.contains(
                         newText,
                         true
-                    )
+                    ) == true
                 ) searchProduct.add(product)
             }
             products.value = searchProduct
         }
 
     }
+
+
 }

@@ -60,7 +60,6 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
         val coupon = coupons[position]
         with(holder) {
             itemViewBinding.viewModel?.coupon?.value = coupon
-
             val bundle = Bundle()
             bundle.putInt("couponId", coupon.couponId)
             itemView.setOnClickListener {

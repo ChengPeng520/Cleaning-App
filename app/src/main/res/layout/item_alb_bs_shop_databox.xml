@@ -2,7 +2,6 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="12dp">
 
@@ -20,7 +19,7 @@
             android:id="@+id/cardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+
             app:cardCornerRadius="6dp"
             app:cardElevation="4dp"
             app:cardUseCompatPadding="true"
@@ -30,36 +29,35 @@
 
             <ImageView
                 android:id="@+id/iv_bs_shop_databox_photo"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/product1"
-                app:imageResource="@{viewModel.product.image}"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tv_bs_shop_databox_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:text="@{String.valueOf(viewModel.product.price)}"
-            tools:text="一擦極亮神奇抹布"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            tools:ignore="DuplicateIds" />
 
         <TextView
             android:id="@+id/tv_bs_shop_databox_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="@{viewModel.product.productname}"
-            tools:text="$100元"
+            android:layout_marginTop="4dp"
+            tools:text="一擦極亮神奇抹布"
+            android:text="@{viewModel.product.name}"
             app:layout_constraintEnd_toEndOf="@+id/cardView"
             app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_databox_price" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            tools:ignore="DuplicateIds" />
+
+        <TextView
+            android:id="@+id/tv_bs_shop_databox_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            tools:text="$100元"
+            android:text="@{String.valueOf(viewModel.product.price)}"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bs_shop_databox_name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
