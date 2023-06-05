@@ -107,22 +107,13 @@
         android:label="fragment_alb_bs_shop_main"
         tools:layout="@layout/fragment_alb_bs_shop_main" >
         <action
-            android:id="@+id/action_bsShopMainFragment_to_bsShopProductFragment"
-            app:destination="@id/bsShopProductFragment" />
-        <action
             android:id="@+id/action_bsShopMainFragment_to_bsShopProductAddFragment"
             app:destination="@id/bsShopProductAddFragment" />
         <action
             android:id="@+id/action_bsShopMainFragment_to_bsShopOrderFragment"
             app:destination="@id/bsShopOrderFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/bsShopProductFragment"
-        android:name="com.example.cleaningapp.backstage.shop.controller.BsShopProductFragment"
-        android:label="fragment_alb_bs_shop_product"
-        tools:layout="@layout/fragment_alb_bs_shop_product" >
         <action
-            android:id="@+id/action_bsShopProductFragment_to_bsShopProductModifyFragment"
+            android:id="@+id/action_bsShopMainFragment_to_bsShopProductModifyFragment"
             app:destination="@id/bsShopProductModifyFragment" />
     </fragment>
     <fragment
@@ -134,11 +125,7 @@
         android:id="@+id/bsShopProductAddFragment"
         android:name="com.example.cleaningapp.backstage.shop.controller.BsShopProductAddFragment"
         android:label="fragment_alb_bs_shop_product_add"
-        tools:layout="@layout/fragment_alb_bs_shop_product_add" >
-        <action
-            android:id="@+id/action_bsShopProductAddFragment_to_bsShopProductFragment"
-            app:destination="@id/bsShopProductFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_alb_bs_shop_product_add" />
     <fragment
         android:id="@+id/bsShopOrderFragment"
         android:name="com.example.cleaningapp.backstage.shop.controller.BsShopOrderFragment"

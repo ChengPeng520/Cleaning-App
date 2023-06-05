@@ -13,26 +13,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.shop.BsShopProductViewModel
 import com.example.cleaningapp.backstage.shop.Product
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopProductModifyViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductModifyBinding
+import com.example.cleaningapp.share.ImageUtils.bitmapToBytes
 
 class BsShopProductModifyFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsShopProductModifyBinding
     private val REQUEST_CARMERA_PERMISSION = 1001
     private val REQUEST_CAMERA = 1002
     private val REQUEST_GALLERY = 1003
+    private var imageByteArray: ByteArray? = null
+    val viewModel: BsShopProductModifyViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val viewModel:com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel by viewModels()
+        val viewModel:BsShopProductModifyViewModel by viewModels()
         binding = FragmentAlbBsShopProductModifyBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -42,6 +44,9 @@ class BsShopProductModifyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+            viewModel?.product?.observe(viewLifecycleOwner){
+                switchBsShopProductModify.isChecked = it.isOnSale == true
+            }
             btnBsShopProductModifyPopback.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
@@ -49,11 +54,31 @@ class BsShopProductModifyFragment : Fragment() {
                 showDialogChoseCameraOrGallery()
             }
             btnBsShopProductModifySubmit.setOnClickListener {
-                Navigation.findNavController(view).popBackStack()
+                //點擊商品更新按鍵直接上傳
+                val product = viewModel?.product?.value
+                product?.name = edtTxtBsShopModifyName.text.toString()
+                product?.description =edtTxtBsShopModifyDescribe.text.toString()
+                product?.price =edtTxtBsShopModifyPrice.text.toString().toInt()
+                product?.storage =edtTxtBsShopModifyStorage.text.toString().toInt()
+                product?.isOnSale = switchBsShopProductModify.isChecked
+                if (imageByteArray != null){
+                    product?.photo = imageByteArray
+                }
+
+                viewModel?.product?.value = product
+                viewModel?. productModify().let {result ->
+                if (result == true){
+                    Toast.makeText(requireContext(), "修改商品成功", Toast.LENGTH_SHORT).show()
+                    Navigation.findNavController(it).popBackStack()
+                }
+                    Toast.makeText(requireContext(), "修改失敗", Toast.LENGTH_SHORT).show()
+
+                }
+
             }
             arguments?.let { bundle ->
-                bundle?.getSerializable("product")?.let {
-                    binding.viewModel?.product?.value = it as Product
+                bundle?.getInt("productId")?.let {
+                    viewModel?.fetchProductInfo(it)
                 }
             }
 
@@ -109,12 +134,22 @@ class BsShopProductModifyFragment : Fragment() {
     private fun handleCameraResult(data: Intent?) {
         // data?.extras? 是一個bundle的對象,內包含intent相關數據,使用get("data")取的數據 轉Bitmap
         val imageBitmap = data?.extras?.get("data") as Bitmap
+        imageByteArray = bitmapToBytes(imageBitmap)
 
         binding.ivBsShopProductModifyPhoto.apply {
             setImageBitmap(imageBitmap)
             scaleType = ImageView.ScaleType.CENTER_CROP
         }
-
+        viewModel.product.value?.apply {
+            photo = imageByteArray
+            name = ""
+            price = 0
+            description = ""
+            storage = 0
+            timeCreate = null
+            timeUpdate = null
+            isOnSale = false
+        }
 
     }
 
@@ -122,6 +157,19 @@ class BsShopProductModifyFragment : Fragment() {
         val imageUri = data?.data
         if (imageUri != null) {
             binding.ivBsShopProductModifyPhoto.setImageURI(imageUri)
+        }
+        val contentResolver = context?.contentResolver
+        val imageUrlBitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
+        imageByteArray = bitmapToBytes(imageUrlBitmap)
+        viewModel.product.value?.apply {
+            photo = imageByteArray
+            name = ""
+            price = 0
+            description = ""
+            storage = 0
+            timeCreate = null
+            timeUpdate = null
+            isOnSale = false
         }
     }
 

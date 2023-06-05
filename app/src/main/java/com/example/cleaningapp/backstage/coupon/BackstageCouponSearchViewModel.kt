@@ -22,9 +22,6 @@ class BackstageCouponSearchViewModel : ViewModel() {
             "GET",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {
-
-
-
             coupons.value = it
         }
     }
