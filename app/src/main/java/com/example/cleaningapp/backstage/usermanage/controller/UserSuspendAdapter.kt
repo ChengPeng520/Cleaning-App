@@ -40,7 +40,7 @@ class UserSuspendAdapter(private var users: List<User>) :
         }
         private fun showDialogOpen(user: User) {
             val alertDialogBuilder = AlertDialog.Builder(itemViewBinding.root.context)  //dialog建立的畫面在binding itemView的內容裡
-            alertDialogBuilder.setTitle("確定開通此帳號?")
+            alertDialogBuilder.setTitle("確定開通此帳號？")
             alertDialogBuilder.setMessage("將發送訊息給使用者")
             alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
                 dialog.dismiss()

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
@@ -25,6 +26,34 @@ class BsCompDealingFragment : Fragment() {
         return binding.root
     }
 
+    private fun showDialogAgree(){
+        val alertDialogBuilder = AlertDialog.Builder(binding.root.context)
+        alertDialogBuilder.setTitle("確定同意客訴申請？")
+        alertDialogBuilder.setMessage("將發送訊息給使用者")
+        alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
+            dialog.dismiss()
+            // TODO 同意後跳轉bsCompDetailFragment，並將資料bundle過去
+//            view?.let { Navigation.findNavController(it).navigate(R.id.bsCompDetailFragment) }
+        }
+        alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialogBuilder.show()
+    }
+
+    private fun showDialogDecline(){
+        val alertDialogBuilder = AlertDialog.Builder(binding.root.context)
+        alertDialogBuilder.setTitle("確定拒絕客訴申請？")
+        alertDialogBuilder.setMessage("將發送訊息給使用者")
+        alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialogBuilder.show()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let { bundle ->
@@ -32,17 +61,18 @@ class BsCompDealingFragment : Fragment() {
                 binding.viewModel?.complaint?.value = it as Complaint
             }
         }
+
         with(binding) {
             btnBsCompDealingAgree.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.bsCompDetailFragment)
+                showDialogAgree()
             }
 
             btnBsCompDealingDecline.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.bsCompDoneFragment)
+                showDialogDecline()
             }
 
             ivBsCompDealingBack.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.bsCompMainFragment)
+                Navigation.findNavController(it).popBackStack()
             }
         }
     }

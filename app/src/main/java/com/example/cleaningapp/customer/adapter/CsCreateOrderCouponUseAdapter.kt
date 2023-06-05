@@ -44,10 +44,7 @@ class CsCreateOrderCouponUseAdapter (private var coupons: List<Coupon>) :
     override fun onBindViewHolder(holder: CsCouponUserViewHolder, position: Int) {
         val coupon = coupons[position]
         with(holder) {
-            // 將欲顯示的coupon物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.coupon?.value = coupon
-//            val bundle = Bundle()
-//            bundle.putSerializable("coupon", coupon)
             itemViewBinding.btCusCouponPick.setOnClickListener {
                 Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set("coupon", coupon)
                 Navigation.findNavController(it).popBackStack()

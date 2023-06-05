@@ -5,10 +5,9 @@
     tools:context=".backstage.shop.controller.BsShopProductModifyFragment">
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopProductModifyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,6 +82,8 @@
                             android:layout_alignParentBottom="true"
                             android:layout_marginEnd="0dp"
                             android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            app:imageBitmap="@{viewModel.product.photoBitmap}"
                             tools:ignore="Suspicious0dp" />
 
                         <ImageButton
@@ -123,7 +124,7 @@
                         android:background="@drawable/all_layout_black_frame_shape"
                         android:inputType="text"
                         android:padding="4dp"
-                        android:text="@{viewModel.product.productname}"
+                        android:text="@{viewModel.product.name}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -148,7 +149,7 @@
                     android:background="@drawable/all_layout_black_frame_shape"
                     android:ems="20"
                     android:gravity="start"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:minHeight="80dp"
                     android:padding="4dp"
                     android:text="@{viewModel.product.description}"
@@ -178,7 +179,7 @@
                         android:background="@drawable/all_layout_black_frame_shape"
                         android:inputType="text"
                         android:padding="4dp"
-                        android:text="@{viewModel.product.productname}"
+                        android:text="@{String.valueOf(viewModel.product.price)}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -206,7 +207,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/all_layout_black_frame_shape"
                         android:padding="4dp"
-                        android:text="@{String.valueOf(viewModel.product.inventory)}"
+                        android:text="@{String.valueOf(viewModel.product.storage)}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -219,7 +220,6 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
-                    android:checked="true"
                     android:text="@string/tv_bs_shop_isonsale_ti"
                     android:textColor="@color/black"
                     android:textSize="20sp" />

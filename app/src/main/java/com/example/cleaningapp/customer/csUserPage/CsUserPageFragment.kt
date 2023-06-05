@@ -32,7 +32,7 @@ class CsUserPageFragment : Fragment() {
         activity?.setTitle(R.string.csTitle_userPage)
         with(binding) {
             llCsUserUserInfo.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csViewProfileFragment)
+                Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csEditProfileFragment)
             }
             llCsUserViewCoupon.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_csViewCouponFragment)

@@ -9,21 +9,20 @@ import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.cleaningapp.BackstageActivity
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.shop.ProductAdapter
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopMainViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopMainBinding
 
 class BsShopMainFragment : Fragment() {
-    private lateinit var binding:FragmentAlbBsShopMainBinding
+    private lateinit var binding: FragmentAlbBsShopMainBinding
+    val viewModel: com.example.cleaningapp.backstage.shop.BsShopMainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 //        (requireActivity() as BackstageActivity).supportActionBar?.hide()
-        val viewModel: BsShopMainViewModel by viewModels()
         binding = FragmentAlbBsShopMainBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -31,7 +30,7 @@ class BsShopMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        requireActivity().title ="商城管理"
+        requireActivity().title = "商城管理"
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvBsShop.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -42,19 +41,22 @@ class BsShopMainFragment : Fragment() {
                 } else {
                     (rvBsShop.adapter as ProductAdapter).updateProducts(products)
                 }
+                svBsShopMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    // 輸入的文字改變時呼叫
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        if (newText != null) {
+                            viewModel?.productSearch(newText)
+                        }
+                        return true
+                    }
+                    // 點擊虛擬鍵盤上的提交鈕時呼叫
+                    override fun onQueryTextSubmit(text: String): Boolean {
+                        return false
+                    }
+                })
             }
 
-            svBsShopMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                // 輸入的文字改變時呼叫
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    viewModel?.search(newText)
-                    return true
-                }
-                // 點擊虛擬鍵盤上的提交鈕時呼叫
-                override fun onQueryTextSubmit(text: String): Boolean {
-                    return false
-                }
-            })
+
 
             with(binding) {
                 btnBsShopMainAdd.setOnClickListener {
@@ -64,6 +66,15 @@ class BsShopMainFragment : Fragment() {
                     Navigation.findNavController(view).navigate(R.id.bsShopOrderFragment)
                 }
             }
+
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadProducts()
+
+
     }
 }
