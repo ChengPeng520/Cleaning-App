@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csUserPage.CsViewCouponViewModel" />
@@ -28,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.25"  />
+            app:layout_constraintGuide_percent="0.25" />
 
         <FrameLayout
             android:id="@+id/fl_discount"
@@ -45,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/customer_coupon_dicount_shape"
                 android:gravity="center"
-                android:text='@{viewModel.coupon.type ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
+                android:text='@{viewModel.coupon.discountType ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:text="@{@string/txt_cusCoupon_lowConsump(viewModel.coupon.minCost)}"
+            android:text="@{@string/txt_cusCoupon_lowConsump(viewModel.coupon.minPrice)}"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/tv_cusCoupon_limitedTime"
             app:layout_constraintTop_toBottomOf="@+id/tv_cusCoupon_limitedTime"
@@ -87,7 +88,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:text="@{@string/txt_cusCoupon_deadline(viewModel.Coupon.exp)}"
+            android:text="@{@string/txt_cusCoupon_deadline(viewModel.Coupon.expiredDate)}"
             android:textColor="@color/clr_cusCoupon_deadline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -123,8 +124,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:strokeColor="@color/customerPrimaryLight"
-            app:strokeWidth="1dp"  />
-
+            app:strokeWidth="1dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

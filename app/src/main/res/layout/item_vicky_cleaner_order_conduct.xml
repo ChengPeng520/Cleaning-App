@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="0dp" />
+            app:layout_constraintGuide_end="411dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline38"
@@ -52,19 +52,31 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.98" />
 
-
-        <ImageView
-            android:id="@+id/imageView4"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_item_orderconduct"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_marginEnd="16dp"
-            app:imageResource="@{viewModel.order.imageId}"
+            android:foreground="?selectableItemBackground"
+            app:cardCornerRadius="150dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline38"
-            app:layout_constraintStart_toStartOf="@+id/guideline37"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            tools:srcCompat="@tools:sample/avatars" />
 
+            app:layout_constraintEnd_toStartOf="@+id/guideline38"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline36">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="16dp"
+                app:imageResource="@{viewModel.order.imageId}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline38"
+                app:layout_constraintStart_toStartOf="@+id/guideline37"
+                app:layout_constraintTop_toTopOf="@+id/imageView5"
+                tools:srcCompat="@tools:sample/avatars" />
+        </androidx.cardview.widget.CardView>
         <TextView
             android:id="@+id/tv_order_cleantime"
             android:layout_width="wrap_content"
@@ -142,8 +154,8 @@
             android:id="@+id/textView79"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_order_cleanwaitmatch"
             android:textColor="#E95E5E"
+            android:text='@{(viewModel.order.status == 1) ? "媒合中" : ""}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline40"
             app:layout_constraintStart_toEndOf="@+id/tv_order_time" />

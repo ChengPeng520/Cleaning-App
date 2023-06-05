@@ -12,6 +12,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.model.Customer
+import com.example.cleaningapp.customer.model.Order
 import com.example.cleaningapp.databinding.FragmentCsEditProfileBinding
 
 class CsEditProfileFragment : Fragment() {
@@ -31,7 +33,13 @@ class CsEditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         activity?.setTitle(R.string.csTitle_editProfile)
+
         with(binding) {
+            arguments?.let { bundle ->
+                bundle.getSerializable("profile")?.let {
+                    viewModel?.profile?.value = it as Customer
+                }
+            }
             btnCsEditProfileRestore.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }

@@ -16,31 +16,16 @@ class CleanerMemberInfoViewModel : ViewModel() {
     }
 
     init {
-        // 測試用 要刪除
-        requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-            "http://192.168.18.26:8080/javaweb-cleaningapp/AccountCleaner/kk0128k@gmail.com/qoo0128kk"
-        )
         val preferencesData =
             CleanerSharedPreferencesUtils.fetchCleanerInfoFromPreferences<CleanerMemberInfoUiState>()
-        if (preferencesData.name.isEmpty()) {
-            val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                "http://192.168.18.26:8080/javaweb-cleaningapp/AccountCleaner/kk0128k@gmail.com/qoo0128kk"
-            )
-            if (result != null) {
-                CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(result)
-                uiState.value =
-                    CleanerSharedPreferencesUtils.fetchCleanerInfoFromPreferences<CleanerMemberInfoUiState>()
-            }
-        } else {
-            uiState.value = preferencesData
-        }
+        uiState.value = preferencesData
     }
 
     fun saveMemberInfo(view: View) {
         if (uiState.value?.name?.isNotEmpty() == true && uiState.value?.identifyNumber?.isNotEmpty() == true && uiState.value?.phone?.isNotEmpty() == true) {
             val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(uiState.value!!)
             val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                "http://192.168.18.26:8080/javaweb-cleaningapp/AccountCleaner",
+                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner",
                 "PUT",
                 uiState
             )

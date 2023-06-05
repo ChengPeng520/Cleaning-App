@@ -27,7 +27,9 @@ class CsViewProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             btnCsProfileModify.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csViewProfileFragment_to_csEditProfileFragment)
+                val bundle = Bundle()
+                bundle.putSerializable("profile", viewModel?.profile?.value)
+                Navigation.findNavController(view).navigate(R.id.action_csViewProfileFragment_to_csEditProfileFragment, bundle)
             }
         }
     }

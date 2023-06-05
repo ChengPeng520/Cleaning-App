@@ -8,7 +8,6 @@
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderViewModel" />
-
     </data>
 
     <ScrollView
@@ -104,8 +103,8 @@
                 android:inputType="textPersonName"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:textSize="16sp"
                 android:text="@={viewModel.order.areaDetail}"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/ll_csCreateOrder_district"
                 app:layout_constraintStart_toStartOf="@+id/ll_csCreateOrder_district"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_district" />
@@ -152,7 +151,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:text="@={viewModel.textDate}"
+                    android:text="@{viewModel.order.dateOrdered}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:text="datepicker" />
@@ -187,7 +186,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:text="@={viewModel.textTimeBegin}"
+                    android:text="@{viewModel.order.timeOrderedStart}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:text="timepicker" />
@@ -220,7 +219,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:text="@={viewModel.textTimeEnd}"
+                    android:text="@{viewModel.order.timeOrderedEnd}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:text="timepicker" />
@@ -263,7 +262,7 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
                     android:inputType="numberDecimal"
-                    android:text="@={viewModel.order.livingRoomSize}"
+                    android:text="@{String.valueOf(viewModel.order.livingRoomSize)}"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -291,7 +290,7 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
                     android:inputType="numberDecimal"
-                    android:text="@={viewModel.order.kitchenSize}"
+                    android:text="@{String.valueOf(viewModel.order.kitchenSize)}"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -321,7 +320,7 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
                     android:inputType="numberDecimal"
-                    android:text="@={viewModel.order.bathroomSize}"
+                    android:text="@{String.valueOf(viewModel.order.bathRoomSize)}"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -351,7 +350,7 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
                     android:inputType="numberDecimal"
-                    android:text="@={viewModel.order.roomSize}"
+                    android:text="@{String.valueOf(viewModel.order.roomSize)}"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -410,7 +409,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:background="@drawable/ic_add"
-                    app:imageBitmap="@{viewModel.photo1}"
+                    app:imageBitmap="@{viewModel.photo.photo1}"
                     tools:src="@tools:sample/avatars" />
 
                 <ImageView
@@ -420,8 +419,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:background="@{viewModel.photo1 != null ? @drawable/ic_add : null}"
-                    app:imageBitmap="@{viewModel.photo2}"
+                    android:background="@{viewModel.photo.photo1 != null ? @drawable/ic_add : null}"
+                    app:imageBitmap="@{viewModel.photo.photo2}"
                     tools:src="@tools:sample/avatars" />
 
                 <ImageView
@@ -430,8 +429,8 @@
                     android:layout_height="110dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:background="@{viewModel.photo2 != null ? @drawable/ic_add : null}"
-                    app:imageBitmap="@{viewModel.photo3}"
+                    android:background="@{viewModel.photo.photo2 != null ? @drawable/ic_add : null}"
+                    app:imageBitmap="@{viewModel.photo.photo3}"
                     tools:src="@tools:sample/avatars" />
             </LinearLayout>
 
@@ -450,7 +449,7 @@
                 <TextView
                     android:id="@+id/tv_csCreateOrder_coupon"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.2"
                     android:text="@string/tv_csOrder_coupon"
@@ -460,10 +459,11 @@
                 <TextView
                     android:id="@+id/tv_csCreateOrder_chooseCoupon"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="3.5"
                     android:ems="10"
-                    android:text="@{viewModel.tvUseCoupon}"
+                    android:paddingEnd="12dp"
+                    android:text="@={viewModel.tvUseCoupon}"
                     android:textAlignment="viewEnd" />
 
             </LinearLayout>
@@ -497,7 +497,8 @@
                     android:background="@null"
                     android:ems="10"
                     android:inputType="numberDecimal"
-                    android:text="@={viewModel.order.price}"
+                    android:paddingEnd="12dp"
+                    android:text="@{String.valueOf(viewModel.order.originalPrice)}"
                     android:textAlignment="viewEnd" />
 
             </LinearLayout>
@@ -519,6 +520,3 @@
     </ScrollView>
 
 </layout>
-
-
-

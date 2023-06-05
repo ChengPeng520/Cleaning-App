@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -8,7 +7,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +15,10 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
@@ -460,14 +460,24 @@ class CsCreateOrderFragment : Fragment() {
         binding = FragmentCsCreateOrderBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        initView()
+        return binding.root
+    }
 
-//  縣市&鄉鎮連動的spinner
+    private fun initView() {
+        setSpinnerOnclick()
+        setTimeOnclick()
+        setOnclick()
+    }
+
+    private fun setSpinnerOnclick() {
+        //  縣市&鄉鎮連動的spinner
         val countyAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countyList)
         countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spnCsCreateOrderCounty.adapter = countyAdapter
         binding.spnCsCreateOrderCounty.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
+            object : OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
@@ -477,8 +487,7 @@ class CsCreateOrderFragment : Fragment() {
                     val order = viewModel.order.value
                     order?.areaCity = countyList[position]
                     viewModel.order.value = order
-                    val selectedCounty = countyList[position]
-                    val districtArray = districtMap[selectedCounty]
+                    val districtArray = districtMap[countyList[position]]
                     val districtAdapter = ArrayAdapter(
                         requireContext(),
                         android.R.layout.simple_spinner_item,
@@ -501,22 +510,18 @@ class CsCreateOrderFragment : Fragment() {
                 id: Long
             ) {
                 val order = viewModel.order.value
-                order?.areaDistrict = (view as MaterialTextView).text as String
+                order?.areaDistrict = (view as MaterialTextView).text.toString()
                 viewModel.order.value = order
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
-
         }
-        return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.setTitle(R.string.csTitle_createOrder)
+    private fun setTimeOnclick() {
         with(binding) {
-//  選擇日期
+            //  選擇日期
             llDatePicker.setOnClickListener {
                 // calendar要宣告為此區域的變數，這樣每次點擊按鈕跳出的預選日期方能維持當下日期；
                 // 如果宣告在此區域外，下方程式calendar加一個月，會影響日期挑選器預選日期
@@ -544,7 +549,8 @@ class CsCreateOrderFragment : Fragment() {
                 // 最後要呼叫show()方能顯示
                 datePickerDialog.show()
             }
-//  選擇時間
+
+            //  選擇時間
             llCsCreateOrderTimeBegin.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(
@@ -559,6 +565,7 @@ class CsCreateOrderFragment : Fragment() {
                     false
                 ).show()
             }
+
             llCsCreateOrderTimeEnd.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(
@@ -573,53 +580,54 @@ class CsCreateOrderFragment : Fragment() {
                     false
                 ).show()
             }
-//  拍照
+        }
+    }
+
+    private fun setOnclick() {
+        with(binding) {
+            //  拍照
             llCsCreateOrderPics.setOnClickListener {
-                if (viewModel?.photo3?.value == null) {
+                if (viewModel?.photo?.value?.photo3 == null) {
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     takePictureSmallLauncher.launch(intent)
                 }
             }
-//  選取優惠券
-//            if (binding.edtTxtCost.text.toString().toInt() == 0) {
-//                tvCsCreateOrderChooseCoupon.isEnabled = false
-//                tvCsCreateOrderChooseCoupon.isClickable = false
-//                Toast.makeText(
-//                    context,
-//                    getString(R.string.toast_csCreateOrder_keyInCost),
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            } else if (binding.edtTxtCost.text.toString().toInt() > 0) {
-//                tvCsCreateOrderChooseCoupon.setOnClickListener {
-//                    Navigation.findNavController(view)
-//                        .navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
-//                }
-//            }
 
-//  跳轉下一頁"
+            // 選取優惠券
+            llCoupon.setOnClickListener {
+                val originPrice = edtTxtCost.text.toString()
+                if (originPrice.isNotEmpty() && originPrice.toInt() == 0) {
+                    tvCsCreateOrderChooseCoupon.isEnabled = false
+                    Toast.makeText(
+                        context,
+                        getString(R.string.toast_csCreateOrder_keyInCost),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    tvCsCreateOrderChooseCoupon.isEnabled = true
+                    tvCsCreateOrderChooseCoupon.setOnClickListener {
+                        findNavController().navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
+                    }
+                }
+            }
+
+            //  跳轉下一頁
             btnCsCreateOrderNext.setOnClickListener {
-//                val order = Order(
-//                    areaCity = countySpinner.selectedItem.toString(),
-//                    areaDistrict = "",
-//                    areaDetail = edtTxtAddress.text.toString(),
-//                    dateOrdered = tvDatePicked.text.toString(),
-//                    timeOrderedStart = tvCsCreateOrderTimeBeginPicked.text.toString(),
-//                    timeOrderedEnd = tvCsCreateOrderTimeEndPicked.text.toString(),
-//                    livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString(),
-//                    kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toDouble(),
-//                    bathroomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toDouble(),
-//                    roomSize = edtTxtCsCreateOrderBedroomSize.text.toString().toDouble(),
-//                    remark = edtTxtCsNotes.text.toString(),
-//                    photo1 = viewModel?.photo1?.value,
-//                    photo2 = viewModel?.photo2?.value,
-//                    photo3 = viewModel?.photo3?.value,
-//                    price = 800,
-//                    discount = tvCsCreateOrderChooseCoupon.text.toString().toInt(),
-//                )
-                val bundle = Bundle()
-                bundle.putSerializable("order", viewModel?.order?.value)
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment, bundle)
+                viewModel?.order?.value?.let {
+                    it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
+                    it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
+                    it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                    it.roomSize = edtTxtCsCreateOrderBedroomSize.text.toString().toInt()
+                    it.originalPrice = edtTxtCost.text.toString().toInt()
+
+                    val bundle = Bundle()
+                    bundle.putSerializable("order", it)
+                    bundle.putSerializable("photos", viewModel?.photo?.value)
+                    findNavController().navigate(
+                        R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment,
+                        bundle
+                    )
+                }
             }
         }
     }
@@ -632,20 +640,21 @@ class CsCreateOrderFragment : Fragment() {
         ).currentBackStackEntry?.savedStateHandle?.getLiveData<Coupon>("coupon")
             ?.observe(viewLifecycleOwner) { coupon ->
                 viewModel.coupon.value = coupon
-                if (binding.edtTxtCost.text.toString().toInt() < coupon.minCost) {
+                val order = viewModel.order.value
+                if (binding.edtTxtCost.text.toString().toInt() < coupon.minPrice) {
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_notMeetMinCost),
                         Toast.LENGTH_SHORT
                     ).show()
-                    viewModel.tvUseCoupon.value = "0"
-                } else if (coupon.type) {
-                    viewModel.tvUseCoupon.value = "-  $ " + coupon.moneyString
+                } else if (coupon.discountType) {
+                    order?.tvUseCoupon = "0"
+                    order?.tvUseCoupon = "-  $ " + coupon.moneyString
                 } else {
-                    val discount = coupon.discount
+                    val discount = coupon._discount
                     val cost = binding.edtTxtCost.text.toString().toDouble()
                     val calculatedValue = ((1 - discount) * (cost)).roundToInt()
-                    viewModel.tvUseCoupon.value = "- $calculatedValue"
+                    order?.tvUseCoupon = "- $calculatedValue"
                 }
             }
     }
