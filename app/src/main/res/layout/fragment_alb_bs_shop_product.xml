@@ -76,7 +76,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:src="@drawable/product1"
-                    app:imageResource="@{viewModel.product.image}" />
+                    app:imageBitmap="@{viewModel.product.photoBitmap}" />
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
@@ -98,7 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@{viewModel.product.productname}"
+                        android:text="@{viewModel.product.name}"
                         tools:text="掃把"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -167,7 +167,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(viewModel.product.inventory)}"
+                        android:text="@{String.valueOf(viewModel.product.storage)}"
                         android:textColor="@color/black"
                         tools:text="100"
                         android:textSize="16sp" />
@@ -217,7 +217,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.product.addDate}"
+                        android:text="@{String.valueOf(viewModel.product.timeCreate)}"
                         android:textColor="@color/black"
                         tools:text="2022-09-09"
                         android:textSize="16sp" />
@@ -242,7 +242,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.product.upDate}"
+                        android:text="@{String.valueOf(viewModel.product.timeUpdate)}"
                         tools:text="2022-09-09"
                         android:textColor="@color/black"
                         android:textSize="16sp" />

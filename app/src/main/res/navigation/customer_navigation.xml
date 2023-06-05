@@ -47,8 +47,8 @@
             android:id="@+id/action_csUserFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />
         <action
-            android:id="@+id/action_csUserPageFragment_to_csViewProfileFragment"
-            app:destination="@id/csViewProfileFragment" />
+            android:id="@+id/action_csUserPageFragment_to_csEditProfileFragment"
+            app:destination="@id/csEditProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/csCouponPickerFragment"
@@ -92,8 +92,8 @@
         android:label="fragment_cs_edit_profile"
         tools:layout="@layout/fragment_cs_edit_profile" >
         <action
-            android:id="@+id/action_csEditProfileFragment_to_csViewProfileFragment"
-            app:destination="@id/csViewProfileFragment" />
+            android:id="@+id/action_csEditProfileFragment_to_csUserPageFragment"
+            app:destination="@id/csUserPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/csViewCouponFragment"
@@ -195,15 +195,6 @@
         <action
             android:id="@+id/action_applycomplaintFragment_to_complaintdetailsFragment"
             app:destination="@id/complaintdetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/csViewProfileFragment"
-        android:name="com.example.cleaningapp.customer.csUserPage.CsViewProfileFragment"
-        android:label="CsViewProfileFragment"
-        tools:layout="@layout/fragment_cs_view_profile">
-        <action
-            android:id="@+id/action_csViewProfileFragment_to_csEditProfileFragment"
-            app:destination="@id/csEditProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentDoneFragment"
