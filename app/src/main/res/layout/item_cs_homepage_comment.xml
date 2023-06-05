@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.cleaningapp.customer.csCreateOrder.CsViewCvViewModel" />
+            type="com.example.cleaningapp.customer.csHomePage.CsHomePageViewModel" />
 
     </data>
 

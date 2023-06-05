@@ -3,40 +3,38 @@ package com.example.cleaningapp.cleaner.viewmodel.shop
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
+import com.example.cleaningapp.cleaner.uistate.CheckShopOrder
 import com.example.cleaningapp.cleaner.uistate.OrderHistoryItemUiState
-import com.example.cleaningapp.cleaner.uistate.OrderHistoryUiState
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.requestTask
 
 class OrderHistoryViewModel : ViewModel() {
-    private val _uiState = MutableLiveData<OrderHistoryUiState>()
-    val uiState: LiveData<OrderHistoryUiState> = _uiState
+    private val _uiState = MutableLiveData<List<OrderHistoryItemUiState>>()
+    val uiState: LiveData<List<OrderHistoryItemUiState>> = _uiState
 
     fun fetchOrderHistory() {
-        val orderHistoryList = mutableListOf<OrderHistoryItemUiState>()
-        orderHistoryList.add(
-            OrderHistoryItemUiState(
-                1,
-                "2023/4/26",
-                2,
-                R.drawable.fatruei_test1,
-                "掃把",
-                100,
-                1,
-                200
-            )
-        )
-        orderHistoryList.add(
-            OrderHistoryItemUiState(
-                2,
-                "2023/4/26",
-                1,
-                R.drawable.fatruei_test3,
-                "拖把組",
-                100,
-                1,
-                100
-            )
-        )
-        _uiState.value = OrderHistoryUiState(orderHistoryItems = orderHistoryList)
+        requestTask<CheckShopOrder>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/isChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            method = "GET",
+        )?.let {
+            val list: MutableList<OrderHistoryItemUiState> = mutableListOf()
+            for (i in 0 until it.shopOrders.size) {
+                list.add(
+                    OrderHistoryItemUiState(
+                        id = it.shopOrders[i].shopOrderId,
+                        date = it.shopOrders[i].timeCreate,
+                        totalCount = it.cList[i].size,
+                        image = it.cList[i][0].photo,
+                        name = it.cList[i][0].name,
+                        unitPrice = it.cList[i][0].price,
+                        number = it.cList[i][0].count,
+                        grossPrice = it.shopOrders[i].totalPrice,
+                        isDelivered = it.shopOrders[i].isDelivered,
+                        isShipped = it.shopOrders[i].isShipped
+                    )
+                )
+            }
+            _uiState.value = list
+        }
     }
 }

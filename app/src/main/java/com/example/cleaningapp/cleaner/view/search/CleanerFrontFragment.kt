@@ -5,8 +5,8 @@ import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,14 +15,17 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.CleanerAdapter
+import com.example.cleaningapp.cleaner.uistate.Job
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontBinding
+import com.google.android.material.textview.MaterialTextView
 import java.util.*
 
+@Suppress("IMPLICIT_CAST_TO_ANY")
 class CleanerFrontFragment : Fragment() {
+    private val viewModel: CleanerFrontViewModel by viewModels()
     private lateinit var binding: FragmentVickyCleanerFrontBinding
-    private lateinit var countySpinner: Spinner
-    private lateinit var districtSpinner: Spinner
+
     private val countyList = arrayOf(
         "基隆市", "臺北市", "新北市",
         "桃園市", "新竹市", "新竹縣",
@@ -446,117 +449,34 @@ class CleanerFrontFragment : Fragment() {
             "南竿鄉"
         )
     )
+
+    private var year = 0
+    private var month = 0
+    private var day = 0
+    private var startHour = 0
+    private var startMin = 0
+    private var endHour = 0
+    private var endMin = 0
+    private var county: String = ""
+    private var district: String = ""
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: CleanerFrontViewModel by viewModels()
         binding = FragmentVickyCleanerFrontBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initAppBarMenu()
-
-        countySpinner = binding.root.findViewById(R.id.spn_county)
-        districtSpinner = binding.root.findViewById(R.id.spn_localtion)
-
-        val countyAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countyList)
-        countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        countySpinner.adapter = countyAdapter
-        countySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedCounty = countyList[position]
-                val districtArray = districtMap[selectedCounty]
-                val districtAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, districtArray!!)
-                districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                districtSpinner.adapter = districtAdapter
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // 不執行任何操作
-            }
-        }
+        setLocationSpnOnclick()
+        setTimeOnclick()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding) {
-            recyclerviewSearchlist.layoutManager = LinearLayoutManager(requireContext())
-            //layoutManager管理每一個layout裡面每個item呈現方式
-            viewModel?.cleaner?.observe(viewLifecycleOwner) { cleaners ->
-                // cleaners 類別是為viewModel中的<List<Job>>
-                // adapter 為null要建立新的adapter；之後只要呼叫updateCleaner(cleaners)即可
-                // observe 監測、觀察者(因為跟livedata綁定須監測)
-                if (recyclerviewSearchlist.adapter == null) {
-                    recyclerviewSearchlist.adapter = CleanerAdapter(cleaners)
-
-                } else {
-                    (recyclerviewSearchlist.adapter as CleanerAdapter).updateCleaners(cleaners)
-                }
-            }
-            val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    viewModel?.text?.value = parent?.getItemAtPosition(position).toString()
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    viewModel?.text?.value = getString(R.string.textNothingSelected)
-                }
-            }
-            spnDate.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                val datePickerDialog =
-                    DatePickerDialog(
-                        requireContext(),
-                        { _, year, month, day ->
-                            // 一月的值是0而非1，所以「month + 1」後才顯示
-                            viewModel?.textDate?.value = "$year-${pad(month + 1)}-${pad(day)}"
-                        },
-                        calendar.get(Calendar.YEAR),
-                        calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH)
-                    )
-                // 取得DatePicker物件方可設定可選取的日期區間
-                val datePicker = datePickerDialog.datePicker
-                // 設定可選取的開始日為今日
-                datePicker.minDate = calendar.timeInMillis
-                // 設定可選取的結束日為一個月後
-                calendar.add(Calendar.MONTH, 1)
-                datePicker.maxDate = calendar.timeInMillis
-                // 最後要呼叫show()方能顯示
-                datePickerDialog.show()
-            }
-            spnTime.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                TimePickerDialog(
-                    requireContext(),
-                    { _, hour, minute ->
-                        viewModel?.textTime?.value = "${pad(hour)}:${pad(minute)}"
-                    },
-                    calendar.get(Calendar.HOUR),
-                    calendar.get(Calendar.MINUTE),
-                    false
-                ).show()
-                // result?
-            }
-            spinner3.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                TimePickerDialog(
-                    requireContext(),
-                    { _, hour, minute ->
-                        viewModel?.textTime2?.value = "${pad(hour)}:${pad(minute)}"
-                    },
-                    calendar.get(Calendar.HOUR),
-                    calendar.get(Calendar.MINUTE),
-                    false
-                ).show()
-                // result?
-            }
-        }
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
     }
 
     private fun initAppBarMenu() {
@@ -579,6 +499,186 @@ class CleanerFrontFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
+
+    private fun initRecyclerView() {
+        with(binding) {
+            recyclerviewSearchlist.layoutManager = LinearLayoutManager(requireContext())
+            //layoutManager管理每一個layout裡面每個item呈現方式
+            viewModel?.cleaner?.observe(viewLifecycleOwner) { cleaners ->
+                // cleaners 類別是為viewModel中的<List<Job>>
+                // adapter 為null要建立新的adapter；之後只要呼叫updateCleaner(cleaners)即可
+                // observe 監測、觀察者(因為跟livedata綁定須監測)
+                if (recyclerviewSearchlist.adapter == null) {
+                    recyclerviewSearchlist.adapter = CleanerAdapter(cleaners)
+                } else {
+                    (recyclerviewSearchlist.adapter as CleanerAdapter).updateCleaners(cleaners)
+                }
+            }
+        }
+    }
+
+    private fun setTimeOnclick() {
+        with(binding) {
+            spnDate.setOnClickListener {
+                val calendar = Calendar.getInstance()
+                val datePickerDialog =
+                    DatePickerDialog(
+                        requireContext(),
+                        { _, year, month, day ->
+                            this@CleanerFrontFragment.year = year
+                            this@CleanerFrontFragment.month = month + 1
+                            this@CleanerFrontFragment.day = day
+//                             一月的值是0而非1，所以「month + 1」後才顯示
+                            viewModel?.chooseCleaningDate?.value =
+                                "$year-${pad(month + 1)}-${pad(day)}"
+                            viewModel?.isSearch()?.let {
+                                if (it) viewModel?.cleaner?.value = getByCondition()
+                            }
+                        },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                    )
+                // 取得DatePicker物件方可設定可選取的日期區間
+                val datePicker = datePickerDialog.datePicker
+                // 設定可選取的開始日為今日
+                datePicker.minDate = calendar.timeInMillis
+                // 設定可選取的結束日為一個月後
+                calendar.add(Calendar.MONTH, 1)
+                datePicker.maxDate = calendar.timeInMillis
+                // 最後要呼叫show()方能顯示
+                datePickerDialog.show()
+            }
+
+            startTime.setOnClickListener {
+                val calendar = Calendar.getInstance()
+                TimePickerDialog(
+                    requireContext(),
+                    { _, hour, minute ->
+                        this@CleanerFrontFragment.startHour = hour
+                        this@CleanerFrontFragment.startMin = minute
+                        viewModel?.chooseCleaningTimeStart?.value = "${pad(hour)}:${pad(minute)}"
+                        viewModel?.isSearch()?.let {
+                            if (it) viewModel?.cleaner?.value = getByCondition()
+                        }
+                    },
+                    calendar.get(Calendar.HOUR),
+                    calendar.get(Calendar.MINUTE),
+                    false
+                ).show()
+            }
+
+            spinner3.setOnClickListener {
+                val calendar = Calendar.getInstance()
+                TimePickerDialog(
+                    requireContext(),
+                    { _, hour, minute ->
+                        this@CleanerFrontFragment.endHour = hour
+                        this@CleanerFrontFragment.endMin = minute
+                        viewModel?.chooseCleaningTimeEnd?.value = "${pad(hour)}:${pad(minute)}"
+                        viewModel?.isSearch()?.let {
+                            if (it) viewModel?.cleaner?.value = getByCondition()
+                        }
+                    },
+                    calendar.get(Calendar.HOUR),
+                    calendar.get(Calendar.MINUTE),
+                    false
+                ).show()
+            }
+        }
+    }
+
+    private fun setLocationSpnOnclick() {
+        with(binding) {
+            val countyAdapter =
+                ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countyList)
+            countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spnCounty.adapter = countyAdapter
+            spnCounty.onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedCounty = countyList[position]
+                    this@CleanerFrontFragment.county = selectedCounty
+                    val districtArray = districtMap[selectedCounty]
+                    val districtAdapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_item,
+                        districtArray!!
+                    )
+                    districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    spnLocaltion.adapter = districtAdapter
+                    viewModel?.isSearch()?.let {
+                        if (it) viewModel?.cleaner?.value = getByCondition()
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // 不執行任何操作
+                }
+            }
+
+            spnLocaltion.onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    this@CleanerFrontFragment.district = (p1 as MaterialTextView).text as String
+                    viewModel?.isSearch()?.let {
+                        if (it) viewModel?.cleaner?.value = getByCondition()
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+            }
+        }
+    }
+
+    private fun getByCondition(): List<Job> {
+        val jobs = viewModel.cleanerList
+        val searchedJobs = mutableListOf<Job>()
+        val startDateTime = Calendar.getInstance()
+        startDateTime.set(this.year, this.month, this.day, this.startHour, this.startMin)
+        val endDateTime = Calendar.getInstance()
+        endDateTime.set(this.year, this.month, this.day, this.endHour, this.endMin)
+        val orderStartTime = Calendar.getInstance()
+        val orderEndTime = Calendar.getInstance()
+        for (job in jobs) {
+            val startCalendar = job.orderStartDate
+            val endCalendar = job.orderEndDate
+            orderStartTime.set(
+                startCalendar.get(Calendar.YEAR),
+                startCalendar.get(Calendar.MONTH) + 1,
+                startCalendar.get(Calendar.DAY_OF_MONTH),
+                startCalendar.get(Calendar.HOUR_OF_DAY),
+                startCalendar.get(Calendar.MINUTE) + 1
+            )
+            orderEndTime.set(
+                endCalendar.get(Calendar.YEAR),
+                endCalendar.get(Calendar.MONTH) + 1,
+                endCalendar.get(Calendar.DAY_OF_MONTH),
+                endCalendar.get(Calendar.HOUR_OF_DAY),
+                endCalendar.get(Calendar.MINUTE) - 1
+            )
+            if (isBetween(orderStartTime, startDateTime, endDateTime)
+                && isBetween(orderEndTime, startDateTime, endDateTime)
+                && job.county == this.county && job.district == this.district
+            ) {
+                searchedJobs.add(job)
+            }
+        }
+        return searchedJobs
+    }
+
+    private fun isBetween(
+        dateTime: Calendar,
+        startDateTime: Calendar,
+        endDateTime: Calendar
+    ): Boolean {
+        return dateTime.after(startDateTime) && dateTime.before(endDateTime)
+    }
 }
 
 private fun pad(number: Int): String {
@@ -588,6 +688,3 @@ private fun pad(number: Int): String {
         "0$number"
     }
 }
-
-
-

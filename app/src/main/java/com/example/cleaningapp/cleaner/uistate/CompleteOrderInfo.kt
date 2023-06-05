@@ -1,13 +1,17 @@
 package com.example.cleaningapp.cleaner.uistate
 
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
-import java.sql.Timestamp
+import com.example.cleaningapp.share.ImageUtils
+import java.sql.Date
+import java.sql.Time
 
 data class CompleteOrderInfoUiState(
     val orderId: Int = 0,
-    val dateOrdered: Timestamp,
-    val timeOrderStart: Timestamp,
-    val timeOrderedEnd: Timestamp,
+    val dateOrdered: Date? = null,
+    val timeOrderedStart: Time? = null,
+    val timeOrderedEnd: Time? = null,
     val areaCity: String,
     val areaDistrict: String,
     val areaDetail: String,
@@ -20,13 +24,6 @@ data class CompleteOrderInfoUiState(
     val stars: Float = 0f,
     val commentCleaner: String = ""
 ) {
-    val cleaningDate: String
-        get() {
-            dateOrdered.let {
-                val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-                return dateFormat.format(it)
-            }
-        }
     val address: String
         get() {
             return "$areaCity$areaDistrict$areaDetail"
@@ -35,7 +32,7 @@ data class CompleteOrderInfoUiState(
         get() {
             val stringBuilder = StringBuilder()
             if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
-            if (kitchenSize != 0 && livingRoomSize == 0) stringBuilder.append("\n廚房${kitchenSize}坪")
+            if (kitchenSize != 0 && livingRoomSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
             else if (kitchenSize != 0) stringBuilder.append("廚房${kitchenSize}坪")
             if (bathRoomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0)) stringBuilder.append(
                 "\n廁所${bathRoomSize}坪"
@@ -47,9 +44,36 @@ data class CompleteOrderInfoUiState(
             else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
             return stringBuilder.toString()
         }
+    val cleaningTime: String
+        @SuppressLint("SimpleDateFormat")
+        get() {
+            val sb = StringBuilder()
+            val dateFormat = SimpleDateFormat("HH:mm")
+            sb.append(dateFormat.format(timeOrderedStart)).append("-")
+                .append(dateFormat.format(timeOrderedEnd))
+            return sb.toString()
+        }
 }
 
-data class InsertOrder(
-    val order: CompleteOrderInfoUiState,
-    val photo: List<ByteArray>
-)
+data class CompleteOrderPhotos(
+    val photos: List<ByteArray>
+) {
+    val photo1: Bitmap?
+        get() {
+            return if (photos.isNotEmpty()) {
+                ImageUtils.bytesToBitmap(photos[0])
+            } else null
+        }
+    val photo2: Bitmap?
+        get() {
+            return if (photos.size >= 2) {
+                ImageUtils.bytesToBitmap(photos[1])
+            } else null
+        }
+    val photo3: Bitmap?
+        get() {
+            return if (photos.size == 3) {
+                ImageUtils.bytesToBitmap(photos[2])
+            } else null
+        }
+}

@@ -2,8 +2,8 @@ package com.example.cleaningapp.cleaner.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -12,16 +12,19 @@ import com.example.cleaningapp.cleaner.uistate.Work
 import com.example.cleaningapp.cleaner.viewmodel.order.OrdersViewModel
 import com.example.cleaningapp.databinding.ItemVickyCleanerOrderConductBinding
 
-class OrderAdapter(private var orders: List<Work>) :
+class OrderAdapter(var orders: List<Work>) :
     RecyclerView.Adapter<OrderAdapter.OrdersViewHolder>() {
+
+
+    class OrdersViewHolder(val itemViewBinding: ItemVickyCleanerOrderConductBinding) :
+        RecyclerView.ViewHolder(itemViewBinding.root) {
+
+    }
 
     fun updateOrders(orders: List<Work>) {
         this.orders = orders
         notifyDataSetChanged()
     }
-
-    class OrdersViewHolder(val itemViewBinding: ItemVickyCleanerOrderConductBinding) :
-        RecyclerView.ViewHolder(itemViewBinding.root)
 
     override fun getItemCount(): Int {
         return orders.size
@@ -39,6 +42,7 @@ class OrderAdapter(private var orders: List<Work>) :
 
     override fun onBindViewHolder(holder: OrdersViewHolder, position: Int) {
         val order = orders[position]
+
         //position 現在生成位子
         with(holder) {
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示

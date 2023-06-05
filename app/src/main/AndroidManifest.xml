@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.CAMERA" />
+<!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
     <application
         android:name=".share.MyApplication"
@@ -24,7 +24,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".CustomerActivity"
+            android:name=".LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
@@ -32,7 +32,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".CustomerActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>

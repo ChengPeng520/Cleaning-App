@@ -1,43 +1,85 @@
 package com.example.cleaningapp.cleaner.viewmodel.order
 
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.OrderStateUiState
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
+import com.example.cleaningapp.share.OrderUtil
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
 
 class OrderStateViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(OrderStateUiState())
-    val uiState: StateFlow<OrderStateUiState> = _uiState
+    private val _uiState: MutableLiveData<OrderStateUiState> by lazy { MutableLiveData<OrderStateUiState>() }
+    val uiState: LiveData<OrderStateUiState> = _uiState
 
     fun fetchOrderProgress() {
-        _uiState.value = OrderStateUiState(
-            orderId = 10001,
-            dateOrdered = "2023年4月26日",
-            orderedTime = "12:00-14:00(2小時)",
-            address = "台北市中山區南京東路三段219號5樓",
-            livingRoomSize = 5,
-            remark = "工具:吸塵器、拖把\n整理重點:臥房、客房",
-            priceForCleaner = 1000,
-            status = 1
-        )
-    }
-
-    fun startCleaning() {
-        _uiState.update {
-            it.copy(status = 2)
+        requestTask<OrderUtil.OrderStatus>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/11",
+            method = "GET"
+        )?.let {
+            _uiState.value = OrderStateUiState(
+                orderId = it.order.orderId,
+                customerId = it.order.customerId,
+                dateOrdered = it.order.dateOrdered,
+                timeOrderedStart = it.order.timeOrderedStart,
+                timeOrderedEnd = it.order.timeOrderedEnd,
+                areaCity = it.order.areaCity,
+                areaDistrict = it.order.areaDistrict,
+                areaDetail = it.order.areaDetail,
+                livingRoomSize = it.order.livingRoomSize,
+                kitchenSize = it.order.kitchenSize,
+                bathRoomSize = it.order.bathRoomSize,
+                roomSize = it.order.roomSize,
+                remark = it.order.remark,
+                priceForCleaner = it.order.priceForCleaner,
+                status = it.order.status
+            )
         }
     }
 
-    fun next() {
-        _uiState.update {
-            it.copy(status = 3)
+    fun startCleaning(view: View) {
+        requestTask<JsonObject>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            method = "PUT",
+            reqBody = OrderUtil.OrderStatus(
+                OrderUtil.Order(
+                    orderId = uiState.value?.orderId!!,
+                    status = 2
+                ), null
+            )
+        )?.let {
+            if (it.get("result").asBoolean) {
+                val order = _uiState.value
+                order?.status = 2
+                _uiState.value = order
+                Toast.makeText(view.context, "訂單開始進行", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(view.context, "進行失敗", Toast.LENGTH_SHORT).show()
+            return
         }
+        Toast.makeText(view.context, "回傳失敗", Toast.LENGTH_SHORT).show()
     }
 
-    fun next4() {
-        _uiState.update {
-            it.copy(status = 4)
+    fun nextState(view: View) {
+        requestTask<JsonObject>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            method = "PUT",
+            reqBody = OrderUtil.OrderStatus(
+                OrderUtil.Order(
+                    orderId = uiState.value?.orderId!!,
+                    status = 3
+                ), null
+            )
+        )?.let {
+            if (it.get("result").asBoolean) {
+                val order = _uiState.value
+                order?.status = 3
+                _uiState.value = order
+                Toast.makeText(view.context, "請交由顧客確認", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(view.context, "進行失敗", Toast.LENGTH_SHORT).show()
+            return
         }
+        Toast.makeText(view.context, "回傳失敗", Toast.LENGTH_SHORT).show()
     }
 }

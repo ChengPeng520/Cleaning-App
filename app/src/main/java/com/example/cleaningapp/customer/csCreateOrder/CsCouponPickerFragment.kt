@@ -30,7 +30,7 @@ class CsCouponPickerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.setTitle(R.string.csTitle_couponPicker)
-        viewModel.loadCoupons()
+        viewModel.fetchCustomerCoupons()
         binding.rvCouponPicker.layoutManager = LinearLayoutManager(requireContext())
         viewModel.coupons.observe(viewLifecycleOwner) { coupons ->
             if (binding.rvCouponPicker.adapter == null) {

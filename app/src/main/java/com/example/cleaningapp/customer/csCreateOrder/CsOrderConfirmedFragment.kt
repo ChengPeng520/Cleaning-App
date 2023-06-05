@@ -1,13 +1,14 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.model.CreateOrderPhoto
 import com.example.cleaningapp.customer.model.Order
 import com.example.cleaningapp.databinding.FragmentCsOrderConfirmedBinding
 
@@ -31,13 +32,18 @@ class CsOrderConfirmedFragment : Fragment() {
         with(binding) {
             arguments?.let { bundle ->
                 bundle.getSerializable("order")?.let {
-                    viewModel?.order?.value = it as Order
+                    val order = it as Order
+                    order.priceForCustomer =
+                        order.originalPrice + order.charge - order.couponDiscount
+                    viewModel?.order?.value = order
+                }
+                bundle.getSerializable("photos")?.let {
+                    viewModel?.photo?.value = it as CreateOrderPhoto
                 }
             }
             btCsOderConfirmedSubmit.setOnClickListener {
                 Navigation.findNavController(view)
                     .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
-//                Toast.makeText(context,context?.getString(R.string.txt_csCreateOrder_orderEstablished),Toast.LENGTH_LONG).show()
             }
         }
     }

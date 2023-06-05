@@ -13,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingVertical="12dp"
         android:paddingHorizontal="23dp"
+        android:paddingVertical="12dp"
         tools:context=".cleaner.view.shop.ProductDetailFragment">
 
         <androidx.cardview.widget.CardView
@@ -28,12 +28,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <ImageView
                 android:id="@+id/iv_product_detail_picture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:imageResource="@{viewModel.uiState.image}" />
+                android:imageBitmap="@{viewModel.uiState.productPhoto}" />
 
         </androidx.cardview.widget.CardView>
 
@@ -73,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@{viewModel.uiState.description}"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />

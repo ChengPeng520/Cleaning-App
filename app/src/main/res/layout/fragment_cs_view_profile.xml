@@ -115,11 +115,13 @@
 
             </LinearLayout>
 
+
             <LinearLayout
-                android:id="@+id/ll_csProfile_address"
+                android:id="@+id/ll_csProfile_gender"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
+
                 android:background="@drawable/all_spinner_gray_frame_shape"
                 android:orientation="horizontal"
                 android:paddingStart="8dp"
@@ -127,38 +129,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_phoneNumber">
-
-                <TextView
-                    android:id="@+id/tv_csProfile_address"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/tv_csProfile_address" />
-
-                <TextView
-                    android:id="@+id/tv_csProfile_address2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:ems="10"
-                    android:gravity="center_vertical"
-                    android:inputType="textPersonName"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_csProfile_gender"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/all_spinner_gray_frame_shape"
-                android:orientation="horizontal"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ll_csProfile_address">
 
                 <TextView
                     android:id="@+id/tv_csProfile_gender"
