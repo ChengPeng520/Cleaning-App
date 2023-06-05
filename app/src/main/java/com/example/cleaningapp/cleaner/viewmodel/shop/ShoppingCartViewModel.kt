@@ -1,11 +1,14 @@
 package com.example.cleaningapp.cleaner.viewmodel.shop
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartUiState
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class ShoppingCartViewModel : ViewModel() {
     private val _uiState: MutableLiveData<ShoppingCartUiState> by lazy { MutableLiveData<ShoppingCartUiState>() }
@@ -14,17 +17,22 @@ class ShoppingCartViewModel : ViewModel() {
     val list = mutableListOf<ShoppingCartItemUiState>()
 
     init {
-        list.add(ShoppingCartItemUiState(1, R.drawable.fatruei_test1, "掃把", 100, 1))
-        list.add(ShoppingCartItemUiState(2, R.drawable.fatruei_test3, "拖把組", 100, 1))
+        fetchShopOrderList()
     }
 
-    fun fetchShopOrderList() {
-        _uiState.value = ShoppingCartUiState(shoppingCartItems = list, grossPrice = 200)
+    private fun fetchShopOrderList() {
+        requestTask<List<ShoppingCartItemUiState>>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            method = "GET",
+            respBodyType = object : TypeToken<List<ShoppingCartItemUiState>>() {}.type
+        )?.let {
+            _uiState.value = ShoppingCartUiState(it)
+            Log.d("1", it.size.toString())
+        }
     }
 
     fun deleteProduct(productItem: ShoppingCartItemUiState) {
         list.remove(productItem)
-        _uiState.value = ShoppingCartUiState(shoppingCartItems = list, 100)
     }
 
     fun updateNumber(position: Int, state: Boolean) {

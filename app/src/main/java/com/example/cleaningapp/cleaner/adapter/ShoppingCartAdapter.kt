@@ -50,7 +50,7 @@ class ShoppingCartAdapter :
             oldItem: ShoppingCartItemUiState,
             newItem: ShoppingCartItemUiState
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.shopOrderId == newItem.shopOrderId
         }
 
         override fun areContentsTheSame(

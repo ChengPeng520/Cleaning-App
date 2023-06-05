@@ -1,6 +1,7 @@
 package com.example.cleaningapp.cleaner.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
@@ -35,9 +36,11 @@ class OrderHistoryAdapter :
 
         fun onBind(orderHistoryItem: OrderHistoryItemUiState, context: Context) {
             with(itemBinding) {
-                tvOrderHistoryReceiptDate.text = orderHistoryItem.date
+                tvOrderHistoryReceiptDate.text = orderHistoryItem.orderTime
+                tvOrderHistoryReceiptState.text =
+                    if (orderHistoryItem.isDelivered) "已送達" else if (orderHistoryItem.isShipped) "已出貨" else "以結帳"
                 tvOrderHistoryReceiptCount.text = orderHistoryItem.totalCount.toString()
-                ivOrderHistoryImage.setImageResource(orderHistoryItem.image)
+                ivOrderHistoryImage.setImageBitmap(orderHistoryItem.productPhoto)
                 tvOrderHistoryName.text = orderHistoryItem.name
                 tvOrderHistoryUnitPrice.text = orderHistoryItem.unitPrice.toString()
                 tvOrderHistoryNumber.text = String.format(
@@ -51,8 +54,11 @@ class OrderHistoryAdapter :
                     )
                 )
                 clOrderHistory.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putInt("shopOrderId", orderHistoryItem.id)
+                    bundle.putSerializable("orderHistoryItem", orderHistoryItem)
                     Navigation.findNavController(it)
-                        .navigate(R.id.action_orderHistoryFragment_to_orderInfoFragment)
+                        .navigate(R.id.action_orderHistoryFragment_to_orderInfoFragment, bundle)
                 }
             }
         }

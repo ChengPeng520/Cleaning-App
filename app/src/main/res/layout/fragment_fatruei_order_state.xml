@@ -434,6 +434,19 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_order_state_start_cleaning"
+                    style="@style/cleanerBtnSubmitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{viewModel::startCleaning}"
+                    android:text="@string/btn_order_state_start_cleaning"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_order_state_add_picture"
                     style="@style/cleanerBtnSubmitStyle"
                     android:layout_width="0dp"
@@ -441,10 +454,21 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/btn_order_state_add_picture"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_order_state_next"
+                    style="@style/cleanerBtnSubmitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{viewModel::nextState}"
+                    android:text="@string/btn_order_state_next"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_order_state_add_picture" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_order_state_sign"
@@ -454,19 +478,6 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/btn_order_state_sign"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_order_state_start_cleaning"
-                    style="@style/cleanerBtnSubmitStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:onClick="@{viewModel::startCleaning}"
-                    android:text="@string/btn_order_state_start_cleaning"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

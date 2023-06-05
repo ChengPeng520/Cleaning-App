@@ -29,7 +29,7 @@ class OrderChatroomAdapter :
     class ItemViewHolder(private val itemBinding: ItemFatrueiChatroomTxtBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: OrderChatroomItemUiState) {
-            if (item.fromId == 0) {
+            if (item.cleanerId != 0) {
                 itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
                 itemBinding.tvChatroomTalkTo.text = item.text
             } else {
@@ -44,7 +44,7 @@ class OrderChatroomAdapter :
             oldItem: OrderChatroomItemUiState,
             newItem: OrderChatroomItemUiState
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.msgCustClnId == newItem.msgCustClnId
         }
 
         override fun areContentsTheSame(

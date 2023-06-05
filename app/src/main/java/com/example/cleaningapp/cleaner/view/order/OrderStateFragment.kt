@@ -37,12 +37,6 @@ class OrderStateFragment : Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             with(binding) {
                 when (it.status) {
-                    0 -> {
-                        this.tvOrderStateNotStart.visibility = View.VISIBLE
-                        this.clOrderStateProgressBar.visibility = View.GONE
-                        this.btnOrderStateStartCleaning.visibility = View.VISIBLE
-                        this.btnOrderStateStartCleaning.isEnabled = false
-                    }
                     1 -> {
                         this.btnOrderStateStartCleaning.visibility = View.VISIBLE
                         this.btnOrderStateStartCleaning.isEnabled = true
@@ -52,13 +46,16 @@ class OrderStateFragment : Fragment() {
                     2 -> {
                         this.btnOrderStateStartCleaning.visibility = View.GONE
                         this.btnOrderStateAddPicture.visibility = View.VISIBLE
+                        this.btnOrderStateNext.visibility = View.VISIBLE
                         this.ivOrderStateApplied.isSelected = true
+//                        this.btnOrderStateNext.isEnabled = false
                         this.tvOrderStateApplied.setTextColor(Color.BLACK)
                         this.ivOrderStateIng.isSelected = true
                         this.tvOrderStateIng.setTextColor(Color.BLACK)
                     }
                     3 -> {
                         this.btnOrderStateAddPicture.visibility = View.GONE
+                        this.btnOrderStateNext.visibility = View.GONE
                         this.btnOrderStateSign.visibility = View.VISIBLE
                         this.ivOrderStateApplied.isSelected = true
                         this.tvOrderStateApplied.setTextColor(Color.BLACK)
@@ -79,10 +76,6 @@ class OrderStateFragment : Fragment() {
                         this.ivOrderStateOver.isSelected = true
                         this.tvOrderStateOver.setTextColor(Color.BLACK)
                     }
-                }
-                this.ivOrderStateChatroom.setOnClickListener {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.action_orderStateFragment_to_cleanerOrderChatroomFragment)
                 }
             }
         }
@@ -125,6 +118,14 @@ class OrderStateFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putInt("orderId", viewModel?.uiState?.value?.orderId!!)
                 findNavController().navigate(R.id.action_orderStateFragment_to_vicky_order_cssign_checkFragment)
+            }
+            ivOrderStateChatroom.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putSerializable("order", viewModel?.uiState?.value)
+                findNavController().navigate(
+                    R.id.action_orderStateFragment_to_cleanerOrderChatroomFragment,
+                    bundle
+                )
             }
         }
     }

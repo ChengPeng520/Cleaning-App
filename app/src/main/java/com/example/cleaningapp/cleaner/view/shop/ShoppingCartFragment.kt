@@ -39,7 +39,6 @@ class ShoppingCartFragment : Fragment() {
 
     private fun initRecyclerView() {
         with(binding) {
-            viewModel?.fetchShopOrderList()
             rvShoppingCartProduct.layoutManager = LinearLayoutManager(requireContext())
             rvShoppingCartProduct.adapter = ShoppingCartAdapter()
             viewModel?.uiState?.observe(viewLifecycleOwner) {

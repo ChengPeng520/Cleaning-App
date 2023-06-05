@@ -32,7 +32,7 @@ class OrderHistoryFragment : Fragment() {
             rvOrderHistory.adapter = OrderHistoryAdapter()
             viewModel?.fetchOrderHistory()
             viewModel?.uiState?.observe(viewLifecycleOwner) {
-                (rvOrderHistory.adapter as OrderHistoryAdapter).submitList(it.orderHistoryItems)
+                (rvOrderHistory.adapter as OrderHistoryAdapter).submitList(it)
             }
         }
     }
