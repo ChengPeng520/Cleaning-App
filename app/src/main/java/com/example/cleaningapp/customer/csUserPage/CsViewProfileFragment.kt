@@ -29,7 +29,7 @@ class CsViewProfileFragment : Fragment() {
             btnCsProfileModify.setOnClickListener{
                 val bundle = Bundle()
                 bundle.putSerializable("profile", viewModel?.profile?.value)
-                Navigation.findNavController(view).navigate(R.id.action_csViewProfileFragment_to_csEditProfileFragment, bundle)
+//                Navigation.findNavController(view).navigate(R.id.action_csViewProfileFragment_to_csEditProfileFragment, bundle)
             }
         }
     }

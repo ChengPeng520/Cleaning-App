@@ -8,14 +8,16 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel
+import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsUserMainDataboxBinding
 
 /**
  * 使用者列表所需的Adapter
  */
-class UserMainAdapter(private var users: List<User>) :
+class UserMainAdapter(private var users: List<Member>) :
     RecyclerView.Adapter<UserMainAdapter.UserMainViewHolder>() {
 
 
@@ -25,7 +27,7 @@ class UserMainAdapter(private var users: List<User>) :
      * @param users 新的好友列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateUsers(users: List<User>) {
+    fun updateUsers(users: List<Member>) {
         this.users = users
         notifyDataSetChanged()
     }
@@ -42,19 +44,19 @@ class UserMainAdapter(private var users: List<User>) :
         val itemViewBinding = ItemAlbBsUserMainDataboxBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BsUserMainDetailViewModel()
+        itemViewBinding.viewModel = BsUserMainViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return UserMainViewHolder(itemViewBinding)
     }
 
     override fun onBindViewHolder(holder: UserMainViewHolder, position: Int) {
-        val user = users[position]
+        val member = users[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
-            itemViewBinding.viewModel?.user?.value = user
+            itemViewBinding.viewModel?.member?.value = member
             val bundle = Bundle()
-            bundle.putSerializable("user", user)
+            bundle.putSerializable("member", member)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsAccountManageMainFragment_to_bsAccountManageMainDetailFragment, bundle)

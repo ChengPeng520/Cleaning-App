@@ -5,10 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cleaningapp.customer.detailed.Order
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.OrderAdapter
 import com.example.cleaningapp.customer.viewModel.HistoricalOrderViewModel
 import com.example.cleaningapp.databinding.FragmentVictorHistoricalorderBinding
@@ -36,23 +37,85 @@ class HistoricalOrderFragment : Fragment() {
         adapter = OrderAdapter(emptyList())
         binding.rvOrderListList.adapter = adapter
 
-        viewModel.fetchOrders()
+//        viewModel.fetchOrders()
         viewModel.orderList.observe(viewLifecycleOwner) { orders ->
             adapter?.updateOrders(orders)
         }
+        val defaultTextColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
+        val defaultIconColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
 
         binding.btnOrderListIng.setOnClickListener {
-            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 1 }
+            binding.btnOrderListIng.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.customerPrimaryDeep
+                )
+            )
+
+            // 设置按钮图标颜色
+            val drawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
+            drawable?.setTint(ContextCompat.getColor(requireContext(), R.color.customerPrimaryDeep))
+
+            // 恢复其他按钮颜色
+            binding.btnOrderListEstablished.setTextColor(defaultTextColor)
+            binding.btnOrderListDone.setTextColor(defaultTextColor)
+
+            val processingDrawable = binding.btnOrderListEstablished.compoundDrawablesRelative[0]
+            processingDrawable?.setTint(defaultIconColor)
+
+            val completedDrawable = binding.btnOrderListDone.compoundDrawablesRelative[0]
+            completedDrawable?.setTint(defaultIconColor)
+            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 0 }
             adapter?.updateOrders(orders)
         }
 
         binding.btnOrderListEstablished.setOnClickListener {
-            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 2 }
+            binding.btnOrderListEstablished.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.customerPrimaryDeep
+                )
+            )
+
+            // 设置按钮图标颜色
+            val drawable = binding.btnOrderListEstablished.compoundDrawablesRelative[0]
+            drawable?.setTint(ContextCompat.getColor(requireContext(), R.color.customerPrimaryDeep))
+
+            // 恢复其他按钮颜色
+            binding.btnOrderListIng.setTextColor(defaultTextColor)
+            binding.btnOrderListDone.setTextColor(defaultTextColor)
+
+            val processingDrawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
+            processingDrawable?.setTint(defaultIconColor)
+
+            val completedDrawable = binding.btnOrderListDone.compoundDrawablesRelative[0]
+            completedDrawable?.setTint(defaultIconColor)
+            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 1 || it.status == 2 || it.status == 3 || it.status == 4 || it.status == 6 || it.status == 7}
             adapter?.updateOrders(orders)
         }
 
         binding.btnOrderListDone.setOnClickListener {
-            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 3 }
+            binding.btnOrderListDone.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.customerPrimaryDeep
+                )
+            )
+
+            // 设置按钮图标颜色
+            val drawable = binding.btnOrderListDone.compoundDrawablesRelative[0]
+            drawable?.setTint(ContextCompat.getColor(requireContext(), R.color.customerPrimaryDeep))
+
+            // 恢复其他按钮颜色
+            binding.btnOrderListEstablished.setTextColor(defaultTextColor)
+            binding.btnOrderListIng.setTextColor(defaultTextColor)
+
+            val processingDrawable = binding.btnOrderListEstablished.compoundDrawablesRelative[0]
+            processingDrawable?.setTint(defaultIconColor)
+
+            val completedDrawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
+            completedDrawable?.setTint(defaultIconColor)
+            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 5 || it.status == 8}
             adapter?.updateOrders(orders)
         }
     }

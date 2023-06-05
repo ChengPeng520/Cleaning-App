@@ -70,7 +70,7 @@ class BsUserServiceChatFragment : Fragment() {
             }
 
             ivBsUserServChatBack.setOnClickListener {
-                Navigation.findNavController(view).popBackStack()
+                Navigation.findNavController(it).popBackStack()
             }
             tvBsUserServChatClose.setOnClickListener{
                 //TODO:已結案點選將傳回後端作標記,此Id已結案,再傳回到客服前台的recycle view項目標記已結案

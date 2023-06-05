@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
 import com.example.cleaningapp.backstage.usermanage.model.Chatroom
+import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserMainDetailBinding
@@ -33,19 +34,19 @@ class BsUserMainDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         requireActivity().title = "用戶管理"
         arguments?.let { bundle ->
-            bundle.getSerializable("user")?.let {
-                binding.viewModel?.user?.value = it as User
+            bundle.getSerializable("member")?.let {
+                binding.viewModel?.fetchMemberInfo(it as Member)
             }
             //新增從客服聊天室點選查詢,bundle customerId或cleanerId的會員資料解讀
-            arguments?.let { chatBundle ->
-                chatBundle.getSerializable("chat")?.let {
-                    if ((it as Chatroom).customerId == 0) {
-                        viewModel.fetchMemberInfo(it.cleanerId)
-                    } else {
-                        viewModel.fetchMemberInfo(it.customerId)
-                    }
-                }
-            }
+//            arguments?.let { chatBundle ->
+//                chatBundle.getSerializable("chat")?.let {
+//                    if ((it as Chatroom).customerId == 0) {
+//                        viewModel.fetchMemberInfo(it.cleanerId)
+//                    } else {
+//                        viewModel.fetchMemberInfo(it.customerId)
+//                    }
+//                }
+//            }
 
             with(binding) {
 
@@ -57,7 +58,7 @@ class BsUserMainDetailFragment : Fragment() {
                     showAlertDialog()
                 }
                 ivBsUserMainDetailBack.setOnClickListener {
-                    Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)
+                    Navigation.findNavController(it).popBackStack()
                 }
             }
 
@@ -74,6 +75,7 @@ class BsUserMainDetailFragment : Fragment() {
             dialog.dismiss()
             Navigation.findNavController(binding.btnBsUserMainDetailDelete)
                 .navigate(R.id.bsUserMainFragment)
+            //TODO 將帳號的suspend狀態update成1
         }
         alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
             dialog.dismiss()

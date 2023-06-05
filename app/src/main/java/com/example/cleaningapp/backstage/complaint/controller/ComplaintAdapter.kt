@@ -45,7 +45,7 @@ class ComplaintAdapter(private var complaints: List<Complaint>) :
     override fun onBindViewHolder(holder: ComplaintViewHolder, position: Int) {
         val complaint = complaints[position]
         with(holder) {
-            // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
+            // 將欲顯示的complaint物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.complaint?.value = complaint
             val bundle = Bundle()
             bundle.putSerializable("complaint", complaint)

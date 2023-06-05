@@ -68,6 +68,7 @@ class LoginFragment : Fragment() {
                         if (it.suspend) {
                             tvLoginErrMsg.text = "此帳號已停權"
                         } else {
+                            CustomerSharePreferencesUtils.saveCustomerInfoFromPreferences(it)
                             val intent = Intent(requireContext(), CustomerActivity::class.java)
                             requireContext().startActivity(intent)
                         }
@@ -84,6 +85,7 @@ class LoginFragment : Fragment() {
                         } else if (!it.verify) {
                             findNavController().navigate(R.id.action_loginFragment_to_signupCheckingFragment)
                         } else {
+                            CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(it)
                             val intent = Intent(requireContext(), CleanerActivity::class.java)
                             requireContext().startActivity(intent)
                         }

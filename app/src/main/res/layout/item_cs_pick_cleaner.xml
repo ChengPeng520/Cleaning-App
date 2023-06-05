@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.example.cleaningapp.customer.csCreateOrder.CsViewCvViewModel" />
@@ -29,7 +30,7 @@
                 android:id="@+id/img_item_csPickCleaner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:imageBitmap="@{viewmodel.cleaner.photo}"
+                app:imageBitmap="@{viewmodel.cleaner.cleanerPhoto}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +58,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:numStars="5"
-            android:rating="@{viewmodel.cleaner.stars}"
+            android:rating="@{viewmodel.cleaner.averageStars}"
             android:theme="@style/RatingBar"
             app:layout_constraintBottom_toTopOf="@+id/tv_csPickCleaner_orderQ"
             app:layout_constraintStart_toStartOf="@+id/tv_csPickCleaner_nameGender"
@@ -68,10 +69,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@{@string/tv_item_csPickCleaner_orderCount(viewmodel.cleaner.completedOrderCount)}"
+            android:text="@{@string/tv_item_csPickCleaner_orderCount(viewmodel.cleaner.count)}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/rb_csPickCleaner_averageStar"
             app:layout_constraintTop_toBottomOf="@+id/rb_csPickCleaner_averageStar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

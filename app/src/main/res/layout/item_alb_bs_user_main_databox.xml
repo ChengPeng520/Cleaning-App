@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainDetailViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserMainViewModel" />
     </data>
 
     <LinearLayout
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="@{viewModel.user.email}"
+            android:text="@{viewModel.member.email}"
             android:textColor="#414141" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="@{viewModel.user.name}"
+            android:text="@{viewModel.member.name}"
             android:textColor="#414141" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="@{viewModel.user.createTime}"
+            android:text="@{String.valueOf(viewModel.member.timeCreate)}"
             android:textColor="#414141" />
 
 

@@ -203,6 +203,7 @@
                     android:id="@+id/edtTxt_csEditProfile_selfIntro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="left"
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
@@ -221,6 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/btn_cs_restore"
+                android:onClick="@{viewModel::saveMemberInfo}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_selfIntro" />

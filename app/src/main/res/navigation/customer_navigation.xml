@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customer_navigation"
-    app:startDestination="@id/csCouponObtainFragment">
+    app:startDestination="@id/historicalorderFragment">
 
     <fragment
         android:id="@+id/csHomePageFragment"
@@ -47,8 +47,8 @@
             android:id="@+id/action_csUserFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />
         <action
-            android:id="@+id/action_csUserPageFragment_to_csViewProfileFragment"
-            app:destination="@id/csViewProfileFragment" />
+            android:id="@+id/action_csUserPageFragment_to_csEditProfileFragment"
+            app:destination="@id/csEditProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/csCouponPickerFragment"
@@ -92,8 +92,8 @@
         android:label="fragment_cs_edit_profile"
         tools:layout="@layout/fragment_cs_edit_profile" >
         <action
-            android:id="@+id/action_csEditProfileFragment_to_csViewProfileFragment"
-            app:destination="@id/csViewProfileFragment" />
+            android:id="@+id/action_csEditProfileFragment_to_csUserPageFragment"
+            app:destination="@id/csUserPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/csViewCouponFragment"
@@ -197,15 +197,6 @@
             app:destination="@id/complaintdetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/csViewProfileFragment"
-        android:name="com.example.cleaningapp.customer.csUserPage.CsViewProfileFragment"
-        android:label="CsViewProfileFragment"
-        tools:layout="@layout/fragment_cs_view_profile">
-        <action
-            android:id="@+id/action_csViewProfileFragment_to_csEditProfileFragment"
-            app:destination="@id/csEditProfileFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/commentDoneFragment"
         android:name="com.example.cleaningapp.customer.fragment.CommentDoneFragment"
         android:label="fragment_victor_comment_done"
@@ -240,4 +231,8 @@
             android:id="@+id/action_orderingFragment_to_ordercompletedFragment"
             app:destination="@id/ordercompletedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orderChatroomFragment"
+        android:name="com.example.cleaningapp.customer.fragment.OrderChatroomFragment"
+        android:label="OrderChatroomFragment" />
 </navigation>
