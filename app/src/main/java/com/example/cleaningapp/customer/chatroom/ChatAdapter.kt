@@ -1,47 +1,60 @@
-// ChatAdapter.kt
 package com.example.cleaningapp.customer.chatroom
 
-import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cleaningapp.databinding.ItemVictorChatMessageBinding
+import com.example.cleaningapp.databinding.ItemFatrueiChatroomTxtBinding
 
-class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
-    private val chatMessages = mutableListOf<ChatMessage>()
+class ChatAdapter :
+    ListAdapter<ChatroomItemUiState, ChatAdapter.ItemViewHodler>(DiffCallBack()) {
+        private var layoutWidth: Int = 0
 
-    inner class ChatViewHolder(private val binding: ItemVictorChatMessageBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(chatMessage: ChatMessage) {
-            binding.messageTextView.text = chatMessage.content
-            // 根據發送者決定訊息佈局的對齊方式，例如左對齊或右對齊
-            val gravity = if (chatMessage.sender == "User") Gravity.END else Gravity.START
-            binding.messageTextView.gravity = gravity
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHodler {
+            this.layoutWidth = parent.width / 3 * 2
+            return ItemViewHodler(
+                ItemFatrueiChatroomTxtBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+        }
+
+        override fun onBindViewHolder(holder: ItemViewHodler, position: Int) {
+            holder.bind(getItem(position), layoutWidth)
+        }
+
+        class ItemViewHodler(private val itemBinding: ItemFatrueiChatroomTxtBinding) :
+            RecyclerView.ViewHolder(itemBinding.root) {
+            fun bind(item: ChatroomItemUiState, layoutWidth: Int) {
+                if (item.fromId == 0) {
+                    itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
+                    itemBinding.tvChatroomTalkTo.text = item.text
+                    itemBinding.tvChatroomTalkTo.maxWidth = layoutWidth
+                } else {
+                    itemBinding.tvChatroomTalkFrom.visibility = View.VISIBLE
+                    itemBinding.tvChatroomTalkFrom.text = item.text
+                    itemBinding.tvChatroomTalkFrom.maxWidth = layoutWidth
+                }
+            }
+        }
+
+        class DiffCallBack : DiffUtil.ItemCallback<ChatroomItemUiState>() {
+            override fun areItemsTheSame(
+                oldItem: ChatroomItemUiState,
+                newItem: ChatroomItemUiState
+            ): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: ChatroomItemUiState,
+                newItem: ChatroomItemUiState
+            ): Boolean {
+                return oldItem == newItem
+            }
         }
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemVictorChatMessageBinding.inflate(inflater, parent, false)
-        return ChatViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        val chatMessage = chatMessages[position]
-        holder.bind(chatMessage)
-    }
-
-    override fun getItemCount(): Int = chatMessages.size
-
-    fun addMessage(chatMessage: ChatMessage) {
-        chatMessages.add(chatMessage)
-        notifyItemInserted(chatMessages.size - 1)
-    }
-
-    fun setMessages(messages: List<ChatMessage>) {
-        chatMessages.clear()
-        chatMessages.addAll(messages)
-        Log.d("SDASD", chatMessages.size.toString())
-        notifyDataSetChanged()
-    }
-}
