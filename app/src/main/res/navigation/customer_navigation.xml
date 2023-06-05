@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customer_navigation"
-    app:startDestination="@id/csCouponObtainFragment">
+    app:startDestination="@id/historicalorderFragment">
 
     <fragment
         android:id="@+id/csHomePageFragment"
@@ -240,4 +240,8 @@
             android:id="@+id/action_orderingFragment_to_ordercompletedFragment"
             app:destination="@id/ordercompletedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orderChatroomFragment"
+        android:name="com.example.cleaningapp.customer.fragment.OrderChatroomFragment"
+        android:label="OrderChatroomFragment" />
 </navigation>

@@ -22,7 +22,7 @@ class BsShopProductFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
 
-    (requireActivity() as BackstageActivity).supportActionBar?.show()
+        (requireActivity() as BackstageActivity).supportActionBar?.show()
         val viewModel: BsShopProductViewModel by viewModels()
 
         binding = FragmentAlbBsShopProductBinding.inflate(inflater, container, false)
@@ -32,17 +32,12 @@ class BsShopProductFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments?.let {
-            val product =
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    it.getSerializable("product", Product::class.java)
-                } else {
-                    it.getSerializable("product")
-                }
-            viewModel.product.value = product as Product
-        }
-
         with(binding) {
+            viewModel?.product?.observe(viewLifecycleOwner){
+                product -> ivBsShopProductPhoto.setImageBitmap(product.photoBitmap)
+                tvBsShopCreatetime.text = product.newTimeCreate
+                tvBsShopUpdatetime.text =product.newTimeUpdate
+            }
             btnBsShopProductDetailPopback.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
@@ -50,11 +45,16 @@ class BsShopProductFragment : Fragment() {
                 Navigation.findNavController(view).navigate(R.id.bsShopProductModifyFragment)
             }
             arguments?.let { bundle ->
-                bundle.getSerializable("product")?.let {
-                    binding.viewModel?.product?.value = it as Product
+                bundle.getInt("productId",).let {
+                    viewModel?.fetchProductInfo(it)
                 }
+            }
+
+
             }
         }
     }
-}
+
+
+
 

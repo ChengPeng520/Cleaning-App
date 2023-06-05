@@ -320,7 +320,7 @@
                     android:gravity="center_horizontal"
                     android:hint="@string/ht_csCreateOrder_enterSize"
                     android:inputType="numberDecimal"
-                    android:text="@{String.valueOf(viewModel.order.bathroomSize)}"
+                    android:text="@{String.valueOf(viewModel.order.bathRoomSize)}"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -409,7 +409,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:background="@drawable/ic_add"
-                    app:imageBitmap="@{viewModel.photo1}"
+                    app:imageBitmap="@{viewModel.photo.photo1}"
                     tools:src="@tools:sample/avatars" />
 
                 <ImageView
@@ -419,8 +419,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:background="@{viewModel.photo1 != null ? @drawable/ic_add : null}"
-                    app:imageBitmap="@{viewModel.photo2}"
+                    android:background="@{viewModel.photo.photo1 != null ? @drawable/ic_add : null}"
+                    app:imageBitmap="@{viewModel.photo.photo2}"
                     tools:src="@tools:sample/avatars" />
 
                 <ImageView
@@ -429,8 +429,8 @@
                     android:layout_height="110dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:background="@{viewModel.photo2 != null ? @drawable/ic_add : null}"
-                    app:imageBitmap="@{viewModel.photo3}"
+                    android:background="@{viewModel.photo.photo2 != null ? @drawable/ic_add : null}"
+                    app:imageBitmap="@{viewModel.photo.photo3}"
                     tools:src="@tools:sample/avatars" />
             </LinearLayout>
 
@@ -461,8 +461,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3.5"
-                    android:paddingEnd="12dp"
                     android:ems="10"
+                    android:paddingEnd="12dp"
                     android:text="@={viewModel.tvUseCoupon}"
                     android:textAlignment="viewEnd" />
 
@@ -494,11 +494,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3.5"
-                    android:paddingEnd="12dp"
                     android:background="@null"
                     android:ems="10"
                     android:inputType="numberDecimal"
-                    android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
+                    android:paddingEnd="12dp"
+                    android:text="@{String.valueOf(viewModel.order.originalPrice)}"
                     android:textAlignment="viewEnd" />
 
             </LinearLayout>
@@ -520,6 +520,3 @@
     </ScrollView>
 
 </layout>
-
-
-

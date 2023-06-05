@@ -4,6 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.Order
 
-class OrderprogressViewModel : ViewModel() {
+class OrderChatroomViewModel : ViewModel() {
     val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
 }

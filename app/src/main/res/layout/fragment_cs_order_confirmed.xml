@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csCreateOrder.CsOrderConfirmedViewModel" />
@@ -18,7 +19,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bt_csOderConfirmed_submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -46,8 +48,8 @@
                         android:id="@+id/ll_csOrderConfirmed_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -55,17 +57,17 @@
                         <ImageView
                             android:id="@+id/iv_calendar"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
                             android:src="@drawable/ic_calendar" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_date"
                             android:layout_width="0dp"
-                            android:layout_weight="3"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="3"
                             android:gravity="center_vertical"
                             android:text="@string/tv_csOrderConfirmed_date"
                             android:textColor="@color/black" />
@@ -73,10 +75,10 @@
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_date2"
                             android:layout_width="0dp"
-                            android:layout_weight="8"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="8"
+                            android:gravity="center_vertical"
                             android:text="@{viewModel.order.dateOrdered}"
                             tools:text="TextView" />
 
@@ -86,8 +88,8 @@
                         android:id="@+id/ll_csOrderConfirmed_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmed_date">
@@ -95,17 +97,17 @@
                         <ImageView
                             android:id="@+id/iv_time"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
                             android:src="@drawable/ic_time" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_time"
                             android:layout_width="0dp"
-                            android:layout_weight="3"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="3"
                             android:gravity="center_vertical"
                             android:text="@string/tv_csOrderConfirmed_time"
                             android:textColor="@color/black" />
@@ -113,10 +115,10 @@
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_time2"
                             android:layout_width="0dp"
-                            android:layout_weight="8"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="8"
+                            android:gravity="center_vertical"
                             android:text='@{viewModel.order.timeOrderedStart+"~"+viewModel.order.timeOrderedEnd}'
                             tools:text="TextView" />
 
@@ -126,8 +128,8 @@
                         android:id="@+id/ll_csOrderConfirmed_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmed_time">
@@ -135,17 +137,17 @@
                         <ImageView
                             android:id="@+id/iv_location"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
                             android:src="@drawable/ic_location" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_address"
                             android:layout_width="0dp"
-                            android:layout_weight="3"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="3"
                             android:gravity="center_vertical"
                             android:text="@string/tv_csOrderConfirmed_address"
                             android:textColor="@color/black" />
@@ -153,20 +155,21 @@
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_address2"
                             android:layout_width="0dp"
-                            android:layout_weight="8"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
                             android:layout_marginStart="8dp"
-                            android:text="@{viewModel.order.areaDetail}"
+                            android:layout_weight="8"
+                            android:gravity="center_vertical"
+                            android:text="@{viewModel.order.address}"
                             tools:text="TextView" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linearLayout9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ll_csOrderConfirmed_address">
@@ -174,53 +177,54 @@
                         <ImageView
                             android:id="@+id/iv_area"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="25dp"
+                            android:layout_weight="1"
                             android:src="@drawable/ic_room" />
 
                         <TextView
                             android:id="@+id/tv_csOrderConfirmed_area"
                             android:layout_width="0dp"
-                            android:layout_weight="3"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="3"
                             android:text="@string/tv_csOrderConfirmed_area"
                             android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/tv_csOrderConfirmed_area2"
                             android:layout_width="0dp"
-                            android:layout_weight="8"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="8"
                             android:inputType="textMultiLine"
-                            android:text="@{@string/tv_csOrderConfirmed_area2 (viewModel.order.livingRoomSize, viewModel.order.kitchenSize, viewModel.order.bathroomSize, viewModel.order.roomSize)}"
+                            android:text="@{viewModel.order.cleaningRange}"
                             tools:text="TextView" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linearLayout10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
 
                         <ImageView
                             android:id="@+id/iv_tools"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
                             android:src="@drawable/ic_editnote" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_tools"
                             android:layout_width="0dp"
-                            android:layout_weight="11"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
+                            android:layout_weight="11"
                             android:gravity="center_vertical"
                             android:text="@string/tv_csOderConfirmedTools"
                             android:textColor="@color/black" />
@@ -233,7 +237,6 @@
                         android:layout_marginStart="36dp"
                         android:layout_marginTop="8dp"
                         android:inputType="textMultiLine"
-                        android:minLines="5"
                         android:lineSpacingExtra="30px"
                         android:text="@{viewModel.order.remark}"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -241,7 +244,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
                         tools:text="TextView" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -262,6 +264,7 @@
                         android:layout_height="110dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
+                        app:imageBitmap="@{viewModel.photo.photo1}"
                         tools:src="@tools:sample/avatars" />
 
                     <ImageView
@@ -271,6 +274,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
+                        app:imageBitmap="@{viewModel.photo.photo2}"
                         tools:src="@tools:sample/avatars" />
 
                     <ImageView
@@ -279,7 +283,9 @@
                         android:layout_height="110dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
+                        app:imageBitmap="@{viewModel.photo.photo3}"
                         tools:src="@tools:sample/avatars" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -292,6 +298,7 @@
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ll_csCreateOrder_pics">
 
@@ -311,9 +318,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
+                        android:text="@{String.valueOf(viewModel.order.originalPrice)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
@@ -347,9 +354,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
+                        android:text="@{String.valueOf(viewModel.order.charge)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        android:text="@{String.valueOf(viewModel.order.charge)}"
                         tools:text="帶入金額" />
 
                 </LinearLayout>
@@ -383,6 +390,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
+                        android:text="@{String.valueOf(viewModel.order.couponDiscount)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         tools:text="帶入金額" />
@@ -418,9 +426,11 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
+                        android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         tools:text="帶入金額" />
+
 
                 </LinearLayout>
 

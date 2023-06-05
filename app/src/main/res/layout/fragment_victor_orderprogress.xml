@@ -224,6 +224,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:text="@{viewModel.order.date}"
             app:layout_constraintBottom_toBottomOf="@+id/textView31"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView31"
@@ -235,6 +236,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:text="@{viewModel.order.time}"
             app:layout_constraintBottom_toBottomOf="@+id/textView32"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView32"
@@ -242,11 +244,12 @@
             tools:text="12:00-14:00 (2小時)" />
 
         <TextView
-            android:id="@+id/tv_order_adress"
+            android:id="@+id/tv_order_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:text="@{viewModel.order.address}"
             app:layout_constraintBottom_toBottomOf="@+id/textView33"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView33"
@@ -254,10 +257,11 @@
             tools:text="台北市南京復興**********" />
 
         <TextView
-            android:id="@+id/tv_order_range"
+            android:id="@+id/tv_order_size"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:text="@{viewModel.order.size}"
             app:layout_constraintBottom_toBottomOf="@+id/textView34"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView34"
@@ -268,6 +272,7 @@
             android:id="@+id/tv_order_remark"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.order.remark}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView111"
             app:layout_constraintTop_toBottomOf="@+id/textView111"
@@ -278,7 +283,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView38"
+            android:text="@{String.valueOf(viewModel.order.cleanerid)}"            app:layout_constraintBottom_toBottomOf="@+id/textView38"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView38"
             app:layout_constraintTop_toTopOf="@+id/textView38"
@@ -298,6 +303,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:text="@{String.valueOf(viewModel.order.total)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView59"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView59"

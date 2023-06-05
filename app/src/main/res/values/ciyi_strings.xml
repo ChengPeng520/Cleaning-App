@@ -91,14 +91,17 @@
     <string name="tv_order_detail_product_recipient">呂正凡</string>
     <string name="tv_order_product_detail_number">0912345678</string>
     <string name="tv_order_detail_recipient_address">台北市南京復興區嘿嘿路嘿嘿巷12號3樓</string>
-    <string name="searchProduct">訂單查詢</string>
+    <string name="searchProduct">產品查詢</string>
     <string name="product_add_camera_button">拍照</string>
     <string name="editButton">修改</string>
-
     <string name="saveButton">保存</string>
     <string name="tv_coupon_search_noResult">查無資料</string>
     <string name="tv_ti_bs_shop_order_detail">訂單詳情</string>
     <string name="bs_shop_product_add">產品新增</string>
     <dimen name="button_corner_radius">6dp</dimen>
     <string name="btn_bs_shop_product_modify_save">保存</string>
+    
+    //productdetail
+    <string name="true_text">是</string>
+    <string name="false_text">否</string>
 </resources>

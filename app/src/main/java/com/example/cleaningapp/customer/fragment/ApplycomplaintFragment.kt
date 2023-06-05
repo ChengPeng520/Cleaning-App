@@ -3,12 +3,12 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
@@ -26,6 +26,8 @@ class ApplycomplaintFragment : Fragment() {
     ): View {
         binding = FragmentVictorApplycomplaintBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
+        initAppBarMenu()
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -47,32 +49,44 @@ class ApplycomplaintFragment : Fragment() {
         binding.bntApplyComplaintCancel.setOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
-
-        binding.imageView40.setOnClickListener {
-            if (viewModel.capturedCount < 3) {
+        //拍照功能
+        binding.applycomplaintPhoto.setOnClickListener {
+            if (viewModel?.photo3?.value == null) {
                 val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 takePictureSmallLauncher.launch(intent)
             }
         }
     }
 
-    private val takePictureSmallLauncher =
+    private var takePictureSmallLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.extras?.let { bundle ->
                     val picture = bundle["data"] as Bitmap?
                     picture?.let {
-                        if (!viewModel.isPhotoExists(it) && viewModel.capturedCount < 3) {
-                            viewModel.addCapturedPhoto(it)
-
-                            when (viewModel.capturedCount) {
-                                1 -> binding.imageView41.setImageBitmap(it)
-                                2 -> binding.imageView42.setImageBitmap(it)
-                                3 -> binding.imageView40.setImageBitmap(it)
-                            }
-                        }
+                        viewModel.addCapturedPhoto(it)
                     }
                 }
             }
         }
+    private fun initAppBarMenu() {
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.ment_customer_chatroom, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.chatRoomFragment -> {
+                        Navigation.findNavController(
+                            requireActivity(),
+                            R.id.customer_nav_host_fragment
+                        ).navigate(R.id.chatRoomFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
 }
