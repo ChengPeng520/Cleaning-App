@@ -1,15 +1,21 @@
 package com.example.cleaningapp.customer.model
 
 import android.graphics.Bitmap
+import com.example.cleaningapp.share.ImageUtils
 import java.io.Serializable
 
 data class Cleaner(
-    val id: Int,
-    val photo: Bitmap,
+    val cleanerId: Int,
+    val photo: ByteArray,
     val name: String,
     val gender: Int,
-    val stars: Float,
-    val completedOrderCount: Int,
+    val averageStars: Float,
+    val count: Int,
     val phone: String,
     val introduction: String
-) : Serializable
+) : Serializable {
+    val cleanerPhoto: Bitmap?
+        get() {
+            return ImageUtils.bytesToBitmap(photo)
+        }
+}
