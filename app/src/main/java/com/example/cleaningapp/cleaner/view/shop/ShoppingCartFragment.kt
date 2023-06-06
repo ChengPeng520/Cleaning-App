@@ -15,6 +15,7 @@ import com.example.cleaningapp.cleaner.adapter.ShoppingCartAdapter
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.cleaner.viewmodel.shop.ShoppingCartViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiShoppingCartBinding
+import com.example.cleaningapp.share.TapPay
 
 class ShoppingCartFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiShoppingCartBinding
@@ -39,13 +40,15 @@ class ShoppingCartFragment : Fragment() {
         }
     }
 
-
     private fun initView() {
         binding.cLShoppingCartReceiverInfo.setOnClickListener {
             Navigation.findNavController(it)
                 .navigate(R.id.action_shoppingCartFragment_to_receiverInfoFragment)
         }
         initRecyclerView()
+        binding.btnPay3.setOnClickListener {
+            TapPay(requireContext()).prepareGooglePay(10)
+        }
     }
 
     private fun initRecyclerView() {
