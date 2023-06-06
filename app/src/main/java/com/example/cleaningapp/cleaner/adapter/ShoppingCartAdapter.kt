@@ -16,6 +16,7 @@ class ShoppingCartAdapter :
 
     interface ClickInterface {
         fun onBtnClick(productId: ShoppingCartItemUiState)
+        fun onBtnPlusOrMinus(productId: ShoppingCartItemUiState, state: Boolean)
     }
 
     fun setOnclick(clickInterface: ClickInterface) {
@@ -38,6 +39,12 @@ class ShoppingCartAdapter :
             viewModel?.adapterUiState?.value = getItem(position)
             ivShoppingCartProductDelete.setOnClickListener {
                 clickInterface.onBtnClick(getItem(position))
+            }
+            btnShoppingCartPlus.setOnClickListener {
+                clickInterface.onBtnPlusOrMinus(getItem(position), true)
+            }
+            btnShoppingCartMinus.setOnClickListener {
+                clickInterface.onBtnPlusOrMinus(getItem(position), false)
             }
         }
     }

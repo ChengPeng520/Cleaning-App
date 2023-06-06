@@ -49,6 +49,7 @@
             android:id="@+id/tv_shopping_cart_gross_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.totalPrice)}"
             android:textColor="#121212"
             android:textSize="24sp"
             android:textStyle="bold"

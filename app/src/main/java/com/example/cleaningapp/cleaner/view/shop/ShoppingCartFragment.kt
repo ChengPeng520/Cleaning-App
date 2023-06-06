@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,7 +43,7 @@ class ShoppingCartFragment : Fragment() {
             rvShoppingCartProduct.layoutManager = LinearLayoutManager(requireContext())
             rvShoppingCartProduct.adapter = ShoppingCartAdapter()
             viewModel?.uiState?.observe(viewLifecycleOwner) {
-                (rvShoppingCartProduct.adapter as ShoppingCartAdapter).submitList(it.shoppingCartItems.toList())
+                (rvShoppingCartProduct.adapter as ShoppingCartAdapter).submitList(it.toList())
             }
 
             rvShoppingCartProduct.post {
@@ -50,7 +51,21 @@ class ShoppingCartFragment : Fragment() {
                     (rvShoppingCartProduct.adapter as ShoppingCartAdapter).setOnclick(object :
                         ShoppingCartAdapter.ClickInterface {
                         override fun onBtnClick(productId: ShoppingCartItemUiState) {
-                            viewModel?.deleteProduct(productId)
+                            viewModel?.deleteProduct(productId)?.let {
+                                if (it) {
+                                    viewModel?.fetchShopOrderList()
+                                    Toast.makeText(requireContext(), "刪除成功", Toast.LENGTH_SHORT)
+                                        .show()
+                                } else Toast.makeText(requireContext(), "刪除失敗", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+
+                        override fun onBtnPlusOrMinus(
+                            productId: ShoppingCartItemUiState,
+                            state: Boolean
+                        ) {
+                            viewModel?.updateNumber(productId, state)
                         }
                     })
                 }
