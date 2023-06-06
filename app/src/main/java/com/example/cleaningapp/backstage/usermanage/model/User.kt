@@ -1,7 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.model
 
 import android.graphics.Bitmap
-import com.example.cleaningapp.share.ImageUtils
 import java.io.Serializable
 import java.sql.Timestamp
 
