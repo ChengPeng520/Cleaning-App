@@ -11,12 +11,12 @@ import com.example.cleaningapp.cleaner.uistate.OrderInfoItemUiState
 import com.example.cleaningapp.databinding.ItemFatrueiOrderInfoProudctsBinding
 
 class OrderInfoAdapter :
-    ListAdapter<OrderInfoItemUiState, OrderInfoAdapter.ItemViewHodler>(DiffCallBack()) {
+    ListAdapter<OrderInfoItemUiState, OrderInfoAdapter.ItemViewHolder>(DiffCallBack()) {
     private lateinit var context: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHodler {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         this.context = parent.context
-        return ItemViewHodler(
+        return ItemViewHolder(
             ItemFatrueiOrderInfoProudctsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -25,20 +25,20 @@ class OrderInfoAdapter :
         )
     }
 
-    override fun onBindViewHolder(holder: ItemViewHodler, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.onBind(getItem(position), context)
     }
 
-    class ItemViewHodler(private val itemBinding: ItemFatrueiOrderInfoProudctsBinding) :
+    class ItemViewHolder(private val itemBinding: ItemFatrueiOrderInfoProudctsBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun onBind(orderInfoItem: OrderInfoItemUiState, context: Context) {
             with(itemBinding) {
-                ivOrderInfoImage.setImageResource(orderInfoItem.image)
+                ivOrderInfoImage.setImageBitmap(orderInfoItem.productPhoto)
                 tvOrdreInfoName.text = orderInfoItem.name
-                tvOrderInfoUnitPrice.text = orderInfoItem.unitPrice.toString()
+                tvOrderInfoUnitPrice.text = orderInfoItem.price.toString()
                 tvOrderInfoNumber.text = String.format(
                     context.getString(R.string.tv_shopping_info_number),
-                    orderInfoItem.number
+                    orderInfoItem.count
                 )
             }
         }
@@ -49,7 +49,7 @@ class OrderInfoAdapter :
             oldItem: OrderInfoItemUiState,
             newItem: OrderInfoItemUiState
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.productId == newItem.productId
         }
 
         override fun areContentsTheSame(

@@ -5,7 +5,10 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductDetailUiState
+import com.example.cleaningapp.cleaner.uistate.ShopOrderList
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -13,13 +16,24 @@ import kotlinx.coroutines.flow.update
 class ProductDetailViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(ProductDetailUiState())
     val uiState = _uiState.asStateFlow()
+    var shopOrderId: Int = 0
 
     fun fetchProductDetail(productId: Int) {
         requestTask<ProductDetailUiState>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/$productId",
-            method = "GET",
+            method = "GET"
         )?.let {
             _uiState.value = it
+        }
+        fetchShopCart()
+    }
+
+    private fun fetchShopCart() {
+        requestTask<Int>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            method = "GET"
+        )?.let {
+            shopOrderId = it
         }
     }
 
@@ -49,7 +63,23 @@ class ProductDetailViewModel : ViewModel() {
 
     fun putProductToCart(view: View) {
         if (uiState.value.count > 0) {
-            Toast.makeText(view.context, "已將商品儲存至購物車內", Toast.LENGTH_SHORT).show()
+            requestTask<JsonObject>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                method = "POST",
+                reqBody = ShopOrderList(
+                    shopOrderId = shopOrderId,
+                    productId = uiState.value.productId,
+                    count = uiState.value.count,
+                    price = uiState.value.totalPrice
+                )
+            )?.let {
+                if (it.get("result").asBoolean) {
+                    Toast.makeText(view.context, "已將商品儲存至購物車內", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(view.context, "儲存失敗", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
     }
 }

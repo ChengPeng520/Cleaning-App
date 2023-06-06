@@ -16,6 +16,7 @@ class ShoppingCartAdapter :
 
     interface ClickInterface {
         fun onBtnClick(productId: ShoppingCartItemUiState)
+        fun onBtnPlusOrMinus(productId: ShoppingCartItemUiState, state: Boolean)
     }
 
     fun setOnclick(clickInterface: ClickInterface) {
@@ -39,6 +40,12 @@ class ShoppingCartAdapter :
             ivShoppingCartProductDelete.setOnClickListener {
                 clickInterface.onBtnClick(getItem(position))
             }
+            btnShoppingCartPlus.setOnClickListener {
+                clickInterface.onBtnPlusOrMinus(getItem(position), true)
+            }
+            btnShoppingCartMinus.setOnClickListener {
+                clickInterface.onBtnPlusOrMinus(getItem(position), false)
+            }
         }
     }
 
@@ -50,7 +57,7 @@ class ShoppingCartAdapter :
             oldItem: ShoppingCartItemUiState,
             newItem: ShoppingCartItemUiState
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.shopOrderId == newItem.shopOrderId
         }
 
         override fun areContentsTheSame(

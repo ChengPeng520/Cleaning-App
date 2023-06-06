@@ -13,6 +13,7 @@ import com.example.cleaningapp.LoginActivity
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberBinding
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CleanerMemberFragment : Fragment(), OnClickListener {
@@ -44,6 +45,7 @@ class CleanerMemberFragment : Fragment(), OnClickListener {
             R.id.cl_member_info -> findNavController().navigate(R.id.action_memberFragment_to_memberInfoFragment)
             R.id.cl_member_window -> findNavController().navigate(R.id.action_memberFragment_to_contactWindowFragment)
             R.id.btn_member_signout -> {
+                CleanerSharedPreferencesUtils.logout()
                 val intent = Intent(activity, LoginActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
@@ -55,6 +57,5 @@ class CleanerMemberFragment : Fragment(), OnClickListener {
         super.onResume()
         requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
             View.VISIBLE
-        viewModel.fetchPhoto()
     }
 }

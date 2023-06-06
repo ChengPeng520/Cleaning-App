@@ -6,10 +6,8 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.cleaner.uistate.Job
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontOrderDetailViewModel
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontOrderDetailBinding
 
@@ -31,12 +29,11 @@ class CleanerFrontOrderDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-            arguments?.let { bundle ->
-                bundle.getSerializable("cleaner")?.let {
-                    binding.viewModel?.cleaner?.value = it as Job
-                }
+            arguments?.getInt("orderId")?.let {
+                viewModel?.fetchOrderAccept(it)
             }
             button8.setOnClickListener {
+                viewModel?.fetchOrderConfirm()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_cleanerFrontOrderDetailFragment_to_order_acceptFragment)
             }

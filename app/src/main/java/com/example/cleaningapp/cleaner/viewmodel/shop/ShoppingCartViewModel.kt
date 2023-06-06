@@ -3,31 +3,66 @@ package com.example.cleaningapp.cleaner.viewmodel.shop
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
-import com.example.cleaningapp.cleaner.uistate.ShoppingCartUiState
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 
 class ShoppingCartViewModel : ViewModel() {
-    private val _uiState: MutableLiveData<ShoppingCartUiState> by lazy { MutableLiveData<ShoppingCartUiState>() }
-    val uiState: LiveData<ShoppingCartUiState> = _uiState
+    private val _uiState: MutableLiveData<List<ShoppingCartItemUiState>> by lazy { MutableLiveData<List<ShoppingCartItemUiState>>() }
+    val uiState: LiveData<List<ShoppingCartItemUiState>> = _uiState
     val adapterUiState: MutableLiveData<ShoppingCartItemUiState> by lazy { MutableLiveData<ShoppingCartItemUiState>() }
-    val list = mutableListOf<ShoppingCartItemUiState>()
+    val totalPrice: MutableLiveData<Int> by lazy { MutableLiveData(0) }
 
     init {
-        list.add(ShoppingCartItemUiState(1, R.drawable.fatruei_test1, "掃把", 100, 1))
-        list.add(ShoppingCartItemUiState(2, R.drawable.fatruei_test3, "拖把組", 100, 1))
+        fetchShopOrderList()
     }
 
     fun fetchShopOrderList() {
-        _uiState.value = ShoppingCartUiState(shoppingCartItems = list, grossPrice = 200)
+        requestTask<List<ShoppingCartItemUiState>>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            method = "GET",
+            respBodyType = object : TypeToken<List<ShoppingCartItemUiState>>() {}.type
+        )?.let {
+            _uiState.value = it
+            var price = 0
+            for (i in it.indices) {
+                price += it[i].price * it[i].count
+            }
+            totalPrice.value = price
+        }
     }
 
-    fun deleteProduct(productItem: ShoppingCartItemUiState) {
-        list.remove(productItem)
-        _uiState.value = ShoppingCartUiState(shoppingCartItems = list, 100)
+    fun deleteProduct(productItem: ShoppingCartItemUiState): Boolean {
+        requestTask<JsonObject>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
+            method = "DELETE",
+        )?.let {
+            return it.get("result").asBoolean
+        }
+        return false
     }
 
-    fun updateNumber(position: Int, state: Boolean) {
-
+    fun updateNumber(productItem: ShoppingCartItemUiState, state: Boolean) {
+        if (state) {
+            productItem.count += 1
+            requestTask<ShoppingCartItemUiState>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                method = "PUT",
+                reqBody = productItem
+            )?.let {
+                fetchShopOrderList()
+            }
+        } else {
+            productItem.count -= 1
+            requestTask<ShoppingCartItemUiState>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                method = "PUT",
+                reqBody = productItem
+            )?.let {
+                fetchShopOrderList()
+            }
+        }
     }
 }

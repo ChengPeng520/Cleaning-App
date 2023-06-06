@@ -62,23 +62,24 @@
     <string name="tv_notify_window">前往客服聯繫</string>
 
     //order_state共用
-    <string name="tv_order_state_not_start">訂單尚未開始</string>
+    <string name="tv_order_state_not_start">接單成功 訂單尚未開始</string>
     <string name="tv_order_state_applied">接單成功</string>
     <string name="tv_order_state_ing">正進行中</string>
     <string name="tv_order_state_check">顧客確認</string>
     <string name="tv_order_state_over">打掃結束</string>
-    <string name="tv_order_state_id">訂單編號:</string>
-    <string name="tv_order_state_date">打掃日期:</string>
-    <string name="tv_order_state_hours">打掃時數:</string>
-    <string name="tv_order_state_address">地址:</string>
-    <string name="tv_order_state_area">打掃區域:</string>
-    <string name="tv_order_state_remark">清潔工具及其他需求:</string>
-    <string name="tv_order_state_price">總金額:</string>
+    <string name="tv_order_state_id">訂單編號 :</string>
+    <string name="tv_order_state_date">打掃日期 :</string>
+    <string name="tv_order_state_hours">打掃時數 :</string>
+    <string name="tv_order_state_address">地址 :</string>
+    <string name="tv_order_state_area">打掃區域 :</string>
+    <string name="tv_order_state_remark">清潔工具及其他需求 :</string>
+    <string name="tv_order_state_price">總金額 :</string>
     <string name="tv_order_state_comment">客戶評論</string>
     <string name="tv_order_state_picture">照片</string>
     <string name="btn_order_state_start_cleaning">開始清潔</string>
     <string name="tv_order_state_cancel"><u>取消接單</u></string>
     <string name="btn_order_state_add_picture">新增照片</string>
+    <string name="btn_order_state_next">下一步</string>
     <string name="btn_order_state_sign">顧客簽名</string>
     <string name="tv_order_state_view_picture"><u>查看照片</u></string>
 </resources>

@@ -1,14 +1,18 @@
 package com.example.cleaningapp.cleaner.uistate
 
-data class ShoppingCartUiState(
-    val shoppingCartItems: List<ShoppingCartItemUiState> = listOf(),
-    val grossPrice: Int = 0,
-)
+import android.graphics.Bitmap
+import com.example.cleaningapp.share.ImageUtils
 
 data class ShoppingCartItemUiState(
-    val id: Int = 0,
-    val image: Int = 0,
+    val shopOrderId: Int = 0,
+    val productId: Int = 0,
+    val photo: ByteArray,
     val name: String = "",
-    val unitPrice: Int = 0,
-    val number: Int = 0
-)
+    val price: Int = 0,
+    var count: Int = 0,
+) {
+    val productPhoto: Bitmap?
+        get() {
+            return ImageUtils.bytesToBitmap(photo)
+        }
+}
