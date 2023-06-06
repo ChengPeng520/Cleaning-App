@@ -31,13 +31,13 @@ class CsUserPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         activity?.setTitle(R.string.csTitle_userPage)
         with(binding) {
-            btnCsUserPageProfile.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csViewProfileFragment)
+            llCsUserUserInfo.setOnClickListener{
+                Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csEditProfileFragment)
             }
-            btnCsUserPageDiscount.setOnClickListener{
+            llCsUserViewCoupon.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csUserFragment_to_csViewCouponFragment)
             }
-            btnCsUserPageLogOut.setOnClickListener{
+            btnCsUserLogout.setOnClickListener{
                 val intent = Intent(activity, LoginActivity::class.java)
                 startActivity(intent)
                 activity?.finish()

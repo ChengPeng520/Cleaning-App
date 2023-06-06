@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopMainViewModel" />
+            type="com.example.cleaningapp.backstage.shop.BsShopMainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

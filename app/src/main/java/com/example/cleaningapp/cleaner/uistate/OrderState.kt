@@ -2,11 +2,13 @@ package com.example.cleaningapp.cleaner.uistate
 
 import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
+import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
 
 data class OrderStateUiState(
     val orderId: Int = 0,
+    val customerId: Int = 0,
     val dateOrdered: Date? = null,
     val timeOrderedStart: Time? = null,
     val timeOrderedEnd: Time? = null,
@@ -20,7 +22,7 @@ data class OrderStateUiState(
     val remark: String = "",
     val priceForCleaner: Int = 0,
     var status: Int = 0
-) {
+) : Serializable {
     val address: String
         get() {
             return "$areaCity$areaDistrict$areaDetail"
@@ -29,7 +31,7 @@ data class OrderStateUiState(
         get() {
             val stringBuilder = StringBuilder()
             if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
-            if (kitchenSize != 0 && livingRoomSize == 0) stringBuilder.append("\n廚房${kitchenSize}坪")
+            if (kitchenSize != 0 && livingRoomSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
             else if (kitchenSize != 0) stringBuilder.append("廚房${kitchenSize}坪")
             if (bathRoomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0)) stringBuilder.append(
                 "\n廁所${bathRoomSize}坪"

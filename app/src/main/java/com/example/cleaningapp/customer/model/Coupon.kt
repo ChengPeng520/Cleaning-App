@@ -1,12 +1,25 @@
 package com.example.cleaningapp.customer.model
 
-import androidx.annotation.VisibleForTesting
 import java.io.Serializable
-import java.sql.Date
 
-data class Coupon (var id: Int, var type:Boolean, var discount: Double, var minCost: Int, var count: Int, var exp: String, var obtained: Boolean) : Serializable {
+data class Coupon(
+    var couponId: Int,
+    var couponName: String,
+    var _discount: Double,
+    var discountType: Boolean,
+    var minPrice: Int,
+    var expiredDate: String = "",
+    var isOnUsed: Boolean = true
+) : Serializable {
+
+    var discount = if(discountType) {
+        _discount.toInt().toString()
+    } else {
+        _discount.toInt().toString()
+    }
+
     val discountString: String
-        get() = (discount*10).toInt().toString()
+        get() = (_discount * 10).toInt().toString()
     val moneyString: String
-        get() = discount.toInt().toString()
+        get() = _discount.toInt().toString()
 }

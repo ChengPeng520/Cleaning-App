@@ -16,10 +16,10 @@ class CsViewCouponViewModel : ViewModel() {
     }
 
     fun loadCoupons() {
-        val couponList = mutableListOf<Coupon>()
-        couponList.add(Coupon(1, false, 0.80, 500, 300, "2023/5/31", true))
-        couponList.add(Coupon(2, false, 0.90, 300, 500, "2023/5/31", true))
-        this.couponList = couponList
-        this.coupons.value = this.couponList
+//        val couponList = mutableListOf<Coupon>()
+//        couponList.add(Coupon(1, "xxx", true, 100.0, 300, 500, expiredDate = "2023/06/30", isOnUsed = true))
+//        couponList.add(Coupon(2, "ooo", false,  0.8,500, 500, expiredDate = "2023/08/31", isOnUsed = true))
+//        this.couponList = couponList
+//        this.coupons.value = this.couponList
     }
 }

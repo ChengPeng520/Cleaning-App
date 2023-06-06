@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.customer.viewModel.OrderChatroomViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/all_layout_light_gray_shape">
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="48dp"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/ic_time"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+                        app:layout_constraintStart_toStartOf="@+id/imageView14"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+                    <ImageView
+                        android:id="@+id/imageView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/ic_location"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+                        app:layout_constraintStart_toStartOf="@+id/imageView15"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+                    <TextView
+                        android:id="@+id/tv_order_demands"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tv_order_remark"
+                        app:layout_constraintStart_toStartOf="@+id/textView34"
+                        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/tv_order_adress"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+                        app:layout_constraintStart_toEndOf="@+id/imageView16"
+                        app:layout_constraintTop_toTopOf="@+id/imageView16" />
+
+                    <TextView
+                        android:id="@+id/textView59"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tv_order_total"
+                        app:layout_constraintStart_toStartOf="@+id/textView38"
+                        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+                    <TextView
+                        android:id="@+id/tv_order_adress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.order.address}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView33"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView33"
+                        app:layout_constraintTop_toTopOf="@+id/textView33"
+                        tools:text="台北市南京復興**********" />
+
+                    <TextView
+                        android:id="@+id/tv_order_date"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.order.date}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView31"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView31"
+                        app:layout_constraintTop_toTopOf="@+id/textView31"
+                        tools:text="2023年4月25日" />
+
+                    <TextView
+                        android:id="@+id/tv_order_remark"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.order.remark}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_demands"
+                        tools:text="我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註" />
+
+                    <TextView
+                        android:id="@+id/textView31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/tv_customer_order_date"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                        app:layout_constraintStart_toEndOf="@+id/imageView14"
+                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+
+                    <TextView
+                        android:id="@+id/tv_order_cleaner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{String.valueOf(viewModel.order.cleanerid)}"                        app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView38"
+                        app:layout_constraintTop_toTopOf="@+id/textView38"
+                        tools:text="曾正凡" />
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tv_order_range"
+                        app:layout_constraintStart_toStartOf="@+id/textView33"
+                        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+                    <TextView
+                        android:id="@+id/tv_order_size"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.order.size}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView34"
+                        app:layout_constraintTop_toTopOf="@+id/textView34"
+                        tools:text="房間5坪 " />
+
+                    <TextView
+                        android:id="@+id/textView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/tv_order_time"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+                        app:layout_constraintStart_toEndOf="@+id/imageView15"
+                        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+                    <TextView
+                        android:id="@+id/tv_order_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.order.time}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView32"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView32"
+                        app:layout_constraintTop_toTopOf="@+id/textView32"
+                        tools:text="12:00-14:00 (2小時)" />
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tv_order_cleaner"
+                        app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_remark" />
+
+                    <TextView
+                        android:id="@+id/tv_order_total"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{String.valueOf(viewModel.order.total)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView59"
+                        app:layout_constraintTop_toTopOf="@+id/textView59"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text=" NT$X,XXX元" />
+
+                    <TextView
+                        android:id="@+id/tv_order_orderId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{String.valueOf(viewModel.order.orderid)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView30"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView30"
+                        app:layout_constraintTop_toTopOf="@+id/textView30"
+                        tools:text="XXXXXX" />
+
+                    <TextView
+                        android:id="@+id/textView30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tv_order_orderId"
+                        app:layout_constraintStart_toEndOf="@+id/imageView14"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/all_layout_light_gray_shape"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_view_left"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/tv_order_money"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_order_money"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        tools:text="X,XXX元 " />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/all_layout_light_gray_shape"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_view_left2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/tv_order_platformFee"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_order_platformFee"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        tools:text="XX元 " />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/all_layout_light_gray_shape"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_view_left3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/tv_order_coupon"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_order_coupon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        tools:text="-    XX元 " />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/all_layout_light_gray_shape"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_view_left4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/tv_order_total"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_order_total2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        tools:text="X,XXX元" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bnt_applyComplaint"
+                    style="@style/customerBtnSubmitStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/bnt_applyComplaint_cs" />
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

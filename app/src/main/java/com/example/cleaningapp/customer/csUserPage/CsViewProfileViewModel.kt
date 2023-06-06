@@ -11,7 +11,7 @@ class CsViewProfileViewModel : ViewModel() {
 
     init {
         val result = requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/kk0128k@gmail.com/123456"
+            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/aaa@aaa.aaa/aaaaaa"
         )
         if (result != null) {
             CustomerSharePreferencesUtils.saveCustomerInfoFromPreferences(result)

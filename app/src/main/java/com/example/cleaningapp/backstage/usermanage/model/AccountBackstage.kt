@@ -7,9 +7,8 @@ import java.sql.Timestamp
 
 data class AccountBackstage(
     val backstageId: Int,
-    val account: String?,
-    val password: String?,
-    val name: String?,
+    val account: String,
+    val name: String,
     val timeCreate: Timestamp,
     val timeUpdate: Timestamp,
     val suspend: Boolean = false,

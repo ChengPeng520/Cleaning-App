@@ -56,7 +56,7 @@
                     android:layout_width="86dp"
                     android:layout_height="86dp"
                     android:layout_gravity="center_horizontal"
-                    android:imageResource="@{viewModel.user.avatar}" />
+                    android:imageBitmap="@{viewModel.user.photo}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -77,28 +77,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.user.email}"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_verify_detail_password_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_password_ti"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_verify_detail_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.password}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -153,28 +131,6 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_bs_user_verify_detail_address_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_address_ti"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_verify_detail_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.address}"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
                         android:id="@+id/tv_bs_user_verify_detail_gender_ti"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -208,7 +164,7 @@
                         android:id="@+id/tv_bs_user_verify_detail_createtime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.createTime}"
+                        android:text="@{String.valueOf(viewModel.user.timeCreate)}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -230,7 +186,7 @@
                         android:id="@+id/tv_bs_user_verify_detail_updatetime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.updateTime}"
+                        android:text="@{String.valueOf(viewModel.user.timeUpdate)}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -274,7 +230,7 @@
                         android:id="@+id/tv_bs_user_verify_detail_permission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.verify}"
+                        android:text='@{viewModel.user.verify ? "未開通" : "開通中"}'
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -292,7 +248,7 @@
                     android:id="@+id/tv_bs_user_verify_detail_intro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.user.intro}"
+                    android:text="@{viewModel.user.introduction}"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
 
@@ -314,33 +270,10 @@
                         android:id="@+id/tv_bs_user_verify_detail_idnum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.idNum}"
+                        android:text="@{viewModel.user.identifyNumber}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_verify_detail_bank_ti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_bs_user_main_detail_bank_ti"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tv_bs_user_verify_detail_bank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.bank}"
-                        android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
 
                 <TextView
                     android:id="@+id/tv_bs_user_verify_detail_idfront_ti"
@@ -355,7 +288,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_idfront"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:imageResource="@{viewModel.user.idCardFront}" />
+                    android:imageBitmap="@{viewModel.user.idCardFront}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_verify_detail_idback_ti"
@@ -370,7 +303,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_idback"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:imageResource="@{viewModel.user.idCardBack}" />
+                    android:imageBitmap="@{viewModel.user.idCardBack}" />
 
                 <TextView
                     android:id="@+id/tv_bs_user_verify_detail_criminalrecord_ti"
@@ -385,7 +318,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_criminalrecord"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
-                    android:imageResource="@{viewModel.user.criminalRecord}" />
+                    android:imageBitmap="@{viewModel.user.crc}" />
 
             </LinearLayout>
         </ScrollView>

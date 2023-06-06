@@ -1,6 +1,5 @@
 package com.example.cleaningapp.backstage.shop.controller
 
-
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
@@ -9,30 +8,56 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.cleaningapp.backstage.shop.viewModel.BsShopProductAddViewModel
+import com.example.cleaningapp.backstage.shop.BsShopProductViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductAddBinding
-
+import com.example.cleaningapp.share.ImageUtils.bitmapToBytes
 
 class BsShopProductAddFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsShopProductAddBinding
+    val viewModel: BsShopProductViewModel by viewModels()
     private val REQUEST_CARMERA_PERMISSION = 1001
     private val REQUEST_CAMERA = 1002
     private val REQUEST_GALLERY = 1003
+    private var imageByteArray: ByteArray? = null
+
+    private fun handleGallery(data: Intent?) {
+        val imageUri = data?.data
+        if (imageUri != null) {
+            binding.ivBsShopProductAddPhoto.setImageURI(imageUri)
+
+            // 將相簿挑選到的圖片轉換為位元組陣列
+            val contentResolver = context?.contentResolver
+            val imageUrlBitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
+            imageByteArray = bitmapToBytes(imageUrlBitmap)
+
+            viewModel.product.value?.apply {
+                photo = imageByteArray
+                name = ""
+                price = 0
+                description = ""
+                storage = 0
+                timeCreate = null
+                timeUpdate = null
+                isOnSale = false
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val viewModel: BsShopProductAddViewModel by viewModels()
         binding = FragmentAlbBsShopProductAddBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -42,16 +67,31 @@ class BsShopProductAddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-
             btnBsShopProductAddPopback.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
 
-            btnProductAdd.setOnClickListener {
-                Navigation.findNavController(view).popBackStack()
-            }
             btnCameraProductAdd.setOnClickListener {
                 showDialogChoseCameraOrGallery()
+            }
+
+            btnProductAdd.setOnClickListener {
+                val product = viewModel?.product?.value
+                product?.name = edtTxtBsShopProductAddName.text.toString()
+                product?.description = editBsShopProductAddDescribe.text.toString()
+                product?.price = edtTxtBsShopProductAddPrice.text.toString().toInt()
+                product?.storage = edtTxtBsShopProductAddStorage.text.toString().toInt()
+                product?.isOnSale = switchBsShopProductAdd.isChecked
+                product?.photo = imageByteArray
+
+                viewModel?.product?.value = product
+                viewModel?.productAdd().let { result ->
+                    if (result == true) {
+                        Toast.makeText(requireContext(), "新增商品成功", Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(view).popBackStack()
+                    }
+                    Toast.makeText(requireContext(), "新增失敗", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -78,15 +118,36 @@ class BsShopProductAddFragment : Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, REQUEST_CAMERA)
-
     }
 
     //設定打開相簿的方法
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, REQUEST_GALLERY)
-
     }
+
+    private fun handleCameraResult(data: Intent?) {
+        // data?.extras? 是一個bundle的對象,內包含intent相關數據,使用get("data")取的數據 轉Bitmap
+        val imageBitmap = data?.extras?.get("data") as Bitmap
+        imageByteArray = bitmapToBytes(imageBitmap)
+
+        binding.ivBsShopProductAddPhoto.apply {
+            setImageBitmap(imageBitmap)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+        }
+
+        viewModel.product.value?.apply {
+            photo = imageByteArray
+            name = ""
+            price = 0
+            description = ""
+            storage = 0
+            timeCreate = null
+            timeUpdate = null
+            isOnSale = false
+        }
+    }
+
 
     //檢查是否具有相機權限,沒有權限時並請求系統開啟相機的權限方法
     private fun checkPermissionOpenCamera() {
@@ -102,38 +163,18 @@ class BsShopProductAddFragment : Fragment() {
     }
 
 
-    private fun handleCameraResult(data: Intent?) {
-        // data?.extras? 是一個bundle的對象,內包含intent相關數據,使用get("data")取的數據 轉Bitmap
-        val imageBitmap = data?.extras?.get("data") as Bitmap
-
-        binding.ivBsShopProductAddPhoto.apply {
-            setImageBitmap(imageBitmap)
-            scaleType =ImageView.ScaleType.CENTER_CROP
-        }
-
-
-    }
-
-    private fun handleGallery(data: Intent?) {
-        val imageUri = data?.data
-        if (imageUri != null) {
-            binding.ivBsShopProductAddPhoto.setImageURI(imageUri)
-        }
-    }
-
     @Deprecated("Deprecated in Java")
     //當使用startActivityResult啟動一個活動結果,可以使用onActivityResult來承接活動返回的結果
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK){
-            when(requestCode){
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
                 //將REQUEST_CAMERA啟動獲得的data指派給handleCameraResult(data)承接,在顯示在imageview上
                 REQUEST_CAMERA -> handleCameraResult(data)
                 REQUEST_GALLERY -> handleGallery(data)
             }
         }
     }
-
 }
 
 

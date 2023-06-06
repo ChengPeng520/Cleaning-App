@@ -32,25 +32,32 @@ class BsUserMainModifyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            val spinner:Spinner =view.findViewById(R.id.spinner_bs_user_main_modify_gender)
+            val spinner: Spinner = view.findViewById(R.id.spinner_bs_user_main_modify_gender)
             // 創建選項內容
-            val data = arrayOf("男","女")
+            val data = arrayOf("男", "女")
             // 創建 ArrayAdapter，並將spinner的樣式layout跟男或女的內容綁定
-            val genderAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_item,data)
+            val genderAdapter =
+                ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, data)
             genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
-            spinnerBsUserMainModifyGender.adapter =genderAdapter
+            spinnerBsUserMainModifyGender.adapter = genderAdapter
             //創建選項監聽器
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
                     //在選擇選項發生變化時同時會變更viewModel中的數據
-                   val selectGender = data[position]
-                   viewModel?.user?.value?.suspend = selectGender
+                    val selectGender = data[position]
+                    viewModel?.user?.value?.userGender = selectGender
+
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     //不執行任何操作
                 }
-                
+
             }
 
             btnBsUserMainModifySubmit.setOnClickListener {

@@ -48,7 +48,7 @@ class BackstageShopProductAdapter(private var products: List<Product>) :
             bundle.putSerializable("product", product)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_bsShopMainFragment_to_bsShopProductFragment, bundle)
+                    .navigate(R.id.action_bsShopMainFragment_to_bsShopProductModifyFragment, bundle)
             }
 
         }

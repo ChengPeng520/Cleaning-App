@@ -153,7 +153,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@{viewModel.order.cleaner}"
+                        android:text="@{String.valueOf(viewModel.order.cleanerid)}"
                         app:layout_constraintBottom_toBottomOf="@+id/textView38"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView38"
@@ -229,7 +229,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@{String.valueOf(viewModel.order.orderId)}"
+                        android:text="@{String.valueOf(viewModel.order.orderid)}"
                         app:layout_constraintBottom_toBottomOf="@+id/textView30"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView30"
@@ -281,34 +281,41 @@
                     tools:text="地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......" />
 
                 <LinearLayout
+                    android:id="@+id/applycomplaint_photo"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <ImageView
                         android:id="@+id/imageView40"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
-                        android:padding="8dp"
-                        app:srcCompat="@drawable/alb_ic_camera"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="@drawable/ic_add"
+                        app:imageBitmap="@{viewModel.photo1}"
+                        tools:src="@tools:sample/avatars" />
 
                     <ImageView
                         android:id="@+id/imageView41"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
                         android:layout_weight="1"
-                        android:padding="8dp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="@{viewModel.photo1 != null ? @drawable/ic_add : null}"
+                        app:imageBitmap="@{viewModel.photo2}"
+                        tools:src="@tools:sample/avatars" />
 
                     <ImageView
                         android:id="@+id/imageView42"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
                         android:layout_weight="1"
-                        android:padding="8dp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="@{viewModel.photo2 != null ? @drawable/ic_add : null}"
+                        app:imageBitmap="@{viewModel.photo3}"
+                        tools:src="@tools:sample/avatars" />
 
                 </LinearLayout>
 

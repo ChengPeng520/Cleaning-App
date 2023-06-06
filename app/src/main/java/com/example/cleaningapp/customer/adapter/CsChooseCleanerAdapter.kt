@@ -19,7 +19,7 @@ class CsChooseCleanerAdapter(var cleaners: List<Cleaner>) :
         notifyDataSetChanged()
     }
 
-    class CsChooseCleanerViewHolder(val itemBinding: ItemCsPickCleanerBinding):
+    class CsChooseCleanerViewHolder(val itemBinding: ItemCsPickCleanerBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CsChooseCleanerViewHolder {
@@ -40,13 +40,12 @@ class CsChooseCleanerAdapter(var cleaners: List<Cleaner>) :
         with(holder) {
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemBinding.viewmodel?.cleaner?.value = cleaner
-            val bundle = Bundle()
-            bundle.putSerializable("cleaner", cleaner)
             itemView.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putInt("cleanerId", cleaner.cleanerId)
                 Navigation.findNavController(it)
                     .navigate(R.id.action_csChooseCleanerFragment2_to_csViewCvFragment, bundle)
             }
         }
     }
-
 }

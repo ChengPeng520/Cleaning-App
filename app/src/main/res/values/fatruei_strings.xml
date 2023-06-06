@@ -79,6 +79,7 @@
     <string name="btn_order_state_start_cleaning">開始清潔</string>
     <string name="tv_order_state_cancel"><u>取消接單</u></string>
     <string name="btn_order_state_add_picture">新增照片</string>
+    <string name="btn_order_state_next">下一步</string>
     <string name="btn_order_state_sign">顧客簽名</string>
     <string name="tv_order_state_view_picture"><u>查看照片</u></string>
 </resources>
