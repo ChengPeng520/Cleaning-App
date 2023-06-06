@@ -26,7 +26,7 @@ class CleanerFrontViewModel : ViewModel() {
 
     // 搜尋列表
     init {
-        fetchJob()
+//        fetchJob()
     }
 
     private fun fetchJob() {
