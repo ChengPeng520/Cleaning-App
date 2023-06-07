@@ -82,4 +82,6 @@
     <string name="btn_order_state_next">下一步</string>
     <string name="btn_order_state_sign">顧客簽名</string>
     <string name="tv_order_state_view_picture"><u>查看照片</u></string>
+
+    <string name="google_pay">GooglePay</string>
 </resources>

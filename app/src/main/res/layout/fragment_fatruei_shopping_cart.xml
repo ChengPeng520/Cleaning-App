@@ -109,48 +109,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_pay1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/all_layout_gray_frame_shape"
-            android:text="街口支付"
-            android:textColor="#414141"
-            android:textSize="14sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/btn_pay2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_receiver_error"
-            app:layout_constraintVertical_bias="0.98" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_pay2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/all_layout_gray_frame_shape"
-            android:text="LINEPAY"
-            android:textColor="#414141"
-            android:textSize="14sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/btn_pay3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_pay3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/all_layout_gray_frame_shape"
-            android:text="綠界支付"
-            android:textColor="#414141"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
@@ -160,6 +118,18 @@
             android:textColor="#414141"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_googlePay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/all_layout_gray_frame_shape"
+            android:text="@string/google_pay"
+            android:textColor="#414141"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
