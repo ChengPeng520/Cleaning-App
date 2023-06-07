@@ -132,4 +132,8 @@ object CustomerSharePreferencesUtils {
 
         )
     }
+
+    fun logout() {
+        sharedPreferences.edit().clear().apply()
+    }
 }

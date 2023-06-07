@@ -1,17 +1,21 @@
 package com.example.cleaningapp.customer.adapter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.csCreateOrder.CsChooseCleanerViewModel
 import com.example.cleaningapp.customer.csCreateOrder.CsViewCvViewModel
 import com.example.cleaningapp.customer.model.Cleaner
+import com.example.cleaningapp.customer.model.Order
+import com.example.cleaningapp.customer.model.OrderEstablished
 import com.example.cleaningapp.databinding.ItemCsPickCleanerBinding
 
-class CsChooseCleanerAdapter(var cleaners: List<Cleaner>) :
+class CsChooseCleanerAdapter(var cleaners: List<Cleaner>, var orderId: Int) :
     RecyclerView.Adapter<CsChooseCleanerAdapter.CsChooseCleanerViewHolder>() {
 
     fun updateCleaners(cleaners: List<Cleaner>) {
@@ -26,6 +30,7 @@ class CsChooseCleanerAdapter(var cleaners: List<Cleaner>) :
         val itemView = ItemCsPickCleanerBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
+        val ccViewModel = CsChooseCleanerViewModel()
         itemView.viewmodel = CsViewCvViewModel()
         itemView.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return CsChooseCleanerViewHolder(itemView)
@@ -43,6 +48,8 @@ class CsChooseCleanerAdapter(var cleaners: List<Cleaner>) :
             itemView.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putInt("cleanerId", cleaner.cleanerId)
+                bundle.putInt("orderId", orderId)
+                Log.d("orderId","orderID: $orderId")
                 Navigation.findNavController(it)
                     .navigate(R.id.action_csChooseCleanerFragment2_to_csViewCvFragment, bundle)
             }

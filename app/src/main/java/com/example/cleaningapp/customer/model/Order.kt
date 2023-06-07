@@ -55,3 +55,17 @@ data class CreateOrderPhoto(
     var photo2: Bitmap? = null,
     var photo3: Bitmap? = null,
 ) : Serializable
+
+data class OrderRemind(
+    var orderId: Int = 0,
+    var areaCity:String = "",
+    var areaDistrict: String = "",
+    var dateOrdered: String = "",
+    var timeOrderedStart: String = "",
+    var timeOrderedEnd: String = "",
+)
+
+data class OrderEstablished (
+    var orderId: Int = 0,
+    var cleanerId: Int = 0
+)

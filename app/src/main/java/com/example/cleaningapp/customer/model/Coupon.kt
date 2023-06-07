@@ -5,21 +5,20 @@ import java.io.Serializable
 data class Coupon(
     var couponId: Int,
     var couponName: String,
-    var _discount: Double,
+    var discount: Double,
     var discountType: Boolean,
     var minPrice: Int,
     var expiredDate: String = "",
     var isOnUsed: Boolean = true
 ) : Serializable {
-
-    var discount = if(discountType) {
-        _discount.toInt().toString()
+    var _discount = if(discountType) {
+        discount.toInt().toString()
     } else {
-        _discount.toInt().toString()
+        discount.toInt().toString()
     }
 
     val discountString: String
-        get() = (_discount * 10).toInt().toString()
+        get() = (discount * 10).toInt().toString()
     val moneyString: String
-        get() = _discount.toInt().toString()
+        get() = discount.toInt().toString()
 }

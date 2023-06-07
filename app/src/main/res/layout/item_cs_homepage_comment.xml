@@ -13,7 +13,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/all_layout_light_gray_shape">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_item_csPickCleaner"
@@ -22,6 +25,7 @@
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="150dp"
             app:cardElevation="0dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

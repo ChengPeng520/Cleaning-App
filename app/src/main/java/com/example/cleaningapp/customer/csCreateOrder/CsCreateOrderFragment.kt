@@ -22,7 +22,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
-import com.google.android.material.textview.MaterialTextView
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -501,22 +500,6 @@ class CsCreateOrderFragment : Fragment() {
                     // 不執行任何操作
                 }
             }
-
-        binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val order = viewModel.order.value
-                order?.areaDistrict = (view as MaterialTextView).text.toString()
-                viewModel.order.value = order
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-        }
     }
 
     private fun setTimeOnclick() {
@@ -597,6 +580,7 @@ class CsCreateOrderFragment : Fragment() {
             llCoupon.setOnClickListener {
                 val originPrice = edtTxtCost.text.toString()
                 if (originPrice.isNotEmpty() && originPrice.toInt() == 0) {
+                    saveCreateOrderInfo()
                     tvCsCreateOrderChooseCoupon.isEnabled = false
                     Toast.makeText(
                         context,
@@ -614,12 +598,7 @@ class CsCreateOrderFragment : Fragment() {
             //  跳轉下一頁
             btnCsCreateOrderNext.setOnClickListener {
                 viewModel?.order?.value?.let {
-                    it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
-                    it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
-                    it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
-                    it.roomSize = edtTxtCsCreateOrderBedroomSize.text.toString().toInt()
-                    it.originalPrice = edtTxtCost.text.toString().toInt()
-
+                    saveCreateOrderInfo()
                     val bundle = Bundle()
                     bundle.putSerializable("order", it)
                     bundle.putSerializable("photos", viewModel?.photo?.value)
@@ -651,7 +630,7 @@ class CsCreateOrderFragment : Fragment() {
                     order?.tvUseCoupon = "0"
                     order?.tvUseCoupon = "-  $ " + coupon.moneyString
                 } else {
-                    val discount = coupon._discount
+                    val discount = coupon.discount
                     val cost = binding.edtTxtCost.text.toString().toDouble()
                     val calculatedValue = ((1 - discount) * (cost)).roundToInt()
                     order?.tvUseCoupon = "- $calculatedValue"
@@ -678,4 +657,21 @@ class CsCreateOrderFragment : Fragment() {
                 }
             }
         }
+
+    private fun saveCreateOrderInfo() {
+        with(binding) {
+            val order = viewModel?.order?.value
+            order?.let {
+                it.areaDistrict =
+                    districtMap[viewModel?.order?.value?.areaCity]?.get(spnCsCreateOrderDistrict.selectedItemPosition)
+                        ?: ""
+                it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
+                it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
+                it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                it.roomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                it.originalPrice = edtTxtCost.text.toString().toInt()
+            }
+            viewModel?.order?.value = order
+        }
+    }
 }
