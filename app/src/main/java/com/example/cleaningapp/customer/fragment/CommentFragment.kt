@@ -7,12 +7,12 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.viewModel.CommentViewModel
@@ -29,6 +29,7 @@ class CommentFragment : Fragment() {
     ): View {
         binding = FragmentVictorCommentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
+        initAppBarMenu()
         binding.lifecycleOwner = this
         return binding.root
     }
@@ -41,8 +42,9 @@ class CommentFragment : Fragment() {
                 .navigate(R.id.action_commentFragment_to_commentDoneFragment)
         }
 
-        binding.imageView43.setOnClickListener {
-            if (viewModel.capturedCount < 3) {
+        //拍照功能
+        binding.applycomplaintPhoto.setOnClickListener {
+            if (viewModel?.photo3?.value == null) {
                 val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 takePictureSmallLauncher.launch(intent)
             }
@@ -55,17 +57,29 @@ class CommentFragment : Fragment() {
                 result.data?.extras?.let { bundle ->
                     val picture = bundle["data"] as Bitmap?
                     picture?.let {
-                        if (!viewModel.isPhotoExists(it) && viewModel.capturedCount < 3) {
-                            viewModel.addCapturedPhoto(it)
-
-                            when (viewModel.capturedCount) {
-                                1 -> binding.imageView44.setImageBitmap(it)
-                                2 -> binding.imageView45.setImageBitmap(it)
-                                3 -> binding.imageView43.setImageBitmap(it)
-                            }
-                        }
+                        viewModel.addCapturedPhoto(it)
                     }
                 }
             }
         }
+    private fun initAppBarMenu() {
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.ment_customer_chatroom, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.chatRoomFragment -> {
+                        Navigation.findNavController(
+                            requireActivity(),
+                            R.id.customer_nav_host_fragment
+                        ).navigate(R.id.chatRoomFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
 }

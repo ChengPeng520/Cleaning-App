@@ -1,14 +1,17 @@
 package com.example.cleaningapp.customer.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.Order
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class HistoricalOrderViewModel : ViewModel() {
     val orderList: MutableLiveData<List<Order>> by lazy { MutableLiveData<List<Order>>() }
 
-    fun init(){
+    init {
         fetchOrdersInfo()
     }
 
@@ -25,15 +28,16 @@ class HistoricalOrderViewModel : ViewModel() {
 //        list.add(Order(8, 1009, "2023-05-19", "15:35", "台北市天母區", "54坪", "感恩有您", "Chris Wilson", 80))
 //        list.add(Order(0, 1010, "2023-05-20", "15:36", "台北市天母區", "70坪", "3Q", "Chris Wilson", 80))
 //        orderList.value = list
-//    }
+//   }
 
-    fun fetchOrdersInfo(){
+    private fun fetchOrdersInfo() {
         requestTask<List<Order>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/1/",
-            method = "GET"
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/1/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            method = "GET",
+            respBodyType = object : TypeToken<List<Order>>() {}.type
         )?.let {
             orderList.value = it
+            Log.d("OrderList", "Fetched orders: $it")
         }
-
     }
 }

@@ -1,11 +1,13 @@
 package com.example.cleaningapp.customer.detailed
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.ItemVictorOrderboxBinding
@@ -13,12 +15,14 @@ import com.example.cleaningapp.databinding.ItemVictorOrderboxBinding
 
 class OrderAdapter(private var orders: List<Order>) :
     RecyclerView.Adapter<OrderAdapter.MyViewHolder>() {
-    class MyViewHolder(val itemBinding: ItemVictorOrderboxBinding) :
+
+    inner class MyViewHolder(val itemBinding: ItemVictorOrderboxBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(order: Order) {
+            // 设置状态
             when (order.status) {
                 0 -> {
-                    // 状态为1，表示徵才中
+                    // 状态为0，表示徵才中
                     itemBinding.statusTextView.text = "徵才中"
                     itemBinding.statusTextView.setTextColor(
                         ContextCompat.getColor(
@@ -28,86 +32,9 @@ class OrderAdapter(private var orders: List<Order>) :
                     )
                     itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_black)
                 }
-                1 -> {
-                    // 状态为1，表示接單成功
-                    itemBinding.statusTextView.text = "接單成功"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                2 -> {
-                    // 状态为2，表示進行中
-                    itemBinding.statusTextView.text = "進行中"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                3 -> {
-                    // 状态为3，表示打掃結束
-                    itemBinding.statusTextView.text = "打掃結束"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                4 -> {
-                    // 状态为4，表示顧客確認
-                    itemBinding.statusTextView.text = "顧客確認"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                5 -> {
-                    // 状态为5，表示已完成
-                    itemBinding.statusTextView.text = "已完成"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                6 -> {
-                    // 状态为6，表示退費申請中
-                    itemBinding.statusTextView.text = "退費申請中"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                7 -> {
-                    // 状态为7，表示退費核可
-                    itemBinding.statusTextView.text = "退費核可"
-                    itemBinding.statusTextView.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.clr_cusCoupon_deadline
-                        )
-                    )
-                    itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_red)
-                }
-                8 -> {
-                    // 状态为8，表示已退款
-                    itemBinding.statusTextView.text = "已退款"
+                1, 2, 3, 4, 5, 6 -> {
+                    // 状态为1、2、3、4、5、6、7、8，表示其他状态
+                    itemBinding.statusTextView.text = getStatusText(order.status)
                     itemBinding.statusTextView.setTextColor(
                         ContextCompat.getColor(
                             itemView.context,
@@ -127,12 +54,32 @@ class OrderAdapter(private var orders: List<Order>) :
                     )
                 }
             }
+
+            itemBinding.tvOrderOrderId.text = order.orderId.toString()
+            itemBinding.tvOrderCleaner.text = order.cleanerName
+            itemBinding.tvOrderDate.text = order.dateOrdered.toString()
+            itemBinding.tvOrderRange.text = order.cleaningRange
+            itemBinding.tvOrderTime.text = order.cleaningTime
+            itemBinding.tvOrderTotal.text = order.priceForCustomer.toString()
+        }
+
+        private fun getStatusText(status: Int): String {
+            return when (status) {
+                1 -> "媒合成功"
+                2 -> "正進行中"
+                3 -> "打掃結束"
+                4 -> "顧客確認"
+                5 -> "客訴申請"
+                6 -> "已取消"
+                else -> "未知状态"
+            }
         }
     }
 
     fun updateOrders(orders: List<Order>) {
         this.orders = orders
         notifyDataSetChanged()
+//        Log.d("OrderAdapter", "Updated orders: $orders")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -149,48 +96,22 @@ class OrderAdapter(private var orders: List<Order>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val orderList = orders[position]
         holder.bind(orderList)
+
         // 设置按钮点击事件和导航目的地
         holder.itemBinding.btnOrderBoxDetailed.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putSerializable("orderItem", orderList)
-
+            val navController = holder.itemView.findNavController()
             when (orderList.status) {
-                0 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.action_historicalorderFragment_to_csChooseCleanerFragment2, bundle)
-                }
-                1 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.orderprogressFragment, bundle)
-                }
-                2 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.orderingFragment, bundle)
-                }
-                3 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.orderdoneFragment, bundle)
-                }
-                4 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.ordercompletedFragment, bundle)
-                }
-                5 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.action_historicalorderFragment_to_detailedOrderFragment, bundle)
-                }
-                6 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.orderChatroomFragment, bundle)
-                }
-                7 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.orderChatroomFragment, bundle)
-                }
-                8 -> {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.orderChatroomFragment, bundle)
-                }
+                0 -> navController.navigate(
+                    R.id.action_historicalorderFragment_to_csChooseCleanerFragment2
+                )
+                1 -> navController.navigate(R.id.orderprogressFragment)
+                2 -> navController.navigate(R.id.orderingFragment)
+                3 -> navController.navigate(R.id.orderdoneFragment)
+                4 -> navController.navigate(R.id.ordercompletedFragment)
+                5 -> navController.navigate(
+                    R.id.action_historicalorderFragment_to_detailedOrderFragment
+                )
+                6 -> navController.navigate(R.id.orderChatroomFragment)
             }
         }
     }
