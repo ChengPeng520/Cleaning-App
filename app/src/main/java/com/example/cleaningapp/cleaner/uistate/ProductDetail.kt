@@ -23,3 +23,10 @@ data class ProductDetailUiState(
             return count * price
         }
 }
+
+data class ShopOrderList(
+    val shopOrderId: Int,
+    val productId: Int,
+    val count: Int,
+    val price: Int
+)

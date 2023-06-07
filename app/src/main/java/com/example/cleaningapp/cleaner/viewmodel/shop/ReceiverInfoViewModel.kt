@@ -14,14 +14,14 @@ class ReceiverInfoViewModel(private val application: Application) : AndroidViewM
     val receiverAddress = MutableLiveData<String>()
 
     init {
-        val preferences = application.getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE)
+        val preferences = application.getSharedPreferences("ReceiverInfo", Context.MODE_PRIVATE)
         receiverName.value = preferences.getString("name", "")
         receiverTelPhone.value = preferences.getString("phone", "")
         receiverAddress.value = preferences.getString("address", "")
     }
 
     fun saveSharePreferences(view: View) {
-        application.getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE).edit()
+        application.getSharedPreferences("ReceiverInfo", Context.MODE_PRIVATE).edit()
             .putString("name", receiverName.value)
             .putString("phone", receiverTelPhone.value)
             .putString("address", receiverAddress.value)

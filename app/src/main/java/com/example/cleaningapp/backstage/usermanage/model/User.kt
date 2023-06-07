@@ -1,7 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.model
 
 import android.graphics.Bitmap
-import com.example.cleaningapp.share.ImageUtils
 import java.io.Serializable
 import java.sql.Timestamp
 
@@ -15,9 +14,9 @@ data class User(
     var phone: String = "",
     var gender: Int = 0,
     var introduction: String? = "",
-    var timeCreate: Timestamp,
-    var timeUpdate: Timestamp,
-    var role: String= "",
+    var timeCreate: Timestamp? = null,
+    var timeUpdate: Timestamp? = null,
+    var role: String = "",
     var suspend: Boolean = false,
     var verify: Boolean = false,
     var identifyNumber: String = "",

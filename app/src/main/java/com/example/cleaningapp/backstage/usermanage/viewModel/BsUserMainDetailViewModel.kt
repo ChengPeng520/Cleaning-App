@@ -1,8 +1,14 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
+import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.*
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 
 /**
@@ -11,6 +17,9 @@ import com.example.cleaningapp.share.requestTask
 class BsUserMainDetailViewModel : ViewModel() {
     val user: MutableLiveData<User> by lazy { MutableLiveData<User>() }
 
+    /**
+     * 連線取得個人info
+     */
     fun fetchMemberInfo(member: Member) {
         when (member.status) {
             1 -> {
@@ -95,5 +104,31 @@ class BsUserMainDetailViewModel : ViewModel() {
                 }
             }
         }
+    }
+
+    /**
+     * 連線修改個人資料
+     */
+    fun editMemberInfo(view: View) {
+        if (user.value?.customerId == null && user.value?.backstageId == null) {
+            val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(user.value!!)
+            requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                method = "PUT",
+                uiState
+            )?.let {
+                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+            }
+        } else if (user.value?.cleanerId == null && user.value?.backstageId == null) {
+            val uistate = CustomerSharePreferencesUtils.anyToApiCustomerModel(user.value!!)
+            requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                method = "PUT",
+                uistate
+            )?.let {
+                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+            }
+        }
+
     }
 }
