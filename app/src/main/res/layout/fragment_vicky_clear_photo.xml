@@ -58,6 +58,7 @@
                 android:id="@+id/imageView28"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                app:imageBitmap="@{viewModel.cleanerbeforePhoto.photo1}"
                 android:background="@drawable/ic_add"
                 tools:src="@tools:sample/avatars" />
 
@@ -65,6 +66,7 @@
                 android:id="@+id/imageView33"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                app:imageBitmap="@{viewModel.cleanerbeforePhoto.photo2}"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 tools:src="@tools:sample/avatars" />
@@ -73,6 +75,7 @@
                 android:id="@+id/imageView39"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                app:imageBitmap="@{viewModel.cleanerbeforePhoto.photo3}"
                 tools:src="@tools:sample/avatars" />
         </LinearLayout>
 

@@ -32,8 +32,8 @@ class OrderOrdermatchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             arguments?.let { bundle ->
-                bundle.getSerializable("order")?.let {
-                    binding.viewModel?.order?.value = it as Work
+                bundle.getInt("orderId")?.let {
+//                    viewModel.fetchOrderamtch()
                 }
         }
         with(binding){
