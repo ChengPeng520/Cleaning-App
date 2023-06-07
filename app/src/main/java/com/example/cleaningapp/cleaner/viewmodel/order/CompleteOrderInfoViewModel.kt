@@ -36,7 +36,7 @@ class CompleteOrderInfoViewModel : ViewModel() {
                 stars = it.order.stars,
                 commentCleaner = it.order.commentCleaner!!
             )
-            _uiPhoto.value = CompleteOrderPhotos(it.photos as List<ByteArray>)
+//            _uiPhoto.value = CompleteOrderPhotos(it.photos)
         }
     }
 }
