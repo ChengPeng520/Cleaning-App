@@ -1,7 +1,6 @@
 package com.example.cleaningapp.customer.model
 
 import android.graphics.Bitmap
-import androidx.lifecycle.MutableLiveData
 import java.io.Serializable
 
 data class Order(
@@ -20,13 +19,16 @@ data class Order(
     val customerCouponId: Int? = null,
     var couponDiscount: Int = 0,
     var originalPrice: Int = 0,
-    var priceForCustomer: Int = 0
+    var priceForCustomer: Int = 0,
 ) : Serializable {
+    val couponDisplay: String
+        get() {
+            return "- $couponDiscount"
+        }
     val charge: Int
         get() {
             return (originalPrice * 0.1).toInt()
         }
-    var tvUseCoupon: String = ""
     val address: String
         get() {
             return "$areaCity$areaDistrict$areaDetail"
@@ -58,14 +60,14 @@ data class CreateOrderPhoto(
 
 data class OrderRemind(
     var orderId: Int = 0,
-    var areaCity:String = "",
+    var areaCity: String = "",
     var areaDistrict: String = "",
     var dateOrdered: String = "",
     var timeOrderedStart: String = "",
     var timeOrderedEnd: String = "",
 )
 
-data class OrderEstablished (
+data class OrderEstablished(
     var orderId: Int = 0,
     var cleanerId: Int = 0
 )

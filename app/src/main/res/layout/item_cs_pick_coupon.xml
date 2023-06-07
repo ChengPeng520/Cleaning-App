@@ -23,7 +23,7 @@
             android:layout_height="0dp"
             android:background="@drawable/customer_coupon_dicount_shape"
             android:gravity="center"
-            android:text='@{viewModel.coupon.discountType ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
+            android:text='@{viewModel.coupon.discountType ? "$"+ viewModel.coupon.discountMoney : viewModel.coupon.discountString+"折"}'
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"

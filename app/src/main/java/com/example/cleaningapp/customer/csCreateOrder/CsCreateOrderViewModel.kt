@@ -10,7 +10,6 @@ import com.example.cleaningapp.customer.model.Order
 class CsCreateOrderViewModel : ViewModel() {
     val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>(Order()) }
     val coupon: MutableLiveData<Coupon> by lazy { MutableLiveData<Coupon>() }
-    val tvUseCoupon: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val photo: MutableLiveData<CreateOrderPhoto> by lazy {
         MutableLiveData<CreateOrderPhoto>(
             CreateOrderPhoto()

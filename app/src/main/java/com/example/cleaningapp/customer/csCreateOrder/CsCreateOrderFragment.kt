@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
@@ -452,6 +453,11 @@ class CsCreateOrderFragment : Fragment() {
         ),
     )
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -580,18 +586,14 @@ class CsCreateOrderFragment : Fragment() {
             llCoupon.setOnClickListener {
                 val originPrice = edtTxtCost.text.toString()
                 if (originPrice.isNotEmpty() && originPrice.toInt() == 0) {
-                    saveCreateOrderInfo()
-                    tvCsCreateOrderChooseCoupon.isEnabled = false
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_keyInCost),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    tvCsCreateOrderChooseCoupon.isEnabled = true
-                    tvCsCreateOrderChooseCoupon.setOnClickListener {
-                        findNavController().navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
-                    }
+                    saveCreateOrderInfo()
+                    findNavController().navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
                 }
             }
 
@@ -612,29 +614,31 @@ class CsCreateOrderFragment : Fragment() {
     }
 
     override fun onResume() {
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         super.onResume()
         Navigation.findNavController(
             requireActivity(),
             R.id.customer_nav_host_fragment
         ).currentBackStackEntry?.savedStateHandle?.getLiveData<Coupon>("coupon")
             ?.observe(viewLifecycleOwner) { coupon ->
-                viewModel.coupon.value = coupon
                 val order = viewModel.order.value
-                if (binding.edtTxtCost.text.toString().toInt() < coupon.minPrice) {
+                if (viewModel.order.value?.originalPrice!! < coupon.minPrice) {
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_notMeetMinCost),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else if (coupon.discountType) {
-                    order?.tvUseCoupon = "0"
-                    order?.tvUseCoupon = "-  $ " + coupon.moneyString
+                    viewModel.coupon.value = coupon
+                    order?.couponDiscount = coupon.discountMoney
                 } else {
+                    viewModel.coupon.value = coupon
                     val discount = coupon.discount
                     val cost = binding.edtTxtCost.text.toString().toDouble()
-                    val calculatedValue = ((1 - discount) * (cost)).roundToInt()
-                    order?.tvUseCoupon = "- $calculatedValue"
+                    val calculatedValue = ((1 - discount) * cost).roundToInt()
+                    order?.couponDiscount = calculatedValue
                 }
+                viewModel.order.value = order
             }
     }
 
@@ -673,5 +677,10 @@ class CsCreateOrderFragment : Fragment() {
             }
             viewModel?.order?.value = order
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 }

@@ -1,7 +1,6 @@
 package com.example.cleaningapp.cleaner.uistate
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
 import java.io.Serializable
 import java.sql.Date
