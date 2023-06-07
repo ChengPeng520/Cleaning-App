@@ -1,20 +1,22 @@
 package com.example.cleaningapp.cleaner.uistate
 
+import com.example.cleaningapp.share.OrderUtil
 import java.io.Serializable
 
     data class Work
         (
         var status: Int,
         val imageId: Int = 0,
-        val orderId: String = "",
+        val orderId: Int = 0 ,
         val date: String = "",
         val time: String = "",
         val address: String = "",
-        val livingRoomSize:  Double = 0.0,
-        val kitchenSize:  Double = 0.0,
-        val bathroomSize: Double = 0.0,
-        val bedroomSize:  Double = 0.0,
-        val location: String ="",
+        val livingRoomSize:  Int = 0,
+        val kitchenSize:  Int = 0,
+        val bathroomSize: Int = 0,
+        val bedroomSize:  Int = 0,
+        val areaCity: String ="",
+        val areaDistrict: String ="",
         val notes: String = "",
         val price: String = "",
     ):Serializable {
@@ -27,6 +29,3 @@ import java.io.Serializable
         val bedroomSizeString: String
             get() = bedroomSize.toString()
     }
-//
-
-//
