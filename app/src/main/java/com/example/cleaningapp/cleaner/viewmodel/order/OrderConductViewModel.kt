@@ -1,25 +1,18 @@
 package com.example.cleaningapp.cleaner.viewmodel.order
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.cleaner.uistate.ApplingOrder
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
 class OrderConductViewModel : ViewModel() {
-
     private val _selectedTab = MutableLiveData<Int>()
-    val selectedTab: LiveData<Int> get() = _selectedTab
-
 
     // 受監控的LiveData，一旦指派新值就會更新Cleaner列表畫面
     val order: MutableLiveData<List<SearchOrder>> by lazy { MutableLiveData<List<SearchOrder>>() }
     private var orderList = listOf<SearchOrder>()
-
 
     fun onTabSelected(tabNumber: Int) {
         _selectedTab.value = tabNumber
@@ -33,16 +26,13 @@ class OrderConductViewModel : ViewModel() {
         requestTask<List<SearchOrder>>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/orderRecord/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}/",
             "GET",
-            respBodyType = object : TypeToken<List<ApplingOrder>>() {}.type
+            respBodyType = object : TypeToken<List<SearchOrder>>() {}.type
         )?.let {
             order.value = it
             orderList = it
-            Log.d("order", "Fetched orders: $it")
         }
     }
 }
-
-
 
 //    init {
 //        loadOrders()
@@ -74,5 +64,3 @@ class OrderConductViewModel : ViewModel() {
 //        this.orderList = orderList
 //        this.order.value = this.orderList
 //    }
-
-

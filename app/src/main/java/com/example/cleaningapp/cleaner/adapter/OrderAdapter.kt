@@ -8,7 +8,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
-import com.example.cleaningapp.cleaner.uistate.Work
 import com.example.cleaningapp.cleaner.viewmodel.order.OrdersViewModel
 import com.example.cleaningapp.databinding.ItemVickyCleanerOrderConductBinding
 
@@ -43,37 +42,37 @@ class OrderAdapter(var orders: List<SearchOrder>) :
         //position 現在生成位子
         with(holder) {
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示
-//            itemViewBinding.viewModel?.order?.value = order
-//            val bundle = Bundle()
-//            bundle.putInt("orderId", order.orderId)
-//            itemView.setOnClickListener {
-//                when (order.status) {
-//                    // 待確認
-//                    0 -> {
-//                        Navigation.findNavController(it)
-//                            .navigate(
-//                                R.id.action_vicky_order_conductFragment_to_vicky_order_ordermatchFragment,
-//                                bundle
-//                            )
-//                    }
-//                    // 已完成
-//                    4 -> {
-//                        Navigation.findNavController(it)
-//                            .navigate(
-//                                R.id.action_vicky_order_conductFragment_to_completeOrderInfoFragment,
-//                                bundle
-//                            )
-//                    }
-//                    // 1 已成立 2 進行中 3
-//                    else -> {
-//                        Navigation.findNavController(it)
-//                            .navigate(
-//                                R.id.action_vicky_order_conductFragment_to_orderStateFragment,
-//                                bundle
-//                            )
-//                    }
-//                }
-//            }
+            itemViewBinding.viewModel?.order?.value = order
+            val bundle = Bundle()
+            bundle.putInt("orderId", order.orderId)
+            itemView.setOnClickListener {
+                when (order.status) {
+                    // 待確認
+                    0 -> {
+                        Navigation.findNavController(it)
+                            .navigate(
+                                R.id.action_vicky_order_conductFragment_to_vicky_order_ordermatchFragment,
+                                bundle
+                            )
+                    }
+                    // 已完成
+                    4 -> {
+                        Navigation.findNavController(it)
+                            .navigate(
+                                R.id.action_vicky_order_conductFragment_to_completeOrderInfoFragment,
+                                bundle
+                            )
+                    }
+                    // 1 已成立 2 進行中 3
+                    else -> {
+                        Navigation.findNavController(it)
+                            .navigate(
+                                R.id.action_vicky_order_conductFragment_to_orderStateFragment,
+                                bundle
+                            )
+                    }
+                }
+            }
         }
     }
 }
