@@ -21,10 +21,8 @@
             android:id="@+id/constraintLayout25"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/all_layout_light_gray_shape"
             android:paddingHorizontal="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_csViewCv_confirmPay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -72,6 +70,7 @@
                         android:id="@+id/tv_csViewCv_nameGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:text="@{@string/tv_item_csPickCleaner_nameGender(viewModel.cleaner.name, viewModel.cleaner.gender == 0 ? '男' : '女')}"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -85,6 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cs_layout_light_white_shape"
+                        android:minLines="5"
                         android:padding="4dp"
                         android:text="@{viewModel.cleaner.introduction}"
                         android:textColor="@color/black"
@@ -98,18 +98,19 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_csViewComment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/cs_layout_light_white_shape"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_csViewComment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/cs_layout_light_white_shape"
+            app:layout_constraintBottom_toTopOf="@+id/btn_csViewCv_confirmPay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout25"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_csViewCv_confirmPay"

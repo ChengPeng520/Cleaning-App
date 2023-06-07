@@ -55,7 +55,6 @@ class CsCouponObtainAdapter(private var coupons: List<CouponObtain>) :
                         ).show()
                     }
                 }
-
             }
         }
     }

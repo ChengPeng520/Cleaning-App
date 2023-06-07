@@ -121,7 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_csCoupon_new"
             app:strokeColor="@color/customerPrimaryLight"
             app:strokeWidth="1dp" />
-<!--        android:onClick="@{v -> viewModel.customerUseCoupon()}"-->
+        <!--        android:onClick="@{v -> viewModel.customerUseCoupon()}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
