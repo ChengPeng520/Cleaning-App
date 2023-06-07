@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerViewModel" />
+            type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="16dp"
-                app:imageResource="@{viewModel.cleaner.imgId}"
+                app:imageBitmap="@{viewModel.cleaner.customerPhoto}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -61,28 +61,16 @@
 
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="姓名:"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="日期:"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView5"
@@ -100,24 +88,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="報價費用:"
+            android:text="打掃時數:"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@{viewModel.cleaner.csname}"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/textView2"
-            tools:text="王XX" />
 
 
         <TextView
@@ -125,7 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{viewModel.cleaner.date}"
+            android:text="@{String.valueOf(viewModel.cleaner.dateOrdered)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -137,24 +113,34 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{viewModel.cleaner.location}"
+            android:text="@{viewModel.cleaner.areaCity}"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="@+id/textView5"
-            tools:text="台北市大安區" />
+            tools:text="台北市" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{viewModel.cleaner.price}"
+            android:text="@{viewModel.cleaner.cleaningTime}"
             app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
-            tools:text="1000元整" />
+            tools:text="12:00-14:00 (2小時)" />
+
+        <TextView
+            android:id="@+id/textView84"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@{viewModel.cleaner.areaDistrict}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintTop_toTopOf="@+id/textView11"
+            tools:text="中山區" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

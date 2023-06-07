@@ -12,6 +12,7 @@ import com.example.cleaningapp.databinding.FragmentVictorDetailedorderBinding
 
 class DetailedOrderFragment : Fragment() {
     private lateinit var binding: FragmentVictorDetailedorderBinding
+    private lateinit var order: Order
     val viewModel: OrderListViewModel by viewModels()
 
     override fun onCreateView(
@@ -26,25 +27,12 @@ class DetailedOrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let { bundle ->
-            bundle.getSerializable("orderItem")?.let {
-                viewModel.orderItem.value = it as Order
-            }
-        }
-
-        // 假設您從 viewModel.photoUri 獲取要傳遞的照片的 Uri
-        val photoUri = viewModel.photoUri.value
-
-        // 將修改後的 newArguments 傳遞給下一頁
         binding.bntApplyComplaint.setOnClickListener {
-            val newArguments = Bundle(arguments)
-            photoUri?.let {
-                newArguments.putParcelable("photoUri", it)
-            }
+            val bundle = Bundle()
+            bundle.putSerializable("orderItem", order)
             Navigation.findNavController(view)
                 .navigate(
-                    R.id.action_detailedOrderFragment_to_applycomplaintFragment,
-                    newArguments
+                    R.id.action_detailedOrderFragment_to_applycomplaintFragment, bundle
                 )
         }
     }

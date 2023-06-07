@@ -4,17 +4,20 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
-import androidx.core.view.MenuProvider
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.order.OrderStateViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiOrderStateBinding
+import com.example.cleaningapp.share.CleanerPreferencesUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class OrderStateFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiOrderStateBinding
@@ -32,6 +35,29 @@ class OrderStateFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.uiState.observe(viewLifecycleOwner) {
+            if (it.dateOrdered.toString() == getCurrentTime()) {
+                binding.clOrderStateProgressBar.visibility = View.VISIBLE
+                binding.btnOrderStateStartCleaning.isEnabled = true
+            } else {
+                binding.tvOrderStateNotStart.visibility = View.VISIBLE
+                binding.btnOrderStateStartCleaning.isEnabled = false
+            }
+        }
+        binding.tvOrderStateAddress.setOnClickListener {
+            val address = binding.tvOrderStateAddress.text.toString()
+            googleMaps(address)
+        }
+    }
+
+    private fun googleMaps(address: String) {
+        val intentUri = Uri.parse("google.navigation:q=$address")
+        val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
+    }
+
     private fun initView() {
         viewModel.fetchOrderProgress()
         viewModel.uiState.observe(viewLifecycleOwner) {
@@ -39,7 +65,6 @@ class OrderStateFragment : Fragment() {
                 when (it.status) {
                     1 -> {
                         this.btnOrderStateStartCleaning.visibility = View.VISIBLE
-                        this.btnOrderStateStartCleaning.isEnabled = true
                         this.ivOrderStateApplied.isSelected = true
                         this.tvOrderStateApplied.setTextColor(Color.BLACK)
                     }
@@ -48,7 +73,7 @@ class OrderStateFragment : Fragment() {
                         this.btnOrderStateAddPicture.visibility = View.VISIBLE
                         this.btnOrderStateNext.visibility = View.VISIBLE
                         this.ivOrderStateApplied.isSelected = true
-//                        this.btnOrderStateNext.isEnabled = false
+                        this.btnOrderStateNext.isEnabled = CleanerPreferencesUtils.fetchCleaningPhotoFromPreferences(requireContext())[0] != null
                         this.tvOrderStateApplied.setTextColor(Color.BLACK)
                         this.ivOrderStateIng.isSelected = true
                         this.tvOrderStateIng.setTextColor(Color.BLACK)
@@ -79,34 +104,6 @@ class OrderStateFragment : Fragment() {
                 }
             }
         }
-
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_cleaner_notify, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return if (menuItem.itemId == R.id.notifyFragment) {
-                    Navigation.findNavController(requireActivity(), R.id.cleaner_nav_host_fragment)
-                        .navigate(R.id.notifyFragment)
-                    true
-                } else false
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.tvOrderStateAddress.setOnClickListener {
-            val address = binding.tvOrderStateAddress.text.toString()
-            googleMaps(address)
-        }
-    }
-
-    private fun googleMaps(address: String) {
-        val intentUri = Uri.parse("google.navigation:q=$address")
-        val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
-        mapIntent.setPackage("com.google.android.apps.maps")
-        startActivity(mapIntent)
     }
 
     private fun setBtnOnclick() {
@@ -127,6 +124,18 @@ class OrderStateFragment : Fragment() {
                     bundle
                 )
             }
+        }
+    }
+
+    private fun getCurrentTime(): String {
+        return if (android.os.Build.VERSION.SDK_INT >= 26) {
+            val current = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            current.format(formatter)
+        } else {
+            val tms = Calendar.getInstance()
+            tms.get(Calendar.MONTH).toString() + "-" + tms.get(Calendar.DAY_OF_MONTH)
+                .toString()
         }
     }
 

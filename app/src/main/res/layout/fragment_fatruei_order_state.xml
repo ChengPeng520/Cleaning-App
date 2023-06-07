@@ -42,6 +42,7 @@
                     android:id="@+id/cl_order_state_progress_bar"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -454,6 +455,7 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/btn_order_state_add_picture"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
@@ -466,6 +468,7 @@
                     android:layout_marginTop="16dp"
                     android:onClick="@{viewModel::nextState}"
                     android:text="@string/btn_order_state_next"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn_order_state_add_picture" />

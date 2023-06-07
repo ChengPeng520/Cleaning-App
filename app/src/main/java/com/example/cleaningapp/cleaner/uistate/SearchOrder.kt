@@ -1,46 +1,36 @@
 package com.example.cleaningapp.cleaner.uistate
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
+import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.OrderUtil
-import java.io.Serializable
-import java.sql.Timestamp
-import java.util.Calendar
+import java.sql.Date
+import java.sql.Time
+import java.util.*
 
-//Serializable 序列化
-data class Job
-//data class自動幫setter取質(容器=資料庫的欄位)
-    (
-    val imgId: Int = 0,
-    val csname: String = "",
+class SearchOrder(
+    val photo: ByteArray,
     val orderId: Int = 0,
+    val cleanerId: Int = 0,
+    val dateOrdered: Date? = null,
+    val timeOrderedStart: Time? = null,
+    val timeOrderedEnd: Time? = null,
     val areaCity: String = "",
     val areaDistrict: String = "",
-    val location: String = "",
     val areaDetail: String = "",
-    val dateOrdered: String = "", // 刪除
-    val orderedTime: String = "",
-    val timeOrderedStart: String = "", // LocalDateTime
-    val timeOrderedEnd: String = "", // LocalDateTime
     val livingRoomSize: Int = 0,
     val kitchenSize: Int = 0,
     val bathRoomSize: Int = 0,
     val roomSize: Int = 0,
     val remark: String = "",
-    val photo: Int? = null,
-    val photo2: Int? = null,
-    val photo3: Int? = null,
     val priceForCleaner: Int = 0,
-    val discount: Int = 0,
-) : Serializable {
-    val livingRoomSizeString: String
-        get() = livingRoomSize.toString()
-    val kitchenSizeString: String
-        get() = kitchenSize.toString()
-    val bathroomSizeString: String
-        get() = bathRoomSize.toString()
-    val bedroomSizeString: String
-        get() = roomSize.toString()
+    var status: Int = 0
+) : java.io.Serializable {
+    val customerPhoto: Bitmap?
+        get() {
+            return ImageUtils.bytesToBitmap(photo)
+        }
     val orderStartDate: Calendar
         get() {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
@@ -57,10 +47,6 @@ data class Job
             calendar.timeInMillis = date.time
             return calendar
         }
-    data class OrderDetail(
-        val order: Job,
-        val photo: List<ByteArray>?
-    )
     val address: String
         get() {
             return "$areaCity$areaDistrict$areaDetail"
@@ -90,10 +76,37 @@ data class Job
                 .append(dateFormat.format(timeOrderedEnd))
             return sb.toString()
         }
-    data class SearchOrderStatus(
-        val order: OrderUtil.Order,
-        val photo: List<ByteArray>?
-    )
 }
 
-//var date: LocalDate
+data class OrderPhotos(
+    val photos: List<ByteArray>
+) {
+    val photo1: Bitmap?
+        get() {
+            return if (photos.isNotEmpty()) {
+                ImageUtils.bytesToBitmap(photos[0])
+            } else null
+        }
+    val photo2: Bitmap?
+        get() {
+            return if (photos.size >= 2) {
+                ImageUtils.bytesToBitmap(photos[1])
+            } else null
+        }
+    val photo3: Bitmap?
+        get() {
+            return if (photos.size == 3) {
+                ImageUtils.bytesToBitmap(photos[2])
+            } else null
+        }
+}
+
+data class SearchOrderPhotos(
+    val order: SearchOrder,
+    val photos: List<ByteArray>
+)
+
+data class ApplingOrder(
+    val order: SearchOrder,
+    val photo: ByteArray
+)
