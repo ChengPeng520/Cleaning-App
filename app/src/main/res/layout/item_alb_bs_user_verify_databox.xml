@@ -59,7 +59,7 @@
                     android:gravity="center"
                     android:text='@{viewModel.member.verify ? "已開通" : "未開通"}'
                     android:textColor="@color/error"
-                    tools:text="未審核" />
+                    tools:text="未開通" />
             </LinearLayout>
 
             <View

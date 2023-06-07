@@ -46,12 +46,12 @@ class UserVerifyAdapter(private var users: List<Member>) :
     }
 
     override fun onBindViewHolder(holder: UserVerifyViewHolder, position: Int) {
-        val user = users[position]
+        val member = users[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
-            itemViewBinding.viewModel?.member?.value = user
+            itemViewBinding.viewModel?.member?.value = member
             val bundle = Bundle()
-            bundle.putSerializable("user", user)
+            bundle.putSerializable("member", member)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsUserVerifyFragment_to_bsUserVerifyDetailFragment, bundle)
