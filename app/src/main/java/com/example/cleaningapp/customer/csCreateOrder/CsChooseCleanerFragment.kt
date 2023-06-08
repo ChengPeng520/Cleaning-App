@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.adapter.CsChooseCleanerAdapter
@@ -30,16 +32,19 @@ class CsChooseCleanerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.setTitle(R.string.csTitle_chooseCleaner)
         arguments?.let { bundle ->
-            bundle.getSerializable("orderItem").let {
-                val order = it as com.example.cleaningapp.customer.detailed.Order
-                viewModel.order.value = order
+            bundle.getInt("orderId").let {
+                viewModel.orderId = it
             }
+        }
+        binding.btnCsChooseCleanerCancelOrder.setOnClickListener {
+            Toast.makeText( it.context, it.context.getString(R.string.toast_CsChooseCleanerCancelOrder), Toast.LENGTH_SHORT ).show()
+            Navigation.findNavController(it).popBackStack()
         }
 
         binding.rvCsChooseCleaner.layoutManager = LinearLayoutManager(requireContext())
         viewModel.cleanerList.observe(viewLifecycleOwner) { cleaners ->
             if (binding.rvCsChooseCleaner.adapter == null) {
-                binding.rvCsChooseCleaner.adapter = CsChooseCleanerAdapter(cleaners, 10)
+                binding.rvCsChooseCleaner.adapter = CsChooseCleanerAdapter(cleaners, viewModel.orderId )
             } else {
                 (binding.rvCsChooseCleaner.adapter as CsChooseCleanerAdapter).updateCleaners(
                     cleaners

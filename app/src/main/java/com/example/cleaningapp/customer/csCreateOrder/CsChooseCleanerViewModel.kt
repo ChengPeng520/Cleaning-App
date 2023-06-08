@@ -18,7 +18,7 @@ class CsChooseCleanerViewModel : ViewModel() {
     //受監控的LiveDATA，一旦指派新值就會更新使用者列表畫面
     val cleanerList: MutableLiveData<List<Cleaner>> by lazy { MutableLiveData<List<Cleaner>>() }
     val commentItem: MutableLiveData<Comment> by lazy { MutableLiveData<Comment>() }
-    val order: MutableLiveData<com.example.cleaningapp.customer.detailed.Order> by lazy { MutableLiveData<com.example.cleaningapp.customer.detailed.Order>() }
+    var orderId: Int = 0
     val orderEstablished: MutableLiveData<OrderEstablished> by lazy { MutableLiveData<OrderEstablished>() }
     val orderTest= OrderEstablished()
     //  原始使用者列表
@@ -27,23 +27,17 @@ class CsChooseCleanerViewModel : ViewModel() {
         fetchCleanerApplied()
     }
 
-    fun fetchCleanerApplied() {
+    private fun fetchCleanerApplied() {
         requestTask<List<Cleaner>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/${order.value?.orderId}",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/${orderId}",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
             cleanerList.value = it
         }
     }
 
-    fun checkout(): Boolean {
-        requestTask<OrderEstablished>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied",
-            "PUT",
-            orderEstablished.value
-        )?.let {
-            return true
-        }
-        return false
+    fun cancelOrder() {
+
     }
+
 }
