@@ -1,12 +1,17 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
+import android.graphics.Color
 import android.opengl.Visibility
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,12 +21,12 @@ import com.example.cleaningapp.databinding.FragmentAlbBsUserVerifyBinding
 
 class BsUserVerifyFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsUserVerifyBinding
+    val viewModel: BsUserVerifyViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: BsUserVerifyViewModel by viewModels()
         binding = FragmentAlbBsUserVerifyBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -68,7 +73,6 @@ class BsUserVerifyFragment : Fragment() {
                     return false
                 }
             })
-
 
             btnBsUserVerifyUser.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)

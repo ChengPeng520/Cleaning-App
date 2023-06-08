@@ -30,10 +30,10 @@ class CleanerFrontOrderDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             arguments?.getInt("orderId")?.let {
-                viewModel?.fetchOrderAccept(it)
+//                viewModel?.fetchOrderAccept(it)
             }
             button8.setOnClickListener {
-                viewModel?.fetchOrderConfirm()
+//                viewModel?.fetchOrderConfirm()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_cleanerFrontOrderDetailFragment_to_order_acceptFragment)
             }

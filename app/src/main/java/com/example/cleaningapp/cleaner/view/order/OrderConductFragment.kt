@@ -1,16 +1,12 @@
 package com.example.cleaningapp.cleaner.view.order
 
-import android.graphics.Color
 import android.os.Bundle
-import android.view.*
-import android.widget.TextView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat.setTint
 import androidx.fragment.app.Fragment
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.CleanerActivity
 import com.example.cleaningapp.R
@@ -32,29 +28,7 @@ class OrderConductFragment : Fragment() {
         binding = FragmentVickyOrderConductBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        initAppBarMenu()
         return binding.root
-    }
-
-    private fun initAppBarMenu() {
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_cleaner_notify, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.notifyFragment -> {
-                        Navigation.findNavController(
-                            requireActivity(),
-                            R.id.cleaner_nav_host_fragment
-                        ).navigate(R.id.notifyFragment)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,119 +38,124 @@ class OrderConductFragment : Fragment() {
         val defaultIconColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
 
         with(binding) {
+            viewModel?.onTabSelected(1)
+            textView62.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.cleanerPrimary
+                )
+            )
+            // 設置按鈕圖標颜色
+            val drawable = textView62.compoundDrawablesRelative[0]
+            drawable?.setTint(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.cleanerPrimary
+                )
+            )
             recyclerView2.layoutManager = LinearLayoutManager(requireContext())
-            adapter = OrderAdapter(emptyList())
+            val orders = viewModel?.order?.value.orEmpty().filter { it.status == 0 }
+            adapter = OrderAdapter(orders)
             recyclerView2.adapter = adapter
+            // 當選項發生變化時執行相應的操作
 
-            viewModel?.loadOrders()
-            viewModel?.order?.observe(viewLifecycleOwner) { orders ->
+            // 待確認
+            textView62.setOnClickListener {
+                viewModel?.onTabSelected(1)
+                textView62.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.cleanerPrimary
+                    )
+                )
+                // 設置按鈕圖標颜色
+                val drawable = textView62.compoundDrawablesRelative[0]
+                drawable?.setTint(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.cleanerPrimary
+                    )
+                )
+                // 恢復其他按鈕颜色
+                textView49.setTextColor(defaultTextColor)
+                imageButton4.setTextColor(defaultTextColor)
+
+                val processingDrawable = textView49.compoundDrawablesRelative[0]
+                processingDrawable?.setTint(defaultIconColor)
+
+                val completedDrawable = imageButton4.compoundDrawablesRelative[0]
+                completedDrawable?.setTint(defaultIconColor)
+
+                val orders = viewModel?.order?.value.orEmpty().filter { it.status == 0 }
                 adapter?.updateOrders(orders)
+            }
 
-                // 當選項發生變化時執行相應的操作
-//            handleTabSelection(tabNumber: Int)
-//            }
+            // 已成立
+            textView49.setOnClickListener {
+                viewModel?.onTabSelected(2)
 
-                textView62.setOnClickListener {
-                    viewModel?.onTabSelected(1)
-                    textView62.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.cleanerPrimary
-                        )
+                textView49.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.cleanerPrimary
                     )
-                    // 設置按鈕圖標颜色
-                    val drawable = textView62.compoundDrawablesRelative[0]
-                    drawable?.setTint(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.cleanerPrimary
-                        )
+                )
+                // 設置按鈕圖標颜色
+                val drawable = textView49.compoundDrawablesRelative[0]
+                drawable?.setTint(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.cleanerPrimary
                     )
-                    // 恢復其他按鈕颜色
-                    textView49.setTextColor(defaultTextColor)
-                    imageButton4.setTextColor(defaultTextColor)
+                )
+                // 恢復其他按鈕颜色
 
-                    val processingDrawable = textView49.compoundDrawablesRelative[0]
-                    processingDrawable?.setTint(defaultIconColor)
 
-                    val completedDrawable = imageButton4.compoundDrawablesRelative[0]
-                    completedDrawable?.setTint(defaultIconColor)
+                textView62.setTextColor(defaultTextColor)
+                imageButton4.setTextColor(defaultTextColor)
 
-                    val orders = viewModel?.order?.value.orEmpty().filter { it.status == 1 }
-                    adapter?.updateOrders(orders)
-                }
+                val processingDrawable = textView62.compoundDrawablesRelative[0]
+                processingDrawable?.setTint(defaultIconColor)
 
-                textView49.setOnClickListener {
-                    viewModel?.onTabSelected(2)
+                val completedDrawable = imageButton4.compoundDrawablesRelative[0]
+                completedDrawable?.setTint(defaultIconColor)
 
-                    textView49.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.cleanerPrimary
-                        )
+
+                val orders = viewModel?.order?.value.orEmpty()
+                    .filter { it.status == 1 || it.status == 2 || it.status == 3 }
+                adapter?.updateOrders(orders)
+            }
+
+            // 已結束
+            imageButton4.setOnClickListener {
+                viewModel?.onTabSelected(3)
+
+                imageButton4.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.cleanerPrimary
                     )
-                    // 設置按鈕圖標颜色
-                    val drawable = textView49.compoundDrawablesRelative[0]
-                    drawable?.setTint(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.cleanerPrimary
-                        )
+                )
+
+                val drawable = imageButton4.compoundDrawablesRelative[0]
+                drawable?.setTint(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.cleanerPrimary
                     )
-                    // 恢復其他按鈕颜色
-                    textView62.setTextColor(defaultTextColor)
-                    imageButton4.setTextColor(defaultTextColor)
+                )
+                // 恢復其他按鈕颜色
+                textView62.setTextColor(defaultTextColor)
+                textView49.setTextColor(defaultTextColor)
 
-                    val processingDrawable = textView62.compoundDrawablesRelative[0]
-                    processingDrawable?.setTint(defaultIconColor)
+                val processingDrawable = textView62.compoundDrawablesRelative[0]
+                processingDrawable?.setTint(defaultIconColor)
 
-                    val completedDrawable = imageButton4.compoundDrawablesRelative[0]
-                    completedDrawable?.setTint(defaultIconColor)
+                val completedDrawable = textView49.compoundDrawablesRelative[0]
+                completedDrawable?.setTint(defaultIconColor)
 
-
-                    val orders = viewModel?.order?.value.orEmpty().filter { it.status == 2 }
-                    adapter?.updateOrders(orders)
-                }
-
-                imageButton4.setOnClickListener {
-                    viewModel?.onTabSelected(3)
-
-                    imageButton4.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.cleanerPrimary
-                        )
-                    )
-
-                    val drawable = imageButton4.compoundDrawablesRelative[0]
-                    drawable?.setTint(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.cleanerPrimary
-                        )
-                    )
-                    // 恢復其他按鈕颜色
-                    textView62.setTextColor(defaultTextColor)
-                    textView49.setTextColor(defaultTextColor)
-
-                    val processingDrawable = textView62.compoundDrawablesRelative[0]
-                    processingDrawable?.setTint(defaultIconColor)
-
-                    val completedDrawable = textView49.compoundDrawablesRelative[0]
-                    completedDrawable?.setTint(defaultIconColor)
-
-                    val orders = viewModel?.order?.value.orEmpty().filter { it.status == 3 }
-                    adapter?.updateOrders(orders)
-                }
-
-                recyclerView2.layoutManager = LinearLayoutManager(requireContext())
-                viewModel?.order?.observe(viewLifecycleOwner) { orders ->
-                    if (recyclerView2.adapter == null) {
-                        recyclerView2.adapter = OrderAdapter(orders)
-                    } else {
-                        (recyclerView2.adapter as OrderAdapter).updateOrders(orders)
-                    }
-                }
+                val orders = viewModel?.order?.value.orEmpty().filter { it.status == 4 }
+                adapter?.updateOrders(orders)
             }
         }
     }

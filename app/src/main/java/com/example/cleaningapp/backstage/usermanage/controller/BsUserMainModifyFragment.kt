@@ -70,7 +70,7 @@ class BsUserMainModifyFragment : Fragment() {
 
                 btnBsUserMainModifySubmit.setOnClickListener {
                     viewModel?.editMemberInfo(view)
-                    Navigation.findNavController(view).navigate(R.id.bsUserMainDetailFragment)
+                    Navigation.findNavController(view).popBackStack()
                 }
                 ivBsUserMainModifyBack.setOnClickListener {
                     Navigation.findNavController(view).popBackStack()

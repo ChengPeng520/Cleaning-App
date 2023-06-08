@@ -110,25 +110,75 @@ class BsUserMainDetailViewModel : ViewModel() {
      * 連線修改個人資料
      */
     fun editMemberInfo(view: View) {
-        if (user.value?.customerId == null && user.value?.backstageId == null) {
-            val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(user.value!!)
-            requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-                method = "PUT",
-                uiState
-            )?.let {
-                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+        user.value?.let {
+            if (it.customerId != null) {
+                requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    method = "PUT",
+                    reqBody = CustomerSharePreferencesUtils.ApiCustomerModel(
+                        customerId = it.customerId!!,
+                        email = null,
+                        name = it.name,
+                        phone = it.phone,
+                        gender = it.gender,
+                        introduction = it.introduction,
+                        photo = null,
+                        password = null,
+                        suspend = it.suspend
+                    )
+                )?.let {
+                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+                }
             }
-        } else if (user.value?.cleanerId == null && user.value?.backstageId == null) {
-            val uistate = CustomerSharePreferencesUtils.anyToApiCustomerModel(user.value!!)
-            requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-                method = "PUT",
-                uistate
-            )?.let {
-                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+            if (it.cleanerId != null) {
+                requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    method = "PUT",
+                    reqBody = CleanerSharedPreferencesUtils.ApiCleanerModel(
+                        cleanerId = it.cleanerId!!,
+                        email = null,
+                        name = it.name,
+                        phone = it.phone,
+                        gender = it.gender,
+                        introduction = it.introduction,
+                        photo = null,
+                        password = null,
+                        identifyNumber = it.identifyNumber,
+                        idCardFront = null,
+                        idCardBack = null,
+                        crc = null,
+                        suspend = it.suspend
+                    )
+                )?.let {
+                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+                }
             }
         }
-
     }
+
+    /**
+     * 連線修改個人資料
+     */
+//    fun editMemberInfo(view: View) {
+//        if (user.value?.customerId == null && user.value?.backstageId == null) {
+//            val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(user.value!!)
+//            requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+//                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                method = "PUT",
+//                uiState
+//            )?.let {
+//                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//            }
+//        } else if (user.value?.cleanerId == null && user.value?.backstageId == null) {
+//            val uistate = CustomerSharePreferencesUtils.anyToApiCustomerModel(user.value!!)
+//            requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+//                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                method = "PUT",
+//                uistate
+//            )?.let {
+//                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//            }
+//        }
+//
+//    }
 }

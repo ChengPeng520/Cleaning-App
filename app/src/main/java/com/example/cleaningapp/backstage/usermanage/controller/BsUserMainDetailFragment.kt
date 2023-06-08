@@ -83,10 +83,9 @@ class BsUserMainDetailFragment : Fragment() {
 
         alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
             dialog.dismiss()
-            //TODO 將帳號的suspend狀態update成1
-
-            Navigation.findNavController(binding.btnBsUserMainDetailSuspend)
-                .navigate(R.id.bsUserMainFragment)
+            //TODO 將帳號的suspend狀態update成1(目前有錯)
+            binding.viewModel?.user?.value?.suspend = true
+            view?.let { viewModel.editMemberInfo(it) }
         }
         alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
             dialog.dismiss()

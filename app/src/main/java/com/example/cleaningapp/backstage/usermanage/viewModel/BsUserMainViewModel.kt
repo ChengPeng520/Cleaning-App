@@ -16,26 +16,6 @@ class BsUserMainViewModel : ViewModel() {
     val users: MutableLiveData<List<Member>> by lazy { MutableLiveData<List<Member>>() }
     val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
 
-    /**
-     * 如果搜尋條件為空字串，就顯示原始使用者列表；否則就顯示搜尋後結果
-     * @param newText 欲搜尋的條件字串
-     */
-    fun search(newText: String?) {
-        if (newText == null || newText.isEmpty()) {
-            users.value = userList
-        } else {
-            val searchUserList = mutableListOf<Member>()
-            userList.forEach { user ->
-                if (user.name.contains(newText, true) ||
-                    user.email.contains(newText, true)
-                ) {
-                    searchUserList.add(user)
-                }
-            }
-            users.value = searchUserList
-        }
-    }
-
     init {
         loadUsers()
     }
@@ -44,6 +24,7 @@ class BsUserMainViewModel : ViewModel() {
     private fun loadUsers(){
         requestTask<List<Member>>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            "GET",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
             users.value = it
@@ -102,4 +83,24 @@ class BsUserMainViewModel : ViewModel() {
 //        this.userList = userList
 //        this.users.value = this.userList
 //    }
+
+    /**
+     * 如果搜尋條件為空字串，就顯示原始使用者列表；否則就顯示搜尋後結果
+     * @param newText 欲搜尋的條件字串
+     */
+    fun search(newText: String?) {
+        if (newText == null || newText.isEmpty()) {
+            users.value = userList
+        } else {
+            val searchUserList = mutableListOf<Member>()
+            userList.forEach { user ->
+                if (user.name.contains(newText, true) ||
+                    user.email.contains(newText, true)
+                ) {
+                    searchUserList.add(user)
+                }
+            }
+            users.value = searchUserList
+        }
+    }
 }
