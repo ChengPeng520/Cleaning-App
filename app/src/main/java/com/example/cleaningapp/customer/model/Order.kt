@@ -34,14 +34,14 @@ data class Order(
         }
     val timeStart: String
         get() {
-            dateOrdered?.let {
+            timeOrderedStart?.let {
                 return it.toString()
             }
             return ""
         }
     val timeEnd: String
         get() {
-            dateOrdered?.let {
+            timeOrderedEnd?.let {
                 return it.toString()
             }
             return ""
