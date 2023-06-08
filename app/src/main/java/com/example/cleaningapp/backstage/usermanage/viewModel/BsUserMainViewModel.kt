@@ -21,14 +21,20 @@ class BsUserMainViewModel : ViewModel() {
     }
 
     /** 連線後端取得資料 */
-    private fun loadUsers(){
+    private fun loadUsers() {
         requestTask<List<Member>>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
             "GET",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
-            users.value = it
-            userList = it
+            var usersWithoutSuspend = mutableListOf<Member>()
+            for (i in it) {
+                if (!i.suspend) {
+                    usersWithoutSuspend.add(i)
+                }
+            }
+            users.value = usersWithoutSuspend
+            userList = usersWithoutSuspend
         }
     }
 

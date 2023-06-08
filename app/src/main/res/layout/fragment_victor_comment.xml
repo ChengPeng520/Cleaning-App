@@ -24,56 +24,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:progressTint="#FFE600"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/applycomplaint_photo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:rating="@={viewModel.stars}"
             app:layout_constraintBottom_toTopOf="@+id/guideline24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar3">
-
-            <ImageView
-                android:id="@+id/imageView40"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:background="@drawable/ic_add"
-                app:imageBitmap="@{viewModel.photo1}"
-                tools:src="@tools:sample/avatars" />
-
-            <ImageView
-                android:id="@+id/imageView41"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_weight="1"
-                android:background="@{viewModel.photo1 != null ? @drawable/ic_add : null}"
-                app:imageBitmap="@{viewModel.photo2}"
-                tools:src="@tools:sample/avatars" />
-
-            <ImageView
-                android:id="@+id/imageView42"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_weight="1"
-                android:background="@{viewModel.photo2 != null ? @drawable/ic_add : null}"
-                app:imageBitmap="@{viewModel.photo3}"
-                tools:src="@tools:sample/avatars" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45" />
+            app:layout_constraintGuide_percent="0.28" />
 
         <EditText
             android:id="@+id/edtTxt_comment_content"
@@ -83,6 +45,7 @@
             android:background="@android:color/transparent"
             android:gravity="top|left"
             android:hint="@string/edtTxt_comment_content"
+            android:text="@={viewModel.content}"
             app:layout_constraintBottom_toTopOf="@+id/guideline23"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,6 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="送出"
+            android:onClick="@{viewModel::uploadContent}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

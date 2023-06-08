@@ -46,6 +46,8 @@ class UserSuspendAdapter(private var users: List<Member>) :
             alertDialogBuilder.setMessage("將發送訊息給使用者")
             alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
                 //TODO
+                itemViewBinding.viewModel?.member?.value?.suspend = false
+//                itemViewBinding.viewModel.
                 dialog.dismiss()
             }
             alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->

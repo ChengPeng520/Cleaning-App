@@ -157,10 +157,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+                        android:selectedItemPosition="@={viewModel.user.gender}"
                         android:inputType="text"
                         android:minHeight="40dp"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
+
                 </LinearLayout>
 
                 <LinearLayout

@@ -18,11 +18,6 @@ class BsUserSuspendViewModel : ViewModel() {
 
     init {
         loadUsers()
-//        userList.forEach { _ ->
-//            if (member.value!!.suspend){
-//
-//            }
-//        }
     }
 
     /** 連線後端取得資料 */
@@ -31,32 +26,90 @@ class BsUserSuspendViewModel : ViewModel() {
             "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
-            users.value = it
-            userList = it
+            var suspendUsers = mutableListOf<Member>()
+            for (a in it) {
+                if (a.suspend) {
+                    suspendUsers.add(a)
+                }
+            }
+            users.value = suspendUsers
+            userList = suspendUsers
         }
+
+
     }
 
     /**
-     * 如果搜尋條件為空字串，就顯示原始使用者列表；否則就顯示搜尋後結果
-     * @param newText 欲搜尋的條件字串
+     * 連線修改個人資料
      */
-    fun search(newText: String?) {
-        if (newText == null || newText.isEmpty()) {
-            users.value = userList
-        } else {
-            val searchUserList = mutableListOf<Member>()
-            userList.forEach { user ->
-                if (user.name.contains(newText, true) ||
-                    user.email.contains(newText, true)
-                ) {
-                    searchUserList.add(user)
-                }
-            }
-            users.value = searchUserList
-        }
-    }
+//    fun editMemberInfo(view: View) {
+//        user.value?.let {
+//            if (it.customerId != null) {
+//                requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                    method = "PUT",
+//                    reqBody = CustomerSharePreferencesUtils.ApiCustomerModel(
+//                        customerId = it.customerId!!,
+//                        email = null,
+//                        name = it.name,
+//                        phone = it.phone,
+//                        gender = it.gender,
+//                        introduction = it.introduction,
+//                        photo = null,
+//                        password = null,
+//                        suspend = it.suspend
+//                    )
+//                )?.let {
+//                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//                }
+//            }
+//            if (it.cleanerId != null) {
+//                requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                    method = "PUT",
+//                    reqBody = CleanerSharedPreferencesUtils.ApiCleanerModel(
+//                        cleanerId = it.cleanerId!!,
+//                        email = null,
+//                        name = it.name,
+//                        phone = it.phone,
+//                        gender = it.gender,
+//                        introduction = it.introduction,
+//                        photo = null,
+//                        password = null,
+//                        identifyNumber = it.identifyNumber,
+//                        idCardFront = null,
+//                        idCardBack = null,
+//                        crc = null,
+//                        suspend = it.suspend
+//                    )
+//                )?.let {
+//                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//                }
+//            }
+//        }
+//    }
 
-    /** 模擬取得遠端資料 */
+/**
+ * 如果搜尋條件為空字串，就顯示原始使用者列表；否則就顯示搜尋後結果
+ * @param newText 欲搜尋的條件字串
+ */
+fun search(newText: String?) {
+    if (newText == null || newText.isEmpty()) {
+        users.value = userList
+    } else {
+        val searchUserList = mutableListOf<Member>()
+        userList.forEach { user ->
+            if (user.name.contains(newText, true) ||
+                user.email.contains(newText, true)
+            ) {
+                searchUserList.add(user)
+            }
+        }
+        users.value = searchUserList
+    }
+}
+
+/** 模擬取得遠端資料 */
 //    private fun loadUsersTest() {
 //        val userList = mutableListOf<User>()
 //        userList.add(

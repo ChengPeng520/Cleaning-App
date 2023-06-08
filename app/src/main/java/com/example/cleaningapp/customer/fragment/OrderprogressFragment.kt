@@ -30,15 +30,9 @@ class OrderprogressFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let { bundle ->
-            order = bundle.getSerializable("orderItem") as Order
-            viewModel.order.value = order
-        }
+        arguments?.getInt("orderId")?.let {
+            viewModel.fetchOrdersInfo(it)
 
-        with(binding){
-            button.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_orderprogressFragment_to_orderingFragment, arguments)
-            }
         }
     }
 }
