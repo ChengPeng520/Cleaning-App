@@ -154,7 +154,8 @@ class OrderConductFragment : Fragment() {
                 val completedDrawable = textView49.compoundDrawablesRelative[0]
                 completedDrawable?.setTint(defaultIconColor)
 
-                val orders = viewModel?.order?.value.orEmpty().filter { it.status == 4 }
+                val orders = viewModel?.order?.value.orEmpty()
+                    .filter { it.status == 4 || it.status == 5 || it.status == 7 }
                 adapter?.updateOrders(orders)
             }
         }

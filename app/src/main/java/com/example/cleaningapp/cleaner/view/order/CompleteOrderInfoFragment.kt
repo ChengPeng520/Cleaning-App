@@ -22,11 +22,11 @@ class CompleteOrderInfoFragment : Fragment() {
         binding = FragmentFatrueiCompleteOrderInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        viewModel.fetchOrderInfo()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        arguments?.getInt("orderId")?.let { viewModel.fetchOrderInfo(it) }
         binding.tvCompleteOrderInfoAddress.setOnClickListener {
             val address = binding.tvCompleteOrderInfoAddress.text.toString()
             googleMaps(address)

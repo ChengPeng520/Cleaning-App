@@ -1,5 +1,6 @@
 package com.example.cleaningapp.cleaner.view.member
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,6 +47,8 @@ class CleanerMemberFragment : Fragment(), OnClickListener {
             R.id.cl_member_window -> findNavController().navigate(R.id.action_memberFragment_to_contactWindowFragment)
             R.id.btn_member_signout -> {
                 CleanerSharedPreferencesUtils.logout()
+                requireContext().getSharedPreferences("ReceiverInfo", Context.MODE_PRIVATE).edit()
+                    .clear().apply()
                 val intent = Intent(activity, LoginActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
