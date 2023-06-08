@@ -36,6 +36,7 @@ class OrderStateFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        arguments?.getInt("orderId")?.let { viewModel.orderId.value = it }
         viewModel.uiState.observe(viewLifecycleOwner) {
             if (it.dateOrdered.toString() == getCurrentTime()) {
                 binding.clOrderStateProgressBar.visibility = View.VISIBLE
@@ -73,7 +74,8 @@ class OrderStateFragment : Fragment() {
                         this.btnOrderStateAddPicture.visibility = View.VISIBLE
                         this.btnOrderStateNext.visibility = View.VISIBLE
                         this.ivOrderStateApplied.isSelected = true
-                        this.btnOrderStateNext.isEnabled = CleanerPreferencesUtils.fetchCleaningPhotoFromPreferences(requireContext())[0] != null
+                        this.btnOrderStateNext.isEnabled =
+                            CleanerPreferencesUtils.fetchCleaningPhotoFromPreferences(requireContext())[0] != null
                         this.tvOrderStateApplied.setTextColor(Color.BLACK)
                         this.ivOrderStateIng.isSelected = true
                         this.tvOrderStateIng.setTextColor(Color.BLACK)

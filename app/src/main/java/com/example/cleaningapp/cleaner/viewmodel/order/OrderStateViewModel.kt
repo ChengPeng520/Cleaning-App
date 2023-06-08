@@ -15,10 +15,11 @@ import com.google.gson.JsonObject
 class OrderStateViewModel : ViewModel() {
     private val _uiState: MutableLiveData<OrderStateUiState> by lazy { MutableLiveData<OrderStateUiState>() }
     val uiState: LiveData<OrderStateUiState> = _uiState
+    val orderId: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
 
     fun fetchOrderProgress() {
         requestTask<OrderUtil.OrderStatus>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/11",
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
             method = "GET"
         )?.let {
             _uiState.value = OrderStateUiState(

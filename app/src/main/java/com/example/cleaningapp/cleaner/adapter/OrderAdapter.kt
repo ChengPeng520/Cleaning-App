@@ -63,6 +63,20 @@ class OrderAdapter(var orders: List<SearchOrder>) :
                                 bundle
                             )
                     }
+                    5 -> {
+                        Navigation.findNavController(it)
+                            .navigate(
+                                R.id.action_vicky_order_conductFragment_to_completeOrderInfoFragment,
+                                bundle
+                            )
+                    }
+                    7 -> {
+                        Navigation.findNavController(it)
+                            .navigate(
+                                R.id.action_vicky_order_conductFragment_to_completeOrderInfoFragment,
+                                bundle
+                            )
+                    }
                     // 1 已成立 2 進行中 3
                     else -> {
                         Navigation.findNavController(it)
