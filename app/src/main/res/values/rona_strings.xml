@@ -4,10 +4,13 @@
     <string name="edtTxt_login_account_hint">帳號:</string>
     <string name="edtTxt_login_password_hint">密碼:</string>
     <string name="btn_login_login">登入</string>
-    <string name="tv_login_signUp"><u>點此註冊帳號</u></string>
-    <string name="tv_login_forgetPassword">忘記密碼</string>
+    <string name="tv_login_signUp"><u>點此註冊</u></string>
+    <string name="tv_login_forgetPassword"><u>忘記密碼</u></string>
     <string name="tv_login_errMsg">帳號或密碼錯誤</string>
     <string name="tv_login_empty">帳號或密碼不可空白</string>
+    <string name="tv_login_fail">google登入失敗</string>
+    <string name="btn_login_loginGoogle">以 Google 帳號登入</string>
+    <string name="tv_login_text">-------------- 或是第三方登入 -------------</string>
 
     <!--    signup-->
     <string name="edtTxt_signup_passwordcfm_hint">確認密碼:</string>
@@ -15,6 +18,8 @@
     <string name="edtTxt_signup_cancel"><u>取消</u></string>
     <string name="tv_signup_statusHint">選擇註冊用戶</string>
     <string name="tv_signup_wrongPW">密碼不一致</string>
+    <string name="tv_signup_text">-------------- 或是第三方註冊 -------------</string>
+    <string name="btn_signup_signupGoogle">以 Google 帳號註冊</string>
     <string-array name="sp_signup_info_gender">
     <item>男</item>
     <item>女</item>
@@ -53,7 +58,7 @@
     <string name="edtTxt_forgetPassword_Phone_hint">輸入手機號碼</string>
     <string name="edtTxt_forgetPassword_verify_hint">輸入驗證碼</string>
     <string name="edtTxt_forgetPassword_Email_hint">電子信箱</string>
-    <string name="btn_forgetPassword_send">寄送</string>
+    <string name="btn_forgetPassword_send">下一步</string>
     <string name="btn_forgetPassword_verify">驗證</string>
     <string name="tv_forgetPassword_useEmail"><u>使用信箱驗證</u></string>
     <string name="tv_forgetPassword_usePhone"><u>使用手機驗證</u></string>
@@ -63,4 +68,7 @@
     <string name="tv_resetPassword_NP">輸入新密碼</string>
     <string name="tv_resetPassword_checkNP">確認新密碼</string>
     <string name="tv_resetPassword_title">更新密碼</string>
+
+<!--    FCM-->
+    <string name="default_notification_channel_id">default_channel_id</string>
 </resources>

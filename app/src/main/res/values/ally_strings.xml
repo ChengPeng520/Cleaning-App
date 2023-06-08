@@ -58,6 +58,7 @@
     <string name="txt_csCreateOrder_orderEstablished">訂單建立完成</string>
     <string name="tv_csCreateOrder_chooseCleanerAtHistory">請於刊登紀錄選擇清潔人員</string>
     <string name="btn_csCreateOrder_checkHistory"><u>查看刊登紀錄</u></string>
+    <string name="toast_CsChooseCleanerCancelOrder">訂單取消成功</string>
 
     <!--    確認訂單    -->
     <string name="txt_oderConfirmed">確認訂單</string>

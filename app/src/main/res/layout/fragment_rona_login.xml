@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.100000024" />
+            app:layout_constraintVertical_bias="0.057" />
 
         <EditText
             android:id="@+id/edtTxt_login_account"
@@ -76,10 +76,10 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login_login"
+            style="@style/loginBtnSubmitStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
-            style="@style/loginBtnSubmitStyle"
             android:minHeight="48dp"
             android:text="@string/btn_login_login"
             android:textSize="20dp"
@@ -87,45 +87,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintVertical_bias="0.1" />
 
         <TextView
             android:id="@+id/tv_login_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/tv_login_signUp"
             android:textColor="@color/white"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login_login"
-            app:layout_constraintVertical_bias="0.146" />
-
-        <ImageView
-            android:id="@+id/iv_login_googleLogo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/googlelogo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.401"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login_signUp"
-            app:layout_constraintVertical_bias="0.243" />
-
-        <ImageView
-            android:id="@+id/iv_login_fbLogo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/fblogo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
-            app:layout_constraintStart_toEndOf="@+id/iv_login_googleLogo"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login_signUp"
-            app:layout_constraintVertical_bias="0.243" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_forgetPassword"
+            app:layout_constraintVertical_bias="0.16000003" />
 
         <ImageView
             android:id="@+id/iv_login_arrow"
@@ -144,14 +119,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_login_forgetPassword"
-            android:textColor="@color/textSecondary"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
-            app:layout_constraintVertical_bias="0.02" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_login_signupGoogle"
+            app:layout_constraintVertical_bias="0.3" />
 
         <TextView
             android:id="@+id/tv_login_errMsg"
@@ -160,12 +135,43 @@
             android:textColor="@color/error"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_login_forgetPassword"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.096"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtTxt_login_password"
             app:layout_constraintVertical_bias="0.018"
             tools:text="@string/tv_login_empty" />
+
+        <TextView
+            android:id="@+id/tv_login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_login_text"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login_login"
+            app:layout_constraintVertical_bias="0.077" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login_signupGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rona_field_style"
+            android:minHeight="48dp"
+            android:text="@string/btn_login_loginGoogle"
+            android:textColor="@color/textPrimary"
+            android:textSize="20dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_text"
+            app:layout_constraintVertical_bias="0.288" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

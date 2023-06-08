@@ -45,9 +45,9 @@ class UserSuspendAdapter(private var users: List<Member>) :
             alertDialogBuilder.setTitle("確定復原此帳號？")
             alertDialogBuilder.setMessage("將發送訊息給使用者")
             alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
-                //TODO
+                //TODO 沒有附到值
                 itemViewBinding.viewModel?.member?.value?.suspend = false
-//                itemViewBinding.viewModel.
+                itemViewBinding.viewModel?.editMemberInfo(itemView)
                 dialog.dismiss()
             }
             alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
@@ -79,10 +79,6 @@ class UserSuspendAdapter(private var users: List<Member>) :
         holder.itemViewBinding.viewModel?.member?.value = member
         holder.bind(member)
 
-
     }
-
-
-
 
 }

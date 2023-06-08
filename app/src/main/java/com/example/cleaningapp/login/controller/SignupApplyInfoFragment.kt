@@ -134,20 +134,37 @@ class SignupApplyInfoFragment : Fragment() {
         with(binding) {
             val fullName = viewModel?.fullName?.value?.trim()
             val phone = viewModel?.phone?.value?.trim()
+            val avatar = viewModel?.avatar?.value
+            val identifyNumber = viewModel?.identifyNumber?.value?.trim()
+            val id1 = viewModel?.id1?.value
+            val id2 = viewModel?.id2?.value
+            val goodPerson = viewModel?.crc?.value
 
             if (fullName == null || fullName.isEmpty() || phone == null || phone.isEmpty()) {
                 Toast.makeText(context, "姓名或手機不可空白", Toast.LENGTH_SHORT).show()
                 check = false
             }
 
-//            val id1 = viewModel?.id1?.value
-//            val id2 = viewModel?.id2?.value
-//            val goodPerson = viewModel?.goodPerson?.value
-//
-//            if ( id1 == null || id2 == null || goodPerson == null){
-//                Toast.makeText(context, "請上傳照片", Toast.LENGTH_SHORT).show()
-//                check = false
-//            }
+            if (identifyNumber == null){
+                Toast.makeText(context, "身份證字號不可空白", Toast.LENGTH_SHORT).show()
+                check = false
+            }
+
+            if (avatar == null){
+                Toast.makeText(context, "請上傳本人照片", Toast.LENGTH_SHORT).show()
+                check = false
+            }
+
+            if ( id1 == null || id2 == null){
+                Toast.makeText(context, "請上傳身分證照片", Toast.LENGTH_SHORT).show()
+                check = false
+            }
+
+            if ( goodPerson == null){
+                Toast.makeText(context, "請上傳良民證照片", Toast.LENGTH_SHORT).show()
+                check = false
+            }
+
             return check
         }
     }
