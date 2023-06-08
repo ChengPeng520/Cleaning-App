@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -18,11 +19,32 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaSignupBinding
 import com.example.cleaningapp.login.viewModel.SignupViewModel
 import com.example.cleaningapp.share.requestTask
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.gson.JsonObject
 
 class SignupFragment : Fragment() {
     private lateinit var binding: FragmentRonaSignupBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var client: GoogleSignInClient
+    private val myTag = "TAG_${javaClass.simpleName}"
     private val viewModel: SignupViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+        val options = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            // 要求輸入email
+            .requestEmail()
+            .build()
+        client = GoogleSignIn.getClient(requireActivity(), options)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +76,7 @@ class SignupFragment : Fragment() {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-
+            // 一般註冊方法
             btnSignupSignup.setOnClickListener { view ->
                 if (!inputCheck()) {
                     return@setOnClickListener
@@ -63,7 +85,7 @@ class SignupFragment : Fragment() {
                 val position = spnSignupStatus.selectedItemPosition
 
                 if (position == 0) {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/isExist"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
                         if (it.get("result").asBoolean) {
                             tvSignupErrMsg.text = "此帳號已存在"
@@ -79,7 +101,7 @@ class SignupFragment : Fragment() {
                         }
                     }
                 } else {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/"
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/isExist"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
                         Log.d("result", it.get("result").asBoolean.toString())
                         if (it.get("result").asBoolean) {
@@ -96,6 +118,36 @@ class SignupFragment : Fragment() {
                         }
                     }
                 }
+            }
+            // google註冊方法
+            btnSignupSignupGoogle.setOnClickListener {
+                //選擇身分設定
+                val position = spnSignupStatus.selectedItemPosition
+                if (position == 0) {
+                    // 註冊Google email, 取出email並bundle email至info頁
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/isExist"
+                    requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
+                        if (it.get("result").asBoolean) {
+                            tvSignupErrMsg.text = "此帳號已存在"
+                        } else {
+                            // google註冊method
+                            customerSignUpGoogleLauncher.launch(client.signInIntent)
+                        }
+                    }
+                } else {
+                    // 註冊Google email, 取出email並bundle email至info頁
+                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/isExist"
+                    requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
+                        Log.d("result", it.get("result").asBoolean.toString())
+                        if (it.get("result").asBoolean) {
+                            tvSignupErrMsg.text = "此帳號已存在"
+                        } else {
+                            // google註冊method
+                            cleanerSignUpGoogleLauncher.launch(client.signInIntent)
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -120,6 +172,86 @@ class SignupFragment : Fragment() {
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
+    }
+
+    // customer登入註冊
+    private var customerSignUpGoogleLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                account?.let {
+                    firebaseAuthWithGoogleCustomer(it)
+                }
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Log.e(myTag, e.toString())
+            }
+        }
+
+    // Customer使用Google帳號完成Firebase驗證
+    private fun firebaseAuthWithGoogleCustomer(account: GoogleSignInAccount) {
+        // get the unique ID for the Google account
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                // 登入成功轉至下頁；失敗則顯示錯誤訊息
+                if (task.isSuccessful) {
+                    // 將Email bundle至個人填寫頁並insert至DB
+                    val user = task.result.user //這裡的user指的是firebaseAuth的user
+                    val bundle = Bundle()
+                    bundle.putString("emailAccount", user?.email)
+                    bundle.putString("password", null)
+                    Log.d(myTag, "firebase user email: ${user?.email}")
+                    findNavController().navigate(
+                        R.id.action_signupFragment_to_signupContractMemberFragment,
+                        bundle
+                    )
+                } else {
+                    binding.tvSignupErrMsg.text = task.exception?.message
+                        ?: "google登入失敗"
+                }
+            }
+    }
+
+    // cleaner登入註冊
+    private var cleanerSignUpGoogleLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                account?.let {
+                    firebaseAuthWithGoogleCleaner(it)
+                }
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Log.e(myTag, e.toString())
+            }
+        }
+
+    // Cleaner使用Google帳號完成Firebase驗證
+    private fun firebaseAuthWithGoogleCleaner(account: GoogleSignInAccount) {
+        // get the unique ID for the Google account
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                // 登入成功轉至下頁；失敗則顯示錯誤訊息
+                if (task.isSuccessful) {
+                    // 將Email bundle至個人填寫頁並insert至DB
+                    val user = task.result.user //這裡的user指的是firebaseAuth的user
+                    val bundle = Bundle()
+                    bundle.putString("emailAccount", user?.email)
+                    bundle.putString("password", null)
+                    Log.d(myTag, "firebase user email: ${user?.email}")
+                    findNavController().navigate(
+                        R.id.action_signupFragment_to_signupContractFragment,
+                        bundle
+                    )
+                } else {
+                    binding.tvSignupErrMsg.text = task.exception?.message
+                        ?: "google登入失敗"
+                }
+            }
     }
 
     @SuppressLint("ResourceType")
@@ -151,7 +283,6 @@ class SignupFragment : Fragment() {
         }
     }
 }
-
 
 public enum class Identity { //用陣列約束
     Customer, Cleaner
