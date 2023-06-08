@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.*
+import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
@@ -147,6 +148,21 @@ class BsUserMainDetailViewModel : ViewModel() {
                         idCardFront = null,
                         idCardBack = null,
                         crc = null,
+                        suspend = it.suspend
+                    )
+                )?.let {
+                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+                }
+            }
+            if (it.backstageId != null) {
+                requestTask<BackstageSharedPreferencesUtils.ApiBackstageModel>(
+                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    method = "PUT",
+                    reqBody = BackstageSharedPreferencesUtils.ApiBackstageModel(
+                        backstageId = it.backstageId!!,
+                        account = it.email,
+                        name = it.name,
+                        password = null,
                         suspend = it.suspend
                     )
                 )?.let {

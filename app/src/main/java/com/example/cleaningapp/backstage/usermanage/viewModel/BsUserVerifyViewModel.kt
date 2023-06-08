@@ -26,8 +26,14 @@ class BsUserVerifyViewModel : ViewModel() {
             "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
-            users.value = it
-            userList = it
+            var unverifiedUsers = mutableListOf<Member>()
+            for (i in it) {
+                if (!i.verify) {
+                    unverifiedUsers.add(i)
+                }
+            }
+            users.value = unverifiedUsers
+            userList = unverifiedUsers
         }
     }
 
