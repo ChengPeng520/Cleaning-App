@@ -4,9 +4,9 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
@@ -33,17 +33,9 @@ class ApplycomplaintFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        arguments?.let { bundle ->
-            order = bundle.getSerializable("orderItem") as Order
-            viewModel.order.value = order
-        }
-
-        binding.bntApplyComplaintOk.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putSerializable("orderItem", order)
-            Navigation.findNavController(view)
-                .navigate(R.id.action_applycomplaintFragment_to_complaintdetailsFragment, bundle)
+        arguments?.getInt("orderId")?.let {
+            viewModel.fetchOrdersInfo(it)
+            viewModel.orderId.value = it
         }
 
         binding.bntApplyComplaintCancel.setOnClickListener {
@@ -51,7 +43,7 @@ class ApplycomplaintFragment : Fragment() {
         }
         //拍照功能
         binding.applycomplaintPhoto.setOnClickListener {
-            if (viewModel?.photo3?.value == null) {
+            if (viewModel.photo3.value == null) {
                 val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 takePictureSmallLauncher.launch(intent)
             }

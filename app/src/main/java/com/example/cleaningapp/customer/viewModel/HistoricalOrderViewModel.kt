@@ -37,7 +37,7 @@ class HistoricalOrderViewModel : ViewModel() {
             respBodyType = object : TypeToken<List<Order>>() {}.type
         )?.let {
             orderList.value = it
-            Log.d("OrderList", "Fetched orders: $it")
+//            Log.d("OrderList", "Fetched orders: $it")
         }
     }
 }

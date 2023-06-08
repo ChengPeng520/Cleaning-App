@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="@{viewModel.order.date}"
+                    android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_orderdatil_status"
                     app:layout_constraintEnd_toEndOf="@+id/tv_ti_order_date"
                     app:layout_constraintStart_toStartOf="@+id/tv_ti_order_date"
@@ -120,19 +120,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="@{viewModel.order.status}"
+                    android:text='@{viewModel.order.getStatus}'
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_orderdatil_num"
                     app:layout_constraintStart_toStartOf="@+id/tv_ti_order_status"
-                    app:layout_constraintTop_toTopOf="@+id/tv_bs_orderdatil_num" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_bs_orderdatil_num"
+                    app:layout_constraintVertical_bias="0.4"
+                    tools:text="" />
 
                 <TextView
                     android:id="@+id/tv_bs_orderdatil_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="14dp"
                     android:layout_marginTop="16dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="@{viewModel.order.number}"
+                    android:text="@{String.valueOf(viewModel.order.orderId)}"
                     app:layout_constraintEnd_toEndOf="@+id/tv_ti_order_num"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/tv_ti_order_num"
@@ -159,49 +161,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.order.date}"
+                android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_orderdatil_cleantime"
                 app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_orderdatil_cleantime"
                 app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_orderdatil_cleantime" />
 
 
             <TextView
-                android:id="@+id/tv_bs_orderdatil_cleantimetotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{String.valueOf(viewModel.order.Timetotal)}"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_order_time"
-                app:layout_constraintStart_toEndOf="@+id/tv_order_time"
-                app:layout_constraintTop_toTopOf="@+id/tv_order_time" />
-
-            <TextView
                 android:id="@+id/tv_ti_order_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_ti_bs_orderdatil_cleantime"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_orderdatil_cleantime"
                 app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_orderdatil_cleantime" />
 
             <TextView
-                android:id="@+id/tv_order_time"
+                android:id="@+id/tv_order_time_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{viewModel.order.cleantime}"
+                android:text="@{String.valueOf(viewModel.order.cleanTotalTime)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_ti_order_time"
                 app:layout_constraintStart_toEndOf="@+id/tv_ti_order_time"
                 app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_orderdatil_cleantime"
                 app:layout_constraintVertical_bias="1.0" />
 
+
             <TextView
                 android:id="@+id/tv_ti_order_adress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_ti_bs_order_address"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_order_time"
@@ -222,7 +215,7 @@
                 android:id="@+id/tv_ti_bs_order_cleanarea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_ti_bs_order_cleanarea"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_order_adress"
@@ -233,7 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.order.area}"
+                android:text="@{viewModel.order.cleanRange}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_order_cleanarea"
                 app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_order_cleanarea"
                 app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_order_cleanarea" />
@@ -242,70 +235,37 @@
                 android:id="@+id/textView34"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_ti_bs_order_clean_tools_and_ask"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_order_cleanarea"
                 app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_order_cleanarea" />
 
             <TextView
-                android:id="@+id/tv_ti_bs_tools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/tv_ti_bs_tools"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/textView34" />
-
-            <TextView
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="@{viewModel.order.tools}"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_tools"
-                app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_tools"
-                app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_tools" />
-
-            <TextView
-                android:id="@+id/tv_ti_bs_order_clean_focus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/tv_ti_bs_order_clean_focus"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_tools"
-                app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_tools" />
-
-            <TextView
-                android:id="@+id/tv_bs_order_clean_focus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@{viewModel.order.focus}"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_order_clean_focus"
-                app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_order_clean_focus"
-                app:layout_constraintTop_toBottomOf="@+id/textView43" />
+                android:layout_marginTop="16dp"
+                android:text="@{viewModel.order.remark}"
+                app:layout_constraintStart_toStartOf="@+id/textView34"
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
             <TextView
                 android:id="@+id/tv_ti_bs_order_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_ti_bs_order_pay"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_order_cleanarea"
-                app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_order_clean_focus" />
+                app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
             <TextView
                 android:id="@+id/tv_bs_orderdetail_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.order.money}"
+                android:text="@{String.valueOf(viewModel.order.originalPrice)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_order_pay"
                 app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_order_pay"
                 app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_order_pay"
@@ -315,7 +275,7 @@
                 android:id="@+id/tv_bs_order_booking_fee6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_bs_order_booking_fee"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_order_pay"
@@ -326,7 +286,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.order.bookingFee}"
+                android:text="@{String.valueOf(viewModel.order.priceForCleaner)}"
                 app:layout_constraintStart_toEndOf="@+id/tv_bs_order_booking_fee6"
                 app:layout_constraintTop_toTopOf="@+id/tv_bs_order_booking_fee6" />
 
@@ -334,7 +294,7 @@
                 android:id="@+id/tv_ti_bs_order_coupon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/tv_ti_bs_order_coupon"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_bs_order_booking_fee6"
@@ -345,7 +305,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.order.coupon}"
+                android:text="@{String.valueOf(viewModel.order.couponPrice)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_order_coupon"
                 app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_order_coupon"
                 app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_order_coupon" />
@@ -354,7 +314,7 @@
                 android:id="@+id/tv_ti_bs_order_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/tv_ti_bs_order_total"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_order_coupon"
@@ -365,7 +325,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.order.total}"
+                android:text="@{String.valueOf(viewModel.order.priceForCleaner)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_order_total"
                 app:layout_constraintStart_toEndOf="@+id/tv_ti_bs_order_total"
                 app:layout_constraintTop_toTopOf="@+id/tv_ti_bs_order_total"
@@ -395,7 +355,7 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/before1"
-                app:imageResource="@{viewModel.order.csPicture}"
+                app:imageBitmap ="@{viewModel.orderPhotos.orderPhoto1}"
                 app:layout_constraintStart_toStartOf="@+id/guideline17"
                 app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_order_cs_pic"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -406,7 +366,7 @@
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/before2"
-                app:imageResource="@{viewModel.order.csPicture2}"
+                app:imageBitmap ="@{viewModel.orderPhotos.orderPhotos2}"
                 app:layout_constraintStart_toEndOf="@+id/img_order_cs_pc1"
                 app:layout_constraintTop_toTopOf="@+id/img_order_cs_pc1"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -418,8 +378,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
                 android:src="@drawable/before3"
-                app:imageResource="@{viewModel.order.csPicture3}"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:imageBitmap ="@{viewModel.orderPhotos.orderPhotos3}"
                 app:layout_constraintStart_toEndOf="@+id/img_order_cs_pc2"
                 app:layout_constraintTop_toTopOf="@+id/img_order_cs_pc2"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -430,7 +390,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/tv_ti_bs_orderdatil_cleaner_pic"
-                app:layout_constraintStart_toStartOf="@+id/guideline17"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_order_cs_pic"
                 app:layout_constraintTop_toBottomOf="@+id/img_order_cs_pc1" />
 
             <ImageView
@@ -439,8 +401,8 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/after1"
-                app:imageResource="@{viewModel.order.clPicture}"
                 app:layout_constraintStart_toStartOf="@+id/guideline17"
+                app:imageBitmap ="@{viewModel.cleaningPhotos.cleaningPhotos1}"
                 app:layout_constraintTop_toBottomOf="@+id/tv_bs_orderdati_cleanpic"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -450,7 +412,7 @@
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/after2"
-                app:imageResource="@{viewModel.order.clPicture2}"
+                app:imageBitmap ="@{viewModel.cleaningPhotos.cleaningPhotos2}"
                 app:layout_constraintBottom_toBottomOf="@+id/img_order_cl_pc1"
                 app:layout_constraintStart_toEndOf="@+id/img_order_cl_pc1"
                 app:layout_constraintTop_toTopOf="@+id/img_order_cl_pc1"
@@ -463,12 +425,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
                 android:src="@drawable/after3"
-                app:imageResource="@{viewModel.order.clPicture3}"
+                app:imageBitmap ="@{viewModel.cleaningPhotos.cleaningPhotos3}"
                 app:layout_constraintBottom_toBottomOf="@+id/img_order_cl_pc2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/img_order_cl_pc2"
                 app:layout_constraintTop_toTopOf="@+id/img_order_cl_pc2"
                 tools:srcCompat="@tools:sample/avatars" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

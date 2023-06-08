@@ -11,7 +11,7 @@
         android:title="@string/item_customer_create_order" />
 
     <item
-        android:id="@+id/csChooseCleanerFragment2"
+        android:id="@+id/historicalorderFragment"
         android:icon="@drawable/cs_btnavbar_ic_order"
         android:title="@string/item_customer_history" />
 

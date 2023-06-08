@@ -28,15 +28,8 @@ class OrderingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let { bundle ->
-            order = bundle.getSerializable("orderItem") as Order
-            viewModel.order.value = order
-        }
-
-        with(binding){
-            button3.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_orderingFragment_to_ordercompletedFragment, arguments)
-            }
+        arguments?.getInt("orderId")?.let {
+            viewModel.fetchOrdersInfo(it)
         }
     }
 }

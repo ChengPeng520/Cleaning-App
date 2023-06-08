@@ -27,10 +27,9 @@
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintVertical_bias="0.077" />
 
         <ImageView
             android:id="@+id/iv_login_arrow"
@@ -76,7 +75,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spn_signup_status"
-            app:layout_constraintVertical_bias="0.10" />
+            app:layout_constraintVertical_bias="0.05" />
 
         <EditText
             android:id="@+id/edtTxt_signup_password"
@@ -122,17 +121,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/rona_btn_primarylight"
             android:minHeight="48dp"
+            android:layout_marginTop="8dp"
             android:text="@string/btn_signup_signup"
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_passwordcfm"
-            app:layout_constraintVertical_bias="0.168" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signup_signupGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rona_field_style"
+            android:minHeight="48dp"
+            android:text="@string/btn_signup_signupGoogle"
+            android:textColor="@color/textPrimary"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Signup_text" />
 
         <TextView
             android:id="@+id/tv_signup_cancel"
@@ -144,21 +159,36 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_signup_signup"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_signup_signupGoogle"
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/tv_Signup_ErrMsg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/error"
-            app:layout_constraintBottom_toTopOf="@+id/btn_signup_signup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_passwordcfm"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxt_signup_passwordcfm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_signup_signup"
             tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_Signup_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/tv_signup_text"
+            android:textAlignment="center"
+            android:textColor="@color/clr_cs_date_time_picker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edtTxt_signup_passwordcfm"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Signup_ErrMsg" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

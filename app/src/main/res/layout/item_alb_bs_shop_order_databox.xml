@@ -22,10 +22,10 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
-            android:text="@{viewModel.shopOrder.num}"
             android:textColor="@color/textPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{String.valueOf(viewModel.shopOrder.shopOrderId)}"
             tools:text="訂單編號" />
 
         <TextView
@@ -33,8 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{viewModel.shopOrder.state}"
             android:textColor="@color/error"
+            android:text='@{viewModel.shopOrder.isDelivered ? "已抵達":"未抵達"}'
             app:layout_constraintBottom_toBottomOf="@+id/tv_bs_shop_order_order"
             app:layout_constraintStart_toStartOf="@+id/guideline11"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{viewModel.shopOrder.time}"
+            android:text="@{viewModel.shopOrder.shopOderTime}"
             android:textColor="@color/textPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline46"

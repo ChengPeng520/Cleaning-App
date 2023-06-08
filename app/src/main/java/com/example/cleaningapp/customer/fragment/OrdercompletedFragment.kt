@@ -27,10 +27,5 @@ class OrdercompletedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            button4.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_ordercompletedFragment_to_orderdoneFragment)
-            }
-        }
     }
 }

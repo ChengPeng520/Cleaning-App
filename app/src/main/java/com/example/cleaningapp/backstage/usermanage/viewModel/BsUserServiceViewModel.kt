@@ -4,7 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
+import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
 import com.example.cleaningapp.backstage.usermanage.model.Chatroom
+import com.example.cleaningapp.share.requestTask
+import com.google.android.gms.common.util.ArrayUtils.contains
+import com.google.gson.reflect.TypeToken
 import java.util.jar.Attributes.Name
 
 /**
@@ -12,13 +16,28 @@ import java.util.jar.Attributes.Name
  */
 class BsUserServiceViewModel : ViewModel() {
     //原始聊天室列表
-    private var chatList = mutableListOf<Chatroom>()
+    private var chatList = listOf<ChatClnBack>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
-    val chats: MutableLiveData<List<Chatroom>> by lazy { MutableLiveData<List<Chatroom>>() }
+    val chats: MutableLiveData<List<ChatClnBack>> by lazy { MutableLiveData<List<ChatClnBack>>() }
+    val chat: MutableLiveData<ChatClnBack> by lazy { MutableLiveData<ChatClnBack>() }
 
     init {
-        loadChats()
+        loadChatList()
+    }
+
+    /**
+     * 連線後端取得聊天室列表
+     */
+    private fun loadChatList() {
+        requestTask<List<ChatClnBack>>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+            method = "GET",
+            respBodyType = object : TypeToken<List<ChatClnBack>>() {}.type
+        )?.let {
+            chats.value = it
+            chatList = it
+        }
     }
 
     /**
@@ -29,10 +48,10 @@ class BsUserServiceViewModel : ViewModel() {
         if (newText == null || newText.isEmpty()) {
             chats.value = chatList
         } else {
-            val searchChatList = mutableListOf<Chatroom>()
+            val searchChatList = mutableListOf<ChatClnBack>()
             chatList.forEach { chat ->
-                if (chat.email.contains(newText, true) ||
-                    chat.createTime.contains(newText, true)
+                if (chat.chatClnBackId.toString().contains(newText, true) ||
+                    chat.timeCreate.toString().contains(newText, true)
                 ) {
                     searchChatList.add(chat)
                 }
@@ -42,48 +61,48 @@ class BsUserServiceViewModel : ViewModel() {
     }
 
     /** 模擬取得遠端資料 */
-    private fun loadChats() {
-        val chatList = mutableListOf<Chatroom>()
-        chatList.add(
-            Chatroom(
-                chatId = 0,
-                cleanerId = 1,
-                name = "Rona",
-                avatar = R.drawable.alb_account_avatar,
-                email = "rona87@gmail.com",
-                text = "我是一名熱愛閱讀和旅行的年輕人",
-                createTime = "02:13",
-                read = true,
-                closed = true,
-            )
-        )
-        chatList.add(
-            Chatroom(
-                chatId = 1,
-                customerId = 1,
-                name = "Ally",
-                avatar = R.drawable.alb_account_avatar,
-                email = "ally87@gmail.com",
-                text = "我是一位熱衷於技術創新的工程師",
-                createTime = "09:13",
-                read = true,
-                closed = true,
-            )
-        )
-        chatList.add(
-            Chatroom(
-                chatId = 2,
-                customerId = 3,
-                name = "Ciyi",
-                avatar = R.drawable.alb_account_avatar,
-                email = "ciyi87@gmail.com",
-                text = "我是一名喜愛運動和音樂的青年",
-                createTime = "05-09",
-                read = true,
-                closed = true,
-            )
-        )
-        this.chatList = chatList
-        this.chats.value = this.chatList
-    }
+//    private fun loadChats() {
+//        val chatList = mutableListOf<Chatroom>()
+//        chatList.add(
+//            Chatroom(
+//                chatId = 0,
+//                cleanerId = 1,
+//                name = "Rona",
+//                avatar = R.drawable.alb_account_avatar,
+//                email = "rona87@gmail.com",
+//                text = "我是一名熱愛閱讀和旅行的年輕人",
+//                createTime = "02:13",
+//                read = true,
+//                closed = true,
+//            )
+//        )
+//        chatList.add(
+//            Chatroom(
+//                chatId = 1,
+//                customerId = 1,
+//                name = "Ally",
+//                avatar = R.drawable.alb_account_avatar,
+//                email = "ally87@gmail.com",
+//                text = "我是一位熱衷於技術創新的工程師",
+//                createTime = "09:13",
+//                read = true,
+//                closed = true,
+//            )
+//        )
+//        chatList.add(
+//            Chatroom(
+//                chatId = 2,
+//                customerId = 3,
+//                name = "Ciyi",
+//                avatar = R.drawable.alb_account_avatar,
+//                email = "ciyi87@gmail.com",
+//                text = "我是一名喜愛運動和音樂的青年",
+//                createTime = "05-09",
+//                read = true,
+//                closed = true,
+//            )
+//        )
+//        this.chatList = chatList
+//        this.chats.value = this.chatList
+//    }
 }

@@ -29,7 +29,7 @@ class CsChooseCleanerViewModel : ViewModel() {
 
     fun fetchCleanerApplied() {
         requestTask<List<Cleaner>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/10",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/${order.value?.orderId}",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
             cleanerList.value = it

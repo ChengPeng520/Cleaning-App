@@ -2,6 +2,7 @@ package com.example.cleaningapp.customer.fragment
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,31 +28,11 @@ class ComplaintdetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        arguments?.let { bundle ->
-            bundle.getSerializable("orderItem")?.let {
-                viewModel.order.value = it as Order
-            }
-
-            val photoUri = bundle.getParcelable<Uri>("photoUri")
-            photoUri?.let {
-                viewModel.photoUri.value = it
-            }
+        arguments?.getInt("orderId")?.let {
+            viewModel.fetchOrdersInfo(it)
         }
-
-        viewModel.photoUri.observe(viewLifecycleOwner) { uri ->
-            // 設置照片到對應的 ImageView
-            when (viewModel.capturedCount) {
-                1 -> binding.imageView41.setImageURI(uri)
-                2 -> binding.imageView42.setImageURI(uri)
-                3 -> binding.imageView40.setImageURI(uri)
-            }
-        }
-        with(binding){
-            bntApplyComplaintChat.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_complaintdetailsFragment_to_chatRoomFragment)
-            }
+        binding.bntApplyComplaintChat.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.chatRoomFragment)
         }
     }
 }

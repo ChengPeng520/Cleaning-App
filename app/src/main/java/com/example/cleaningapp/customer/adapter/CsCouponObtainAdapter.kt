@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -11,6 +10,7 @@ import com.example.cleaningapp.customer.csHomePage.CsCouponObtainViewModel
 import com.example.cleaningapp.customer.model.CouponObtain
 import com.example.cleaningapp.customer.model.CustomerCoupon
 import com.example.cleaningapp.databinding.ItemCsObtainCouponBinding
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 
 class CsCouponObtainAdapter(private var coupons: List<CouponObtain>) :
     RecyclerView.Adapter<CsCouponObtainAdapter.CouponObtainViewHolder>() {
@@ -38,7 +38,12 @@ class CsCouponObtainAdapter(private var coupons: List<CouponObtain>) :
             // 將欲顯示的coupon物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewmodel?.coupon?.value = coupon
             itemViewBinding.btCusCouponObtain.setOnClickListener {
-                itemViewBinding.viewmodel?.customerTakeCoupon(CustomerCoupon(customerId = 1, couponId = coupon.couponId))?.let { result ->
+                itemViewBinding.viewmodel?.customerTakeCoupon(
+                    CustomerCoupon(
+                        customerId = CustomerSharePreferencesUtils.getCurrentCustomerId(),
+                        couponId = coupon.couponId
+                    )
+                )?.let { result ->
                     if (result) {
                         coupon.isOnReceive = true
                         itemViewBinding.viewmodel?.coupon?.value = coupon

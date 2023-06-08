@@ -1,62 +1,39 @@
 package com.example.cleaningapp.backstage.shop.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.shop.shopOrder
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class BsShopOrdersViewModel:ViewModel(){
+    private var shopOrderList = mutableListOf<shopOrder>()
+    val shopOrders: MutableLiveData<List<shopOrder>> by lazy { MutableLiveData<List<shopOrder>>() }
 
-         val shopOrders: MutableLiveData<List<shopOrder>> by lazy { MutableLiveData<List<shopOrder>>() }
-        private var shopOrderList = mutableListOf<shopOrder>()
 
         init {
             loadOrderList()
         }
 
-        private fun loadOrderList() {
-            //取得遠端資料
+        fun loadOrderList() {
+            requestTask<List<shopOrder>>(
+                "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/selectAll/",
+            "GET" ,
+                    respBodyType = object :TypeToken<List<shopOrder>>() {} .type
+            )?.let {
+                shopOrders.value =it
 
-            val shopOrderList = mutableListOf<shopOrder>()
-            shopOrderList.add(
-                shopOrder(
-                    "12345678",
-                    "處理中",
-                    "2023-05-17",
-                    "5",
-                    "5000",
-                    "Albert",
-                    "0912345789",
-                    "台北市南京復興區嘿嘿路嘿嘿巷12號3樓"
-
-                )
-            )
-            shopOrderList.add(
-                shopOrder(
-                    "12345678",
-                    "執行中",
-                    "2023-05-17",
-                    "5",
-                    "5000",
-                    "Albert",
-                    "0912345789",
-                    "台北市南京復興區嘿嘿路嘿嘿巷12號3樓"
-
-                )
-            )
-            this.shopOrderList = shopOrderList
-            this.shopOrders.value = this.shopOrderList
-
+            }
         }
 
         fun search(netText: String) {
-            if (netText.isEmpty() || netText == null) {
+            if (netText.isEmpty()) {
                 shopOrders.value = shopOrderList
             } else {
                 val searchOfOrder = mutableListOf<shopOrder>()
-                ///前面一開始宣告的訂單.forEach 所代表每一個訂單列表中的一筆訂單,使用lambda表示式去核對netText所輸入的值與
-                // .num或.name的字串是否與
                 shopOrderList.forEach { shopOrder ->
-                    if (shopOrder.num.contains(netText,true)){
+                    if (shopOrder.recieverName?.contains(netText,true) == true){
                         searchOfOrder.add(shopOrder)
                     }
                 }

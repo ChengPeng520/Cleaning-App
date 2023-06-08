@@ -24,8 +24,13 @@ class  LoginForgetPasswordPhoneFragment : Fragment() {
     private lateinit var binding: FragmentRonaLoginForgetPasswordPhoneBinding
     private val myTag = "TAG_${javaClass.simpleName}"
     private lateinit var auth: FirebaseAuth
-    private lateinit var verificationId: String
+    private var verificationId: String = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,19 +49,24 @@ class  LoginForgetPasswordPhoneFragment : Fragment() {
             ivApplyinfoBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
-            tvForgetPasswordUseEmail.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_loginForgetPasswordPhoneFragment_to_loginForgetPasswordEmailFragment)
-            }
+
             btnForgetPasswordSend.setOnClickListener {
                 //1.發送驗證需求給手機
                 //2.轉跳至驗證頁面
                 if (inputCheck()){
-                    requestVerificationCode("+886${viewModel?.phone?.value}")
-                    Navigation.findNavController(it)
-                        .navigate(R.id.action_loginForgetPasswordPhoneFragment_to_forgetPasswordPhoneVFragment)
+                    val phone = viewModel?.phone?.value?.substring(1)
+                    requestVerificationCode("+886$phone")
+                    if(verificationId.isNotEmpty()){
+                        val bundle = Bundle()
+                        bundle.putString("phoneNumber", viewModel?.phone?.value)
+                        bundle.putString("verificationId", verificationId)
+                        Log.d(myTag, "verificationId: $verificationId")
+                        Navigation.findNavController(it)
+                            .navigate(R.id.action_loginForgetPasswordPhoneFragment_to_forgetPasswordPhoneVFragment,bundle)
+                    }else{
+                        return@setOnClickListener
+                    }
                 }
-
             }
         }
     }
@@ -76,11 +86,11 @@ class  LoginForgetPasswordPhoneFragment : Fragment() {
     }
 
     // 發送驗證需求給手機
-    private fun requestVerificationCode(mobile: String) {
+    private fun requestVerificationCode(phone: String) {
         auth.setLanguageCode("zh-Hant")
         val phoneAuthOptions = PhoneAuthOptions.newBuilder(auth)
             // 輸入的電話號碼
-            .setPhoneNumber(mobile)
+            .setPhoneNumber(phone)
             // 驗證碼失效時間，設為60秒代表即使多次請求驗證碼，過了60秒才會發送第2次
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(requireActivity())

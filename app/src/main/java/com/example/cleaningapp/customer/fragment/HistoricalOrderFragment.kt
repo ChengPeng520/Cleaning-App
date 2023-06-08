@@ -92,7 +92,7 @@ class HistoricalOrderFragment : Fragment() {
             val completedDrawable = binding.btnOrderListDone.compoundDrawablesRelative[0]
             completedDrawable?.setTint(defaultIconColor)
             val orders = viewModel.orderList.value.orEmpty()
-                .filter { it.status == 1 || it.status == 2 || it.status == 3 || it.status == 4 }
+                .filter { it.status == 1 || it.status == 2 || it.status == 3 }
             adapter?.updateOrders(orders)
         }
 
@@ -118,7 +118,7 @@ class HistoricalOrderFragment : Fragment() {
             val completedDrawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
             completedDrawable?.setTint(defaultIconColor)
             val orders =
-                viewModel.orderList.value.orEmpty().filter { it.status == 5 || it.status == 6 }
+                viewModel.orderList.value.orEmpty().filter { it.status == 4 || it.status == 5 || it.status == 6 }
             adapter?.updateOrders(orders)
         }
     }
