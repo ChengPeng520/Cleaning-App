@@ -24,7 +24,6 @@ class BsShopMainViewModel : ViewModel() {
                 respBodyType = object : TypeToken<List<Product>>() {}.type
             )?.let {
                     response ->
-                Log.d("API Response",response.toString())
                 products.value = response
                 productList= response
             }

@@ -1,5 +1,6 @@
 package com.example.cleaningapp.cleaner.viewmodel.search
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.ApplingOrder
@@ -11,7 +12,7 @@ import com.google.gson.reflect.TypeToken
 class CleanerFrontViewModel : ViewModel() {
     // 原始Cleaner列表
     // RecyclerView、Adapter
-    var cleanerList = mutableListOf<SearchOrder>()
+    var cleanerList = listOf<SearchOrder>()
 
     // 受監控的LiveData，一旦指派新值就會更新Cleaner列表畫面
     val cleaners: MutableLiveData<List<SearchOrder>> by lazy { MutableLiveData<List<SearchOrder>>() }
@@ -24,37 +25,38 @@ class CleanerFrontViewModel : ViewModel() {
     val chooseCleaningTimeStart: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
     val chooseCleaningTimeEnd: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
 
-    // 搜尋列表
-    init {
-        fetchJob()
-    }
+    // 搜尋列表 (連線)
+//    init {
+//        fetchOrderJob()
+//    }
 
-    private fun fetchJob() {
-        requestTask<List<ApplingOrder>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
-            respBodyType = object : TypeToken<List<ApplingOrder>>() {}.type
-        )?.let {
-            val searchOrderList : MutableList<SearchOrder> = mutableListOf()
-            it.forEach { applingOrder ->
-                val searchOrder = SearchOrder(
-                    photo = applingOrder.photo,
-                    orderId = applingOrder.order.orderId,
-                    cleanerId = applingOrder.order.cleanerId,
-                    dateOrdered = applingOrder.order.dateOrdered,
-                    timeOrderedStart = applingOrder.order.timeOrderedStart,
-                    timeOrderedEnd = applingOrder.order.timeOrderedEnd,
-                    areaCity = applingOrder.order.areaCity,
-                    areaDistrict = applingOrder.order.areaDistrict,
-                    areaDetail = applingOrder.order.areaDetail
-                )
-                searchOrderList.add(searchOrder)
-            }
-            cleaners.value = searchOrderList
-            cleanerList = searchOrderList
+//    private fun fetchOrderJob() {
+//        requestTask<List<SearchOrder>>(
+//            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+//            "GET",
+//            respBodyType = object : TypeToken<List<SearchOrder>>() {}.type
+//        )?.let {
+//            cleaners.value = it
+//            cleanerList = it
+//
+//            Log.d("CleanerList","CleanerId: $it")
+//        }
+//    }
+
+    // 搜尋日期時間 篩選
+    fun isSearch(): Boolean {
+        if (chooseCleaningDate.value.toString()
+                .isNotEmpty() && chooseCleaningTimeStart.value.toString()
+                .isNotEmpty() && chooseCleaningTimeEnd.value.toString().isNotEmpty()
+        ) {
+            return true
         }
+        return false
     }
+}
 
-    // 前端預設假資料
+// 前端預設假資料 - - - - - -
+
 //    init {
 //        loadCleaners()
 //    }
@@ -99,16 +101,6 @@ class CleanerFrontViewModel : ViewModel() {
 //        this.cleaner.value = this.cleanerList
 //    }
 
-    // 搜尋日期時間篩選
-    fun isSearch(): Boolean {
-        if (chooseCleaningDate.value.toString()
-                .isNotEmpty() && chooseCleaningTimeStart.value.toString()
-                .isNotEmpty() && chooseCleaningTimeEnd.value.toString().isNotEmpty()
-        ) {
-            return true
-        }
-        return false
-    }
-}
+
 //by lazy 晚一點啟用
 //MutableLiveData<List<Job>>() 括弧為初始質

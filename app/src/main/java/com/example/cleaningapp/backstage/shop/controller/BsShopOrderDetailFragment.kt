@@ -18,12 +18,12 @@ import com.example.cleaningapp.databinding.FragmentAlbBsShopOrderDetailBinding
 
 class BsShopOrderDetailFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsShopOrderDetailBinding
+    val viewModel: BsShopOrdersDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val viewModel: BsShopOrdersDetailViewModel by viewModels()
         binding = FragmentAlbBsShopOrderDetailBinding.inflate(inflater, container, false)
         binding.viewModel = BsShopOrdersDetailViewModel()
         binding.lifecycleOwner = this
@@ -36,22 +36,18 @@ class BsShopOrderDetailFragment : Fragment() {
                 Navigation.findNavController(it).popBackStack()
             }
             btnBsShopOrderDetailShip.setOnClickListener {
-
+                viewModel?.shopOrder?.value?.isChecked = true
                 val radius = resources.getDimensionPixelSize(R.dimen.button_corner_radius).toFloat()
                 val shape = GradientDrawable()
                 shape.cornerRadius = radius
                 btnBsShopOrderDetailShip.background = shape
-                // 更改按钮颜色为灰色
                 btnBsShopOrderDetailShip.setBackgroundColor(Color.LTGRAY)
-                //不能再被點擊
                 btnBsShopOrderDetailShip.isEnabled = false
-                //文字內容改變成已出貨
-                btnBsShopOrderDetailShip.text = "已出貨"
                 btnBsShopOrderDetailShip.setTextColor(Color.WHITE)
-
             }
             arguments?.let { bundle ->
-                bundle.getSerializable("product")?.let {
+                bundle.getInt("shopOrderId")?.let {
+                    viewModel?.loadShopOrderDetail(it)
                 }
             }
             binding.rvBsShopOrderDetail.layoutManager = LinearLayoutManager(requireContext())

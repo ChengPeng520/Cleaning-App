@@ -520,9 +520,8 @@ class CsCreateOrderFragment : Fragment() {
                     DatePickerDialog(
                         requireContext(),
                         { _, year, month, day ->
-                            // 一月的值是0而非1，所以「month + 1」後才顯示
                             val order = viewModel?.order?.value
-                            order?.dateOrdered = java.sql.Date(year, month + 1, day)
+                            order?.dateOrdered = java.sql.Date(year, month, day)
                             viewModel?.order?.value = order
                         },
                         calendar.get(Calendar.YEAR),

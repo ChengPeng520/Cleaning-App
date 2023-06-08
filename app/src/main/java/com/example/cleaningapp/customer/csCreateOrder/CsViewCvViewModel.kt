@@ -37,4 +37,15 @@ class CsViewCvViewModel : ViewModel() {
             comments.value = it
         }
     }
+
+//    fun checkout(): Boolean {
+//        requestTask<OrderEstablished>(
+//            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied",
+//            "PUT",
+//            orderEstablished.value
+//        )?.let {
+//            return true
+//        }
+//        return false
+//    }
 }

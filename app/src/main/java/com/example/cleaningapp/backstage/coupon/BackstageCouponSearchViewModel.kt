@@ -32,11 +32,7 @@ class BackstageCouponSearchViewModel : ViewModel() {
         } else {
             val couponSearchList = mutableListOf<Coupon>()
             couponList.forEach { coupon ->
-                if (coupon.couponName.contains(netText, true) || coupon.couponName.contains(
-                        netText,
-                        true
-                    )
-                )
+                if (coupon.couponName.contains(netText, true))
                     couponSearchList.add(coupon)
             }
             coupons.value = couponSearchList

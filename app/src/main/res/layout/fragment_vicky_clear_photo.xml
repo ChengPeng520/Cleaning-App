@@ -6,6 +6,7 @@
     tools:context=".cleaner.view.order.ClearPhotoFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.cleaner.viewmodel.order.ClearPhotoViewModel" />
@@ -58,25 +59,26 @@
                 android:id="@+id/imageView28"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                app:imageBitmap="@{viewModel.cleanerbeforePhoto.photo1}"
                 android:background="@drawable/ic_add"
+                app:imageBitmap="@{viewModel.orderPhotos.photo1}"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/imageView33"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                app:imageBitmap="@{viewModel.cleanerbeforePhoto.photo2}"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                app:imageBitmap="@{viewModel.orderPhotos.photo2}"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/imageView39"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                app:imageBitmap="@{viewModel.cleanerbeforePhoto.photo3}"
+                app:imageBitmap="@{viewModel.orderPhotos.photo3}"
                 tools:src="@tools:sample/avatars" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -85,12 +87,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/linearLayout4"
-            app:layout_constraintTop_toBottomOf="@+id/tv_order_clearphoto_after"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_clearphoto_after">
 
             <ImageView
                 android:id="@+id/imageView40"
@@ -127,4 +126,5 @@
             app:layout_constraintVertical_bias="0.6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
