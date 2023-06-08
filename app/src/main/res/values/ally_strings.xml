@@ -25,6 +25,8 @@
     <string name="tv_csHome_orderDate">打掃日期：</string>
     <string name="tv_csHome_orderTime">打掃時間：</string>
     <string name="tv_csHome_orderArea">位　　置：</string>
+    <string name="tv_csHome_noOrderRemind"><u>目前有沒進行中訂單，前往刊登需求>></u></string>
+    <string name="tv_csHome_orderTB">進行中訂單</string>
 
     <!--        服務條款      -->
     <string name="txt_csServiceTerms_title">服務條款</string>

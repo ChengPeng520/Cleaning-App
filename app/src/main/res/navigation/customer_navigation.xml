@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_csHomePageFragment_to_csCouponObtainFragment"
             app:destination="@id/csCouponObtainFragment" />
+        <action
+            android:id="@+id/action_csHomePageFragment_to_csCreateOrderFragment"
+            app:destination="@id/csCreateOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/csCouponObtainFragment"

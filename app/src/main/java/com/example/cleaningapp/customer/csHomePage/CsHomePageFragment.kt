@@ -24,6 +24,13 @@ class CsHomePageFragment : Fragment() {
         binding.viewModel = viewModel
         // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
+        if(viewModel.order.value?.orderId == 0) {
+            binding.flCsHomeGoCreateOrder.visibility = View.VISIBLE
+            binding.flCsHomeOrderTB.visibility = View.GONE
+        } else {
+            binding.flCsHomeGoCreateOrder.visibility = View.GONE
+            binding.flCsHomeOrderTB.visibility = View.VISIBLE
+        }
         return binding.root
     }
 
@@ -33,6 +40,9 @@ class CsHomePageFragment : Fragment() {
         with(binding) {
             flCsHomeCoupon.setOnClickListener {
                 findNavController().navigate(R.id.action_csHomePageFragment_to_csCouponObtainFragment)
+            }
+            flCsHomeGoCreateOrder.setOnClickListener{
+                findNavController().navigate(R.id.action_csHomePageFragment_to_csCreateOrderFragment)
             }
             rvCsHomePageComment.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.cleaners?.observe(viewLifecycleOwner) { cleaners ->
