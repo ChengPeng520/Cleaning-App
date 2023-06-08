@@ -8,7 +8,6 @@
         <variable
             name="viewModel"
             type="com.example.cleaningapp.customer.csHomePage.CsHomePageViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,17 +17,170 @@
         android:paddingTop="12dp"
         tools:context=".customer.csHomePage.CsHomePageFragment">
 
-        <FrameLayout
-            android:id="@+id/fl_csHome_orderTB"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:background="@drawable/shape_cs_graybackground_rectangle"
-            app:layout_constraintBottom_toTopOf="@+id/tv_csHome_coupon"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/iv_csHome_orderTB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/fl_csHome_coupon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout21"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/shape_cs_title_bar" />
 
-        </FrameLayout>
+        <TextView
+            android:id="@+id/tv_csHome_orderTB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/tv_csHome_orderTB"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_csHome_orderTB"
+            app:layout_constraintStart_toEndOf="@id/iv_csHome_orderTB"
+            app:layout_constraintTop_toTopOf="@id/iv_csHome_orderTB" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout21"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/shape_cs_graybackground_rectangle"
+            app:layout_constraintTop_toBottomOf="@id/iv_csHome_orderTB"
+            tools:layout_editor_absoluteX="24dp">
+
+            <FrameLayout
+                android:id="@+id/fl_csHome_goCreateOrder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_cs_graybackground_rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/tv_csHome_noOrderRemind"
+                    android:textColor="@color/clr_csOderOption" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_csHome_orderTB"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_cs_graybackground_rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_csHome_orderDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:src="@drawable/ic_calendar" />
+
+                        <TextView
+                            android:id="@+id/tv_csHome_orderNoTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csHome_orderDate" />
+
+                        <TextView
+                            android:id="@+id/tv_csHome_orderNo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.5" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_csHome_orderTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:src="@drawable/ic_time" />
+
+                        <TextView
+                            android:id="@+id/tv_csHome_orderTimeTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csHome_orderTime" />
+
+                        <TextView
+                            android:id="@+id/tv_csHome_orderTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.5" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_csHome_orderArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:src="@drawable/ic_location" />
+
+                        <TextView
+                            android:id="@+id/tv_csHome_orderAreaTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_csHome_orderArea" />
+
+                        <TextView
+                            android:id="@+id/tv_csHome_orderArea"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.5" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/imageView41"
@@ -37,7 +189,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/fl_csHome_coupon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fl_csHome_orderTB"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout21"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/shape_cs_title_bar" />
 
@@ -52,13 +204,12 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView41"
             app:layout_constraintStart_toEndOf="@+id/imageView41"
-            app:layout_constraintTop_toTopOf="@+id/imageView41"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/imageView41" />
 
         <LinearLayout
             android:id="@+id/fl_csHome_coupon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/customer_btn_submit_shape"
             android:orientation="vertical"
@@ -70,22 +221,20 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="1dp"
                 android:background="@drawable/shape_cs_coupon_limitedtime_white"
                 android:gravity="center"
                 android:text="@string/txt_cusCoupon_limitedTime"
                 android:textColor=" #FF0808"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="1dp"
                 android:gravity="center_vertical"
                 android:text="8折"
                 android:textColor="@color/black"
-                android:textSize="26dp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -93,11 +242,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="1dp"
                 android:gravity="center"
                 android:text="@string/tv_csHomepage_obtainLimited"
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -122,8 +270,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView40"
             app:layout_constraintStart_toEndOf="@+id/imageView40"
-            app:layout_constraintTop_toTopOf="@+id/imageView40"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/imageView40" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_csHomePage_comment"
@@ -136,7 +283,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_csHome_comment">
 
         </androidx.recyclerview.widget.RecyclerView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

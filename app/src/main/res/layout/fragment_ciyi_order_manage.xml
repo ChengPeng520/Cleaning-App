@@ -109,7 +109,9 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="@string/tv_bs_orderlist_noresult"
-                tools:gravity="center" />
+                android:visibility="invisible"
+                tools:gravity="center"
+                tools:visibility="invisible" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"

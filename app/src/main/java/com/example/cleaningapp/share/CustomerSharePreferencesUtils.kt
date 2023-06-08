@@ -63,7 +63,7 @@ object CustomerSharePreferencesUtils {
         return try {
             val apiCustomerModel = Gson().fromJson(Gson().toJson(any), ApiCustomerModel::class.java)
             sharedPreferences.edit()
-                .putInt("customerId", getCurrentCustomerId())
+                .putInt("customerId", apiCustomerModel.customerId)
                 .putString("email", apiCustomerModel.email)
                 .putString("name", apiCustomerModel.name)
                 .putString(
@@ -131,5 +131,9 @@ object CustomerSharePreferencesUtils {
             introduction = customer.introduction,
 
         )
+    }
+
+    fun logout() {
+        sharedPreferences.edit().clear().apply()
     }
 }

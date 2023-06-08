@@ -19,7 +19,7 @@ class OrderUtil {
         val bathRoomSize: Int = 0,
         val roomSize: Int = 0,
         val remark: String = "",
-        val commentCleaner: String = "",
+        val commentCleaner: String? = null,
         val priceForCleaner: Int = 0,
         val stars: Float = 0f,
         val status: Int = 0
@@ -27,6 +27,11 @@ class OrderUtil {
 
     data class OrderStatus(
         val order: Order,
-        val photo: List<ByteArray>?
+        val photos: List<ByteArray?>?
+    )
+
+    data class InsertOrder(
+        val order: Order,
+        val photos: List<ByteArray>?
     )
 }

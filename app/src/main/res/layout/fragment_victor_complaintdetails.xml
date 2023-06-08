@@ -15,61 +15,17 @@
         android:layout_height="match_parent"
         tools:context=".customer.fragment.ComplaintdetailsFragment">
 
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/btn_orderList_ing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/baseline_event_24"
-                android:gravity="center"
-                android:text="@string/btn_orderList_ing"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/btn_orderList_established"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/baseline_fact_check_24"
-                android:gravity="center"
-                android:text="@string/btn_orderList_established"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/btn_orderList_done"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/vicky_baseline_check_box_24"
-                android:gravity="center"
-                android:text="@string/btn_orderList_done"
-                android:textSize="20sp" />
-        </LinearLayout>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ScrollView
                 android:id="@+id/scrollView4"
@@ -172,7 +128,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@{viewModel.order.date}"
+                            android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
                             app:layout_constraintBottom_toBottomOf="@+id/textView31"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView31"
@@ -203,7 +159,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:text="@{String.valueOf(viewModel.order.cleanerid)}"                            app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                            android:text="@{viewModel.order.cleanerName}"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView38"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView38"
                             app:layout_constraintTop_toTopOf="@+id/textView38"
@@ -223,7 +180,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:text="@{viewModel.order.size}"
+                            android:text="@{viewModel.order.cleaningRange}"
                             app:layout_constraintBottom_toBottomOf="@+id/textView34"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView34"
@@ -244,7 +201,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@{viewModel.order.time}"
+                            android:text="@{viewModel.order.cleaningTime}"
                             app:layout_constraintBottom_toBottomOf="@+id/textView32"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView32"
@@ -265,7 +222,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:text="@{String.valueOf(viewModel.order.total)}"
+                            android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
                             app:layout_constraintBottom_toBottomOf="@+id/textView59"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView59"
@@ -278,7 +235,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@{String.valueOf(viewModel.order.orderid)}"
+                            android:text="@{String.valueOf(viewModel.order.orderId)}"
                             app:layout_constraintBottom_toBottomOf="@+id/textView30"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView30"
@@ -298,19 +255,6 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView27"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="客訴內容:" />
-
-                    <TextView
-                        android:id="@+id/tv_complaintContent_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="8dp" />
-
-                    <TextView
                         android:id="@+id/tv_complaintContent_detailed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -327,6 +271,7 @@
                         android:gravity="top|left"
                         android:inputType="textMultiLine"
                         android:padding="8dp"
+                        android:text="@{viewModel.order.bsComplainRemark}"
                         tools:text="地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......" />
 
                     <LinearLayout

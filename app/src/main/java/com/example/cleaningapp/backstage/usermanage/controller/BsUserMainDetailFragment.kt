@@ -33,6 +33,10 @@ class BsUserMainDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         requireActivity().title = "用戶管理"
+
+        /**
+         * 從用戶管理Main的recyclerView接過來的bundle
+         */
         arguments?.let { bundle ->
             bundle.getSerializable("member")?.let {
                 binding.viewModel?.fetchMemberInfo(it as Member)
@@ -51,10 +55,16 @@ class BsUserMainDetailFragment : Fragment() {
             with(binding) {
 
                 btnBsUserMainDetailModify.setOnClickListener {
+                    val bundle = Bundle()
+                    val user = binding.viewModel?.user?.value
+                    bundle.putSerializable("user", user)
                     Navigation.findNavController(view)
-                        .navigate(R.id.action_bsUserMainDetailFragment_to_bsUserMainModifyFragment)
+                        .navigate(
+                            R.id.action_bsUserMainDetailFragment_to_bsUserMainModifyFragment,
+                            bundle
+                        )
                 }
-                btnBsUserMainDetailDelete.setOnClickListener {
+                btnBsUserMainDetailSuspend.setOnClickListener {
                     showAlertDialog()
                 }
                 ivBsUserMainDetailBack.setOnClickListener {
@@ -73,9 +83,8 @@ class BsUserMainDetailFragment : Fragment() {
 
         alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
             dialog.dismiss()
-            Navigation.findNavController(binding.btnBsUserMainDetailDelete)
-                .navigate(R.id.bsUserMainFragment)
-            //TODO 將帳號的suspend狀態update成1
+            binding.viewModel?.user?.value?.suspend = true
+            view?.let { viewModel.editMemberInfo(it) }
         }
         alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
             dialog.dismiss()

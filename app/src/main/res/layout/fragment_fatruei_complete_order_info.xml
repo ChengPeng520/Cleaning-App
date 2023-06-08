@@ -308,6 +308,7 @@
                         android:numStars="5"
                         android:rating="@{viewModel.uiState.stars}"
                         android:stepSize="0.1"
+                        android:theme="@style/RatingBar"
                         app:layout_constraintBottom_toBottomOf="@+id/textView31"
                         app:layout_constraintStart_toEndOf="@+id/textView31"
                         app:layout_constraintTop_toTopOf="@+id/textView31" />
@@ -349,6 +350,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
+                        android:id="@+id/linearLayout12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"

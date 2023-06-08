@@ -20,12 +20,6 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
     RecyclerView.Adapter<BackstageCouponAdapter.CouponViewHolder>() {
 
 
-    /* CouponViewHolder 有ItemViewBinding的屬性,類型為FragmentCiyiCouponSearchBinding
-    這個類別是用於在RecyclerView中顯示每個項目的視圖持有者。
-
-    這段程式碼定義了一個使用Data Binding的項目視圖持有者(CouponViewHolder)，
-    它通過接收綁定類別(ItemViewBinding)來輕鬆訪問和操作項目佈局中的元素。
-     */
     class CouponViewHolder(val itemViewBinding: ItemCiyiBackstageCouponBinding) :
         ViewHolder(itemViewBinding.root)
 
@@ -36,20 +30,16 @@ class BackstageCouponAdapter(private var coupons: List<Coupon>) :
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
-    ): CouponViewHolder {
-        /*創建項目的畫面綁定（ViewBinding）對象,FragmentCiyiCouponSearchBinding是由LayoutInflater.from(畫面擴充來自)parent.context(RecyclerView父容器.內容)*/
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CouponViewHolder {
         val itemCouponViewBinding = ItemCiyiBackstageCouponBinding.inflate(
             LayoutInflater.from(parent.context),
-            parent,                 //parent：這是RecyclerView的父容器，即RecyclerView所在的布局容器。在創建ViewHolder時，我們需要提供父容器的參考，以便在後續的佈局中使用。
-            false       //這是將創建的ViewHolder加入到父容器中的一個標誌。當設置為false時，表示不將ViewHolder自動添加到父容器中。
+            parent,
+            false
         )
         itemCouponViewBinding.viewModel =
-            BackstageCouponViewModel()    //跟單一筆的couponViewModel 畫面資料綁定
+            BackstageCouponViewModel()
         itemCouponViewBinding.lifecycleOwner =
-            parent.findViewTreeLifecycleOwner() //將ViewModel和生命周期所有者（LifecycleOwner）與項目視圖綁定對象關聯起來，以便在該項目的布局中使用ViewModel的數據綁定。
+            parent.findViewTreeLifecycleOwner()
         return CouponViewHolder(itemCouponViewBinding)
     }
 

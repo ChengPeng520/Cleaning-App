@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.CleanerAdapter
 import com.example.cleaningapp.cleaner.uistate.Job
+import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontBinding
 import com.google.android.material.textview.MaterialTextView
@@ -25,7 +26,9 @@ import java.util.*
 class CleanerFrontFragment : Fragment() {
     private val viewModel: CleanerFrontViewModel by viewModels()
     private lateinit var binding: FragmentVickyCleanerFrontBinding
+//    private var adapter: CleanerAdapter? = null
 
+    // 市區
     private val countyList = arrayOf(
         "基隆市", "臺北市", "新北市",
         "桃園市", "新竹市", "新竹縣",
@@ -36,6 +39,8 @@ class CleanerFrontFragment : Fragment() {
         "宜蘭縣", "澎湖縣", "金門縣",
         "連江縣"
     )
+
+    // 地區
     private val districtMap = mapOf(
         "基隆市" to arrayOf(
             "中正區",
@@ -450,6 +455,7 @@ class CleanerFrontFragment : Fragment() {
         )
     )
 
+    // 日期時間
     private var year = 0
     private var month = 0
     private var day = 0
@@ -503,8 +509,9 @@ class CleanerFrontFragment : Fragment() {
     private fun initRecyclerView() {
         with(binding) {
             recyclerviewSearchlist.layoutManager = LinearLayoutManager(requireContext())
+
             //layoutManager管理每一個layout裡面每個item呈現方式
-            viewModel?.cleaner?.observe(viewLifecycleOwner) { cleaners ->
+            viewModel?.cleaners?.observe(viewLifecycleOwner) { cleaners ->
                 // cleaners 類別是為viewModel中的<List<Job>>
                 // adapter 為null要建立新的adapter；之後只要呼叫updateCleaner(cleaners)即可
                 // observe 監測、觀察者(因為跟livedata綁定須監測)
@@ -519,6 +526,8 @@ class CleanerFrontFragment : Fragment() {
 
     private fun setTimeOnclick() {
         with(binding) {
+
+            //日期
             spnDate.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 val datePickerDialog =
@@ -532,7 +541,7 @@ class CleanerFrontFragment : Fragment() {
                             viewModel?.chooseCleaningDate?.value =
                                 "$year-${pad(month + 1)}-${pad(day)}"
                             viewModel?.isSearch()?.let {
-                                if (it) viewModel?.cleaner?.value = getByCondition()
+                                if (it) viewModel?.cleaners?.value = getByCondition()
                             }
                         },
                         calendar.get(Calendar.YEAR),
@@ -550,6 +559,7 @@ class CleanerFrontFragment : Fragment() {
                 datePickerDialog.show()
             }
 
+            // 開始時間
             startTime.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(
@@ -559,7 +569,7 @@ class CleanerFrontFragment : Fragment() {
                         this@CleanerFrontFragment.startMin = minute
                         viewModel?.chooseCleaningTimeStart?.value = "${pad(hour)}:${pad(minute)}"
                         viewModel?.isSearch()?.let {
-                            if (it) viewModel?.cleaner?.value = getByCondition()
+                            if (it) viewModel?.cleaners?.value = getByCondition()
                         }
                     },
                     calendar.get(Calendar.HOUR),
@@ -568,6 +578,7 @@ class CleanerFrontFragment : Fragment() {
                 ).show()
             }
 
+            // 結束時間
             spinner3.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(
@@ -577,7 +588,7 @@ class CleanerFrontFragment : Fragment() {
                         this@CleanerFrontFragment.endMin = minute
                         viewModel?.chooseCleaningTimeEnd?.value = "${pad(hour)}:${pad(minute)}"
                         viewModel?.isSearch()?.let {
-                            if (it) viewModel?.cleaner?.value = getByCondition()
+                            if (it) viewModel?.cleaners?.value = getByCondition()
                         }
                     },
                     calendar.get(Calendar.HOUR),
@@ -612,7 +623,7 @@ class CleanerFrontFragment : Fragment() {
                     districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spnLocaltion.adapter = districtAdapter
                     viewModel?.isSearch()?.let {
-                        if (it) viewModel?.cleaner?.value = getByCondition()
+                        if (it) viewModel?.cleaners?.value = getByCondition()
                     }
                 }
 
@@ -625,7 +636,7 @@ class CleanerFrontFragment : Fragment() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     this@CleanerFrontFragment.district = (p1 as MaterialTextView).text as String
                     viewModel?.isSearch()?.let {
-                        if (it) viewModel?.cleaner?.value = getByCondition()
+                        if (it) viewModel?.cleaners?.value = getByCondition()
                     }
                 }
 
@@ -636,9 +647,9 @@ class CleanerFrontFragment : Fragment() {
         }
     }
 
-    private fun getByCondition(): List<Job> {
+    private fun getByCondition(): List<SearchOrder> {
         val jobs = viewModel.cleanerList
-        val searchedJobs = mutableListOf<Job>()
+        val searchedJobs = mutableListOf<SearchOrder>()
         val startDateTime = Calendar.getInstance()
         startDateTime.set(this.year, this.month, this.day, this.startHour, this.startMin)
         val endDateTime = Calendar.getInstance()
@@ -664,7 +675,7 @@ class CleanerFrontFragment : Fragment() {
             )
             if (isBetween(orderStartTime, startDateTime, endDateTime)
                 && isBetween(orderEndTime, startDateTime, endDateTime)
-                && job.county == this.county && job.district == this.district
+                && job.areaCity == this.county && job.areaDistrict == this.district
             ) {
                 searchedJobs.add(job)
             }

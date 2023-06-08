@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
@@ -22,7 +23,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
-import com.google.android.material.textview.MaterialTextView
+import java.sql.Time
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -453,6 +454,11 @@ class CsCreateOrderFragment : Fragment() {
         ),
     )
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -501,22 +507,6 @@ class CsCreateOrderFragment : Fragment() {
                     // 不執行任何操作
                 }
             }
-
-        binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val order = viewModel.order.value
-                order?.areaDistrict = (view as MaterialTextView).text.toString()
-                viewModel.order.value = order
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-        }
     }
 
     private fun setTimeOnclick() {
@@ -530,9 +520,8 @@ class CsCreateOrderFragment : Fragment() {
                     DatePickerDialog(
                         requireContext(),
                         { _, year, month, day ->
-                            // 一月的值是0而非1，所以「month + 1」後才顯示
                             val order = viewModel?.order?.value
-                            order?.dateOrdered = "$year-${pad(month + 1)}-${pad(day)}"
+                            order?.dateOrdered = java.sql.Date(year, month, day)
                             viewModel?.order?.value = order
                         },
                         calendar.get(Calendar.YEAR),
@@ -557,7 +546,7 @@ class CsCreateOrderFragment : Fragment() {
                     requireContext(),
                     { _, hour, minute ->
                         val order = viewModel?.order?.value
-                        order?.timeOrderedStart = "${pad(hour)}:${pad(minute)}"
+                        order?.timeOrderedStart = Time(hour, minute, 0)
                         viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
@@ -572,7 +561,7 @@ class CsCreateOrderFragment : Fragment() {
                     requireContext(),
                     { _, hour, minute ->
                         val order = viewModel?.order?.value
-                        order?.timeOrderedEnd = "${pad(hour)}:${pad(minute)}"
+                        order?.timeOrderedEnd = Time(hour, minute, 0)
                         viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
@@ -597,29 +586,21 @@ class CsCreateOrderFragment : Fragment() {
             llCoupon.setOnClickListener {
                 val originPrice = edtTxtCost.text.toString()
                 if (originPrice.isNotEmpty() && originPrice.toInt() == 0) {
-                    tvCsCreateOrderChooseCoupon.isEnabled = false
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_keyInCost),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    tvCsCreateOrderChooseCoupon.isEnabled = true
-                    tvCsCreateOrderChooseCoupon.setOnClickListener {
-                        findNavController().navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
-                    }
+                    saveCreateOrderInfo()
+                    findNavController().navigate(R.id.action_csCreateOrderFragment_to_csCouponPickerFragment)
                 }
             }
 
             //  跳轉下一頁
             btnCsCreateOrderNext.setOnClickListener {
                 viewModel?.order?.value?.let {
-                    it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
-                    it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
-                    it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
-                    it.roomSize = edtTxtCsCreateOrderBedroomSize.text.toString().toInt()
-                    it.originalPrice = edtTxtCost.text.toString().toInt()
-
+                    saveCreateOrderInfo()
                     val bundle = Bundle()
                     bundle.putSerializable("order", it)
                     bundle.putSerializable("photos", viewModel?.photo?.value)
@@ -633,38 +614,32 @@ class CsCreateOrderFragment : Fragment() {
     }
 
     override fun onResume() {
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         super.onResume()
         Navigation.findNavController(
             requireActivity(),
             R.id.customer_nav_host_fragment
         ).currentBackStackEntry?.savedStateHandle?.getLiveData<Coupon>("coupon")
             ?.observe(viewLifecycleOwner) { coupon ->
-                viewModel.coupon.value = coupon
                 val order = viewModel.order.value
-                if (binding.edtTxtCost.text.toString().toInt() < coupon.minPrice) {
+                if (viewModel.order.value?.originalPrice!! < coupon.minPrice) {
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_notMeetMinCost),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else if (coupon.discountType) {
-                    order?.tvUseCoupon = "0"
-                    order?.tvUseCoupon = "-  $ " + coupon.moneyString
+                    viewModel.coupon.value = coupon
+                    order?.couponDiscount = coupon.discountMoney
                 } else {
-                    val discount = coupon._discount
+                    viewModel.coupon.value = coupon
+                    val discount = coupon.discount
                     val cost = binding.edtTxtCost.text.toString().toDouble()
-                    val calculatedValue = ((1 - discount) * (cost)).roundToInt()
-                    order?.tvUseCoupon = "- $calculatedValue"
+                    val calculatedValue = ((1 - discount) * cost).roundToInt()
+                    order?.couponDiscount = calculatedValue
                 }
+                viewModel.order.value = order
             }
-    }
-
-    private fun pad(number: Int): String {
-        return if (number >= 10) {
-            number.toString()
-        } else {
-            "0$number"
-        }
     }
 
     private var takePictureSmallLauncher =
@@ -678,4 +653,26 @@ class CsCreateOrderFragment : Fragment() {
                 }
             }
         }
+
+    private fun saveCreateOrderInfo() {
+        with(binding) {
+            val order = viewModel?.order?.value
+            order?.let {
+                it.areaDistrict =
+                    districtMap[viewModel?.order?.value?.areaCity]?.get(spnCsCreateOrderDistrict.selectedItemPosition)
+                        ?: ""
+                it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
+                it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
+                it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                it.roomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                it.originalPrice = edtTxtCost.text.toString().toInt()
+            }
+            viewModel?.order?.value = order
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+    }
 }

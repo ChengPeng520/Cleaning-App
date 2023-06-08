@@ -1,7 +1,6 @@
 package com.example.cleaningapp.customer.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,16 +30,18 @@ class HistoricalOrderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val drawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
+        drawable?.setTint(ContextCompat.getColor(requireContext(), R.color.customerPrimaryDeep))
+        binding.btnOrderListIng.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.customerPrimaryDeep
+            )
+        )
         binding.rvOrderListList.layoutManager = LinearLayoutManager(requireContext())
-
-        adapter = OrderAdapter(emptyList())
+        val orders = viewModel.orderList.value.orEmpty().filter { it.status == 0 }
+        adapter = OrderAdapter(orders)
         binding.rvOrderListList.adapter = adapter
-
-//        viewModel.fetchOrders()
-        viewModel.orderList.observe(viewLifecycleOwner) { orders ->
-            adapter?.updateOrders(orders)
-        }
         val defaultTextColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
         val defaultIconColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
 
@@ -90,7 +91,8 @@ class HistoricalOrderFragment : Fragment() {
 
             val completedDrawable = binding.btnOrderListDone.compoundDrawablesRelative[0]
             completedDrawable?.setTint(defaultIconColor)
-            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 1 || it.status == 2 || it.status == 3 || it.status == 4 || it.status == 6 || it.status == 7}
+            val orders = viewModel.orderList.value.orEmpty()
+                .filter { it.status == 1 || it.status == 2 || it.status == 3 }
             adapter?.updateOrders(orders)
         }
 
@@ -115,7 +117,8 @@ class HistoricalOrderFragment : Fragment() {
 
             val completedDrawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
             completedDrawable?.setTint(defaultIconColor)
-            val orders = viewModel.orderList.value.orEmpty().filter { it.status == 5 || it.status == 8}
+            val orders =
+                viewModel.orderList.value.orEmpty().filter { it.status == 4 || it.status == 5 || it.status == 6 }
             adapter?.updateOrders(orders)
         }
     }

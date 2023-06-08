@@ -31,7 +31,7 @@ class BsShopOrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
                 rvBsShopOrder.layoutManager = LinearLayoutManager(requireContext())
-                viewModel?.shopOrders?.observe(viewLifecycleOwner) {    //監控ordrerViewModel的週期,如果adapter沒有更新,就呈現orderList的資料,其他有更新的狀態就加上update方法
+                viewModel?.shopOrders?.observe(viewLifecycleOwner) {
                     if (rvBsShopOrder.adapter == null) {
                         rvBsShopOrder.adapter = ShopOrderAdapter(it)
                     } else {

@@ -202,4 +202,8 @@ object CleanerSharedPreferencesUtils {
             crc = cleaner.crc?.let { ImageUtils.bitmapToBytes(it) }
         )
     }
+
+    fun logout() {
+        sharedPreferences.edit().clear().apply()
+    }
 }

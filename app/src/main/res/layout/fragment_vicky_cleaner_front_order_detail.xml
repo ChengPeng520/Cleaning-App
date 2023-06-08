@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontOrderDetailViewModel"
-            />
+            type="com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontOrderDetailViewModel" />
     </data>
 
     <ScrollView
@@ -33,26 +33,12 @@
                     android:id="@+id/imageView30"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
-                    app:imageResource="@{viewModel.cleaner.imgId}"
-                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:imageBitmap="@{viewModel.job.customerPhoto}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:text="@{viewModel.cleaner.csname}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView30"
-                    app:layout_constraintStart_toStartOf="@+id/imageView30"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView30"
-                    tools:text="吳XX" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,8 +93,10 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView13"
                     app:layout_constraintDimensionRatio="h,1:1"
                     app:layout_constraintEnd_toEndOf="@+id/imageView31"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/imageView31"
-                    app:layout_constraintTop_toTopOf="@+id/textView13" />
+                    app:layout_constraintTop_toTopOf="@+id/textView13"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -157,9 +145,9 @@
                 <TextView
                     android:id="@+id/textView28"
                     android:layout_width="0dp"
-                    android:text="@{viewModel.cleaner.orderId}"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:text="@{viewModel.job.orderId}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView4"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
@@ -170,7 +158,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@{viewModel.cleaner.date}"
+                    android:text="@{String.valueOf(viewModel.job.dateOrdered)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView7"
                     app:layout_constraintTop_toTopOf="@+id/textView7"
@@ -181,7 +169,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@{viewModel.cleaner.orderedTime}"
+                    android:text="@{viewModel.job.cleaningTime}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView8"
                     app:layout_constraintTop_toTopOf="@+id/textView8"
@@ -192,8 +180,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:text="@{viewModel.job.address}"
                     android:textColor="#3D7EBB"
-                    android:text="@{viewModel.cleaner.address}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView13"
                     app:layout_constraintTop_toTopOf="@+id/textView13"
@@ -227,7 +215,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@{@string/tv_csOrderConfirmed_area3 (viewModel.cleaner.livingRoomSizeString, viewModel.cleaner.kitchenSizeString, viewModel.cleaner.bathroomSizeString, viewModel.cleaner.bedroomSizeString)}"
+                    android:text="@{viewModel.job.cleaningRange}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView14"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView14"
@@ -250,9 +238,9 @@
                     android:id="@+id/textView24"
                     android:layout_width="347dp"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.job.remark}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="@{viewModel.cleaner.notes}"
                     app:layout_constraintStart_toStartOf="@+id/textView22"
                     app:layout_constraintTop_toBottomOf="@+id/textView22"
                     tools:text="工具:  吸塵器 、拖把 整理重點:  臥房、客房 " />
@@ -275,10 +263,10 @@
                     android:id="@+id/textView33"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@{@string/tv_shopping_info_gross_price(viewModel.job.priceForCleaner)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:text="@{viewModel.cleaner.price}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView26"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView26"
@@ -323,7 +311,7 @@
                 android:layout_height="104dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/cs_home_order_tb"
-                app:imageResource="@{viewModel.cleaner.photo}"
+                app:imageBitmap="@{viewModel.jobPhoto.photo1}"
                 app:layout_constraintEnd_toStartOf="@+id/imageView37"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -334,7 +322,7 @@
                 android:layout_width="104dp"
                 android:layout_height="104dp"
                 android:src="@drawable/fatruei_iv_replace_style"
-                app:imageResource="@{viewModel.cleaner.photo2}"
+                app:imageBitmap="@{viewModel.jobPhoto.photo2}"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView35"
                 app:layout_constraintEnd_toStartOf="@+id/imageView38"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -346,7 +334,7 @@
                 android:layout_width="104dp"
                 android:layout_height="104dp"
                 android:src="@drawable/fatruei_iv_replace_style"
-                app:imageResource="@{viewModel.cleaner.photo3}"
+                app:imageBitmap="@{viewModel.jobPhoto.photo3}"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView37"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

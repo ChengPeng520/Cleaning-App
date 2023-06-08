@@ -8,14 +8,16 @@ import android.view.ViewGroup
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendDetailViewModel
+import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsUserSuspDataboxBinding
 
 /**
  * 使用者列表所需的Adapter
  */
-class UserSuspendAdapter(private var users: List<User>) :
+class UserSuspendAdapter(private var users: List<Member>) :
     RecyclerView.Adapter<UserSuspendAdapter.UserSuspendViewHolder>() {
 
 
@@ -24,7 +26,7 @@ class UserSuspendAdapter(private var users: List<User>) :
      * @param users 新的好友列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateUsers(users: List<User>) {
+    fun updateUsers(users: List<Member>) {
         this.users = users
         notifyDataSetChanged()
     }
@@ -32,17 +34,20 @@ class UserSuspendAdapter(private var users: List<User>) :
     class UserSuspendViewHolder(val itemViewBinding: ItemAlbBsUserSuspDataboxBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root) {
 
-        fun bind(user: User) {
+        fun bind(member: Member) {
             //將數據綁定在view
             itemViewBinding.btnOpenAccount.setOnClickListener {
-                showDialogOpen(user)
+                showDialogOpen(member)
             }
         }
-        private fun showDialogOpen(user: User) {
+        private fun showDialogOpen(member: Member) {
             val alertDialogBuilder = AlertDialog.Builder(itemViewBinding.root.context)  //dialog建立的畫面在binding itemView的內容裡
-            alertDialogBuilder.setTitle("確定開通此帳號？")
+            alertDialogBuilder.setTitle("確定復原此帳號？")
             alertDialogBuilder.setMessage("將發送訊息給使用者")
             alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
+                //TODO
+                itemViewBinding.viewModel?.member?.value?.suspend = false
+//                itemViewBinding.viewModel.
                 dialog.dismiss()
             }
             alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
@@ -61,7 +66,7 @@ class UserSuspendAdapter(private var users: List<User>) :
         val itemViewBinding = ItemAlbBsUserSuspDataboxBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BsUserSuspendDetailViewModel()
+        itemViewBinding.viewModel = BsUserSuspendViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return UserSuspendViewHolder(itemViewBinding)
@@ -70,9 +75,9 @@ class UserSuspendAdapter(private var users: List<User>) :
     }
 
     override fun onBindViewHolder(holder: UserSuspendViewHolder, position: Int) {
-        holder.itemViewBinding.viewModel?.user?.value = users[position]
-        val user =users[position]
-        holder.bind(user)
+        val member =users[position]
+        holder.itemViewBinding.viewModel?.member?.value = member
+        holder.bind(member)
 
 
     }

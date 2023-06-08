@@ -1,16 +1,14 @@
 package com.example.cleaningapp.share
 
-import android.util.Log
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.google.gson.*
 import kotlinx.coroutines.*
 import java.lang.reflect.Type
 import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.HttpURLConnection
 import java.net.URL
+import java.sql.Time
 import java.text.SimpleDateFormat
-import java.util.*
 
 inline fun <reified T> requestTask(
     url: String,
@@ -66,5 +64,30 @@ inline fun <reified T> request(
 }
 
 val GSON: Gson = GsonBuilder()
+    .registerTypeAdapter(Time::class.java, TimeAdapter())
     .setDateFormat("yyyy/MM/dd HH:mm:ss")
     .create()
+
+class TimeAdapter : JsonSerializer<Time>, JsonDeserializer<Time> {
+    private val SDF: SimpleDateFormat = SimpleDateFormat("HH:mm:ss")
+    override fun serialize(
+        src: Time,
+        typeOfSrc: Type?,
+        context: JsonSerializationContext?,
+    ): JsonElement {
+        return JsonPrimitive(SDF.format(src))
+    }
+
+    override fun deserialize(
+        json: JsonElement,
+        typeOfT: Type?,
+        context: JsonDeserializationContext?,
+    ): Time? {
+        return try {
+            val date = SDF.parse(json.asString)
+            Time(date.time)
+        } catch (e: Exception) {
+            null
+        }
+    }
+}

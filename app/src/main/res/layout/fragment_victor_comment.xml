@@ -18,66 +18,24 @@
         android:paddingVertical="12dp"
         tools:context=".customer.fragment.CommentFragment">
 
-        <EditText
-            android:id="@+id/textView48"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <RatingBar
             android:id="@+id/ratingBar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:progressTint="#FFE600"
+            android:rating="@={viewModel.stars}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/edtTxt_comment_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar3">
-
-            <ImageView
-                android:id="@+id/imageView43"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="8dp"
-                app:srcCompat="@drawable/alb_ic_camera"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <ImageView
-                android:id="@+id/imageView44"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="8dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <ImageView
-                android:id="@+id/imageView45"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="8dp"
-                tools:srcCompat="@tools:sample/avatars" />
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45" />
+            app:layout_constraintGuide_percent="0.28" />
 
         <EditText
             android:id="@+id/edtTxt_comment_content"
@@ -87,6 +45,7 @@
             android:background="@android:color/transparent"
             android:gravity="top|left"
             android:hint="@string/edtTxt_comment_content"
+            android:text="@={viewModel.content}"
             app:layout_constraintBottom_toTopOf="@+id/guideline23"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="送出"
+            android:onClick="@{viewModel::uploadContent}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

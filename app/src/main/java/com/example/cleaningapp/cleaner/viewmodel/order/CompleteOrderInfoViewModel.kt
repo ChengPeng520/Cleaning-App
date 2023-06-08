@@ -15,7 +15,7 @@ class CompleteOrderInfoViewModel : ViewModel() {
     val uiPhoto: LiveData<CompleteOrderPhotos> by lazy { _uiPhoto }
 
     fun fetchOrderInfo() {
-        requestTask<OrderUtil.OrderStatus>(
+        requestTask<OrderUtil.InsertOrder>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/1",
             "GET"
         )?.let {
@@ -34,9 +34,11 @@ class CompleteOrderInfoViewModel : ViewModel() {
                 remark = it.order.remark,
                 priceForCleaner = it.order.priceForCleaner,
                 stars = it.order.stars,
-                commentCleaner = it.order.commentCleaner
+                commentCleaner = it.order.commentCleaner!!
             )
-            _uiPhoto.value = CompleteOrderPhotos(it.photo!!)
+            it.photos?.let {
+                _uiPhoto.value = CompleteOrderPhotos(it)
+            }
         }
     }
 }

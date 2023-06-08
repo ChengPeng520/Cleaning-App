@@ -3,8 +3,8 @@ package com.example.cleaningapp.customer.csCreateOrder
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Coupon
-import com.example.cleaningapp.customer.model.CouponObtain
 import com.example.cleaningapp.customer.model.CustomerCoupon
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -21,7 +21,7 @@ class CsCouponPickerViewModel : ViewModel() {
 
     fun fetchCustomerCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/1",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {
             coupons.value = it
@@ -40,6 +40,4 @@ class CsCouponPickerViewModel : ViewModel() {
         }
         return false
     }
-
-
 }

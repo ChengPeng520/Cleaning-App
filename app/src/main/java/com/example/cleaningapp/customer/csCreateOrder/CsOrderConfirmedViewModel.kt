@@ -14,7 +14,7 @@ class CsOrderConfirmedViewModel : ViewModel() {
 //    }
 //
 //    private fun loadOrder() {
-//        order.value = Order(
+//        order.value = com.example.cleaningapp.backstage.order.Order(
 //            1,
 //            "臺北市",
 //            "中山區",

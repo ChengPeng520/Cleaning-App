@@ -16,7 +16,7 @@
     <string name="sv_backstage_coupon">查詢優惠券</string>
 
     //orderdatil
-    <string name="tv_ti_bs_orderdatil_cleandate">打掃時間:</string>
+    <string name="tv_ti_bs_orderdatil_cleandate">打掃日期:</string>
     <string name="tv_bs_orderdatil_cleandate" tools:ignore="TypographyDashes">2023–04-25 </string>
     <string name="tv_ti_bs_orderdatil_cleantime">打掃時數:</string>
     <string name="tv_bs_orderdatil_cleantime" tools:ignore="TypographyDashes">12:00-14:00 </string>

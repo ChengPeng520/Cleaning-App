@@ -2,26 +2,36 @@ package com.example.cleaningapp.customer.csHomePage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Cleaner
-import com.example.cleaningapp.customer.model.CouponObtain
+import com.example.cleaningapp.customer.model.OrderRemind
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
 class CsHomePageViewModel : ViewModel() {
-    val cleaners : MutableLiveData<List<Cleaner>> by lazy { MutableLiveData<List<Cleaner>>() }
+    val order: MutableLiveData<OrderRemind> by lazy { MutableLiveData<OrderRemind>(OrderRemind()) }
+    val cleaners: MutableLiveData<List<Cleaner>> by lazy { MutableLiveData<List<Cleaner>>() }
     val cleaner: MutableLiveData<Cleaner> by lazy { MutableLiveData<Cleaner>() }
 
     init {
         fetchCleaners()
+        getOrder()
     }
 
-    fun fetchCleaners() {
+    private fun fetchCleaners() {
         requestTask<List<Cleaner>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/*",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/best",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
             cleaners.value = it
+        }
+    }
+
+    private fun getOrder() {
+        requestTask<OrderRemind>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}"
+        )?.let {
+            order.value = it
         }
     }
 }
