@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.order.number}"
+                    android:text="@{viewModel.order.searchOrderId}"
                     android:textSize="16sp"
                     tools:text="12345678" />
 
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.order.status}"
+                    android:text='@{viewModel.order.getStatus}'
                     android:textColor="@color/error"
                     android:textSize="16sp"
                     tools:text="處理中" />
@@ -58,8 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.order.date}"
                     android:textSize="16sp"
+                    android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
                     tools:text="2023-05-17" />
 
             </LinearLayout>

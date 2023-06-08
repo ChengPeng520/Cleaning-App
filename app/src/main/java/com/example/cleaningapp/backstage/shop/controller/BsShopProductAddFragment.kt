@@ -14,45 +14,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.backstage.shop.BsShopProductViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopProductAddBinding
+import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.ImageUtils.bitmapToBytes
+import java.io.File
 
 class BsShopProductAddFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsShopProductAddBinding
     val viewModel: BsShopProductViewModel by viewModels()
-    private val REQUEST_CARMERA_PERMISSION = 1001
-    private val REQUEST_CAMERA = 1002
-    private val REQUEST_GALLERY = 1003
     private var imageByteArray: ByteArray? = null
 
-    private fun handleGallery(data: Intent?) {
-        val imageUri = data?.data
-        if (imageUri != null) {
-            binding.ivBsShopProductAddPhoto.setImageURI(imageUri)
 
-            // 將相簿挑選到的圖片轉換為位元組陣列
-            val contentResolver = context?.contentResolver
-            val imageUrlBitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
-            imageByteArray = bitmapToBytes(imageUrlBitmap)
-
-            viewModel.product.value?.apply {
-                photo = imageByteArray
-                name = ""
-                price = 0
-                description = ""
-                storage = 0
-                timeCreate = null
-                timeUpdate = null
-                isOnSale = false
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,7 +52,8 @@ class BsShopProductAddFragment : Fragment() {
             }
 
             btnCameraProductAdd.setOnClickListener {
-                showDialogChoseCameraOrGallery()
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                takePictureSmallLauncher.launch(intent)
             }
 
             btnProductAdd.setOnClickListener {
@@ -95,87 +76,22 @@ class BsShopProductAddFragment : Fragment() {
             }
         }
     }
+    private var takePictureSmallLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.extras?.let { bundle ->
+                    val picture = bundle["data"] as Bitmap?
+                    picture?.let{
+                        binding.ivBsShopProductAddPhoto.setImageBitmap(it)
+                        imageByteArray = bitmapToBytes(it)
+                }
 
-    //設定點擊相機按鈕跳出dialog選擇相機或相簿
-    private fun showDialogChoseCameraOrGallery() {
-        //宣告變數定義兩個選項
-        val option = arrayOf("開啟相機", "開啟相簿")
-        //建立本頁內容的AlertDialog
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("選擇照片來源")
-        builder.setItems(option) {
-            //_代表不使用的參數，而 which 代表選擇的索引值。
-                _, witch ->
-            when (witch) {
-                0 -> checkPermissionOpenCamera()
-                1 -> openGallery()
+                }
+                }
             }
         }
-        builder.show()
-    }
-
-    //設定打開相機意圖的方法
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, REQUEST_CAMERA)
-    }
-
-    //設定打開相簿的方法
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, REQUEST_GALLERY)
-    }
-
-    private fun handleCameraResult(data: Intent?) {
-        // data?.extras? 是一個bundle的對象,內包含intent相關數據,使用get("data")取的數據 轉Bitmap
-        val imageBitmap = data?.extras?.get("data") as Bitmap
-        imageByteArray = bitmapToBytes(imageBitmap)
-
-        binding.ivBsShopProductAddPhoto.apply {
-            setImageBitmap(imageBitmap)
-            scaleType = ImageView.ScaleType.CENTER_CROP
-        }
-
-        viewModel.product.value?.apply {
-            photo = imageByteArray
-            name = ""
-            price = 0
-            description = ""
-            storage = 0
-            timeCreate = null
-            timeUpdate = null
-            isOnSale = false
-        }
-    }
 
 
-    //檢查是否具有相機權限,沒有權限時並請求系統開啟相機的權限方法
-    private fun checkPermissionOpenCamera() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                requireActivity(), arrayOf(Manifest.permission.CAMERA), REQUEST_CARMERA_PERMISSION
-            )
-        } else {
-            openCamera()
-        }
-    }
-
-
-    @Deprecated("Deprecated in Java")
-    //當使用startActivityResult啟動一個活動結果,可以使用onActivityResult來承接活動返回的結果
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                //將REQUEST_CAMERA啟動獲得的data指派給handleCameraResult(data)承接,在顯示在imageview上
-                REQUEST_CAMERA -> handleCameraResult(data)
-                REQUEST_GALLERY -> handleGallery(data)
-            }
-        }
-    }
-}
 
 
 
