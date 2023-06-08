@@ -36,8 +36,8 @@ class CompleteOrderInfoViewModel : ViewModel() {
                 stars = it.order.stars,
                 commentCleaner = it.order.commentCleaner!!
             )
-            it.photos?.let {
-                _uiPhoto.value = CompleteOrderPhotos(it)
+            it.photos?.let { photos ->
+                _uiPhoto.value = CompleteOrderPhotos(photos)
             }
         }
     }
