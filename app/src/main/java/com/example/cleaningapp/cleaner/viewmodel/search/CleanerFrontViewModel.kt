@@ -26,22 +26,22 @@ class CleanerFrontViewModel : ViewModel() {
     val chooseCleaningTimeEnd: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
 
     // 搜尋列表 (連線)
-//    init {
-//        fetchOrderJob()
-//    }
+    init {
+        fetchOrderJob()
+    }
 
-//    private fun fetchOrderJob() {
-//        requestTask<List<SearchOrder>>(
-//            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
-//            "GET",
-//            respBodyType = object : TypeToken<List<SearchOrder>>() {}.type
-//        )?.let {
-//            cleaners.value = it
-//            cleanerList = it
-//
-//            Log.d("CleanerList","CleanerId: $it")
-//        }
-//    }
+    private fun fetchOrderJob() {
+        requestTask<List<SearchOrder>>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            "GET",
+            respBodyType = object : TypeToken<List<SearchOrder>>() {}.type
+        )?.let {
+            cleaners.value = it
+            cleanerList = it
+
+            Log.d("CleanerList","CleanerId: $it")
+        }
+    }
 
     // 搜尋日期時間 篩選
     fun isSearch(): Boolean {

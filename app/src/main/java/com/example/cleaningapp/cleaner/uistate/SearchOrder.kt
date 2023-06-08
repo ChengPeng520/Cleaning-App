@@ -8,6 +8,7 @@ import com.example.cleaningapp.share.OrderUtil
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
+import java.text.ParseException
 import java.util.*
 
 class SearchOrder(
@@ -37,19 +38,33 @@ class SearchOrder(
     val orderStartDate: Calendar
         get() {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            val date = dateFormat.parse("${this.dateOrdered} ${this.timeOrderedStart}")
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = date.time
-            return calendar
+            val dateTimeString = "${this.dateOrdered} ${this.timeOrderedStart}"
+            return try {
+                val date = dateFormat.parse(dateTimeString)
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = date.time
+                calendar
+            } catch (e: ParseException) {
+                e.printStackTrace()
+                // 處理日期解析錯誤的情況，例如回傳預設的 Calendar 物件
+                Calendar.getInstance()
+            }
         }
 
     val orderEndDate: Calendar
         get() {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            val date = dateFormat.parse("${this.dateOrdered} ${this.timeOrderedEnd}")
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = date.time
-            return calendar
+            val dateTimeString = "${this.dateOrdered} ${this.timeOrderedEnd}"
+            return try {
+                val date = dateFormat.parse(dateTimeString)
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = date.time
+                calendar
+            } catch (e: ParseException) {
+                e.printStackTrace()
+                // 處理日期解析錯誤的情況，例如回傳預設的 Calendar 物件
+                Calendar.getInstance()
+            }
         }
 
     val address: String
@@ -77,6 +92,9 @@ class SearchOrder(
     val cleaningTime: String
         @SuppressLint("SimpleDateFormat")
         get() {
+            if (timeOrderedStart == null || timeOrderedEnd == null) {
+                return ""
+            }
             val sb = StringBuilder()
             val dateFormat = SimpleDateFormat("HH:mm")
             sb.append(dateFormat.format(timeOrderedStart)).append("-")
