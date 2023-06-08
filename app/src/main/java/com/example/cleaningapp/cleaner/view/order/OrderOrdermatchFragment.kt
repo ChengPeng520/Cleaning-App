@@ -39,7 +39,7 @@ class OrderOrdermatchFragment : Fragment() {
         }
         with(binding) {
             tvOrderCancel.setOnClickListener {
-                viewModel.DeleteOrder()
+//                viewModel.DeleteOrder()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_vicky_order_ordermatchFragment_to_vicky_order_conductFragment)
             }

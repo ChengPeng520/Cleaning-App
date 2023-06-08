@@ -26,7 +26,6 @@ object CustomerSharePreferencesUtils {
         val introduction: String?,
         val certification: String? = null,
         val suspend: Boolean = false,
-        val verify: Boolean = false,
         val token: String = ""
     ) {
         override fun equals(other: Any?): Boolean {
@@ -130,7 +129,7 @@ object CustomerSharePreferencesUtils {
             gender = customer.gender,
             introduction = customer.introduction,
 
-        )
+            )
     }
 
     fun logout() {

@@ -120,7 +120,6 @@ class BsUserVerifyDetailViewModel : ViewModel() {
                         introduction = it.introduction,
                         photo = null,
                         password = null,
-                        verify = it.verify
                     )
                 )?.let {
                     Navigation.findNavController(view).navigate(R.id.bsUserVerifyFragment)

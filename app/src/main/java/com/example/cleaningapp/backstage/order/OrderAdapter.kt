@@ -52,7 +52,7 @@ class OrderAdapter(private var orders: List<Order>) :
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(
-                        R.id.backstageOrderDetailFragment, bundle
+                        R.id.action_orderManageFragment2_to_backstageOrderDetail, bundle
                     )
             }
         }

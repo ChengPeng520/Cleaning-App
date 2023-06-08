@@ -205,7 +205,8 @@
             android:layout_height="wrap_content"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="徵才中" />
 
         <ImageView
             android:id="@+id/imageView7"

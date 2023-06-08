@@ -13,6 +13,7 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.viewModel.ComplaintdetailsViewModel
 import com.example.cleaningapp.databinding.FragmentVictorComplaintdetailsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ComplaintdetailsFragment : Fragment() {
     private lateinit var binding: FragmentVictorComplaintdetailsBinding
@@ -34,5 +35,11 @@ class ComplaintdetailsFragment : Fragment() {
         binding.bntApplyComplaintChat.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.chatRoomFragment)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
+            View.VISIBLE
     }
 }

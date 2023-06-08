@@ -118,8 +118,14 @@ class HistoricalOrderFragment : Fragment() {
             val completedDrawable = binding.btnOrderListIng.compoundDrawablesRelative[0]
             completedDrawable?.setTint(defaultIconColor)
             val orders =
-                viewModel.orderList.value.orEmpty().filter { it.status == 4 || it.status == 5 || it.status == 6 }
+                viewModel.orderList.value.orEmpty()
+                    .filter { it.status == 4 || it.status == 5 || it.status == 6 }
             adapter?.updateOrders(orders)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchOrdersInfo()
     }
 }

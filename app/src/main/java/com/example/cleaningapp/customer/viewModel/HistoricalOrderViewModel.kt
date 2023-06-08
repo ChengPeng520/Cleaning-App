@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.Order
@@ -30,7 +29,7 @@ class HistoricalOrderViewModel : ViewModel() {
 //        orderList.value = list
 //   }
 
-    private fun fetchOrdersInfo() {
+    fun fetchOrdersInfo() {
         requestTask<List<Order>>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/1/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
