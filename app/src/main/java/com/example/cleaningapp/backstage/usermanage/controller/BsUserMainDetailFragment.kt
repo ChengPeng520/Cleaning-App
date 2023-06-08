@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
@@ -85,6 +86,7 @@ class BsUserMainDetailFragment : Fragment() {
             dialog.dismiss()
             binding.viewModel?.user?.value?.suspend = true
             view?.let { viewModel.editMemberInfo(it) }
+            Toast.makeText(requireContext(), "已將用戶停權", Toast.LENGTH_SHORT).show()
         }
         alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
             dialog.dismiss()

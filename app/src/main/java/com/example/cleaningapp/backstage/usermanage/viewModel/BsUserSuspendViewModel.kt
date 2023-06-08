@@ -1,10 +1,16 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
+import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -42,74 +48,83 @@ class BsUserSuspendViewModel : ViewModel() {
     /**
      * 連線修改個人資料
      */
-//    fun editMemberInfo(view: View) {
-//        user.value?.let {
-//            if (it.customerId != null) {
-//                requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-//                    method = "PUT",
-//                    reqBody = CustomerSharePreferencesUtils.ApiCustomerModel(
-//                        customerId = it.customerId!!,
-//                        email = null,
-//                        name = it.name,
-//                        phone = it.phone,
-//                        gender = it.gender,
-//                        introduction = it.introduction,
-//                        photo = null,
-//                        password = null,
-//                        suspend = it.suspend
-//                    )
-//                )?.let {
-//                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
-//                }
-//            }
-//            if (it.cleanerId != null) {
-//                requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-//                    method = "PUT",
-//                    reqBody = CleanerSharedPreferencesUtils.ApiCleanerModel(
-//                        cleanerId = it.cleanerId!!,
-//                        email = null,
-//                        name = it.name,
-//                        phone = it.phone,
-//                        gender = it.gender,
-//                        introduction = it.introduction,
-//                        photo = null,
-//                        password = null,
-//                        identifyNumber = it.identifyNumber,
-//                        idCardFront = null,
-//                        idCardBack = null,
-//                        crc = null,
-//                        suspend = it.suspend
-//                    )
-//                )?.let {
-//                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
-//                }
-//            }
-//        }
-//    }
-
-/**
- * 如果搜尋條件為空字串，就顯示原始使用者列表；否則就顯示搜尋後結果
- * @param newText 欲搜尋的條件字串
- */
-fun search(newText: String?) {
-    if (newText == null || newText.isEmpty()) {
-        users.value = userList
-    } else {
-        val searchUserList = mutableListOf<Member>()
-        userList.forEach { user ->
-            if (user.name.contains(newText, true) ||
-                user.email.contains(newText, true)
-            ) {
-                searchUserList.add(user)
+    fun editMemberInfo(view: View) {
+        member.value?.let {
+            requestTask<Member>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                method = "PUT",
+                reqBody = member
+            )?.let {
+                Toast.makeText(view.context, "帳號已開通", Toast.LENGTH_SHORT).show()
+                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
             }
-        }
-        users.value = searchUserList
-    }
-}
+//            when (it.status) {
+//                1 -> {
+//                    requestTask<Member>(
+//                        url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                        method = "PUT",
+//                        reqBody = member
+//                    )?.let {
+//                        Toast.makeText(view.context, "帳號已開通", Toast.LENGTH_SHORT).show()
+//                        Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//                    }
+//                }
+//                2 -> {
+//                    requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+//                        url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                        method = "PUT",
+//                        reqBody = member
+//                        )
+//                    )?.let {
+//                        Toast.makeText(view.context, "帳號已開通", Toast.LENGTH_SHORT).show()
+//                        Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//                    }
+//                }
+//                3 -> {
+//                    requestTask<BackstageSharedPreferencesUtils.ApiBackstageModel>(
+//                        url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+//                        method = "PUT",
+//                        reqBody = BackstageSharedPreferencesUtils.ApiBackstageModel(
+//                            backstageId = it.id,
+//                            account = it.email,
+//                            name = it.name,
+//                            password = null,
+//                            suspend = it.suspend
+//                        )
+//                    )?.let {
+//                        Toast.makeText(view.context, "帳號已開通", Toast.LENGTH_SHORT).show()
+//                        Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+//                    }
+//                }
+//                else -> {
+//                    Toast.makeText(view.context, "你484搞錯甚麼了", Toast.LENGTH_LONG).show()
+//                }
+//            }
 
-/** 模擬取得遠端資料 */
+        }
+    }
+
+    /**
+     * 如果搜尋條件為空字串，就顯示原始使用者列表；否則就顯示搜尋後結果
+     * @param newText 欲搜尋的條件字串
+     */
+    fun search(newText: String?) {
+        if (newText == null || newText.isEmpty()) {
+            users.value = userList
+        } else {
+            val searchUserList = mutableListOf<Member>()
+            users.value?.forEach { user ->
+                if (user.name.contains(newText, true) ||
+                    user.email.contains(newText, true)
+                ) {
+                    searchUserList.add(user)
+                }
+            }
+            users.value = searchUserList
+        }
+    }
+
+    /** 模擬取得遠端資料 */
 //    private fun loadUsersTest() {
 //        val userList = mutableListOf<User>()
 //        userList.add(
