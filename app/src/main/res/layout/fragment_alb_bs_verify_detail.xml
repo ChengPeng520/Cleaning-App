@@ -142,7 +142,7 @@
                         android:id="@+id/tv_bs_user_verify_detail_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.gender}"
+                        android:text="@{viewModel.user.userGender}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -230,7 +230,7 @@
                         android:id="@+id/tv_bs_user_verify_detail_permission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{viewModel.user.verify ? "未開通" : "開通中"}'
+                        android:text='@{viewModel.user.verify ? "已開通" : "未開通"}'
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>

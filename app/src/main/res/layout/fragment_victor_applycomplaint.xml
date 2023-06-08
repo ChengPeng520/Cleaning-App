@@ -153,7 +153,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@{String.valueOf(viewModel.order.cleanerName)}"
+                        android:text="@{viewModel.order.cleanerName}"
                         app:layout_constraintBottom_toBottomOf="@+id/textView38"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView38"
@@ -249,19 +249,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/textView27"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="客訴內容:" />
-
-                <Spinner
-                    android:id="@+id/spinner2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="8dp" />
-
-                <TextView
                     android:id="@+id/tv_complaintContent_detailed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -278,6 +265,7 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:padding="8dp"
+                    android:text="@={viewModel.complaint}"
                     tools:text="地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......" />
 
                 <LinearLayout
@@ -332,6 +320,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
                         android:backgroundTint="#87CBB9"
+                        android:onClick="@{viewModel.uploadComplaint}"
                         android:text="@string/bnt_applyComplaint_ok" />
 
                     <Button

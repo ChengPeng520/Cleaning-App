@@ -8,7 +8,7 @@ import com.example.cleaningapp.backstage.usermanage.model.User
 
 class BsCompMainViewModel : ViewModel() {
     //原始使用者列表
-    private var complaintList = mutableListOf<Complaint>()
+    private var complaintList = listOf<Complaint>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
     val complaints: MutableLiveData<List<Complaint>> by lazy { MutableLiveData<List<Complaint>>() }

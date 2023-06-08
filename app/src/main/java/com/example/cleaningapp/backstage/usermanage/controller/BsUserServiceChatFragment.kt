@@ -11,7 +11,9 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
+import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
 import com.example.cleaningapp.backstage.usermanage.model.Chatroom
+import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserServiceChatBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,15 +39,14 @@ class BsUserServiceChatFragment : Fragment() {
         return binding.root
     }
 
-    private fun initRecyclerView(){
-        with(binding){
+    private fun initRecyclerView() {
+        with(binding) {
             rvContactWindowTalk.adapter = UserServiceChatAdapter()
             rvContactWindowTalk.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             (rvContactWindowTalk.layoutManager as LinearLayoutManager).stackFromEnd = true
             rvContactWindowTalk.setItemViewCacheSize(500)
-            viewModel?.fetchChatRoomTalkList()
-            viewModel?.uiState?.observe(viewLifecycleOwner){
+            viewModel?.uiState?.observe(viewLifecycleOwner) {
                 (rvContactWindowTalk.adapter as UserServiceChatAdapter).submitList(it.chatItems.toMutableList())
                 rvContactWindowTalk.smoothScrollToPosition((rvContactWindowTalk.adapter as UserServiceChatAdapter).itemCount)
             }
@@ -54,35 +55,41 @@ class BsUserServiceChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "客服管理"
+        requireActivity().title = "客服聊天室"
+
+        /**
+         * 從ServiceAdapter接過來的bundle
+         */
         arguments?.let { bundle ->
-            bundle.getSerializable("chat")?.let {
-                binding.viewModel?.chatroom?.value = it as Chatroom
-            }
-        }
-
-        with(binding) {
-            //點選查詢button跳轉,bundle"chat"的參數(customerId 或 cleanerId)
-            tvBsUserServChatQuery.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putSerializable("chat", binding.viewModel?.chatroom?.value)
-                Navigation.findNavController(view).navigate(R.id.bsUserMainDetailFragment, bundle)
+            bundle.getInt("cleanerId")?.let {
+                binding.viewModel?.cleanerId = it
             }
 
-            ivBsUserServChatBack.setOnClickListener {
-                Navigation.findNavController(it).popBackStack()
-            }
-            tvBsUserServChatClose.setOnClickListener{
-                //TODO:已結案點選將傳回後端作標記,此Id已結案,再傳回到客服前台的recycle view項目標記已結案
-                val chatroom =binding.viewModel?.chatroom?.value
-                chatroom?.let{
-                    //傳送請求後端,標記chatroom已結案
+            with(binding) {
+                //點選查詢button跳轉,bundle"chat"的參數(customerId 或 cleanerId)
+                tvBsUserServChatQuery.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putSerializable("chat", binding.viewModel?.chatroom?.value)
+                    Navigation.findNavController(view)
+                        .navigate(R.id.bsUserMainDetailFragment, bundle)
                 }
-                Navigation.findNavController(it).popBackStack()
-            }
 
+                ivBsUserServChatBack.setOnClickListener {
+                    Navigation.findNavController(it).popBackStack()
+                }
+                tvBsUserServChatClose.setOnClickListener {
+                    //TODO:已結案點選將傳回後端作標記,此Id已結案,再傳回到客服前台的recycle view項目標記已結案
+                    val chatroom = binding.viewModel?.chatroom?.value
+                    chatroom?.let {
+                        //傳送請求後端,標記chatroom已結案
+                    }
+                    Navigation.findNavController(it).popBackStack()
+                }
+
+            }
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)

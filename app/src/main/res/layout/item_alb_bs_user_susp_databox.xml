@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendDetailViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text="@{viewModel.user.email}"
+                    android:text="@{viewModel.member.email}"
                     android:textColor="@color/textPrimary"
                     tools:text="Email帳號" />
 
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text="@{viewModel.user.name}"
+                    android:text="@{viewModel.member.name}"
                     android:textColor="@color/textPrimary"
                     tools:text="名稱" />
 

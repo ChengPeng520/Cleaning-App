@@ -21,7 +21,8 @@ class OrderOrdermatchFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentVickyOrderOrdermatchBinding.inflate(inflater, container, false)
@@ -31,39 +32,16 @@ class OrderOrdermatchFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            arguments?.let { bundle ->
-                bundle.getInt("orderId")?.let {
-//                    viewModel.fetchOrderamtch()
-                }
-        }
-        with(binding){
-            val onClickListener = DialogInterface.OnClickListener { dialog, which ->
-                val text = when (which) {
-                    AlertDialog.BUTTON_POSITIVE -> getString(R.string.txtYes)
-                    AlertDialog.BUTTON_NEGATIVE -> getString(R.string.txtNo)
-
-                    else -> ""
-                }
-                viewModel?.text?.value = text
-                dialog.cancel()
+        arguments?.let { bundle ->
+            bundle.getInt("orderId")?.let {
+                viewModel.fetchOrdermatch(it)
             }
-            tvOrderCancel.setOnClickListener{
-                android.app.AlertDialog.Builder(view.context)
-                    // 設定標題文字
-                    .setTitle(R.string.txtTitle)
-                    // 設定圖示
-                    .setIcon(R.drawable.alert)
-                    // 設定訊息文字
-                    .setMessage(R.string.txtMessage)
-                    // 設定positive, negative, neutral按鈕上面的文字與點擊事件監聽器
-                    .setPositiveButton(R.string.txtYes, onClickListener)
-                    .setNegativeButton(R.string.txtNo, onClickListener)
-
-                    .show()
-
+        }
+        with(binding) {
+            tvOrderCancel.setOnClickListener {
+                viewModel.DeleteOrder()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_vicky_order_ordermatchFragment_to_vicky_order_conductFragment)
-
             }
         }
     }
