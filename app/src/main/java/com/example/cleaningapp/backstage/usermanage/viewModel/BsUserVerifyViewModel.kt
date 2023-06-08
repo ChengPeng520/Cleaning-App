@@ -3,21 +3,32 @@ package com.example.cleaningapp.backstage.usermanage.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class BsUserVerifyViewModel : ViewModel() {
     //原始使用者列表
-    private var userList = mutableListOf<User>()
+    private var userList = listOf<Member>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
-    val users: MutableLiveData<List<User>> by lazy { MutableLiveData<List<User>>() }
+    val users: MutableLiveData<List<Member>> by lazy { MutableLiveData<List<Member>>() }
+    val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
 
     init {
         loadUsers()
     }
 
+    /** 連線後端取得資料 */
     private fun loadUsers() {
-
+        requestTask<List<Member>>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            respBodyType = object : TypeToken<List<Member>>() {}.type
+        )?.let {
+            users.value = it
+            userList = it
+        }
     }
 
     /**
@@ -28,10 +39,10 @@ class BsUserVerifyViewModel : ViewModel() {
         if (newText == null || newText.isEmpty()) {
             users.value = userList
         } else {
-            val searchUserList = mutableListOf<User>()
+            val searchUserList = mutableListOf<Member>()
             userList.forEach { user ->
-                if (user.name!!.contains(newText, true) ||
-                    user.email!!.contains(newText, true)
+                if (user.name.contains(newText, true) ||
+                    user.email.contains(newText, true)
                 ) {
                     searchUserList.add(user)
                 }

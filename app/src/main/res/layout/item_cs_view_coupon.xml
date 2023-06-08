@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/customer_coupon_dicount_shape"
                 android:gravity="center"
-                android:text='@{viewModel.coupon.discountType ? "$"+ viewModel.coupon.moneyString : viewModel.coupon.discountString+"折"}'
+                android:text='@{viewModel.coupon.discountType ? "$"+ viewModel.coupon.discountMoney : viewModel.coupon.discountString+"折"}'
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -112,7 +112,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_cusCoupon_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:strokeColor="@color/customerPrimaryLight"
-            app:strokeWidth="1dp"/>
+            app:strokeWidth="5dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

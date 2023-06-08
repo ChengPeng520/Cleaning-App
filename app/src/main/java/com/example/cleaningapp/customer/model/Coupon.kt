@@ -11,14 +11,13 @@ data class Coupon(
     var expiredDate: String = "",
     var isOnUsed: Boolean = true
 ) : Serializable {
-    var _discount = if(discountType) {
+    var _discount = if (discountType) {
         discount.toInt().toString()
     } else {
         discount.toInt().toString()
     }
-
     val discountString: String
         get() = (discount * 10).toInt().toString()
-    val moneyString: String
-        get() = discount.toInt().toString()
+    val discountMoney: Int
+        get() = discount.toInt()
 }

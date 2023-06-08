@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceDetailViewModel" />
+            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,8 +47,7 @@
                     android:layout_height="42dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="7dp"
-                    android:layout_marginRight="9dp"
-                    app:imageResource="@{viewModel.chat.avatar}" />
+                    android:layout_marginRight="9dp" />
 
                 <LinearLayout
                     android:layout_width="197dp"
@@ -61,7 +60,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@{viewModel.chat.email}"
                         android:textColor="@color/textPrimary" />
 
                     <TextView
@@ -69,7 +67,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@{viewModel.chat.text}"
                         android:textColor="@color/textPrimary" />
                 </LinearLayout>
 
@@ -84,7 +81,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@{viewModel.chat.createTime}"
                         android:textColor="@color/textPrimary" />
 
                     <TextView
@@ -92,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@string/tv_bs_user_serv_databox_closed"
+                        tools:text="@string/tv_bs_user_serv_databox_closed"
                         android:textColor="@color/textPrimary" />
                 </LinearLayout>
 

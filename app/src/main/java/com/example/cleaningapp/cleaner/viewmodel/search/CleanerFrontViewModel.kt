@@ -26,7 +26,7 @@ class CleanerFrontViewModel : ViewModel() {
 
     // 搜尋列表
     init {
-//        fetchJob()
+        fetchJob()
     }
 
     private fun fetchJob() {
@@ -41,8 +41,8 @@ class CleanerFrontViewModel : ViewModel() {
                     orderId = applingOrder.order.orderId,
                     cleanerId = applingOrder.order.cleanerId,
                     dateOrdered = applingOrder.order.dateOrdered,
-                    timeOrderedEnd = applingOrder.order.timeOrderedEnd,
                     timeOrderedStart = applingOrder.order.timeOrderedStart,
+                    timeOrderedEnd = applingOrder.order.timeOrderedEnd,
                     areaCity = applingOrder.order.areaCity,
                     areaDistrict = applingOrder.order.areaDistrict,
                     areaDetail = applingOrder.order.areaDetail
