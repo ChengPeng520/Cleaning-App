@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Chat
+import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
 import com.example.cleaningapp.backstage.usermanage.model.ChatItem
 import com.example.cleaningapp.backstage.usermanage.model.Chatroom
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceDetailViewModel
+import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceViewModel
 import com.example.cleaningapp.cleaner.uistate.ChatroomItemUiState
 import com.example.cleaningapp.databinding.ItemAlbBsUserServChatTxtBinding
 import com.example.cleaningapp.databinding.ItemAlbBsUserServDataboxBinding
@@ -23,7 +25,7 @@ import com.example.cleaningapp.databinding.ItemFatrueiChatroomTxtBinding
 /**
  * 聊天室列表所需的Adapter
  */
-class UserServiceAdapter(private var chats: List<Chatroom>) :
+class UserServiceAdapter(private var chats: List<ChatClnBack>) :
     RecyclerView.Adapter<UserServiceAdapter.UserServiceViewHolder>() {
 
     /**
@@ -31,7 +33,7 @@ class UserServiceAdapter(private var chats: List<Chatroom>) :
      * @param chats 聊天室列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateChats(chats: List<Chatroom>) {
+    fun updateChats(chats: List<ChatClnBack>) {
         this.chats = chats
         notifyDataSetChanged()
     }
@@ -47,7 +49,7 @@ class UserServiceAdapter(private var chats: List<Chatroom>) :
         val itemViewBinding = ItemAlbBsUserServDataboxBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BsUserServiceDetailViewModel()
+        itemViewBinding.viewModel = BsUserServiceViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return UserServiceViewHolder(itemViewBinding)
@@ -59,7 +61,7 @@ class UserServiceAdapter(private var chats: List<Chatroom>) :
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.chat?.value = chat
             val bundle = Bundle()
-            bundle.putSerializable("chat", chat)
+            bundle.putInt("cleanerId", chat.cleanerId)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(

@@ -2,24 +2,35 @@
 
 package com.example.cleaningapp.customer.viewModel
 
-import android.graphics.Bitmap
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
+import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.detailed.Order
+import com.example.cleaningapp.customer.detailed.OrderInfo
+import com.example.cleaningapp.share.requestTask
 
 class CommentViewModel : ViewModel() {
-    private val capturedPhotos: MutableList<Bitmap?> = mutableListOf()
+    val stars: MutableLiveData<Float> by lazy { MutableLiveData<Float>(0F) }
+    val content: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val orderId: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
+    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
 
-    //  拍照功能
-    val photo1: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
-    val photo2: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
-    val photo3: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
-    fun addCapturedPhoto(photo: Bitmap?) {
-        if (photo1.value == null) {
-            photo1.value = photo
-        } else if (photo2.value == null) {
-            photo2.value = photo
-        } else if (photo3.value == null) {
-            photo3.value = photo
+    fun uploadContent(view: View) {
+        requestTask<OrderInfo>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
+            method = "PUT",
+            reqBody = OrderInfo(
+                Order(
+                    orderId = orderId.value!!,
+                    stars = stars.value!!,
+                    commentCleaner = content.value!!,
+                    status = 5
+                ), null
+            )
+        )?.let {
+            view.findNavController().navigate(R.id.action_commentFragment_to_commentDoneFragment)
         }
     }
 }

@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI
 
 import com.example.cleaningapp.databinding.ActivityBackstageBinding
 import com.example.cleaningapp.login.controller.LoginFragment
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 
 class BackstageActivity : AppCompatActivity() {
 
@@ -46,9 +47,13 @@ class BackstageActivity : AppCompatActivity() {
             val navController = navHostFragment.navController
             when(item.itemId){
                 //登出選項
-                R.id.logOut ->{
-                    val intent = Intent(this@BackstageActivity, LoginFragment::class.java)
-                startActivity(intent)
+                R.id.logOut -> {
+                    val intent = Intent(this@BackstageActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                    this.finish()
+                    fun logout() {
+                        CustomerSharePreferencesUtils.logout()
+                    }
                 }
                 R.id.bsUserMainFragment ->{
                     navController.navigate(R.id.bsUserMainFragment)

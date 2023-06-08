@@ -16,11 +16,12 @@ import com.example.cleaningapp.databinding.FragmentAlbBsUserSuspendBinding
 
 class BsUserSuspendFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsUserSuspendBinding
+    val viewModel: BsUserSuspendViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: BsUserSuspendViewModel by viewModels()
         binding = FragmentAlbBsUserSuspendBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

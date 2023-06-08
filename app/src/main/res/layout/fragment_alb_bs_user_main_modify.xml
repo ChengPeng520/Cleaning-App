@@ -73,13 +73,11 @@
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/edtTxt_bs_user_main_modify_email"
+                    <TextView
+                        android:id="@+id/tv_bs_user_main_modify_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:minHeight="48dp"
-                        android:text="@={viewModel.user.email}"
+                        android:text="@{viewModel.user.email}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -159,10 +157,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+                        android:selectedItemPosition="@={viewModel.user.gender}"
                         android:inputType="text"
                         android:minHeight="40dp"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
+
                 </LinearLayout>
 
                 <LinearLayout

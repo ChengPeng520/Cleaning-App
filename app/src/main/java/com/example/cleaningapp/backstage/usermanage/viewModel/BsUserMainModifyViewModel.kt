@@ -1,7 +1,10 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
+import android.database.Observable
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
@@ -10,6 +13,7 @@ import com.example.cleaningapp.backstage.usermanage.model.AccountBackstage
 import com.example.cleaningapp.backstage.usermanage.model.AccountCleaner
 import com.example.cleaningapp.backstage.usermanage.model.AccountCustomer
 import com.example.cleaningapp.backstage.usermanage.model.User
+import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
@@ -92,7 +96,7 @@ class BsUserMainModifyViewModel : ViewModel() {
     /**
      * 連線修改個人資料
      */
-    fun editMemberInfo(view: View) {
+    fun editMemberInfo(view: View): Boolean {
         user.value?.let {
             if (it.customerId != null) {
                 requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
@@ -109,8 +113,9 @@ class BsUserMainModifyViewModel : ViewModel() {
                         password = null
                     )
                 )?.let {
-                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+                    return true
                 }
+                return false
             }
             if (it.cleanerId != null) {
                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
@@ -131,9 +136,29 @@ class BsUserMainModifyViewModel : ViewModel() {
                         crc = null
                     )
                 )?.let {
-                    Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
+                    Navigation.findNavController(view).popBackStack()
+                    return true
                 }
+                return false
+            }
+            if (it.backstageId != null) {
+                requestTask<BackstageSharedPreferencesUtils.ApiBackstageModel>(
+                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    method = "PUT",
+                    reqBody = BackstageSharedPreferencesUtils.ApiBackstageModel(
+                        backstageId = it.backstageId!!,
+                        account = it.email,
+                        name = it.name,
+                        password = null,
+                        suspend = it.suspend
+                    )
+                )?.let {
+                    Navigation.findNavController(view).popBackStack()
+                    return true
+                }
+                return false
             }
         }
+        return false
     }
 }

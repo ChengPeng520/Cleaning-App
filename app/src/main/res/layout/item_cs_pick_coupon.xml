@@ -111,7 +111,6 @@
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/customer_coupon_shape_button"
             android:backgroundTint="@color/white"
             android:text="@string/txt_use"
             android:textColor="@color/clr_cusCoupon_obtain"
@@ -121,7 +120,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_csCoupon_new"
             app:strokeColor="@color/customerPrimaryLight"
             app:strokeWidth="1dp" />
-        <!--        android:onClick="@{v -> viewModel.customerUseCoupon()}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

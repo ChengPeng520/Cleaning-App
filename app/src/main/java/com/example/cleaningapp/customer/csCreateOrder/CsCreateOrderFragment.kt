@@ -23,6 +23,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
+import java.sql.Time
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -519,9 +520,8 @@ class CsCreateOrderFragment : Fragment() {
                     DatePickerDialog(
                         requireContext(),
                         { _, year, month, day ->
-                            // 一月的值是0而非1，所以「month + 1」後才顯示
                             val order = viewModel?.order?.value
-                            order?.dateOrdered = "$year-${pad(month + 1)}-${pad(day)}"
+                            order?.dateOrdered = java.sql.Date(year, month, day)
                             viewModel?.order?.value = order
                         },
                         calendar.get(Calendar.YEAR),
@@ -546,7 +546,7 @@ class CsCreateOrderFragment : Fragment() {
                     requireContext(),
                     { _, hour, minute ->
                         val order = viewModel?.order?.value
-                        order?.timeOrderedStart = "${pad(hour)}:${pad(minute)}"
+                        order?.timeOrderedStart = Time(hour, minute, 0)
                         viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
@@ -561,7 +561,7 @@ class CsCreateOrderFragment : Fragment() {
                     requireContext(),
                     { _, hour, minute ->
                         val order = viewModel?.order?.value
-                        order?.timeOrderedEnd = "${pad(hour)}:${pad(minute)}"
+                        order?.timeOrderedEnd = Time(hour, minute, 0)
                         viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
@@ -640,14 +640,6 @@ class CsCreateOrderFragment : Fragment() {
                 }
                 viewModel.order.value = order
             }
-    }
-
-    private fun pad(number: Int): String {
-        return if (number >= 10) {
-            number.toString()
-        } else {
-            "0$number"
-        }
     }
 
     private var takePictureSmallLauncher =

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -58,8 +59,11 @@ class BsUserMainModifyFragment : Fragment() {
                     ) {
                         //在選擇選項發生變化時同時會變更viewModel中的數據
                         val selectGender = data[position]
-                        viewModel?.user?.value?.userGender = selectGender
-
+                        if (selectGender == "男") {
+                            viewModel?.user?.value?.gender = 0
+                        } else if (selectGender == "女") {
+                            viewModel?.user?.value?.gender = 1
+                        }
                     }
 
                     override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -69,8 +73,14 @@ class BsUserMainModifyFragment : Fragment() {
                 }
 
                 btnBsUserMainModifySubmit.setOnClickListener {
-                    viewModel?.editMemberInfo(view)
-                    Navigation.findNavController(view).navigate(R.id.bsUserMainDetailFragment)
+                    viewModel?.editMemberInfo(view)?.let { result ->
+                        if (result) {
+                            Toast.makeText(requireContext(), "修改成功", Toast.LENGTH_SHORT).show()
+                            Navigation.findNavController(view).popBackStack()
+                        } else {
+                            Toast.makeText(requireContext(), "修改失敗", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
                 ivBsUserMainModifyBack.setOnClickListener {
                     Navigation.findNavController(view).popBackStack()
