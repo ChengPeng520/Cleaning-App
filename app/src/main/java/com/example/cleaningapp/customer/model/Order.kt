@@ -1,16 +1,20 @@
 package com.example.cleaningapp.customer.model
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
+import android.icu.text.SimpleDateFormat
 import java.io.Serializable
+import java.sql.Date
+import java.sql.Time
 
 data class Order(
     val customerId: Int = 0,
     var areaCity: String = "",
     var areaDistrict: String = "",
     var areaDetail: String = "",
-    var dateOrdered: String = "",
-    var timeOrderedStart: String = "",
-    var timeOrderedEnd: String = "",
+    var dateOrdered: Date? = null,
+    var timeOrderedStart: Time? = null,
+    var timeOrderedEnd: Time? = null,
     var livingRoomSize: Int = 0,
     var kitchenSize: Int = 0,
     var bathRoomSize: Int = 0,
@@ -21,6 +25,27 @@ data class Order(
     var originalPrice: Int = 0,
     var priceForCustomer: Int = 0,
 ) : Serializable {
+    val orderDate: String
+        get() {
+            dateOrdered?.let {
+                return it.toString()
+            }
+            return ""
+        }
+    val timeStart: String
+        get() {
+            dateOrdered?.let {
+                return it.toString()
+            }
+            return ""
+        }
+    val timeEnd: String
+        get() {
+            dateOrdered?.let {
+                return it.toString()
+            }
+            return ""
+        }
     val couponDisplay: String
         get() {
             return "- $couponDiscount"
@@ -62,10 +87,30 @@ data class OrderRemind(
     var orderId: Int = 0,
     var areaCity: String = "",
     var areaDistrict: String = "",
-    var dateOrdered: String = "",
-    var timeOrderedStart: String = "",
-    var timeOrderedEnd: String = "",
-)
+    var dateOrdered: Date? = null,
+    var timeOrderedStart: Time? = null,
+    var timeOrderedEnd: Time? = null
+) {
+    val orderDate: String
+        get() {
+            dateOrdered?.let {
+                return it.toString()
+            }
+            return ""
+        }
+    val time: String
+        @SuppressLint("SimpleDateFormat")
+        get() {
+            val sb = StringBuilder()
+            val dateFormat = SimpleDateFormat("HH:mm")
+            timeOrderedStart?.let {
+                sb.append(dateFormat.format(timeOrderedStart)).append("-")
+                    .append(dateFormat.format(timeOrderedEnd))
+                return sb.toString()
+            }
+            return ""
+        }
+}
 
 data class OrderEstablished(
     var orderId: Int = 0,

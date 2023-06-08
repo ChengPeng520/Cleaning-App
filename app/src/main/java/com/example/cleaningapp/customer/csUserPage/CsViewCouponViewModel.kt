@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.customer.model.CustomerCoupon
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -21,23 +22,24 @@ class CsViewCouponViewModel : ViewModel() {
 
     fun fetchCustomerCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/1",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            method = "GET",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {
             coupons.value = it
         }
     }
 
-    fun customerUseCoupon(customerCoupon: CustomerCoupon): Boolean {
-        requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/",
-            "POST",
-            reqBody = customerCoupon
-        )?.let {
-            val result = it["result"].toString().toBoolean()
-            if (result) fetchCustomerCoupons()
-            return result
-        }
-        return false
-    }
+//    fun customerUseCoupon(customerCoupon: CustomerCoupon): Boolean {
+//        requestTask<JsonObject>(
+//            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+//            "GET",
+//            reqBody = customerCoupon
+//        )?.let {
+//            val result = it["result"].toString().toBoolean()
+//            if (result) fetchCustomerCoupons()
+//            return result
+//        }
+//        return false
+//    }
 }

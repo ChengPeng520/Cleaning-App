@@ -34,7 +34,7 @@ class CsOrderConfirmedFragment : Fragment() {
                 bundle.getSerializable("order")?.let {
                     val order = it as Order
                     order.priceForCustomer =
-                        order.originalPrice + order.charge - order.couponDiscount
+                        order.originalPrice - order.couponDiscount
                     viewModel?.order?.value = order
                 }
                 bundle.getSerializable("photos")?.let {

@@ -23,7 +23,7 @@
             android:layout_height="0dp"
             android:background="@drawable/customer_coupon_dicount_shape"
             android:gravity="center"
-            android:text='@{viewmodel.coupon.discountType  ? "$"+ viewmodel.coupon.discount : viewmodel.coupon.discount+"折"}'
+            android:text='@{viewmodel.coupon.discountType ? "$"+ viewmodel.coupon.discountMoney : viewmodel.coupon.discountString+"折"}'
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -94,11 +94,11 @@
             android:id="@+id/bt_cusCoupon_obtain"
             android:layout_width="70dp"
             android:layout_height="40dp"
-            android:gravity="center"
             android:layout_marginBottom="8dp"
             android:background="@drawable/customer_coupon_shape_button"
             android:backgroundTint="@color/white"
             android:enabled="@{viewmodel.coupon.onReceive ? false : true}"
+            android:gravity="center"
             android:text="@{viewmodel.coupon.onReceive ? @string/txt_cusCoupon_notObtain : @string/txt_cusCoupon_obtain}"
             android:textColor="@color/clr_cusCoupon_obtain"
             app:layout_constraintBottom_toBottomOf="parent"
