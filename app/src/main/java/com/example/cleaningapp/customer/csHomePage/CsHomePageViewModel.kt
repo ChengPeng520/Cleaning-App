@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.OrderRemind
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
 class CsHomePageViewModel : ViewModel() {
-    //    val orders : MutableLiveData<List<Order>> by lazy { MutableLiveData<List<Order>>() }
-    val order: MutableLiveData<OrderRemind> by lazy { MutableLiveData<OrderRemind>() }
+    val order: MutableLiveData<OrderRemind> by lazy { MutableLiveData<OrderRemind>(OrderRemind()) }
     val cleaners: MutableLiveData<List<Cleaner>> by lazy { MutableLiveData<List<Cleaner>>() }
     val cleaner: MutableLiveData<Cleaner> by lazy { MutableLiveData<Cleaner>() }
 
@@ -18,7 +18,7 @@ class CsHomePageViewModel : ViewModel() {
         getOrder()
     }
 
-    fun fetchCleaners() {
+    private fun fetchCleaners() {
         requestTask<List<Cleaner>>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/best",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
@@ -27,21 +27,11 @@ class CsHomePageViewModel : ViewModel() {
         }
     }
 
-    fun getOrder() {
+    private fun getOrder() {
         requestTask<OrderRemind>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/4"
+            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}"
         )?.let {
             order.value = it
-//            var order = it[0]
-//            order = OrderRemind(
-//                orderId = order.orderId,
-//                areaCity = order.areaCity,
-//                areaDistrict = order.areaDistrict,
-//                dateOrdered = order.dateOrdered,
-//                timeOrderedStart = order.timeOrderedStart,
-//                timeOrderedEnd = order.timeOrderedEnd
-//            )
         }
     }
-
 }

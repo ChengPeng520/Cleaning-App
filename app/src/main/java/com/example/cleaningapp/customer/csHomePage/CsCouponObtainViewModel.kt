@@ -1,16 +1,20 @@
 package com.example.cleaningapp.customer.csHomePage
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.CouponObtain
 import com.example.cleaningapp.customer.model.CustomerCoupon
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 
 class CsCouponObtainViewModel : ViewModel() {
-    val coupons: MutableLiveData<List<CouponObtain>> by lazy { MutableLiveData<List<CouponObtain>>(listOf()) }
+    val coupons: MutableLiveData<List<CouponObtain>> by lazy {
+        MutableLiveData<List<CouponObtain>>(
+            listOf()
+        )
+    }
     val coupon: MutableLiveData<CouponObtain> by lazy { MutableLiveData<CouponObtain>() }
 
     init {
@@ -19,7 +23,7 @@ class CsCouponObtainViewModel : ViewModel() {
 
     private fun fetchCoupons() {
         requestTask<List<CouponObtain>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csCoupon/1",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/csCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             respBodyType = object : TypeToken<List<CouponObtain>>() {}.type
         )?.let {
             coupons.value = it

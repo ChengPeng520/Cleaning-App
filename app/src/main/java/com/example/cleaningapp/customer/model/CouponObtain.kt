@@ -6,20 +6,24 @@ import java.text.SimpleDateFormat
 import kotlin.math.roundToInt
 
 data class CouponObtain(
-    var couponId: Int = 0,
-    var couponName: String = "",
-    var discountType: Boolean = false,
-    var _discount: Double = 0.0,
-    var minPrice: Int = 0,
+    var couponId: Int,
+    var couponName: String,
+    var discountType: Boolean,
+    var discount: Double,
+    var minPrice: Int,
     var _expiredDate: Long,
-    var isOnReceive: Boolean = false
+    var isOnReceive: Boolean
 ) {
 
-    var discount = if(discountType) {
-        _discount.roundToInt().toString()
+    var _discount = if (discountType) {
+        discount.toInt().toString()
     } else {
-        (_discount * 10).toString()
+        discount.toInt().toString()
     }
+    val discountString: String
+        get() = (discount * 10).toInt().toString()
+    val discountMoney: Int
+        get() = discount.toInt()
 
     var expiredDate = timeStampToDate(_expiredDate)
 

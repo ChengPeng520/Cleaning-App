@@ -67,8 +67,8 @@ class OrderAdapter(private var orders: List<Order>) :
             return when (status) {
                 1 -> "媒合成功"
                 2 -> "正進行中"
-                3 -> "打掃結束"
-                4 -> "顧客確認"
+                3 -> "顧客確認"
+                4 -> "打掃結束"
                 5 -> "客訴申請"
                 6 -> "已取消"
                 else -> "未知状态"
@@ -99,19 +99,21 @@ class OrderAdapter(private var orders: List<Order>) :
 
         // 设置按钮点击事件和导航目的地
         holder.itemBinding.btnOrderBoxDetailed.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("orderId", orderList.orderId)
             val navController = holder.itemView.findNavController()
             when (orderList.status) {
                 0 -> navController.navigate(
-                    R.id.action_historicalorderFragment_to_csChooseCleanerFragment2
+                    R.id.action_historicalorderFragment_to_csChooseCleanerFragment2, bundle
                 )
-                1 -> navController.navigate(R.id.orderprogressFragment)
-                2 -> navController.navigate(R.id.orderingFragment)
-                3 -> navController.navigate(R.id.orderdoneFragment)
-                4 -> navController.navigate(R.id.ordercompletedFragment)
+                1 -> navController.navigate(R.id.orderprogressFragment, bundle)
+                2 -> navController.navigate(R.id.orderingFragment, bundle)
+                3 -> navController.navigate(R.id.ordercompletedFragment, bundle)
+                4 -> navController.navigate(R.id.orderdoneFragment, bundle)
                 5 -> navController.navigate(
-                    R.id.action_historicalorderFragment_to_detailedOrderFragment
+                    R.id.action_historicalorderFragment_to_detailedOrderFragment, bundle
                 )
-                6 -> navController.navigate(R.id.orderChatroomFragment)
+                6 -> navController.navigate(R.id.orderChatroomFragment, bundle)
             }
         }
     }

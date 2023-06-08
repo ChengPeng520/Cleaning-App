@@ -8,27 +8,28 @@ import java.sql.Time
 import java.sql.Timestamp
 
 data class Order(
-    val orderId: Int,
-    val customerId: Int,
-    val cleanerId: Int,
-    val cleanerName: String,
-    val areaCity: String,
-    val areaDistrict: String,
-    val areaDetail: String,
-    val dateOrdered: Date,
-    val timeOrderedStart: String,
-    val timeOrderedEnd: String,
-    val livingRoomSize: Int,
-    val kitchenSize: Int,
-    val bathRoomSize: Int,
-    val customerCouponId: Int,
-    val roomSize: Int,
-    val remark: String,
-    val priceForCustomer: Int,
-    val originalPrice: Int,
-    val stars: Double,
-    val commentCustomer: String,
-    val status: Int,
+    val orderId: Int = 0,
+    val customerId: Int = 0,
+    val cleanerId: Int = 0,
+    val cleanerName: String = "",
+    val areaCity: String = "",
+    val areaDistrict: String = "",
+    val areaDetail: String = "",
+    val dateOrdered: Date? = null,
+    val timeOrderedStart: Time? = null,
+    val timeOrderedEnd: Time? = null,
+    val livingRoomSize: Int = 0,
+    val kitchenSize: Int = 0,
+    val bathRoomSize: Int = 0,
+    val customerCouponId: Int = 0,
+    val roomSize: Int = 0,
+    val remark: String = "",
+    val priceForCustomer: Int = 0,
+    val originalPrice: Int = 0,
+    val stars: Float = 0F,
+    val commentCleaner: String = "",
+    val status: Int = 0,
+    val bsComplainRemark: String = "",
 ) : Serializable {
     val address: String
         get() {
@@ -51,25 +52,21 @@ data class Order(
             return stringBuilder.toString()
         }
     val cleaningTime: String
+        @SuppressLint("SimpleDateFormat")
         get() {
             val sb = StringBuilder()
-            val timeFormat = SimpleDateFormat("HH:mm")
-            val startTime = timeFormat.format(timeFormat.parse(timeOrderedStart))
-            val endTime = timeFormat.format(timeFormat.parse(timeOrderedEnd))
-            sb.append("$startTime - $endTime")
-            sb.append(" (${calculateCleaningHours()}小時)")
+            val dateFormat = SimpleDateFormat("HH:mm")
+            sb.append(dateFormat.format(timeOrderedStart)).append("-")
+                .append(dateFormat.format(timeOrderedEnd))
             return sb.toString()
         }
 
-    private fun calculateCleaningHours(): Int {
-        val startTime = timeOrderedStart.split(":").toTypedArray()
-        val endTime = timeOrderedEnd.split(":").toTypedArray()
-        val startHour = startTime[0].toInt()
-        val startMinute = startTime[1].toInt()
-        val endHour = endTime[0].toInt()
-        val endMinute = endTime[1].toInt()
-        val diffHour = endHour - startHour
-        val diffMinute = endMinute - startMinute
-        return if (diffMinute < 0) diffHour - 1 else diffHour
-    }
+    val platformFee: Int
+        get() {
+            return (originalPrice * 0.1).toInt()
+        }
+    val coupon: Int
+        get() {
+            return (priceForCustomer - originalPrice - platformFee)
+        }
 }
