@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
 import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.OrderUtil
+import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
 import java.util.*
@@ -26,11 +27,13 @@ class SearchOrder(
     val remark: String = "",
     val priceForCleaner: Int = 0,
     var status: Int = 0
-) : java.io.Serializable {
+
+) {
     val customerPhoto: Bitmap?
         get() {
             return ImageUtils.bytesToBitmap(photo)
         }
+
     val orderStartDate: Calendar
         get() {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
@@ -39,6 +42,7 @@ class SearchOrder(
             calendar.timeInMillis = date.time
             return calendar
         }
+
     val orderEndDate: Calendar
         get() {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
@@ -47,10 +51,12 @@ class SearchOrder(
             calendar.timeInMillis = date.time
             return calendar
         }
+
     val address: String
         get() {
             return "$areaCity$areaDistrict$areaDetail"
         }
+
     val cleaningRange: String
         get() {
             val stringBuilder = StringBuilder()
@@ -67,6 +73,7 @@ class SearchOrder(
             else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
             return stringBuilder.toString()
         }
+
     val cleaningTime: String
         @SuppressLint("SimpleDateFormat")
         get() {
@@ -78,7 +85,9 @@ class SearchOrder(
         }
 }
 
+
 data class OrderPhotos(
+    // 清潔前照片
     val photos: List<ByteArray>
 ) {
     val photo1: Bitmap?
@@ -110,3 +119,10 @@ data class ApplingOrder(
     val order: SearchOrder,
     val photo: ByteArray
 )
+
+data class CreateOrderPhoto(
+    //  拍照功能
+    var photo1: Bitmap? = null,
+    var photo2: Bitmap? = null,
+    var photo3: Bitmap? = null,
+) : Serializable

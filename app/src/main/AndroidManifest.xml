@@ -6,11 +6,9 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <uses-feature android:name="android.hardware.camera" />
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
     <application
         android:name=".share.MyApplication"
-        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +17,14 @@
         android:theme="@style/Theme.CleaningApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
         <activity
             android:name=".BackstageActivity"
             android:exported="false"

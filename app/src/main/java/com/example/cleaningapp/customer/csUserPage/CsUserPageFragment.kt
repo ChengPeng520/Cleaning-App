@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.example.cleaningapp.LoginActivity
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentCsUserBinding
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CsUserPageFragment : Fragment() {
@@ -41,7 +42,9 @@ class CsUserPageFragment : Fragment() {
                 val intent = Intent(activity, LoginActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
-
+                fun logout() {
+                    CustomerSharePreferencesUtils.logout()
+                }
             }
         }
     }

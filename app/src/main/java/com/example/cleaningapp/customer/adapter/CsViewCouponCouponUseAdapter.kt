@@ -1,10 +1,12 @@
 package com.example.cleaningapp.customer.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.csUserPage.CsViewCouponViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.ItemCsViewCouponBinding
@@ -44,8 +46,9 @@ class CsViewCouponCouponUseAdapter (private var coupons: List<Coupon>) :
             // 將欲顯示的coupon物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.coupon?.value = coupon
             itemViewBinding.btCusCouponUse.setOnClickListener {
-                Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set("coupon", coupon)
-                Navigation.findNavController(it).popBackStack()
+                val bundle = Bundle()
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_csViewCouponFragment_to_csCreateOrderFragment2)
             }
         }
     }

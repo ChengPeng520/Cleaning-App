@@ -70,13 +70,15 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginEnd="16dp"
-                app:imageResource="@{viewModel.order.imageId}"
+                app:imageBitmap="@{viewModel.order.customerPhoto}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline38"
                 app:layout_constraintStart_toStartOf="@+id/guideline37"
                 app:layout_constraintTop_toTopOf="@+id/imageView5"
                 tools:srcCompat="@tools:sample/avatars" />
+
         </androidx.cardview.widget.CardView>
+
         <TextView
             android:id="@+id/tv_order_cleantime"
             android:layout_width="wrap_content"
@@ -99,8 +101,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_order_cleantime"
-            app:layout_constraintTop_toTopOf="@+id/tv_order_localtion" />
+            app:layout_constraintStart_toStartOf="@+id/tv_order_cleantime" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline41"
@@ -135,7 +136,7 @@
             android:id="@+id/tv_order_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.order.time}"
+            android:text="@{viewModel.order.cleaningTime}"
             app:layout_constraintBottom_toTopOf="@+id/tv_order_localtion"
             app:layout_constraintStart_toStartOf="@+id/guideline39"
             app:layout_constraintTop_toTopOf="parent"
@@ -145,20 +146,33 @@
             android:id="@+id/tv_order_localtion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.order.location}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@{viewModel.order.areaCity}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_order_cleanlocaltion"
             app:layout_constraintStart_toStartOf="@+id/guideline39"
-            tools:text="台北市松山區" />
+            app:layout_constraintTop_toTopOf="@+id/tv_order_cleanlocaltion"
+            tools:text="台北市" />
 
         <TextView
             android:id="@+id/textView79"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text='@{(viewModel.order.status == 0) ? "媒合中" : ""}'
             android:textColor="#E95E5E"
-            android:text='@{(viewModel.order.status == 1) ? "媒合中" : ""}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline40"
             app:layout_constraintStart_toEndOf="@+id/tv_order_time" />
 
+        <TextView
+            android:id="@+id/textView64"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@{viewModel.order.areaDistrict}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_order_localtion"
+            app:layout_constraintStart_toEndOf="@+id/tv_order_localtion"
+            app:layout_constraintTop_toTopOf="@+id/tv_order_localtion"
+            tools:text="大同區" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

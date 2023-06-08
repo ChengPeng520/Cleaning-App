@@ -35,11 +35,11 @@ class CsEditProfileFragment : Fragment() {
         activity?.setTitle(R.string.csTitle_editProfile)
 
         with(binding) {
-            arguments?.let { bundle ->
-                bundle.getSerializable("profile")?.let {
-                    viewModel?.profile?.value = it as Customer
-                }
-            }
+//            arguments?.let { bundle ->
+//                bundle.getSerializable("profile")?.let {
+//                    viewModel?.profile?.value = it as Customer
+//                }
+//            }
             btnCsEditProfileRestore.setOnClickListener {
                 Navigation.findNavController(view).popBackStack()
             }

@@ -29,10 +29,17 @@ class CsChooseCleanerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.setTitle(R.string.csTitle_chooseCleaner)
+        arguments?.let { bundle ->
+            bundle.getSerializable("orderItem").let {
+                val order = it as com.example.cleaningapp.customer.detailed.Order
+                viewModel.order.value = order
+            }
+        }
+
         binding.rvCsChooseCleaner.layoutManager = LinearLayoutManager(requireContext())
         viewModel.cleanerList.observe(viewLifecycleOwner) { cleaners ->
             if (binding.rvCsChooseCleaner.adapter == null) {
-                binding.rvCsChooseCleaner.adapter = CsChooseCleanerAdapter(cleaners)
+                binding.rvCsChooseCleaner.adapter = CsChooseCleanerAdapter(cleaners, 10)
             } else {
                 (binding.rvCsChooseCleaner.adapter as CsChooseCleanerAdapter).updateCleaners(
                     cleaners

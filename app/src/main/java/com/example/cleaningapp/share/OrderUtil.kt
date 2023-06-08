@@ -29,4 +29,9 @@ class OrderUtil {
         val order: Order,
         val photos: List<ByteArray?>?
     )
+
+    data class InsertOrder(
+        val order: Order,
+        val photos: List<ByteArray>?
+    )
 }

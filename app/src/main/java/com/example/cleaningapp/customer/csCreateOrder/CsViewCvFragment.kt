@@ -1,6 +1,7 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,12 @@ class CsViewCvFragment : Fragment() {
             bundle.getInt("cleanerId").let {
                 viewModel.fetchCleanerInfo(it)
                 viewModel.fetchComments(it)
+                viewModel.order.value?.cleanerId = it
+                Log.d("xxx", "cleanerId:$it")
+            }
+            bundle.getInt("orderId").let {
+                viewModel.order.value?.orderId = it
+                Log.d("xxx", "orderId: $it")
             }
         }
         binding.rvCsViewComment.layoutManager = LinearLayoutManager(requireContext())
