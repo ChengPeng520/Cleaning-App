@@ -13,15 +13,12 @@ import com.example.cleaningapp.databinding.FragmentCiyiOrderManageBinding
 
 class OrderManageFragment : Fragment() {
     private lateinit var binding: FragmentCiyiOrderManageBinding
+    val viewModel : OrderListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-
-
-        val viewModel : OrderListViewModel by viewModels()
         requireActivity().setTitle(R.string.menu_backstage_orderManage)
         binding = FragmentCiyiOrderManageBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
@@ -48,7 +45,9 @@ class OrderManageFragment : Fragment() {
 
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    viewModel?.search(newText.toString())
+                 if ( newText != null ){
+                     viewModel?.search(newText)
+                 }
                     if (recyclerView.adapter != null && recyclerView.adapter?.itemCount ==0 ){
                         tvBsOrderlistNoresult.visibility = View.VISIBLE
                     }else{

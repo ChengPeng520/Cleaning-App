@@ -1,5 +1,6 @@
 package com.example.cleaningapp.cleaner.viewmodel.order
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,40 +11,28 @@ import com.example.cleaningapp.cleaner.uistate.Work
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.OrderUtil
 import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class OrderOrdermatchViewModel : ViewModel() {
-//    val _order: MutableLiveData<SearchOrder> by lazy { MutableLiveData<SearchOrder>() }
-    val order: MutableLiveData<SearchOrder> by lazy { MutableLiveData<SearchOrder>() }
+    val order: MutableLiveData<SearchOrder>by lazy { MutableLiveData<SearchOrder>() }
     val text: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
-//    val uiState: LiveData<OrderStateUiState> = order
+    fun fetchOrdermatch(orderId:Int) {
+        requestTask<SearchOrder>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
+            "GET",
+        )?.let {
+            order.value = it
+        }
+    }
 
-//    init {
-//        fetchOrderamtch()
-//    }
-//
-//    fun fetchOrderamtch() {
+//    fun DeleteOrder(){
 //        requestTask<SearchOrder>(
-//            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
-//            "GET"
+//            "http://10.0.2.2:8080/javaweb-cleaningapp/javaweb-cleaningapp/orderApplied/",
+//            "DELETE",
 //        )?.let {
-//            order.value = SearchOrder (
-//                photo = it.photo,
-//                orderId = it.orderId,
-//                dateOrdered = it.dateOrdered,
-//                timeOrderedStart = it.timeOrderedStart,
-//                timeOrderedEnd = it.timeOrderedEnd,
-//                areaCity = it.areaCity,
-//                areaDistrict = it.areaDistrict,
-//                areaDetail = it.areaDetail,
-//                livingRoomSize = it.livingRoomSize,
-//                kitchenSize = it.kitchenSize,
-//                bathRoomSize = it.bathRoomSize,
-//                roomSize = it.roomSize,
-//                remark = it.remark,
-//                priceForCleaner = it.priceForCleaner,
-//                status = it.status
-//            )
+//            order.value = it
 //        }
 //    }
 }
+

@@ -14,7 +14,6 @@ import com.example.cleaningapp.databinding.ItemAlbBsShopOrderDataboxBinding
 class ShopOrderAdapter(private var shopOrders: List<shopOrder>) :
     RecyclerView.Adapter<ShopOrderAdapter.OrderViewHolder>() {
 
-    //更新資料列表內需要oderlist ,寫出這個方法內的oders 是哪邊的oders
     @SuppressLint("NotifyDataSetChanged")
     fun updateShopOrders(orders: List<shopOrder>) {
         this.shopOrders = orders
@@ -45,12 +44,11 @@ class ShopOrderAdapter(private var shopOrders: List<shopOrder>) :
         val order = shopOrders[position]  //首先通过position从shopOrders列表中获取对应位置的订单数据，将其赋值给order变量
         with(holder) {
             itemViewBinding.viewModel?.shopOrder?.value = order
-            val bundle = Bundle()
-            bundle.putSerializable("order", order)
-
             itemView.setOnClickListener() {
+                val bundle = Bundle()
+                order.shopOrderId?.let { bundle.putInt("shopOrderId", it) }
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_bsShopOrderFragment_to_bsShopOrderDetailFragment)
+                    .navigate(R.id.action_bsShopOrderFragment_to_bsShopOrderDetailFragment,bundle)
             }
         }
 

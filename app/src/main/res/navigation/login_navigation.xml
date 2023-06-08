@@ -103,9 +103,6 @@
         <action
             android:id="@+id/action_loginForgetPasswordPhoneFragment_to_forgetPasswordPhoneVFragment"
             app:destination="@id/forgetPasswordPhoneVFragment" />
-        <action
-            android:id="@+id/action_loginForgetPasswordPhoneFragment_to_loginForgetPasswordEmailFragment"
-            app:destination="@id/loginForgetPasswordEmailFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginForgetPasswordEmailFragment"

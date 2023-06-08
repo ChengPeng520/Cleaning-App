@@ -23,9 +23,6 @@ class SignupContractMemberFragment : Fragment() {
 //            putString(accountKey, account)
 //        }
 //    }
-
-    private lateinit var viewModel: SignupContractMemberViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

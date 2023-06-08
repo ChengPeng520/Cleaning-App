@@ -1,5 +1,6 @@
 package com.example.cleaningapp.cleaner.adapter
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.cleaningapp.databinding.ItemVickyCleanerFrontBinding
 
 class CleanerAdapter(private var cleaners: List<SearchOrder>) :
     RecyclerView.Adapter<CleanerAdapter.CleanerViewHolder>() {
+    @SuppressLint("NotifyDataSetChanged")
     fun updateCleaners(cleaners: List<SearchOrder>) {
         this.cleaners = cleaners
         notifyDataSetChanged()

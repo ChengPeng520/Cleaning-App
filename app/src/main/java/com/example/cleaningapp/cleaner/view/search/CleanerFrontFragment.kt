@@ -26,6 +26,7 @@ import java.util.*
 class CleanerFrontFragment : Fragment() {
     private val viewModel: CleanerFrontViewModel by viewModels()
     private lateinit var binding: FragmentVickyCleanerFrontBinding
+//    private var adapter: CleanerAdapter? = null
 
     // 市區
     private val countyList = arrayOf(
@@ -508,6 +509,7 @@ class CleanerFrontFragment : Fragment() {
     private fun initRecyclerView() {
         with(binding) {
             recyclerviewSearchlist.layoutManager = LinearLayoutManager(requireContext())
+
             //layoutManager管理每一個layout裡面每個item呈現方式
             viewModel?.cleaners?.observe(viewLifecycleOwner) { cleaners ->
                 // cleaners 類別是為viewModel中的<List<Job>>
@@ -524,6 +526,8 @@ class CleanerFrontFragment : Fragment() {
 
     private fun setTimeOnclick() {
         with(binding) {
+
+            //日期
             spnDate.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 val datePickerDialog =
@@ -555,6 +559,7 @@ class CleanerFrontFragment : Fragment() {
                 datePickerDialog.show()
             }
 
+            // 開始時間
             startTime.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(
@@ -573,6 +578,7 @@ class CleanerFrontFragment : Fragment() {
                 ).show()
             }
 
+            // 結束時間
             spinner3.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 TimePickerDialog(

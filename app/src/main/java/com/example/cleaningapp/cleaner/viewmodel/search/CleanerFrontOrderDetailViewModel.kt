@@ -17,7 +17,7 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
     val job: LiveData<SearchOrder> = _job
     val jobPhoto: LiveData<OrderPhotos> by lazy { _jobPhoto }
 
-    // 訂單詳情
+// 訂單詳情
 //    fun fetchOrderAccept(orderId: Int) {
 //        requestTask<SearchOrderPhotos>(
 //            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
