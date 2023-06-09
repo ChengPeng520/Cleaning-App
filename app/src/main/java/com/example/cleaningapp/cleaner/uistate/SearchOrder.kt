@@ -3,6 +3,7 @@ package com.example.cleaningapp.cleaner.uistate
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
+import android.util.Log
 import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.OrderUtil
 import java.io.Serializable

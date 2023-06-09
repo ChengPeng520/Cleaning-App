@@ -3,6 +3,7 @@ package com.example.cleaningapp.cleaner.viewmodel.search
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.backstage.order.Order
 import com.example.cleaningapp.cleaner.uistate.ApplingOrder
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
