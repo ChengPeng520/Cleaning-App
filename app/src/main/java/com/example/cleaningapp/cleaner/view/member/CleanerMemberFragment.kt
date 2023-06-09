@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -33,6 +34,7 @@ class CleanerMemberFragment : Fragment(), OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView()
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "會員中心"
     }
 
     private fun initView() {

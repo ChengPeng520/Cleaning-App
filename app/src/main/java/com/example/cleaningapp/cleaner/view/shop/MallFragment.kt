@@ -2,9 +2,10 @@ package com.example.cleaningapp.cleaner.view.shop
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -32,6 +33,10 @@ class MallFragment : Fragment() {
         initRecycler()
         onSearchInputChange()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "商城"
     }
 
     private fun initRecycler() {
