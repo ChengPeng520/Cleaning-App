@@ -15,7 +15,11 @@ class CsViewCvViewModel : ViewModel() {
     //受監控的LiveDATA，一旦指派新值就會更新使用者列表畫面
     val comments: MutableLiveData<List<Comment>> by lazy { MutableLiveData<List<Comment>>() }
     val cleaner: MutableLiveData<Cleaner> by lazy { MutableLiveData<Cleaner>() }
-    val orderEstablished: MutableLiveData<OrderEstablished> by lazy { MutableLiveData<OrderEstablished>() }
+    val orderEstablished: MutableLiveData<OrderEstablished> by lazy {
+        MutableLiveData<OrderEstablished>(
+            OrderEstablished()
+        )
+    }
     var csPayment: Int = 0
 
     fun fetchCleanerInfo(cleanerId: Int) {
@@ -41,7 +45,7 @@ class CsViewCvViewModel : ViewModel() {
             method = "GET",
         )?.let {
             csPayment = it.priceForCustomer
-            Log.d("yyy","csPayment: $csPayment")
+            Log.d("yyy", "csPayment: $csPayment")
         }
     }
 

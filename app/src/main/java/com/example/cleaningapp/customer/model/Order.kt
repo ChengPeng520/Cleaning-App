@@ -3,7 +3,6 @@ package com.example.cleaningapp.customer.model
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
-import com.example.cleaningapp.share.OrderUtil
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time

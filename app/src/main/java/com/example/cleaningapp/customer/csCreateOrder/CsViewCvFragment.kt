@@ -36,13 +36,15 @@ class CsViewCvFragment : Fragment() {
             bundle.getInt("cleanerId").let {
                 viewModel.fetchCleanerInfo(it)
                 viewModel.fetchComments(it)
-                viewModel.orderEstablished.value?.cleanerId = it
-                Log.d("xxx", "cleanerId:$it")
+                val orderEstablished = viewModel.orderEstablished.value
+                orderEstablished?.cleanerId = it
+                viewModel.orderEstablished.value = orderEstablished
             }
             bundle.getInt("orderId").let {
                 viewModel.fetchOrdersInfo(it)
-                viewModel.orderEstablished.value?.orderId = it
-                Log.d("xxx", "orderId: $it")
+                val orderEstablished = viewModel.orderEstablished.value
+                orderEstablished?.orderId = it
+                viewModel.orderEstablished.value = orderEstablished
             }
         }
         binding.rvCsViewComment.layoutManager = LinearLayoutManager(requireContext())
@@ -55,6 +57,7 @@ class CsViewCvFragment : Fragment() {
         }
         binding.btnCsViewCvConfirmPay.setOnClickListener {
             viewModel.orderEstablished.value?.let { it1 ->
+                Log.d("2", "2")
                 TapPay.getInstance().prepareGooglePay(
                     requireActivity(),
                     it1.orderId,

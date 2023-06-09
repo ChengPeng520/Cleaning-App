@@ -108,7 +108,9 @@ class ShoppingCartFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 100) {
-            viewModel.checkout(context!!)
+//            if (viewModel.checkout(requireContext())) {
+//                findNavController().navigate(R.id.action_shoppingCartFragment_to_completedPaymentFragment)
+//            }
         }
     }
 }

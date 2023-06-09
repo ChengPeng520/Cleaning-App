@@ -17,6 +17,7 @@ class TapPay {
     private lateinit var tpdGooglePay: TPDGooglePay
     private var id = 0
     private var price = 0
+    private var result = true
 
     // 測試環境網址
     private val sandbox = "https://sandbox.tappaysdk.com/"
@@ -84,7 +85,6 @@ class TapPay {
     }
 
     fun getPrimeFromTapPay(paymentData: PaymentData, context: Context): Boolean {
-        var result = false
         /* 呼叫getPrime()只將支付資料提交給TapPay以取得prime (代替卡片的一次性字串，此字串的時效為 30 秒)，
             參看https://docs.tappaysdk.com/google-pay/zh/reference.html#prime */
         /* 一般而言，手機提交支付、信用卡資料給TapPay後，TapPay會將信用卡等資訊送至Bank確認是否合法，
@@ -105,7 +105,7 @@ class TapPay {
                 )
                 val jsonObject = Gson().fromJson(resultJson, JsonObject::class.java)
                 if (jsonObject["msg"].asString == "Success") {
-                    result = true
+                    this.result = true
                 }
                 val text = "支付結束，TapPay回應的結果訊息:\n$resultJson"
                 Log.d("a", text)
