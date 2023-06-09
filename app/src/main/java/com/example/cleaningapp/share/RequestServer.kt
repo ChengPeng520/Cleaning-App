@@ -85,7 +85,7 @@ class TimeAdapter : JsonSerializer<Time>, JsonDeserializer<Time> {
     ): Time? {
         return try {
             val date = SDF.parse(json.asString)
-            Time(date.time)
+            Time(date?.time ?: 0)
         } catch (e: Exception) {
             null
         }
