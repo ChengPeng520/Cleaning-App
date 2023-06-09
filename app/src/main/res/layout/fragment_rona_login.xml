@@ -25,7 +25,7 @@
             android:background="@drawable/all_layout_gray_frame_shape"
             android:ems="10"
             android:hint="@string/edtTxt_login_password_hint"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             android:paddingStart="10dp"
             android:text="@={viewModel.password}"
