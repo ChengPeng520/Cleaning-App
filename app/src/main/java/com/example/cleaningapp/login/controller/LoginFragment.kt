@@ -230,19 +230,6 @@ class LoginFragment : Fragment() {
             return check
         }
     }
-
-    // FCM傳送通知中, API 33開始需要加上requestPermissionLauncher
-    override fun onStart() {
-        super.onStart()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-        }
-    }
-
-    private var requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            Log.d("myTag", "granted: $granted")
-        }
 }
 
 
