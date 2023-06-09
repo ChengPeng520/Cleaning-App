@@ -3,6 +3,7 @@ package com.example.cleaningapp.customer.model
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
+import com.example.cleaningapp.share.OrderUtil
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
@@ -58,22 +59,34 @@ data class Order(
         get() {
             return "$areaCity$areaDistrict$areaDetail"
         }
+
     val cleaningRange: String
         get() {
             val stringBuilder = StringBuilder()
-            if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
-            if (kitchenSize != 0 && livingRoomSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
-            else if (kitchenSize != 0) stringBuilder.append("廚房${kitchenSize}坪")
-            if (bathRoomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0)) stringBuilder.append(
-                "\n廁所${bathRoomSize}坪"
-            )
-            else if (bathRoomSize != 0) stringBuilder.append("/n廁所${bathRoomSize}坪")
-            if (roomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0 || bathRoomSize != 0)) stringBuilder.append(
-                "\n房間${roomSize}坪"
-            )
-            else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
+            if (livingRoomSize != 0 && livingRoomSize != null) stringBuilder.append("客廳${livingRoomSize}坪")
+            if (kitchenSize != 0 && kitchenSize != null) stringBuilder.append("\n廚房${kitchenSize}坪")
+            if (bathRoomSize != 0 && bathRoomSize != null) stringBuilder.append("\n廁所${bathRoomSize}坪")
+            if (roomSize != 0 && roomSize != null) stringBuilder.append("\n房間${roomSize}坪")
             return stringBuilder.toString()
         }
+
+
+//    val cleaningRange: String
+//        get() {
+//            val stringBuilder = StringBuilder()
+//            if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
+//            if (kitchenSize != 0 && livingRoomSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
+//            else if (kitchenSize != 0) stringBuilder.append("廚房${kitchenSize}坪")
+//            if (bathRoomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0)) stringBuilder.append(
+//                "\n廁所${bathRoomSize}坪"
+//            )
+//            else if (bathRoomSize != 0) stringBuilder.append("/n廁所${bathRoomSize}坪")
+//            if (roomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0 || bathRoomSize != 0)) stringBuilder.append(
+//                "\n房間${roomSize}坪"
+//            )
+//            else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
+//            return stringBuilder.toString()
+//        }
 }
 
 data class CreateOrderPhoto(
@@ -115,4 +128,9 @@ data class OrderRemind(
 data class OrderEstablished(
     var orderId: Int = 0,
     var cleanerId: Int = 0
+)
+
+data class EstablishOrder(
+    val order: Order,
+    val photo: CreateOrderPhoto
 )

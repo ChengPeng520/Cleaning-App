@@ -410,7 +410,8 @@
             android:text="@string/btn_cs_confirmAndSubmit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{viewModel::checkout}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

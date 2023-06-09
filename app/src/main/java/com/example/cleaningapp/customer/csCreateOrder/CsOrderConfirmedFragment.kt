@@ -41,10 +41,10 @@ class CsOrderConfirmedFragment : Fragment() {
                     viewModel?.photo?.value = it as CreateOrderPhoto
                 }
             }
-            btCsOderConfirmedSubmit.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
-            }
+//            btCsOderConfirmedSubmit.setOnClickListener {
+//                Navigation.findNavController(view)
+//                    .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
+//            }
         }
     }
 }
