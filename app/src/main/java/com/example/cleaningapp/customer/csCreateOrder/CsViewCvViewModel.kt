@@ -1,6 +1,7 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.Order
@@ -40,6 +41,7 @@ class CsViewCvViewModel : ViewModel() {
             method = "GET",
         )?.let {
             csPayment = it.priceForCustomer
+            Log.d("yyy","csPayment: $csPayment")
         }
     }
 

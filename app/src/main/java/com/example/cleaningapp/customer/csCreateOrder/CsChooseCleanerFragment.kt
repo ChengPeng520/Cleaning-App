@@ -34,6 +34,7 @@ class CsChooseCleanerFragment : Fragment() {
         activity?.setTitle(R.string.csTitle_chooseCleaner)
         arguments?.let { bundle ->
             bundle.getInt("orderId").let {
+                viewModel.orderId = it
                 viewModel.fetchCleanerApplied(it)
             }
         }

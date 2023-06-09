@@ -31,7 +31,7 @@ class CsChooseCleanerViewModel : ViewModel() {
 
     fun fetchCleanerApplied(orderId: Int) {
         requestTask<List<Cleaner>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/10}",
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/$orderId",
             method = "GET",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
