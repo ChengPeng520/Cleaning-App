@@ -664,7 +664,7 @@ class CsCreateOrderFragment : Fragment() {
                 it.livingRoomSize = edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
                 it.kitchenSize = edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
                 it.bathRoomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
-                it.roomSize = edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                it.roomSize = edtTxtCsCreateOrderRoomSize.text.toString().toInt()
                 it.originalPrice = edtTxtCost.text.toString().toInt()
             }
             viewModel?.order?.value = order

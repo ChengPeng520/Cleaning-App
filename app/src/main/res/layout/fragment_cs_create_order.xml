@@ -343,7 +343,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/edtTxt_csCreateOrder_bedroomSize"
+                    android:id="@+id/edtTxt_csCreateOrder_roomSize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"

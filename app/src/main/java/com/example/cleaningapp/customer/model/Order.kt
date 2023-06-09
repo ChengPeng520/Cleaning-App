@@ -3,7 +3,7 @@ package com.example.cleaningapp.customer.model
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
-import com.example.cleaningapp.share.OrderUtil
+import androidx.lifecycle.MutableLiveData
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
@@ -132,5 +132,5 @@ data class OrderEstablished(
 
 data class EstablishOrder(
     val order: Order,
-    val photo: CreateOrderPhoto
+    val photo: MutableLiveData<CreateOrderPhoto>
 )
