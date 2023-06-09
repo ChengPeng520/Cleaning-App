@@ -1,9 +1,12 @@
 package com.example.cleaningapp.login.viewModel
 
+import android.app.Application
 import android.graphics.Bitmap
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.R
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
@@ -21,7 +24,7 @@ private data class Cleaner(
     val crc: Bitmap?
 )
 
-class SignupApplyInfoViewModel : ViewModel() {
+class SignupApplyInfoViewModel(application: Application) : AndroidViewModel(application) {
     var email: String? = null
     var password: String? = null
     val gender: MutableLiveData<Int> by lazy { MutableLiveData<Int>(0) }
@@ -32,7 +35,11 @@ class SignupApplyInfoViewModel : ViewModel() {
     val avatar: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>(null) }
     val id1: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>(null) }
     val id2: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>(null) }
-    val crc: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>(null) }
+    val crc: MutableLiveData<Bitmap> by lazy {
+        MutableLiveData<Bitmap>(
+            ImageUtils.resToBitmap(application, R.drawable.rona_upload_goodperson)
+        )
+    }
 
     fun cleanerRegister(): Boolean? {
         val member =

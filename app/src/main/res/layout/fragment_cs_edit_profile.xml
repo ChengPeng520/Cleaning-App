@@ -32,15 +32,14 @@
                 app:layout_constraintTop_toTopOf="@id/guideline47">
 
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_csEditProfile_img"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    android:layout_margin="2dp"
                     android:foreground="?selectableItemBackground"
                     app:cardCornerRadius="150dp"
-                    android:elevation="2dp"
-                    app:cardElevation="0dp"
+                    app:cardElevation="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +54,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:srcCompat="@tools:sample/avatars" />
+
                 </androidx.cardview.widget.CardView>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -62,9 +62,9 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="4dp"
                     android:background="@drawable/baseline_camera_alt_24"
                     android:elevation="5dp"
-                    android:layout_marginEnd="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/cv_csEditProfile_img" />
 
@@ -103,7 +103,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:minHeight="48dp"
-                    android:text="@{viewModel.profile.name}"
+                    android:text="@={viewModel.profile.name}"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -138,12 +138,13 @@
                     android:background="@null"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:inputType="phone"
+                    android:maxLength="10"
                     android:minHeight="48dp"
-                    android:text="@{viewModel.profile.phone}"
+                    android:text="@={viewModel.profile.phone}"
                     android:textSize="15sp" />
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_gender"
@@ -203,15 +204,15 @@
                     android:id="@+id/edtTxt_csEditProfile_selfIntro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
+                    android:gravity="left"
                     android:inputType="textMultiLine"
                     android:lineSpacingExtra="30px"
                     android:minLines="5"
                     android:paddingBottom="12dp"
-                    android:text="@{viewModel.profile.introduction}"
+                    android:text="@={viewModel.profile.introduction}"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -221,8 +222,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/btn_cs_restore"
                 android:onClick="@{viewModel::saveMemberInfo}"
+                android:text="@string/btn_cs_restore"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_csEditProfile_selfIntro" />
