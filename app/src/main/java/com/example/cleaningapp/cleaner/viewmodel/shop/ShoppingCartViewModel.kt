@@ -11,7 +11,7 @@ import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 
-class ShoppingCartViewModel() : ViewModel() {
+class ShoppingCartViewModel : ViewModel() {
     private val _uiState: MutableLiveData<List<ShoppingCartItemUiState>> by lazy { MutableLiveData<List<ShoppingCartItemUiState>>() }
     val uiState: LiveData<List<ShoppingCartItemUiState>> = _uiState
     val adapterUiState: MutableLiveData<ShoppingCartItemUiState> by lazy { MutableLiveData<ShoppingCartItemUiState>() }
@@ -68,7 +68,7 @@ class ShoppingCartViewModel() : ViewModel() {
         }
     }
 
-    fun checkout(context: Context) {
+    fun checkout(context: Context) : Boolean {
         requestTask<ShopOrder>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/",
             method = "PUT",
@@ -93,7 +93,8 @@ class ShoppingCartViewModel() : ViewModel() {
                 totalPrice = totalPrice.value!!
             )
         )?.let {
-
+            return true
         }
+        return false
     }
 }
