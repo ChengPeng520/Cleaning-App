@@ -16,3 +16,11 @@ data class ShoppingCartItemUiState(
             return ImageUtils.bytesToBitmap(photo)
         }
 }
+
+data class ShopOrder(
+    val shopOrderId : Int = 0,
+    val recieverName : String = "",
+    val recieverPhone : String = "",
+    val recieverAddress : String = "",
+    val totalPrice : Int = 0
+)
