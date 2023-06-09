@@ -3,7 +3,6 @@ package com.example.cleaningapp.share
 import android.app.Activity
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import com.example.cleaningapp.R
 import com.google.android.gms.wallet.PaymentData
 import com.google.android.gms.wallet.TransactionInfo
@@ -16,6 +15,8 @@ import tech.cherri.tpdirect.api.*
 class TapPay {
     private val requestCode = 101
     private lateinit var tpdGooglePay: TPDGooglePay
+    private var id = 0
+    private var price = 0
 
     // 測試環境網址
     private val sandbox = "https://sandbox.tappaysdk.com/"
@@ -31,7 +32,21 @@ class TapPay {
         TPDCard.CardType.AmericanExpress
     )
 
-    fun prepareGooglePay(context: Context, price: Int) {
+    companion object {
+        private var instance: TapPay? = null
+
+        @Synchronized
+        fun getInstance(): TapPay {
+            if (instance == null) {
+                instance = TapPay()
+            }
+            return instance!!
+        }
+    }
+
+    fun prepareGooglePay(context: Context, id: Int, price: Int) {
+        this.id = id
+        this.price = price
         TPDSetup.initInstance(
             context,
             context.getString(R.string.TapPay_AppID).toInt(),
@@ -60,7 +75,7 @@ class TapPay {
                 tpdGooglePay.requestPayment(
                     TransactionInfo.newBuilder()
                         .setTotalPriceStatus(WalletConstants.TOTAL_PRICE_STATUS_FINAL)
-                        .setTotalPrice("$price") // 消費總金額
+                        .setTotalPrice("${this.price}") // 消費總金額
                         .setCurrencyCode("TWD") // 設定幣別
                         .build(), requestCode
                 )
@@ -68,7 +83,8 @@ class TapPay {
         }
     }
 
-    fun getPrimeFromTapPay(paymentData: PaymentData, context: Context) {
+    fun getPrimeFromTapPay(paymentData: PaymentData, context: Context): Boolean {
+        var result = false
         /* 呼叫getPrime()只將支付資料提交給TapPay以取得prime (代替卡片的一次性字串，此字串的時效為 30 秒)，
             參看https://docs.tappaysdk.com/google-pay/zh/reference.html#prime */
         /* 一般而言，手機提交支付、信用卡資料給TapPay後，TapPay會將信用卡等資訊送至Bank確認是否合法，
@@ -89,11 +105,7 @@ class TapPay {
                 )
                 val jsonObject = Gson().fromJson(resultJson, JsonObject::class.java)
                 if (jsonObject["msg"].asString == "Success") {
-                    Toast.makeText(
-                        context,
-                        "支付成功",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    result = true
                 }
                 val text = "支付結束，TapPay回應的結果訊息:\n$resultJson"
                 Log.d("a", text)
@@ -103,6 +115,7 @@ class TapPay {
                 "TapPay getPrime failed. status: $status, message: $reportMsg"
             Log.d("b", text)
         }
+        return result
     }
 
     // 將交易資訊送至TapPay測試區
@@ -115,9 +128,10 @@ class TapPay {
         paymentJO.addProperty("partner_key", partnerKey)
         paymentJO.addProperty("prime", prime)
         paymentJO.addProperty("merchant_id", merchantId)
-        paymentJO.addProperty("amount", 10)
+        paymentJO.addProperty("amount", this.price)
         paymentJO.addProperty("currency", "TWD")
-        paymentJO.addProperty("order_number", "SN0001")
+        paymentJO.addProperty("order_number", "$id")
+        paymentJO.addProperty("details", "茶葉蛋1顆")
         val cardHolderJO = JsonObject()
         cardHolderJO.addProperty("name", "Ron")
         cardHolderJO.addProperty("phone_number", "+886912345678")

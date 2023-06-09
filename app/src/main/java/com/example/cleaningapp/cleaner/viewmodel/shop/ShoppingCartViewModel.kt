@@ -1,15 +1,17 @@
 package com.example.cleaningapp.cleaner.viewmodel.shop
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.cleaner.uistate.ShopOrder
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 
-class ShoppingCartViewModel : ViewModel() {
+class ShoppingCartViewModel() : ViewModel() {
     private val _uiState: MutableLiveData<List<ShoppingCartItemUiState>> by lazy { MutableLiveData<List<ShoppingCartItemUiState>>() }
     val uiState: LiveData<List<ShoppingCartItemUiState>> = _uiState
     val adapterUiState: MutableLiveData<ShoppingCartItemUiState> by lazy { MutableLiveData<ShoppingCartItemUiState>() }
@@ -63,6 +65,35 @@ class ShoppingCartViewModel : ViewModel() {
             )?.let {
                 fetchShopOrderList()
             }
+        }
+    }
+
+    fun checkout(context: Context) {
+        requestTask<ShopOrder>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/",
+            method = "PUT",
+            reqBody = ShopOrder(
+                shopOrderId = context.getSharedPreferences(
+                    "AccountCleaner",
+                    Context.MODE_PRIVATE
+                )
+                    .getInt("ShopOrderId", 0),
+                recieverName = context.getSharedPreferences(
+                    "ReceiverInfo",
+                    Context.MODE_PRIVATE
+                ).getString("name", "")!!,
+                recieverPhone = context.getSharedPreferences(
+                    "ReceiverInfo",
+                    Context.MODE_PRIVATE
+                ).getString("phone", "")!!,
+                recieverAddress = context.getSharedPreferences(
+                    "ReceiverInfo",
+                    Context.MODE_PRIVATE
+                ).getString("address", "")!!,
+                totalPrice = totalPrice.value!!
+            )
+        )?.let {
+
         }
     }
 }
