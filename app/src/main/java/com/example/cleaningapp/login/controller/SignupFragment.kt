@@ -278,6 +278,7 @@ class SignupFragment : Fragment() {
             if (cPassword != password) {
                 tvSignupErrMsg.text = ""
                 edtTxtSignupPasswordcfm.error = "密碼不一致" // 抓不到string的值, 先以字串代替
+                check = false
             }
             return check
         }

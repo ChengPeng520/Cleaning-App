@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.login.viewModel.SignupCheckApplyViewModel
 
 class SignupCheckApplyFragment : Fragment() {
 
@@ -17,8 +15,9 @@ class SignupCheckApplyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       val signupCheckApplyFragment = inflater.inflate(R.layout.fragment_rona_signup_check_apply, container, false)
-        val countDownTimer = object : CountDownTimer(5000,1000){
+        val signupCheckApplyFragment =
+            inflater.inflate(R.layout.fragment_rona_signup_check_apply, container, false)
+        val countDownTimer = object : CountDownTimer(5000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
@@ -31,7 +30,4 @@ class SignupCheckApplyFragment : Fragment() {
         countDownTimer.start()
         return signupCheckApplyFragment
     }
-
-
-
 }

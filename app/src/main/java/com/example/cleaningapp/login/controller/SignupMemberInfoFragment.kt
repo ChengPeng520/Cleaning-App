@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -18,9 +19,15 @@ import com.example.cleaningapp.databinding.FragmentSignupMemberInfoBinding
 import com.example.cleaningapp.login.viewModel.SignupMemberInfoViewModel
 import com.example.cleaningapp.share.ImageUtils
 
-class signupMemberInfoFragment : Fragment() {
+class SignupMemberInfoFragment : Fragment() {
     private lateinit var binding: FragmentSignupMemberInfoBinding
     private val viewModel: SignupMemberInfoViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +58,7 @@ class signupMemberInfoFragment : Fragment() {
 
                 viewModel?.customerRegister()?.let {
                     if (it) {
+                        Toast.makeText(context, "註冊成功", Toast.LENGTH_SHORT).show()
                         Navigation.findNavController(requireActivity(), R.id.fragmentContainerView3)
                             .navigate(R.id.action_signupMemberInfoFragment_to_loginFragment)
                     } else {
@@ -91,4 +99,9 @@ class signupMemberInfoFragment : Fragment() {
                 }
             }
         }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+    }
 }

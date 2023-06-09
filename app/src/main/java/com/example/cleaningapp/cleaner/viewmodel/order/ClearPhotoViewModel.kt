@@ -16,8 +16,7 @@ class ClearPhotoViewModel : ViewModel() {
     fun cleanerBeforePhoto(orderId: Int) {
         requestTask<SearchOrderPhotos>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
-            "GET",
-            respBodyType = object : TypeToken<SearchOrderPhotos>() {}.type
+            "GET"
         )?.let {
             orderPhotos.value = OrderPhotos(it.photos)
         }

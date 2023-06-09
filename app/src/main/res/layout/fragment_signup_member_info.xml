@@ -5,6 +5,7 @@
     tools:context=".login.controller.signupMemberInfoFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.cleaningapp.login.viewModel.SignupMemberInfoViewModel" />
@@ -28,29 +29,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/iv_memInfo_avatar"
-                    android:layout_width="104dp"
-                    android:layout_height="104dp"
-                    android:src="@drawable/fatruei_my_image"
-                    android:imageBitmap="@{viewModel.avatar}"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout_memberInfo_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_memberInfo_img"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="2dp"
+                        android:foreground="?selectableItemBackground"
+                        app:cardCornerRadius="150dp"
+                        app:cardElevation="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iv_memInfo_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/default_img"
+                            android:imageBitmap="@{viewModel.avatar}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/bt_memberInfo_editPic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/baseline_camera_alt_24"
+                        android:elevation="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout_memberInfo_img" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="40dp"
                     android:background="@drawable/all_layout_gray_frame_shape"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_memInfo_avatar">
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout_memberInfo_img">
 
                     <TextView
                         android:id="@+id/tv_suInfo_name"
@@ -74,8 +110,8 @@
                         android:hint="@string/edtTxt_member_hint"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
-                        android:textColorHint="#DDDDDD"
                         android:text="@={viewModel.fullName}"
+                        android:textColorHint="#DDDDDD"
                         app:layout_constraintBottom_toBottomOf="@id/tv_suInfo_name"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -150,13 +186,16 @@
                         android:gravity="center|end"
                         android:hint="@string/edtTxt_member_hint"
                         android:inputType="number"
+                        android:maxLength="10"
                         android:minHeight="48dp"
-                        android:textColorHint="#DDDDDD"
                         android:text="@={viewModel.phone}"
+                        android:textColorHint="#DDDDDD"
                         app:layout_constraintBottom_toBottomOf="@+id/textView15"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/textView15"
                         app:layout_constraintTop_toTopOf="@+id/textView15"
+                        app:layout_constraintVertical_bias="0.518"
                         tools:ignore="TextFields" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -217,9 +256,9 @@
             android:id="@+id/tv_memInfo_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="24dp"
             android:text="@string/tv_suinfo_done"
             android:textColor="@color/black"
-            android:padding="24dp"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
