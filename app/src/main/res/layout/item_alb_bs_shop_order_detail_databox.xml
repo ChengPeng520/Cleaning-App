@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopOrderDetailViewModel" />
+            type="com.example.cleaningapp.backstage.shop.viewModel.BsShopOrdersDetailViewModel" />
 
     </data>
 
@@ -24,7 +24,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
-            app:imageResource="@{viewModel.ordersDetail.orderImage}"
+            app:imageBitmap ="@{viewModel.orderDetail.orderListPhoto}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,7 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{viewModel.ordersDetail.productName}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_ti_bs_shop_order_detail_name"
@@ -59,26 +58,49 @@
             android:id="@+id/tv_bs_shop_order_detail_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.ordersDetail.productPrice}"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(viewModel.orderDetail.price)}"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_shop_order_detail_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ti_bs_shop_order_detail_name"
-            tools:text="$100" />
+            app:layout_constraintBottom_toBottomOf="@+id/textView85"
+            app:layout_constraintStart_toEndOf="@+id/textView85"
+            app:layout_constraintTop_toTopOf="@+id/textView85"
+            tools:text="100" />
+
 
         <TextView
             android:id="@+id/tv_bs_shop_order_detail_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@{viewModel.ordersDetail.productSum}"
+            android:text="@{String.valueOf(viewModel.orderDetail.count)}"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_bs_shop_order_detail_money"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_bs_shop_order_detail_money"
-            tools:text="x1" />
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="X"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_bs_shop_order_detail_count"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bs_shop_order_detail_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_bs_shop_order_detail_count" />
+
+        <TextView
+            android:id="@+id/textView85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bs_shop_order_detail_money"
+            app:layout_constraintStart_toStartOf="@+id/tv_ti_bs_shop_order_detail_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

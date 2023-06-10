@@ -2,17 +2,32 @@ package com.example.cleaningapp.backstage.complaint.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
 import com.example.cleaningapp.backstage.complaint.model.Complaint
+import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 class BsCompDoneViewModel : ViewModel() {
-    //原始使用者列表
-    private var complaintList = mutableListOf<Complaint>()
+    private var complaintList = listOf<BSCompOrderItem>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
-    val complaints: MutableLiveData<List<Complaint>> by lazy { MutableLiveData<List<Complaint>>() }
+    val complaints: MutableLiveData<List<BSCompOrderItem>> by lazy { MutableLiveData<List<BSCompOrderItem>>() }
+    val complaint: MutableLiveData<BSCompOrderItem> by lazy { MutableLiveData<BSCompOrderItem>() }
 
     init {
-//        loadComplaints()
+        loadComplaints()
+    }
+
+    private fun loadComplaints() {
+        requestTask<List<BSCompOrderItem>>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrders7/",
+            method = "GET",
+            respBodyType = object : TypeToken<List<BSCompOrderItem>>() {}.type
+        )?.let {
+            complaints.value = it
+            complaintList = it
+        }
     }
 
     /**
@@ -23,10 +38,10 @@ class BsCompDoneViewModel : ViewModel() {
         if (newText == null || newText.isEmpty()) {
             complaints.value = complaintList
         } else {
-            val searchComplaintList = mutableListOf<Complaint>()
+            val searchComplaintList = mutableListOf<BSCompOrderItem>()
             complaintList.forEach { complaint ->
-                if (complaint.applier.contains(newText, true) ||
-                    complaint.createTime.contains(newText, true)
+                if (complaint.customerName.contains(newText, true) ||
+                    complaint.timeCreate.toString().contains(newText, true)
                 ) {
                     searchComplaintList.add(complaint)
                 }
@@ -35,7 +50,7 @@ class BsCompDoneViewModel : ViewModel() {
         }
     }
 
-//    /** 模擬取得遠端資料 */
+    /** 模擬取得遠端資料 */
 //    private fun loadComplaints() {
 //        val complaintList = mutableListOf<Complaint>()
 //        complaintList.add(

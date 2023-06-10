@@ -1,15 +1,14 @@
 package com.example.cleaningapp.backstage.shop.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.backstage.shop.shopOrder
+import com.example.cleaningapp.backstage.shop.ShopOrder
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
 class BsShopOrdersViewModel:ViewModel(){
-    private var shopOrderList = mutableListOf<shopOrder>()
-    val shopOrders: MutableLiveData<List<shopOrder>> by lazy { MutableLiveData<List<shopOrder>>() }
+    var shopOrderList = listOf<ShopOrder>()
+    val shopOrders: MutableLiveData<List<ShopOrder>> by lazy { MutableLiveData<List<ShopOrder>>() }
 
 
         init {
@@ -17,13 +16,13 @@ class BsShopOrdersViewModel:ViewModel(){
         }
 
         fun loadOrderList() {
-            requestTask<List<shopOrder>>(
+            requestTask<List<ShopOrder>>(
                 "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/selectAll/",
             "GET" ,
-                    respBodyType = object :TypeToken<List<shopOrder>>() {} .type
+                    respBodyType = object :TypeToken<List<ShopOrder>>() {} .type
             )?.let {
                 shopOrders.value =it
-
+                shopOrderList = it
             }
         }
 
@@ -31,7 +30,7 @@ class BsShopOrdersViewModel:ViewModel(){
             if (netText.isEmpty()) {
                 shopOrders.value = shopOrderList
             } else {
-                val searchOfOrder = mutableListOf<shopOrder>()
+                val searchOfOrder = mutableListOf<ShopOrder>()
                 shopOrderList.forEach { shopOrder ->
                     if (shopOrder.recieverName?.contains(netText,true) == true){
                         searchOfOrder.add(shopOrder)

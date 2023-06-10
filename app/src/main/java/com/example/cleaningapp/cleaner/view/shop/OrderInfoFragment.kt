@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.OrderInfoAdapter
 import com.example.cleaningapp.cleaner.uistate.OrderHistoryItemUiState
 import com.example.cleaningapp.cleaner.viewmodel.shop.OrderInfoViewModel
@@ -28,8 +30,12 @@ class OrderInfoFragment : Fragment() {
         binding.tvOrderInfoState.text =
             if (viewModel.orderHistoryItem.isDelivered) "已送達" else if (viewModel.orderHistoryItem.isShipped) "已出貨" else "以結帳"
         viewModel.fetchOrderInfo(arguments?.getInt("shopOrderId"))
-        initRecyclerView()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initRecyclerView()
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "訂單詳情"
     }
 
     private fun initRecyclerView() {

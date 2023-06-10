@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.order.CompleteOrderInfoViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiCompleteOrderInfoBinding
 
@@ -26,6 +28,7 @@ class CompleteOrderInfoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "訂單列表"
         arguments?.getInt("orderId")?.let { viewModel.fetchOrderInfo(it) }
         binding.tvCompleteOrderInfoAddress.setOnClickListener {
             val address = binding.tvCompleteOrderInfoAddress.text.toString()

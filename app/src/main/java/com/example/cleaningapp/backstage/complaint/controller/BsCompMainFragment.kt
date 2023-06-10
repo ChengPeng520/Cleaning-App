@@ -29,34 +29,35 @@ class BsCompMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        requireActivity().title ="客訴管理"
+        requireActivity().title = "客訴管理"
         super.onViewCreated(view, savedInstanceState)
-    with(binding){
-        rvBsCompMain.layoutManager = LinearLayoutManager(requireContext())
-        viewModel?.complaints?.observe(viewLifecycleOwner){ complaints ->
-            // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
-            if (rvBsCompMain.adapter == null) {
-                rvBsCompMain.adapter = ComplaintAdapter(complaints)
-            } else {
-                (rvBsCompMain.adapter as ComplaintAdapter).updateComplaints(complaints)
+        with(binding) {
+            rvBsCompMain.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.complaints?.observe(viewLifecycleOwner) { complaints ->
+                // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
+                if (rvBsCompMain.adapter == null) {
+                    rvBsCompMain.adapter = ComplaintAdapter(complaints)
+                } else {
+                    (rvBsCompMain.adapter as ComplaintAdapter).updateComplaints(complaints)
+                }
             }
-        }
 
-        svBsCompMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            // 輸入的文字改變時呼叫
-            override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel?.search(newText)
-                return true
-            }
-            // 點擊虛擬鍵盤上的提交鈕時呼叫
-            override fun onQueryTextSubmit(text: String): Boolean {
-                return false
-            }
-        })
+            svBsCompMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                // 輸入的文字改變時呼叫
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    viewModel?.search(newText)
+                    return true
+                }
 
-        btnBsCompMainDone.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.bsCompDoneFragment)
-        }
+                // 點擊虛擬鍵盤上的提交鈕時呼叫
+                override fun onQueryTextSubmit(text: String): Boolean {
+                    return false
+                }
+            })
+
+            btnBsCompMainDone.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.bsCompDoneFragment)
+            }
         }
     }
 }

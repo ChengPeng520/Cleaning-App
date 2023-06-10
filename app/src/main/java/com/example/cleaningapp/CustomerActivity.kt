@@ -52,11 +52,11 @@ class CustomerActivity : AppCompatActivity() {
                     data?.let {
                         // 取得本機支付資訊(使用者同意支付的款項與信用卡資訊)
                         PaymentData.getFromIntent(data)?.let { paymentData ->
-                            if (TapPay.getInstance().getPrimeFromTapPay(paymentData, this)) {
-                                val intent = Intent()
-                                intent.putExtra("result", true)
-                                ShoppingCartFragment().onActivityResult(100, resultCode, intent)
-                            }
+//                            if (TapPay.getInstance().getPrimeFromTapPay(paymentData, this)) {
+//                                val intent = Intent()
+//                                intent.putExtra("result", true)
+//                                ShoppingCartFragment().onActivityResult(100, resultCode, intent)
+//                            }
                         }
                     }
                 }

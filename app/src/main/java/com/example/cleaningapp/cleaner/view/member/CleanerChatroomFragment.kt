@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -42,6 +43,10 @@ class CleanerChatroomFragment : Fragment() {
         messageReceiver = MessageReceiver()
         registerMessageReceiver()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "聯繫客服"
     }
 
     private fun initRecyclerView() {

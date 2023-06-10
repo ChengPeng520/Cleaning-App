@@ -1,6 +1,7 @@
 package com.example.cleaningapp.backstage.coupon
 
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.requestTask
@@ -28,6 +29,7 @@ class BackstageCouponModifyViewModel : ViewModel() {
             "GET"
         )?.let {
             coupon.value = it
+            Log.d("TAG","回傳資料:$it")
         }
     }
 }

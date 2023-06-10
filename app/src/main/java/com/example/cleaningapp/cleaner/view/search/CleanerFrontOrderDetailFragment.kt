@@ -17,7 +17,8 @@ class CleanerFrontOrderDetailFragment : Fragment() {
     private val viewModel: CleanerFrontOrderDetailViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentVickyCleanerFrontOrderDetailBinding.inflate(inflater, container, false)
@@ -29,11 +30,13 @@ class CleanerFrontOrderDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
+            // 訂單詳情
             arguments?.getInt("orderId")?.let {
-//                viewModel?.fetchOrderAccept(it)
+                viewModel?.fetchOrderAccept(it)
             }
+
+            // 確定接單
             button8.setOnClickListener {
-//                viewModel?.fetchOrderConfirm()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_cleanerFrontOrderDetailFragment_to_order_acceptFragment)
             }

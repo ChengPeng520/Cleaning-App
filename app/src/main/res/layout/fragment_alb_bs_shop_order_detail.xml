@@ -2,9 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".backstage.shop.controller.BsShopOrderDetailFragment"
     android:layout_margin="24dp"
-    >
+    tools:context=".backstage.shop.controller.BsShopOrderDetailFragment">
 
     <data>
 
@@ -14,10 +13,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-       >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <ImageButton
@@ -31,31 +28,32 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView86"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:text="@string/tv_ti_bs_shop_order_detail"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/sclVi_bs_shop_order_detail"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_bs_shop_order_detail_popback">
+            app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
 
         <ScrollView
             android:id="@+id/sclVi_bs_shop_order_detail"
             android:layout_width="316dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/divider14"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView86">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
@@ -63,7 +61,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_bs_shop_order_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -179,35 +177,26 @@
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_bs_shop_order_detail_ship"
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/ciyi_button_shape"
+                    android:enabled="@{viewModel.shopOrder.isShipped()}"
+                    android:text='@{viewModel.shopOrder.isShipped ? "已出貨":"出貨"}'
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sclVi_bs_shop_order_detail" />
 
             </LinearLayout>
 
         </ScrollView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_bs_shop_order_detail_ship"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/ciyi_button_shape"
-            android:text="@string/btn_bs_shop_order_detail_ship"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider14" />
-
-        <View
-            android:id="@+id/divider14"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sclVi_bs_shop_order_detail" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

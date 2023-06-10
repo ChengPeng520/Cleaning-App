@@ -50,14 +50,7 @@ class ProductAdapter(private var products: List<Product>) :
                     .navigate(R.id.bsShopProductModifyFragment,
                         bundle)
             }
-
-//            with(holder) {
-//                itemViewBinding.viewModel?.coupon?.value = coupon
-//                itemViewBinding.btCusCouponPick.setOnClickListener {
-//                    Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set("coupon", coupon)
-//                    Navigation.findNavController(it).popBackStack()
-//                }
-//            }
+         }
         }
     }
-}
+

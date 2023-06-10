@@ -1,17 +1,22 @@
 package com.example.cleaningapp.cleaner.view.order
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.order.ClearPhotoViewModel
 import com.example.cleaningapp.databinding.FragmentVickyClearPhotoBinding
+import com.example.cleaningapp.share.CleanerPreferencesUtils
 
 class ClearPhotoFragment : Fragment() {
     private lateinit var binding: FragmentVickyClearPhotoBinding
@@ -35,11 +40,17 @@ class ClearPhotoFragment : Fragment() {
                 viewModel?.cleanerBeforePhoto(it)
                 Log.d("1", "1")
             }
+            linearLayout4.setOnClickListener {
+                if (viewModel?.photo?.value?.photo3 == null) {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    takePictureSmallLauncher.launch(intent)
+                }
+            }
             linearLayout5.setOnClickListener {
-//                if (viewModel?.Photo?.value?.photo3 == null) {
-//                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//                    takePictureSmallLaunchers.launch(intent)
-//                }
+                if (viewModel?.photo?.value?.photo3 == null) {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    takePictureSmallLauncher.launch(intent)
+                }
             }
             btAddCheck.setOnClickListener {
                 Navigation.findNavController(view)
@@ -48,54 +59,21 @@ class ClearPhotoFragment : Fragment() {
         }
     }
 
-//    private var takePictureSmallLaunchers =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                result.data?.extras?.let { bundle ->
-//                    val picture = bundle["data"] as Bitmap?
-//                    picture?.let {
-//                        viewModel.addCapturedPhoto(it)
-//                        if (!binding.viewModel?.isPhotoExists(it)!! && binding.viewModel?.capturedCount!! < 3) {
-//                            binding.viewModel?.addCapturedPhoto(it)
-//
-//                            when (binding.viewModel?.capturedCount) {
-//
-//                                1 -> {
-//                                    binding.imageView40.setImageBitmap(it); binding.imageView41.setBackgroundResource(
-//                                        R.drawable.ic_add
-//                                    )
-//                                    photos[0] = it
-//                                    CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-//                                        requireContext(),
-//                                        photos
-//                                    )
-//                                }
-//
-//                                2 -> {
-//                                    binding.imageView41.setImageBitmap(it); binding.imageView42.setBackgroundResource(
-//                                        R.drawable.ic_add
-//                                    )
-//                                    photos[1] = it
-//                                    CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-//                                        requireContext(),
-//                                        photos
-//                                    )
-//                                }
-//
-//                                3 -> {
-//                                    binding.imageView42.setImageBitmap(it)
-//                                    photos[2] = it
-//                                    CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-//                                        requireContext(),
-//                                        photos
-//                                    )
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+    private var takePictureSmallLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.extras?.let { bundle ->
+                    val picture = bundle["data"] as Bitmap?
+                    picture?.let {
+                        viewModel.addCapturedPhoto(it)
+                        photos[0] = it
+                        CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
+                        requireContext(),
+                        photos)
+                    }
+                }
+            }
+        }
 }
 
 //  - - - - -
