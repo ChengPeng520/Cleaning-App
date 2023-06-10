@@ -2,27 +2,31 @@ package com.example.cleaningapp
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.example.cleaningapp.cleaner.view.shop.ShoppingCartFragment
 import com.example.cleaningapp.databinding.ActivityCustomerBinding
+import com.example.cleaningapp.share.GetPrimeCallback
 import com.example.cleaningapp.share.TapPay
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
 
 class CustomerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCustomerBinding
+    private val viewModel: CustomerViewModel by viewModels()
     private lateinit var navHostFragment: NavHostFragment
     private val requestCode = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_customer)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.customer_nav_host_fragment) as NavHostFragment
@@ -39,6 +43,7 @@ class CustomerActivity : AppCompatActivity() {
             navHostFragment.navController
         )
     }
+
     override fun onSupportNavigateUp(): Boolean {
         navHostFragment.navController.navigateUp()
         return super.onSupportNavigateUp()
@@ -52,11 +57,12 @@ class CustomerActivity : AppCompatActivity() {
                     data?.let {
                         // 取得本機支付資訊(使用者同意支付的款項與信用卡資訊)
                         PaymentData.getFromIntent(data)?.let { paymentData ->
-//                            if (TapPay.getInstance().getPrimeFromTapPay(paymentData, this)) {
-//                                val intent = Intent()
-//                                intent.putExtra("result", true)
-//                                ShoppingCartFragment().onActivityResult(100, resultCode, intent)
-//                            }
+                            TapPay.getInstance()
+                                .getPrimeFromTapPay(paymentData, this, object : GetPrimeCallback {
+                                    override fun onGetPrimeResult(result: Boolean) {
+                                        viewModel.setResult(result)
+                                    }
+                                })
                         }
                     }
                 }
