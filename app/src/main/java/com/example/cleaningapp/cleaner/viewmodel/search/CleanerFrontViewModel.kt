@@ -39,7 +39,6 @@ class CleanerFrontViewModel : ViewModel() {
         )?.let {
             cleaners.value = it
             cleanerList = it
-
             Log.d("CleanerList","CleanerId: $it")
         }
     }
