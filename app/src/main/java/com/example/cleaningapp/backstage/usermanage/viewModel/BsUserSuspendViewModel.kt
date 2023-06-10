@@ -21,6 +21,8 @@ class BsUserSuspendViewModel : ViewModel() {
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
     val users: MutableLiveData<List<Member>> by lazy { MutableLiveData<List<Member>>() }
     val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
+    val user: MutableLiveData<User> by lazy { MutableLiveData<User>() }
+
 
     init {
         loadUsers()
@@ -32,7 +34,7 @@ class BsUserSuspendViewModel : ViewModel() {
             "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
-            var suspendUsers = mutableListOf<Member>()
+            val suspendUsers = mutableListOf<Member>()
             for (a in it) {
                 if (a.suspend) {
                     suspendUsers.add(a)
@@ -40,6 +42,31 @@ class BsUserSuspendViewModel : ViewModel() {
             }
             users.value = suspendUsers
             userList = suspendUsers
+//            for (b in it) {
+//                when (b.status) {
+//                    1 -> {
+//                        b.id = user.value?.customerId!!
+//                        b.name = user.value?.name!!
+//                        b.email = user.value?.email!!
+//                        b.suspend = user.value?.suspend!!
+//                        b.verify = user.value?.verify!!
+//                    }
+//                    2 -> {
+//                        b.id = user.value?.cleanerId!!
+//                        b.name = user.value?.name!!
+//                        b.email = user.value?.email!!
+//                        b.suspend = user.value?.suspend!!
+//                        b.verify = user.value?.verify!!
+//                    }
+//                    3 -> {
+//                        b.id = user.value?.backstageId!!
+//                        b.name = user.value?.name!!
+//                        b.email = user.value?.email!!
+//                        b.suspend = user.value?.suspend!!
+//                        b.verify = user.value?.verify!!
+//                    }
+//                }
+//            }
         }
 
 
@@ -50,7 +77,7 @@ class BsUserSuspendViewModel : ViewModel() {
      */
     fun editMemberInfo(view: View) {
         member.value?.let {
-            requestTask<Member>(
+            requestTask<User>(
                 url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
                 method = "PUT",
                 reqBody = member

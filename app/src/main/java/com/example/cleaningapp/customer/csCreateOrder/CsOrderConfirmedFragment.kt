@@ -24,6 +24,9 @@ class CsOrderConfirmedFragment : Fragment() {
         binding.viewModel = viewModel
         // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
+        if(viewModel.photo.value == null) {
+            binding.llCsCreateOrderPics.visibility = View.GONE
+        }
         return binding.root
     }
 
@@ -32,19 +35,19 @@ class CsOrderConfirmedFragment : Fragment() {
         with(binding) {
             arguments?.let { bundle ->
                 bundle.getSerializable("order")?.let {
-                    val order = it as Order
-                    order.priceForCustomer =
-                        order.originalPrice - order.couponDiscount
-                    viewModel?.order?.value = order
+                    val orderCreated = it as Order
+                    orderCreated.priceForCustomer =
+                        orderCreated.originalPrice - orderCreated.couponDiscount
+                    viewModel?.orderCreated?.value = orderCreated
                 }
                 bundle.getSerializable("photos")?.let {
                     viewModel?.photo?.value = it as CreateOrderPhoto
                 }
             }
-            btCsOderConfirmedSubmit.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
-            }
+//            btCsOderConfirmedSubmit.setOnClickListener {
+//                Navigation.findNavController(view)
+//                    .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
+//            }
         }
     }
 }

@@ -103,7 +103,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:minHeight="48dp"
-                    android:text="@{viewModel.profile.name}"
+                    android:text="@={viewModel.profile.name}"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -138,12 +138,13 @@
                     android:background="@null"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:inputType="phone"
+                    android:maxLength="10"
                     android:minHeight="48dp"
-                    android:text="@{viewModel.profile.phone}"
+                    android:text="@={viewModel.profile.phone}"
                     android:textSize="15sp" />
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/ll_csEditProfile_gender"
@@ -211,7 +212,7 @@
                     android:lineSpacingExtra="30px"
                     android:minLines="5"
                     android:paddingBottom="12dp"
-                    android:text="@{viewModel.profile.introduction}"
+                    android:text="@={viewModel.profile.introduction}"
                     android:textSize="15sp" />
             </LinearLayout>
 

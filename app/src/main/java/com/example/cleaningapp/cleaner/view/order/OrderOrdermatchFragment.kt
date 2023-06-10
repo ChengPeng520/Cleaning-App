@@ -4,6 +4,7 @@ package com.example.cleaningapp.cleaner.view.order
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,13 +34,21 @@ class OrderOrdermatchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.let { bundle ->
-            bundle.getInt("orderId")?.let {
+            arguments?.getInt("orderId")?.let {
                 viewModel.fetchOrdermatch(it)
+                Log.d("111","$it")
+                viewModel.orderId = it
+                Log.d("222","${viewModel.orderId}")
             }
-        }
+//            bundle.getInt("orderId")?.let {
+//                val orderId = viewModel.orderId
+//                viewModel.orderId = orderId
+//                viewModel.fetchOrdermatch(it)
+            }
+//        }
+
         with(binding) {
             tvOrderCancel.setOnClickListener {
-//                viewModel.DeleteOrder()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_vicky_order_ordermatchFragment_to_vicky_order_conductFragment)
             }

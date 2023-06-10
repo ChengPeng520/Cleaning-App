@@ -62,6 +62,7 @@ class UserServiceAdapter(private var chats: List<ChatClnBack>) :
             itemViewBinding.viewModel?.chat?.value = chat
             val bundle = Bundle()
             bundle.putInt("cleanerId", chat.cleanerId)
+            bundle.putSerializable("xxx", chat)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(

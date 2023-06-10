@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -37,6 +38,7 @@ class OrderStateFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "訂單狀況"
         viewModel.uiState.observe(viewLifecycleOwner) {
             if (it.dateOrdered.toString() == getCurrentTime()) {
                 binding.clOrderStateProgressBar.visibility = View.VISIBLE

@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="viewModel"
-            type="com.example.cleaningapp.customer.csCreateOrder.CsOrderEstablishedViewModel" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".customer.csCreateOrder.CsOrderEstablishedFragment">
+        tools:context=".cleaner.MallPaymentDoneFragment">
 
         <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/imageView"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/checked"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline20" />
+            app:layout_constraintTop_toTopOf="@+id/guideline20"
+            tools:layout_editor_absoluteY="0dp" />
 
         <TextView
             android:id="@+id/txt_csCreateOrder_orderEstablished"
@@ -30,25 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/txt_csCreateOrder_orderEstablished"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-
-        <TextView
-            android:id="@+id/tv_csCreateOrder_chooseCleanerAtHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/tv_csCreateOrder_chooseCleanerAtHistory"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_csCreateOrder_orderEstablished" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_csCreateOrder_checkHistory"
@@ -57,12 +44,12 @@
             android:layout_marginTop="24dp"
             android:background="@null"
             android:elevation="0dp"
-            android:text="@string/btn_csCreateOrder_checkHistory"
-            android:textColor="@color/black"
+            android:text="@string/tv_mall_viewOrderStatus"
+            android:textColor="@color/Secondary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_csCreateOrder_chooseCleanerAtHistory" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_csCreateOrder_orderEstablished" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline20"
@@ -70,6 +57,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.18" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

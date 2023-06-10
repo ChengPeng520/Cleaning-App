@@ -59,7 +59,7 @@
                 android:id="@+id/imageView28"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:background="@drawable/ic_add"
+
                 app:imageBitmap="@{viewModel.orderPhotos.photo1}"
                 tools:src="@tools:sample/avatars" />
 
@@ -96,6 +96,7 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:background="@drawable/ic_add"
+                app:imageBitmap="@{viewModel.photo.photo1}"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
@@ -104,12 +105,16 @@
                 android:layout_height="110dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:background="@{viewModel.photo.photo1 != null ? @drawable/ic_add : null}"
+                app:imageBitmap="@{viewModel.photo.photo2}"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/imageView42"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                android:background="@{viewModel.photo.photo2 != null ? @drawable/ic_add : null}"
+                app:imageBitmap="@{viewModel.photo.photo3}"
                 tools:src="@tools:sample/avatars" />
         </LinearLayout>
 

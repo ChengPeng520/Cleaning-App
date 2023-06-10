@@ -1,14 +1,20 @@
 package com.example.cleaningapp.cleaner.viewmodel.member
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.cleaner.uistate.ChatroomItemUiState
 import com.example.cleaningapp.cleaner.uistate.ChatroomUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.launch
+
 
 class CleanerChatroomViewModel : ViewModel() {
     private val _uiState = MutableLiveData<ChatroomUiState>()
@@ -19,7 +25,7 @@ class CleanerChatroomViewModel : ViewModel() {
         fetchChatRoomTalkList()
     }
 
-    private fun fetchChatRoomTalkList() {
+    fun fetchChatRoomTalkList() {
         requestTask<List<ChatroomItemUiState>>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
@@ -36,7 +42,7 @@ class CleanerChatroomViewModel : ViewModel() {
                 method = "POST",
                 reqBody = ChatroomItemUiState(
                     cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId(),
-                    text = commitText.value!!
+                    text = commitText.value!!,
                 )
             )?.let {
                 if (it.get("result").toString().toBoolean()) {

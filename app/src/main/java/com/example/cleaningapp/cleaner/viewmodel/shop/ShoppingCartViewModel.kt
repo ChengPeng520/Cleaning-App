@@ -1,8 +1,10 @@
 package com.example.cleaningapp.cleaner.viewmodel.shop
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.cleaner.uistate.ShopOrder
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
@@ -64,5 +66,35 @@ class ShoppingCartViewModel : ViewModel() {
                 fetchShopOrderList()
             }
         }
+    }
+
+    fun checkout(context: Context) : Boolean {
+        requestTask<ShopOrder>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/",
+            method = "PUT",
+            reqBody = ShopOrder(
+                shopOrderId = context.getSharedPreferences(
+                    "AccountCleaner",
+                    Context.MODE_PRIVATE
+                )
+                    .getInt("ShopOrderId", 0),
+                recieverName = context.getSharedPreferences(
+                    "ReceiverInfo",
+                    Context.MODE_PRIVATE
+                ).getString("name", "")!!,
+                recieverPhone = context.getSharedPreferences(
+                    "ReceiverInfo",
+                    Context.MODE_PRIVATE
+                ).getString("phone", "")!!,
+                recieverAddress = context.getSharedPreferences(
+                    "ReceiverInfo",
+                    Context.MODE_PRIVATE
+                ).getString("address", "")!!,
+                totalPrice = totalPrice.value!!
+            )
+        )?.let {
+            return true
+        }
+        return false
     }
 }

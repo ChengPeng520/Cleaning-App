@@ -8,13 +8,15 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
 import com.example.cleaningapp.backstage.complaint.model.Complaint
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDealingViewModel
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDetailViewModel
+import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDoneViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsCompDoneDataboxBinding
 import com.example.cleaningapp.databinding.ItemAlbBsCompMainDataboxBinding
 
-class ComplaintDoneAdapter(private var complaints: List<Complaint>) :
+class ComplaintDoneAdapter(private var complaints: List<BSCompOrderItem>) :
     RecyclerView.Adapter<ComplaintDoneAdapter.ComplaintDoneViewHolder>()  {
 
     /**
@@ -22,7 +24,7 @@ class ComplaintDoneAdapter(private var complaints: List<Complaint>) :
      * @param complaints 新的好友列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateComplaints(complaints: List<Complaint>) {
+    fun updateComplaints(complaints: List<BSCompOrderItem>) {
         this.complaints = complaints
         notifyDataSetChanged()
     }
@@ -38,7 +40,7 @@ class ComplaintDoneAdapter(private var complaints: List<Complaint>) :
         val itemViewBinding = ItemAlbBsCompDoneDataboxBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BsCompDetailViewModel()
+        itemViewBinding.viewModel = BsCompDoneViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return ComplaintDoneViewHolder(itemViewBinding)
@@ -48,9 +50,9 @@ class ComplaintDoneAdapter(private var complaints: List<Complaint>) :
         val complaint = complaints[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
-            itemViewBinding.viewModel?.complaint?.value = complaint
+//            itemViewBinding.viewModel?.complaint?.value = complaint
             val bundle = Bundle()
-            bundle.putSerializable("complaint", complaint)
+            bundle.putInt("orderIdDone", complaint.orderId)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsCompDoneFragment_to_bsCompDetailFragment, bundle)

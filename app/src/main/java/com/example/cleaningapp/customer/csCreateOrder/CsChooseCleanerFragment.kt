@@ -1,6 +1,7 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,7 @@ class CsChooseCleanerFragment : Fragment() {
         arguments?.let { bundle ->
             bundle.getInt("orderId").let {
                 viewModel.orderId = it
+                viewModel.fetchCleanerApplied(it)
             }
         }
         binding.btnCsChooseCleanerCancelOrder.setOnClickListener {

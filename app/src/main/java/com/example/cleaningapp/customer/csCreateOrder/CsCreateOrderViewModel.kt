@@ -28,4 +28,9 @@ class CsCreateOrderViewModel : ViewModel() {
             this.photo.value = it
         }
     }
+
+    fun convert(value: String): String {
+        return if (value.isNotEmpty()) value.substring(0, 5) else ""
+    }
+
 }

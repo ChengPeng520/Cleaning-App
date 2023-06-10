@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.*
+import com.example.cleaningapp.cleaner.uistate.OrderChatroomItemUiState
+import com.example.cleaningapp.cleaner.uistate.OrderInfo
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
