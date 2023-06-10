@@ -12,12 +12,15 @@ import com.google.gson.JsonObject
 import kotlinx.coroutines.runBlocking
 import tech.cherri.tpdirect.api.*
 
+interface GetPrimeCallback {
+    fun onGetPrimeResult(result: Boolean)
+}
+
 class TapPay {
     private val requestCode = 101
     private lateinit var tpdGooglePay: TPDGooglePay
     private var id = 0
     private var price = 0
-    private var result = true
 
     // 測試環境網址
     private val sandbox = "https://sandbox.tappaysdk.com/"
@@ -84,7 +87,7 @@ class TapPay {
         }
     }
 
-    fun getPrimeFromTapPay(paymentData: PaymentData, context: Context): Boolean {
+    fun getPrimeFromTapPay(paymentData: PaymentData, context: Context, callback: GetPrimeCallback) {
         /* 呼叫getPrime()只將支付資料提交給TapPay以取得prime (代替卡片的一次性字串，此字串的時效為 30 秒)，
             參看https://docs.tappaysdk.com/google-pay/zh/reference.html#prime */
         /* 一般而言，手機提交支付、信用卡資料給TapPay後，TapPay會將信用卡等資訊送至Bank確認是否合法，
@@ -104,9 +107,8 @@ class TapPay {
                     context.getString(R.string.TapPay_MerchantID)
                 )
                 val jsonObject = Gson().fromJson(resultJson, JsonObject::class.java)
-                if (jsonObject["msg"].asString == "Success") {
-                    this.result = true
-                }
+                val result = jsonObject["msg"].asString == "Success"
+                callback.onGetPrimeResult(result)
                 val text = "支付結束，TapPay回應的結果訊息:\n$resultJson"
                 Log.d("a", text)
             }
@@ -114,8 +116,8 @@ class TapPay {
             val text =
                 "TapPay getPrime failed. status: $status, message: $reportMsg"
             Log.d("b", text)
+            callback.onGetPrimeResult(false)
         }
-        return result
     }
 
     // 將交易資訊送至TapPay測試區
