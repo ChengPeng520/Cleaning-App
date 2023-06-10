@@ -1,18 +1,16 @@
 package com.example.cleaningapp.customer.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
-import com.example.cleaningapp.customer.viewModel.OrderprogressViewModel
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.detailed.Order
+import com.example.cleaningapp.customer.viewModel.OrderprogressViewModel
 import com.example.cleaningapp.databinding.FragmentVictorOrderprogressBinding
 import java.util.*
 
@@ -26,20 +24,28 @@ class OrderprogressFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentVictorOrderprogressBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
+        initAppBarMenu()
         binding.lifecycleOwner = this
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getInt("orderId")?.let { orderId ->
             viewModel.fetchOrdersInfo(orderId)
-            startRefreshingOrderStatus(orderId)
-
+//            startRefreshingOrderStatus(orderId)
+        }
+        viewModel.order.observe(viewLifecycleOwner) { order ->
+            // 在訂單狀態更新時執行導航操作
+            if (order.status == 2) {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_orderprogressFragment_to_orderingFragment, arguments)
+            }
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         stopRefreshingOrderStatus()
@@ -63,5 +69,28 @@ class OrderprogressFragment : Fragment() {
     private fun stopRefreshingOrderStatus() {
         isRefreshing = false
         timer.cancel()
+    }
+
+    private fun initAppBarMenu() {
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.ment_customer_chatroom, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.chatRoomFragment -> {
+                        val bundle = Bundle()
+                        bundle.putInt("cleanerId", viewModel.order.value?.cleanerId!!)
+                        Navigation.findNavController(
+                            requireActivity(),
+                            R.id.customer_nav_host_fragment
+                        ).navigate(R.id.clnChatFragment, bundle)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

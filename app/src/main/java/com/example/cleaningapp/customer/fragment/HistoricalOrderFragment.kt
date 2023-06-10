@@ -119,7 +119,7 @@ class HistoricalOrderFragment : Fragment() {
             completedDrawable?.setTint(defaultIconColor)
             val orders =
                 viewModel.orderList.value.orEmpty()
-                    .filter { it.status == 4 || it.status == 5 || it.status == 6 }
+                    .filter { it.status == 4 || it.status == 5 || it.status == 6 || it.status == 7 }
             adapter?.updateOrders(orders)
         }
     }

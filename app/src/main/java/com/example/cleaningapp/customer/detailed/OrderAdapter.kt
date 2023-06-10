@@ -1,12 +1,10 @@
 package com.example.cleaningapp.customer.detailed
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
@@ -32,8 +30,8 @@ class OrderAdapter(private var orders: List<Order>) :
                     )
                     itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_black)
                 }
-                1, 2, 3, 4, 5, 6 -> {
-                    // 状态为1、2、3、4、5、6、7、8，表示其他状态
+                1, 2, 3, 4, 5, 6, 7 -> {
+                    // 状态为1、2、3、4、5、6、7，表示其他状态
                     itemBinding.statusTextView.text = getStatusText(order.status)
                     itemBinding.statusTextView.setTextColor(
                         ContextCompat.getColor(
@@ -71,6 +69,7 @@ class OrderAdapter(private var orders: List<Order>) :
                 4 -> "打掃結束"
                 5 -> "客訴申請"
                 6 -> "已取消"
+                7 -> "客訴完成"
                 else -> "未知状态"
             }
         }
@@ -96,7 +95,13 @@ class OrderAdapter(private var orders: List<Order>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val orderList = orders[position]
         holder.bind(orderList)
-
+        //判斷狀態更改Button文字
+        val btnOrderBoxDetailed = holder.itemBinding.btnOrderBoxDetailed
+        when (orderList.status) {
+            0 -> btnOrderBoxDetailed.setText(R.string.btn_orderBox_choose)
+            1, 2, 3, 4, 5, 6, 7 ->
+                btnOrderBoxDetailed.setText(R.string.btn_orderBox_detailed)
+        }
         // 设置按钮点击事件和导航目的地
         holder.itemBinding.btnOrderBoxDetailed.setOnClickListener {
             val bundle = Bundle()
@@ -114,6 +119,7 @@ class OrderAdapter(private var orders: List<Order>) :
                     R.id.action_historicalorderFragment_to_detailedOrderFragment, bundle
                 )
                 6 -> navController.navigate(R.id.orderChatroomFragment, bundle)
+                7 -> navController.navigate(R.id.complaintdetailsFragment, bundle)
             }
         }
     }

@@ -1,7 +1,6 @@
 package com.example.cleaningapp.customer.viewModel
 
 import android.graphics.Bitmap
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +10,7 @@ import androidx.navigation.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.detailed.OrderInfo
+import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 
 class ApplycomplaintViewModel : ViewModel() {
@@ -22,6 +22,7 @@ class ApplycomplaintViewModel : ViewModel() {
     val photo1: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
     val photo2: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
     val photo3: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
+
     fun addCapturedPhoto(photo: Bitmap?) {
         if (photo1.value == null) {
             photo1.value = photo
@@ -43,7 +44,6 @@ class ApplycomplaintViewModel : ViewModel() {
     }
 
     fun uploadComplaint(view: View) {
-
         requestTask<OrderInfo>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
             method = "PUT",
@@ -55,7 +55,7 @@ class ApplycomplaintViewModel : ViewModel() {
                     commentCleaner = order.value!!.commentCleaner,
                     stars = order.value!!.stars,
                     status = 7
-                ), null
+                ), sendPhotos()
             )
         )?.let {
             val bundle = Bundle()
@@ -65,5 +65,19 @@ class ApplycomplaintViewModel : ViewModel() {
                 bundle
             )
         }
+    }
+
+    private fun sendPhotos(): List<ByteArray> {
+        val photos = mutableListOf<ByteArray>()
+        photo1.value?.let {
+            photos.add(ImageUtils.bitmapToBytes(it))
+        }
+        photo2.value?.let {
+            photos.add(ImageUtils.bitmapToBytes(it))
+        }
+        photo3.value?.let {
+            photos.add(ImageUtils.bitmapToBytes(it))
+        }
+        return photos
     }
 }

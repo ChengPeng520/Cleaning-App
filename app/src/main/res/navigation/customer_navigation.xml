@@ -233,9 +233,16 @@
         <action
             android:id="@+id/action_orderingFragment_to_ordercompletedFragment"
             app:destination="@id/ordercompletedFragment" />
+        <action
+            android:id="@+id/action_orderingFragment_to_clnChatFragment"
+            app:destination="@id/clnChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderChatroomFragment"
         android:name="com.example.cleaningapp.customer.fragment.OrderChatroomFragment"
         android:label="OrderChatroomFragment" />
+    <fragment
+        android:id="@+id/clnChatFragment"
+        android:name="com.example.cleaningapp.customer.fragment.ClnChatFragment"
+        android:label="ClnChatFragment" />
 </navigation>

@@ -5,7 +5,6 @@ import android.icu.text.SimpleDateFormat
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
-import java.sql.Timestamp
 
 data class Order(
     val orderId: Int = 0,
@@ -30,6 +29,7 @@ data class Order(
     val commentCleaner: String = "",
     val status: Int = 0,
     val bsComplainRemark: String = "",
+    val returnReason: String = "",
 ) : Serializable {
     val address: String
         get() {

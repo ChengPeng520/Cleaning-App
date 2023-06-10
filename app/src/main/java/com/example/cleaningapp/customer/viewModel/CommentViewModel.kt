@@ -23,7 +23,6 @@ class CommentViewModel : ViewModel() {
             method = "PUT",
             reqBody = OrderInfo(
                 Order(
-                    orderId = orderId.value!!,
                     stars = stars.value!!,
                     commentCleaner = content.value!!,
                     status = 5
