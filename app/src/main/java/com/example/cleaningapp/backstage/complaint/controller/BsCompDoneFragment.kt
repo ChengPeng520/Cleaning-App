@@ -15,12 +15,12 @@ import com.example.cleaningapp.databinding.FragmentAlbBsCompDoneBinding
 
 class BsCompDoneFragment : Fragment() {
     private lateinit var binding: FragmentAlbBsCompDoneBinding
+    val viewModel: BsCompDoneViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: BsCompDoneViewModel by viewModels()
         binding = FragmentAlbBsCompDoneBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{viewModel.complaint.orderId}"
+                    android:text="@{String.valueOf(viewModel.uiState.orderId)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_detail_orderId_ti"
@@ -82,7 +82,7 @@
                     android:id="@+id/tv_bs_comp_detail_applier"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.complaint.applier}"
+                    android:text="@{viewModel.uiState.customerName}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_comp_detail_orderId"
@@ -108,7 +108,7 @@
                     android:id="@+id/tv_bs_comp_detail_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.complaint.createTime}"
+                    android:text="@{String.valueOf(viewModel.uiState.timeCreate)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_comp_detail_applier"
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{viewModel.complaint.cleaner}"
+                    android:text="@{viewModel.uiState.cleanerName}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_detail_cleaner_ti"
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@{viewModel.complaint.status}"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_detail_status_ti"
@@ -183,7 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@{viewModel.complaint.updateTime}"
+                    android:text="@{String.valueOf(viewModel.uiState.timeUpdate)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_detail_updateTime_ti"
@@ -214,21 +214,21 @@
                         android:layout_width="132dp"
                         android:layout_height="132dp"
                         android:layout_weight="1"
-                        android:imageResource="@{viewModel.complaint.photo1}" />
+                        app:imageBitmap="@{viewModel.uiPhoto.photo1}" />
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_detail_uploadPhoto2"
                         android:layout_width="132dp"
                         android:layout_height="132dp"
                         android:layout_weight="1"
-                        android:imageResource="@{viewModel.complaint.photo2}" />
+                        app:imageBitmap="@{viewModel.uiPhoto.photo2}" />
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_detail_uploadPhoto3"
                         android:layout_width="132dp"
                         android:layout_height="132dp"
                         android:layout_weight="1"
-                        android:imageResource="@{viewModel.complaint.photo3}" />
+                        app:imageBitmap="@{viewModel.uiPhoto.photo3}" />
                 </LinearLayout>
 
                 <TextView
@@ -246,7 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{viewModel.complaint.content}"
+                    android:text="@{viewModel.uiState.bsComplainRemark}"
                     android:textColor="#49454F"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_detail_content_ti"
@@ -269,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ems="20"
-                    android:text="@{viewModel.complaint.remark}"
+                    android:text="@{viewModel.uiState.returnReason}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"

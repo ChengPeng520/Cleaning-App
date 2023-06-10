@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.backstage.complaint.viewModel.BsCompDetailViewModel" />
+            type="com.example.cleaningapp.backstage.complaint.viewModel.BsCompDoneViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.complaint.orderId}"
+            android:text="@{String.valueOf(viewModel.complaint.orderId)}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.complaint.applier}"
+            android:text="@{viewModel.complaint.customerName}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.complaint.createTime}"
+            android:text="@{String.valueOf(viewModel.complaint.timeCreate)}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="@{viewModel.complaint.status}"
             android:textColor="@color/noActionGray"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"

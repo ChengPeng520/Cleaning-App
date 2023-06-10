@@ -8,11 +8,11 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.complaint.model.Complaint
-import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDealingViewModel
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
+import com.example.cleaningapp.backstage.complaint.viewModel.BsCompMainViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsCompMainDataboxBinding
 
-class ComplaintAdapter(private var complaints: List<Complaint>) :
+class ComplaintAdapter(private var complaints: List<BSCompOrderItem>) :
     RecyclerView.Adapter<ComplaintAdapter.ComplaintViewHolder>() {
 
     /**
@@ -20,7 +20,7 @@ class ComplaintAdapter(private var complaints: List<Complaint>) :
      * @param complaints 新的好友列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateComplaints(complaints: List<Complaint>) {
+    fun updateComplaints(complaints: List<BSCompOrderItem>) {
         this.complaints = complaints
         notifyDataSetChanged()
     }
@@ -36,7 +36,7 @@ class ComplaintAdapter(private var complaints: List<Complaint>) :
         val itemViewBinding = ItemAlbBsCompMainDataboxBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BsCompDealingViewModel()
+        itemViewBinding.viewModel = BsCompMainViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return ComplaintViewHolder(itemViewBinding)
@@ -48,7 +48,7 @@ class ComplaintAdapter(private var complaints: List<Complaint>) :
             // 將欲顯示的complaint物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.complaint?.value = complaint
             val bundle = Bundle()
-            bundle.putSerializable("complaint", complaint)
+            bundle.putInt("orderIdMain", complaint.orderId)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsCompFragment_to_bsCompDealingFragment, bundle)
