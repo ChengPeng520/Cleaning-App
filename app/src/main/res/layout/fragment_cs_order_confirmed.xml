@@ -80,6 +80,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_weight="8"
                             android:gravity="center_vertical"
+                            android:text="@{String.valueOf(viewModel.orderCreated.dateOrdered)}"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -115,11 +116,10 @@
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_time2"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_weight="8"
-                            android:gravity="center_vertical"
-                            android:text='@{viewModel.order.timeStart+"~"+viewModel.order.timeEnd}'
+                            android:text='@{viewModel.convert(viewModel.orderCreated.timeStart)+"~"+viewModel.convert(viewModel.orderCreated.timeEnd)}'
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -159,7 +159,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_weight="8"
                             android:gravity="center_vertical"
-                            android:text="@{viewModel.order.address}"
+                            android:text="@{viewModel.orderCreated.address}"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -197,7 +197,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_weight="8"
                             android:inputType="textMultiLine"
-                            android:text="@{viewModel.order.cleaningRange}"
+                            android:text="@{viewModel.orderCreated.cleaningRange}"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -238,7 +238,7 @@
                         android:layout_marginTop="8dp"
                         android:inputType="textMultiLine"
                         android:lineSpacingExtra="30px"
-                        android:text="@{viewModel.order.remark}"
+                        android:text="@{viewModel.orderCreated.remark}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -318,7 +318,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
-                        android:text="@{String.valueOf(viewModel.order.originalPrice)}"
+                        android:text="@{String.valueOf(viewModel.orderCreated.originalPrice)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         tools:text="帶入金額" />
@@ -354,7 +354,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
-                        android:text="@{String.valueOf(viewModel.order.couponDiscount)}"
+                        android:text="@{String.valueOf(viewModel.orderCreated.couponDiscount)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         tools:text="帶入金額" />
@@ -390,7 +390,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
-                        android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
+                        android:text="@{String.valueOf(viewModel.orderCreated.priceForCustomer)}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         tools:text="帶入金額" />
@@ -410,7 +410,8 @@
             android:text="@string/btn_cs_confirmAndSubmit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{viewModel::orderEstablish}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

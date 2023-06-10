@@ -112,4 +112,10 @@
     <string name="txt_use">使用</string>
     <string name="toast_csHome_obtainSucceed">領取成功</string>
     <string name="toast_csHome_obtainFailed">領取失敗</string>
+
+
+    <!--   CL商城      -->
+    <string name="tv_mall_viewOrderStatus"><u>查看訂單進度</u></string>
+
+
 </resources>

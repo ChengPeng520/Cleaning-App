@@ -75,7 +75,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
-                    android:src="@drawable/product1"
                     app:imageBitmap="@{viewModel.product.photoBitmap}" />
                 </androidx.cardview.widget.CardView>
 

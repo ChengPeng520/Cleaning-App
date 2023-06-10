@@ -1,5 +1,6 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.adapter.CsCommentAdapter
 import com.example.cleaningapp.databinding.FragmentCsViewCvBinding
+import com.example.cleaningapp.share.TapPay
 
 class CsViewCvFragment : Fragment() {
     private lateinit var binding: FragmentCsViewCvBinding
@@ -35,12 +36,15 @@ class CsViewCvFragment : Fragment() {
             bundle.getInt("cleanerId").let {
                 viewModel.fetchCleanerInfo(it)
                 viewModel.fetchComments(it)
-                viewModel.order.value?.cleanerId = it
-                Log.d("xxx", "cleanerId:$it")
+                val orderEstablished = viewModel.orderEstablished.value
+                orderEstablished?.cleanerId = it
+                viewModel.orderEstablished.value = orderEstablished
             }
             bundle.getInt("orderId").let {
-                viewModel.order.value?.orderId = it
-                Log.d("xxx", "orderId: $it")
+                viewModel.fetchOrdersInfo(it)
+                val orderEstablished = viewModel.orderEstablished.value
+                orderEstablished?.orderId = it
+                viewModel.orderEstablished.value = orderEstablished
             }
         }
         binding.rvCsViewComment.layoutManager = LinearLayoutManager(requireContext())
@@ -52,8 +56,20 @@ class CsViewCvFragment : Fragment() {
             }
         }
         binding.btnCsViewCvConfirmPay.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_csViewCvFragment_to_paymentFragment)
+            viewModel.orderEstablished.value?.let { it1 ->
+                Log.d("2", "2")
+                TapPay.getInstance().prepareGooglePay(
+                    requireActivity(),
+                    it1.orderId,
+                    viewModel.csPayment
+                )
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 100) {
+            viewModel.checkout(requireContext())
         }
     }
 }

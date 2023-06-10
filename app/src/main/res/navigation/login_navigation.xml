@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupMemberInfoFragment"
-        android:name="com.example.cleaningapp.login.controller.signupMemberInfoFragment"
+        android:name="com.example.cleaningapp.login.controller.SignupMemberInfoFragment"
         android:label="fragment_signup_member_info"
         tools:layout="@layout/fragment_signup_member_info" >
         <action

@@ -1,6 +1,9 @@
 package com.example.cleaningapp.share
 
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -17,11 +20,13 @@ class FirebaseFCMService: FirebaseMessagingService(){
             body = notification.body ?: ""
         }
         // 取得自訂資料
-        val data = remoteMessage.data["data"]
-        Log.d(
-            myTag,
-            "onMessageReceived():\ntitle: $title, body: $body, data: $data"
-        )
+        remoteMessage.data["data"]?.let {
+            sendMessageBroadcast(it)
+            Log.d(
+                myTag,
+                "onMessageReceived():\ntitle: $title, body: $body, data: $it"
+            )
+        }
     }
 
     // 當registration token更新時呼叫，應該將新的token傳送至server
@@ -33,5 +38,13 @@ class FirebaseFCMService: FirebaseMessagingService(){
     override fun onDeletedMessages() {
         super.onDeletedMessages()
         Log.d(myTag, "onDeletedMessages")
+    }
+
+    private fun sendMessageBroadcast(data: String) {
+        val intent = Intent("action_chatroom") //要執行的id(自訂義的)標籤, 後在IntentFilter配合使用
+        val bundle = Bundle()
+        bundle.putString("data", data)
+        intent.putExtras(bundle)
+        LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
     }
 }

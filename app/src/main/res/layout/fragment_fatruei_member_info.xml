@@ -41,10 +41,10 @@
                         android:id="@+id/cv_memberInfo_img"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:elevation="2dp"
+                        android:layout_margin="2dp"
                         android:foreground="?selectableItemBackground"
                         app:cardCornerRadius="150dp"
-                        app:cardElevation="0dp"
+                        app:cardElevation="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -329,8 +329,7 @@
                     app:imageBitmap="@{viewModel.uiState.crc}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView58"
-                    tools:src="@drawable/alb_criminal_record" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView58" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"

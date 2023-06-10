@@ -1,18 +1,23 @@
 package com.example.cleaningapp.share
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.util.Base64
+import com.example.cleaningapp.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+@SuppressLint("StaticFieldLeak")
 object CustomerSharePreferencesUtils {
     private const val PREF_NAME = "AccountCustomer"
     lateinit var sharedPreferences: SharedPreferences
+    private var defaultImg: Bitmap? = null
 
     fun init(context: Context) {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        defaultImg = ImageUtils.resToBitmap(context, R.drawable.default_img)
     }
 
     data class ApiCustomerModel(
@@ -124,12 +129,11 @@ object CustomerSharePreferencesUtils {
             email = customer.email,
             password = customer.password,
             name = customer.name,
-            photo = customer.photo?.let { ImageUtils.bitmapToBytes(it) },
+            photo = ImageUtils.bitmapToBytes(customer.photo ?: defaultImg!!),
             phone = customer.phone,
             gender = customer.gender,
-            introduction = customer.introduction,
-
-            )
+            introduction = customer.introduction
+        )
     }
 
     fun logout() {
