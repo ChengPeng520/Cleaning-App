@@ -48,7 +48,8 @@ class CleanerFrontViewModel : ViewModel() {
     fun isSearch(): Boolean {
         if (chooseCleaningDate.value.toString()
                 .isNotEmpty() && chooseCleaningTimeStart.value.toString()
-                .isNotEmpty() && chooseCleaningTimeEnd.value.toString().isNotEmpty()
+                .isNotEmpty() && chooseCleaningTimeEnd.value.toString()
+                .isNotEmpty() &&chooseCleaningDate.value.toString().isNotEmpty()
         ) {
             return true
         }

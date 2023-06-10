@@ -607,10 +607,12 @@ class CleanerFrontFragment : Fragment() {
 
             spnLocaltion.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    this@CleanerFrontFragment.district = (p1 as MaterialTextView).text as String
-                    viewModel?.isSearch()?.let {
-                        if (it) viewModel?.cleaners?.value = getByCondition()
-                    }
+
+//                    this@CleanerFrontFragment.district =
+//                        (p1 as MaterialTextView).text as String
+//                    viewModel?.isSearch()?.let {
+//                        if (it) viewModel?.cleaners?.value = getByCondition()
+//                    }
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
