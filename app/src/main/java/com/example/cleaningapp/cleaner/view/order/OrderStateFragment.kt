@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -30,13 +31,14 @@ class OrderStateFragment : Fragment() {
         binding = FragmentFatrueiOrderStateBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        arguments?.getInt("orderId")?.let { viewModel.orderId.value = it }
         initView()
         setBtnOnclick()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments?.getInt("orderId")?.let { viewModel.orderId.value = it }
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "訂單狀況"
         viewModel.uiState.observe(viewLifecycleOwner) {
             if (it.dateOrdered.toString() == getCurrentTime()) {
                 binding.clOrderStateProgressBar.visibility = View.VISIBLE
@@ -111,12 +113,20 @@ class OrderStateFragment : Fragment() {
     private fun setBtnOnclick() {
         with(binding) {
             btnOrderStateAddPicture.setOnClickListener {
-                findNavController().navigate(R.id.action_orderStateFragment_to_vicky_clear_photoFragment)
+                val bundle = Bundle()
+                bundle.putInt("orderId", viewModel?.uiState?.value?.orderId!!)
+                findNavController().navigate(
+                    R.id.action_orderStateFragment_to_vicky_clear_photoFragment,
+                    bundle
+                )
             }
             btnOrderStateSign.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putInt("orderId", viewModel?.uiState?.value?.orderId!!)
-                findNavController().navigate(R.id.action_orderStateFragment_to_vicky_order_cssign_checkFragment)
+                findNavController().navigate(
+                    R.id.action_orderStateFragment_to_vicky_order_cssign_checkFragment,
+                    bundle
+                )
             }
             ivOrderStateChatroom.setOnClickListener {
                 val bundle = Bundle()

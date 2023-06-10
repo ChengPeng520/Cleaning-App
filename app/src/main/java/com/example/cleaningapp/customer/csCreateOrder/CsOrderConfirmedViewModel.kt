@@ -1,25 +1,56 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
+import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.model.CreateOrder
 import com.example.cleaningapp.customer.model.CreateOrderPhoto
-import com.example.cleaningapp.customer.model.Order
-import com.example.cleaningapp.customer.model.OrderEstablished
+import com.example.cleaningapp.customer.model.EstablishOrder
+import com.example.cleaningapp.share.CustomerSharePreferencesUtils
+import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 
 class CsOrderConfirmedViewModel : ViewModel() {
-    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
-    val photo: MutableLiveData<CreateOrderPhoto> by lazy { MutableLiveData<CreateOrderPhoto>() }
+    val orderCreated: MutableLiveData<CreateOrder> by lazy { MutableLiveData<CreateOrder>() }
+    val photo: MutableLiveData<CreateOrderPhoto> by lazy {
+        MutableLiveData<CreateOrderPhoto>(
+            CreateOrderPhoto()
+        )
+    }
 
+    fun orderEstablish(view: View) {
+        val orderCreated = orderCreated.value
+        orderCreated?.customerId = CustomerSharePreferencesUtils.getCurrentCustomerId()
+        requestTask<EstablishOrder>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder",
+            method = "POST",
+            reqBody = orderCreated?.let { EstablishOrder(it, sendPhotos(photo.value!!)) }
+        )?.let {
+            Toast.makeText(view.context, "訂單建立完成", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(view)
+                .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
+        }
+        Toast.makeText(view.context, "訂單建立失敗", Toast.LENGTH_SHORT).show()
+    }
 
-//    fun checkout(): Boolean {
-//        requestTask<OrderEstablished>(
-//            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied",
-//            "PUT",
-//            orderEstablished.value
-//        )?.let {
-//            return true
-//        }
-//        return false
-//    }
+    fun convert(value: String): String {
+        return if (value.isNotEmpty()) value.substring(0, 5) else ""
+    }
+
+    fun sendPhotos(createOrderPhoto: CreateOrderPhoto): List<ByteArray> {
+        val photos = mutableListOf<ByteArray>()
+        createOrderPhoto.photo1?.let {
+            photos.add(ImageUtils.bitmapToBytes(it))
+        }
+        createOrderPhoto.photo2?.let {
+            photos.add(ImageUtils.bitmapToBytes(it))
+        }
+        createOrderPhoto.photo3?.let {
+            photos.add(ImageUtils.bitmapToBytes(it))
+        }
+        return photos
+    }
 }

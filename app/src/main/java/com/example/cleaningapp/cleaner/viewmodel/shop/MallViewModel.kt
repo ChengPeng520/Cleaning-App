@@ -1,8 +1,11 @@
 package com.example.cleaningapp.cleaner.viewmodel.shop
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import com.example.cleaningapp.cleaner.uistate.ProductItemUiState
 import com.example.cleaningapp.cleaner.uistate.ProductUiState
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class MallViewModel : ViewModel() {
+class MallViewModel(application: Application) : AndroidViewModel(application) {
     private var allProductItems = listOf<ProductItemUiState>()
     private val _uiState: MutableStateFlow<ProductUiState> by lazy { MutableStateFlow(ProductUiState()) }
     val uiState: StateFlow<ProductUiState> by lazy { _uiState.asStateFlow() }
@@ -27,6 +30,18 @@ class MallViewModel : ViewModel() {
             }
             _uiState.value = ProductUiState(filterList)
             allProductItems = filterList
+        }
+        fetchShopCart()
+    }
+
+    private fun fetchShopCart() {
+        requestTask<Int>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            method = "GET"
+        )?.let {
+            getApplication<Application>().getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE).edit()
+                .putInt("ShopOrderId", it)
+                .apply()
         }
     }
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +12,16 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopOrderViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsShopOrderDataboxBinding
 
-class ShopOrderAdapter(private var shopOrders: List<shopOrder>) :
+class ShopOrderAdapter(private var shopOrders: List<ShopOrder>) :
     RecyclerView.Adapter<ShopOrderAdapter.OrderViewHolder>() {
 
+    interface  onItemClickListener{
+        fun onItemClick(shopOrderId:Int)
+    }
+
+
     @SuppressLint("NotifyDataSetChanged")
-    fun updateShopOrders(orders: List<shopOrder>) {
+    fun updateShopOrders(orders: List<ShopOrder>) {
         this.shopOrders = orders
         notifyDataSetChanged()
 
@@ -41,18 +47,17 @@ class ShopOrderAdapter(private var shopOrders: List<shopOrder>) :
 
     //綁定每列訂單要呈現 viewholder 與畫面
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        val order = shopOrders[position]  //首先通过position从shopOrders列表中获取对应位置的订单数据，将其赋值给order变量
+        val order = shopOrders[position]
         with(holder) {
             itemViewBinding.viewModel?.shopOrder?.value = order
+            val bundle = Bundle()
+            order.shopOrderId?.let { bundle.putInt("shopOrderId", it) }
             itemView.setOnClickListener() {
-                val bundle = Bundle()
-                order.shopOrderId?.let { bundle.putInt("shopOrderId", it) }
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_bsShopOrderFragment_to_bsShopOrderDetailFragment,bundle)
+//                order.shopOrderId?.let { it1 -> listener.onItemClick(it1) }
+                    Navigation.findNavController(it)
+                        .navigate(R.id.action_bsShopOrderFragment_to_bsShopOrderDetailFragment,bundle)
             }
         }
-
-
     }
 
     override fun getItemCount(): Int {

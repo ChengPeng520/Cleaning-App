@@ -17,7 +17,7 @@ class OrderViewModel : ViewModel() {
 
     fun fetchBackstageOrderInfo(orderId : Int) {
         requestTask<BackstageOrderInfo>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/1",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/order/$orderId",
             "GET"
         )?.let { backstageorderInfo ->
             order.value = backstageorderInfo.order

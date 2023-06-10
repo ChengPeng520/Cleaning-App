@@ -1,51 +1,52 @@
 package com.example.cleaningapp.backstage.shop.viewModel
 
+
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.shop.OrderDetail
-import com.example.cleaningapp.backstage.shop.shopOrder
+import com.example.cleaningapp.backstage.shop.Product
+import com.example.cleaningapp.backstage.shop.ShopOrder
 import com.example.cleaningapp.share.requestTask
+import com.google.gson.reflect.TypeToken
 
 //訂單細項資料列表
 class BsShopOrdersDetailViewModel : ViewModel() {
-    val ordersdetail: MutableLiveData<List<OrderDetail>> by lazy { MutableLiveData<List<OrderDetail>>() }
-    private var ordersDetailList = mutableListOf<OrderDetail>()
-    val shopOrder: MutableLiveData<shopOrder> by lazy { MutableLiveData<shopOrder>() }
-    //單一商品訂單列表畫面
+    val ordersDetail: MutableLiveData<List<OrderDetail>> by lazy { MutableLiveData<List<OrderDetail>>() }
+    val shopOrder: MutableLiveData<ShopOrder> by lazy { MutableLiveData<ShopOrder>(ShopOrder()) }
+    val productId: MutableLiveData<Product> by lazy { MutableLiveData<Product>() }
+    val orderDetail: MutableLiveData<OrderDetail> by lazy { MutableLiveData<OrderDetail>() }
+    val order: MutableLiveData<ShopOrder> by lazy { MutableLiveData<ShopOrder>() }
 
-
-    init {
-//        loadOrdersDetailList()
-    }
-
-    fun loadShopOrderDetail(shopOrderId: Int?) {
-        requestTask<shopOrder>(
+    fun loadShopOrderList(shopOrderId: Int?) {
+        requestTask<ShopOrder>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/info/$shopOrderId",
             "GET",
         )?.let {
             shopOrder.value = it
-            Log.d("TAG", "接收內容:$shopOrderId")
         }
     }
-        fun shopOrderModify(): Boolean {
-            requestTask<shopOrder>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/",
-                "PUT",
-                shopOrder.value
-            )?.let {
-                return true
-            }
-            return false
+
+    fun shopOrderModify(): Boolean {
+        requestTask<ShopOrder>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/",
+            "PUT",
+            shopOrder.value
+        )?.let {
+            return true
+            Log.d("TAG", "shopOrder修改成功:$it")
         }
+        return false
+    }
 
-
-            fun loadOrdersDetailList() {
-
-
-            }
-
+    fun loadOrdersDetailList(shopOrderId: Int) {
+        requestTask<List<OrderDetail>>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/$shopOrderId",
+            "GET",
+            respBodyType = object : TypeToken<List<OrderDetail>>() {}.type
+        )?.let {
+            ordersDetail.value = it
+            Log.d("TAG", "回傳內容$it")
         }
-
-
+    }
+}

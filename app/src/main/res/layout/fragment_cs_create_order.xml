@@ -186,7 +186,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.order.timeStart}"
+                    android:text="@{viewModel.convert(viewModel.order.timeStart)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:text="timepicker" />
@@ -219,7 +219,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.order.timeEnd}"
+                    android:text="@{viewModel.convert(viewModel.order.timeEnd)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:text="timepicker" />
@@ -343,7 +343,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/edtTxt_csCreateOrder_bedroomSize"
+                    android:id="@+id/edtTxt_csCreateOrder_roomSize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"

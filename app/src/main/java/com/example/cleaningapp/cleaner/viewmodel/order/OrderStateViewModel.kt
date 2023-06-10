@@ -19,7 +19,7 @@ class OrderStateViewModel : ViewModel() {
 
     fun fetchOrderProgress() {
         requestTask<OrderUtil.OrderStatus>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/${orderId.value}",
             method = "GET"
         )?.let {
             _uiState.value = OrderStateUiState(

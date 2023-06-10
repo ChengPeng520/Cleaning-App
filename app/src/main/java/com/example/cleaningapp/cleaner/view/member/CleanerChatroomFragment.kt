@@ -1,12 +1,18 @@
 package com.example.cleaningapp.cleaner.view.member
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.CleanerChatroomAdapter
@@ -17,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class CleanerChatroomFragment : Fragment() {
     private lateinit var binding: FragmentFatrueiChatroomBinding
     private val viewModel: CleanerChatroomViewModel by viewModels()
+    private lateinit var messageReceiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +40,13 @@ class CleanerChatroomFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initRecyclerView()
+        messageReceiver = MessageReceiver()
+        registerMessageReceiver()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "聯繫客服"
     }
 
     private fun initRecyclerView() {
@@ -44,9 +57,22 @@ class CleanerChatroomFragment : Fragment() {
             (rvContactWindowTalk.layoutManager as LinearLayoutManager).stackFromEnd = true
             rvContactWindowTalk.setItemViewCacheSize(500)
             viewModel?.uiState?.observe(viewLifecycleOwner) {
-                 (rvContactWindowTalk.adapter as CleanerChatroomAdapter).submitList(it.chatroomItems.toMutableList())
+                (rvContactWindowTalk.adapter as CleanerChatroomAdapter).submitList(it.chatroomItems.toMutableList())
                 rvContactWindowTalk.smoothScrollToPosition((rvContactWindowTalk.adapter as CleanerChatroomAdapter).itemCount)
             }
+        }
+    }
+
+    // 註冊廣播接收器攔截"action_chatroom"的廣播
+    private fun registerMessageReceiver() {
+        val intentFilter = IntentFilter("action_chatroom") //要執行的id
+        LocalBroadcastManager.getInstance(requireActivity())
+            .registerReceiver(messageReceiver, intentFilter)
+    }
+
+    private inner class MessageReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            viewModel.fetchChatRoomTalkList()
         }
     }
 

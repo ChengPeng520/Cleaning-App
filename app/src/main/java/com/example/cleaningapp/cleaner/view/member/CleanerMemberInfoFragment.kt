@@ -7,9 +7,11 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.CleanerMemberInfoUiState
 import com.example.cleaningapp.cleaner.viewmodel.member.CleanerMemberInfoViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiMemberInfoBinding
@@ -30,8 +32,8 @@ class CleanerMemberInfoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initView()
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "會員資料"
     }
 
     private fun initView() {

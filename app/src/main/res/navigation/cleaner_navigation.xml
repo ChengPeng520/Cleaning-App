@@ -69,8 +69,8 @@
         android:label="fragment_fatruei_completed_payment"
         tools:layout="@layout/fragment_fatruei_completed_payment">
         <action
-            android:id="@+id/action_completedPaymentFragment_to_shopFragment"
-            app:destination="@id/shopFragment" />
+            android:id="@+id/action_completedPaymentFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberInfoFragment"

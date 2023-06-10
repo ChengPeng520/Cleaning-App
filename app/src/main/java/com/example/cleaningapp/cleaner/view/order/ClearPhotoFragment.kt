@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,12 +36,21 @@ class ClearPhotoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-            arguments?.getInt("orderId")?.let { viewModel?.cleanerBeforePhoto(it) }
+            arguments?.getInt("orderId")?.let {
+                viewModel?.cleanerBeforePhoto(it)
+                Log.d("1", "1")
+            }
+            linearLayout4.setOnClickListener {
+                if (viewModel?.photo?.value?.photo3 == null) {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    takePictureSmallLauncher.launch(intent)
+                }
+            }
             linearLayout5.setOnClickListener {
-//                if (viewModel?.Photo?.value?.photo3 == null) {
-//                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//                    takePictureSmallLaunchers.launch(intent)
-//                }
+                if (viewModel?.photo?.value?.photo3 == null) {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    takePictureSmallLauncher.launch(intent)
+                }
             }
             btAddCheck.setOnClickListener {
                 Navigation.findNavController(view)
@@ -49,54 +59,21 @@ class ClearPhotoFragment : Fragment() {
         }
     }
 
-//    private var takePictureSmallLaunchers =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                result.data?.extras?.let { bundle ->
-//                    val picture = bundle["data"] as Bitmap?
-//                    picture?.let {
-//                        viewModel.addCapturedPhoto(it)
-//                        if (!binding.viewModel?.isPhotoExists(it)!! && binding.viewModel?.capturedCount!! < 3) {
-//                            binding.viewModel?.addCapturedPhoto(it)
-//
-//                            when (binding.viewModel?.capturedCount) {
-//
-//                                1 -> {
-//                                    binding.imageView40.setImageBitmap(it); binding.imageView41.setBackgroundResource(
-//                                        R.drawable.ic_add
-//                                    )
-//                                    photos[0] = it
-//                                    CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-//                                        requireContext(),
-//                                        photos
-//                                    )
-//                                }
-//
-//                                2 -> {
-//                                    binding.imageView41.setImageBitmap(it); binding.imageView42.setBackgroundResource(
-//                                        R.drawable.ic_add
-//                                    )
-//                                    photos[1] = it
-//                                    CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-//                                        requireContext(),
-//                                        photos
-//                                    )
-//                                }
-//
-//                                3 -> {
-//                                    binding.imageView42.setImageBitmap(it)
-//                                    photos[2] = it
-//                                    CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-//                                        requireContext(),
-//                                        photos
-//                                    )
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+    private var takePictureSmallLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.extras?.let { bundle ->
+                    val picture = bundle["data"] as Bitmap?
+                    picture?.let {
+                        viewModel.addCapturedPhoto(it)
+                        photos[0] = it
+                        CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
+                        requireContext(),
+                        photos)
+                    }
+                }
+            }
+        }
 }
 
 //  - - - - -

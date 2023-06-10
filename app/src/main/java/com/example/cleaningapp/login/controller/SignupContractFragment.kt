@@ -15,6 +15,7 @@ import com.example.cleaningapp.login.viewModel.SignupContractViewModel
 class SignupContractFragment : Fragment() {
     private lateinit var binding: FragmentRonaSignupContractBinding
     private var nextPage: Int? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -39,6 +39,7 @@ class CleanerAdapter(private var cleaners: List<SearchOrder>) :
 
     override fun onBindViewHolder(holder: CleanerViewHolder, position: Int) {
         val cleaner = cleaners[position]
+
         //position 現在生成位子
         with(holder) {
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示

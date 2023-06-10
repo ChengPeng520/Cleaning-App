@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.fragment.app.Fragment
@@ -21,6 +22,12 @@ import com.example.cleaningapp.share.ImageUtils.uriToBitmap
 class SignupApplyInfoFragment : Fragment() {
     private lateinit var binding: FragmentRonaSignupApplyInfoBinding
     val viewModel: SignupApplyInfoViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +58,7 @@ class SignupApplyInfoFragment : Fragment() {
 
                 viewModel?.cleanerRegister()?.let {
                     if (it) {
+                        Toast.makeText(context, "註冊成功", Toast.LENGTH_SHORT).show()
                         Navigation.findNavController(requireActivity(), R.id.fragmentContainerView3)
                             .navigate(R.id.action_signupApplyInfoFragment_to_signupCheckApplyFragment)
                     } else {
@@ -145,27 +153,32 @@ class SignupApplyInfoFragment : Fragment() {
                 check = false
             }
 
-            if (identifyNumber == null){
+            if (identifyNumber == null) {
                 Toast.makeText(context, "身份證字號不可空白", Toast.LENGTH_SHORT).show()
                 check = false
             }
 
-            if (avatar == null){
+            if (avatar == null) {
                 Toast.makeText(context, "請上傳本人照片", Toast.LENGTH_SHORT).show()
                 check = false
             }
 
-            if ( id1 == null || id2 == null){
+            if (id1 == null || id2 == null) {
                 Toast.makeText(context, "請上傳身分證照片", Toast.LENGTH_SHORT).show()
                 check = false
             }
 
-            if ( goodPerson == null){
+            if (goodPerson == null) {
                 Toast.makeText(context, "請上傳良民證照片", Toast.LENGTH_SHORT).show()
                 check = false
             }
 
             return check
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 }

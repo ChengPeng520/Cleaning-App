@@ -1,9 +1,7 @@
 package com.example.cleaningapp.login.controller
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -73,53 +71,68 @@ class LoginFragment : Fragment() {
                     return@setOnClickListener
                 }
                 val position = spnLoginStatus.selectedItemPosition
-                val token = FirebaseMessaging.getInstance().token
-                if (position == 0) {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/login/"
-                    requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                        "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
-                    )?.let {
-                        if (it.suspend) {
-                            tvLoginErrMsg.text = "此帳號已停權"
-                        } else {
-                            CustomerSharePreferencesUtils.saveCustomerInfoFromPreferences(it)
-                            val intent = Intent(requireContext(), CustomerActivity::class.java)
-                            requireContext().startActivity(intent)
+                FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        task.result?.let { token ->
+                            if (position == 0) {
+                                val url =
+                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/login/"
+                                requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+                                    "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
+                                )?.let {
+                                    if (it.suspend) {
+                                        tvLoginErrMsg.text = "此帳號已停權"
+                                    } else {
+                                        CustomerSharePreferencesUtils.saveCustomerInfoFromPreferences(
+                                            it
+                                        )
+                                        val intent =
+                                            Intent(requireContext(), CustomerActivity::class.java)
+                                        requireContext().startActivity(intent)
+                                    }
+                                    return@addOnCompleteListener
+                                }
+                                tvLoginErrMsg.text = "使用者帳號或密碼不正確"
+                            } else if (position == 1) {
+                                val url =
+                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/login/"
+                                requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+                                    "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
+                                )?.let {
+                                    if (it.suspend) {
+                                        tvLoginErrMsg.text = "此帳號已停權"
+                                    } else if (!it.verify) {
+                                        findNavController().navigate(R.id.action_loginFragment_to_signupCheckingFragment)
+                                    } else {
+                                        CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(
+                                            it
+                                        )
+                                        val intent =
+                                            Intent(requireContext(), CleanerActivity::class.java)
+                                        requireContext().startActivity(intent)
+                                    }
+                                    return@addOnCompleteListener
+                                }
+                                tvLoginErrMsg.text = "使用者帳號或密碼不正確"
+                            } else {
+                                val url =
+                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/"
+                                requestTask<AccountBackstage>(
+                                    "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
+                                )?.let {
+                                    if (it.suspend) {
+                                        tvLoginErrMsg.text = "此帳號已停權"
+                                    } else {
+                                        val intent =
+                                            Intent(requireContext(), BackstageActivity::class.java)
+                                        requireContext().startActivity(intent)
+                                    }
+                                    return@addOnCompleteListener
+                                }
+                                tvLoginErrMsg.text = "使用者帳號或密碼不正確"
+                            }
                         }
-                        return@setOnClickListener
                     }
-                    tvLoginErrMsg.text = "使用者帳號或密碼不正確"
-                } else if (position == 1) {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/login/"
-                    requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                        "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
-                    )?.let {
-                        if (it.suspend) {
-                            tvLoginErrMsg.text = "此帳號已停權"
-                        } else if (!it.verify) {
-                            findNavController().navigate(R.id.action_loginFragment_to_signupCheckingFragment)
-                        } else {
-                            CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(it)
-                            val intent = Intent(requireContext(), CleanerActivity::class.java)
-                            requireContext().startActivity(intent)
-                        }
-                        return@setOnClickListener
-                    }
-                    tvLoginErrMsg.text = "使用者帳號或密碼不正確"
-                } else {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/"
-                    requestTask<AccountBackstage>(
-                        "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
-                    )?.let {
-                        if (it.suspend) {
-                            tvLoginErrMsg.text = "此帳號已停權"
-                        } else {
-                            val intent = Intent(requireContext(), BackstageActivity::class.java)
-                            requireContext().startActivity(intent)
-                        }
-                        return@setOnClickListener
-                    }
-                    tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                 }
             }
 
@@ -170,9 +183,10 @@ class LoginFragment : Fragment() {
                     val position = binding.spnLoginStatus.selectedItemPosition
                     val email = user?.email
                     if (position == 0) {
+                        val token = FirebaseMessaging.getInstance().token
                         val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/google/"
                         requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                            "$url$email/}"
+                            "$url$email/${token.result}}"
                         )?.let {
                             if (it.suspend) {
                                 binding.tvLoginErrMsg.text = "此帳號已停權"
@@ -184,9 +198,10 @@ class LoginFragment : Fragment() {
                             }
                         }
                     } else if (position == 1) {
+                        val token = FirebaseMessaging.getInstance().token
                         val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/google/"
                         requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                            "$url$email"
+                            "$url$email/${token.result}"
                         )?.let {
                             if (it.suspend) {
                                 binding.tvLoginErrMsg.text = "此帳號已停權"
@@ -230,19 +245,6 @@ class LoginFragment : Fragment() {
             return check
         }
     }
-
-    // FCM傳送通知中, API 33開始需要加上requestPermissionLauncher
-    override fun onStart() {
-        super.onStart()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-        }
-    }
-
-    private var requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            Log.d("myTag", "granted: $granted")
-        }
 }
 
 
