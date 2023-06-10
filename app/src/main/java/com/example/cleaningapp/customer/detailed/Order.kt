@@ -1,7 +1,9 @@
 package com.example.cleaningapp.customer.detailed
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
+import com.example.cleaningapp.share.ImageUtils
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
@@ -52,8 +54,7 @@ data class Order(
             return stringBuilder.toString()
         }
     val cleaningTime: String
-        @SuppressLint("SimpleDateFormat")
-        get() {
+        @SuppressLint("SimpleDateFormat") get() {
             val sb = StringBuilder()
             val dateFormat = SimpleDateFormat("HH:mm")
             sb.append(dateFormat.format(timeOrderedStart)).append("-")
@@ -68,5 +69,27 @@ data class Order(
     val coupon: Int
         get() {
             return (priceForCustomer - originalPrice - platformFee)
+        }
+}
+data class CompleteOrderPhotos(
+    val photos: List<ByteArray>
+) {
+    val photo1: Bitmap?
+        get() {
+            return if (photos.isNotEmpty()) {
+                ImageUtils.bytesToBitmap(photos[0])
+            } else null
+        }
+    val photo2: Bitmap?
+        get() {
+            return if (photos.size >= 2) {
+                ImageUtils.bytesToBitmap(photos[1])
+            } else null
+        }
+    val photo3: Bitmap?
+        get() {
+            return if (photos.size == 3) {
+                ImageUtils.bytesToBitmap(photos[2])
+            } else null
         }
 }

@@ -26,9 +26,7 @@ class ComplaintdetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getInt("orderId")?.let {
-            viewModel.fetchOrdersInfo(it)
-        }
+        arguments?.getInt("orderId")?.let { viewModel.fetchComplaintInfo(it) }
         binding.bntApplyComplaintChat.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.chatRoomFragment)
         }

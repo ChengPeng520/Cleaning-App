@@ -67,7 +67,7 @@ class OrderAdapter(private var orders: List<Order>) :
                 2 -> "正進行中"
                 3 -> "顧客確認"
                 4 -> "打掃結束"
-                5 -> "客訴申請"
+                5 -> "已完成"
                 6 -> "已取消"
                 7 -> "客訴完成"
                 else -> "未知状态"

@@ -15,8 +15,8 @@ import com.example.cleaningapp.share.requestTask
 
 class ApplycomplaintViewModel : ViewModel() {
     val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>() }
-    val complaint: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val orderId: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
+    val returnReason: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
     //  拍照功能
     val photo1: MutableLiveData<Bitmap?> by lazy { MutableLiveData<Bitmap?>(null) }
@@ -50,7 +50,7 @@ class ApplycomplaintViewModel : ViewModel() {
             reqBody = OrderInfo(
                 Order(
                     orderId = order.value!!.orderId,
-                    bsComplainRemark = complaint.value!!,
+                    returnReason = returnReason.value!!,
                     cleanerId = order.value!!.cleanerId,
                     commentCleaner = order.value!!.commentCleaner,
                     stars = order.value!!.stars,
