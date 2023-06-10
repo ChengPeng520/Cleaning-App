@@ -2,6 +2,7 @@ package com.example.cleaningapp.cleaner.view.shop
 
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -27,7 +28,7 @@ class ProductDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "商品詳情"
         arguments?.let {
             viewModel.fetchProductDetail(it.getInt("productId"))
         }

@@ -36,12 +36,13 @@ class BsUserSuspendFragment : Fragment() {
             tvBsUserSuspNoSearchData.visibility = View.GONE
 
             viewModel?.users?.observe(viewLifecycleOwner) { users ->
-                // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBsUserSusp.adapter == null) {
                     rvBsUserSusp.adapter = UserSuspendAdapter(users)
                 } else {
                     (rvBsUserSusp.adapter as UserSuspendAdapter).updateUsers(users)
                 }
+
+
 
                 // 顯示尚無資料的判斷
                 if (rvBsUserSusp.adapter != null && rvBsUserSusp.adapter?.itemCount == 0) {

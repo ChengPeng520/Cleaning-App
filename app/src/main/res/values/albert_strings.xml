@@ -59,6 +59,7 @@
     <string name="btn_bs_user_main_save">儲存</string>
     <string name="tv_bs_user_main_add_account">帳號： </string>
     <string name="tv_bs_user_main_add_password">密碼： </string>
+    <string name="tv_bs_user_main_add_name">姓名： </string>
     <string name="tv_bs_user_main_add_exist">此帳號已存在</string>
     <string name="tv_bs_user_verify_status_ti">狀態</string>
     <string name="tv_bs_user_verify_status_verify"><u>未審核</u></string>

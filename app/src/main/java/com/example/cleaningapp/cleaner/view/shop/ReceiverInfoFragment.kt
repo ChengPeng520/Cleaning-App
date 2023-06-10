@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.viewModels
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.viewmodel.shop.ReceiverInfoViewModel
 import com.example.cleaningapp.databinding.FragmentFatrueiReceiverInfoBinding
 
@@ -22,6 +24,10 @@ class ReceiverInfoFragment : Fragment() {
         binding.lifecycleOwner = this
         isBtnEnable()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "宅配詳情"
     }
 
     private fun isBtnEnable() {

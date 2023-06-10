@@ -34,15 +34,16 @@
             android:value="true" />
 
         <activity
-            android:name=".BackstageActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
             android:name=".CustomerActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".CleanerActivity"
+            android:exported="false"
+            android:theme="@style/CleanerActivityTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".BackstageActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
@@ -55,6 +56,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".share.FirebaseFCMService"
             android:exported="false">

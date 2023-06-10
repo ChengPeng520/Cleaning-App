@@ -27,7 +27,7 @@ class BsUserMainViewModel : ViewModel() {
             "GET",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
-            var usersWithoutSuspend = mutableListOf<Member>()
+            val usersWithoutSuspend = mutableListOf<Member>()
             for (i in it) {
                 if (!i.suspend) {
                     usersWithoutSuspend.add(i)

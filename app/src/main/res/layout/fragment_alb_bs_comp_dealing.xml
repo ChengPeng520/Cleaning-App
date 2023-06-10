@@ -59,11 +59,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(viewModel.uiState.orderId)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_orderid_ti"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_orderid_ti"
-                    android:text="@{viewModel.complaint.orderId}" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_orderid_ti" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_applierti"
@@ -82,12 +82,12 @@
                     android:id="@+id/tv_bs_comp_dealing_applier"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.uiState.customerName}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_comp_dealing_orderId"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_applierti"
-                    app:layout_constraintTop_toTopOf="@+id/tv_bs_comp_dealing_orderId"
-                    android:text="@{viewModel.complaint.applier}" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_bs_comp_dealing_orderId" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_timeti"
@@ -108,12 +108,12 @@
                     android:id="@+id/tv_bs_comp_dealing_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(viewModel.uiState.timeCreate)}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bs_comp_dealing_applier"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_timeti"
-                    app:layout_constraintTop_toTopOf="@+id/tv_bs_comp_dealing_applier"
-                    android:text="@{viewModel.complaint.createTime}" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_bs_comp_dealing_applier" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_cleanerti"
@@ -131,11 +131,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:text="@{viewModel.uiState.cleanerName}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_cleanerti"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_cleanerti"
-                    android:text="@{viewModel.complaint.cleaner}" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_cleanerti" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_uploadPhototi"
@@ -162,21 +162,21 @@
                         android:layout_width="132dp"
                         android:layout_height="132dp"
                         android:layout_weight="1"
-                        android:imageResource="@{viewModel.complaint.photo1}" />
+                        app:imageBitmap="@{viewModel.uiPhoto.photo1}" />
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_dealing_uploadPhoto2"
                         android:layout_width="132dp"
                         android:layout_height="132dp"
                         android:layout_weight="1"
-                        android:imageResource="@{viewModel.complaint.photo2}" />
+                        app:imageBitmap="@{viewModel.uiPhoto.photo2}" />
 
                     <ImageView
                         android:id="@+id/iv_bs_comp_dealing_uploadPhoto3"
                         android:layout_width="132dp"
                         android:layout_height="132dp"
                         android:layout_weight="1"
-                        android:imageResource="@{viewModel.complaint.photo3}" />
+                        app:imageBitmap="@{viewModel.uiPhoto.photo3}" />
                 </LinearLayout>
 
                 <TextView
@@ -194,11 +194,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:text="@{viewModel.uiState.bsComplainRemark}"
                     android:textColor="#49454F"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_contentti"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_contentti"
-                    android:text="@{viewModel.complaint.content}" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_contentti" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_dealing_remarkti"
@@ -225,6 +225,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tv_bs_comp_dealing_remarkti"
                     app:layout_constraintTop_toBottomOf="@+id/tv_bs_comp_dealing_remarkti" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
