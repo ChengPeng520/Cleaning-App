@@ -4,11 +4,11 @@ import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Coupon
+import com.example.cleaningapp.customer.model.CreateOrder
 import com.example.cleaningapp.customer.model.CreateOrderPhoto
-import com.example.cleaningapp.customer.model.Order
 
 class CsCreateOrderViewModel : ViewModel() {
-    val order: MutableLiveData<Order> by lazy { MutableLiveData<Order>(Order()) }
+    val order: MutableLiveData<CreateOrder> by lazy { MutableLiveData<CreateOrder>(CreateOrder()) }
     val coupon: MutableLiveData<Coupon> by lazy { MutableLiveData<Coupon>() }
     val photo: MutableLiveData<CreateOrderPhoto> by lazy {
         MutableLiveData<CreateOrderPhoto>(

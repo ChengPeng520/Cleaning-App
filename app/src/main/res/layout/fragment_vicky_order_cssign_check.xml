@@ -51,7 +51,8 @@
             android:text="@string/bt_order_sign_achieve"
             app:layout_constraintBottom_toTopOf="@+id/tv_order_revise"
             app:layout_constraintEnd_toEndOf="@+id/signatureView"
-            app:layout_constraintStart_toStartOf="@+id/signatureView" />
+            app:layout_constraintStart_toStartOf="@+id/signatureView"
+            android:onClick="@{viewModel::sendSignature}"/>
 
         <TextView
             android:id="@+id/tv_order_revise"

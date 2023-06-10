@@ -2,7 +2,6 @@ package com.example.cleaningapp.customer.csCreateOrder
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +56,6 @@ class CsViewCvFragment : Fragment() {
         }
         binding.btnCsViewCvConfirmPay.setOnClickListener {
             viewModel.orderEstablished.value?.let { it1 ->
-                Log.d("2", "2")
                 TapPay.getInstance().prepareGooglePay(
                     requireActivity(),
                     it1.orderId,

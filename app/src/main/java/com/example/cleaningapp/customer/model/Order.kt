@@ -3,7 +3,6 @@ package com.example.cleaningapp.customer.model
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
-import androidx.lifecycle.MutableLiveData
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
@@ -63,30 +62,75 @@ data class Order(
     val cleaningRange: String
         get() {
             val stringBuilder = StringBuilder()
-            if (livingRoomSize != 0 && livingRoomSize != null) stringBuilder.append("客廳${livingRoomSize}坪")
-            if (kitchenSize != 0 && kitchenSize != null) stringBuilder.append("\n廚房${kitchenSize}坪")
-            if (bathRoomSize != 0 && bathRoomSize != null) stringBuilder.append("\n廁所${bathRoomSize}坪")
-            if (roomSize != 0 && roomSize != null) stringBuilder.append("\n房間${roomSize}坪")
+            if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
+            if (kitchenSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
+            if (bathRoomSize != 0) stringBuilder.append("\n廁所${bathRoomSize}坪")
+            if (roomSize != 0) stringBuilder.append("\n房間${roomSize}坪")
             return stringBuilder.toString()
         }
+}
 
+data class CreateOrder(
+    var customerId: Int = 0,
+    var areaCity: String = "",
+    var areaDistrict: String = "",
+    var areaDetail: String = "",
+    var dateOrdered: Date? = null,
+    var timeOrderedStart: String? = null,
+    var timeOrderedEnd: String? = null,
+    var livingRoomSize: Int = 0,
+    var kitchenSize: Int = 0,
+    var bathRoomSize: Int = 0,
+    var roomSize: Int = 0,
+    var remark: String = "",
+    val customerCouponId: Int? = null,
+    var couponDiscount: Int = 0,
+    var originalPrice: Int = 0,
+    var priceForCustomer: Int = 0,
+) : Serializable {
+    val orderDate: String
+        get() {
+            dateOrdered?.let {
+                return it.toString()
+            }
+            return ""
+        }
+    val timeStart: String
+        get() {
+            timeOrderedStart?.let {
+                return it.toString()
+            }
+            return ""
+        }
+    val timeEnd: String
+        get() {
+            timeOrderedEnd?.let {
+                return it.toString()
+            }
+            return ""
+        }
+    val couponDisplay: String
+        get() {
+            return "- $couponDiscount"
+        }
+    val charge: Int
+        get() {
+            return (originalPrice * 0.1).toInt()
+        }
+    val address: String
+        get() {
+            return "$areaCity$areaDistrict$areaDetail"
+        }
 
-//    val cleaningRange: String
-//        get() {
-//            val stringBuilder = StringBuilder()
-//            if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
-//            if (kitchenSize != 0 && livingRoomSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
-//            else if (kitchenSize != 0) stringBuilder.append("廚房${kitchenSize}坪")
-//            if (bathRoomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0)) stringBuilder.append(
-//                "\n廁所${bathRoomSize}坪"
-//            )
-//            else if (bathRoomSize != 0) stringBuilder.append("/n廁所${bathRoomSize}坪")
-//            if (roomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0 || bathRoomSize != 0)) stringBuilder.append(
-//                "\n房間${roomSize}坪"
-//            )
-//            else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
-//            return stringBuilder.toString()
-//        }
+    val cleaningRange: String
+        get() {
+            val stringBuilder = StringBuilder()
+            if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
+            if (kitchenSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
+            if (bathRoomSize != 0) stringBuilder.append("\n廁所${bathRoomSize}坪")
+            if (roomSize != 0) stringBuilder.append("\n房間${roomSize}坪")
+            return stringBuilder.toString()
+        }
 }
 
 data class CreateOrderPhoto(
@@ -131,6 +175,6 @@ data class OrderEstablished(
 )
 
 data class EstablishOrder(
-    val order: Order,
-    val photo: MutableLiveData<CreateOrderPhoto>
+    val order: CreateOrder,
+    val photos: List<ByteArray>?
 )
