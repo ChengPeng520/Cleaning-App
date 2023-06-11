@@ -46,82 +46,112 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"
-                        android:text="訂單詳細:" />
+                        android:text="訂單詳細:"
+                        android:textColor="@color/black" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout7"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:layout_editor_absoluteY="45dp">
-
-                        <ImageView
-                            android:id="@+id/imageView14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="48dp"
-                            android:src="@drawable/ic_calendar"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imageView15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:src="@drawable/ic_time"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView14"
-                            app:layout_constraintStart_toStartOf="@+id/imageView14"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
-                        <ImageView
-                            android:id="@+id/imageView16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:src="@drawable/ic_location"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView15"
-                            app:layout_constraintStart_toStartOf="@+id/imageView15"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/all_layout_light_gray_shape"
+                        android:paddingHorizontal="16dp">
 
                         <TextView
-                            android:id="@+id/tv_order_demands"
+                            android:id="@+id/textView31"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/tv_order_remark"
-                            app:layout_constraintStart_toStartOf="@+id/textView34"
-                            app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/tv_customer_order_date"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView32"
+                            app:layout_constraintStart_toStartOf="@+id/textView30"
+                            app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
                         <TextView
                             android:id="@+id/textView33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
                             android:text="@string/tv_order_adress"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tv_order_size"
                             app:layout_constraintStart_toStartOf="@+id/textView32"
-                            app:layout_constraintTop_toTopOf="@+id/imageView16" />
-
-                        <TextView
-                            android:id="@+id/textView59"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/tv_order_total"
-                            app:layout_constraintStart_toStartOf="@+id/textView38"
-                            app:layout_constraintTop_toBottomOf="@+id/textView38" />
+                            app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
                         <TextView
                             android:id="@+id/tv_order_address"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
+                            android:layout_marginStart="8dp"
                             android:text="@{viewModel.order.address}"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView33"
+                            android:textColor="@color/black"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView33"
                             app:layout_constraintTop_toTopOf="@+id/textView33"
                             tools:text="台北市南京復興**********" />
+
+                        <TextView
+                            android:id="@+id/textView32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_order_time"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView33"
+                            app:layout_constraintStart_toStartOf="@+id/textView31"
+                            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+                        <TextView
+                            android:id="@+id/textView30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/tv_order_orderId"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView31"
+                            app:layout_constraintStart_toEndOf="@+id/imageView17"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/fatruei_baseline_calendar_month_24"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView31"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView17"
+                            app:layout_constraintStart_toStartOf="@+id/imageView17"
+                            app:layout_constraintTop_toTopOf="@+id/textView31" />
+
+                        <TextView
+                            android:id="@+id/tv_order_demands"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/tv_order_remark"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/tv_order_remark"
+                            app:layout_constraintStart_toStartOf="@+id/textView34"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_order_size" />
+
+                        <TextView
+                            android:id="@+id/textView38"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/tv_order_cleaner"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView59"
+                            app:layout_constraintStart_toStartOf="@+id/tv_order_remark"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_order_remark" />
 
                         <TextView
                             android:id="@+id/tv_order_date"
@@ -129,6 +159,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
+                            android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="@+id/textView31"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView31"
@@ -136,72 +167,12 @@
                             tools:text="2023年4月25日" />
 
                         <TextView
-                            android:id="@+id/tv_order_remark"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@{viewModel.order.remark}"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_order_demands"
-                            tools:text="我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註" />
-
-                        <TextView
-                            android:id="@+id/textView31"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tv_customer_order_date"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-                            app:layout_constraintStart_toStartOf="@+id/textView30"
-                            app:layout_constraintTop_toTopOf="@+id/imageView14" />
-
-                        <TextView
-                            android:id="@+id/tv_order_cleaner"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="@{viewModel.order.cleanerName}"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView38"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView38"
-                            app:layout_constraintTop_toTopOf="@+id/textView38"
-                            tools:text="曾正凡" />
-
-                        <TextView
-                            android:id="@+id/textView34"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/tv_order_range"
-                            app:layout_constraintStart_toStartOf="@+id/textView33"
-                            app:layout_constraintTop_toBottomOf="@+id/textView33" />
-
-                        <TextView
-                            android:id="@+id/tv_order_size"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="@{viewModel.order.cleaningRange}"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView34"
-                            app:layout_constraintTop_toTopOf="@+id/textView34"
-                            tools:text="房間5坪 " />
-
-                        <TextView
-                            android:id="@+id/textView32"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tv_order_time"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
-                            app:layout_constraintStart_toStartOf="@+id/textView31"
-                            app:layout_constraintTop_toTopOf="@+id/imageView15" />
-
-                        <TextView
                             android:id="@+id/tv_order_time"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="@{viewModel.order.cleaningTime}"
+                            android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="@+id/textView32"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView32"
@@ -209,33 +180,12 @@
                             tools:text="12:00-14:00 (2小時)" />
 
                         <TextView
-                            android:id="@+id/textView38"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/tv_order_cleaner"
-                            app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_order_remark" />
-
-                        <TextView
-                            android:id="@+id/tv_order_total"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView59"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView59"
-                            app:layout_constraintTop_toTopOf="@+id/textView59"
-                            app:layout_constraintVertical_bias="0.0"
-                            tools:text=" NT$X,XXX元" />
-
-                        <TextView
                             android:id="@+id/tv_order_orderId"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="@{String.valueOf(viewModel.order.orderId)}"
+                            android:textColor="@color/black"
                             app:layout_constraintBottom_toBottomOf="@+id/textView30"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView30"
@@ -243,14 +193,115 @@
                             tools:text="XXXXXX" />
 
                         <TextView
-                            android:id="@+id/textView30"
+                            android:id="@+id/tv_order_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.order.cleaningRange}"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toTopOf="@+id/tv_order_demands"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView34"
+                            app:layout_constraintTop_toBottomOf="@+id/textView33"
+                            tools:text="房間5坪 " />
+
+                        <TextView
+                            android:id="@+id/tv_order_total"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView59"
+                            app:layout_constraintTop_toTopOf="@+id/textView59"
+                            tools:text=" NT$X,XXX元" />
+
+                        <ImageView
+                            android:id="@+id/imageView15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="32dp"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/tv_order_orderId"
-                            app:layout_constraintStart_toEndOf="@+id/imageView14"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:src="@drawable/fatruei_baseline_access_time_24"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView32"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView14"
+                            app:layout_constraintStart_toStartOf="@+id/imageView14"
+                            app:layout_constraintTop_toTopOf="@+id/textView32" />
+
+                        <TextView
+                            android:id="@+id/textView59"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_order_total"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView38"
+                            app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+                        <ImageView
+                            android:id="@+id/imageView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/fatruei_baseline_location_on_24"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView33"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView15"
+                            app:layout_constraintStart_toStartOf="@+id/imageView15"
+                            app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+                        <TextView
+                            android:id="@+id/textView34"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_order_range"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/textView33"
+                            app:layout_constraintTop_toTopOf="@+id/tv_order_size" />
+
+                        <TextView
+                            android:id="@+id/tv_order_remark"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.order.remark}"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toTopOf="@+id/textView38"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_order_demands"
+                            tools:text="我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註我是備註" />
+
+                        <TextView
+                            android:id="@+id/tv_order_cleaner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.order.cleanerName}"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView38"
+                            app:layout_constraintTop_toTopOf="@+id/textView38"
+                            tools:text="曾正凡" />
+
+                        <ImageView
+                            android:id="@+id/imageView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView30"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView30"
+                            app:srcCompat="@drawable/fatruei_baseline_list_alt_24" />
+
+                        <ImageView
+                            android:id="@+id/imageView43"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                            app:layout_constraintStart_toStartOf="@+id/imageView16"
+                            app:layout_constraintTop_toTopOf="@+id/textView59"
+                            app:srcCompat="@drawable/fatruei_baseline_monetization_on_24" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -260,18 +311,21 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:text="@string/tv_complaintContent_detailed"
+                        android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/edtTxt_complaint"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#EAEAEA"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/all_layout_light_gray_shape"
                         android:ems="10"
                         android:gravity="top|left"
                         android:inputType="textMultiLine"
-                        android:padding="8dp"
+                        android:lineSpacingExtra="30px"
+                        android:padding="16dp"
                         android:text="@{viewModel.order.returnReason}"
+                        android:textColor="@color/black"
                         tools:text="地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......" />
 
                     <LinearLayout
@@ -282,28 +336,28 @@
                         <ImageView
                             android:id="@+id/imageView40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="8dp"
                             android:imageBitmap="@{viewModel.uiPhoto.photo1}"
+                            android:padding="8dp"
                             tools:srcCompat="@tools:sample/avatars" />
 
                         <ImageView
                             android:id="@+id/imageView41"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="8dp"
                             android:imageBitmap="@{viewModel.uiPhoto.photo2}"
+                            android:padding="8dp"
                             tools:srcCompat="@tools:sample/avatars" />
 
                         <ImageView
                             android:id="@+id/imageView42"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="8dp"
                             android:imageBitmap="@{viewModel.uiPhoto.photo3}"
+                            android:padding="8dp"
                             tools:srcCompat="@tools:sample/avatars" />
 
                     </LinearLayout>
@@ -313,21 +367,21 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-                        <Button
+                        <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/bnt_applyComplaint_chat"
+                            style="@style/customerBtnSubmitStyle"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_weight="1"
-                            android:backgroundTint="#87CBB9"
+                            android:layout_height="wrap_content"
                             android:text="@string/bnt_applyComplaint_cs" />
 
                     </LinearLayout>
 
                 </LinearLayout>
+
             </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

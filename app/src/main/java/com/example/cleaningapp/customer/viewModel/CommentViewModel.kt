@@ -26,7 +26,7 @@ class CommentViewModel : ViewModel() {
                     stars = stars.value!!,
                     commentCleaner = content.value!!,
                     status = 5
-                ), null
+                ), emptyList()
             )
         )?.let {
             view.findNavController().navigate(R.id.action_commentFragment_to_commentDoneFragment)

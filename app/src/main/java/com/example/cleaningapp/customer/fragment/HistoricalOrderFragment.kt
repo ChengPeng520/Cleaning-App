@@ -42,8 +42,16 @@ class HistoricalOrderFragment : Fragment() {
         val orders = viewModel.orderList.value.orEmpty().filter { it.status == 0 }
         adapter = OrderAdapter(orders)
         binding.rvOrderListList.adapter = adapter
+
         val defaultTextColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
         val defaultIconColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
+
+        binding.btnOrderListEstablished.setTextColor(defaultTextColor)
+        binding.btnOrderListDone.setTextColor(defaultTextColor)
+        val processingDrawable = binding.btnOrderListEstablished.compoundDrawablesRelative[0]
+        processingDrawable?.setTint(defaultIconColor)
+        val completedDrawable = binding.btnOrderListDone.compoundDrawablesRelative[0]
+        completedDrawable?.setTint(defaultIconColor)
 
         binding.btnOrderListIng.setOnClickListener {
             binding.btnOrderListIng.setTextColor(

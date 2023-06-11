@@ -1,12 +1,11 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
-import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,8 +40,6 @@ class BsUserSuspendFragment : Fragment() {
                 } else {
                     (rvBsUserSusp.adapter as UserSuspendAdapter).updateUsers(users)
                 }
-
-
 
                 // 顯示尚無資料的判斷
                 if (rvBsUserSusp.adapter != null && rvBsUserSusp.adapter?.itemCount == 0) {
@@ -85,5 +82,4 @@ class BsUserSuspendFragment : Fragment() {
 
         }
     }
-
 }

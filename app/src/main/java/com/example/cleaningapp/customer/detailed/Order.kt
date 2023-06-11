@@ -68,7 +68,7 @@ data class Order(
         }
     val coupon: Int
         get() {
-            return (priceForCustomer - originalPrice - platformFee)
+            return (priceForCustomer - originalPrice)
         }
 }
 data class CompleteOrderPhotos(

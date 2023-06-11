@@ -26,10 +26,11 @@ class ComplaintdetailsViewModel : ViewModel() {
 //    }
     fun fetchComplaintInfo(orderId: Int) {
         requestTask<OrderInfo>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId", "DELETE"
+            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            "DELETE"
         )?.let {
             order.value = Order(
-                orderId= it.order.orderId,
+                orderId = it.order.orderId,
                 dateOrdered = it.order.dateOrdered,
                 timeOrderedStart = it.order.timeOrderedStart,
                 timeOrderedEnd = it.order.timeOrderedEnd,
@@ -42,6 +43,7 @@ class ComplaintdetailsViewModel : ViewModel() {
                 roomSize = it.order.roomSize,
                 remark = it.order.remark,
                 stars = it.order.stars,
+                returnReason = it.order.returnReason
             )
             it.photos?.let { photo ->
                 _uiPhoto.value = CompleteOrderPhotos(photo)
