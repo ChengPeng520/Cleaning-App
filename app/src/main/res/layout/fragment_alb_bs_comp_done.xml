@@ -84,27 +84,27 @@
 
                 <TextView
                     android:id="@+id/tv_bs_comp_done_order_ti"
-                    android:layout_width="60dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:text="@string/tv_bs_comp_databox_orderid_ti"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_done_applier_ti"
-                    android:layout_width="60dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:text="@string/tv_bs_comp_databox_applier_ti"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_done_time_ti"
-                    android:layout_width="60dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
+                    android:layout_weight="1"
                     android:text="@string/tv_bs_user_main_time_ti"
                     android:textColor="@color/black"
                     android:textSize="18sp" />

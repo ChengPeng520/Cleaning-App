@@ -54,6 +54,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_bs_comp_main_done">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
             <SearchView
                 android:id="@+id/sv_bs_comp_main"
                 android:layout_width="match_parent"
@@ -63,6 +68,7 @@
                 app:iconifiedByDefault="false">
 
             </SearchView>
+        </LinearLayout>
 
             <View
                 android:id="@+id/divider11"
@@ -73,12 +79,13 @@
             <LinearLayout
                 android:id="@+id/ll_bs_comp_main_ti"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
 
                 <TextView
                     android:id="@+id/tv_bs_comp_main_order_ti"
-                    android:layout_width="7dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_comp_databox_orderid_ti"
