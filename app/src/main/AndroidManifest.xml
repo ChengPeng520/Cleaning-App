@@ -36,6 +36,7 @@
         <activity
             android:name=".CustomerActivity"
             android:exported="false"
+            android:theme="@style/CleanerActivityTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".CleanerActivity"
@@ -49,6 +50,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
+            android:theme="@style/CleanerActivityTheme"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -55,6 +56,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.GONE
         requireActivity().title = "會員登入"
         val viewModel: LoginViewModel by viewModels()
         binding = FragmentRonaLoginBinding.inflate(inflater, container, false)

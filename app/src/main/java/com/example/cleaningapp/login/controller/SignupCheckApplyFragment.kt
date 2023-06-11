@@ -5,6 +5,8 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
@@ -25,9 +27,13 @@ class SignupCheckApplyFragment : Fragment() {
                 Navigation.findNavController(signupCheckApplyFragment)
                     .navigate(R.id.action_signupCheckApplyFragment_to_loginFragment)
             }
-
         }
         countDownTimer.start()
         return signupCheckApplyFragment
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = ""
     }
 }
