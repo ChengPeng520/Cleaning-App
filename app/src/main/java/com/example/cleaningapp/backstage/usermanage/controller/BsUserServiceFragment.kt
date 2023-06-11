@@ -1,11 +1,11 @@
 package com.example.cleaningapp.backstage.usermanage.controller
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +33,7 @@ class BsUserServiceFragment : Fragment() {
             tvBsUserServQueryNoData.visibility = View.GONE
             tvBsUserServQueryNoSearchData.visibility = View.GONE
 
-            viewModel?.chats?.observe(viewLifecycleOwner){ chats ->
+            viewModel?.chats?.observe(viewLifecycleOwner) { chats ->
                 if (rvBsUserServ.adapter == null) {
                     rvBsUserServ.adapter = UserServiceAdapter(chats)
                 } else {
@@ -52,14 +52,15 @@ class BsUserServiceFragment : Fragment() {
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
-                    if (rvBsUserServ.adapter != null && rvBsUserServ.adapter?.itemCount == 0){
+                    if (rvBsUserServ.adapter != null && rvBsUserServ.adapter?.itemCount == 0) {
                         tvBsUserServQueryNoSearchData.visibility = View.VISIBLE
                         tvBsUserServQueryNoData.visibility = View.GONE
-                    }else{
+                    } else {
                         tvBsUserServQueryNoSearchData.visibility = View.GONE
                     }
                     return true
                 }
+
                 // 點擊虛擬鍵盤上的提交鈕時呼叫
                 override fun onQueryTextSubmit(text: String): Boolean {
                     return false
@@ -74,7 +75,6 @@ class BsUserServiceFragment : Fragment() {
             btnBsUserServSuspend.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
             }
-
         }
     }
 }

@@ -8,13 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.databinding.ItemFatrueiChatroomTxtBinding
 
-class ChatAdapter :
-    ListAdapter<ChatroomItemUiState, ChatAdapter.ItemViewHodler>(DiffCallBack()) {
-    private var layoutWidth: Int = 0
+class ClnChatAdapter :
+    ListAdapter<ClnChatMessage, ClnChatAdapter.ItemViewHolder>(DiffCallBack()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHodler {
-        this.layoutWidth = parent.width / 3 * 2
-        return ItemViewHodler(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        return ItemViewHolder(
             ItemFatrueiChatroomTxtBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -23,36 +21,34 @@ class ChatAdapter :
         )
     }
 
-    override fun onBindViewHolder(holder: ItemViewHodler, position: Int) {
-        holder.bind(getItem(position), layoutWidth)
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
-    class ItemViewHodler(private val itemBinding: ItemFatrueiChatroomTxtBinding) :
+    class ItemViewHolder(private val itemBinding: ItemFatrueiChatroomTxtBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(item: ChatroomItemUiState, layoutWidth: Int) {
+        fun bind(item: ClnChatMessage) {
             if (item.customerId != 0) {
                 itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
                 itemBinding.tvChatroomTalkTo.text = item.text
-                itemBinding.tvChatroomTalkTo.maxWidth = layoutWidth
             } else {
                 itemBinding.tvChatroomTalkFrom.visibility = View.VISIBLE
                 itemBinding.tvChatroomTalkFrom.text = item.text
-                itemBinding.tvChatroomTalkFrom.maxWidth = layoutWidth
             }
         }
     }
 
-    class DiffCallBack : DiffUtil.ItemCallback<ChatroomItemUiState>() {
+    class DiffCallBack : DiffUtil.ItemCallback<ClnChatMessage>() {
         override fun areItemsTheSame(
-            oldItem: ChatroomItemUiState,
-            newItem: ChatroomItemUiState
+            oldItem: ClnChatMessage,
+            newItem: ClnChatMessage
         ): Boolean {
-            return oldItem.chatCustBackId == newItem.chatCustBackId
+            return oldItem.msgCustClnId == newItem.msgCustClnId
         }
 
         override fun areContentsTheSame(
-            oldItem: ChatroomItemUiState,
-            newItem: ChatroomItemUiState
+            oldItem: ClnChatMessage,
+            newItem: ClnChatMessage
         ): Boolean {
             return oldItem == newItem
         }

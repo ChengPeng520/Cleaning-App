@@ -61,7 +61,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_calendar" />
+                            android:src="@drawable/fatruei_baseline_calendar_month_24" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_date"
@@ -101,7 +101,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_time" />
+                            android:src="@drawable/fatruei_baseline_access_time_24" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_time"
@@ -140,7 +140,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_location" />
+                            android:src="@drawable/fatruei_baseline_location_on_24" />
 
                         <TextView
                             android:id="@+id/tv_csOderConfirmed_address"

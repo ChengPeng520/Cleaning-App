@@ -2,16 +2,11 @@ package com.example.cleaningapp.backstage.usermanage.controller
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.backstage.usermanage.model.Member
-import com.example.cleaningapp.backstage.usermanage.model.User
-import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendDetailViewModel
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserSuspendViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsUserSuspDataboxBinding
 
@@ -20,8 +15,6 @@ import com.example.cleaningapp.databinding.ItemAlbBsUserSuspDataboxBinding
  */
 class UserSuspendAdapter(private var users: List<Member>) :
     RecyclerView.Adapter<UserSuspendAdapter.UserSuspendViewHolder>() {
-
-
     /**
      * 更新使用者列表內容
      * @param users 新的好友列表
@@ -41,8 +34,10 @@ class UserSuspendAdapter(private var users: List<Member>) :
                 showDialogOpen(member)
             }
         }
+
         private fun showDialogOpen(member: Member) {
-            val alertDialogBuilder = AlertDialog.Builder(itemViewBinding.root.context)  //dialog建立的畫面在binding itemView的內容裡
+            val alertDialogBuilder =
+                AlertDialog.Builder(itemViewBinding.root.context)  //dialog建立的畫面在binding itemView的內容裡
             alertDialogBuilder.setTitle("確定復原此帳號？")
             alertDialogBuilder.setMessage("將發送訊息給使用者")
             alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
@@ -71,15 +66,11 @@ class UserSuspendAdapter(private var users: List<Member>) :
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return UserSuspendViewHolder(itemViewBinding)
-
-
     }
 
     override fun onBindViewHolder(holder: UserSuspendViewHolder, position: Int) {
-        val member =users[position]
+        val member = users[position]
         holder.itemViewBinding.viewModel?.member?.value = member
         holder.bind(member)
-
     }
-
 }

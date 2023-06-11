@@ -1,47 +1,43 @@
 package com.example.cleaningapp.customer.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.customer.chatroom.ChatroomItemUiState
-import com.example.cleaningapp.customer.chatroom.ChatroomUiState
+import com.example.cleaningapp.customer.chatroom.ClnChatMessage
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 
-
-class ChatRoomViewModel : ViewModel() {
-    private val _uiState = MutableLiveData<ChatroomUiState>()
-    val uiState: LiveData<ChatroomUiState> = _uiState
+class ClnChatViewModel : ViewModel() {
+    private val _chatroomUiState: MutableLiveData<List<ClnChatMessage>> by lazy { MutableLiveData<List<ClnChatMessage>>() }
+    val chatroomUiState: LiveData<List<ClnChatMessage>> by lazy { _chatroomUiState }
+    var cleanerId = 0
     val commitText = MutableLiveData("")
 
-    init {
-        fetchChatRoomTalkList()
-    }
-
-    private fun fetchChatRoomTalkList() {
-        requestTask<List<ChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+    fun fetchOrderChatRoomTalkList() {
+        requestTask<List<ClnChatMessage>>(
+            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/$cleanerId",
             method = "GET",
-            respBodyType = object : TypeToken<List<ChatroomItemUiState>>() {}.type
+            respBodyType = object : TypeToken<List<ClnChatMessage>>() {}.type
         )?.let {
-            _uiState.value = ChatroomUiState(it)
+            _chatroomUiState.value = it
         }
     }
 
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack",
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/",
                 method = "POST",
-                reqBody = ChatroomItemUiState(
+                reqBody = ClnChatMessage(
                     customerId = CustomerSharePreferencesUtils.getCurrentCustomerId(),
                     text = commitText.value!!
                 )
             )?.let {
                 if (it.get("result").toString().toBoolean()) {
-                    fetchChatRoomTalkList()
+                    fetchOrderChatRoomTalkList()
                     commitText.value = ""
                 }
             }

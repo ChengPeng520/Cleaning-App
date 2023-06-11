@@ -9,7 +9,7 @@
         android:id="@+id/csHomePageFragment"
         android:name="com.example.cleaningapp.customer.csHomePage.CsHomePageFragment"
         android:label="fragment_cs_homepage"
-        tools:layout="@layout/fragment_cs_homepage" >
+        tools:layout="@layout/fragment_cs_homepage">
         <action
             android:id="@+id/action_csHomePageFragment_to_csCouponObtainFragment"
             app:destination="@id/csCouponObtainFragment" />
@@ -21,7 +21,7 @@
         android:id="@+id/csCouponObtainFragment"
         android:name="com.example.cleaningapp.customer.csHomePage.CsCouponObtainFragment"
         android:label="fragment_cs_coupon_obtain"
-        tools:layout="@layout/fragment_cs_coupon_obtain" >
+        tools:layout="@layout/fragment_cs_coupon_obtain">
         <action
             android:id="@+id/action_csCouponObtainFragment_to_csHomePageFragment"
             app:destination="@id/csHomePageFragment" />
@@ -30,7 +30,7 @@
         android:id="@+id/csCreateOrderFragment"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderFragment"
         android:label="fragment_cs_create_order"
-        tools:layout="@layout/fragment_cs_create_order" >
+        tools:layout="@layout/fragment_cs_create_order">
         <action
             android:id="@+id/action_csCreateOrderFragment_to_csCouponPickerFragment"
             app:destination="@id/csCouponPickerFragment" />
@@ -42,7 +42,7 @@
         android:id="@+id/csUserPageFragment"
         android:name="com.example.cleaningapp.customer.csUserPage.CsUserPageFragment"
         android:label="fragment_cs_user"
-        tools:layout="@layout/fragment_cs_user" >
+        tools:layout="@layout/fragment_cs_user">
         <action
             android:id="@+id/action_csUserFragment_to_csViewCouponFragment"
             app:destination="@id/csViewCouponFragment" />
@@ -57,7 +57,7 @@
         android:id="@+id/csCouponPickerFragment"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsCouponPickerFragment"
         android:label="fragment_cs_coupon_picker"
-        tools:layout="@layout/fragment_cs_coupon_picker" >
+        tools:layout="@layout/fragment_cs_coupon_picker">
         <action
             android:id="@+id/action_csCouponPickerFragment_to_csCreateOrderFragment"
             app:destination="@id/csCreateOrderFragment" />
@@ -66,7 +66,7 @@
         android:id="@+id/csOrderConfirmedFragment"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsOrderConfirmedFragment"
         android:label="fragment_cs_oder_confirmed"
-        tools:layout="@layout/fragment_cs_order_confirmed" >
+        tools:layout="@layout/fragment_cs_order_confirmed">
         <action
             android:id="@+id/action_csOrderConfirmedFragment_to_csOrderEstablishedFragment"
             app:destination="@id/csOrderEstablishedFragment" />
@@ -75,7 +75,7 @@
         android:id="@+id/csChooseCleanerFragment2"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsChooseCleanerFragment"
         android:label="fragment_cs_choose_cleaner"
-        tools:layout="@layout/fragment_cs_choose_cleaner" >
+        tools:layout="@layout/fragment_cs_choose_cleaner">
         <action
             android:id="@+id/action_csChooseCleanerFragment2_to_csViewCvFragment"
             app:destination="@id/csViewCvFragment" />
@@ -87,16 +87,12 @@
         android:id="@+id/csViewCvFragment"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsViewCvFragment"
         android:label="fragment_cs_view_cv"
-        tools:layout="@layout/fragment_cs_view_cv" >
-        <action
-            android:id="@+id/action_csViewCvFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_cs_view_cv" />
     <fragment
         android:id="@+id/csEditProfileFragment"
         android:name="com.example.cleaningapp.customer.csUserPage.CsEditProfileFragment"
         android:label="fragment_cs_edit_profile"
-        tools:layout="@layout/fragment_cs_edit_profile" >
+        tools:layout="@layout/fragment_cs_edit_profile">
         <action
             android:id="@+id/action_csEditProfileFragment_to_csUserPageFragment"
             app:destination="@id/csUserPageFragment" />
@@ -105,7 +101,7 @@
         android:id="@+id/csViewCouponFragment"
         android:name="com.example.cleaningapp.customer.csUserPage.CsViewCouponFragment"
         android:label="fragment_cs_view_coupon"
-        tools:layout="@layout/fragment_cs_view_coupon" >
+        tools:layout="@layout/fragment_cs_view_coupon">
         <action
             android:id="@+id/action_csViewCouponFragment_to_csCreateOrderFragment2"
             app:destination="@id/csCreateOrderFragment" />
@@ -131,28 +127,10 @@
             app:destination="@id/detailedOrderFragment" />
     </fragment>
     <fragment
-        android:id="@+id/paymentFragment"
-        android:name="com.example.cleaningapp.customer.fragment.PaymentFragment"
-        android:label="PaymentFragment"
-        tools:layout="@layout/fragment_victor_payment">
-        <action
-            android:id="@+id/action_paymentFragment_to_paydoneFragment"
-            app:destination="@id/paydoneFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/paydoneFragment"
-        android:name="com.example.cleaningapp.customer.fragment.PaydoneFragment"
-        android:label="PaydoneFragment"
-        tools:layout="@layout/fragment_victor_paydone">
-        <action
-            android:id="@+id/action_paydoneFragment_to_orderprogressFragment"
-            app:destination="@id/orderprogressFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/orderprogressFragment"
         android:name="com.example.cleaningapp.customer.fragment.OrderprogressFragment"
         android:label="OrderprogressFragment"
-        tools:layout="@layout/fragment_victor_orderprogress" >
+        tools:layout="@layout/fragment_victor_orderprogress">
         <action
             android:id="@+id/action_orderprogressFragment_to_orderingFragment"
             app:destination="@id/orderingFragment" />
@@ -161,7 +139,7 @@
         android:id="@+id/ordercompletedFragment"
         android:name="com.example.cleaningapp.customer.fragment.OrdercompletedFragment"
         android:label="OrdercompletedFragment"
-        tools:layout="@layout/fragment_victor_ordercompleted" >
+        tools:layout="@layout/fragment_victor_ordercompleted">
         <action
             android:id="@+id/action_ordercompletedFragment_to_orderdoneFragment"
             app:destination="@id/orderdoneFragment" />
@@ -170,7 +148,7 @@
         android:id="@+id/orderdoneFragment"
         android:name="com.example.cleaningapp.customer.fragment.OrderdoneFragment"
         android:label="OrderdoneFragment"
-        tools:layout="@layout/fragment_victor_orderdone" >
+        tools:layout="@layout/fragment_victor_orderdone">
         <action
             android:id="@+id/action_orderdoneFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
@@ -179,7 +157,7 @@
         android:id="@+id/commentFragment"
         android:name="com.example.cleaningapp.customer.fragment.CommentFragment"
         android:label="CommentFragment"
-        tools:layout="@layout/fragment_victor_comment" >
+        tools:layout="@layout/fragment_victor_comment">
         <action
             android:id="@+id/action_commentFragment_to_commentDoneFragment"
             app:destination="@id/commentDoneFragment" />
@@ -188,7 +166,7 @@
         android:id="@+id/detailedOrderFragment"
         android:name="DetailedOrderFragment"
         android:label="DetailedOrderFragment"
-        tools:layout="@layout/fragment_victor_detailedorder" >
+        tools:layout="@layout/fragment_victor_detailedorder">
         <action
             android:id="@+id/action_detailedOrderFragment_to_applycomplaintFragment"
             app:destination="@id/applycomplaintFragment" />
@@ -197,7 +175,7 @@
         android:id="@+id/applycomplaintFragment"
         android:name="ApplycomplaintFragment"
         android:label="ApplycomplaintFragment"
-        tools:layout="@layout/fragment_victor_applycomplaint" >
+        tools:layout="@layout/fragment_victor_applycomplaint">
         <action
             android:id="@+id/action_applycomplaintFragment_to_complaintdetailsFragment"
             app:destination="@id/complaintdetailsFragment" />
@@ -228,17 +206,27 @@
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="com.example.cleaningapp.customer.fragment.ChatRoomFragment"
-        android:label="ChatRoomFragment" />
+        android:label="ChatRoomFragment"
+        tools:layout="@layout/fragment_victor_ordering" />
     <fragment
         android:id="@+id/orderingFragment"
         android:name="com.example.cleaningapp.customer.fragment.OrderingFragment"
-        android:label="OrderingFragment" >
+        android:label="OrderingFragment"
+        tools:layout="@layout/fragment_victor_ordering">
         <action
             android:id="@+id/action_orderingFragment_to_ordercompletedFragment"
             app:destination="@id/ordercompletedFragment" />
+        <action
+            android:id="@+id/action_orderingFragment_to_clnChatFragment"
+            app:destination="@id/clnChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderChatroomFragment"
         android:name="com.example.cleaningapp.customer.fragment.OrderChatroomFragment"
         android:label="OrderChatroomFragment" />
+    <fragment
+        android:id="@+id/clnChatFragment"
+        android:name="com.example.cleaningapp.customer.fragment.ClnChatFragment"
+        android:label="ClnChatFragment"
+        tools:layout="@layout/fragment_victor_cln_chat" />
 </navigation>

@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="48dp"
-                        android:src="@drawable/ic_calendar"
+                        android:src="@drawable/fatruei_baseline_calendar_month_24"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:src="@drawable/ic_time"
+                        android:src="@drawable/fatruei_baseline_access_time_24"
                         app:layout_constraintEnd_toEndOf="@+id/imageView14"
                         app:layout_constraintStart_toStartOf="@+id/imageView14"
                         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
@@ -60,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:src="@drawable/ic_location"
+                        android:src="@drawable/fatruei_baseline_location_on_24"
                         app:layout_constraintEnd_toEndOf="@+id/imageView15"
                         app:layout_constraintStart_toStartOf="@+id/imageView15"
                         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
@@ -263,8 +263,8 @@
                         android:layout_gravity="end"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:textSize="16sp"
                         android:text="@{String.valueOf(viewModel.order.originalPrice)}"
+                        android:textSize="16sp"
                         tools:text="X,XXX元 " />
 
                 </LinearLayout>
@@ -293,8 +293,8 @@
                         android:layout_gravity="end"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:textSize="16sp"
                         android:text="@{String.valueOf(viewModel.order.platformFee)}"
+                        android:textSize="16sp"
                         tools:text="XX元 " />
 
                 </LinearLayout>
@@ -323,8 +323,8 @@
                         android:layout_gravity="end"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:textSize="16sp"
                         android:text="@{String.valueOf(viewModel.order.coupon)}"
+                        android:textSize="16sp"
                         tools:text="-    XX元 " />
 
                 </LinearLayout>
@@ -353,8 +353,8 @@
                         android:layout_gravity="end"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:textSize="16sp"
                         android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
+                        android:textSize="16sp"
                         tools:text="X,XXX元" />
 
                 </LinearLayout>
