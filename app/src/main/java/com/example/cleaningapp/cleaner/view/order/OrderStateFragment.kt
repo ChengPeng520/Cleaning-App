@@ -74,6 +74,7 @@ class OrderStateFragment : Fragment() {
                     2 -> {
                         this.btnOrderStateStartCleaning.visibility = View.GONE
                         this.btnOrderStateAddPicture.visibility = View.VISIBLE
+                        this.clOrderStateProgressBar.visibility = View.VISIBLE
                         this.btnOrderStateNext.visibility = View.VISIBLE
                         this.ivOrderStateApplied.isSelected = true
                         this.btnOrderStateNext.isEnabled =

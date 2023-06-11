@@ -106,7 +106,7 @@ class OrderConductFragment : Fragment() {
                 textView62.compoundDrawablesRelative[0]?.setTint(defaultIconColor)
                 textView49.compoundDrawablesRelative[0].setTint(defaultIconColor)
                 viewModel?.order?.value = viewModel?.orderList.orEmpty()
-                    .filter { it.status == 4 || it.status == 5 || it.status == 7 }
+                    .filter { it.status == 4 || it.status == 5 || it.status == 6 || it.status == 7 }
             }
         }
     }

@@ -8,8 +8,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import com.example.cleaningapp.databinding.ActivityCustomerBinding
 import com.example.cleaningapp.share.GetPrimeCallback
 import com.example.cleaningapp.share.TapPay

@@ -177,7 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.20" />
+                    app:layout_constraintGuide_percent="0.15" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout9"
@@ -257,8 +257,8 @@
                         android:id="@+id/textView43"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/tv_order_state_date"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -281,8 +281,8 @@
                         android:id="@+id/textView45"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/tv_order_state_address"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -304,7 +304,8 @@
                         android:id="@+id/textView55"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/tv_order_state_remark"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -366,7 +367,6 @@
                         android:id="@+id/tv_order_state_remark"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:text="@{viewModel.uiState.remark}"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"

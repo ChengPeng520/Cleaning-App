@@ -54,6 +54,32 @@ class BsUserMainDetailFragment : Fragment() {
 //            }
 
             with(binding) {
+                if (viewModel?.user?.value?.customerId != null){
+                    tvBsUserMainDetailIdnum.visibility = View.GONE
+                    tvBsUserMainDetailIdnumTi.visibility = View.GONE
+                    tvBsUserMainDetailIdfrontTi.visibility = View.GONE
+                    ivBsUserMainDetailIdfront.visibility = View.GONE
+                    ivBsUserMainDetailIdback.visibility = View.GONE
+                    tvBsUserMainDetailIdbackTi.visibility = View.GONE
+                    ivBsUserMainDetailCriminalrecord.visibility = View.GONE
+                    tvBsUserMainDetailCriminalrecordTi.visibility = View.GONE
+                    llBsUserMainDetailPermission.visibility = View.GONE
+                }
+                if (viewModel?.user?.value?.backstageId != null){
+                    ivBsUserMainDetailAvatar.visibility = View.GONE
+                    llBsUserMainDetailPhone.visibility = View.GONE
+                    tvBsUserMainDetailIntro.visibility = View.GONE
+                    tvBsUserMainDetailIntroTi.visibility = View.GONE
+                    tvBsUserMainDetailIdnum.visibility = View.GONE
+                    tvBsUserMainDetailIdnumTi.visibility = View.GONE
+                    tvBsUserMainDetailIdfrontTi.visibility = View.GONE
+                    ivBsUserMainDetailIdfront.visibility = View.GONE
+                    ivBsUserMainDetailIdback.visibility = View.GONE
+                    tvBsUserMainDetailIdbackTi.visibility = View.GONE
+                    ivBsUserMainDetailCriminalrecord.visibility = View.GONE
+                    tvBsUserMainDetailCriminalrecordTi.visibility = View.GONE
+                    llBsUserMainDetailPermission.visibility = View.GONE
+                }
 
                 btnBsUserMainDetailModify.setOnClickListener {
                     val bundle = Bundle()

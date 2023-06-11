@@ -17,8 +17,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_susp_user"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_user"
             android:textColor="@color/textPrimary"
@@ -31,8 +32,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_susp_verify"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_check"
             android:textColor="@color/textPrimary"
@@ -42,8 +44,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_susp_suspend"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/textPrimary"
             android:text="@string/btn_bs_user_main_suspend"
             android:textColor="@color/white"
@@ -53,8 +56,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_susp_service"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_service"
             android:textColor="@color/textPrimary"
@@ -77,12 +81,11 @@
 
             <SearchView
                 android:id="@+id/sv_bs_user_susp_main"
-                android:layout_width="235dp"
-                android:layout_height="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                app:iconifiedByDefault="false" />
+                android:background="@drawable/ciyi_shape_search"
+                app:iconifiedByDefault="false"/>
 
 
             <View
@@ -100,6 +103,7 @@
                 <TextView
                     android:id="@+id/tv_bs_user_susp_email_ti"
                     android:layout_width="78dp"
+                    android:textSize="18sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_user_main_email_ti"
@@ -110,6 +114,7 @@
                     android:layout_width="4dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textSize="18sp"
                     android:text="@string/tv_bs_user_main_name_ti"
                     android:textColor="@color/black" />
 
@@ -118,6 +123,7 @@
                     android:layout_width="14dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:text="@string/tv_bs_user_susp_status_ti"
                     android:textColor="@color/black" />

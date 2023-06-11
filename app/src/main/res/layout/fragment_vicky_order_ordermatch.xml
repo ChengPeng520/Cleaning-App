@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingStart="24dp"
             android:paddingTop="12dp"
             android:paddingEnd="24dp"
@@ -35,6 +35,7 @@
                 android:id="@+id/constraintLayout5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/all_layout_light_gray_shape"
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,56 +43,17 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline17">
 
                 <TextView
-                    android:id="@+id/textView58"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView55"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@{@string/tv_csOrderConfirmed_area3 (viewModel.order.livingRoomSize, viewModel.order.kitchenSize, viewModel.order.bathRoomSize, viewModel.order.roomSize)}"
-                    app:layout_constraintBottom_toTopOf="@+id/textView43"
-                    app:layout_constraintStart_toEndOf="@+id/textView38"
-                    app:layout_constraintTop_toBottomOf="@+id/textView57"
-                    tools:text=" 房間5坪" />
-
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/ic_ordernumber"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                    app:layout_constraintDimensionRatio="w,1:1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView34" />
-
-                <ImageView
-                    android:id="@+id/imageView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="@+id/textView35"
-                    app:layout_constraintDimensionRatio="h,1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView11"
-                    app:layout_constraintStart_toStartOf="@+id/imageView11"
-                    app:layout_constraintTop_toTopOf="@+id/textView35" />
-
-                <ImageView
-                    android:id="@+id/imageView26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:src="@drawable/fatruei_baseline_access_time_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView36"
-                    app:layout_constraintDimensionRatio="h,1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView24"
-                    app:layout_constraintStart_toStartOf="@+id/imageView24"
-                    app:layout_constraintTop_toTopOf="@+id/textView36" />
-
-                <ImageView
-                    android:id="@+id/imageView27"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:src="@drawable/fatruei_baseline_location_on_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
-                    app:layout_constraintDimensionRatio="h,1:1"
-                    app:layout_constraintStart_toStartOf="@+id/imageView26"
-                    app:layout_constraintTop_toTopOf="@+id/textView37" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toTopOf="@+id/textView35"
+                    tools:text="2023年4月26日" />
 
                 <TextView
                     android:id="@+id/textView34"
@@ -100,21 +62,100 @@
                     android:layout_marginStart="16dp"
                     android:text="@string/tv_order_detail_number_text"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/textView35"
                     app:layout_constraintStart_toEndOf="@+id/imageView11"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/imageView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    tools:layout_editor_absoluteX="26dp"
+                    tools:layout_editor_absoluteY="63dp" />
+
+                <ImageView
+                    android:id="@+id/imageView60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView35"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView11"
+                    app:layout_constraintStart_toStartOf="@+id/imageView11"
+                    app:layout_constraintTop_toTopOf="@+id/textView35"
+                    app:srcCompat="@drawable/fatruei_baseline_calendar_month_24" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="0dp"
+                    android:layout_height="21dp"
+                    android:src="@drawable/ic_ordernumber"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView34" />
+
                 <TextView
-                    android:id="@+id/textView35"
+                    android:id="@+id/textView43"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/tv_order_detail_date"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/tv_order_detail_other"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toTopOf="@+id/textView36"
-                    app:layout_constraintStart_toStartOf="@+id/textView34"
-                    app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/textView44"
+                    app:layout_constraintStart_toStartOf="@+id/textView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView58" />
+
+                <TextView
+                    android:id="@+id/textView46"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{String.valueOf(viewModel.order.orderId)}"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView34"
+                    app:layout_constraintTop_toTopOf="@+id/textView34"
+                    tools:text="XXXXXXXXX" />
+
+                <TextView
+                    android:id="@+id/textView58"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{@string/tv_csOrderConfirmed_area3 (viewModel.order.livingRoomSize, viewModel.order.kitchenSize, viewModel.order.bathRoomSize, viewModel.order.roomSize)}"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toTopOf="@+id/textView43"
+                    app:layout_constraintStart_toEndOf="@+id/textView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37"
+                    tools:text=" 房間5坪" />
+
+                <TextView
+                    android:id="@+id/textView56"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{viewModel.order.cleaningTime}"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView36"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView36"
+                    app:layout_constraintTop_toTopOf="@+id/textView36"
+                    tools:text="12:00-14:00(2小時)" />
+
+                <TextView
+                    android:id="@+id/textView57"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{viewModel.order.address}"
+                    android:textColor="#3D7EBB"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView37"
+                    app:layout_constraintTop_toTopOf="@+id/textView37"
+                    tools:text="台北市南京復興**********" />
 
                 <TextView
                     android:id="@+id/textView36"
@@ -122,6 +163,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_order_detail_hours"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/textView37"
                     app:layout_constraintStart_toStartOf="@+id/textView35"
                     app:layout_constraintTop_toBottomOf="@+id/textView35" />
@@ -134,9 +176,20 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/tv_order_detail_address"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toTopOf="@+id/textView38"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/textView58"
                     app:layout_constraintStart_toStartOf="@+id/textView36"
                     app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+                <ImageView
+                    android:id="@+id/imageView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:src="@drawable/fatruei_baseline_access_time_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView36"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView60"
+                    app:layout_constraintStart_toStartOf="@+id/imageView60"
+                    app:layout_constraintTop_toTopOf="@+id/textView36" />
 
                 <TextView
                     android:id="@+id/textView38"
@@ -144,76 +197,43 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_order_detail_area"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toTopOf="@+id/textView43"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView37"
-                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
+                    app:layout_constraintTop_toTopOf="@+id/textView58" />
+
+                <ImageView
+                    android:id="@+id/imageView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:src="@drawable/fatruei_baseline_location_on_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView26"
+                    app:layout_constraintStart_toStartOf="@+id/imageView26"
+                    app:layout_constraintTop_toTopOf="@+id/textView37" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/textView35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@string/tv_order_detail_other"
+                    android:text="@string/tv_order_detail_date"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toTopOf="@+id/textView44"
-                    app:layout_constraintStart_toStartOf="@+id/textView38"
-                    app:layout_constraintTop_toBottomOf="@+id/textView38" />
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/textView36"
+                    app:layout_constraintStart_toStartOf="@+id/textView34"
+                    app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
                 <TextView
                     android:id="@+id/textView44"
                     android:layout_width="299dp"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.order.remark}"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView43"
                     app:layout_constraintTop_toBottomOf="@+id/textView43"
                     tools:text="工具:  吸塵器 、拖把 整理重點:  臥房、客房" />
-
-                <TextView
-                    android:id="@+id/textView46"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@{String.valueOf(viewModel.order.orderId)}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                    app:layout_constraintStart_toEndOf="@+id/textView34"
-                    app:layout_constraintTop_toTopOf="@+id/textView34"
-                    tools:text="XXXXXXXXX" />
-
-                <TextView
-                    android:id="@+id/textView55"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView35"
-                    app:layout_constraintStart_toEndOf="@+id/textView35"
-                    app:layout_constraintTop_toTopOf="@+id/textView35"
-                    tools:text="2023年4月26日" />
-
-                <TextView
-                    android:id="@+id/textView56"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@{viewModel.order.cleaningTime}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView36"
-                    app:layout_constraintStart_toEndOf="@+id/textView36"
-                    app:layout_constraintTop_toTopOf="@+id/textView36"
-                    tools:text="12:00-14:00(2小時)" />
-
-                <TextView
-                    android:id="@+id/textView57"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@{viewModel.order.address}"
-                    android:textColor="#3D7EBB"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
-                    app:layout_constraintStart_toEndOf="@+id/textView37"
-                    app:layout_constraintTop_toTopOf="@+id/textView37"
-                    tools:text="台北市南京復興**********" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -245,6 +265,7 @@
                     android:text="@string/tv_order_totalprice"
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView36"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -276,6 +297,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout18" />
+
+            <TextView
+                android:id="@+id/textView88"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="等待應徵中..."
+                android:textColor="#B8B8B9"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

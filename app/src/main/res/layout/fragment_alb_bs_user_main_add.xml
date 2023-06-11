@@ -17,8 +17,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_add_user"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/textPrimary"
             android:text="@string/btn_bs_user_main_user"
             android:textColor="@color/white"
@@ -31,8 +32,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_add_verify"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_check"
             android:textColor="@color/textPrimary"
@@ -42,8 +44,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_add_suspend"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_suspend"
             android:textColor="@color/textPrimary"
@@ -53,8 +56,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_add_service"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_service"
             android:textColor="@color/textPrimary"
@@ -97,8 +101,10 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_bs_user_main_save"
-                        android:layout_width="54dp"
-                        android:layout_height="38dp"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:textSize="16sp"
+                        android:backgroundTint="@color/white"
                         android:layout_gravity="center_vertical"
                         android:text="@string/btn_bs_user_main_save" />
                 </LinearLayout>
@@ -179,19 +185,19 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_bs_user_main_add_exist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_bs_user_main_add_exist"
-            android:textColor="@color/error"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.85"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_bs_user_main_add_base"
-            app:layout_constraintVertical_bias="0.0" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_bs_user_main_add_exist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/tv_bs_user_main_add_exist"-->
+<!--            android:textColor="@color/error"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.85"-->
+<!--            android:textSize="16sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ll_bs_user_main_add_base"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

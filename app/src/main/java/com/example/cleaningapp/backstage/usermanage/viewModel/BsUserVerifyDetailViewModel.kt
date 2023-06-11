@@ -16,33 +16,6 @@ class BsUserVerifyDetailViewModel : ViewModel() {
     /** 連線取得個人info */
     fun fetchMemberInfo(member: Member) {
         when (member.status) {
-//            1 -> {
-//                requestTask<AccountCustomer>(
-//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/1/${member.id}",
-//                    method = "GET"
-//                )?.let {
-//                    user.value = User(
-//                        cleanerId = null,
-//                        customerId = it.customerId,
-//                        backstageId = null,
-//                        email = it.email,
-//                        name = it.name,
-//                        photo = it.userPhoto,
-//                        phone = it.phone,
-//                        gender = it.gender,
-//                        introduction = it.introduction,
-//                        timeCreate = it.timeCreate,
-//                        timeUpdate = it.timeUpdate,
-//                        role = "一般用戶",
-//                        suspend = it.suspend,
-//                        verify = true,
-//                        identifyNumber = "",
-//                        idCardFront = null,
-//                        idCardBack = null,
-//                        crc = null
-//                    )
-//                }
-//            }
             2 -> {
                 requestTask<AccountCleaner>(
                     url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/2/${member.id}",
@@ -70,33 +43,6 @@ class BsUserVerifyDetailViewModel : ViewModel() {
                     )
                 }
             }
-//            3 -> {
-//                requestTask<AccountBackstage>(
-//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/3/${member.id}",
-//                    method = "GET"
-//                )?.let {
-//                    user.value = User(
-//                        cleanerId = null,
-//                        customerId = null,
-//                        backstageId = it.backstageId,
-//                        email = it.account,
-//                        name = it.name,
-//                        photo = null,
-//                        phone = "",
-//                        gender = 0,
-//                        introduction = "",
-//                        timeCreate = it.timeCreate,
-//                        timeUpdate = it.timeUpdate,
-//                        role = "後台人員",
-//                        suspend = it.suspend,
-//                        verify = true,
-//                        identifyNumber = "",
-//                        idCardFront = null,
-//                        idCardBack = null,
-//                        crc = null
-//                    )
-//                }
-//            }
         }
     }
 
@@ -105,24 +51,6 @@ class BsUserVerifyDetailViewModel : ViewModel() {
      */
     fun editMemberInfo(view: View) {
         user.value?.let {
-//            if (it.customerId != null) {
-//                requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-//                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-//                    method = "PUT",
-//                    reqBody = CustomerSharePreferencesUtils.ApiCustomerModel(
-//                        customerId = it.customerId!!,
-//                        email = null,
-//                        name = it.name,
-//                        phone = it.phone,
-//                        gender = it.gender,
-//                        introduction = it.introduction,
-//                        photo = null,
-//                        password = null,
-//                    )
-//                )?.let {
-//                    Navigation.findNavController(view).navigate(R.id.bsUserVerifyFragment)
-//                }
-//            }
             if (it.cleanerId != null) {
                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                     url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",

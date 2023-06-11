@@ -7,7 +7,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
-class FirebaseFCMService: FirebaseMessagingService(){
+class FirebaseFCMService : FirebaseMessagingService() {
     private val myTag = "TAG_${javaClass.simpleName}"
 
     // 當App在前景收到FCM時呼叫，App在背景收到FCM時不會呼叫此方法
@@ -20,8 +20,13 @@ class FirebaseFCMService: FirebaseMessagingService(){
             body = notification.body ?: ""
         }
         // 取得自訂資料
-        remoteMessage.data["data"]?.let {
-            sendMessageBroadcast(it)
+        remoteMessage.data["chatroom"]?.let {
+            if (it == "chatroom") {
+                sendMessageBroadcast(it)
+            }
+            if (it == "order") {
+                sendOrderBroadcast(it)
+            }
             Log.d(
                 myTag,
                 "onMessageReceived():\ntitle: $title, body: $body, data: $it"
@@ -42,6 +47,14 @@ class FirebaseFCMService: FirebaseMessagingService(){
 
     private fun sendMessageBroadcast(data: String) {
         val intent = Intent("action_chatroom") //要執行的id(自訂義的)標籤, 後在IntentFilter配合使用
+        val bundle = Bundle()
+        bundle.putString("data", data)
+        intent.putExtras(bundle)
+        LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+    }
+
+    private fun sendOrderBroadcast(data: String) {
+        val intent = Intent("action_order") //要執行的id(自訂義的)標籤, 後在IntentFilter配合使用
         val bundle = Bundle()
         bundle.putString("data", data)
         intent.putExtras(bundle)
