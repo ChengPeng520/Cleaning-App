@@ -10,7 +10,6 @@ import java.sql.Time
 import java.text.ParseException
 import java.util.*
 
-
 class SearchOrder(
     var photo: ByteArray? = null,
     val orderId: Int = 0,
@@ -237,8 +236,6 @@ class OrderForSearch {
         data class ApplingOrder(
             val order: SearchOrder,
             val photo: ByteArray
-
         )
     }
-
 }

@@ -3,6 +3,7 @@ package com.example.cleaningapp.cleaner.view.search
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -14,7 +15,6 @@ import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontOrderDetailV
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontOrderDetailBinding
 
 class CleanerFrontOrderDetailFragment : Fragment() {
-
     private lateinit var binding: FragmentVickyCleanerFrontOrderDetailBinding
     private val viewModel: CleanerFrontOrderDetailViewModel by viewModels()
 
@@ -32,6 +32,7 @@ class CleanerFrontOrderDetailFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "訂單詳情"
         with(binding) {
             // 訂單詳情
             arguments?.getInt("orderId")?.let {
@@ -41,11 +42,6 @@ class CleanerFrontOrderDetailFragment : Fragment() {
                 val job = viewModel?.job?.value
                 job?.photo = it
                 viewModel?.job?.value = job
-            }
-            // 確定接單
-            button8.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_cleanerFrontOrderDetailFragment_to_order_acceptFragment)
             }
         }
     }

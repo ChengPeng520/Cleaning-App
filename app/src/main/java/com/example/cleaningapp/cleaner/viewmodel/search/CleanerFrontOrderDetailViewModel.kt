@@ -1,17 +1,17 @@
 package com.example.cleaningapp.cleaner.viewmodel.search
 
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.OrderPhotos
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.uistate.SearchOrderPhotos
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
-
 
 class CleanerFrontOrderDetailViewModel : ViewModel() {
     val job: MutableLiveData<SearchOrder> by lazy { MutableLiveData<SearchOrder>() }
@@ -40,21 +40,23 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
                 priceForCleaner = it.order.priceForCleaner
             )
             jobPhoto.value = OrderPhotos(photos = it.photos)
-//            Log.d("photo","$jobPhoto")
         }
     }
-
 
     // 確定接單
     fun fetchOrderConfirm(view: View) {
         requestTask<JsonObject>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/",
             "POST",
+            reqBody = SearchOrder(
+                orderId = job.value?.orderId!!,
+                cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId()
+            )
         )?.let {
             if (it.get("result").asBoolean) {
                 Toast.makeText(view.context, "確定接單成功", Toast.LENGTH_SHORT).show()
                 view.findNavController()
-
+                    .navigate(R.id.action_cleanerFrontOrderDetailFragment_to_order_acceptFragment)
             }
         }
     }

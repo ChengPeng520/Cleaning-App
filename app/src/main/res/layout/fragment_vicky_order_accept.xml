@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.cleaningapp.cleaner.viewmodel.order.OrderAcceptViewModel"
-            />
+            type="com.example.cleaningapp.cleaner.viewmodel.order.OrderAcceptViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -108,4 +107,5 @@
             app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
