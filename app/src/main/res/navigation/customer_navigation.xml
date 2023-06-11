@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_csChooseCleanerFragment2_to_csViewCvFragment"
             app:destination="@id/csViewCvFragment" />
+        <action
+            android:id="@+id/action_csChooseCleanerFragment2_to_historicalorderFragment"
+            app:destination="@id/historicalorderFragment" />
     </fragment>
     <fragment
         android:id="@+id/csViewCvFragment"

@@ -1,11 +1,14 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.CreateOrder
 import com.example.cleaningapp.customer.model.CreateOrderPhoto
@@ -23,11 +26,19 @@ class CsOrderConfirmedFragment : Fragment() {
         binding.viewModel = viewModel
         // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
+        arguments?.let { bundle ->
+            bundle.getSerializable("photos")?.let {
+                viewModel.photo.value = it as CreateOrderPhoto
+                if (viewModel.photo.value!!.photo1 == null) {
+                        binding.llCsCreateOrderPics.visibility = View.GONE
+                    }
+            }
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.setTitle(R.string.csTitle_orderConfirmed)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_orderConfirmed)
         with(binding) {
             arguments?.let { bundle ->
                 bundle.getSerializable("order")?.let {
@@ -35,12 +46,6 @@ class CsOrderConfirmedFragment : Fragment() {
                     orderCreated.priceForCustomer =
                         orderCreated.originalPrice - orderCreated.couponDiscount
                     viewModel?.orderCreated?.value = orderCreated
-                }
-                bundle.getSerializable("photos")?.let {
-                    viewModel?.photo?.value = it as CreateOrderPhoto
-                    if (viewModel?.photo?.value == null) {
-                        binding.llCsCreateOrderPics.visibility = View.GONE
-                    }
                 }
             }
         }

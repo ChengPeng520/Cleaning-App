@@ -32,6 +32,8 @@ class CsEditProfileViewModel : ViewModel() {
                 } else
                     Toast.makeText(view.context, "儲存失敗", Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(view.context, "姓名及手機號碼不得空白", Toast.LENGTH_SHORT).show()
         }
     }
 }

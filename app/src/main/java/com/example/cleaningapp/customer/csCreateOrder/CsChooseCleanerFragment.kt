@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,7 +32,7 @@ class CsChooseCleanerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.setTitle(R.string.csTitle_chooseCleaner)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_chooseCleaner)
         arguments?.let { bundle ->
             bundle.getInt("orderId").let {
                 viewModel.orderId = it
@@ -39,14 +40,27 @@ class CsChooseCleanerFragment : Fragment() {
             }
         }
         binding.btnCsChooseCleanerCancelOrder.setOnClickListener {
-            Toast.makeText( it.context, it.context.getString(R.string.toast_CsChooseCleanerCancelOrder), Toast.LENGTH_SHORT ).show()
-            Navigation.findNavController(it).popBackStack()
+            if (viewModel.cancelOrder()) {
+                Toast.makeText(
+                    it.context,
+                    requireActivity().getString(R.string.toast_CsChooseCleanerCancelOrder),
+                    Toast.LENGTH_SHORT
+                ).show()
+                Navigation.findNavController(it).navigate(R.id.action_csChooseCleanerFragment2_to_historicalorderFragment)
+            } else {
+                Toast.makeText(
+                    it.context,
+                    "訂單取消失敗",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         binding.rvCsChooseCleaner.layoutManager = LinearLayoutManager(requireContext())
         viewModel.cleanerList.observe(viewLifecycleOwner) { cleaners ->
             if (binding.rvCsChooseCleaner.adapter == null) {
-                binding.rvCsChooseCleaner.adapter = CsChooseCleanerAdapter(cleaners, viewModel.orderId )
+                binding.rvCsChooseCleaner.adapter =
+                    CsChooseCleanerAdapter(cleaners, viewModel.orderId)
             } else {
                 (binding.rvCsChooseCleaner.adapter as CsChooseCleanerAdapter).updateCleaners(
                     cleaners
