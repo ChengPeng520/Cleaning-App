@@ -8,11 +8,11 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrder
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompMainViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsCompMainDataboxBinding
 
-class ComplaintAdapter(private var complaints: List<BSCompOrderItem>) :
+class ComplaintAdapter(private var complaints: List<BSCompOrder>) :
     RecyclerView.Adapter<ComplaintAdapter.ComplaintViewHolder>() {
 
     /**
@@ -20,7 +20,7 @@ class ComplaintAdapter(private var complaints: List<BSCompOrderItem>) :
      * @param complaints 新的好友列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateComplaints(complaints: List<BSCompOrderItem>) {
+    fun updateComplaints(complaints: List<BSCompOrder>) {
         this.complaints = complaints
         notifyDataSetChanged()
     }

@@ -1,6 +1,7 @@
 package com.example.cleaningapp.backstage.complaint.controller
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
-import com.example.cleaningapp.backstage.complaint.model.Complaint
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDealingViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsCompDealingBinding
 
@@ -36,8 +34,9 @@ class BsCompDealingFragment : Fragment() {
             dialog.dismiss()
             // 同意後修改，跳轉bsCompDetailFragment，並將資料bundle過去
             val bundle = Bundle()
-            viewModel.uiState.value?.let { bundle.putInt("orderIdDealing", it.orderId) }
+            viewModel.uiState.value?.let { bundle.putInt("orderId", it.orderId) }
             // 修改
+            viewModel._uiState.value?.bsComplainRemark = binding.edtTxtRemark.text.toString()
             arguments?.getInt("orderIdMain")?.let { viewModel.editComplaint(it) }
             view?.let { Navigation.findNavController(it).navigate(R.id.bsCompDetailFragment, bundle) }
         }
@@ -53,7 +52,12 @@ class BsCompDealingFragment : Fragment() {
         alertDialogBuilder.setMessage("將發送訊息給使用者")
         alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
             dialog.dismiss()
-            view?.let { Navigation.findNavController(it).popBackStack() }
+            val bundle = Bundle()
+            viewModel.uiState.value?.let { bundle.putInt("orderId", it.orderId) }
+            // 修改
+            viewModel._uiState.value?.bsComplainRemark = "已拒絕客訴"
+            arguments?.getInt("orderIdMain")?.let { viewModel.editComplaint(it) }
+            view?.let { Navigation.findNavController(it).navigate(R.id.bsCompDetailFragment, bundle) }
         }
         alertDialogBuilder.setNegativeButton("取消") { dialog, _ ->
             dialog.dismiss()
@@ -64,7 +68,11 @@ class BsCompDealingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let { bundle ->
-            bundle.getInt("orderIdMain").let { viewModel.loadComplaint(it) }
+            bundle.getInt("orderIdMain").let {
+                Log.d("acmon",it.toString())
+                viewModel.loadComplaint(it)
+            }
+
         }
 
         with(binding) {
@@ -77,7 +85,7 @@ class BsCompDealingFragment : Fragment() {
             }
 
             ivBsCompDealingBack.setOnClickListener {
-                Navigation.findNavController(it).popBackStack()
+                Navigation.findNavController(it).navigate(R.id.bsCompMainFragment)
             }
         }
     }
