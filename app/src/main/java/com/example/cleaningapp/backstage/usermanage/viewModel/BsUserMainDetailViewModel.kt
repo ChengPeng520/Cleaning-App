@@ -145,6 +145,7 @@ class BsUserMainDetailViewModel : ViewModel() {
                         photo = null,
                         password = null,
                         identifyNumber = it.identifyNumber,
+                        verify = it.verify,
                         idCardFront = null,
                         idCardBack = null,
                         crc = null,
