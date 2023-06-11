@@ -3,12 +3,12 @@ package com.example.cleaningapp.customer.fragment
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.viewModel.OrdercompletedViewModel
@@ -32,7 +32,7 @@ class OrdercompletedFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        initAppBarMenu()
         requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
             getString(R.string.csTitle_orderStatus)
         arguments?.getInt("orderId")?.let { orderId ->
@@ -66,6 +66,29 @@ class OrdercompletedFragment : Fragment() {
                 }
             }
         }, 0, 3000)
+    }
+
+    private fun initAppBarMenu() {
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.ment_customer_chatroom, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.chatRoomFragment -> {
+                        val bundle = Bundle()
+                        bundle.putInt("cleanerId", viewModel.order.value?.cleanerId!!)
+                        Navigation.findNavController(
+                            requireActivity(),
+                            R.id.customer_nav_host_fragment
+                        ).navigate(R.id.clnChatFragment, bundle)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     private fun stopRefreshingOrderStatus() {

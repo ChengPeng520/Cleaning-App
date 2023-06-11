@@ -20,7 +20,7 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
     // 訂單詳情
     fun fetchOrderAccept(orderId: Int) {
         requestTask<SearchOrderPhotos>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/$orderId",
             "GET",
         )?.let {
             job.value = SearchOrder(

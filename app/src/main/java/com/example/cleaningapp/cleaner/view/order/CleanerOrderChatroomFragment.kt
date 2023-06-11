@@ -46,8 +46,8 @@ class CleanerOrderChatroomFragment : Fragment() {
         binding.lifecycleOwner = this
         setOrder()
         initRecyclerView()
-        registerMessageReceiver()
         messageReceiver = MessageReceiver()
+        registerMessageReceiver()
         return binding.root
     }
 
