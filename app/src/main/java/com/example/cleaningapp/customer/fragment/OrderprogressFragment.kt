@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.viewModel.OrderprogressViewModel
 import com.example.cleaningapp.databinding.FragmentVictorOrderprogressBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
 class OrderprogressFragment : Fragment() {
@@ -92,5 +93,11 @@ class OrderprogressFragment : Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
+            View.VISIBLE
     }
 }
