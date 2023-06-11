@@ -5,17 +5,17 @@ import java.io.Serializable
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
-data class shopOrder(
-    val shopOrderId:Int?,
-    val cleanerId:Int?,
-    val recieverName:String?,
-    val recieverPhone:String?,
-    val recieverAddress:String?,
-    var totalPrice: Int?,
-    var timeCreate:Timestamp?,
-    var isChecked:Boolean?,
-    var isDelivered:Boolean?,
-    var isShipped:Boolean?,
+data class ShopOrder(
+    val shopOrderId:Int? =0 ,
+    val cleanerId:Int? =0,
+    val recieverName:String? ="",
+    val recieverPhone:String? = "",
+    val recieverAddress:String? ="",
+    var totalPrice: Int? = 0,
+    var timeCreate:Timestamp? = null,
+    var isChecked:Boolean? =false,
+    var isDelivered:Boolean? = null,
+    var isShipped:Boolean? = false,
 
 ): Serializable{
     val shopOderTime:String

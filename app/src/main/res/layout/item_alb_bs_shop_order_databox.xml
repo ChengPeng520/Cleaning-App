@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/error"
-            android:text='@{viewModel.shopOrder.isDelivered ? "已抵達":"未抵達"}'
+            android:text='@{viewModel.shopOrder.isShipped ? "已出貨":"未出貨"}'
             app:layout_constraintBottom_toBottomOf="@+id/tv_bs_shop_order_order"
             app:layout_constraintStart_toStartOf="@+id/guideline11"
             app:layout_constraintTop_toTopOf="parent"

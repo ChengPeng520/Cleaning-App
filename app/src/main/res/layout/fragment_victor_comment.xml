@@ -22,9 +22,8 @@
             android:id="@+id/ratingBar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:progressTint="#FFE600"
             android:rating="@={viewModel.stars}"
+            android:theme="@style/RatingBar"
             app:layout_constraintBottom_toTopOf="@+id/guideline24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,16 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.28" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <EditText
             android:id="@+id/edtTxt_comment_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="16dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/all_layout_light_gray_shape"
             android:gravity="top|left"
             android:hint="@string/edtTxt_comment_content"
+            android:padding="16dp"
             android:text="@={viewModel.content}"
             app:layout_constraintBottom_toTopOf="@+id/guideline23"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,8 +63,8 @@
             style="@style/customerBtnSubmitStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="送出"
             android:onClick="@{viewModel::uploadContent}"
+            android:text="送出"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

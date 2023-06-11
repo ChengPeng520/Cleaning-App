@@ -17,9 +17,7 @@
         android:paddingStart="24dp"
         android:paddingTop="12dp"
         android:paddingEnd="24dp"
-        android:paddingBottom="12dp"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="-1dp">
+        android:paddingBottom="12dp">
 
         <ScrollView
             android:id="@+id/scrollView4"
@@ -38,70 +36,83 @@
                 <TextView
                     android:id="@+id/textView26"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:text="訂單詳細:" />
+                    android:text="訂單詳細:"
+                    android:textColor="@color/black" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout7"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/all_layout_light_gray_shape"
+                    android:paddingHorizontal="16dp"
                     tools:layout_editor_absoluteY="45dp">
 
                     <ImageView
                         android:id="@+id/imageView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="48dp"
-                        android:src="@drawable/ic_calendar"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:src="@drawable/fatruei_baseline_calendar_month_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView31"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView47"
+                        app:layout_constraintStart_toStartOf="@+id/imageView47"
+                        app:layout_constraintTop_toTopOf="@+id/textView31" />
 
                     <ImageView
                         android:id="@+id/imageView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/ic_time"
+                        android:src="@drawable/fatruei_baseline_access_time_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView32"
                         app:layout_constraintEnd_toEndOf="@+id/imageView14"
                         app:layout_constraintStart_toStartOf="@+id/imageView14"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+                        app:layout_constraintTop_toTopOf="@+id/textView32" />
 
                     <ImageView
                         android:id="@+id/imageView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/ic_location"
+                        android:src="@drawable/fatruei_baseline_location_on_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView33"
                         app:layout_constraintEnd_toEndOf="@+id/imageView15"
                         app:layout_constraintStart_toStartOf="@+id/imageView15"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+                        app:layout_constraintTop_toTopOf="@+id/textView33" />
 
                     <TextView
                         android:id="@+id/tv_order_demands"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/tv_order_remark"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_order_remark"
                         app:layout_constraintStart_toStartOf="@+id/textView34"
-                        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_size" />
 
                     <TextView
                         android:id="@+id/textView33"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/tv_order_adress"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_order_size"
                         app:layout_constraintStart_toStartOf="@+id/textView32"
-                        app:layout_constraintTop_toTopOf="@+id/imageView16" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
                     <TextView
                         android:id="@+id/textView59"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:text="@string/tv_order_total"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView38"
                         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -109,8 +120,9 @@
                         android:id="@+id/tv_order_adress"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:text="@{viewModel.order.address}"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/textView33"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView33"
@@ -123,6 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@{String.valueOf(viewModel.order.dateOrdered)}"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/textView31"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView31"
@@ -134,6 +147,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.order.remark}"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/textView38"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
                         app:layout_constraintTop_toBottomOf="@+id/tv_order_demands"
@@ -143,17 +158,22 @@
                         android:id="@+id/textView31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/tv_customer_order_date"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView32"
                         app:layout_constraintStart_toStartOf="@+id/textView30"
-                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
                     <TextView
                         android:id="@+id/tv_order_cleaner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:text="@{viewModel.order.cleanerName}"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/textView38"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView38"
@@ -164,21 +184,24 @@
                         android:id="@+id/textView34"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:text="@string/tv_order_range"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/textView33"
-                        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+                        app:layout_constraintTop_toTopOf="@+id/tv_order_size" />
 
                     <TextView
                         android:id="@+id/tv_order_size"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:text="@{viewModel.order.cleaningRange}"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_order_demands"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView34"
-                        app:layout_constraintTop_toTopOf="@+id/textView34"
+                        app:layout_constraintTop_toBottomOf="@+id/textView33"
                         tools:text="房間5坪 " />
 
                     <TextView
@@ -186,9 +209,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_order_time"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView33"
                         app:layout_constraintStart_toStartOf="@+id/textView31"
-                        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
                     <TextView
                         android:id="@+id/tv_order_time"
@@ -196,6 +221,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@{viewModel.order.cleaningTime}"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/textView32"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView32"
@@ -206,22 +232,26 @@
                         android:id="@+id/textView38"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/tv_order_cleaner"
-                        app:layout_constraintStart_toStartOf="@+id/tv_order_demands"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView59"
+                        app:layout_constraintStart_toStartOf="@+id/tv_order_remark"
                         app:layout_constraintTop_toBottomOf="@+id/tv_order_remark" />
 
                     <TextView
                         android:id="@+id/tv_order_total"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="8dp"
                         android:text="@{String.valueOf(viewModel.order.priceForCustomer)}"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView59"
                         app:layout_constraintTop_toTopOf="@+id/textView59"
-                        app:layout_constraintVertical_bias="0.0"
                         tools:text=" NT$X,XXX元" />
 
                     <TextView
@@ -230,6 +260,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@{String.valueOf(viewModel.order.orderId)}"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/textView30"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView30"
@@ -240,11 +271,33 @@
                         android:id="@+id/textView30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
                         android:text="@string/tv_order_orderId"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/textView31"
+                        app:layout_constraintStart_toEndOf="@+id/imageView47"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/fatruei_baseline_list_alt_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView30" />
+
+                    <ImageView
+                        android:id="@+id/imageView48"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fatruei_baseline_monetization_on_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                        app:layout_constraintStart_toStartOf="@+id/imageView16"
+                        app:layout_constraintTop_toTopOf="@+id/textView59" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -254,6 +307,7 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_complaintContent_detailed"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <EditText
@@ -264,8 +318,9 @@
                     android:ems="10"
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
-                    android:padding="8dp"
-                    android:text="@={viewModel.complaint}"
+                    android:lineSpacingExtra="30px"
+                    android:padding="16dp"
+                    android:text="@={viewModel.returnReason}"
                     tools:text="地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......地上有小強沒有掃到......" />
 
                 <LinearLayout
@@ -312,11 +367,13 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/bnt_applyComplaint_ok"
+                        style="@style/customerBtnSubmitStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
                         android:backgroundTint="#87CBB9"
@@ -326,8 +383,9 @@
                     <Button
                         android:id="@+id/bnt_applyComplaint_cancel"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="60dp"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
                         android:backgroundTint="#B8B8B9"
@@ -336,8 +394,9 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </ScrollView>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

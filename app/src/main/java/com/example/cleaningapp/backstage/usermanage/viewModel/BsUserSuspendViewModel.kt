@@ -8,21 +8,32 @@ import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
-import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
-import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
-import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
 class BsUserSuspendViewModel : ViewModel() {
+    data class Customer(
+        val customerId: Int,
+        val suspend: Boolean
+    )
+
+    data class Cleaner(
+        val cleanerId: Int,
+        val suspend: Boolean
+    )
+
+    data class Backstage(
+        val backstageId: Int,
+        val suspend: Boolean
+    )
+
     //原始使用者列表
     private var userList = listOf<Member>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
     val users: MutableLiveData<List<Member>> by lazy { MutableLiveData<List<Member>>() }
-    val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
     val user: MutableLiveData<User> by lazy { MutableLiveData<User>() }
-
+    val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
 
     init {
         loadUsers()
@@ -42,34 +53,7 @@ class BsUserSuspendViewModel : ViewModel() {
             }
             users.value = suspendUsers
             userList = suspendUsers
-//            for (b in it) {
-//                when (b.status) {
-//                    1 -> {
-//                        b.id = user.value?.customerId!!
-//                        b.name = user.value?.name!!
-//                        b.email = user.value?.email!!
-//                        b.suspend = user.value?.suspend!!
-//                        b.verify = user.value?.verify!!
-//                    }
-//                    2 -> {
-//                        b.id = user.value?.cleanerId!!
-//                        b.name = user.value?.name!!
-//                        b.email = user.value?.email!!
-//                        b.suspend = user.value?.suspend!!
-//                        b.verify = user.value?.verify!!
-//                    }
-//                    3 -> {
-//                        b.id = user.value?.backstageId!!
-//                        b.name = user.value?.name!!
-//                        b.email = user.value?.email!!
-//                        b.suspend = user.value?.suspend!!
-//                        b.verify = user.value?.verify!!
-//                    }
-//                }
-//            }
         }
-
-
     }
 
     /**
@@ -77,6 +61,19 @@ class BsUserSuspendViewModel : ViewModel() {
      */
     fun editMemberInfo(view: View) {
         member.value?.let {
+            val member: Any =
+                when (it.status) {
+                    1 -> {
+                        Customer(it.id, it.suspend)
+                    }
+                    2 -> {
+                        Cleaner(it.id, it.suspend)
+                    }
+                    3 -> {
+                        Backstage(it.id, it.suspend)
+                    }
+                    else -> {}
+                }
             requestTask<User>(
                 url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
                 method = "PUT",
@@ -127,7 +124,6 @@ class BsUserSuspendViewModel : ViewModel() {
 //                    Toast.makeText(view.context, "你484搞錯甚麼了", Toast.LENGTH_LONG).show()
 //                }
 //            }
-
         }
     }
 

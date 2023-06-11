@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.viewModel.OrderingViewModel
 import com.example.cleaningapp.databinding.FragmentVictorOrderingBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
 class OrderingFragment : Fragment() {
@@ -35,9 +35,17 @@ class OrderingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getInt("orderId")?.let { orderId ->
             viewModel.fetchOrdersInfo(orderId)
-            startRefreshingOrderStatus(orderId)
+//            startRefreshingOrderStatus(orderId)
+        }
+        viewModel.order.observe(viewLifecycleOwner) { order ->
+            // 在訂單狀態更新時執行導航操作
+            if (order.status == 3) {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_orderingFragment_to_ordercompletedFragment, arguments)
+            }
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         stopRefreshingOrderStatus()
@@ -61,5 +69,10 @@ class OrderingFragment : Fragment() {
     private fun stopRefreshingOrderStatus() {
         isRefreshing = false
         timer.cancel()
+    }
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
+            View.VISIBLE
     }
 }

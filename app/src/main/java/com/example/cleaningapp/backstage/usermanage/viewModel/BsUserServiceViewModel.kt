@@ -2,14 +2,9 @@ package com.example.cleaningapp.backstage.usermanage.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.usermanage.model.Chat
 import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
-import com.example.cleaningapp.backstage.usermanage.model.Chatroom
 import com.example.cleaningapp.share.requestTask
-import com.google.android.gms.common.util.ArrayUtils.contains
 import com.google.gson.reflect.TypeToken
-import java.util.jar.Attributes.Name
 
 /**
  * 客服聊天室資料處理

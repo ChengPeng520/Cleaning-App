@@ -119,7 +119,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline38"
             app:layout_constraintTop_toTopOf="@+id/tv_order_cleantime"
-            app:srcCompat="@drawable/ic_time" />
+            app:srcCompat="@drawable/fatruei_baseline_access_time_24" />
 
         <ImageView
             android:id="@+id/imageView10"

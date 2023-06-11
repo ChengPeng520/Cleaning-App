@@ -9,8 +9,7 @@ import com.example.cleaningapp.share.requestTask
 
 class BsShopProductModifyViewModel : ViewModel() {
     val product :MutableLiveData<Product> by lazy { MutableLiveData<Product>(Product()) }
-//    val photoBitmap: MutableLiveData<Bitmap?> = MutableLiveData(product.value?.photoBitmap)
-//    val isOnSale:MutableLiveData<Boolean?> = MutableLiveData(product.value?.isOnSale)
+
 
     fun productModify():Boolean{
         requestTask<Product>(
