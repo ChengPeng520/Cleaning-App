@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
@@ -28,19 +29,16 @@ class CsOrderConfirmedFragment : Fragment() {
         arguments?.let { bundle ->
             bundle.getSerializable("photos")?.let {
                 viewModel.photo.value = it as CreateOrderPhoto
-                if (viewModel?.photo?.value == null) {
+                if (viewModel.photo.value!!.photo1 == null) {
                         binding.llCsCreateOrderPics.visibility = View.GONE
                     }
             }
-        }
-        if (viewModel.photo == MutableLiveData(CreateOrderPhoto())) {
-            binding.llCsCreateOrderPics.visibility = View.GONE
         }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.setTitle(R.string.csTitle_orderConfirmed)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_orderConfirmed)
         with(binding) {
             arguments?.let { bundle ->
                 bundle.getSerializable("order")?.let {
@@ -49,12 +47,6 @@ class CsOrderConfirmedFragment : Fragment() {
                         orderCreated.originalPrice - orderCreated.couponDiscount
                     viewModel?.orderCreated?.value = orderCreated
                 }
-//                bundle.getSerializable("photos")?.let {
-//                    viewModel?.photo?.value = it as CreateOrderPhoto
-//                    if (viewModel?.photo?.value == null) {
-//                        binding.llCsCreateOrderPics.visibility = View.GONE
-//                    }
-//                }
             }
         }
     }

@@ -14,6 +14,7 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -509,6 +511,7 @@ class CsCreateOrderFragment : Fragment() {
     }
 
     private fun setTimeOnclick() {
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_createOrder)
         with(binding) {
             //  選擇日期
             llDatePicker.setOnClickListener {
@@ -738,5 +741,12 @@ class CsCreateOrderFragment : Fragment() {
         } else {
             "0$number"
         }
+    }
+
+    private fun isTimeBefore(timeBegin: String, timeEnd: String): Boolean {
+        val format = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val timeBegin = format.parse(timeBegin)
+        val timeEnd = format.parse(timeEnd)
+        return timeBegin?.before(timeEnd) ?: false
     }
 }

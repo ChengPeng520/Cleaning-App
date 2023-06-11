@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.viewModel.OrdercompletedViewModel
@@ -32,6 +33,7 @@ class OrdercompletedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_orderStatus)
         arguments?.getInt("orderId")?.let { orderId ->
             viewModel.fetchOrdersInfo(orderId)
             startRefreshingOrderStatus(orderId)
