@@ -33,6 +33,9 @@ class BsCompMainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvBsCompMain.layoutManager = LinearLayoutManager(requireContext())
+            tvBsCompMainNoSearchData.visibility = View.GONE
+            tvBsCompMainNoData.visibility = View.GONE
+
             viewModel?.complaints?.observe(viewLifecycleOwner) { complaints ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBsCompMain.adapter == null) {
@@ -42,10 +45,25 @@ class BsCompMainFragment : Fragment() {
                 }
             }
 
+            // 顯示尚無資料的判斷
+            if (rvBsCompMain.adapter != null && rvBsCompMain.adapter?.itemCount == 0) {
+                tvBsCompMainNoData.visibility = View.VISIBLE
+            } else {
+                tvBsCompMainNoData.visibility = View.GONE
+            }
+
             svBsCompMain.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 // 輸入的文字改變時呼叫
                 override fun onQueryTextChange(newText: String?): Boolean {
                     viewModel?.search(newText)
+
+                    //增加查無資料的判斷
+                    if (rvBsCompMain.adapter != null && rvBsCompMain.adapter?.itemCount == 0) {
+                        tvBsCompMainNoSearchData.visibility = View.VISIBLE
+                        tvBsCompMainNoData.visibility = View.GONE
+                    } else {
+                        tvBsCompMainNoSearchData.visibility = View.GONE
+                    }
                     return true
                 }
 

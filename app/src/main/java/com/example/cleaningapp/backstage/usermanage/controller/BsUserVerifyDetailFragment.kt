@@ -60,7 +60,6 @@ class BsUserVerifyDetailFragment : Fragment() {
 
         alertDialogBuilder.setPositiveButton("確定") { dialog, _ ->
             dialog.dismiss()
-            //TODO 將帳號的verify狀態update成1(目前有錯)
             binding.viewModel?.user?.value?.verify = true
             view?.let { viewModel.editMemberInfo(it) }
         }

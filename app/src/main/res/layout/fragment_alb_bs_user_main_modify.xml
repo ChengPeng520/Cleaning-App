@@ -102,7 +102,7 @@
                         android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/edtTxt_bs_user_main_modify_mane"
+                        android:id="@+id/edtTxt_bs_user_main_modify_nane"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
@@ -113,6 +113,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bs_user_main_modify_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -138,6 +139,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bs_user_main_modify_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -235,6 +237,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bs_user_main_modify_permission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"

@@ -19,8 +19,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_shop_order_product"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_shop_main_product"
             android:textColor="@color/textPrimary"
@@ -29,8 +30,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_shop_order_order"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
             android:backgroundTint="@color/textPrimary"
             android:text="@string/btn_bs_shop_main_order"
             android:textColor="@color/white"

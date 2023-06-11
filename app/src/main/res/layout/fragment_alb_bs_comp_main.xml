@@ -17,11 +17,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_comp_main_dealing"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/textPrimary"
             android:text="@string/btn_bs_comp_dealing"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
@@ -31,11 +32,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_comp_main_done"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_comp_done"
             android:textColor="@color/textPrimary"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_bs_comp_main_dealing"
             app:layout_constraintStart_toEndOf="@+id/btn_bs_comp_main_dealing"
             app:layout_constraintTop_toTopOf="@+id/btn_bs_comp_main_dealing" />
@@ -54,11 +56,10 @@
 
             <SearchView
                 android:id="@+id/sv_bs_comp_main"
-                android:layout_width="235dp"
-                android:layout_height="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
+                android:background="@drawable/ciyi_shape_search"
                 app:iconifiedByDefault="false">
 
             </SearchView>
@@ -81,7 +82,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_comp_databox_orderid_ti"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_main_applier_ti"
@@ -89,7 +91,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_comp_databox_applier_ti"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_bs_comp_main_time_ti"
@@ -97,7 +100,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_user_main_time_ti"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <View
@@ -105,6 +109,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/tv_bs_comp_main_no_search_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_main_no_search_data" />
+
+            <TextView
+                android:id="@+id/tv_bs_comp_main_no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/tv_bs_user_main_no_data" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_bs_comp_main"
