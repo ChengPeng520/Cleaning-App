@@ -8,8 +8,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import com.example.cleaningapp.databinding.ActivityCustomerBinding
 import com.example.cleaningapp.share.GetPrimeCallback
 import com.example.cleaningapp.share.TapPay
@@ -60,8 +58,8 @@ class CustomerActivity : AppCompatActivity() {
                     navController.navigate(R.id.historicalorderFragment)
                     true
                 }
-                R.id.csHomePageFragment -> {
-                    navController.navigate(R.id.csHomePageFragment)
+                R.id.csUserPageFragment -> {
+                    navController.navigate(R.id.csUserPageFragment)
                     true
                 }
                 else -> false
