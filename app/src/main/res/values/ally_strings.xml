@@ -15,6 +15,16 @@
     <string name="csTitle_userPage">個人管理</string>
     <string name="csTitle_viewCoupon">查看優惠券</string>
     <string name="csTitle_viewProfile">查看個人資料</string>
+    <string name="csTitle_applyComplaint">申請客訴</string>
+    <string name="csTitle_customerService">聯繫客服</string>
+    <string name="csTitle_contactCleaner">聯繫清潔人員</string>
+    <string name="csTitle_commentDone">評論完成</string>
+    <string name="csTitle_commentOrder">訂單評價</string>
+    <string name="csTitle_orderHistory">訂單紀錄</string>
+    <string name="csTitle_orderStatus">訂單進度</string>
+
+
+
 
     <!--    首頁      -->
     <string name="txt_cs_home">Home</string>
@@ -59,6 +69,7 @@
     <string name="tv_csCreateOrder_chooseCleanerAtHistory">請於刊登紀錄選擇清潔人員</string>
     <string name="btn_csCreateOrder_checkHistory"><u>查看刊登紀錄</u></string>
     <string name="toast_CsChooseCleanerCancelOrder">訂單取消成功</string>
+    <string name="tv_csChooseCleaner_noCandidate">尚無清潔人員應徵</string>
 
     <!--    確認訂單    -->
     <string name="txt_oderConfirmed">確認訂單</string>
@@ -89,6 +100,7 @@
     <string name="txt_csViewCoupon_viewCoupon">查看優惠券</string>
     <string name="tv_csProfile_male">男</string>
     <string name="tv_csProfile_female">女</string>
+    <string name="hint_csEditProfile_required">(必填)</string>
 
     <!--    訂單流程    -->
     <string name="txt_CsChooseCleaner_title">選擇清潔人員</string>
@@ -98,6 +110,8 @@
     <string name="txt_csViewCv_confirmPay">確認並付款</string>
     <string name="tv_item_csPickCleaner_nameGender">%s / %s</string>
     <string name="tv_item_csPickCleaner_orderCount">已完成 %d 筆訂單</string>
+    <string name="tv_csPaymentDone_done">付款完成</string>
+    <string name="tv_csPaymentDone_viewHistory"><u>前往查看訂單紀錄</u></string>
 
 
     <!--    button      -->

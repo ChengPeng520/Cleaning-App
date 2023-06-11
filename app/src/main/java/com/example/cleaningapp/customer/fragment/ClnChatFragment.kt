@@ -1,14 +1,20 @@
 package com.example.cleaningapp.customer.fragment
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.chatroom.ClnChatAdapter
@@ -19,6 +25,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class ClnChatFragment : Fragment() {
     private lateinit var binding: FragmentVictorClnChatBinding
     private val viewModel: ClnChatViewModel by viewModels()
+    private lateinit var messageReceiver: BroadcastReceiver
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +44,13 @@ class ClnChatFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initRecyclerView()
+        messageReceiver = MessageReceiver()
+        registerMessageReceiver()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_contactCleaner)
     }
 
     private fun initRecyclerView() {
@@ -52,6 +66,19 @@ class ClnChatFragment : Fragment() {
             }
         }
         viewModel.fetchOrderChatRoomTalkList()
+    }
+
+    // 註冊廣播接收器攔截"action_chatroom"的廣播
+    private fun registerMessageReceiver() {
+        val intentFilter = IntentFilter("action_chatroom") //要執行的id
+        LocalBroadcastManager.getInstance(requireActivity())
+            .registerReceiver(messageReceiver, intentFilter)
+    }
+
+    private inner class MessageReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            viewModel.fetchOrderChatRoomTalkList()
+        }
     }
 
     override fun onDestroyView() {

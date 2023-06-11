@@ -1,9 +1,12 @@
 package com.example.cleaningapp.customer.csHomePage
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,7 +18,9 @@ import com.example.cleaningapp.databinding.FragmentCsHomepageBinding
 class CsHomePageFragment : Fragment() {
     private lateinit var binding: FragmentCsHomepageBinding
     private val viewModel: CsHomePageViewModel by viewModels()
+    private lateinit var toolbar: Toolbar
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +41,7 @@ class CsHomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.setTitle(R.string.csTitle_homepage)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_homepage)
         with(binding) {
             flCsHomeCoupon.setOnClickListener {
                 findNavController().navigate(R.id.action_csHomePageFragment_to_csCouponObtainFragment)

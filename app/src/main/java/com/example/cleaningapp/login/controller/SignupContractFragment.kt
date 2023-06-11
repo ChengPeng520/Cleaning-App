@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -20,7 +22,6 @@ class SignupContractFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        requireActivity().title = "合約條款"
         val viewModel: SignupContractViewModel by viewModels()
         binding = FragmentRonaSignupContractBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
@@ -29,6 +30,8 @@ class SignupContractFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "合約條款"
         with(binding) {
             ivContractBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
@@ -55,7 +58,10 @@ class SignupContractFragment : Fragment() {
 //                }
                 if (rdoBtnSignupRead.isChecked) {
                     Navigation.findNavController(it)
-                        .navigate(R.id.action_signupContractFragment_to_signupApplyInfoFragment,bundle)
+                        .navigate(
+                            R.id.action_signupContractFragment_to_signupApplyInfoFragment,
+                            bundle
+                        )
                 } else {
                     Toast.makeText(context, "尚未同意規範", Toast.LENGTH_SHORT).show()
                 }

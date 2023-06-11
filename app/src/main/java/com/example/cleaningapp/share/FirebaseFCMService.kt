@@ -47,4 +47,6 @@ class FirebaseFCMService: FirebaseMessagingService(){
         intent.putExtras(bundle)
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
     }
+
+
 }

@@ -354,7 +354,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center|right"
-                        android:text="@{String.valueOf(viewModel.orderCreated.couponDiscount)}"
+                        android:text="@{viewModel.orderCreated.couponDisplay}"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         tools:text="帶入金額" />

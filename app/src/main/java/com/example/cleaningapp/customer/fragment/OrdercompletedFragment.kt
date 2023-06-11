@@ -1,18 +1,19 @@
 package com.example.cleaningapp.customer.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.cleaningapp.customer.viewModel.OrdercompletedViewModel
 import com.example.cleaningapp.R
+import com.example.cleaningapp.customer.viewModel.OrdercompletedViewModel
 import com.example.cleaningapp.databinding.FragmentVictorOrdercompletedBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
 class OrdercompletedFragment : Fragment() {
@@ -32,6 +33,8 @@ class OrdercompletedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_orderStatus)
         arguments?.getInt("orderId")?.let { orderId ->
             viewModel.fetchOrdersInfo(orderId)
             startRefreshingOrderStatus(orderId)
@@ -44,6 +47,7 @@ class OrdercompletedFragment : Fragment() {
             }
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         stopRefreshingOrderStatus()
@@ -63,8 +67,15 @@ class OrdercompletedFragment : Fragment() {
             }
         }, 0, 3000)
     }
+
     private fun stopRefreshingOrderStatus() {
         isRefreshing = false
         timer.cancel()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
+            View.VISIBLE
     }
 }

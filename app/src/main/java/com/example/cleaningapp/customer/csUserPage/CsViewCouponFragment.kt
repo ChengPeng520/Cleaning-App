@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
@@ -29,7 +30,7 @@ class CsViewCouponFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.setTitle(R.string.csTitle_viewCoupon)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_viewCoupon)
         viewModel.fetchCustomerCoupons()
         binding.rvCsViewCoupon.layoutManager = LinearLayoutManager(requireContext())
         viewModel?.coupons?.observe(viewLifecycleOwner) { coupons ->

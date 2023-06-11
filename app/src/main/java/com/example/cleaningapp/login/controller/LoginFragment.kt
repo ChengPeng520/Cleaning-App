@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -55,6 +56,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.GONE
         requireActivity().title = "會員登入"
         val viewModel: LoginViewModel by viewModels()
         binding = FragmentRonaLoginBinding.inflate(inflater, container, false)
@@ -182,44 +184,62 @@ class LoginFragment : Fragment() {
                     val user = task.result.user
                     val position = binding.spnLoginStatus.selectedItemPosition
                     val email = user?.email
-                    if (position == 0) {
-                        val token = FirebaseMessaging.getInstance().token
-                        val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/google/"
-                        requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                            "$url$email/${token.result}}"
-                        )?.let {
-                            if (it.suspend) {
-                                binding.tvLoginErrMsg.text = "此帳號已停權"
-                            } else {
-                                CustomerSharePreferencesUtils.saveCustomerInfoFromPreferences(it)
-                                //跳轉至CustomerActivity
-                                val intent = Intent(requireContext(), CustomerActivity::class.java)
-                                requireContext().startActivity(intent)
+                    FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            task.result?.let { token ->
+                                if (position == 0) {
+                                    val url =
+                                        "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/google/"
+                                    requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
+                                        "$url$email/$token"
+                                    )?.let {
+                                        if (it.suspend) {
+                                            binding.tvLoginErrMsg.text = "此帳號已停權"
+                                        } else {
+                                            CustomerSharePreferencesUtils.saveCustomerInfoFromPreferences(
+                                                it
+                                            )
+                                            //跳轉至CustomerActivity
+                                            val intent = Intent(
+                                                requireContext(),
+                                                CustomerActivity::class.java
+                                            )
+                                            requireContext().startActivity(intent)
+                                        }
+                                    }
+                                } else if (position == 1) {
+                                    val token = FirebaseMessaging.getInstance().token
+                                    val url =
+                                        "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/google/"
+                                    requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
+                                        "$url$email/$token"
+                                    )?.let {
+                                        if (it.suspend) {
+                                            binding.tvLoginErrMsg.text = "此帳號已停權"
+                                        } else if (!it.verify) {
+                                            findNavController().navigate(R.id.action_loginFragment_to_signupCheckingFragment)
+                                        } else {
+                                            CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(
+                                                it
+                                            )
+                                            //跳轉至CleanerActivity
+                                            val intent = Intent(
+                                                requireContext(),
+                                                CleanerActivity::class.java
+                                            )
+                                            requireContext().startActivity(intent)
+                                        }
+                                    }
+                                } else {
+                                    Toast.makeText(context, "管理員無google登入服務", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
                             }
+                        }else {
+                            binding.tvLoginErrMsg.text = task.exception?.message
+                                ?: "google登入失敗"  // getString(R.string.tv_login_fail)
                         }
-                    } else if (position == 1) {
-                        val token = FirebaseMessaging.getInstance().token
-                        val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/google/"
-                        requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                            "$url$email/${token.result}"
-                        )?.let {
-                            if (it.suspend) {
-                                binding.tvLoginErrMsg.text = "此帳號已停權"
-                            } else if (!it.verify) {
-                                findNavController().navigate(R.id.action_loginFragment_to_signupCheckingFragment)
-                            } else {
-                                CleanerSharedPreferencesUtils.saveCleanerInfoFromPreferences(it)
-                                //跳轉至CleanerActivity
-                                val intent = Intent(requireContext(), CleanerActivity::class.java)
-                                requireContext().startActivity(intent)
-                            }
-                        }
-                    } else {
-                        Toast.makeText(context, "管理員無google登入服務", Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    binding.tvLoginErrMsg.text = task.exception?.message
-                        ?: "google登入失敗"  // getString(R.string.tv_login_fail)
                 }
             }
     }

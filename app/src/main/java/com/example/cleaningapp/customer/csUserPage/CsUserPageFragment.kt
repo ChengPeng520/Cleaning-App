@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.LoginActivity
@@ -30,7 +31,7 @@ class CsUserPageFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.setTitle(R.string.csTitle_userPage)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_userPage)
         with(binding) {
             llCsUserUserInfo.setOnClickListener{
                 Navigation.findNavController(view).navigate(R.id.action_csUserPageFragment_to_csEditProfileFragment)

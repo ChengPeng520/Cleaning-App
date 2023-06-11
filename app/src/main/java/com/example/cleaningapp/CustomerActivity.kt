@@ -8,8 +8,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import com.example.cleaningapp.databinding.ActivityCustomerBinding
 import com.example.cleaningapp.share.GetPrimeCallback
 import com.example.cleaningapp.share.TapPay
@@ -28,26 +26,47 @@ class CustomerActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        initView()
+        initNavigation()
+    }
+
+    private fun initView() {
+        // 隱藏標題列
+        supportActionBar?.hide()
+        // 設置自訂義toolbar
+        setSupportActionBar(binding.customerToolbar)
+        // 隱藏App名稱
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+    }
+
+
+    private fun initNavigation() {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.customer_nav_host_fragment) as NavHostFragment
-        val configuration = AppBarConfiguration(binding.bvnCustomer.menu)
-
-        NavigationUI.setupActionBarWithNavController(
-            this,
-            navHostFragment.navController,
-            configuration
-        )
-
-        NavigationUI.setupWithNavController(
-            binding.bvnCustomer,
-            navHostFragment.navController
-        )
+        val navController = navHostFragment.navController
+        binding.bvnCustomer.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.csHomePageFragment -> {
+                    navController.navigate(R.id.csHomePageFragment)
+                    true
+                }
+                R.id.csCreateOrderFragment -> {
+                    navController.navigate(R.id.csCreateOrderFragment)
+                    true
+                }
+                R.id.historicalorderFragment -> {
+                    navController.navigate(R.id.historicalorderFragment)
+                    true
+                }
+                R.id.csUserPageFragment -> {
+                    navController.navigate(R.id.csUserPageFragment)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        navHostFragment.navController.navigateUp()
-        return super.onSupportNavigateUp()
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

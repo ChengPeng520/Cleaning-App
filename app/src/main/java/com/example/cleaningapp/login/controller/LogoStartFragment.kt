@@ -1,17 +1,14 @@
 package com.example.cleaningapp.login.controller
 
-import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.csHomePage.CsHomePageFragment
-import com.example.cleaningapp.login.viewModel.LogoStartViewModel
 
 class LogoStartFragment : Fragment() {
 
@@ -20,7 +17,7 @@ class LogoStartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val logoStartFragment = inflater.inflate(R.layout.fragment_logo_start, container, false)
-        val countDownTimer = object : CountDownTimer(2000,1000){
+        val countDownTimer = object : CountDownTimer(2000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
@@ -36,6 +33,4 @@ class LogoStartFragment : Fragment() {
         countDownTimer.start()
         return logoStartFragment
     }
-
-
 }
