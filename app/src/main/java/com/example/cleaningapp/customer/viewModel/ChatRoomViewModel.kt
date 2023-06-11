@@ -20,7 +20,7 @@ class ChatRoomViewModel : ViewModel() {
         fetchChatRoomTalkList()
     }
 
-    private fun fetchChatRoomTalkList() {
+    fun fetchChatRoomTalkList() {
         requestTask<List<ChatroomItemUiState>>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",

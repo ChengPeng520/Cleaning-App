@@ -1,5 +1,9 @@
 package com.example.cleaningapp.customer.fragment
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +12,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.chatroom.ChatAdapter
@@ -19,6 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class ChatRoomFragment : Fragment() {
     private lateinit var binding: FragmentVictorChatRoomBinding
     private val viewModel: ChatRoomViewModel by viewModels()
+    private lateinit var messageReceiver: BroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
@@ -34,6 +40,8 @@ class ChatRoomFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initRecyclerView()
+        messageReceiver = MessageReceiver()
+        registerMessageReceiver()
         return binding.root
     }
 
@@ -53,6 +61,19 @@ class ChatRoomFragment : Fragment() {
                 (rvContactWindowTalk.adapter as ChatAdapter).submitList(it.chatroomItems.toMutableList())
                 rvContactWindowTalk.smoothScrollToPosition((rvContactWindowTalk.adapter as ChatAdapter).itemCount)
             }
+        }
+    }
+
+    // 註冊廣播接收器攔截"action_chatroom"的廣播
+    private fun registerMessageReceiver() {
+        val intentFilter = IntentFilter("action_chatroom") //要執行的id
+        LocalBroadcastManager.getInstance(requireActivity())
+            .registerReceiver(messageReceiver, intentFilter)
+    }
+
+    private inner class MessageReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            viewModel.fetchChatRoomTalkList()
         }
     }
 
