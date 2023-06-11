@@ -1,5 +1,9 @@
 package com.example.cleaningapp.customer.fragment
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,7 +13,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.viewModel.OrdercompletedViewModel
 import com.example.cleaningapp.databinding.FragmentVictorOrdercompletedBinding
@@ -21,6 +27,8 @@ class OrdercompletedFragment : Fragment() {
     private val timer = Timer()
     private var isRefreshing = false
     val viewModel: OrdercompletedViewModel by viewModels()
+    private lateinit var messageReceiver: BroadcastReceiver
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +36,8 @@ class OrdercompletedFragment : Fragment() {
         binding = FragmentVictorOrdercompletedBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        messageReceiver = MessageReceiver()
+        registerMessageReceiver()
         return binding.root
     }
 
@@ -45,6 +55,19 @@ class OrdercompletedFragment : Fragment() {
                 Navigation.findNavController(view)
                     .navigate(R.id.action_ordercompletedFragment_to_orderdoneFragment)
             }
+        }
+    }
+
+    // 註冊廣播接收器攔截"action_chatroom"的廣播
+    private fun registerMessageReceiver() {
+        val intentFilter = IntentFilter("action_order") //要執行的id
+        LocalBroadcastManager.getInstance(requireActivity())
+            .registerReceiver(messageReceiver, intentFilter)
+    }
+
+    private inner class MessageReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            findNavController().navigate(R.id.orderdoneFragment)
         }
     }
 

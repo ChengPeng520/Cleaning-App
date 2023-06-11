@@ -1,5 +1,9 @@
 package com.example.cleaningapp.customer.fragment
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,7 +13,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.viewModel.OrderprogressViewModel
 import com.example.cleaningapp.databinding.FragmentVictorOrderprogressBinding
@@ -21,6 +27,7 @@ class OrderprogressFragment : Fragment() {
     val viewModel: OrderprogressViewModel by viewModels()
     private val timer = Timer()
     private var isRefreshing = false
+    private lateinit var messageReceiver: BroadcastReceiver
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,12 +37,15 @@ class OrderprogressFragment : Fragment() {
         binding.viewModel = viewModel
         initAppBarMenu()
         binding.lifecycleOwner = this
+        messageReceiver = MessageReceiver()
+        registerMessageReceiver()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_orderStatus)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_orderStatus)
         arguments?.getInt("orderId")?.let { orderId ->
             viewModel.fetchOrdersInfo(orderId)
 //            startRefreshingOrderStatus(orderId)
@@ -46,6 +56,19 @@ class OrderprogressFragment : Fragment() {
                 Navigation.findNavController(view)
                     .navigate(R.id.action_orderprogressFragment_to_orderingFragment, arguments)
             }
+        }
+    }
+
+    // 註冊廣播接收器攔截"action_chatroom"的廣播
+    private fun registerMessageReceiver() {
+        val intentFilter = IntentFilter("action_order") //要執行的id
+        LocalBroadcastManager.getInstance(requireActivity())
+            .registerReceiver(messageReceiver, intentFilter)
+    }
+
+    private inner class MessageReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            findNavController().navigate(R.id.orderingFragment)
         }
     }
 
