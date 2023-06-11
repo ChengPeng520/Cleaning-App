@@ -102,8 +102,10 @@
                     android:background="@null"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:hint="@string/hint_csEditProfile_required"
                     android:minHeight="48dp"
                     android:text="@={viewModel.profile.name}"
+                    android:textColorHint="#DDDDDD"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -138,10 +140,12 @@
                     android:background="@null"
                     android:ems="10"
                     android:gravity="center_vertical"
+                    android:hint="@string/hint_csEditProfile_required"
                     android:inputType="phone"
                     android:maxLength="10"
                     android:minHeight="48dp"
                     android:text="@={viewModel.profile.phone}"
+                    android:textColorHint="#DDDDDD"
                     android:textSize="15sp" />
 
             </LinearLayout>

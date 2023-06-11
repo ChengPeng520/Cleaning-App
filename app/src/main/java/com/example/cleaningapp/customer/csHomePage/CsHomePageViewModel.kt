@@ -29,7 +29,7 @@ class CsHomePageViewModel : ViewModel() {
 
     private fun getOrder() {
         requestTask<OrderRemind>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}"
+            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/1"
         )?.let {
             order.value = it
         }

@@ -59,6 +59,7 @@
     <string name="tv_csCreateOrder_chooseCleanerAtHistory">請於刊登紀錄選擇清潔人員</string>
     <string name="btn_csCreateOrder_checkHistory"><u>查看刊登紀錄</u></string>
     <string name="toast_CsChooseCleanerCancelOrder">訂單取消成功</string>
+    <string name="tv_csChooseCleaner_noCandidate">尚無清潔人員應徵</string>
 
     <!--    確認訂單    -->
     <string name="txt_oderConfirmed">確認訂單</string>
@@ -89,6 +90,7 @@
     <string name="txt_csViewCoupon_viewCoupon">查看優惠券</string>
     <string name="tv_csProfile_male">男</string>
     <string name="tv_csProfile_female">女</string>
+    <string name="hint_csEditProfile_required">(必填)</string>
 
     <!--    訂單流程    -->
     <string name="txt_CsChooseCleaner_title">選擇清潔人員</string>

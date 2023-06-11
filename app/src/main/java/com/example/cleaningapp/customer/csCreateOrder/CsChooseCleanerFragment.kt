@@ -39,14 +39,27 @@ class CsChooseCleanerFragment : Fragment() {
             }
         }
         binding.btnCsChooseCleanerCancelOrder.setOnClickListener {
-            Toast.makeText( it.context, it.context.getString(R.string.toast_CsChooseCleanerCancelOrder), Toast.LENGTH_SHORT ).show()
-            Navigation.findNavController(it).popBackStack()
+            if (viewModel.cancelOrder()) {
+                Toast.makeText(
+                    it.context,
+                    requireActivity().getString(R.string.toast_CsChooseCleanerCancelOrder),
+                    Toast.LENGTH_SHORT
+                ).show()
+                Navigation.findNavController(it).navigate(R.id.action_csChooseCleanerFragment2_to_historicalorderFragment)
+            } else {
+                Toast.makeText(
+                    it.context,
+                    "訂單取消失敗",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         binding.rvCsChooseCleaner.layoutManager = LinearLayoutManager(requireContext())
         viewModel.cleanerList.observe(viewLifecycleOwner) { cleaners ->
             if (binding.rvCsChooseCleaner.adapter == null) {
-                binding.rvCsChooseCleaner.adapter = CsChooseCleanerAdapter(cleaners, viewModel.orderId )
+                binding.rvCsChooseCleaner.adapter =
+                    CsChooseCleanerAdapter(cleaners, viewModel.orderId)
             } else {
                 (binding.rvCsChooseCleaner.adapter as CsChooseCleanerAdapter).updateCleaners(
                     cleaners
