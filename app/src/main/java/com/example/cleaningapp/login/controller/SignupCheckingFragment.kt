@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -26,6 +28,8 @@ class SignupCheckingFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = ""
         with(binding) {
             tvSignupBtnBack.setOnClickListener {
                 Navigation.findNavController(it)

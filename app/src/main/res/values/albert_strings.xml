@@ -7,8 +7,7 @@
     <string name="tv_bs_comp_databox_applier_ti">申請人</string>
     <string name="tv_bs_comp_databox_applier_ex">睿老闆</string>
     <string name="tv_bs_comp_databox_status_dealing"><u>待處理</u></string>
-    <string name="tv_bs_comp_databox_status_applied">已同意</string>
-    <string name="tv_bs_comp_databox_status_denied">已拒絕</string>
+    <string name="tv_bs_comp_databox_status_applied"><u>已完成</u></string>
     <string name="tv_bs_comp_databox_time_ti">時間</string>
     <string name="tv_bs_comp_databox_time_ex">2023–04-18 23:00</string>
     <string name="tv_bs_comp_dealing_cleaner_ti">被投訴人</string>

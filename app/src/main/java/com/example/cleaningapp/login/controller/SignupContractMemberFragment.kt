@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -25,8 +27,7 @@ class SignupContractMemberFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        requireActivity().title = "會員條款"
+    ): View {
         val viewModel: SignupContractMemberViewModel by viewModels()
         binding = FragmentRonaSignupContractMemberBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
@@ -35,6 +36,8 @@ class SignupContractMemberFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "會員條款"
         with(binding) {
             ivContractMemberBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()

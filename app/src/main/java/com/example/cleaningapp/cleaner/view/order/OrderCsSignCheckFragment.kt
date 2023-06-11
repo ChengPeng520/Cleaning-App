@@ -31,7 +31,7 @@ class OrderCsSignCheckFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.getInt("orderId")?.let {
             viewModel.orderId = it
-            Log.d("fff","$it")
+            Log.d("fff", "$it")
         }
         with(binding) {
             tvOrderRevise.setOnClickListener {
@@ -41,10 +41,8 @@ class OrderCsSignCheckFragment : Fragment() {
                 val bitmap = signatureView.drawToBitmap(Bitmap.Config.ARGB_8888)
                 // bitmap 存入資料庫
                 viewModel?.signature?.add(ImageUtils.bitmapToBytes(bitmap))
-                findNavController().popBackStack()
+                if (viewModel?.sendSignature()!!) findNavController().popBackStack()
             }
         }
     }
 }
-
-

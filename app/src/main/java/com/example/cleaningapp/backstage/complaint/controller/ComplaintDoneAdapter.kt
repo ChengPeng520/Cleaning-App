@@ -8,15 +8,11 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
-import com.example.cleaningapp.backstage.complaint.model.Complaint
-import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDealingViewModel
-import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDetailViewModel
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrder
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDoneViewModel
 import com.example.cleaningapp.databinding.ItemAlbBsCompDoneDataboxBinding
-import com.example.cleaningapp.databinding.ItemAlbBsCompMainDataboxBinding
 
-class ComplaintDoneAdapter(private var complaints: List<BSCompOrderItem>) :
+class ComplaintDoneAdapter(private var complaints: List<BSCompOrder>) :
     RecyclerView.Adapter<ComplaintDoneAdapter.ComplaintDoneViewHolder>()  {
 
     /**
@@ -24,7 +20,7 @@ class ComplaintDoneAdapter(private var complaints: List<BSCompOrderItem>) :
      * @param complaints 新的好友列表
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun updateComplaints(complaints: List<BSCompOrderItem>) {
+    fun updateComplaints(complaints: List<BSCompOrder>) {
         this.complaints = complaints
         notifyDataSetChanged()
     }
@@ -50,9 +46,9 @@ class ComplaintDoneAdapter(private var complaints: List<BSCompOrderItem>) :
         val complaint = complaints[position]
         with(holder) {
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
-//            itemViewBinding.viewModel?.complaint?.value = complaint
+            itemViewBinding.viewModel?.complaint?.value = complaint
             val bundle = Bundle()
-            bundle.putInt("orderIdDone", complaint.orderId)
+            bundle.putInt("orderId", complaint.orderId)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsCompDoneFragment_to_bsCompDetailFragment, bundle)

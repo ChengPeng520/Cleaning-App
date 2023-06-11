@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,7 +22,7 @@ import com.example.cleaningapp.share.CleanerPreferencesUtils
 class ClearPhotoFragment : Fragment() {
     private lateinit var binding: FragmentVickyClearPhotoBinding
     private val viewModel: ClearPhotoViewModel by viewModels()
-    val photos: MutableList<Bitmap?> = MutableList(3) { null }
+//    val photos: MutableList<Bitmap?> = MutableList(3) { null }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,14 +39,9 @@ class ClearPhotoFragment : Fragment() {
         with(binding) {
             arguments?.getInt("orderId")?.let {
                 viewModel?.cleanerBeforePhoto(it)
-                Log.d("1", "1")
+//                Log.d("1", "1")
             }
-            linearLayout4.setOnClickListener {
-                if (viewModel?.photo?.value?.photo3 == null) {
-                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    takePictureSmallLauncher.launch(intent)
-                }
-            }
+
             linearLayout5.setOnClickListener {
                 if (viewModel?.photo?.value?.photo3 == null) {
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -53,8 +49,9 @@ class ClearPhotoFragment : Fragment() {
                 }
             }
             btAddCheck.setOnClickListener {
+                CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(requireActivity(), viewModel?.photos!!)
                 Navigation.findNavController(view)
-                    .navigate(R.id.action_vicky_clear_photoFragment_to_orderStateFragment)
+                    .popBackStack()
             }
         }
     }
@@ -65,11 +62,10 @@ class ClearPhotoFragment : Fragment() {
                 result.data?.extras?.let { bundle ->
                     val picture = bundle["data"] as Bitmap?
                     picture?.let {
+
                         viewModel.addCapturedPhoto(it)
-                        photos[0] = it
-                        CleanerPreferencesUtils.saveCleaningPhotoFromPreferences(
-                        requireContext(),
-                        photos)
+
+
                     }
                 }
             }

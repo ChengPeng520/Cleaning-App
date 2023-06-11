@@ -6,21 +6,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaLoginForgetPasswordPhoneBinding
 import com.example.cleaningapp.login.viewModel.LoginForgetPasswordPhoneViewModel
-import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.google.firebase.ktx.Firebase
 import java.util.concurrent.TimeUnit
 
-class  LoginForgetPasswordPhoneFragment : Fragment() {
+class LoginForgetPasswordPhoneFragment : Fragment() {
     private lateinit var binding: FragmentRonaLoginForgetPasswordPhoneBinding
     private val myTag = "TAG_${javaClass.simpleName}"
     private lateinit var auth: FirebaseAuth
@@ -36,16 +34,17 @@ class  LoginForgetPasswordPhoneFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        requireActivity().title = "忘記密碼"
         val viewModel: LoginForgetPasswordPhoneViewModel by viewModels()
-        binding = FragmentRonaLoginForgetPasswordPhoneBinding.inflate(inflater,container,false)
+        binding = FragmentRonaLoginForgetPasswordPhoneBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding){
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "忘記密碼"
+        with(binding) {
             ivApplyinfoBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
@@ -53,17 +52,20 @@ class  LoginForgetPasswordPhoneFragment : Fragment() {
             btnForgetPasswordSend.setOnClickListener {
                 //1.發送驗證需求給手機
                 //2.轉跳至驗證頁面
-                if (inputCheck()){
+                if (inputCheck()) {
                     val phone = viewModel?.phone?.value?.substring(1)
                     requestVerificationCode("+886$phone")
-                    if(verificationId.isNotEmpty()){
+                    if (verificationId.isNotEmpty()) {
                         val bundle = Bundle()
                         bundle.putString("phoneNumber", viewModel?.phone?.value)
                         bundle.putString("verificationId", verificationId)
                         Log.d(myTag, "verificationId: $verificationId")
                         Navigation.findNavController(it)
-                            .navigate(R.id.action_loginForgetPasswordPhoneFragment_to_forgetPasswordPhoneVFragment,bundle)
-                    }else{
+                            .navigate(
+                                R.id.action_loginForgetPasswordPhoneFragment_to_forgetPasswordPhoneVFragment,
+                                bundle
+                            )
+                    } else {
                         return@setOnClickListener
                     }
                 }
@@ -82,7 +84,7 @@ class  LoginForgetPasswordPhoneFragment : Fragment() {
                 check = false
             }
         }
-            return check
+        return check
     }
 
     // 發送驗證需求給手機

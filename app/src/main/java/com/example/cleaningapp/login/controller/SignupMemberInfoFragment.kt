@@ -9,8 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -32,7 +34,6 @@ class SignupMemberInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        requireActivity().title = "會員資料"
         binding = FragmentSignupMemberInfoBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -40,6 +41,8 @@ class SignupMemberInfoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "會員填寫資料"
         with(binding) {
             ivMemInfoBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()

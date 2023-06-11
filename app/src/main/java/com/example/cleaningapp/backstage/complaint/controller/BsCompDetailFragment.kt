@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
-import com.example.cleaningapp.backstage.complaint.model.Complaint
 import com.example.cleaningapp.backstage.complaint.viewModel.BsCompDetailViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsCompDetailBinding
 
@@ -30,16 +28,13 @@ class BsCompDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let { bundle ->
-            bundle.getInt("orderIdDone").let {
-                viewModel.loadComplaint(it)
-            }
-            bundle.getInt("orderIdDealing").let {
+            bundle.getInt("orderId").let {
                 viewModel.loadComplaint(it)
             }
         }
         with(binding) {
             ivBsCompDetailBack.setOnClickListener {
-                Navigation.findNavController(view).popBackStack()
+                Navigation.findNavController(view).navigate(R.id.bsCompDoneFragment)
             }
         }
     }

@@ -25,14 +25,21 @@ class ClearPhotoViewModel : ViewModel() {
         }
     }
 
+    fun isPhotoExists(){
+
+    }
+
     fun addCapturedPhoto(photo: Bitmap?) {
         this.photo.value?.let {
             if (it.photo1 == null) {
                 it.photo1 = photo
+                photos[0] = photo
             } else if (it.photo2 == null) {
                 it.photo2 = photo
+                photos[1] = photo
             } else if (it.photo3 == null) {
                 it.photo3 = photo
+                photos[2] = photo
             }
             this.photo.value = it
         }

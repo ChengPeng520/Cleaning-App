@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel
 import com.example.cleaningapp.databinding.ItemVickyCleanerFrontBinding
 
-class CleanerAdapter(private var cleaners: List<SearchOrder>) :
+class CleanerAdapter(private var cleaners: List<SearchOrder.ApplingOrders>) :
     RecyclerView.Adapter<CleanerAdapter.CleanerViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
-    fun updateCleaners(cleaners: List<SearchOrder>) {
+    fun updateCleaners(cleaners: List<SearchOrder.ApplingOrders>) {
         this.cleaners = cleaners
         notifyDataSetChanged()
     }
@@ -45,13 +45,13 @@ class CleanerAdapter(private var cleaners: List<SearchOrder>) :
             // 將欲顯示的cleaner物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.cleaner?.value = cleaner
             val bundle = Bundle()
-            bundle.putInt("orderId", cleaner.orderId)
+            bundle.putInt("orderId", cleaner.order.orderId)
+            bundle.putByteArray("photo", cleaner.photo)
             itemView.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(
-                        R.id.action_cleanerFrontFragment2_to_cleanerFrontOrderDetailFragment,
-                        bundle
-                    )
+                it.findNavController().navigate(
+                    R.id.action_cleanerFrontFragment2_to_cleanerFrontOrderDetailFragment,
+                    bundle
+                )
             }
         }
     }

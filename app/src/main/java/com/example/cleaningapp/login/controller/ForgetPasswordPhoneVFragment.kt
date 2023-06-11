@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -20,7 +22,7 @@ import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
 class ForgetPasswordPhoneVFragment : Fragment() {
-    private lateinit var binding:FragmentForgetPasswordPhoneVBinding
+    private lateinit var binding: FragmentForgetPasswordPhoneVBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var verificationId: String
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -30,26 +32,28 @@ class ForgetPasswordPhoneVFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        requireActivity().title = "忘記密碼"
-        val viewModel: ForgetPasswordPhoneVViewModel   by viewModels()
-        binding = FragmentForgetPasswordPhoneVBinding.inflate(inflater,container,false)
+        val viewModel: ForgetPasswordPhoneVViewModel by viewModels()
+        binding = FragmentForgetPasswordPhoneVBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding){
+        requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "忘記密碼"
+        with(binding) {
             ivApplyinfoBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
 
             btnForgetPasswordVerify.setOnClickListener {
-                if (inputCheck()){
+                if (inputCheck()) {
                     verificationId = arguments?.getString("verificationId").toString()
                     verifyIdAndCode(verificationId, viewModel?.phoneVerify?.value!!)
                 }
@@ -63,6 +67,7 @@ class ForgetPasswordPhoneVFragment : Fragment() {
             }
         }
     }
+
     @SuppressLint("ResourceType")
     private fun inputCheck(): Boolean {
         var check = true
@@ -103,21 +108,22 @@ class ForgetPasswordPhoneVFragment : Fragment() {
                 }
             }
     }
-        private fun resendVerificationCode(
-            phone: String,
-            token: PhoneAuthProvider.ForceResendingToken
-        ) {
-            val phoneAuthOptions = PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber(phone)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(requireActivity())
-                .setCallbacks(verifyCallbacks)
-                /* 驗證碼發送後，verifyCallbacks.onCodeSent()會傳來token，
-                   使用者要求重傳驗證碼必須提供token */
-                .setForceResendingToken(token)
-                .build()
-            PhoneAuthProvider.verifyPhoneNumber(phoneAuthOptions)
-        }
+
+    private fun resendVerificationCode(
+        phone: String,
+        token: PhoneAuthProvider.ForceResendingToken
+    ) {
+        val phoneAuthOptions = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phone)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(requireActivity())
+            .setCallbacks(verifyCallbacks)
+            /* 驗證碼發送後，verifyCallbacks.onCodeSent()會傳來token，
+               使用者要求重傳驗證碼必須提供token */
+            .setForceResendingToken(token)
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(phoneAuthOptions)
+    }
 
     private val verifyCallbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -151,5 +157,5 @@ class ForgetPasswordPhoneVFragment : Fragment() {
                 resendToken = token
             }
         }
-    }
+}
 
