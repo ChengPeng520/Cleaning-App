@@ -1,10 +1,7 @@
 package com.example.cleaningapp.cleaner.viewmodel.search
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.backstage.order.Order
-import com.example.cleaningapp.cleaner.uistate.ApplingOrder
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
@@ -13,13 +10,11 @@ import com.google.gson.reflect.TypeToken
 class CleanerFrontViewModel : ViewModel() {
     // 原始Cleaner列表
     // RecyclerView、Adapter
-    var cleanerList = listOf<SearchOrder>()
+    var cleanerList = listOf<SearchOrder.ApplingOrders>()
 
     // 受監控的LiveData，一旦指派新值就會更新Cleaner列表畫面
-    val cleaners: MutableLiveData<List<SearchOrder>> by lazy { MutableLiveData<List<SearchOrder>>() }
-    val cleaner: MutableLiveData<SearchOrder> by lazy { MutableLiveData<SearchOrder>() }
-
-    val text: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val cleaners: MutableLiveData<List<SearchOrder.ApplingOrders>> by lazy { MutableLiveData<List<SearchOrder.ApplingOrders>>() }
+    val cleaner: MutableLiveData<SearchOrder.ApplingOrders> by lazy { MutableLiveData<SearchOrder.ApplingOrders>() }
 
     // 日期、時間篩選
     val chooseCleaningDate: MutableLiveData<String> by lazy { MutableLiveData<String>("") }
@@ -32,15 +27,13 @@ class CleanerFrontViewModel : ViewModel() {
     }
 
     private fun fetchOrderJob() {
-        requestTask<List<SearchOrder>>(
+        requestTask<List<SearchOrder.ApplingOrders>>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             "GET",
-            respBodyType = object : TypeToken<List<SearchOrder>>() {}.type
+            respBodyType = object : TypeToken<List<SearchOrder.ApplingOrders>>() {}.type
         )?.let {
             cleaners.value = it
             cleanerList = it
-
-            Log.d("CleanerList","CleanerId: $it")
         }
     }
 
@@ -49,7 +42,7 @@ class CleanerFrontViewModel : ViewModel() {
         if (chooseCleaningDate.value.toString()
                 .isNotEmpty() && chooseCleaningTimeStart.value.toString()
                 .isNotEmpty() && chooseCleaningTimeEnd.value.toString()
-                .isNotEmpty() &&chooseCleaningDate.value.toString().isNotEmpty()
+                .isNotEmpty() && chooseCleaningDate.value.toString().isNotEmpty()
         ) {
             return true
         }

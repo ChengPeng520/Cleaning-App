@@ -1,7 +1,9 @@
 package com.example.cleaningapp.cleaner.view.search
 
+import android.os.Build
 import android.os.Bundle
 import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,13 +30,18 @@ class CleanerFrontOrderDetailFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             // 訂單詳情
             arguments?.getInt("orderId")?.let {
                 viewModel?.fetchOrderAccept(it)
             }
-
+            arguments?.getParcelable("photo", ByteArray::class.java)?.let {
+                val job = viewModel?.job?.value
+                job?.photo = it
+                viewModel?.job?.value = job
+            }
             // 確定接單
             button8.setOnClickListener {
                 Navigation.findNavController(view)

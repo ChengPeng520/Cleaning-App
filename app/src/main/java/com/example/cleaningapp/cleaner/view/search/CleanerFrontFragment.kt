@@ -14,7 +14,6 @@ import com.example.cleaningapp.cleaner.adapter.CleanerAdapter
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontBinding
-import com.google.android.material.textview.MaterialTextView
 import java.util.*
 
 @Suppress("IMPLICIT_CAST_TO_ANY")
@@ -622,9 +621,9 @@ class CleanerFrontFragment : Fragment() {
         }
     }
 
-    private fun getByCondition(): List<SearchOrder> {
+    private fun getByCondition(): List<SearchOrder.ApplingOrders> {
         val jobs = viewModel.cleanerList
-        val searchedJobs = mutableListOf<SearchOrder>()
+        val searchedJobs = mutableListOf<SearchOrder.ApplingOrders>()
         val startDateTime = Calendar.getInstance()
         startDateTime.set(this.year, this.month, this.day, this.startHour, this.startMin)
         val endDateTime = Calendar.getInstance()
@@ -632,8 +631,8 @@ class CleanerFrontFragment : Fragment() {
         val orderStartTime = Calendar.getInstance()
         val orderEndTime = Calendar.getInstance()
         for (job in jobs) {
-            val startCalendar = job.orderStartDate
-            val endCalendar = job.orderEndDate
+            val startCalendar = job.order.orderStartDate
+            val endCalendar = job.order.orderEndDate
             orderStartTime.set(
                 startCalendar.get(Calendar.YEAR),
                 startCalendar.get(Calendar.MONTH) + 1,
@@ -650,7 +649,7 @@ class CleanerFrontFragment : Fragment() {
             )
             if (isBetween(orderStartTime, startDateTime, endDateTime)
                 && isBetween(orderEndTime, startDateTime, endDateTime)
-                && job.areaCity == this.county && job.areaDistrict == this.district
+                && job.order.areaCity == this.county && job.order.areaDistrict == this.district
             ) {
                 searchedJobs.add(job)
             }

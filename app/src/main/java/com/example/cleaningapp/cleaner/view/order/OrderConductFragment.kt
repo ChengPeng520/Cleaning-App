@@ -53,12 +53,16 @@ class OrderConductFragment : Fragment() {
                     R.color.cleanerPrimary
                 )
             )
+//            viewModel?.order?.value.orEmpty().filter { it.status == 0 }
             recyclerView2.layoutManager = LinearLayoutManager(requireContext())
-            val orders = viewModel?.order?.value.orEmpty().filter { it.status == 0 }
-            adapter = OrderAdapter(orders)
-            recyclerView2.adapter = adapter
+            viewModel?.order?.observe(viewLifecycleOwner) {
+                if (recyclerView2.adapter == null) {
+                    recyclerView2.adapter = OrderAdapter(it)
+                } else {
+                    (recyclerView2.adapter as OrderAdapter).updateOrders(it)
+                }
+            }
             // 當選項發生變化時執行相應的操作
-
             // 待確認
             textView62.setOnClickListener {
                 viewModel?.onTabSelected(1)
@@ -159,5 +163,10 @@ class OrderConductFragment : Fragment() {
                 adapter?.updateOrders(orders)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchOrderRecord()
     }
 }

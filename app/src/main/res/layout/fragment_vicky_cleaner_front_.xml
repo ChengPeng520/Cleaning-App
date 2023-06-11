@@ -50,7 +50,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/spn_date" />
 
-
             <TextView
                 android:id="@+id/spn_date"
                 android:layout_width="0dp"
@@ -227,7 +226,6 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
         <androidx.recyclerview.widget.RecyclerView

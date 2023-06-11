@@ -22,7 +22,7 @@ class OrderConductViewModel : ViewModel() {
         fetchOrderRecord()
     }
 
-    private fun fetchOrderRecord() {
+    fun fetchOrderRecord() {
         requestTask<List<SearchOrder>>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/orderRecord/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}/",
             "GET",
