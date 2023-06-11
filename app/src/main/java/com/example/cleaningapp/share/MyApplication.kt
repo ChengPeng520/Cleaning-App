@@ -7,5 +7,6 @@ class MyApplication : Application() {
         super.onCreate()
         CustomerSharePreferencesUtils.init(this)
         CleanerSharedPreferencesUtils.init(this)
+        BackstageSharedPreferencesUtils.init(this)
     }
 }

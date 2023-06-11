@@ -1,32 +1,14 @@
 package com.example.cleaningapp.backstage.complaint.model
 
-import android.graphics.Bitmap
-import com.example.cleaningapp.share.ImageUtils
+import java.sql.Timestamp
 
 data class BSCompOrder(
-    var bsCompOrderItem: BSCompOrderItem,
-    var orderPhotos: List<ByteArray>?
-)
-
-data class OrderPhotos(
-    val photos: List<ByteArray>
-) {
-    val photo1: Bitmap?
-        get() {
-            return if (photos.isNotEmpty()) {
-                ImageUtils.bytesToBitmap(photos[0])
-            } else null
-        }
-    val photo2: Bitmap?
-        get() {
-            return if (photos.size >= 2) {
-                ImageUtils.bytesToBitmap(photos[1])
-            } else null
-        }
-    val photo3: Bitmap?
-        get() {
-            return if (photos.size == 3) {
-                ImageUtils.bytesToBitmap(photos[2])
-            } else null
-        }
-}
+    var orderId: Int = 0,
+    val customerName: String,
+    val timeCreate: Timestamp,
+    val cleanerName: String,
+    var status: Int,
+    val timeUpdate: Timestamp,
+    var returnReason: String? = "",
+    var bsComplainRemark: String? = "",
+) : java.io.Serializable

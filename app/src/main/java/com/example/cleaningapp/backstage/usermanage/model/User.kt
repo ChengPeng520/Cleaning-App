@@ -29,7 +29,7 @@ data class User(
 //            return ImageUtils.bytesToBitmap(photo!!)
 //        }
 
-    var userGender: String? = ""
+    val userGender: String
         get() {
             return if (gender == 0) {
                 "男"

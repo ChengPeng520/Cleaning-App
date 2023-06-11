@@ -2,27 +2,27 @@ package com.example.cleaningapp.backstage.complaint.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.backstage.complaint.model.BSCompOrderItem
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrder
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
 class BsCompMainViewModel : ViewModel() {
     //原始使用者列表
-    private var complaintList = listOf<BSCompOrderItem>()
+    private var complaintList = listOf<BSCompOrder>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
-    val complaints: MutableLiveData<List<BSCompOrderItem>> by lazy { MutableLiveData<List<BSCompOrderItem>>() }
-    val complaint: MutableLiveData<BSCompOrderItem> by lazy { MutableLiveData<BSCompOrderItem>() }
+    val complaints: MutableLiveData<List<BSCompOrder>> by lazy { MutableLiveData<List<BSCompOrder>>() }
+    val complaint: MutableLiveData<BSCompOrder> by lazy { MutableLiveData<BSCompOrder>() }
 
     init {
         loadComplaints()
     }
 
     private fun loadComplaints() {
-        requestTask<List<BSCompOrderItem>>(
+        requestTask<List<BSCompOrder>>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrders5/",
             method = "GET",
-            respBodyType = object : TypeToken<List<BSCompOrderItem>>() {}.type
+            respBodyType = object : TypeToken<List<BSCompOrder>>() {}.type
         )?.let {
             complaints.value = it
             complaintList = it
@@ -37,7 +37,7 @@ class BsCompMainViewModel : ViewModel() {
         if (newText == null || newText.isEmpty()) {
             complaints.value = complaintList
         } else {
-            val searchComplaintList = mutableListOf<BSCompOrderItem>()
+            val searchComplaintList = mutableListOf<BSCompOrder>()
             complaintList.forEach { complaint ->
                 if (complaint.customerName.contains(newText, true) ||
                     complaint.timeCreate.toString().contains(newText, true)
