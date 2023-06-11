@@ -1,15 +1,12 @@
 package com.example.cleaningapp.customer.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.viewModel.PaydoneViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentVictorPaydoneBinding
 
 class PaydoneFragment : Fragment() {
@@ -25,13 +22,13 @@ class PaydoneFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            btnPayDoneOk.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_paydoneFragment_to_orderprogressFragment)
-            }
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        with(binding) {
+//            btnPayDoneOk.setOnClickListener {
+//                Navigation.findNavController(it)
+//                    .navigate(R.id.action_paydoneFragment_to_orderprogressFragment)
+//            }
+//        }
+//    }
 }

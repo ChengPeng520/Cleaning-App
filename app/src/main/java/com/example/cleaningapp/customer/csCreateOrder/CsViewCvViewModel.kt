@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +8,7 @@ import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.Comment
 import com.example.cleaningapp.customer.model.OrderEstablished
 import com.example.cleaningapp.share.requestTask
+import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 
 class CsViewCvViewModel : ViewModel() {
@@ -49,12 +49,14 @@ class CsViewCvViewModel : ViewModel() {
         }
     }
 
-    fun checkout(requireContext: Context) {
-        requestTask<OrderEstablished>(
+    fun checkout(): Boolean {
+        requestTask<JsonObject>(
             "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied",
             "PUT",
             orderEstablished.value
         )?.let {
+            return it.get("result").asBoolean
         }
+        return false
     }
 }

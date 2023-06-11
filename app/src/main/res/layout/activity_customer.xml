@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.cleaningapp.CustomerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

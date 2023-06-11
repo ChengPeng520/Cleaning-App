@@ -1,65 +1,63 @@
 package com.example.cleaningapp.cleaner.viewmodel.search
 
-import androidx.lifecycle.LiveData
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.cleaner.uistate.Job
+import androidx.navigation.findNavController
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.OrderPhotos
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.uistate.SearchOrderPhotos
+import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
-
+import com.google.gson.JsonObject
 
 class CleanerFrontOrderDetailViewModel : ViewModel() {
-    val cleaner: MutableLiveData<Job> by lazy { MutableLiveData<Job>() }
-    private val _job: MutableLiveData<SearchOrder> by lazy { MutableLiveData<SearchOrder>() }
-    private val _jobPhoto: MutableLiveData<OrderPhotos> by lazy { MutableLiveData<OrderPhotos>() }
-    val job: LiveData<SearchOrder> = _job
-    val jobPhoto: LiveData<OrderPhotos> by lazy { _jobPhoto }
+    val job: MutableLiveData<SearchOrder> by lazy { MutableLiveData<SearchOrder>() }
+    val jobPhoto: MutableLiveData<OrderPhotos> by lazy { MutableLiveData<OrderPhotos>() }
 
-// 訂單詳情
-//    fun fetchOrderAccept(orderId: Int) {
-//        requestTask<SearchOrderPhotos>(
-//            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
-//            "GET"
-//        )?.let {
-//            _job.value = SearchOrder(
-//                photo = it.order.photo,
-//                orderId = it.order.orderId,
-//                dateOrdered = it.order.dateOrdered,
-//                timeOrderedStart = it.order.timeOrderedStart,
-//                timeOrderedEnd = it.order.timeOrderedEnd,
-//                areaCity = it.order.areaCity,
-//                areaDistrict = it.order.areaDistrict,
-//
-//            )
-//            _jobPhoto.value = OrderPhotos(it.photos)
-//        }
-//    }
-//
-//    // 確定接單
-//    fun fetchOrderConfirm() {
-//        requestTask<SearchOrder>(
-//            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/",
-//            "POST"
-//        )?.let {
-//            _job.value = SearchOrder(
-//                photo = it.photo,
-//                orderId = it.orderId,
-//                dateOrdered = it.dateOrdered,
-//                timeOrderedStart = it.timeOrderedStart,
-//                timeOrderedEnd = it.timeOrderedEnd,
-//                areaCity = it.areaCity,
-//                areaDistrict = it.areaDistrict,
-//                areaDetail = it.areaDetail,
-//                livingRoomSize = it.livingRoomSize,
-//                kitchenSize = it.kitchenSize,
-//                bathRoomSize = it.bathRoomSize,
-//                roomSize = it.roomSize,
-//                remark = it.remark,
-//                priceForCleaner = it.priceForCleaner,
-//                status = it.status,
-//            )
-//        }
-//    }
+    // 訂單詳情
+    fun fetchOrderAccept(orderId: Int) {
+        requestTask<SearchOrderPhotos>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
+            "GET",
+        )?.let {
+            job.value = SearchOrder(
+                photo = it.order.photo,
+                orderId = it.order.orderId,
+                dateOrdered = it.order.dateOrdered,
+                timeOrderedStart = it.order.timeOrderedStart,
+                timeOrderedEnd = it.order.timeOrderedEnd,
+                areaCity = it.order.areaCity,
+                areaDistrict = it.order.areaDistrict,
+                areaDetail = it.order.areaDetail,
+                livingRoomSize = it.order.livingRoomSize,
+                kitchenSize = it.order.kitchenSize,
+                bathRoomSize = it.order.bathRoomSize,
+                roomSize = it.order.roomSize,
+                remark = it.order.remark,
+                priceForCleaner = it.order.priceForCleaner
+            )
+            jobPhoto.value = OrderPhotos(photos = it.photos)
+        }
+    }
+
+    // 確定接單
+    fun fetchOrderConfirm(view: View) {
+        requestTask<JsonObject>(
+            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/",
+            "POST",
+            reqBody = SearchOrder(
+                orderId = job.value?.orderId!!,
+                cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId()
+            )
+        )?.let {
+            if (it.get("result").asBoolean) {
+                Toast.makeText(view.context, "確定接單成功", Toast.LENGTH_SHORT).show()
+                view.findNavController()
+                    .navigate(R.id.action_cleanerFrontOrderDetailFragment_to_order_acceptFragment)
+            }
+        }
+    }
 }

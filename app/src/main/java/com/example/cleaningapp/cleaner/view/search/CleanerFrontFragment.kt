@@ -1,27 +1,27 @@
 package com.example.cleaningapp.cleaner.view.search
 
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.adapter.CleanerAdapter
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.viewmodel.search.CleanerFrontViewModel
 import com.example.cleaningapp.databinding.FragmentVickyCleanerFrontBinding
-import com.google.android.material.textview.MaterialTextView
 import java.util.*
 
 @Suppress("IMPLICIT_CAST_TO_ANY")
 class CleanerFrontFragment : Fragment() {
     private val viewModel: CleanerFrontViewModel by viewModels()
     private lateinit var binding: FragmentVickyCleanerFrontBinding
-//    private var adapter: CleanerAdapter? = null
 
     // 市區
     private val countyList = arrayOf(
@@ -476,6 +476,7 @@ class CleanerFrontFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().findViewById<TextView>(R.id.cleaner_toolbar_title).text = "搜尋列表"
         initRecyclerView()
     }
 
@@ -533,42 +534,42 @@ class CleanerFrontFragment : Fragment() {
             }
 
             // 開始時間
-            startTime.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                TimePickerDialog(
-                    requireContext(),
-                    { _, hour, minute ->
-                        this@CleanerFrontFragment.startHour = hour
-                        this@CleanerFrontFragment.startMin = minute
-                        viewModel?.chooseCleaningTimeStart?.value = "${pad(hour)}:${pad(minute)}"
-                        viewModel?.isSearch()?.let {
-                            if (it) viewModel?.cleaners?.value = getByCondition()
-                        }
-                    },
-                    calendar.get(Calendar.HOUR),
-                    calendar.get(Calendar.MINUTE),
-                    false
-                ).show()
-            }
+//            startTime.setOnClickListener {
+//                val calendar = Calendar.getInstance()
+//                TimePickerDialog(
+//                    requireContext(),
+//                    { _, hour, minute ->
+//                        this@CleanerFrontFragment.startHour = hour
+//                        this@CleanerFrontFragment.startMin = minute
+//                        viewModel?.chooseCleaningTimeStart?.value = "${pad(hour)}:${pad(minute)}"
+//                        viewModel?.isSearch()?.let {
+//                            if (it) viewModel?.cleaners?.value = getByCondition()
+//                        }
+//                    },
+//                    calendar.get(Calendar.HOUR),
+//                    calendar.get(Calendar.MINUTE),
+//                    false
+//                ).show()
+//            }
 
             // 結束時間
-            spinner3.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                TimePickerDialog(
-                    requireContext(),
-                    { _, hour, minute ->
-                        this@CleanerFrontFragment.endHour = hour
-                        this@CleanerFrontFragment.endMin = minute
-                        viewModel?.chooseCleaningTimeEnd?.value = "${pad(hour)}:${pad(minute)}"
-                        viewModel?.isSearch()?.let {
-                            if (it) viewModel?.cleaners?.value = getByCondition()
-                        }
-                    },
-                    calendar.get(Calendar.HOUR),
-                    calendar.get(Calendar.MINUTE),
-                    false
-                ).show()
-            }
+//            spinner3.setOnClickListener {
+//                val calendar = Calendar.getInstance()
+//                TimePickerDialog(
+//                    requireContext(),
+//                    { _, hour, minute ->
+//                        this@CleanerFrontFragment.endHour = hour
+//                        this@CleanerFrontFragment.endMin = minute
+//                        viewModel?.chooseCleaningTimeEnd?.value = "${pad(hour)}:${pad(minute)}"
+//                        viewModel?.isSearch()?.let {
+//                            if (it) viewModel?.cleaners?.value = getByCondition()
+//                        }
+//                    },
+//                    calendar.get(Calendar.HOUR),
+//                    calendar.get(Calendar.MINUTE),
+//                    false
+//                ).show()
+//            }
         }
     }
 
@@ -607,7 +608,7 @@ class CleanerFrontFragment : Fragment() {
 
             spnLocaltion.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                    this@CleanerFrontFragment.district = (p1 as MaterialTextView).text as String
+                    district = districtMap[county]?.get(p2)!!
                     viewModel?.isSearch()?.let {
                         if (it) viewModel?.cleaners?.value = getByCondition()
                     }
@@ -620,35 +621,41 @@ class CleanerFrontFragment : Fragment() {
         }
     }
 
-    private fun getByCondition(): List<SearchOrder> {
+    private fun getByCondition(): List<SearchOrder.ApplingOrders> {
         val jobs = viewModel.cleanerList
-        val searchedJobs = mutableListOf<SearchOrder>()
-        val startDateTime = Calendar.getInstance()
-        startDateTime.set(this.year, this.month, this.day, this.startHour, this.startMin)
-        val endDateTime = Calendar.getInstance()
-        endDateTime.set(this.year, this.month, this.day, this.endHour, this.endMin)
-        val orderStartTime = Calendar.getInstance()
-        val orderEndTime = Calendar.getInstance()
+        val searchedJobs = mutableListOf<SearchOrder.ApplingOrders>()
+//        val startDateTime = Calendar.getInstance()
+//        startDateTime.set(this.year, this.month, this.day, this.startHour, this.startMin)
+//        val endDateTime = Calendar.getInstance()
+//        endDateTime.set(this.year, this.month, this.day, this.endHour, this.endMin)
+//        val orderStartTime = Calendar.getInstance()
+//        val orderEndTime = Calendar.getInstance()
         for (job in jobs) {
-            val startCalendar = job.orderStartDate
-            val endCalendar = job.orderEndDate
-            orderStartTime.set(
-                startCalendar.get(Calendar.YEAR),
-                startCalendar.get(Calendar.MONTH) + 1,
-                startCalendar.get(Calendar.DAY_OF_MONTH),
-                startCalendar.get(Calendar.HOUR_OF_DAY),
-                startCalendar.get(Calendar.MINUTE) + 1
-            )
-            orderEndTime.set(
-                endCalendar.get(Calendar.YEAR),
-                endCalendar.get(Calendar.MONTH) + 1,
-                endCalendar.get(Calendar.DAY_OF_MONTH),
-                endCalendar.get(Calendar.HOUR_OF_DAY),
-                endCalendar.get(Calendar.MINUTE) - 1
-            )
-            if (isBetween(orderStartTime, startDateTime, endDateTime)
-                && isBetween(orderEndTime, startDateTime, endDateTime)
-                && job.areaCity == this.county && job.areaDistrict == this.district
+            val startCalendar = job.order.orderStartDate
+            val endCalendar = job.order.orderEndDate
+//            orderStartTime.set(
+//                startCalendar.get(Calendar.YEAR),
+//                startCalendar.get(Calendar.MONTH) + 1,
+//                startCalendar.get(Calendar.DAY_OF_MONTH),
+//                startCalendar.get(Calendar.HOUR_OF_DAY),
+//                startCalendar.get(Calendar.MINUTE) + 1
+//            )
+//            orderEndTime.set(
+//                endCalendar.get(Calendar.YEAR),
+//                endCalendar.get(Calendar.MONTH) + 1,
+//                endCalendar.get(Calendar.DAY_OF_MONTH),
+//                endCalendar.get(Calendar.HOUR_OF_DAY),
+//                endCalendar.get(Calendar.MINUTE) - 1
+//            )
+//            if (isBetween(orderStartTime, startDateTime, endDateTime)
+//                && isBetween(orderEndTime, startDateTime, endDateTime)
+//                && job.order.areaCity == this.county && job.order.areaDistrict == this.district
+//            ) {
+//                searchedJobs.add(job)
+//            }
+            Log.d("areaCity", job.order.areaDistrict)
+            Log.d("aa", this.district)
+            if (job.order.dateOrdered.toString() == "$year-0$month-$day" && job.order.areaCity == this.county && job.order.areaDistrict == this.district
             ) {
                 searchedJobs.add(job)
             }

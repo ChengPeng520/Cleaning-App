@@ -24,21 +24,36 @@
                 android:id="@+id/constraintLayout15"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/all_layout_light_gray_shape"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/imageView30"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_item_cleanerfrontdetail"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
-                    app:imageBitmap="@{viewModel.job.customerPhoto}"
+                    android:foreground="?selectableItemBackground"
+                    app:cardCornerRadius="150dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    app:layout_constraintTop_toTopOf="parent">
 
+
+                    <ImageView
+                        android:id="@+id/imageView30"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:imageBitmap="@{viewModel.job.customerPhoto}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.464"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.65"
+                        tools:src="@tools:sample/avatars" />
+                </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -67,7 +82,7 @@
                     android:id="@+id/imageView25"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:src="@drawable/ic_calendar"
+                    android:src="@drawable/fatruei_baseline_calendar_month_24"
                     app:layout_constraintBottom_toBottomOf="@+id/textView7"
                     app:layout_constraintDimensionRatio="h,1:1"
                     app:layout_constraintEnd_toEndOf="@+id/imageView29"
@@ -78,7 +93,7 @@
                     android:id="@+id/imageView31"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:src="@drawable/ic_time"
+                    android:src="@drawable/fatruei_baseline_access_time_24"
                     app:layout_constraintBottom_toBottomOf="@+id/textView8"
                     app:layout_constraintDimensionRatio="h,1:1"
                     app:layout_constraintEnd_toEndOf="@+id/imageView25"
@@ -89,7 +104,7 @@
                     android:id="@+id/imageView32"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:src="@drawable/ic_location"
+                    android:src="@drawable/fatruei_baseline_location_on_24"
                     app:layout_constraintBottom_toBottomOf="@+id/textView13"
                     app:layout_constraintDimensionRatio="h,1:1"
                     app:layout_constraintEnd_toEndOf="@+id/imageView31"
@@ -147,7 +162,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@{viewModel.job.orderId}"
+                    android:text="@{String.valueOf(viewModel.job.OrderId)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView4"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
@@ -347,6 +362,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:onClick="@{viewModel::fetchOrderConfirm}"
                 android:text="@string/bt_order_check"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

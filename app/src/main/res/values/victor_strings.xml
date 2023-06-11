@@ -13,6 +13,7 @@
     <string name="tv_order_platformFee">平台費：</string>
     <string name="tv_order_coupon">優惠卷：</string>
     <string name="btn_orderBox_detailed">展開訂單詳情</string>
+    <string name="btn_orderBox_choose">選擇清潔人員</string>
 
 // 訂單進度
     <string name="tv_order_confirmOrder">確認接單</string>

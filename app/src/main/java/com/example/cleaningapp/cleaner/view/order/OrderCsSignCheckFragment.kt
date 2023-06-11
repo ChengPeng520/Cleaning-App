@@ -2,6 +2,7 @@ package com.example.cleaningapp.cleaner.view.order
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.cleaner.viewmodel.order.OrderCssignCheckViewModel
 import com.example.cleaningapp.databinding.FragmentVickyOrderCssignCheckBinding
+import com.example.cleaningapp.share.ImageUtils
 
 class OrderCsSignCheckFragment : Fragment() {
     private lateinit var binding: FragmentVickyOrderCssignCheckBinding
@@ -27,19 +29,20 @@ class OrderCsSignCheckFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val orderId = arguments?.getInt("orderId")
+        arguments?.getInt("orderId")?.let {
+            viewModel.orderId = it
+            Log.d("fff", "$it")
+        }
         with(binding) {
             tvOrderRevise.setOnClickListener {
                 signatureView.clean()
             }
-
             button7.setOnClickListener {
                 val bitmap = signatureView.drawToBitmap(Bitmap.Config.ARGB_8888)
                 // bitmap 存入資料庫
-                findNavController().popBackStack()
+                viewModel?.signature?.add(ImageUtils.bitmapToBytes(bitmap))
+                if (viewModel?.sendSignature()!!) findNavController().popBackStack()
             }
         }
     }
 }
-
-

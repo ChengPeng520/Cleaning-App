@@ -32,7 +32,17 @@ class OrdercompletedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.order.value?.let { startRefreshingOrderStatus(it.orderId) }
+        arguments?.getInt("orderId")?.let { orderId ->
+            viewModel.fetchOrdersInfo(orderId)
+            startRefreshingOrderStatus(orderId)
+        }
+        viewModel.order.observe(viewLifecycleOwner) { order ->
+            // 在訂單狀態更新時執行導航操作
+            if (order.status == 4) {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_ordercompletedFragment_to_orderdoneFragment)
+            }
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
@@ -53,7 +63,6 @@ class OrdercompletedFragment : Fragment() {
             }
         }, 0, 3000)
     }
-
     private fun stopRefreshingOrderStatus() {
         isRefreshing = false
         timer.cancel()

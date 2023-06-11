@@ -1,16 +1,13 @@
 package com.example.cleaningapp.customer.fragment
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.viewModel.ComplaintdetailsViewModel
 import com.example.cleaningapp.databinding.FragmentVictorComplaintdetailsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,9 +26,7 @@ class ComplaintdetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getInt("orderId")?.let {
-            viewModel.fetchOrdersInfo(it)
-        }
+        arguments?.getInt("orderId")?.let { viewModel.fetchComplaintInfo(it) }
         binding.bntApplyComplaintChat.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.chatRoomFragment)
         }
@@ -39,7 +34,7 @@ class ComplaintdetailsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_cleaner).visibility =
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
             View.VISIBLE
     }
 }

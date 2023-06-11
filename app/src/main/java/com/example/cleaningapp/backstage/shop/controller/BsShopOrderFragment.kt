@@ -13,7 +13,7 @@ import com.example.cleaningapp.backstage.shop.ShopOrderAdapter
 import com.example.cleaningapp.backstage.shop.viewModel.BsShopOrdersViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopOrderBinding
 
-class BsShopOrderFragment : Fragment() {
+class BsShopOrderFragment : Fragment(),ShopOrderAdapter.onItemClickListener {
     private lateinit var binding: FragmentAlbBsShopOrderBinding
     val viewModel: BsShopOrdersViewModel by viewModels()
 
@@ -30,37 +30,52 @@ class BsShopOrderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
-                rvBsShopOrder.layoutManager = LinearLayoutManager(requireContext())
-                viewModel?.shopOrders?.observe(viewLifecycleOwner) {
-                    if (rvBsShopOrder.adapter == null) {
-                        rvBsShopOrder.adapter = ShopOrderAdapter(it)
-                    } else {
-                        (rvBsShopOrder.adapter as ShopOrderAdapter).updateShopOrders(it)
-                    }
+            rvBsShopOrder.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.shopOrders?.observe(viewLifecycleOwner) {
+                if (rvBsShopOrder.adapter == null) {
+                    rvBsShopOrder.adapter = ShopOrderAdapter(it)
+                } else {
+                    (rvBsShopOrder.adapter as ShopOrderAdapter).updateShopOrders(it)
                 }
-                svBsShopOrder.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    // 輸入的文字改變時呼叫
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        if (newText != null) {
-                            viewModel?.search(newText)
-                        }
-                        if (rvBsShopOrder.adapter != null && rvBsShopOrder.adapter?.itemCount == 0) {
-                            tvBsProductOrderNoResult.visibility = View.VISIBLE
-                        }else{
-                            tvBsProductOrderNoResult.visibility = View.GONE
-                        }
-                        return true
+            }
+            svBsShopOrder.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                // 輸入的文字改變時呼叫
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null) {
+                        viewModel?.search(newText)
                     }
-                    // 點擊虛擬鍵盤上的提交鈕時呼叫
-                    override fun onQueryTextSubmit(text: String): Boolean {
-                        return false
+                    if (rvBsShopOrder.adapter != null && rvBsShopOrder.adapter?.itemCount == 0) {
+                        tvBsProductOrderNoResult.visibility = View.VISIBLE
+                    } else {
+                        tvBsProductOrderNoResult.visibility = View.GONE
                     }
-                })
+                    return true
+                }
+
+                // 點擊虛擬鍵盤上的提交鈕時呼叫
+                override fun onQueryTextSubmit(text: String): Boolean {
+                    return false
+                }
+            })
             btnBsShopOrderProduct.setOnClickListener {
                 Navigation.findNavController(it).navigateUp()
             }
+            }
+
         }
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadOrderList()
     }
+
+    override fun onItemClick(shopOrderId: Int) {
+
+    }
+//    fun getMatchDataId(shopOrderId: Int): ShopOrderList?{
+//        val matchDataId = .find {  }
+//    }
+
 }
+
 
 

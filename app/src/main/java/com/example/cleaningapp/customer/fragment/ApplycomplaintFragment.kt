@@ -11,14 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.viewModel.ApplycomplaintViewModel
 import com.example.cleaningapp.databinding.FragmentVictorApplycomplaintBinding
 
 class ApplycomplaintFragment : Fragment() {
     private lateinit var binding: FragmentVictorApplycomplaintBinding
     private val viewModel: ApplycomplaintViewModel by viewModels()
-    private lateinit var order: Order
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +59,7 @@ class ApplycomplaintFragment : Fragment() {
                 }
             }
         }
+
     private fun initAppBarMenu() {
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

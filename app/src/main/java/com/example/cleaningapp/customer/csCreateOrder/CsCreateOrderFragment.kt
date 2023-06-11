@@ -23,7 +23,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
-import java.sql.Time
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -521,7 +520,7 @@ class CsCreateOrderFragment : Fragment() {
                         requireContext(),
                         { _, year, month, day ->
                             val order = viewModel?.order?.value
-                            order?.dateOrdered = java.sql.Date(year, month, day)
+                            order?.dateOrdered = java.sql.Date(year, month + 1, day)
                             viewModel?.order?.value = order
                         },
                         calendar.get(Calendar.YEAR),
@@ -546,7 +545,7 @@ class CsCreateOrderFragment : Fragment() {
                     requireContext(),
                     { _, hour, minute ->
                         val order = viewModel?.order?.value
-                        order?.timeOrderedStart = Time(hour, minute, 0)
+                        order?.timeOrderedStart = "${pad(hour)}:${pad(minute)}:00"
                         viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
@@ -561,7 +560,7 @@ class CsCreateOrderFragment : Fragment() {
                     requireContext(),
                     { _, hour, minute ->
                         val order = viewModel?.order?.value
-                        order?.timeOrderedEnd = Time(hour, minute, 0)
+                        order?.timeOrderedEnd = "${pad(hour)}:${pad(minute)}:00"
                         viewModel?.order?.value = order
                     },
                     calendar.get(Calendar.HOUR),
@@ -584,8 +583,8 @@ class CsCreateOrderFragment : Fragment() {
 
             // 選取優惠券
             llCoupon.setOnClickListener {
-                val originPrice = edtTxtCost.text.toString()
-                if (originPrice.isNotEmpty() && originPrice.toInt() == 0) {
+                val originalPrice = edtTxtCost.text.toString()
+                if (originalPrice.isNotEmpty() && originalPrice.toInt() == 0) {
                     Toast.makeText(
                         context,
                         getString(R.string.toast_csCreateOrder_keyInCost),
@@ -598,6 +597,7 @@ class CsCreateOrderFragment : Fragment() {
             }
 
             //  跳轉下一頁
+            //  新增判斷式!!
             btnCsCreateOrderNext.setOnClickListener {
                 viewModel?.order?.value?.let {
                     saveCreateOrderInfo()
@@ -674,5 +674,13 @@ class CsCreateOrderFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+    }
+
+    private fun pad(number: Int): String {
+        return if (number >= 10) {
+            number.toString()
+        } else {
+            "0$number"
+        }
     }
 }
