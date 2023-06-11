@@ -60,8 +60,8 @@ class CustomerActivity : AppCompatActivity() {
                     navController.navigate(R.id.historicalorderFragment)
                     true
                 }
-                R.id.csHomePageFragment -> {
-                    navController.navigate(R.id.csHomePageFragment)
+                R.id.csUserPageFragment -> {
+                    navController.navigate(R.id.csUserPageFragment)
                     true
                 }
                 else -> false

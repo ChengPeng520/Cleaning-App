@@ -10,7 +10,7 @@
     <string name="tv_login_empty">帳號或密碼不可空白</string>
     <string name="tv_login_fail">google登入失敗</string>
     <string name="btn_login_loginGoogle">以 Google 帳號登入</string>
-    <string name="tv_login_text">-------------- 或是第三方登入 -------------</string>
+    <string name="tv_login_text">-------------- 或使用第三方登入 -------------</string>
 
     <!--    signup-->
     <string name="edtTxt_signup_passwordcfm_hint">確認密碼:</string>
@@ -18,7 +18,7 @@
     <string name="edtTxt_signup_cancel"><u>取消</u></string>
     <string name="tv_signup_statusHint">選擇註冊用戶</string>
     <string name="tv_signup_wrongPW">密碼不一致</string>
-    <string name="tv_signup_text">-------------- 或是第三方註冊 -------------</string>
+    <string name="tv_signup_text">-------------- 或使用第三方註冊 -------------</string>
     <string name="btn_signup_signupGoogle">以 Google 帳號註冊</string>
     <string-array name="sp_signup_info_gender">
     <item>男</item>

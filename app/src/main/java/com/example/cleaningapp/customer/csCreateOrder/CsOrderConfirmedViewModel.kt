@@ -29,11 +29,10 @@ class CsOrderConfirmedViewModel : ViewModel() {
             method = "POST",
             reqBody = orderCreated?.let { EstablishOrder(it, sendPhotos(photo.value!!)) }
         )?.let {
-            Toast.makeText(view.context, "訂單建立完成", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(view)
                 .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
-        }
-        Toast.makeText(view.context, "訂單建立失敗", Toast.LENGTH_SHORT).show()
+        }?:
+        Toast.makeText(view.context, "訂單建立失敗，請稍後再試", Toast.LENGTH_SHORT).show()
     }
 
     fun convert(value: String): String {

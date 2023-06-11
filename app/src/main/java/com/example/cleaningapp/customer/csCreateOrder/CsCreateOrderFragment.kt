@@ -600,7 +600,6 @@ class CsCreateOrderFragment : Fragment() {
             }
 
             //  跳轉下一頁
-            //  新增判斷式!!
             btnCsCreateOrderNext.setOnClickListener {
                 val livingRoom =
                     if (binding.edtTxtCsCreateOrderLivingroomSize.text.toString().isNotBlank()) {
