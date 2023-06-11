@@ -172,30 +172,4 @@ class BsUserMainDetailViewModel : ViewModel() {
             }
         }
     }
-
-    /**
-     * 連線修改個人資料
-     */
-//    fun editMemberInfo(view: View) {
-//        if (user.value?.customerId == null && user.value?.backstageId == null) {
-//            val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(user.value!!)
-//            requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-//                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-//                method = "PUT",
-//                uiState
-//            )?.let {
-//                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
-//            }
-//        } else if (user.value?.cleanerId == null && user.value?.backstageId == null) {
-//            val uistate = CustomerSharePreferencesUtils.anyToApiCustomerModel(user.value!!)
-//            requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-//                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
-//                method = "PUT",
-//                uistate
-//            )?.let {
-//                Navigation.findNavController(view).navigate(R.id.bsUserSuspendFragment)
-//            }
-//        }
-//
-//    }
 }

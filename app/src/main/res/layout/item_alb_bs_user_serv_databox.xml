@@ -38,8 +38,7 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    app:srcCompat="@drawable/alb_unread_circle" />
+                    android:layout_marginLeft="10dp"/>
 
                 <ImageView
                     android:id="@+id/iv_bs_user_serv_databox_avatar"

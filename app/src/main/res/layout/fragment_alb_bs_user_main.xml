@@ -17,11 +17,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_user"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/textPrimary"
             android:text="@string/btn_bs_user_main_user"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
@@ -31,33 +32,36 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_verify"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_check"
             android:textColor="@color/textPrimary"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_main_user"
             app:layout_constraintStart_toEndOf="@+id/btn_bs_user_main_user"
             app:layout_constraintTop_toTopOf="@+id/btn_bs_user_main_user" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_suspend"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_suspend"
             android:textColor="@color/textPrimary"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_main_verify"
             app:layout_constraintStart_toEndOf="@+id/btn_bs_user_main_verify"
             app:layout_constraintTop_toTopOf="@+id/btn_bs_user_main_verify" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_user_main_service"
-            android:layout_width="55dp"
-            android:layout_height="42dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/white"
             android:text="@string/btn_bs_user_main_service"
             android:textColor="@color/textPrimary"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_bs_user_main_suspend"
             app:layout_constraintStart_toEndOf="@+id/btn_bs_user_main_suspend"
             app:layout_constraintTop_toTopOf="@+id/btn_bs_user_main_suspend" />
@@ -76,22 +80,23 @@
 
             <LinearLayout
                 android:id="@+id/ll_bs_user_main_searchbar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 
                 <SearchView
                     android:id="@+id/sv_bs_user_main"
-                    android:layout_width="235dp"
-                    android:layout_height="20dp"
+                    android:layout_width="270dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    app:iconifiedByDefault="false" />
+                    android:background="@drawable/ciyi_shape_search"
+                    app:iconifiedByDefault="false"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_bs_user_main_add"
-                    android:layout_width="54dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:textSize="16sp"
                     android:backgroundTint="@color/white"
                     android:text="@string/btn_bs_user_main_add"
                     android:textColor="@color/black" />
@@ -153,7 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/tv_bs_user_main_no_data"/>
+                android:text="@string/tv_bs_user_main_no_data" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_bs_user_main"

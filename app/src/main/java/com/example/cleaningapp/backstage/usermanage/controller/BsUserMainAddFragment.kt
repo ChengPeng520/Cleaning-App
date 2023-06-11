@@ -42,7 +42,6 @@ class BsUserMainAddFragment : Fragment() {
                 if (!inputCheck()) {
                     return@setOnClickListener
                 }
-                //TODO error: lateinit property sharedPreferences has not been initialized
                 viewModel?.backstageRegister()?.let {
                     if (it) {
                         Navigation.findNavController(view).navigate(R.id.bsUserMainFragment)

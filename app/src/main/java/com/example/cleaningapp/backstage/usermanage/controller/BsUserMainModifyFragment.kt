@@ -41,6 +41,18 @@ class BsUserMainModifyFragment : Fragment() {
             }
 
             with(binding) {
+                if (viewModel?.user?.value?.customerId != null){
+                    llBsUserMainModifyPermission.visibility = View.GONE
+                }
+                if (viewModel?.user?.value?.backstageId != null){
+                    llBsUserMainModifyGender.visibility = View.GONE
+                    ivBsUserMainModifyAvatar.visibility = View.GONE
+                    llBsUserMainModifyPhone.visibility = View.GONE
+                    tvBsUserMainModifyIntroTi.visibility = View.GONE
+                    edtTxtBsUserMainModifyIntro.visibility = View.GONE
+                    llBsUserMainModifyPermission.visibility = View.GONE
+                }
+
                 val spinner: Spinner = view.findViewById(R.id.spinner_bs_user_main_modify_gender)
                 // 創建選項內容
                 val data = arrayOf("男", "女")

@@ -62,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -84,6 +85,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -104,8 +106,10 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bs_user_verify_detail_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -126,8 +130,10 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bs_user_verify_detail_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -150,6 +156,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -172,6 +179,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -194,6 +202,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -214,8 +223,10 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bs_user_verify_detail_permission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -248,6 +259,7 @@
                     android:id="@+id/tv_bs_user_verify_detail_intro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:text="@{viewModel.user.introduction}"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp" />
@@ -255,7 +267,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -288,6 +300,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_idfront"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
+                    android:layout_marginBottom="10dp"
                     android:imageBitmap="@{viewModel.user.idCardFront}" />
 
                 <TextView
@@ -303,6 +316,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_idback"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
+                    android:layout_marginBottom="10dp"
                     android:imageBitmap="@{viewModel.user.idCardBack}" />
 
                 <TextView
@@ -318,6 +332,7 @@
                     android:id="@+id/iv_bs_user_verify_detail_criminalrecord"
                     android:layout_width="264dp"
                     android:layout_height="142dp"
+                    android:layout_marginBottom="10dp"
                     android:imageBitmap="@{viewModel.user.crc}" />
 
             </LinearLayout>
