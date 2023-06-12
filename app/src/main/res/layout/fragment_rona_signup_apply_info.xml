@@ -331,6 +331,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:cropToPadding="false"
+                    android:background="@drawable/rona_upload_goodperson"
                     android:imageBitmap="@{viewModel.crc}"
                     android:scaleType="fitStart"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -338,16 +339,7 @@
                     app:layout_constraintStart_toStartOf="@+id/iv_suInfo_id1"
                     app:layout_constraintTop_toBottomOf="@+id/textView58" />
 
-                <TextView
-                    android:id="@+id/tv_suInfo_goodPerson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="良民證.jpg"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_suInfo_goodPerson"
-                    app:layout_constraintTop_toTopOf="parent" />
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

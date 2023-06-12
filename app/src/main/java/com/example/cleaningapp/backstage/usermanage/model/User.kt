@@ -24,10 +24,16 @@ data class User(
     var idCardBack: Bitmap? = null,
     var crc: Bitmap? = null,
 ) : Serializable {
-//    val userPhoto: Bitmap?
-//        get() {
-//            return ImageUtils.bytesToBitmap(photo!!)
-//        }
+    var accountId: Int? = null
+        get() {
+        if (cleanerId != null){
+            return cleanerId
+        }
+        if (customerId != null){
+            return customerId
+        }
+        return null
+    }
 
     val userGender: String
         get() {
@@ -38,28 +44,5 @@ data class User(
             }
         }
 
-//    val userIdCardFront: Bitmap?
-//        get() {
-//            idCardFront?.let {
-//                return ImageUtils.bytesToBitmap(it)
-//            }
-//            return null
-//        }
-//
-//    val userIdCardBack: Bitmap?
-//        get() {
-//            idCardBack?.let {
-//                return ImageUtils.bytesToBitmap(it)
-//            }
-//            return null
-//        }
-//
-//    val userCrc: Bitmap?
-//        get() {
-//            idCardBack?.let {
-//                return ImageUtils.bytesToBitmap(it)
-//            }
-//            return null
-//        }
 }
 

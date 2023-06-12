@@ -9,9 +9,6 @@
         <variable
             name="viewModel"
             type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel" />
-        <variable
-            name="userViewModel"
-            type="com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +47,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="7dp"
                 android:layout_marginEnd="9dp"
-                app:imageResource="@{userViewModel.chat.avatar}" />
+                app:imageBitmap="@{viewModel.chatroom.photo}" />
 
             <LinearLayout
                 android:layout_width="197dp"
@@ -63,16 +60,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@{userViewModel.chat.email}"
+                    android:text="@{viewModel.chatroom.email}"
                     android:textColor="@color/textPrimary" />
 
-                <TextView
-                    android:id="@+id/tv_bs_user_serv_chat_name_ex"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@{userViewModel.chat.name}"
-                    android:textColor="@color/textPrimary" />
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_bs_user_serv_chat_name_ex"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:text="@{viewModel.chatroom.name}"-->
+<!--                    android:textColor="@color/textPrimary" />-->
             </LinearLayout>
 
 
@@ -82,22 +79,21 @@
             android:id="@+id/tv_bs_user_serv_chat_query"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="24dp"
             android:text="@string/tv_bs_user_serv_chat_query"
             android:textColor="@color/noActionGray"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_bs_user_serv_chat_close"
-            app:layout_constraintEnd_toStartOf="@+id/tv_bs_user_serv_chat_close"
-            app:layout_constraintTop_toTopOf="@+id/tv_bs_user_serv_chat_close" />
-
-        <TextView
-            android:id="@+id/tv_bs_user_serv_chat_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="@string/tv_bs_user_serv_chat_close"
-            android:textColor="@color/colorBottomBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_bs_user_serv_chat_ti" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_bs_user_serv_chat_close"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="24dp"-->
+<!--            android:text="@string/tv_bs_user_serv_chat_close"-->
+<!--            android:textColor="@color/colorBottomBar"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ll_bs_user_serv_chat_ti" />-->
 
         <View
             android:id="@+id/divider12"

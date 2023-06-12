@@ -45,6 +45,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:layout_gravity="center_vertical"
+                    app:imageBitmap="@{viewModel.chat.photo}"
                     android:layout_marginLeft="7dp"
                     android:layout_marginRight="9dp" />
 
@@ -58,19 +59,23 @@
                         android:id="@+id/tv_bs_user_serv_databox_email_ex"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="@{viewModel.chat.email}"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/textPrimary" />
 
                     <TextView
                         android:id="@+id/tv_bs_user_serv_databox_text_ex"
                         android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="@{viewModel.chat.text}"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/textPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:orientation="vertical">
@@ -78,7 +83,9 @@
                     <TextView
                         android:id="@+id/tv_bs_user_serv_databox_time_ex"
                         android:layout_width="wrap_content"
+                        android:textSize="16sp"
                         android:layout_height="wrap_content"
+                        android:text="@{viewModel.chat.time}"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/textPrimary" />
 
@@ -87,7 +94,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        tools:text="@string/tv_bs_user_serv_databox_closed"
                         android:textColor="@color/textPrimary" />
                 </LinearLayout>
 

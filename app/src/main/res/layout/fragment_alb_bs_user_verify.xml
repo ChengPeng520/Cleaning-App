@@ -78,13 +78,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_bs_user_verify_user">
 
-            <SearchView
-                android:id="@+id/sv_bs_user_verify_main"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/ciyi_shape_search"
-                app:iconifiedByDefault="false" />
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <SearchView
+                    android:id="@+id/sv_bs_user_verify_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ciyi_shape_search"
+                    app:iconifiedByDefault="false" />
+            </LinearLayout>
 
             <View
                 android:id="@+id/divider11"
@@ -95,8 +101,9 @@
             <LinearLayout
                 android:id="@+id/ll_bs_user_verify_ti"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
 
                 <TextView
                     android:id="@+id/tv_bs_user_verify_email_ti"
