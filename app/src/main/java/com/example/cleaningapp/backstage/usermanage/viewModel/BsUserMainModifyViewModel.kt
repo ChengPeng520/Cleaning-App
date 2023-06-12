@@ -110,6 +110,7 @@ class BsUserMainModifyViewModel : ViewModel() {
                         gender = it.gender,
                         introduction = it.introduction,
                         photo = null,
+                        suspend = it.suspend,
                         password = null
                     )
                 )?.let {
@@ -131,7 +132,9 @@ class BsUserMainModifyViewModel : ViewModel() {
                         photo = null,
                         password = null,
                         identifyNumber = it.identifyNumber,
+                        verify = it.verify,
                         idCardFront = null,
+                        suspend = it.suspend,
                         idCardBack = null,
                         crc = null
                     )
