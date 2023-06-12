@@ -68,7 +68,6 @@ class CleanerActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == this.requestCode) {
-            viewModel.setResult(false)
             when (resultCode) {
                 Activity.RESULT_OK -> {
                     data?.let {
@@ -89,5 +88,6 @@ class CleanerActivity : AppCompatActivity() {
                 else -> {}
             }
         }
+        viewModel.setResult(false)
     }
 }

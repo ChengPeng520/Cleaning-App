@@ -54,7 +54,7 @@ class ApplycomplaintViewModel : ViewModel() {
                     cleanerId = order.value!!.cleanerId,
                     commentCleaner = order.value!!.commentCleaner,
                     stars = order.value!!.stars,
-                    status = 7
+                    status = 5
                 ), sendPhotos()
             )
         )?.let {

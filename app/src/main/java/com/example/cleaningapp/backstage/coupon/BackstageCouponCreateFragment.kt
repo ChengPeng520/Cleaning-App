@@ -49,10 +49,10 @@ class BackstageCouponCreateFragment : Fragment() {
                 //判斷輸入discount的discountType類型,如果是輸入edTextBsCouponDiscount 則為類型顯示false,Percentage則是true
                 if (edTextBsCoupnDiscount.text.isNotEmpty()) {
                     coupon?.discount = edTextBsCoupnDiscount.text.toString().toDouble()
-                    coupon?.discountType = false
+                    coupon?.discountType = true
                 } else if (edTextBsCouponPercentage.text.isNotEmpty()) {
                     coupon?.discount = edTextBsCouponPercentage.text.toString().toDouble()
-                    coupon?.discountType = true
+                    coupon?.discountType = false
                 }
                 viewModel?.coupon?.value = coupon
                 viewModel?.couponAdd()?.let { result ->

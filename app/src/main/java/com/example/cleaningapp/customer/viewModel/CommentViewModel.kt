@@ -25,7 +25,7 @@ class CommentViewModel : ViewModel() {
                 Order(
                     stars = stars.value!!,
                     commentCleaner = content.value!!,
-                    status = 5
+                    status = 8
                 ), emptyList()
             )
         )?.let {

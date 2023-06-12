@@ -11,7 +11,7 @@ import java.sql.Time
 data class Order(
     val orderId: Int = 0,
     val customerId: Int = 0,
-    val cleanerId: Int = 0,
+    val cleanerId: Int? = null,
     val cleanerName: String = "",
     val areaCity: String = "",
     val areaDistrict: String = "",
