@@ -31,7 +31,7 @@ class UserServiceChatAdapter :
     class ItemViewHolder(private val itemBinding: ItemAlbBsUserServChatTxtBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: ChatItem, layoutWidth: Int) {
-            if (item.customerId == 0 || item.cleanerId == 0) {
+            if (item.customerId == 0 && item.cleanerId == 0) {
                 itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
                 itemBinding.tvChatroomTalkTo.text = item.text
                 itemBinding.tvChatroomTalkTo.maxWidth = layoutWidth
