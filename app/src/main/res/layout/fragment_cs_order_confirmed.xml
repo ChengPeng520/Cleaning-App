@@ -81,6 +81,7 @@
                             android:layout_weight="8"
                             android:gravity="center_vertical"
                             android:text="@{String.valueOf(viewModel.orderCreated.dateOrdered)}"
+                            android:textColor="@color/black"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -120,6 +121,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_weight="8"
                             android:text='@{viewModel.convert(viewModel.orderCreated.timeStart)+"~"+viewModel.convert(viewModel.orderCreated.timeEnd)}'
+                            android:textColor="@color/black"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -160,6 +162,7 @@
                             android:layout_weight="8"
                             android:gravity="center_vertical"
                             android:text="@{viewModel.orderCreated.address}"
+                            android:textColor="@color/black"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -198,6 +201,7 @@
                             android:layout_weight="8"
                             android:inputType="textMultiLine"
                             android:text="@{viewModel.orderCreated.cleaningRange}"
+                            android:textColor="@color/black"
                             tools:text="TextView" />
 
                     </LinearLayout>
@@ -239,6 +243,7 @@
                         android:inputType="textMultiLine"
                         android:lineSpacingExtra="30px"
                         android:text="@{viewModel.orderCreated.remarkDefault}"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -408,11 +413,11 @@
             style="@style/customerBtnSubmitStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:onClick="@{viewModel::orderEstablish}"
             android:text="@string/btn_cs_confirmAndSubmit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{viewModel::orderEstablish}"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -48,6 +48,17 @@ class CsHomePageFragment : Fragment() {
             flCsHomeGoCreateOrder.setOnClickListener {
                 findNavController().navigate(R.id.action_csHomePageFragment_to_csCreateOrderFragment)
             }
+            flCsHomeOrderTB.setOnClickListener {
+                viewModel?.order?.value?.let {
+                    val bundle = Bundle()
+                    bundle.putInt("orderId", it.orderId)
+                    when (it.status) {
+                        1 -> findNavController().navigate(R.id.orderprogressFragment, bundle)
+                        2 -> findNavController().navigate(R.id.orderingFragment, bundle)
+                        3 -> findNavController().navigate(R.id.ordercompletedFragment, bundle)
+                    }
+                }
+            }
             rvCsHomePageComment.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.cleaners?.observe(viewLifecycleOwner) { cleaners ->
                 if (rvCsHomePageComment.adapter == null) {

@@ -126,9 +126,16 @@ data class CreateOrder(
         get() {
             val stringBuilder = StringBuilder()
             if (livingRoomSize != 0) stringBuilder.append("客廳${livingRoomSize}坪")
-            if (kitchenSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
-            if (bathRoomSize != 0) stringBuilder.append("\n廁所${bathRoomSize}坪")
-            if (roomSize != 0) stringBuilder.append("\n房間${roomSize}坪")
+            if (kitchenSize != 0 && livingRoomSize != 0) stringBuilder.append("\n廚房${kitchenSize}坪")
+            else if (kitchenSize != 0) stringBuilder.append("廚房${kitchenSize}坪")
+            if (bathRoomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0)) stringBuilder.append(
+                "\n廁所${bathRoomSize}坪"
+            )
+            else if (bathRoomSize != 0) stringBuilder.append("/n廁所${bathRoomSize}坪")
+            if (roomSize != 0 && (livingRoomSize != 0 || kitchenSize != 0 || bathRoomSize != 0)) stringBuilder.append(
+                "\n房間${roomSize}坪"
+            )
+            else if (roomSize != 0) stringBuilder.append("房間${roomSize}坪")
             return stringBuilder.toString()
         }
     val remarkDefault: String
@@ -153,7 +160,8 @@ data class OrderRemind(
     var areaDistrict: String = "",
     var dateOrdered: Date? = null,
     var timeOrderedStart: Time? = null,
-    var timeOrderedEnd: Time? = null
+    var timeOrderedEnd: Time? = null,
+    var status: Int = 0
 ) {
     val orderDate: String
         get() {

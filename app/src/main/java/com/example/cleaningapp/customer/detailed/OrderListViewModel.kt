@@ -13,7 +13,6 @@ class OrderListViewModel : ViewModel() {
             method = "GET",
         )?.let {
             orderItem.value = it
-//            Log.d("OrderList", "Fetched orders: $it")
         }
     }
 }

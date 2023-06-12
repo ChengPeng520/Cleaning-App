@@ -147,7 +147,6 @@ class OrderConductFragment : Fragment() {
                 }
             }
         }
-
     }
 
     override fun onResume() {

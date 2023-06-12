@@ -30,7 +30,7 @@ class OrderAdapter(private var orders: List<Order>) :
                     )
                     itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_black)
                 }
-                1, 2, 3, 4, 5, 6, 7 -> {
+                1, 2, 3, 4, 5, 6, 7, 8 -> {
                     // 状态为1、2、3、4、5、6、7，表示其他状态
                     itemBinding.statusTextView.text = getStatusText(order.status)
                     itemBinding.statusTextView.setTextColor(
