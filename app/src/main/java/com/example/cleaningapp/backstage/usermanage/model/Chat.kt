@@ -8,22 +8,12 @@ data class Chat(
 
 data class ChatItem(
     val msgCustBackId: Int = 0,
-    val customerId: Int? = null,
+    val customerId: Int = 0,
     val msgClnBackId: Int = 0,
-    val cleanerId: Int? = null,
+    val cleanerId: Int = 0,
     val backstageId: Int = 1,
     val text: String = ""
-) {
-    val id: Int
-        get() {
-            TODO()
-        }
-    val fromId: Int
-        get() {
-            TODO()
-        }
-
-}
+)
 
 data class MsgCustBack(
     val msgCustBackId: Int,

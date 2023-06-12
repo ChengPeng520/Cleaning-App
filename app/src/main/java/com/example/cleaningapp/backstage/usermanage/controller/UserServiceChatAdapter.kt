@@ -31,7 +31,7 @@ class UserServiceChatAdapter :
     class ItemViewHolder(private val itemBinding: ItemAlbBsUserServChatTxtBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: ChatItem, layoutWidth: Int) {
-            if (item.fromId == 0) {
+            if (item.customerId == 0 || item.cleanerId == 0) {
                 itemBinding.tvChatroomTalkTo.visibility = View.VISIBLE
                 itemBinding.tvChatroomTalkTo.text = item.text
                 itemBinding.tvChatroomTalkTo.maxWidth = layoutWidth
@@ -48,7 +48,7 @@ class UserServiceChatAdapter :
             oldItem: ChatItem,
             newItem: ChatItem
         ): Boolean {
-            return oldItem.id == newItem.id
+            return (oldItem.msgCustBackId == newItem.msgCustBackId) || (oldItem.msgClnBackId == newItem.msgClnBackId)
         }
 
         override fun areContentsTheSame(

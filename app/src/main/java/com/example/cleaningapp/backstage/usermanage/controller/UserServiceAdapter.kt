@@ -3,21 +3,14 @@ package com.example.cleaningapp.backstage.usermanage.controller
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.*
-import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceDetailViewModel
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceViewModel
-import com.example.cleaningapp.cleaner.uistate.ChatroomItemUiState
-import com.example.cleaningapp.databinding.ItemAlbBsUserServChatTxtBinding
 import com.example.cleaningapp.databinding.ItemAlbBsUserServDataboxBinding
-import com.example.cleaningapp.databinding.ItemFatrueiChatroomTxtBinding
 
 /**
  * 聊天室列表所需的Adapter
@@ -58,7 +51,9 @@ class UserServiceAdapter(private var chats: List<ChatData>) :
             // 將欲顯示的friend物件指派給LiveData，就會自動更新layout檔案的view顯示
             itemViewBinding.viewModel?.chat?.value = chatroom
             val bundle = Bundle()
-            chatroom.chatroomId?.let { bundle.putInt("chatroomId", it) }
+            chatroom.let { bundle.putSerializable("chatroom", it) }
+            chatroom.customerId?.let { bundle.putInt("customerId", it) }
+            chatroom.cleanerId?.let { bundle.putInt("cleanerId", it) }
             bundle.putSerializable("chatroom", chatroom)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
