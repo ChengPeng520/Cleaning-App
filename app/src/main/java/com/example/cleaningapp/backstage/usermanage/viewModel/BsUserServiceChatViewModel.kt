@@ -17,9 +17,9 @@ import com.google.gson.reflect.TypeToken
 
 
 class BsUserServiceChatViewModel : ViewModel() {
-    val chat: MutableLiveData<Chat> by lazy { MutableLiveData<Chat>() }
-    val chatroom: MutableLiveData<Chatroom> by lazy { MutableLiveData<Chatroom>() }
-    var cleanerId : Int = 0
+    val chatroom: MutableLiveData<ChatData> by lazy { MutableLiveData<ChatData>() }
+    var cleanerId: Int? = chatroom.value?.cleanerId
+    var customerId: Int? = chatroom.value?.customerId
 
     /*TODO:如果聊天室使用firebase連線,先建立firebase的資料庫連線, 取的 database"chatroom"的路徑
        private val database :FirebaseDataBase = FirebaseDataBase.getInstance()
@@ -31,31 +31,70 @@ class BsUserServiceChatViewModel : ViewModel() {
     val uiState: LiveData<Chat> = _uiState
     val commitText = MutableLiveData("")
 
+    init {
+        fetchChatRoomTalkList()
+    }
+
+    /**
+     * 連線取得聊天列
+     */
     fun fetchChatRoomTalkList() {
-        requestTask<List<ChatItem>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/$cleanerId",
-            method = "GET",
-            respBodyType = object : TypeToken<List<ChatItem>>() {}.type
-        )?.let {
-            _uiState.value = Chat(it)
+        if (chatroom.value?.chatCustBackId != null) {
+            // 顧客x後台
+            requestTask<List<ChatItem>>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack/$customerId",
+                method = "GET",
+                respBodyType = object : TypeToken<List<ChatItem>>() {}.type
+            )?.let {
+                _uiState.value = Chat(it)
+            }
+        } else if (chatroom.value?.chatClnBackId != null) {
+            // 清潔x後台
+            requestTask<List<ChatItem>>(
+                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/$cleanerId",
+                method = "GET",
+                respBodyType = object : TypeToken<List<ChatItem>>() {}.type
+            )?.let {
+                _uiState.value = Chat(it)
+            }
         }
     }
 
     fun commitText() {
-        if (commitText.value.toString().isNotEmpty()) {
-            requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
-                method = "POST",
-                reqBody = ChatItem(
-                    id = 1,
-                    fromId = 1,
-                    toId = 0,
-                    text = commitText.value!!
-                )
-            )?.let {
-                if (it.get("result").toString().toBoolean()){
-                    fetchChatRoomTalkList()
-                    commitText.value = ""
+        if (chatroom.value?.chatCustBackId != null) {
+            // 顧客x後台
+            if (commitText.value.toString().isNotEmpty()) {
+                requestTask<JsonObject>(
+                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack",
+                    method = "POST",
+                    reqBody = ChatItem(
+                        cleanerId = null,
+                        customerId = customerId,
+                        text = commitText.value!!
+                    )
+                )?.let {
+                    if (it.get("result").toString().toBoolean()) {
+                        fetchChatRoomTalkList()
+                        commitText.value = ""
+                    }
+                }
+            }
+        } else if (chatroom.value?.chatClnBackId != null) {
+            // 清潔x後台
+            if (commitText.value.toString().isNotEmpty()) {
+                requestTask<JsonObject>(
+                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+                    method = "POST",
+                    reqBody = ChatItem(
+                        cleanerId = cleanerId,
+                        customerId = null,
+                        text = commitText.value!!
+                    )
+                )?.let {
+                    if (it.get("result").toString().toBoolean()) {
+                        fetchChatRoomTalkList()
+                        commitText.value = ""
+                    }
                 }
             }
         }

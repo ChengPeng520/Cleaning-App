@@ -15,10 +15,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.usermanage.model.Chat
-import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
-import com.example.cleaningapp.backstage.usermanage.model.Chatroom
-import com.example.cleaningapp.backstage.usermanage.model.Member
+import com.example.cleaningapp.backstage.usermanage.model.*
 import com.example.cleaningapp.backstage.usermanage.viewModel.BsUserServiceChatViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsUserServiceChatBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -69,15 +66,24 @@ class BsUserServiceChatFragment : Fragment() {
          * 從ServiceAdapter接過來的bundle
          */
         arguments?.let { bundle ->
-            bundle.getInt("cleanerId")?.let {
-                binding.viewModel?.cleanerId = it
+            bundle.getSerializable("chatroom").let {
+                viewModel.chatroom.value = it as ChatData?
+            }
+        }
+
+        /**
+         * 從ServiceAdapter接過來的bundle
+         */
+        arguments?.let { bundle ->
+            bundle.getInt("chatroomId").let {
+                viewModel.chatroom.value?.chatroomId = it
             }
 
             with(binding) {
                 //點選查詢button跳轉,bundle"chat"的參數(customerId 或 cleanerId)
                 tvBsUserServChatQuery.setOnClickListener {
                     val bundle = Bundle()
-                    bundle.putSerializable("chat", binding.viewModel?.chatroom?.value)
+                    viewModel?.chatroom?.value?.accountId?.let { chat -> bundle.putInt("chat", chat) }
                     Navigation.findNavController(view)
                         .navigate(R.id.bsUserMainDetailFragment, bundle)
                 }
@@ -85,14 +91,14 @@ class BsUserServiceChatFragment : Fragment() {
                 ivBsUserServChatBack.setOnClickListener {
                     Navigation.findNavController(it).popBackStack()
                 }
-                tvBsUserServChatClose.setOnClickListener {
-                    //TODO:已結案點選將傳回後端作標記,此Id已結案,再傳回到客服前台的recycle view項目標記已結案
-                    val chatroom = binding.viewModel?.chatroom?.value
-                    chatroom?.let {
-                        //傳送請求後端,標記chatroom已結案
-                    }
-                    Navigation.findNavController(it).popBackStack()
-                }
+//                tvBsUserServChatClose.setOnClickListener {
+//                    //TODO:已結案點選將傳回後端作標記,此Id已結案,再傳回到客服前台的recycle view項目標記已結案
+//                    val chatroom = binding.viewModel?.chatroom?.value
+//                    chatroom?.let {
+//                        //傳送請求後端,標記chatroom已結案
+//                    }
+//                    Navigation.findNavController(it).popBackStack()
+//                }
 
             }
         }

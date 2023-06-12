@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.usermanage.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
+import com.example.cleaningapp.backstage.usermanage.model.ChatData
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -11,11 +12,11 @@ import com.google.gson.reflect.TypeToken
  */
 class BsUserServiceViewModel : ViewModel() {
     //原始聊天室列表
-    private var chatList = listOf<ChatClnBack>()
+    private var chatList = listOf<ChatData>()
 
     // 受監控的LiveData，一旦指派新值就會更新使用者列表畫面
-    val chats: MutableLiveData<List<ChatClnBack>> by lazy { MutableLiveData<List<ChatClnBack>>() }
-    val chat: MutableLiveData<ChatClnBack> by lazy { MutableLiveData<ChatClnBack>() }
+    val chats: MutableLiveData<List<ChatData>> by lazy { MutableLiveData<List<ChatData>>() }
+    val chat: MutableLiveData<ChatData> by lazy { MutableLiveData<ChatData>() }
 
     init {
         loadChatList()
@@ -25,10 +26,10 @@ class BsUserServiceViewModel : ViewModel() {
      * 連線後端取得聊天室列表
      */
     private fun loadChatList() {
-        requestTask<List<ChatClnBack>>(
+        requestTask<List<ChatData>>(
             url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
             method = "GET",
-            respBodyType = object : TypeToken<List<ChatClnBack>>() {}.type
+            respBodyType = object : TypeToken<List<ChatData>>() {}.type
         )?.let {
             chats.value = it
             chatList = it
@@ -43,10 +44,10 @@ class BsUserServiceViewModel : ViewModel() {
         if (newText == null || newText.isEmpty()) {
             chats.value = chatList
         } else {
-            val searchChatList = mutableListOf<ChatClnBack>()
+            val searchChatList = mutableListOf<ChatData>()
             chatList.forEach { chat ->
-                if (chat.chatClnBackId.toString().contains(newText, true) ||
-                    chat.timeCreate.toString().contains(newText, true)
+                if (chat.email!!.contains(newText, true) ||
+                    chat.createTime.contains(newText, true)
                 ) {
                     searchChatList.add(chat)
                 }
