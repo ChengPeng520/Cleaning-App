@@ -50,12 +50,12 @@
     <string name="tv_csCreateOrder_district">地區：</string>
     <string name="tv_csCreateOrder_time">請選取您的打掃時段：</string>
     <string name="txt_address">請輸入地址</string>
-    <string name="txt_date">日期：</string>
+    <string name="txt_date">日　　期：</string>
     <string name="tv_timeBegin">起始時間：</string>
     <string name="tv_timeEnd">結束時間：</string>
     <string name="tv_csCreateOrder_pickCleanArea">請選取您的打掃區域(可複選) ：</string>
     <string name="txt_tools">請填寫您有的清潔工具及其他需求：</string>
-    <string name="txt_cost">金額：</string>
+    <string name="txt_cost">金　額：</string>
     <string name="tv_csOrder_coupon">優惠券：</string>
     <string name="txt_pickCoupon">選取優惠劵</string>
     <string name="chk_csCreateOrder_livingroom">客廳</string>
@@ -75,12 +75,12 @@
     <string name="txt_oderConfirmed">確認訂單</string>
     <string name="tv_csOrderConfirmed_date">打掃日期：</string>
     <string name="tv_csOrderConfirmed_time">打掃時數：</string>
-    <string name="tv_csOrderConfirmed_address">地址：</string>
+    <string name="tv_csOrderConfirmed_address">地　　址：</string>
     <string name="tv_csOrderConfirmed_area">打掃區域：</string>
     <string name="tv_csOrderConfirmed_area2">客廳： %s坪\n廚房： %s坪\n廁所： %s坪\n房間： %s坪</string>
     <string name="tv_csOderConfirmedTools">清潔工具及其他需求：</string>
     <string name="btn_cs_confirmAndSubmit">確認送出</string>
-    <string name="tv_csOrderConfirmed_cost">金額：</string>
+    <string name="tv_csOrderConfirmed_cost">金　額：</string>
     <string name="tv_csOrderConfirmed_charge">平台費：</string>
     <string name="tv_csOrderConfirmed_total">總金額：</string>
 
@@ -88,10 +88,10 @@
     <string name="txt_profile">個人資料</string>
     <string name="txt_seeCoupon">查看優惠券</string>
     <string name="txt_csUserPage_logOut">登出</string>
-    <string name="tv_csProfile_name">姓名：</string>
+    <string name="tv_csProfile_name">姓　　名：</string>
     <string name="tv_csProfile_phoneNumber">手機號碼：</string>
     <string name="tv_csProfile_address">詳細地址：</string>
-    <string name="tv_csProfile_gender">性別：</string>
+    <string name="tv_csProfile_gender">性　　別：</string>
     <string name="tv_csProfile_selfIntro">自我介紹：</string>
     <string name="btn_cs_modify">修改</string>
     <string name="txt_csProfile_seeProfile">查看個人資料</string>

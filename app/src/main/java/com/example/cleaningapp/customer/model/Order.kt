@@ -82,7 +82,7 @@ data class CreateOrder(
     var kitchenSize: Int = 0,
     var bathRoomSize: Int = 0,
     var roomSize: Int = 0,
-    var remark: String = "",
+    var remark: String? = null,
     val customerCouponId: Int? = null,
     var couponDiscount: Int = 0,
     var originalPrice: Int = 0,
@@ -130,6 +130,13 @@ data class CreateOrder(
             if (bathRoomSize != 0) stringBuilder.append("\n廁所${bathRoomSize}坪")
             if (roomSize != 0) stringBuilder.append("\n房間${roomSize}坪")
             return stringBuilder.toString()
+        }
+    val remarkDefault: String
+        get() {
+            remark?.let {
+                return it
+            }
+            return "無"
         }
 }
 
