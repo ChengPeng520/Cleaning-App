@@ -30,16 +30,7 @@ class CsViewCouponViewModel : ViewModel() {
         }
     }
 
-//    fun customerUseCoupon(customerCoupon: CustomerCoupon): Boolean {
-//        requestTask<JsonObject>(
-//            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
-//            "GET",
-//            reqBody = customerCoupon
-//        )?.let {
-//            val result = it["result"].toString().toBoolean()
-//            if (result) fetchCustomerCoupons()
-//            return result
-//        }
-//        return false
-//    }
+    fun convert(value: String): String {
+        return if (value.isNotEmpty()) value.substring(0, 5) else ""
+    }
 }

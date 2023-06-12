@@ -42,7 +42,7 @@ class SignupMemberInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
-        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "會員填寫資料"
+        requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "會員資料填寫"
         with(binding) {
             ivMemInfoBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()

@@ -32,6 +32,6 @@ class OrderUtil {
 
     data class InsertOrder(
         val order: Order,
-        val photo: List<ByteArray>?
+        val photos: List<ByteArray>?
     )
 }

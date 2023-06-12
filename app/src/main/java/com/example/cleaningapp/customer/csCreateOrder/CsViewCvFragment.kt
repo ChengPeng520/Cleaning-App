@@ -33,7 +33,7 @@ class CsViewCvFragment : Fragment() {
         activityViewModel.resultLiveData.observe(viewLifecycleOwner) {
             if (it) {
                 if (viewModel.checkout()) {
-//                    findNavController().navigate()
+                    findNavController().navigate(R.id.action_csViewCvFragment_to_csOrderPaymentDoneFragment)
                 }
             }
         }
