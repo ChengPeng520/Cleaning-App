@@ -54,7 +54,6 @@ class UserServiceAdapter(private var chats: List<ChatData>) :
             chatroom.let { bundle.putSerializable("chatroom", it) }
             chatroom.customerId?.let { bundle.putInt("customerId", it) }
             chatroom.cleanerId?.let { bundle.putInt("cleanerId", it) }
-            bundle.putSerializable("chatroom", chatroom)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(

@@ -18,7 +18,7 @@ class OrderOrdermatchViewModel : ViewModel() {
 
     fun fetchOrderMatch(orderId: Int) {
         requestTask<OrderUtil.InsertOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/$orderId",
             "GET"
         )?.let {
             order.value = SearchOrder(
