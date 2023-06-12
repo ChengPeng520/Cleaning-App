@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -18,7 +17,6 @@ import com.example.cleaningapp.databinding.FragmentCsHomepageBinding
 class CsHomePageFragment : Fragment() {
     private lateinit var binding: FragmentCsHomepageBinding
     private val viewModel: CsHomePageViewModel by viewModels()
-    private lateinit var toolbar: Toolbar
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -29,7 +27,7 @@ class CsHomePageFragment : Fragment() {
         binding.viewModel = viewModel
         // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
-        if(viewModel.order.value?.orderId == 0) {
+        if (viewModel.order.value?.orderId == 0) {
             binding.flCsHomeGoCreateOrder.visibility = View.VISIBLE
             binding.flCsHomeOrderTB.visibility = View.GONE
         } else {
@@ -41,12 +39,13 @@ class CsHomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_homepage)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_homepage)
         with(binding) {
             flCsHomeCoupon.setOnClickListener {
                 findNavController().navigate(R.id.action_csHomePageFragment_to_csCouponObtainFragment)
             }
-            flCsHomeGoCreateOrder.setOnClickListener{
+            flCsHomeGoCreateOrder.setOnClickListener {
                 findNavController().navigate(R.id.action_csHomePageFragment_to_csCreateOrderFragment)
             }
             rvCsHomePageComment.layoutManager = LinearLayoutManager(requireContext())

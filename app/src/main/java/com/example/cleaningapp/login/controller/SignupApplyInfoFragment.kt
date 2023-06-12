@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,9 @@ class SignupApplyInfoFragment : Fragment() {
         requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
         requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "申請資料"
         with(binding) {
+            viewModel?.gender?.observe(viewLifecycleOwner) {
+                Log.d("1", it.toString())
+            }
             ivSuInfoBack.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }

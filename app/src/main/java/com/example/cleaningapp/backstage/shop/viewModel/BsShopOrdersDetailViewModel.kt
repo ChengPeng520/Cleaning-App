@@ -41,7 +41,7 @@ class BsShopOrdersDetailViewModel : ViewModel() {
 
     fun loadOrdersDetailList(shopOrderId: Int) {
         requestTask<List<OrderDetail>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/$shopOrderId",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/shopInfo/$shopOrderId",
             "GET",
             respBodyType = object : TypeToken<List<OrderDetail>>() {}.type
         )?.let {

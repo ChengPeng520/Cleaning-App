@@ -508,10 +508,23 @@ class CsCreateOrderFragment : Fragment() {
                     // 不執行任何操作
                 }
             }
+
+        binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val order = viewModel.order.value
+                order?.areaDistrict = districtMap[order?.areaCity]?.get(p2)!!
+                viewModel.order.value = order
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
     }
 
     private fun setTimeOnclick() {
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_createOrder)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_createOrder)
         with(binding) {
             //  選擇日期
             llDatePicker.setOnClickListener {
@@ -700,29 +713,30 @@ class CsCreateOrderFragment : Fragment() {
         with(binding) {
             val order = viewModel?.order?.value
             order?.let {
-                it.areaDistrict =
-                    districtMap[viewModel?.order?.value?.areaCity]?.get(spnCsCreateOrderDistrict.selectedItemPosition)
-                        ?: ""
-                it.livingRoomSize = if (binding.edtTxtCsCreateOrderLivingroomSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
-                } else {
-                    0
-                }
-                it.kitchenSize = if (binding.edtTxtCsCreateOrderKitchenSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
-                } else {
-                    0
-                }
-                it.bathRoomSize = if (binding.edtTxtCsCreateOrderBathroomSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
-                } else {
-                    0
-                }
-                it.roomSize = if (binding.edtTxtCsCreateOrderRoomSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderRoomSize.text.toString().toInt()
-                } else {
-                    0
-                }
+                it.livingRoomSize =
+                    if (binding.edtTxtCsCreateOrderLivingroomSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
+                it.kitchenSize =
+                    if (binding.edtTxtCsCreateOrderKitchenSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
+                it.bathRoomSize =
+                    if (binding.edtTxtCsCreateOrderBathroomSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
+                it.roomSize =
+                    if (binding.edtTxtCsCreateOrderRoomSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderRoomSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
                 it.originalPrice = edtTxtCost.text.toString().toInt()
             }
             viewModel?.order?.value = order

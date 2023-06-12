@@ -1,5 +1,7 @@
 package com.example.cleaningapp.cleaner.view.order
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,11 +37,22 @@ class OrderOrdermatchFragment : Fragment() {
         }
 
         with(binding) {
+            textView57.setOnClickListener {
+                val address = binding.textView57.text.toString()
+                googleMaps(address)
+            }
             tvOrderCancel.setOnClickListener {
                 Navigation.findNavController(view)
                     .navigate(R.id.action_vicky_order_ordermatchFragment_to_vicky_order_conductFragment)
             }
         }
+    }
+
+    private fun googleMaps(address: String) {
+        val intentUri = Uri.parse("google.navigation:q=$address")
+        val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 }
 

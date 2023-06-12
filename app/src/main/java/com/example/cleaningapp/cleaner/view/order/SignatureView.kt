@@ -1,7 +1,10 @@
 package com.example.cleaningapp.cleaner.view.order
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -21,7 +24,7 @@ class SignatureView(context: Context, attrs: AttributeSet) : View(context, attrs
         super.onDraw(canvas)
         canvas.drawPath(path, paint)
     }
-//
+
 //        へ　　　　　／|
 //    　 /＼7　　　 ∠＿/
 //    　 /　│　　 ／　／            ℙ𝕀𝕂𝔸 ~ ℙ𝕀𝕂𝔸 ~ ℙ𝕀𝕂𝔸 ~
@@ -35,7 +38,7 @@ class SignatureView(context: Context, attrs: AttributeSet) : View(context, attrs
 //    　 ヽ_ﾉ　　(_／　 │／／
 //    　　7　　　　　　　|／
 //    　　＞―r￣￣`ｰ―＿
-//
+
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val x = event.x
@@ -62,5 +65,4 @@ class SignatureView(context: Context, attrs: AttributeSet) : View(context, attrs
         path.lineTo(x, y)
         invalidate()
     }
-
 }

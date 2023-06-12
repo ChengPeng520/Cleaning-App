@@ -1,5 +1,7 @@
 package com.example.cleaningapp.cleaner.view.search
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -39,6 +41,17 @@ class CleanerFrontOrderDetailFragment : Fragment() {
                 job?.photo = it
                 viewModel?.job?.value = job
             }
+            textView31.setOnClickListener {
+                val address = binding.textView31.text.toString()
+                googleMaps(address)
+            }
         }
+    }
+
+    private fun googleMaps(address: String) {
+        val intentUri = Uri.parse("google.navigation:q=$address")
+        val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 }
