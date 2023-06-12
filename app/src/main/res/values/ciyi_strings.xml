@@ -16,30 +16,30 @@
     <string name="sv_backstage_coupon">查詢優惠券</string>
 
     //orderdatil
-    <string name="tv_ti_bs_orderdatil_cleandate">打掃日期:</string>
+    <string name="tv_ti_bs_orderdatil_cleandate">打掃日期：</string>
     <string name="tv_bs_orderdatil_cleandate" tools:ignore="TypographyDashes">2023–04-25 </string>
-    <string name="tv_ti_bs_orderdatil_cleantime">打掃時數:</string>
+    <string name="tv_ti_bs_orderdatil_cleantime">打掃時數：</string>
     <string name="tv_bs_orderdatil_cleantime" tools:ignore="TypographyDashes">12:00-14:00 </string>
     <string name="tv_bs_orderdatil_cleantimetotal">2小時</string>
-    <string name="tv_ti_bs_order_address">地址:</string>
+    <string name="tv_ti_bs_order_address">地址：</string>
     <string name="tv_bs_orderdatil_address">台北市南京復興區嘿嘿路嘿嘿巷12號3樓</string>
-    <string name="tv_ti_bs_order_cleanarea">打掃區域:</string>
+    <string name="tv_ti_bs_order_cleanarea">打掃區域：</string>
     <string name="tv_bs_order_cleanarea_">房間5坪</string>
-    <string name="tv_ti_bs_order_clean_tools_and_ask">清潔工具及其他需求:</string>
+    <string name="tv_ti_bs_order_clean_tools_and_ask">清潔工具及其他需求：</string>
     <string name="tv_ti_bs_tools">工具:</string>
-    <string name="tv_bs_order_tools">吸塵器 、拖把</string>
-    <string name="tv_ti_bs_order_clean_focus">整理重點:</string>
+    <string name="tv_bs_order_tools">吸塵器、拖把</string>
+    <string name="tv_ti_bs_order_clean_focus">整理重點：</string>
     <string name="tv_bs_order_clean_focus">臥房、客房</string>
     <string name="tv_bs_order_pay">5000元</string>
-    <string name="tv_ti_bs_order_pay">金額:</string>
-    <string name="tv_bs_order_booking_fee">平台費:</string>
+    <string name="tv_ti_bs_order_pay">金額：</string>
+    <string name="tv_bs_order_booking_fee">平台費：</string>
     <string name="tv_ti_bs_order_booking_fee">30元</string>
-    <string name="tv_ti_bs_order_coupon">優惠券:</string>
+    <string name="tv_ti_bs_order_coupon">優惠券：</string>
     <string name="tv_bs_order_coupon">-30元</string>
-    <string name="tv_ti_bs_order_total">總金額:</string>
+    <string name="tv_ti_bs_order_total">總金額：</string>
     <string name="tv_bs_order_money">5000元</string>
     <string name="tv_ti_bs_order_cs_pic">顧客需求照片</string>
-    <string name="tv_ti_bs_orderdatil_cleaner_pic">工作人員完成照片:</string>
+    <string name="tv_ti_bs_orderdatil_cleaner_pic">工作人員完成照片：</string>
 
     //coupon
     <string name="tv_ti_coupon_num">優惠券編號</string>
@@ -52,26 +52,26 @@
     <string name="btn_coupon_edit_add">修改</string>
 
     //dialog
-    <string name="tv_ti_bs_dialog_name">名稱:</string>
+    <string name="tv_ti_bs_dialog_name">名稱：</string>
     <string name="tv_bs_dialog_name">跳樓大骨折70%off優惠券</string>
-    <string name="tv_ti_bs_dialog_discount">折數:</string>
+    <string name="tv_ti_bs_dialog_discount">折數：</string>
     <string name="tv_bs_dialog_discount">30%折扣</string>
-    <string name="tv_ti_coupon_piece">張數:</string>
+    <string name="tv_ti_coupon_piece">張數：</string>
     <string name="tv_coupon_piece">30張</string>
-    <string name="tv_ti_coupon_timelimit">期限:</string>
+    <string name="tv_ti_coupon_timelimit">期限：</string>
     <string name="tv_coupon_timelimit">2023–11–03</string>
-    <string name="tv_ti_coupon_minimum">低消:</string>
+    <string name="tv_ti_coupon_minimum">低消：</string>
     <string name="tv_coupon_minimum">2000</string>
-    <string name="tv_ti_coupon_already">上架:</string>
+    <string name="tv_ti_coupon_already">上架：</string>
     <string name="tv_coupon_already">是</string>
     <string name="btn_coupon_dialog_close">關閉</string>
 
     //coupon title
-    <string name="tv_ti_coupon_create_name">名稱:</string>
-    <string name="tv_ti_coupon_percentage">折數:</string>
-    <string name="tv_ti_coupon_discount">折抵:</string>
+    <string name="tv_ti_coupon_create_name">名稱：</string>
+    <string name="tv_ti_coupon_percentage">折數：</string>
+    <string name="tv_ti_coupon_discount">折抵：</string>
     <string name="tv_coupon_modify_discount">100</string>
-    <string name="tv_ti_coupon_quantity">張數:</string>
+    <string name="tv_ti_coupon_quantity">張數：</string>
 
     //navigation drawer
     <string name="open">open</string>

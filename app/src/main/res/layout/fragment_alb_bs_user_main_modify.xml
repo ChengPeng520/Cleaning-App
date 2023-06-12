@@ -70,13 +70,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_bs_user_main_detail_email_ti"
+                        android:layout_gravity="center_vertical"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_bs_user_main_modify_email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:text="@{viewModel.user.email}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
@@ -157,11 +158,11 @@
                     <Spinner
                         android:id="@+id/spinner_bs_user_main_modify_gender"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginBottom="8dp"
-                        android:selectedItemPosition="@={viewModel.user.gender}"
                         android:inputType="text"
                         android:minHeight="40dp"
+                        android:selectedItemPosition="@={viewModel.user.gender}"
                         android:textColor="@color/textPrimary"
                         android:textSize="16sp" />
 
