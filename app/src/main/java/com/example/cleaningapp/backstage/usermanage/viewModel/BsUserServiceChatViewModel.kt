@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.usermanage.model.Chat
 import com.example.cleaningapp.backstage.usermanage.model.ChatData
 import com.example.cleaningapp.backstage.usermanage.model.ChatItem
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -27,7 +28,7 @@ class BsUserServiceChatViewModel : ViewModel() {
             Log.d("1", "1")
             // 顧客x後台
             requestTask<List<ChatItem>>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack/$customerId",
+                url = "${Constants.BASE_URL}/ChatCustBack/$customerId",
                 method = "GET",
                 respBodyType = object : TypeToken<List<ChatItem>>() {}.type
             )?.let {

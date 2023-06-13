@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.*
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 
@@ -18,7 +19,7 @@ class BsUserVerifyDetailViewModel : ViewModel() {
         when (member.status) {
             2 -> {
                 requestTask<AccountCleaner>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/2/${member.id}",
+                    url = "${Constants.BASE_URL}/AccountBackstage/2/${member.id}",
                     method = "GET"
                 )?.let {
                     user.value = User(
@@ -53,7 +54,7 @@ class BsUserVerifyDetailViewModel : ViewModel() {
         user.value?.let {
             if (it.cleanerId != null) {
                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    url = "${Constants.BASE_URL}/AccountBackstage",
                     method = "PUT",
                     reqBody = CleanerSharedPreferencesUtils.ApiCleanerModel(
                         cleanerId = it.cleanerId!!,

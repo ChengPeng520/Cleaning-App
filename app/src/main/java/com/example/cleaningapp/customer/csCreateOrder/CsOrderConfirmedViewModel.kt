@@ -9,6 +9,7 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.CreateOrder
 import com.example.cleaningapp.customer.model.CreateOrderPhoto
 import com.example.cleaningapp.customer.model.EstablishOrder
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
@@ -25,7 +26,7 @@ class CsOrderConfirmedViewModel : ViewModel() {
         val orderCreated = orderCreated.value
         orderCreated?.customerId = CustomerSharePreferencesUtils.getCurrentCustomerId()
         requestTask<EstablishOrder>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder",
+            url = "${Constants.BASE_URL}/csOrder",
             method = "POST",
             reqBody = orderCreated?.let { EstablishOrder(it, sendPhotos(photo.value!!)) }
         )?.let {

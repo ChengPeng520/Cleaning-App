@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.order
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -20,7 +21,7 @@ class OrderListViewModel : ViewModel() {
     /** 模擬取得遠端資料 */
     private fun loadOrders() {
         requestTask<List<Order>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/",
+            "${Constants.BASE_URL}/bsOrder/",
             "GET",
             respBodyType = object : TypeToken<List<Order>>() {}.type
         )?.let {

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.CheckShopOrder
 import com.example.cleaningapp.cleaner.uistate.OrderHistoryItemUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class OrderHistoryViewModel : ViewModel() {
@@ -14,7 +15,7 @@ class OrderHistoryViewModel : ViewModel() {
 
     fun fetchOrderHistory() {
         requestTask<CheckShopOrder>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/isChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            url = "${Constants.BASE_URL}/clShopOrder/isChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
         )?.let {
             val list: MutableList<OrderHistoryItemUiState> = mutableListOf()

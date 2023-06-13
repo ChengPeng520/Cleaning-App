@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.ShopOrder
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -23,7 +24,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun fetchShopOrderList() {
         requestTask<List<ShoppingCartItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            url = "${Constants.BASE_URL}/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ShoppingCartItemUiState>>() {}.type
         )?.let {

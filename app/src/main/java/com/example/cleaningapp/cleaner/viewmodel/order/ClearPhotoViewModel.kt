@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.CreateOrderPhotos
 import com.example.cleaningapp.cleaner.uistate.OrderPhotos
 import com.example.cleaningapp.cleaner.uistate.SearchOrderPhotos
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class ClearPhotoViewModel : ViewModel() {
@@ -20,7 +21,7 @@ class ClearPhotoViewModel : ViewModel() {
 
     fun cleanerBeforePhoto(orderId: Int) {
         requestTask<SearchOrderPhotos>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/$orderId",
+            "${Constants.BASE_URL}/clnOrder/info0/$orderId",
             "GET"
         )?.let {
             orderPhotos.value = OrderPhotos(it.photos)

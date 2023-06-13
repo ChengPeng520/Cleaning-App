@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.chatroom.ChatroomItemUiState
 import com.example.cleaningapp.customer.chatroom.ChatroomUiState
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -22,7 +23,7 @@ class ChatRoomViewModel : ViewModel() {
 
     fun fetchChatRoomTalkList() {
         requestTask<List<ChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            url = "${Constants.BASE_URL}/ChatCustBack/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatroomItemUiState>>() {}.type
         )?.let {
@@ -33,7 +34,7 @@ class ChatRoomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack",
+                url = "${Constants.BASE_URL}/ChatCustBack",
                 method = "POST",
                 reqBody = ChatroomItemUiState(
                     customerId = CustomerSharePreferencesUtils.getCurrentCustomerId(),

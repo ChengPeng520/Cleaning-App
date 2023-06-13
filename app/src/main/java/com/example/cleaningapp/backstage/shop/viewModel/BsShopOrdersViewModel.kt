@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.shop.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.shop.ShopOrder
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -17,7 +18,7 @@ class BsShopOrdersViewModel:ViewModel(){
 
         fun loadOrderList() {
             requestTask<List<ShopOrder>>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/selectAll/",
+                "${Constants.BASE_URL}/ShopOrder/selectAll/",
             "GET" ,
                     respBodyType = object :TypeToken<List<ShopOrder>>() {} .type
             )?.let {

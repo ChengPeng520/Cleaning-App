@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.order
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 
@@ -17,7 +18,7 @@ class OrderViewModel : ViewModel() {
 
     fun fetchBackstageOrderInfo(orderId : Int) {
         requestTask<BackstageOrderInfo>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/order/$orderId",
+            "${Constants.BASE_URL}/bsOrder/order/$orderId",
             "GET"
         )?.let { backstageorderInfo ->
             order.value = backstageorderInfo.order

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.shop.Product
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class BsShopProductModifyViewModel : ViewModel() {
@@ -13,7 +14,7 @@ class BsShopProductModifyViewModel : ViewModel() {
 
     fun productModify():Boolean{
         requestTask<Product>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
+            "${Constants.BASE_URL}/product/",
             "PUT",
             product.value
         )?.let {
@@ -24,7 +25,7 @@ class BsShopProductModifyViewModel : ViewModel() {
 
     fun  fetchProductInfo(productId:Int){
         requestTask<Product>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/product/$productId",
+            "${Constants.BASE_URL}/product/$productId",
             "GET"
         )?.let { result ->
             Log.d("productInfo","Received product: $result")

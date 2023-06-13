@@ -7,6 +7,7 @@ import com.example.cleaningapp.cleaner.uistate.*
 import com.example.cleaningapp.cleaner.uistate.OrderChatroomItemUiState
 import com.example.cleaningapp.cleaner.uistate.OrderInfo
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -20,7 +21,7 @@ class OrderChatroomViewModel : ViewModel() {
 
     fun fetchOrderChatRoomTalkList() {
         requestTask<List<OrderChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/${orderUiState.value?.customerId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            url = "${Constants.BASE_URL}/ChatCustCln/${orderUiState.value?.customerId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<OrderChatroomItemUiState>>() {}.type
         )?.let {

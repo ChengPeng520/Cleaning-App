@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.CouponObtain
 import com.example.cleaningapp.customer.model.CustomerCoupon
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -23,7 +24,7 @@ class CsCouponObtainViewModel : ViewModel() {
 
     private fun fetchCoupons() {
         requestTask<List<CouponObtain>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            "${Constants.BASE_URL}/csCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             respBodyType = object : TypeToken<List<CouponObtain>>() {}.type
         )?.let {
             coupons.value = it
@@ -32,7 +33,7 @@ class CsCouponObtainViewModel : ViewModel() {
 
     fun customerTakeCoupon(customerCoupon: CustomerCoupon): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/",
+            "${Constants.BASE_URL}/customerCoupon/",
             "POST",
             reqBody = customerCoupon
         )?.let {

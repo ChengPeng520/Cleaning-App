@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.OrderHistoryItemUiState
 import com.example.cleaningapp.cleaner.uistate.OrderInfoItemUiState
 import com.example.cleaningapp.cleaner.uistate.OrderInfoUiState
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -17,7 +18,7 @@ class OrderInfoViewModel : ViewModel() {
     fun fetchOrderInfo(shopOrderId: Int?) {
         shopOrderId?.let {
             requestTask<List<OrderInfoItemUiState>>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/shopInfo/${orderHistoryItem.id}",
+                url = "${Constants.BASE_URL}/clShopOrder/shopInfo/${orderHistoryItem.id}",
                 method = "GET",
                 respBodyType = object : TypeToken<List<OrderInfoItemUiState>>() {}.type
             )?.let {

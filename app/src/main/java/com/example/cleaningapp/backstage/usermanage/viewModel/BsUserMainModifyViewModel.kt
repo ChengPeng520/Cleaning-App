@@ -13,10 +13,7 @@ import com.example.cleaningapp.backstage.usermanage.model.AccountBackstage
 import com.example.cleaningapp.backstage.usermanage.model.AccountCleaner
 import com.example.cleaningapp.backstage.usermanage.model.AccountCustomer
 import com.example.cleaningapp.backstage.usermanage.model.User
-import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
-import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
-import com.example.cleaningapp.share.CustomerSharePreferencesUtils
-import com.example.cleaningapp.share.requestTask
+import com.example.cleaningapp.share.*
 
 class BsUserMainModifyViewModel : ViewModel() {
     val user: MutableLiveData<User> by lazy { MutableLiveData<User>(User()) }
@@ -26,9 +23,8 @@ class BsUserMainModifyViewModel : ViewModel() {
      */
     fun fetchMemberInfo(userFetch: User) {
         if (userFetch.customerId != null) {
-            Log.d("1", "1")
             requestTask<AccountCustomer>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/1/${userFetch.customerId}",
+                url = "${Constants.BASE_URL}/AccountBackstage/1/${userFetch.customerId}",
                 method = "GET"
             )?.let {
                 user.value = User(

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.coupon.Coupon
 import com.example.cleaningapp.backstage.shop.Product
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -38,7 +39,7 @@ class BsShopMainViewModel : ViewModel() {
     /** 模擬取得遠端資料 */
     private fun loadProducts() {
         requestTask<List<Product>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
+            "${Constants.BASE_URL}/product/",
             "GET",
             respBodyType = object : TypeToken<List<Product>>() {}.type
         )?.let {

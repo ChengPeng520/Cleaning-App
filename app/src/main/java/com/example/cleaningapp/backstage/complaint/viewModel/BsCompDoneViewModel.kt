@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.complaint.model.BSCompOrder
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -20,7 +21,7 @@ class BsCompDoneViewModel : ViewModel() {
 
     private fun loadComplaints() {
         requestTask<List<BSCompOrder>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrders7/",
+            url = "${Constants.BASE_URL}/bsOrder/compOrders7/",
             method = "GET",
             respBodyType = object : TypeToken<List<BSCompOrder>>() {}.type
         )?.let {

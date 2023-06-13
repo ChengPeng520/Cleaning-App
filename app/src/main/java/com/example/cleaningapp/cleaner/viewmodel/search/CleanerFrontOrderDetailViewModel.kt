@@ -10,6 +10,7 @@ import com.example.cleaningapp.cleaner.uistate.OrderPhotos
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.cleaner.uistate.SearchOrderPhotos
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
@@ -20,7 +21,7 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
     // 訂單詳情
     fun fetchOrderAccept(orderId: Int) {
         requestTask<SearchOrderPhotos>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/$orderId",
+            "${Constants.BASE_URL}/clnOrder/info0/$orderId",
             "GET",
         )?.let {
             job.value = SearchOrder(

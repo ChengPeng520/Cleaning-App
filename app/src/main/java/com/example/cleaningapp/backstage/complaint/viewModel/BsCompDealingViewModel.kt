@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.complaint.model.*
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class BsCompDealingViewModel : ViewModel() {
@@ -18,7 +19,7 @@ class BsCompDealingViewModel : ViewModel() {
      */
     fun loadComplaint(orderId: Int) {
         requestTask<BSCompOrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrder/$orderId",
+            url = "${Constants.BASE_URL}/bsOrder/compOrder/$orderId",
             method = "GET"
         )?.let {
             _uiState.value = BSCompOrder(

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.model.Customer
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 
@@ -22,7 +23,7 @@ class CsEditProfileViewModel : ViewModel() {
         if (profile.value?.name?.isNotEmpty() == true && profile.value?.phone?.isNotEmpty() == true) {
             val profile = CustomerSharePreferencesUtils.anyToApiCustomerModel(profile.value!!)
             requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer",
+                "${Constants.BASE_URL}/AccountCustomer",
                 "PUT",
                 profile
             )?.let {

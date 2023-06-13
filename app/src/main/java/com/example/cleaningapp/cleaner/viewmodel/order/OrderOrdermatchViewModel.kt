@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.OrderUtil
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -18,7 +19,7 @@ class OrderOrdermatchViewModel : ViewModel() {
 
     fun fetchOrderMatch(orderId: Int) {
         requestTask<OrderUtil.InsertOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/$orderId",
+            "${Constants.BASE_URL}/clnOrder/info0/$orderId",
             "GET"
         )?.let {
             order.value = SearchOrder(

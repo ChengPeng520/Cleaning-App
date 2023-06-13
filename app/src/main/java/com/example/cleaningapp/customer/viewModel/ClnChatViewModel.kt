@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.chatroom.ClnChatMessage
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -18,7 +19,7 @@ class ClnChatViewModel : ViewModel() {
 
     fun fetchOrderChatRoomTalkList() {
         requestTask<List<ClnChatMessage>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/$cleanerId",
+            url = "${Constants.BASE_URL}/ChatCustCln/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/$cleanerId",
             method = "GET",
             respBodyType = object : TypeToken<List<ClnChatMessage>>() {}.type
         )?.let {
@@ -29,7 +30,7 @@ class ClnChatViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/",
+                url = "${Constants.BASE_URL}/ChatCustCln/",
                 method = "POST",
                 reqBody = ClnChatMessage(
                     customerId = CustomerSharePreferencesUtils.getCurrentCustomerId(),

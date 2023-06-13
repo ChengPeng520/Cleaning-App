@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.cleaningapp.R
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -58,7 +59,7 @@ class SignupApplyInfoViewModel(application: Application) : AndroidViewModel(appl
             )
         val apiCleanerModel = CleanerSharedPreferencesUtils.anyToApiCleanerModel(member)
         return requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/",
+            "${Constants.BASE_URL}/AccountCleaner/",
             "POST",
             apiCleanerModel
         )?.let {

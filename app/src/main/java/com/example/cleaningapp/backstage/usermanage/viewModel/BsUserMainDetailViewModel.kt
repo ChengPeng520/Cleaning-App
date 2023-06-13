@@ -7,10 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.*
-import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
-import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
-import com.example.cleaningapp.share.CustomerSharePreferencesUtils
-import com.example.cleaningapp.share.requestTask
+import com.example.cleaningapp.share.*
 
 /**
  * 單一使用者資料處理
@@ -25,7 +22,7 @@ class BsUserMainDetailViewModel : ViewModel() {
         when (member.status) {
             1 -> {
                 requestTask<AccountCustomer>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/1/${member.id}",
+                    url = "${Constants.BASE_URL}/AccountBackstage/1/${member.id}",
                     method = "GET"
                 )?.let {
                     user.value = User(

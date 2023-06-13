@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.usermanage.model.ChatClnBack
 import com.example.cleaningapp.backstage.usermanage.model.ChatData
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -27,7 +28,7 @@ class BsUserServiceViewModel : ViewModel() {
      */
     private fun loadChatList() {
         requestTask<List<ChatData>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+            url = "${Constants.BASE_URL}/ChatClnBack",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatData>>() {}.type
         )?.let {

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.CleanerMemberInfoUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class CleanerMemberInfoViewModel : ViewModel() {
@@ -25,7 +26,7 @@ class CleanerMemberInfoViewModel : ViewModel() {
         if (uiState.value?.name?.isNotEmpty() == true && uiState.value?.identifyNumber?.isNotEmpty() == true && uiState.value?.phone?.isNotEmpty() == true) {
             val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(uiState.value!!)
             val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner",
+                "${Constants.BASE_URL}/AccountCleaner",
                 "PUT",
                 uiState
             )

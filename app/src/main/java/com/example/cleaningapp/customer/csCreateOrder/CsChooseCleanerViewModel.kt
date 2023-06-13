@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.Comment
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.OrderUtil
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
@@ -22,7 +23,7 @@ class CsChooseCleanerViewModel : ViewModel() {
 
     fun fetchCleanerApplied(orderId: Int) {
         requestTask<List<Cleaner>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/choose/$orderId",
+            url = "${Constants.BASE_URL}/orderApplied/choose/$orderId",
             method = "GET",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
@@ -35,7 +36,7 @@ class CsChooseCleanerViewModel : ViewModel() {
 
     fun cancelOrder(): Boolean {
         requestTask<OrderUtil.OrderStatus>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
+            "${Constants.BASE_URL}/csOrder/",
             "PUT",
             OrderUtil.OrderStatus(OrderUtil.Order(orderId = orderId, status = 6), null)
         )?.let {
