@@ -4,21 +4,25 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.customer.model.Customer
-import com.example.cleaningapp.customer.model.Order
 import com.example.cleaningapp.databinding.FragmentCsEditProfileBinding
 
 class CsEditProfileFragment : Fragment() {
     private lateinit var binding: FragmentCsEditProfileBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +37,8 @@ class CsEditProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_editProfile)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_editProfile)
 
         with(binding) {
             btnCsEditProfileRestore.setOnClickListener {
@@ -62,4 +67,9 @@ class CsEditProfileFragment : Fragment() {
                 result.data?.data?.let { uri -> binding.ivCsEditProfilePic.setImageURI(uri) }
             }
         }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+    }
 }

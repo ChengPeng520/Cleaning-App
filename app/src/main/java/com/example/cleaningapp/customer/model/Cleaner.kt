@@ -5,11 +5,11 @@ import com.example.cleaningapp.share.ImageUtils
 import java.io.Serializable
 
 data class Cleaner(
-    val cleanerId: Int,
+    val cleanerId: Int? = null,
     val photo: ByteArray,
     val name: String,
     val gender: Int,
-    val averageStars: Float,
+    val averageStars: Float? = null,
     val count: Int,
     val phone: String,
     val introduction: String

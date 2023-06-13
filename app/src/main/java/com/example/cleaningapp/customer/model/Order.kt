@@ -83,7 +83,7 @@ data class CreateOrder(
     var bathRoomSize: Int = 0,
     var roomSize: Int = 0,
     var remark: String? = null,
-    val customerCouponId: Int? = null,
+    var customerCouponId: Int? = null,
     var couponDiscount: Int = 0,
     var originalPrice: Int = 0,
     var priceForCustomer: Int = 0,

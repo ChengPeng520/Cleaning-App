@@ -1,5 +1,6 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -15,7 +16,11 @@ import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 
 class CsOrderConfirmedViewModel : ViewModel() {
-    val orderCreated: MutableLiveData<CreateOrder> by lazy { MutableLiveData<CreateOrder>() }
+    val orderCreated: MutableLiveData<CreateOrder> by lazy {
+        MutableLiveData<CreateOrder>(
+            CreateOrder()
+        )
+    }
     val photo: MutableLiveData<CreateOrderPhoto> by lazy {
         MutableLiveData<CreateOrderPhoto>(
             CreateOrderPhoto()
@@ -32,15 +37,14 @@ class CsOrderConfirmedViewModel : ViewModel() {
         )?.let {
             Navigation.findNavController(view)
                 .navigate(R.id.action_csOrderConfirmedFragment_to_csOrderEstablishedFragment)
-        }?:
-        Toast.makeText(view.context, "訂單建立失敗，請稍後再試", Toast.LENGTH_SHORT).show()
+        } ?: Toast.makeText(view.context, "訂單建立失敗，請稍後再試", Toast.LENGTH_SHORT).show()
     }
 
     fun convert(value: String): String {
         return if (value.isNotEmpty()) value.substring(0, 5) else ""
     }
 
-    fun sendPhotos(createOrderPhoto: CreateOrderPhoto): List<ByteArray> {
+    private fun sendPhotos(createOrderPhoto: CreateOrderPhoto): List<ByteArray> {
         val photos = mutableListOf<ByteArray>()
         createOrderPhoto.photo1?.let {
             photos.add(ImageUtils.bitmapToBytes(it))

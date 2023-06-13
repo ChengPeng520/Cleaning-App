@@ -47,7 +47,7 @@ class CsChooseCleanerAdapter(var cleaners: List<Cleaner>, var orderId: Int) :
             itemBinding.viewmodel?.cleaner?.value = cleaner
             itemView.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putInt("cleanerId", cleaner.cleanerId)
+                bundle.putInt("cleanerId", cleaner.cleanerId!!)
                 bundle.putInt("orderId", orderId)
                 Log.d("orderId","orderID: $orderId")
                 Navigation.findNavController(it)

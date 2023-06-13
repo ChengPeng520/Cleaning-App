@@ -30,8 +30,8 @@ data class Order(
     val stars: Float = 0F,
     val commentCleaner: String = "",
     val status: Int = 0,
-    val bsComplainRemark: String = "",
-    val returnReason: String = "",
+    val bsComplainRemark: String? = null,
+    val returnReason: String? = null,
 ) : Serializable {
     val address: String
         get() {
@@ -71,6 +71,7 @@ data class Order(
             return (priceForCustomer - originalPrice)
         }
 }
+
 data class CompleteOrderPhotos(
     val photos: List<ByteArray>
 ) {

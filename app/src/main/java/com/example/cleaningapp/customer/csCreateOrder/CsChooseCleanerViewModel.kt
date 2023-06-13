@@ -1,10 +1,8 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.Comment
 import com.example.cleaningapp.share.Constants

@@ -1,7 +1,6 @@
 package com.example.cleaningapp.customer.csCreateOrder
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,14 +24,14 @@ class CsChooseCleanerFragment : Fragment() {
     ): View {
         binding = FragmentCsChooseCleanerBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        // 設定lifecycleOwner方能監控LiveData資料變化
         binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_chooseCleaner)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_chooseCleaner)
         arguments?.let { bundle ->
             bundle.getInt("orderId").let {
                 viewModel.orderId = it
@@ -46,7 +45,8 @@ class CsChooseCleanerFragment : Fragment() {
                     requireActivity().getString(R.string.toast_CsChooseCleanerCancelOrder),
                     Toast.LENGTH_SHORT
                 ).show()
-                Navigation.findNavController(it).navigate(R.id.action_csChooseCleanerFragment2_to_historicalorderFragment)
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_csChooseCleanerFragment2_to_historicalorderFragment)
             } else {
                 Toast.makeText(
                     it.context,

@@ -7,15 +7,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.AdapterView
+import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,7 +23,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -475,6 +473,7 @@ class CsCreateOrderFragment : Fragment() {
         setSpinnerOnclick()
         setTimeOnclick()
         setOnclick()
+        setTextWatcher()
     }
 
     private fun setSpinnerOnclick() {
@@ -482,6 +481,12 @@ class CsCreateOrderFragment : Fragment() {
         val countyAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countyList)
         countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var districtAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            districtMap[countyList[0]]!!
+        )
+        districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spnCsCreateOrderCounty.adapter = countyAdapter
         binding.spnCsCreateOrderCounty.onItemSelectedListener =
             object : OnItemSelectedListener {
@@ -495,7 +500,7 @@ class CsCreateOrderFragment : Fragment() {
                     order?.areaCity = countyList[position]
                     viewModel.order.value = order
                     val districtArray = districtMap[countyList[position]]
-                    val districtAdapter = ArrayAdapter(
+                    districtAdapter = ArrayAdapter(
                         requireContext(),
                         android.R.layout.simple_spinner_item,
                         districtArray!!
@@ -509,6 +514,7 @@ class CsCreateOrderFragment : Fragment() {
                 }
             }
 
+        binding.spnCsCreateOrderDistrict.adapter = districtAdapter
         binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val order = viewModel.order.value
@@ -658,6 +664,9 @@ class CsCreateOrderFragment : Fragment() {
                         val bundle = Bundle()
                         bundle.putSerializable("order", it)
                         bundle.putSerializable("photos", viewModel?.photo?.value)
+                        viewModel?.coupon?.value?.let { coupon ->
+                            bundle.putInt("customerCouponId", coupon.customerCouponId)
+                        }
                         findNavController().navigate(
                             R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment,
                             bundle
@@ -665,6 +674,15 @@ class CsCreateOrderFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun setTextWatcher() {
+        with(binding) {
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderLivingroomSize, chkCsCreateOrderLivingroom)
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderKitchenSize, chkCsCreateOrderKitchen)
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderBathroomSize, chkCsCreateOrderBathroom)
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderRoomSize, chkCsCreateOrderBedroom)
         }
     }
 
@@ -743,6 +761,21 @@ class CsCreateOrderFragment : Fragment() {
         }
     }
 
+    private fun setupSizeEditTextWatcher(editText: EditText, checkBox: CheckBox) {
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                checkBox.isChecked = p0.toString().isNotEmpty() && p0.toString() != "0"
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        }
+        editText.addTextChangedListener(textWatcher)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
@@ -754,12 +787,5 @@ class CsCreateOrderFragment : Fragment() {
         } else {
             "0$number"
         }
-    }
-
-    private fun isTimeBefore(timeBegin: String, timeEnd: String): Boolean {
-        val format = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-        val timeBegin = format.parse(timeBegin)
-        val timeEnd = format.parse(timeEnd)
-        return timeBegin?.before(timeEnd) ?: false
     }
 }

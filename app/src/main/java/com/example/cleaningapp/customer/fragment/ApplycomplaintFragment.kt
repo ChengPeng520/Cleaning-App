@@ -19,20 +19,26 @@ class ApplycomplaintFragment : Fragment() {
     private lateinit var binding: FragmentVictorApplycomplaintBinding
     private val viewModel: ApplycomplaintViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentVictorApplycomplaintBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        initAppBarMenu()
         binding.lifecycleOwner = this
+        initAppBarMenu()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_applyComplaint)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_applyComplaint)
         arguments?.getInt("orderId")?.let {
             viewModel.fetchOrdersInfo(it)
             viewModel.orderId.value = it
@@ -81,5 +87,10 @@ class ApplycomplaintFragment : Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 }
