@@ -87,7 +87,7 @@
 
                 <SearchView
                     android:id="@+id/sv_bs_user_main"
-                    android:layout_width="270dp"
+                    android:layout_width="260dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/ciyi_shape_search"
@@ -95,7 +95,7 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_bs_user_main_add"
-                    android:layout_width="70dp"
+                    android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/white"
                     android:text="@string/btn_bs_user_main_add"
