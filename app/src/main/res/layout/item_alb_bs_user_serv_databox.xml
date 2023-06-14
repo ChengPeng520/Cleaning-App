@@ -50,7 +50,7 @@
                     android:layout_marginRight="9dp" />
 
                 <LinearLayout
-                    android:layout_width="197dp"
+                    android:layout_width="185dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:orientation="vertical">
@@ -76,18 +76,18 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tv_bs_user_serv_databox_time_ex"
                         android:layout_width="wrap_content"
-                        android:textSize="16sp"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.chat.time}"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/textPrimary" />
+                        android:text="@{viewModel.chat.time}"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_bs_user_serv_databox_closed"
