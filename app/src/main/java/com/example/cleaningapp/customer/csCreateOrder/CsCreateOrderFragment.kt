@@ -481,12 +481,6 @@ class CsCreateOrderFragment : Fragment() {
         val countyAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countyList)
         countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        var districtAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            districtMap[countyList[0]]!!
-        )
-        districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spnCsCreateOrderCounty.adapter = countyAdapter
         binding.spnCsCreateOrderCounty.onItemSelectedListener =
             object : OnItemSelectedListener {
@@ -499,14 +493,7 @@ class CsCreateOrderFragment : Fragment() {
                     val order = viewModel.order.value
                     order?.areaCity = countyList[position]
                     viewModel.order.value = order
-                    val districtArray = districtMap[countyList[position]]
-                    districtAdapter = ArrayAdapter(
-                        requireContext(),
-                        android.R.layout.simple_spinner_item,
-                        districtArray!!
-                    )
-                    districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    binding.spnCsCreateOrderDistrict.adapter = districtAdapter
+                    viewModel.countyPosition.value = position
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -514,12 +501,24 @@ class CsCreateOrderFragment : Fragment() {
                 }
             }
 
-        binding.spnCsCreateOrderDistrict.adapter = districtAdapter
+        viewModel.countyPosition.observe(viewLifecycleOwner) {
+            val districtArray = districtMap[countyList[it]]
+            val districtAdapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                districtArray!!
+            )
+            districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spnCsCreateOrderDistrict.adapter = districtAdapter
+            binding.spnCsCreateOrderDistrict.setSelection(viewModel.districtPosition.value!!)
+        }
+
         binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val order = viewModel.order.value
                 order?.areaDistrict = districtMap[order?.areaCity]?.get(p2)!!
                 viewModel.order.value = order
+                viewModel.districtPosition.value = p2
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {

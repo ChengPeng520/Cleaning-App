@@ -15,8 +15,8 @@ class CsCreateOrderViewModel : ViewModel() {
             CreateOrderPhoto()
         )
     }
-    val spnPosition1: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
-    val spnPosition2: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
+    val countyPosition: MutableLiveData<Int> by lazy { MutableLiveData<Int>(0) }
+    val districtPosition: MutableLiveData<Int> by lazy { MutableLiveData<Int>(0) }
 
     fun addCapturedPhoto(photo: Bitmap?) {
         this.photo.value?.let {
