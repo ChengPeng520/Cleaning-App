@@ -47,15 +47,15 @@ class OrdercompletedFragment : Fragment() {
             getString(R.string.csTitle_orderStatus)
         arguments?.getInt("orderId")?.let { orderId ->
             viewModel.fetchOrdersInfo(orderId)
-            startRefreshingOrderStatus(orderId)
+//            startRefreshingOrderStatus(orderId)
         }
-        viewModel.order.observe(viewLifecycleOwner) { order ->
-            // 在訂單狀態更新時執行導航操作
-            if (order.status == 4) {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_ordercompletedFragment_to_orderdoneFragment)
-            }
-        }
+//        viewModel.order.observe(viewLifecycleOwner) { order ->
+//            // 在訂單狀態更新時執行導航操作
+//            if (order.status == 4) {
+//                Navigation.findNavController(view)
+//                    .navigate(R.id.action_ordercompletedFragment_to_orderdoneFragment)
+//            }
+//        }
     }
 
     // 註冊廣播接收器攔截"action_chatroom"的廣播
@@ -67,29 +67,28 @@ class OrdercompletedFragment : Fragment() {
 
     private inner class MessageReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            findNavController().navigate(R.id.orderdoneFragment)
+            findNavController().navigate(R.id.orderdoneFragment, arguments)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        stopRefreshingOrderStatus()
     }
 
-    private fun startRefreshingOrderStatus(orderId: Int) {
-        isRefreshing = true
-        val handler = Handler(Looper.getMainLooper())
-        timer.scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                handler.post {
-                    if (isRefreshing) {
-                        // 在这里执行从后端获取最新订单状态的逻辑
-                        viewModel.fetchOrdersInfo(orderId)
-                    }
-                }
-            }
-        }, 0, 3000)
-    }
+//    private fun startRefreshingOrderStatus(orderId: Int) {
+//        isRefreshing = true
+//        val handler = Handler(Looper.getMainLooper())
+//        timer.scheduleAtFixedRate(object : TimerTask() {
+//            override fun run() {
+//                handler.post {
+//                    if (isRefreshing) {
+//                        // 在这里执行从后端获取最新订单状态的逻辑
+//                        viewModel.fetchOrdersInfo(orderId)
+//                    }
+//                }
+//            }
+//        }, 0, 3000)
+//    }
 
     private fun initAppBarMenu() {
         requireActivity().addMenuProvider(object : MenuProvider {
@@ -114,10 +113,10 @@ class OrdercompletedFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    private fun stopRefreshingOrderStatus() {
-        isRefreshing = false
-        timer.cancel()
-    }
+//    private fun stopRefreshingOrderStatus() {
+//        isRefreshing = false
+//        timer.cancel()
+//    }
 
     override fun onResume() {
         super.onResume()

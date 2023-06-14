@@ -39,7 +39,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun deleteProduct(productItem: ShoppingCartItemUiState): Boolean {
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
+            url = "${Constants.BASE_URL}/ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
             method = "DELETE",
         )?.let {
             return it.get("result").asBoolean
@@ -69,7 +69,7 @@ class ShoppingCartViewModel : ViewModel() {
         }
     }
 
-    fun checkout(context: Context) : Boolean {
+    fun checkout(context: Context): Boolean {
         requestTask<ShopOrder>(
             url = "${Constants.BASE_URL}/clShopOrder/",
             method = "PUT",

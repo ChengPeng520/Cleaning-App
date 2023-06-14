@@ -15,7 +15,7 @@ class BackstageShopProductAdapter(private var products: List<Product>) :
     RecyclerView.Adapter<BackstageShopProductAdapter.ProductViewHolder>() {
 
 
-    class ProductViewHolder(val ItemViewBinding:ItemAlbBsShopDataboxBinding) :
+    class ProductViewHolder(val ItemViewBinding: ItemAlbBsShopDataboxBinding) :
         ViewHolder(ItemViewBinding.root)
 
 
@@ -50,9 +50,6 @@ class BackstageShopProductAdapter(private var products: List<Product>) :
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsShopMainFragment_to_bsShopProductModifyFragment, bundle)
             }
-
         }
-
-
     }
 }

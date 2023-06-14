@@ -15,9 +15,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentCsEditProfileBinding
+import com.example.cleaningapp.share.ImageUtils
 
 class CsEditProfileFragment : Fragment() {
     private lateinit var binding: FragmentCsEditProfileBinding
+    private val viewModel: CsEditProfileViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,6 @@ class CsEditProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: CsEditProfileViewModel by viewModels()
         binding = FragmentCsEditProfileBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         // 設定lifecycleOwner方能監控LiveData資料變化
@@ -64,7 +65,12 @@ class CsEditProfileFragment : Fragment() {
     private var pickPictureLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri -> binding.ivCsEditProfilePic.setImageURI(uri) }
+                result.data?.data?.let { uri ->
+                    binding.ivCsEditProfilePic.setImageURI(uri)
+                    val customer = viewModel.profile.value
+                    customer?.photo = ImageUtils.uriToBitmap(requireContext(), uri)
+                    viewModel.profile.value = customer
+                }
             }
         }
 
