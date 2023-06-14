@@ -16,6 +16,7 @@ import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaResetPasswordBinding
 import com.example.cleaningapp.login.viewModel.ResetPasswordViewModel
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
@@ -75,7 +76,7 @@ class ResetPasswordFragment : Fragment() {
     fun resetPassword(): Boolean? {
         // bundle手機號碼帶到這頁
         val phoneNumber = arguments?.getString("phoneNumber")
-        val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
+        val url = "${Constants.BASE_URL}/AccountCustomer/"
         requestTask<JsonObject>(
             "$url${phoneNumber}/${binding.viewModel?.password?.value}",
             "DELETE"

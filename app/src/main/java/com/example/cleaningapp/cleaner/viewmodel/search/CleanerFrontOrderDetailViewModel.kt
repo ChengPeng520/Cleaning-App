@@ -47,7 +47,7 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
     // 確定接單
     fun fetchOrderConfirm(view: View) {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/",
+            "${Constants.BASE_URL}/orderApplied/",
             "POST",
             reqBody = SearchOrder(
                 orderId = job.value?.orderId!!,

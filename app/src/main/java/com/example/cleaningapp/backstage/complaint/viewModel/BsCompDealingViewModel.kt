@@ -46,7 +46,7 @@ class BsCompDealingViewModel : ViewModel() {
             it.orderId = orderId
             it.status = 7
             requestTask<BSCompOrder>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/",
+                url = "${Constants.BASE_URL}/bsOrder/",
                 method = "PUT",
                 reqBody = it
             )

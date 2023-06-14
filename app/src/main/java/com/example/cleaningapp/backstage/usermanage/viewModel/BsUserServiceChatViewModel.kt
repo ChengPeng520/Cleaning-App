@@ -38,7 +38,7 @@ class BsUserServiceChatViewModel : ViewModel() {
             Log.d("2", "2")
             // 清潔x後台
             requestTask<List<ChatItem>>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/$cleanerId",
+                url = "${Constants.BASE_URL}/ChatClnBack/$cleanerId",
                 method = "GET",
                 respBodyType = object : TypeToken<List<ChatItem>>() {}.type
             )?.let {
@@ -52,7 +52,7 @@ class BsUserServiceChatViewModel : ViewModel() {
             // 顧客x後台
             if (commitText.value.toString().isNotEmpty()) {
                 requestTask<JsonObject>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack",
+                    url = "${Constants.BASE_URL}/ChatCustBack",
                     method = "POST",
                     reqBody = ChatItem(
                         text = commitText.value!!
@@ -68,7 +68,7 @@ class BsUserServiceChatViewModel : ViewModel() {
             // 清潔x後台
             if (commitText.value.toString().isNotEmpty()) {
                 requestTask<JsonObject>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+                    url = "${Constants.BASE_URL}/ChatClnBack",
                     method = "POST",
                     reqBody = ChatItem(
                         text = commitText.value!!

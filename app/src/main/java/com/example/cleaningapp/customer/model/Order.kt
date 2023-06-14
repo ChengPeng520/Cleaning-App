@@ -3,6 +3,8 @@ package com.example.cleaningapp.customer.model
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.text.SimpleDateFormat
+import android.os.Parcel
+import android.os.Parcelable
 import java.io.Serializable
 import java.sql.Date
 import java.sql.Time
@@ -149,10 +151,40 @@ data class CreateOrder(
 
 data class CreateOrderPhoto(
     //  拍照功能
+    @Transient
     var photo1: Bitmap? = null,
+    @Transient
     var photo2: Bitmap? = null,
+    @Transient
     var photo3: Bitmap? = null,
-) : Serializable
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readParcelable(Bitmap::class.java.classLoader),
+        parcel.readParcelable(Bitmap::class.java.classLoader),
+        parcel.readParcelable(Bitmap::class.java.classLoader)
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeParcelable(photo1, flags)
+        parcel.writeParcelable(photo2, flags)
+        parcel.writeParcelable(photo3, flags)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<CreateOrderPhoto> {
+        override fun createFromParcel(parcel: Parcel): CreateOrderPhoto {
+            return CreateOrderPhoto(parcel)
+        }
+
+        override fun newArray(size: Int): Array<CreateOrderPhoto?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
 
 data class OrderRemind(
     var orderId: Int = 0,

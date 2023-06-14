@@ -36,7 +36,7 @@ class OrderChatroomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/",
+                url = "${Constants.BASE_URL}/ChatCustCln/",
                 method = "POST",
                 reqBody = OrderChatroomItemUiState(
                     cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId(),

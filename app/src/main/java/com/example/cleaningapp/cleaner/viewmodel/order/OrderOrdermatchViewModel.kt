@@ -42,7 +42,7 @@ class OrderOrdermatchViewModel : ViewModel() {
 
     fun deleteOrder(view: View) {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/${orderId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            "${Constants.BASE_URL}/orderApplied/${orderId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             "DELETE"
         )?.let {
             if (it.get("result").asBoolean) {

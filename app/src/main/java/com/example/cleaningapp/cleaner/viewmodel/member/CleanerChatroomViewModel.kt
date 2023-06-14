@@ -34,7 +34,7 @@ class CleanerChatroomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+                url = "${Constants.BASE_URL}/ChatClnBack",
                 method = "POST",
                 reqBody = ChatroomItemUiState(
                     cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId(),

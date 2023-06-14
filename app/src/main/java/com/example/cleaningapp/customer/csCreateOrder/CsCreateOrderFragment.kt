@@ -662,7 +662,7 @@ class CsCreateOrderFragment : Fragment() {
                         saveCreateOrderInfo()
                         val bundle = Bundle()
                         bundle.putSerializable("order", it)
-                        bundle.putSerializable("photos", viewModel?.photo?.value)
+                        bundle.putParcelable("photos", viewModel?.photo?.value)
                         viewModel?.coupon?.value?.let { coupon ->
                             bundle.putInt("customerCouponId", coupon.customerCouponId)
                         }

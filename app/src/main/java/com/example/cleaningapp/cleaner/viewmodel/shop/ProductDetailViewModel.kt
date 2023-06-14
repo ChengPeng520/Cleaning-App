@@ -57,7 +57,7 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
     fun putProductToCart(view: View) {
         if (uiState.value.count > 0) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                url = "${Constants.BASE_URL}/ShopOrderList/",
                 method = "POST",
                 reqBody = ShopOrderList(
                     shopOrderId = shopOrderId,

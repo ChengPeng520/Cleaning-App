@@ -32,7 +32,7 @@ class CsOrderConfirmedFragment : Fragment() {
             getString(R.string.csTitle_orderConfirmed)
         val bundle = arguments ?: return
         val order = bundle.getSerializable("order") as? CreateOrder
-        val orderPhoto = bundle.getSerializable("photos") as? CreateOrderPhoto
+        val orderPhoto = bundle.getParcelable("photos") as? CreateOrderPhoto
         val customerCouponId = bundle.getInt("customerCouponId")
 
         order?.let {
