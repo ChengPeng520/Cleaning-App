@@ -249,6 +249,9 @@ class LoginFragment : Fragment() {
                                 ?: "google登入失敗"  // getString(R.string.tv_login_fail)
                         }
                     }
+                } else {
+                    binding.tvLoginErrMsg.text = task.exception?.message
+                        ?: "google登入失敗"  // getString(R.string.tv_login_fail)
                 }
             }
     }
