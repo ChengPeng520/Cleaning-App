@@ -2,6 +2,7 @@ package com.example.cleaningapp.customer.detailed
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class OrderListViewModel : ViewModel() {
@@ -9,11 +10,10 @@ class OrderListViewModel : ViewModel() {
 
     fun fetchOrdersInfo(orderId: Int) {
         requestTask<Order>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            url = "${Constants.BASE_URL}/csOrder/$orderId",
             method = "GET",
         )?.let {
             orderItem.value = it
-//            Log.d("OrderList", "Fetched orders: $it")
         }
     }
 }

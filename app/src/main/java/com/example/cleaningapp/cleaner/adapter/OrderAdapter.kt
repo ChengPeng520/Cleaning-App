@@ -70,7 +70,7 @@ class OrderAdapter(var orders: List<SearchOrder>) :
                                 bundle
                             )
                     }
-                    7 -> {
+                    7, 8 -> {
                         Navigation.findNavController(it)
                             .navigate(
                                 R.id.action_vicky_order_conductFragment_to_completeOrderInfoFragment,

@@ -23,6 +23,7 @@ import com.example.cleaningapp.backstage.usermanage.model.AccountBackstage
 import com.example.cleaningapp.databinding.FragmentRonaLoginBinding
 import com.example.cleaningapp.login.viewModel.LoginViewModel
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -82,7 +83,7 @@ class LoginFragment : Fragment() {
                         task.result?.let { token ->
                             if (position == 0) {
                                 val url =
-                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/login/"
+                                    "${Constants.BASE_URL}/AccountCustomer/login/"
                                 requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -101,7 +102,7 @@ class LoginFragment : Fragment() {
                                 tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                             } else if (position == 1) {
                                 val url =
-                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/login/"
+                                    "${Constants.BASE_URL}/AccountCleaner/login/"
                                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -122,7 +123,7 @@ class LoginFragment : Fragment() {
                                 tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                             } else {
                                 val url =
-                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/"
+                                    "${Constants.BASE_URL}/AccountBackstage/"
                                 requestTask<AccountBackstage>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -194,7 +195,7 @@ class LoginFragment : Fragment() {
                             task.result?.let { token ->
                                 if (position == 0) {
                                     val url =
-                                        "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/google/"
+                                        "${Constants.BASE_URL}/AccountCustomer/google/"
                                     requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
                                         "$url$email/$token"
                                     )?.let {
@@ -216,7 +217,7 @@ class LoginFragment : Fragment() {
                                     binding.tvLoginErrMsg.text = "此google帳號未註冊"
                                 } else if (position == 1) {
                                     val url =
-                                        "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/google/"
+                                        "${Constants.BASE_URL}/AccountCleaner/google/"
                                     requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                                         "$url$email/$token"
                                     )?.let {
@@ -243,7 +244,7 @@ class LoginFragment : Fragment() {
                                         .show()
                                 }
                             }
-                        }else {
+                        } else {
                             binding.tvLoginErrMsg.text = task.exception?.message
                                 ?: "google登入失敗"  // getString(R.string.tv_login_fail)
                         }

@@ -3,6 +3,7 @@ package com.example.cleaningapp.backstage.coupon
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -18,7 +19,7 @@ class BackstageCouponSearchViewModel : ViewModel() {
     @SuppressLint("SimpleDateFormat")
     fun loadCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "${Constants.BASE_URL}/bsCoupon/",
             "GET",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {

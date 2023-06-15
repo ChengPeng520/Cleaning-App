@@ -14,7 +14,7 @@ class CleanerMemberViewModel : ViewModel() {
         fetchPhoto()
     }
 
-    fun fetchPhoto() {
+    private fun fetchPhoto() {
         _photo.value = CleanerSharedPreferencesUtils.getCurrentCleanerPhoto()
     }
 }

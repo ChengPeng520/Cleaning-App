@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.cleaner.uistate.ProductDetailUiState
 import com.example.cleaningapp.cleaner.uistate.ShopOrderList
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,7 +23,7 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
 
     fun fetchProductDetail(productId: Int) {
         requestTask<ProductDetailUiState>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/$productId",
+            url = "${Constants.BASE_URL}/product/$productId",
             method = "GET"
         )?.let {
             _uiState.value = it
@@ -56,7 +57,7 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
     fun putProductToCart(view: View) {
         if (uiState.value.count > 0) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                url = "${Constants.BASE_URL}/ShopOrderList/",
                 method = "POST",
                 reqBody = ShopOrderList(
                     shopOrderId = shopOrderId,

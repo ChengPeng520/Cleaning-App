@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.OrderStateUiState
 import com.example.cleaningapp.share.CleanerPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.OrderUtil
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -19,7 +20,7 @@ class OrderStateViewModel : ViewModel() {
 
     fun fetchOrderProgress() {
         requestTask<OrderUtil.OrderStatus>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/${orderId.value}",
+            url = "${Constants.BASE_URL}/clnOrder/info0/${orderId.value}",
             method = "GET"
         )?.let {
             _uiState.value = OrderStateUiState(
@@ -44,7 +45,7 @@ class OrderStateViewModel : ViewModel() {
 
     fun startCleaning(view: View) {
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            url = "${Constants.BASE_URL}/clnOrder/",
             method = "PUT",
             reqBody = OrderUtil.OrderStatus(
                 OrderUtil.Order(
@@ -68,7 +69,7 @@ class OrderStateViewModel : ViewModel() {
         val photosList: List<Bitmap?> =
             CleanerPreferencesUtils.fetchCleaningPhotoFromPreferences(view.context)
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            url = "${Constants.BASE_URL}/clnOrder/",
             method = "PUT",
             reqBody = OrderUtil.OrderStatus(
                 OrderUtil.Order(

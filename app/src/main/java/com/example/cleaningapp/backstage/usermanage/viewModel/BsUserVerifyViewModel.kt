@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Member
 import com.example.cleaningapp.backstage.usermanage.model.User
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -23,7 +24,7 @@ class BsUserVerifyViewModel : ViewModel() {
     /** 連線後端取得資料 */
     private fun loadUsers() {
         requestTask<List<Member>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            "${Constants.BASE_URL}/AccountBackstage/",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
             val unverifiedUsers = mutableListOf<Member>()

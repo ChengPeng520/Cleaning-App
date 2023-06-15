@@ -38,7 +38,7 @@ class OrderHistoryAdapter :
             with(itemBinding) {
                 tvOrderHistoryReceiptDate.text = orderHistoryItem.orderTime
                 tvOrderHistoryReceiptState.text =
-                    if (orderHistoryItem.isDelivered) "已送達" else if (orderHistoryItem.isShipped) "已出貨" else "以結帳"
+                    if (orderHistoryItem.isDelivered) "已送達" else if (orderHistoryItem.isShipped) "已出貨" else "已結帳"
                 tvOrderHistoryReceiptCount.text = orderHistoryItem.totalCount.toString()
                 ivOrderHistoryImage.setImageBitmap(orderHistoryItem.productPhoto)
                 tvOrderHistoryName.text = orderHistoryItem.name

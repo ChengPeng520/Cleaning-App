@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.CompleteOrderPhotos
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.detailed.OrderInfo
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class ComplaintdetailsViewModel : ViewModel() {
@@ -14,23 +15,13 @@ class ComplaintdetailsViewModel : ViewModel() {
     val uiState: LiveData<Order> by lazy { order }
     val uiPhoto: LiveData<CompleteOrderPhotos> by lazy { _uiPhoto }
 
-
-    //    fun fetchOrdersInfo(orderId: Int) {
-//        requestTask<Order>(
-//            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
-//            method = "GET",
-//        )?.let {
-//            order.value = it
-//            Log.d("OrderList", "Fetched orders: $it")
-//        }
-//    }
     fun fetchComplaintInfo(orderId: Int) {
         requestTask<OrderInfo>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            "${Constants.BASE_URL}/csOrder/$orderId",
             "DELETE"
         )?.let {
             order.value = Order(
-                orderId = it.order.orderId,
+                orderId = orderId,
                 dateOrdered = it.order.dateOrdered,
                 timeOrderedStart = it.order.timeOrderedStart,
                 timeOrderedEnd = it.order.timeOrderedEnd,

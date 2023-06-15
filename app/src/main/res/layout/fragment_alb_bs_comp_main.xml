@@ -13,7 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="24dp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_comp_main_dealing"
@@ -25,10 +26,10 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintVertical_bias="0" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bs_comp_main_done"
@@ -46,13 +47,16 @@
             android:id="@+id/ll_bs_comp_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_bs_comp_main_done">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <SearchView
                 android:id="@+id/sv_bs_comp_main"
@@ -63,6 +67,7 @@
                 app:iconifiedByDefault="false">
 
             </SearchView>
+        </LinearLayout>
 
             <View
                 android:id="@+id/divider11"
@@ -73,12 +78,13 @@
             <LinearLayout
                 android:id="@+id/ll_bs_comp_main_ti"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
 
                 <TextView
                     android:id="@+id/tv_bs_comp_main_order_ti"
-                    android:layout_width="7dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_bs_comp_databox_orderid_ti"

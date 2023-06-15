@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.cleaningapp.cleaner.uistate.ProductItemUiState
 import com.example.cleaningapp.cleaner.uistate.ProductUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,7 @@ class MallViewModel(application: Application) : AndroidViewModel(application) {
 
     fun fetchProducts() {
         requestTask<List<ProductItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
+            url = "${Constants.BASE_URL}/product/",
             method = "GET",
             respBodyType = object : TypeToken<List<ProductItemUiState>>() {}.type
         )?.let {
@@ -36,7 +37,7 @@ class MallViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun fetchShopCart() {
         requestTask<Int>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            url = "${Constants.BASE_URL}/clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET"
         )?.let {
             getApplication<Application>().getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE).edit()

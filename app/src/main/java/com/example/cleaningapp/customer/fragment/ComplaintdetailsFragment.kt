@@ -1,6 +1,7 @@
 package com.example.cleaningapp.customer.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,16 +28,11 @@ class ComplaintdetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_orderHistory)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_orderHistory)
         arguments?.getInt("orderId")?.let { viewModel.fetchComplaintInfo(it) }
         binding.bntApplyComplaintChat.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.chatRoomFragment)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
-            View.VISIBLE
     }
 }

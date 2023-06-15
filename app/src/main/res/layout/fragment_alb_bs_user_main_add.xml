@@ -81,7 +81,7 @@
 
             <LinearLayout
                 android:id="@+id/ll_bs_user_main_add_back"
-                android:layout_width="325dp"
+                android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:orientation="horizontal">
 

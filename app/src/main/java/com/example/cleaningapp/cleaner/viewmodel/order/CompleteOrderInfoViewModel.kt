@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.CompleteOrderInfoUiState
 import com.example.cleaningapp.cleaner.uistate.CompleteOrderPhotos
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.OrderUtil
 import com.example.cleaningapp.share.requestTask
 
@@ -16,7 +17,7 @@ class CompleteOrderInfoViewModel : ViewModel() {
 
     fun fetchOrderInfo(orderId : Int) {
         requestTask<OrderUtil.InsertOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info2/$orderId",
+            "${Constants.BASE_URL}/clnOrder/info2/$orderId",
             "GET"
         )?.let {
             _uiState.value = CompleteOrderInfoUiState(

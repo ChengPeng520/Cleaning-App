@@ -3,6 +3,7 @@ package com.example.cleaningapp.login.viewModel
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -40,7 +41,7 @@ class SignupMemberInfoViewModel : ViewModel() {
             )
         val apiCustomerModel = CustomerSharePreferencesUtils.anyToApiCustomerModel(customer)
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/",
+            "${Constants.BASE_URL}/AccountCustomer/",
             "POST",
             apiCustomerModel
         )?.let {

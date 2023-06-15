@@ -80,6 +80,7 @@ class CustomerActivity : AppCompatActivity() {
                                 .getPrimeFromTapPay(paymentData, this, object : GetPrimeCallback {
                                     override fun onGetPrimeResult(result: Boolean) {
                                         viewModel.setResult(result)
+                                        viewModel.setResult(false)
                                     }
                                 })
                         }

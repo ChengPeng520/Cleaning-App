@@ -7,6 +7,7 @@ import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.Comment
 import com.example.cleaningapp.customer.model.OrderEstablished
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -24,7 +25,7 @@ class CsViewCvViewModel : ViewModel() {
 
     fun fetchCleanerInfo(cleanerId: Int) {
         requestTask<Cleaner>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/2/$cleanerId"
+            "${Constants.BASE_URL}/AccountBackstage/2/$cleanerId"
         )?.let {
             cleaner.value = it
         }
@@ -32,7 +33,7 @@ class CsViewCvViewModel : ViewModel() {
 
     fun fetchComments(cleanerId: Int) {
         requestTask<List<Comment>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/comment/$cleanerId",
+            "${Constants.BASE_URL}/orderApplied/comment/$cleanerId",
             respBodyType = object : TypeToken<List<Comment>>() {}.type
         )?.let {
             comments.value = it
@@ -41,7 +42,7 @@ class CsViewCvViewModel : ViewModel() {
 
     fun fetchOrdersInfo(orderId: Int) {
         requestTask<Order>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            url = "${Constants.BASE_URL}/csOrder/$orderId",
             method = "GET",
         )?.let {
             csPayment = it.priceForCustomer
@@ -51,7 +52,7 @@ class CsViewCvViewModel : ViewModel() {
 
     fun checkout(): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied",
+            "${Constants.BASE_URL}/orderApplied",
             "PUT",
             orderEstablished.value
         )?.let {

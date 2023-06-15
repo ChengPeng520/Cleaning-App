@@ -141,7 +141,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/spn_suInfo_gender"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -331,15 +331,12 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:cropToPadding="false"
-                    android:background="@drawable/rona_upload_goodperson"
                     android:imageBitmap="@{viewModel.crc}"
                     android:scaleType="fitStart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/iv_suInfo_id2"
                     app:layout_constraintStart_toStartOf="@+id/iv_suInfo_id1"
                     app:layout_constraintTop_toBottomOf="@+id/textView58" />
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -358,7 +355,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_back" />
 
-
         <TextView
             android:id="@+id/tv_suInfo_done"
             android:layout_width="wrap_content"
@@ -371,6 +367,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

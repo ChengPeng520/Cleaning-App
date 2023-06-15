@@ -15,6 +15,8 @@ class CsCreateOrderViewModel : ViewModel() {
             CreateOrderPhoto()
         )
     }
+    val countyPosition: MutableLiveData<Int> by lazy { MutableLiveData<Int>(0) }
+    val districtPosition: MutableLiveData<Int> by lazy { MutableLiveData<Int>(0) }
 
     fun addCapturedPhoto(photo: Bitmap?) {
         this.photo.value?.let {
@@ -32,5 +34,4 @@ class CsCreateOrderViewModel : ViewModel() {
     fun convert(value: String): String {
         return if (value.isNotEmpty()) value.substring(0, 5) else ""
     }
-
 }

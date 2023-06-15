@@ -21,6 +21,7 @@ import androidx.security.crypto.MasterKey
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaSignupBinding
 import com.example.cleaningapp.login.viewModel.SignupViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -92,7 +93,7 @@ class SignupFragment : Fragment() {
                 val position = spnSignupStatus.selectedItemPosition
 
                 if (position == 0) {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/isExist"
+                    val url = "${Constants.BASE_URL}/AccountCustomer/isExist"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
                         if (it.get("result").asBoolean) {
                             tvSignupErrMsg.text = "此帳號已存在"
@@ -108,7 +109,7 @@ class SignupFragment : Fragment() {
                         }
                     }
                 } else {
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/isExist"
+                    val url = "${Constants.BASE_URL}/AccountCleaner/isExist"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
                         Log.d("result", it.get("result").asBoolean.toString())
                         if (it.get("result").asBoolean) {
@@ -132,7 +133,7 @@ class SignupFragment : Fragment() {
                 val position = spnSignupStatus.selectedItemPosition
                 if (position == 0) {
                     // 註冊Google email, 取出email並bundle email至info頁
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/isExist"
+                    val url = "${Constants.BASE_URL}/AccountCustomer/isExist"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
                         if (it.get("result").asBoolean) {
                             tvSignupErrMsg.text = "此帳號已存在"
@@ -143,7 +144,7 @@ class SignupFragment : Fragment() {
                     }
                 } else {
                     // 註冊Google email, 取出email並bundle email至info頁
-                    val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/isExist"
+                    val url = "${Constants.BASE_URL}/AccountCleaner/isExist"
                     requestTask<JsonObject>("$url/${viewModel?.account}")?.let {
                         Log.d("result", it.get("result").asBoolean.toString())
                         if (it.get("result").asBoolean) {

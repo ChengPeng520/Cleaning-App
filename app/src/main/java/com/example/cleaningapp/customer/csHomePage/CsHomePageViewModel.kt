@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.OrderRemind
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
@@ -20,7 +21,7 @@ class CsHomePageViewModel : ViewModel() {
 
     private fun fetchCleaners() {
         requestTask<List<Cleaner>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/best",
+            "${Constants.BASE_URL}/orderApplied/best",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
             cleaners.value = it
@@ -29,7 +30,7 @@ class CsHomePageViewModel : ViewModel() {
 
     private fun getOrder() {
         requestTask<OrderRemind>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/1"
+            "${Constants.BASE_URL}/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}"
         )?.let {
             order.value = it
         }

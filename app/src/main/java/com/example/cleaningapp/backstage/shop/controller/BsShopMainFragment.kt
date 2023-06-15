@@ -1,17 +1,16 @@
 package com.example.cleaningapp.backstage.shop.controller
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.shop.ProductAdapter
-import com.example.cleaningapp.backstage.shop.viewModel.BsShopMainViewModel
 import com.example.cleaningapp.databinding.FragmentAlbBsShopMainBinding
 
 class BsShopMainFragment : Fragment() {
@@ -49,14 +48,13 @@ class BsShopMainFragment : Fragment() {
                         }
                         return true
                     }
+
                     // 點擊虛擬鍵盤上的提交鈕時呼叫
                     override fun onQueryTextSubmit(text: String): Boolean {
                         return false
                     }
                 })
             }
-
-
 
             with(binding) {
                 btnBsShopMainAdd.setOnClickListener {
@@ -74,7 +72,5 @@ class BsShopMainFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.loadProducts()
-
-
     }
 }

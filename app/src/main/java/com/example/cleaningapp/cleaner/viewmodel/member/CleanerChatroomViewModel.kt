@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.ChatroomItemUiState
 import com.example.cleaningapp.cleaner.uistate.ChatroomUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -22,7 +23,7 @@ class CleanerChatroomViewModel : ViewModel() {
 
     fun fetchChatRoomTalkList() {
         requestTask<List<ChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            url = "${Constants.BASE_URL}/ChatClnBack/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatroomItemUiState>>() {}.type
         )?.let {
@@ -33,7 +34,7 @@ class CleanerChatroomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+                url = "${Constants.BASE_URL}/ChatClnBack",
                 method = "POST",
                 reqBody = ChatroomItemUiState(
                     cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId(),

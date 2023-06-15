@@ -3,6 +3,7 @@ package com.example.cleaningapp.customer.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.detailed.Order
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
@@ -31,7 +32,7 @@ class HistoricalOrderViewModel : ViewModel() {
 
     fun fetchOrdersInfo() {
         requestTask<List<Order>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/1/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            url = "${Constants.BASE_URL}/csOrder/1/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<Order>>() {}.type
         )?.let {

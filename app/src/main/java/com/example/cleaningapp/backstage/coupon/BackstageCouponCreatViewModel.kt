@@ -2,6 +2,7 @@ package com.example.cleaningapp.backstage.coupon
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
@@ -10,7 +11,7 @@ class BackstageCouponCreateViewModel : ViewModel() {
 
     fun couponAdd(): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "${Constants.BASE_URL}/bsCoupon/",
             "POST",
             coupon.value
         )?.let {

@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
@@ -22,7 +23,7 @@ class BsUserMainAddViewModel : ViewModel() {
         )
         val apiBackstageModel = BackstageSharedPreferencesUtils.anyToApiBackstageModel(backstage)
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            url = "${Constants.BASE_URL}/AccountBackstage/",
             method = "POST",
             reqBody = apiBackstageModel
         )?.let {

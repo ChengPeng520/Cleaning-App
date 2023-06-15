@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.ShopOrder
 import com.example.cleaningapp.cleaner.uistate.ShoppingCartItemUiState
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -23,7 +24,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun fetchShopOrderList() {
         requestTask<List<ShoppingCartItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            url = "${Constants.BASE_URL}/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ShoppingCartItemUiState>>() {}.type
         )?.let {
@@ -38,7 +39,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun deleteProduct(productItem: ShoppingCartItemUiState): Boolean {
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
+            url = "${Constants.BASE_URL}/ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
             method = "DELETE",
         )?.let {
             return it.get("result").asBoolean
@@ -50,7 +51,7 @@ class ShoppingCartViewModel : ViewModel() {
         if (state) {
             productItem.count += 1
             requestTask<ShoppingCartItemUiState>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                url = "${Constants.BASE_URL}/ShopOrderList/",
                 method = "PUT",
                 reqBody = productItem
             )?.let {
@@ -59,7 +60,7 @@ class ShoppingCartViewModel : ViewModel() {
         } else {
             productItem.count -= 1
             requestTask<ShoppingCartItemUiState>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                url = "${Constants.BASE_URL}/ShopOrderList/",
                 method = "PUT",
                 reqBody = productItem
             )?.let {
@@ -68,9 +69,9 @@ class ShoppingCartViewModel : ViewModel() {
         }
     }
 
-    fun checkout(context: Context) : Boolean {
+    fun checkout(context: Context): Boolean {
         requestTask<ShopOrder>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/",
+            url = "${Constants.BASE_URL}/clShopOrder/",
             method = "PUT",
             reqBody = ShopOrder(
                 shopOrderId = context.getSharedPreferences(

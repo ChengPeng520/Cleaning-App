@@ -185,7 +185,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/ciyi_button_shape"
-                    android:enabled="@{viewModel.shopOrder.isShipped()}"
+                    android:enabled="@{viewModel.shopOrder.isShipped() ? false : true}"
                     android:text='@{viewModel.shopOrder.isShipped ? "已出貨":"出貨"}'
                     android:textColor="@color/black"
                     android:textSize="20sp"

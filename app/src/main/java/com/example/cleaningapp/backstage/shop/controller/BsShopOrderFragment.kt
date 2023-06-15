@@ -21,7 +21,6 @@ class BsShopOrderFragment : Fragment(),ShopOrderAdapter.onItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-
         binding = FragmentAlbBsShopOrderBinding.inflate(inflater, container, false)
         binding.viewModel = BsShopOrdersViewModel()
         binding.lifecycleOwner = this

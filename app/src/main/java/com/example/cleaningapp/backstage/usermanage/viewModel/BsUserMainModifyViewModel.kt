@@ -13,10 +13,7 @@ import com.example.cleaningapp.backstage.usermanage.model.AccountBackstage
 import com.example.cleaningapp.backstage.usermanage.model.AccountCleaner
 import com.example.cleaningapp.backstage.usermanage.model.AccountCustomer
 import com.example.cleaningapp.backstage.usermanage.model.User
-import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
-import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
-import com.example.cleaningapp.share.CustomerSharePreferencesUtils
-import com.example.cleaningapp.share.requestTask
+import com.example.cleaningapp.share.*
 
 class BsUserMainModifyViewModel : ViewModel() {
     val user: MutableLiveData<User> by lazy { MutableLiveData<User>(User()) }
@@ -26,9 +23,8 @@ class BsUserMainModifyViewModel : ViewModel() {
      */
     fun fetchMemberInfo(userFetch: User) {
         if (userFetch.customerId != null) {
-            Log.d("1", "1")
             requestTask<AccountCustomer>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/1/${userFetch.customerId}",
+                url = "${Constants.BASE_URL}/AccountBackstage/1/${userFetch.customerId}",
                 method = "GET"
             )?.let {
                 user.value = User(
@@ -50,7 +46,7 @@ class BsUserMainModifyViewModel : ViewModel() {
         } else if (userFetch.cleanerId != null) {
             Log.d("2", "2")
             requestTask<AccountCleaner>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/2/${userFetch.cleanerId}",
+                url = "${Constants.BASE_URL}/AccountBackstage/2/${userFetch.cleanerId}",
                 method = "GET"
             )?.let {
                 user.value = User(
@@ -75,7 +71,7 @@ class BsUserMainModifyViewModel : ViewModel() {
         } else if (userFetch.backstageId != null) {
             Log.d("3", "3")
             requestTask<AccountBackstage>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/3/${userFetch.backstageId}",
+                url = "${Constants.BASE_URL}/AccountBackstage/3/${userFetch.backstageId}",
                 method = "GET"
             )?.let {
                 user.value = User(
@@ -100,7 +96,7 @@ class BsUserMainModifyViewModel : ViewModel() {
         user.value?.let {
             if (it.customerId != null) {
                 requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    url = "${Constants.BASE_URL}/AccountBackstage",
                     method = "PUT",
                     reqBody = CustomerSharePreferencesUtils.ApiCustomerModel(
                         customerId = it.customerId!!,
@@ -110,6 +106,7 @@ class BsUserMainModifyViewModel : ViewModel() {
                         gender = it.gender,
                         introduction = it.introduction,
                         photo = null,
+                        suspend = it.suspend,
                         password = null
                     )
                 )?.let {
@@ -119,7 +116,7 @@ class BsUserMainModifyViewModel : ViewModel() {
             }
             if (it.cleanerId != null) {
                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    url = "${Constants.BASE_URL}/AccountBackstage",
                     method = "PUT",
                     reqBody = CleanerSharedPreferencesUtils.ApiCleanerModel(
                         cleanerId = it.cleanerId!!,
@@ -131,7 +128,9 @@ class BsUserMainModifyViewModel : ViewModel() {
                         photo = null,
                         password = null,
                         identifyNumber = it.identifyNumber,
+                        verify = it.verify,
                         idCardFront = null,
+                        suspend = it.suspend,
                         idCardBack = null,
                         crc = null
                     )
@@ -143,7 +142,7 @@ class BsUserMainModifyViewModel : ViewModel() {
             }
             if (it.backstageId != null) {
                 requestTask<BackstageSharedPreferencesUtils.ApiBackstageModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    url = "${Constants.BASE_URL}/AccountBackstage",
                     method = "PUT",
                     reqBody = BackstageSharedPreferencesUtils.ApiBackstageModel(
                         backstageId = it.backstageId!!,

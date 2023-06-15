@@ -1,7 +1,6 @@
 package com.example.cleaningapp.share
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -22,10 +21,10 @@ class FirebaseFCMService : FirebaseMessagingService() {
         // 取得自訂資料
         remoteMessage.data["data"]?.let {
             if (it == "chatroom") {
-                sendMessageBroadcast(it)
+                sendMessageBroadcast()
             }
             if (it == "order") {
-                sendOrderBroadcast(it)
+                sendOrderBroadcast()
             }
             Log.d(
                 myTag,
@@ -45,19 +44,13 @@ class FirebaseFCMService : FirebaseMessagingService() {
         Log.d(myTag, "onDeletedMessages")
     }
 
-    private fun sendMessageBroadcast(data: String) {
+    private fun sendMessageBroadcast() {
         val intent = Intent("action_chatroom") //要執行的id(自訂義的)標籤, 後在IntentFilter配合使用
-        val bundle = Bundle()
-        bundle.putString("data", data)
-        intent.putExtras(bundle)
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
     }
 
-    private fun sendOrderBroadcast(data: String) {
+    private fun sendOrderBroadcast() {
         val intent = Intent("action_order") //要執行的id(自訂義的)標籤, 後在IntentFilter配合使用
-        val bundle = Bundle()
-        bundle.putString("data", data)
-        intent.putExtras(bundle)
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
     }
 }

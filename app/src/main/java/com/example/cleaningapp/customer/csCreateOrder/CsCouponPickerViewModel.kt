@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.customer.model.CustomerCoupon
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -21,7 +22,7 @@ class CsCouponPickerViewModel : ViewModel() {
 
     fun fetchCustomerCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            "${Constants.BASE_URL}/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {
             coupons.value = it
@@ -30,7 +31,7 @@ class CsCouponPickerViewModel : ViewModel() {
 
     fun customerUseCoupon(customerCoupon: CustomerCoupon): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/",
+            "${Constants.BASE_URL}/customerCoupon/",
             "POST",
             reqBody = customerCoupon
         )?.let {
@@ -40,8 +41,4 @@ class CsCouponPickerViewModel : ViewModel() {
         }
         return false
     }
-    fun convert(value: String): String {
-        return if (value.isNotEmpty()) value.substring(0, 5) else ""
-    }
-
 }

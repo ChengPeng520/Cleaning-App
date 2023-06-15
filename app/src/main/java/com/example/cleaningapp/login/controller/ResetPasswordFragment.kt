@@ -11,12 +11,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
 import com.example.cleaningapp.databinding.FragmentRonaResetPasswordBinding
 import com.example.cleaningapp.login.viewModel.ResetPasswordViewModel
-import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 
@@ -38,7 +37,7 @@ class ResetPasswordFragment : Fragment() {
         requireActivity().findViewById<Toolbar>(R.id.login_toolbar).visibility = View.VISIBLE
         requireActivity().findViewById<TextView>(R.id.login_toolbar_title).text = "重設密碼"
         with(binding) {
-            btnResetPasswordConfirm.setOnClickListener {view ->
+            btnResetPasswordConfirm.setOnClickListener { view ->
                 if (!inputCheck()) {
                     return@setOnClickListener
                 }
@@ -77,7 +76,7 @@ class ResetPasswordFragment : Fragment() {
         // bundle手機號碼帶到這頁
         val phoneNumber = arguments?.getString("phoneNumber")
         Log.d("phone","phone: $phoneNumber")
-        val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
+        val url = "${Constants.BASE_URL}/AccountCustomer/"
         requestTask<JsonObject>(
             "$url${phoneNumber}/${binding.viewModel?.password?.value}",
             "DELETE"

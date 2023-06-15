@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.customer.model.CustomerCoupon
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.CustomerSharePreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -22,7 +23,7 @@ class CsViewCouponViewModel : ViewModel() {
 
     fun fetchCustomerCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            "${Constants.BASE_URL}/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {

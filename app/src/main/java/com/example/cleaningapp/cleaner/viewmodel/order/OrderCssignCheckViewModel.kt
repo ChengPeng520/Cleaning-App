@@ -2,6 +2,7 @@ package com.example.cleaningapp.cleaner.viewmodel.order
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.OrderUtil
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
@@ -13,7 +14,7 @@ class OrderCssignCheckViewModel : ViewModel() {
     fun sendSignature(): Boolean {
         Log.d("xxx", "orderId: $orderId")
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            url = "${Constants.BASE_URL}/clnOrder/",
             method = "PUT",
             reqBody = OrderUtil.OrderStatus(
                 OrderUtil.Order(

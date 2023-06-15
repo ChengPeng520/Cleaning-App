@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -18,7 +19,7 @@ class OrderConductViewModel : ViewModel() {
 
     fun fetchOrderRecord() {
         requestTask<List<SearchOrder>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/orderRecord/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}/",
+            "${Constants.BASE_URL}/clnOrder/orderRecord/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}/",
             "GET",
             respBodyType = object : TypeToken<List<SearchOrder>>() {}.type
         )?.let { searchOrders ->

@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.detailed.OrderInfo
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class CommentViewModel : ViewModel() {
@@ -19,13 +20,13 @@ class CommentViewModel : ViewModel() {
 
     fun uploadContent(view: View) {
         requestTask<OrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
+            url = "${Constants.BASE_URL}/csOrder/",
             method = "PUT",
             reqBody = OrderInfo(
                 Order(
                     stars = stars.value!!,
                     commentCleaner = content.value!!,
-                    status = 5
+                    status = 8
                 ), emptyList()
             )
         )?.let {

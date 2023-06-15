@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.detailed.OrderInfo
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.ImageUtils
 import com.example.cleaningapp.share.requestTask
 
@@ -35,7 +36,7 @@ class ApplycomplaintViewModel : ViewModel() {
 
     fun fetchOrdersInfo(orderId: Int) {
         requestTask<Order>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            url = "${Constants.BASE_URL}/csOrder/$orderId",
             method = "GET",
         )?.let {
             order.value = it
@@ -45,7 +46,7 @@ class ApplycomplaintViewModel : ViewModel() {
 
     fun uploadComplaint(view: View) {
         requestTask<OrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
+            url = "${Constants.BASE_URL}/csOrder/",
             method = "PUT",
             reqBody = OrderInfo(
                 Order(
@@ -54,7 +55,7 @@ class ApplycomplaintViewModel : ViewModel() {
                     cleanerId = order.value!!.cleanerId,
                     commentCleaner = order.value!!.commentCleaner,
                     stars = order.value!!.stars,
-                    status = 7
+                    status = 5
                 ), sendPhotos()
             )
         )?.let {
