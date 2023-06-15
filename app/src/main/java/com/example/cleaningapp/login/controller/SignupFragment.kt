@@ -97,10 +97,10 @@ class SignupFragment : Fragment() {
                         if (it.get("result").asBoolean) {
                             tvSignupErrMsg.text = "此帳號已存在"
                         } else {
-                            saveEncryptedPassword()
                             val bundle = Bundle()
                             bundle.putString("emailAccount", viewModel?.account?.value)
                             bundle.putString("password", viewModel?.password?.value)
+                            saveEncryptedPassword()
                             findNavController().navigate(
                                 R.id.action_signupFragment_to_signupContractMemberFragment,
                                 bundle

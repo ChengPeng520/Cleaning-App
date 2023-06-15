@@ -28,6 +28,7 @@ class ForgetPasswordPhoneVFragment : Fragment() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private val myTag = "TAG_${javaClass.simpleName}"
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
@@ -94,7 +95,8 @@ class ForgetPasswordPhoneVFragment : Fragment() {
             .addOnCompleteListener { task: Task<AuthResult?> ->
                 // 若驗證碼比對成功就跳頁
                 if (task.isSuccessful) {
-                    findNavController().navigate(R.id.action_forgetPasswordPhoneVFragment_to_resetPasswordFragment)
+                    val bundle = arguments
+                    findNavController().navigate(R.id.action_forgetPasswordPhoneVFragment_to_resetPasswordFragment, bundle)
                 } else {
                     // 若使用者輸入的驗證碼與簡訊傳來的不同會產生錯誤
                     val e = task.exception

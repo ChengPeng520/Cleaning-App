@@ -2,6 +2,7 @@ package com.example.cleaningapp.login.controller
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +45,7 @@ class ResetPasswordFragment : Fragment() {
                 // 手機號碼(用手機密碼拿到資料)跟密碼帶到後端修改 edit(toDelete)
                 // 連到AccountCustomer doDelete
                 resetPassword()?.let {
-                    SignupFragment().saveEncryptedPassword()
+//                    SignupFragment().saveEncryptedPassword()
                     Navigation.findNavController(view)
                         .navigate(R.id.action_resetPasswordFragment_to_loginFragment)
                 }
@@ -56,10 +57,10 @@ class ResetPasswordFragment : Fragment() {
     private fun inputCheck(): Boolean {
         var check = true
         with(binding) {
-            val password = viewModel?.password?.value?.trim()
-            val cPassword = viewModel?.cPassword?.value?.trim()
+            val password = viewModel?.password?.value
+            val cPassword = viewModel?.cPassword?.value
 
-            if (password == null || password.isEmpty()) {
+            if ((password == null) || password.isEmpty()) {
                 edtTxtResetPasswordNP.error = "不可空白"
                 check = false
             }
@@ -72,9 +73,10 @@ class ResetPasswordFragment : Fragment() {
         }
     }
 
-    fun resetPassword(): Boolean? {
+    fun resetPassword(): Boolean {
         // bundle手機號碼帶到這頁
         val phoneNumber = arguments?.getString("phoneNumber")
+        Log.d("phone","phone: $phoneNumber")
         val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
         requestTask<JsonObject>(
             "$url${phoneNumber}/${binding.viewModel?.password?.value}",

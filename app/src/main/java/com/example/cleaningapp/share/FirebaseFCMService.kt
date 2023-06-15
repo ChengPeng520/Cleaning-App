@@ -20,7 +20,7 @@ class FirebaseFCMService : FirebaseMessagingService() {
             body = notification.body ?: ""
         }
         // 取得自訂資料
-        remoteMessage.data["chatroom"]?.let {
+        remoteMessage.data["data"]?.let {
             if (it == "chatroom") {
                 sendMessageBroadcast(it)
             }
