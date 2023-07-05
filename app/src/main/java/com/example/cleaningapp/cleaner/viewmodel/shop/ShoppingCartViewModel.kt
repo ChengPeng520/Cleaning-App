@@ -23,7 +23,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun fetchShopOrderList() {
         requestTask<List<ShoppingCartItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            path = "clShopOrder/nonChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ShoppingCartItemUiState>>() {}.type
         )?.let {
@@ -38,7 +38,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun deleteProduct(productItem: ShoppingCartItemUiState): Boolean {
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
+            path = "ShopOrderList/${productItem.shopOrderId}/${productItem.productId}",
             method = "DELETE",
         )?.let {
             return it.get("result").asBoolean
@@ -50,7 +50,7 @@ class ShoppingCartViewModel : ViewModel() {
         if (state) {
             productItem.count += 1
             requestTask<ShoppingCartItemUiState>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                path = "ShopOrderList/",
                 method = "PUT",
                 reqBody = productItem
             )?.let {
@@ -59,7 +59,7 @@ class ShoppingCartViewModel : ViewModel() {
         } else {
             productItem.count -= 1
             requestTask<ShoppingCartItemUiState>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                path = "ShopOrderList/",
                 method = "PUT",
                 reqBody = productItem
             )?.let {
@@ -70,7 +70,7 @@ class ShoppingCartViewModel : ViewModel() {
 
     fun checkout(context: Context) : Boolean {
         requestTask<ShopOrder>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/",
+            path = "clShopOrder/",
             method = "PUT",
             reqBody = ShopOrder(
                 shopOrderId = context.getSharedPreferences(

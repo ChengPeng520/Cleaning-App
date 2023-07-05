@@ -1,6 +1,5 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
-import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
@@ -22,7 +21,7 @@ class BsUserMainAddViewModel : ViewModel() {
         )
         val apiBackstageModel = BackstageSharedPreferencesUtils.anyToApiBackstageModel(backstage)
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            path = "AccountBackstage/",
             method = "POST",
             reqBody = apiBackstageModel
         )?.let {

@@ -22,7 +22,7 @@ class ChatRoomViewModel : ViewModel() {
 
     fun fetchChatRoomTalkList() {
         requestTask<List<ChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            path = "ChatCustBack/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatroomItemUiState>>() {}.type
         )?.let {
@@ -33,7 +33,7 @@ class ChatRoomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustBack",
+                path = "ChatCustBack",
                 method = "POST",
                 reqBody = ChatroomItemUiState(
                     customerId = CustomerSharePreferencesUtils.getCurrentCustomerId(),

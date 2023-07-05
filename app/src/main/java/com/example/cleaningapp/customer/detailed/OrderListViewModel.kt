@@ -9,7 +9,7 @@ class OrderListViewModel : ViewModel() {
 
     fun fetchOrdersInfo(orderId: Int) {
         requestTask<Order>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            path = "csOrder/$orderId",
             method = "GET",
         )?.let {
             orderItem.value = it

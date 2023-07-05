@@ -14,7 +14,7 @@ class OrderHistoryViewModel : ViewModel() {
 
     fun fetchOrderHistory() {
         requestTask<CheckShopOrder>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/isChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            path = "clShopOrder/isChecked/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
         )?.let {
             val list: MutableList<OrderHistoryItemUiState> = mutableListOf()

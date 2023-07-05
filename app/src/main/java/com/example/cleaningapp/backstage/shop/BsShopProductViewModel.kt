@@ -12,11 +12,9 @@ open class BsShopProductViewModel : ViewModel() {
     val product: MutableLiveData<Product> by lazy { MutableLiveData<Product>(Product()) }
     //單一商品畫面的viewmodel
 
-
-
     fun productAdd(): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/product/*",
+            "product/*",
             "POST",
             product.value
         )?.let {
@@ -24,7 +22,4 @@ open class BsShopProductViewModel : ViewModel() {
         }
         return false
     }
-
-
-
 }

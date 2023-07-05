@@ -20,7 +20,7 @@ class MallViewModel(application: Application) : AndroidViewModel(application) {
 
     fun fetchProducts() {
         requestTask<List<ProductItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
+            path = "product/",
             method = "GET",
             respBodyType = object : TypeToken<List<ProductItemUiState>>() {}.type
         )?.let {
@@ -36,7 +36,7 @@ class MallViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun fetchShopCart() {
         requestTask<Int>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            path = "clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET"
         )?.let {
             getApplication<Application>().getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE).edit()

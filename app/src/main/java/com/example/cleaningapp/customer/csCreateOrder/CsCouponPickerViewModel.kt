@@ -21,7 +21,7 @@ class CsCouponPickerViewModel : ViewModel() {
 
     fun fetchCustomerCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            "customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {
             coupons.value = it
@@ -30,7 +30,7 @@ class CsCouponPickerViewModel : ViewModel() {
 
     fun customerUseCoupon(customerCoupon: CustomerCoupon): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/",
+            "customerCoupon/",
             "POST",
             reqBody = customerCoupon
         )?.let {

@@ -3,7 +3,6 @@ package com.example.cleaningapp.cleaner.viewmodel.order
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.cleaner.uistate.*
 import com.example.cleaningapp.cleaner.uistate.OrderChatroomItemUiState
 import com.example.cleaningapp.cleaner.uistate.OrderInfo
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
@@ -20,7 +19,7 @@ class OrderChatroomViewModel : ViewModel() {
 
     fun fetchOrderChatRoomTalkList() {
         requestTask<List<OrderChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/${orderUiState.value?.customerId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            path = "ChatCustCln/${orderUiState.value?.customerId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<OrderChatroomItemUiState>>() {}.type
         )?.let {
@@ -35,7 +34,7 @@ class OrderChatroomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/",
+                path = "ChatCustCln/",
                 method = "POST",
                 reqBody = OrderChatroomItemUiState(
                     cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId(),

@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.complaint.model.*
-import com.example.cleaningapp.cleaner.uistate.CompleteOrderInfoUiState
-import com.example.cleaningapp.cleaner.uistate.CompleteOrderPhotos
 import com.example.cleaningapp.share.requestTask
-import com.google.gson.reflect.TypeToken
 
 class BsCompDetailViewModel : ViewModel() {
     private val _uiState: MutableLiveData<BSCompOrder> by lazy { MutableLiveData<BSCompOrder>() }
@@ -17,7 +14,7 @@ class BsCompDetailViewModel : ViewModel() {
 
     fun loadComplaint(orderId: Int) {
         requestTask<BSCompOrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrder/$orderId",
+            path = "bsOrder/compOrder/$orderId",
             method = "GET"
         )?.let {
             _uiState.value = BSCompOrder(

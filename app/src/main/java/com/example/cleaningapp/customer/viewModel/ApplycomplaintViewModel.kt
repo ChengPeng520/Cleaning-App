@@ -2,7 +2,6 @@ package com.example.cleaningapp.customer.viewModel
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,7 +34,7 @@ class ApplycomplaintViewModel : ViewModel() {
 
     fun fetchOrdersInfo(orderId: Int) {
         requestTask<Order>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/$orderId",
+            path = "csOrder/$orderId",
             method = "GET",
         )?.let {
             order.value = it
@@ -45,7 +44,7 @@ class ApplycomplaintViewModel : ViewModel() {
 
     fun uploadComplaint(view: View) {
         requestTask<OrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
+            path = "csOrder/",
             method = "PUT",
             reqBody = OrderInfo(
                 Order(

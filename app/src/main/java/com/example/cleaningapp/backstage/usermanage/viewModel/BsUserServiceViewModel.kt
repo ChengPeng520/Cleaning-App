@@ -26,7 +26,7 @@ class BsUserServiceViewModel : ViewModel() {
      */
     private fun loadChatList() {
         requestTask<List<ChatClnBack>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+            path = "ChatClnBack",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatClnBack>>() {}.type
         )?.let {

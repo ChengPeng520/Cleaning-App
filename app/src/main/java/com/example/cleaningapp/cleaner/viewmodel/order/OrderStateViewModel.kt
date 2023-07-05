@@ -19,7 +19,7 @@ class OrderStateViewModel : ViewModel() {
 
     fun fetchOrderProgress() {
         requestTask<OrderUtil.OrderStatus>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/${orderId.value}",
+            path = "clnOrder/info0/${orderId.value}",
             method = "GET"
         )?.let {
             _uiState.value = OrderStateUiState(
@@ -44,7 +44,7 @@ class OrderStateViewModel : ViewModel() {
 
     fun startCleaning(view: View) {
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            path = "clnOrder/",
             method = "PUT",
             reqBody = OrderUtil.OrderStatus(
                 OrderUtil.Order(
@@ -68,7 +68,7 @@ class OrderStateViewModel : ViewModel() {
         val photosList: List<Bitmap?> =
             CleanerPreferencesUtils.fetchCleaningPhotoFromPreferences(view.context)
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            path = "clnOrder/",
             method = "PUT",
             reqBody = OrderUtil.OrderStatus(
                 OrderUtil.Order(

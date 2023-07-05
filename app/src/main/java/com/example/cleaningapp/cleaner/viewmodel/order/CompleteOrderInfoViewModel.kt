@@ -16,7 +16,7 @@ class CompleteOrderInfoViewModel : ViewModel() {
 
     fun fetchOrderInfo(orderId : Int) {
         requestTask<OrderUtil.InsertOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info2/$orderId",
+            "clnOrder/info2/$orderId",
             "GET"
         )?.let {
             _uiState.value = CompleteOrderInfoUiState(

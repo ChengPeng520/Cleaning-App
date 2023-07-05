@@ -1,6 +1,5 @@
 package com.example.cleaningapp.backstage.shop
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.requestTask
@@ -10,23 +9,19 @@ class BsShopMainViewModel : ViewModel() {
     var productList = listOf<Product>()
     val products: MutableLiveData<List<Product>> by lazy { MutableLiveData<List<Product>>() }
 
-
-
     init {
         loadProducts()
     }
 
-
-        fun loadProducts() {
-            requestTask<List<Product>>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/product/",
-                "GET",
-                respBodyType = object : TypeToken<List<Product>>() {}.type
-            )?.let {
-                    response ->
-                products.value = response
-                productList= response
-            }
+    fun loadProducts() {
+        requestTask<List<Product>>(
+            "product/",
+            "GET",
+            respBodyType = object : TypeToken<List<Product>>() {}.type
+        )?.let { response ->
+            products.value = response
+            productList = response
+        }
     }
 
     fun productSearch(newText: String) {
@@ -45,6 +40,4 @@ class BsShopMainViewModel : ViewModel() {
         }
 
     }
-
-
 }

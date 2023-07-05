@@ -14,7 +14,7 @@ class BackstageCouponModifyViewModel : ViewModel() {
 
     fun couponModify(): Boolean {
         requestTask<Coupon>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "bsCoupon/",
             "PUT",
             coupon.value
         )?.let {
@@ -25,7 +25,7 @@ class BackstageCouponModifyViewModel : ViewModel() {
 
     fun fetchCouponInfo(couponId: Int) {
         requestTask<Coupon>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/$couponId",
+            "bsCoupon/$couponId",
             "GET"
         )?.let {
             coupon.value = it

@@ -20,7 +20,7 @@ class BsCompMainViewModel : ViewModel() {
 
     private fun loadComplaints() {
         requestTask<List<BSCompOrder>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrders5/",
+            path = "bsOrder/compOrders5/",
             method = "GET",
             respBodyType = object : TypeToken<List<BSCompOrder>>() {}.type
         )?.let {

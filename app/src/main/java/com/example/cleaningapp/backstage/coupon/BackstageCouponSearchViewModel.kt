@@ -18,7 +18,7 @@ class BackstageCouponSearchViewModel : ViewModel() {
     @SuppressLint("SimpleDateFormat")
     fun loadCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "bsCoupon/",
             "GET",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {

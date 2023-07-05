@@ -18,7 +18,7 @@ class OrderOrdermatchViewModel : ViewModel() {
 
     fun fetchOrderMatch(orderId: Int) {
         requestTask<OrderUtil.InsertOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info/$orderId",
+            "clnOrder/info/$orderId",
             "GET"
         )?.let {
             order.value = SearchOrder(
@@ -41,7 +41,7 @@ class OrderOrdermatchViewModel : ViewModel() {
 
     fun deleteOrder(view: View) {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/${orderId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            "orderApplied/${orderId}/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             "DELETE"
         )?.let {
             if (it.get("result").asBoolean) {

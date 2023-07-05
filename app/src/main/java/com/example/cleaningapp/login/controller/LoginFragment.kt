@@ -78,7 +78,7 @@ class LoginFragment : Fragment() {
                         task.result?.let { token ->
                             if (position == 0) {
                                 val url =
-                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/login/"
+                                    "AccountCustomer/login/"
                                 requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -97,7 +97,7 @@ class LoginFragment : Fragment() {
                                 tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                             } else if (position == 1) {
                                 val url =
-                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/login/"
+                                    "AccountCleaner/login/"
                                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -118,7 +118,7 @@ class LoginFragment : Fragment() {
                                 tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                             } else {
                                 val url =
-                                    "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/"
+                                    "AccountBackstage/"
                                 requestTask<AccountBackstage>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -189,7 +189,7 @@ class LoginFragment : Fragment() {
                             task.result?.let { token ->
                                 if (position == 0) {
                                     val url =
-                                        "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/google/"
+                                        "AccountCustomer/google/"
                                     requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
                                         "$url$email/$token"
                                     )?.let {
@@ -210,7 +210,7 @@ class LoginFragment : Fragment() {
                                 } else if (position == 1) {
                                     val token = FirebaseMessaging.getInstance().token
                                     val url =
-                                        "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/google/"
+                                        "AccountCleaner/google/"
                                     requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                                         "$url$email/$token"
                                     )?.let {

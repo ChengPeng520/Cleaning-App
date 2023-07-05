@@ -56,11 +56,6 @@ class OrderManageFragment : Fragment() {
                     return  true
                 }
             })
-
-
         }
     }
-
-
-
 }

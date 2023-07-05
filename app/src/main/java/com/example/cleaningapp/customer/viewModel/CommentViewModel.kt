@@ -19,7 +19,7 @@ class CommentViewModel : ViewModel() {
 
     fun uploadContent(view: View) {
         requestTask<OrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/",
+            path = "csOrder/",
             method = "PUT",
             reqBody = OrderInfo(
                 Order(

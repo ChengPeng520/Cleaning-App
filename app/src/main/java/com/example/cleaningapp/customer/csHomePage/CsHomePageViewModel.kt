@@ -20,7 +20,7 @@ class CsHomePageViewModel : ViewModel() {
 
     private fun fetchCleaners() {
         requestTask<List<Cleaner>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/best",
+            "orderApplied/best",
             respBodyType = object : TypeToken<List<Cleaner>>() {}.type
         )?.let {
             cleaners.value = it
@@ -29,7 +29,7 @@ class CsHomePageViewModel : ViewModel() {
 
     private fun getOrder() {
         requestTask<OrderRemind>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/1"
+            "csOrder/remind/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/1"
         )?.let {
             order.value = it
         }

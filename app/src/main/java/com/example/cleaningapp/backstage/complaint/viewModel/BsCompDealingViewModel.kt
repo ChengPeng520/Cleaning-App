@@ -3,7 +3,6 @@ package com.example.cleaningapp.backstage.complaint.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.complaint.model.*
 import com.example.cleaningapp.share.requestTask
 
@@ -18,7 +17,7 @@ class BsCompDealingViewModel : ViewModel() {
      */
     fun loadComplaint(orderId: Int) {
         requestTask<BSCompOrderInfo>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/compOrder/$orderId",
+            path = "bsOrder/compOrder/$orderId",
             method = "GET"
         )?.let {
             _uiState.value = BSCompOrder(
@@ -45,7 +44,7 @@ class BsCompDealingViewModel : ViewModel() {
             it.orderId = orderId
             it.status = 7
             requestTask<BSCompOrder>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/",
+                path = "bsOrder/",
                 method = "PUT",
                 reqBody = it
             )

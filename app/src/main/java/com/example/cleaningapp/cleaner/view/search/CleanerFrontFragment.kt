@@ -454,10 +454,6 @@ class CleanerFrontFragment : Fragment() {
     private var year = 0
     private var month = 0
     private var day = 0
-    private var startHour = 0
-    private var startMin = 0
-    private var endHour = 0
-    private var endMin = 0
     private var county: String = ""
     private var district: String = ""
 
@@ -532,44 +528,6 @@ class CleanerFrontFragment : Fragment() {
                 // 最後要呼叫show()方能顯示
                 datePickerDialog.show()
             }
-
-            // 開始時間
-//            startTime.setOnClickListener {
-//                val calendar = Calendar.getInstance()
-//                TimePickerDialog(
-//                    requireContext(),
-//                    { _, hour, minute ->
-//                        this@CleanerFrontFragment.startHour = hour
-//                        this@CleanerFrontFragment.startMin = minute
-//                        viewModel?.chooseCleaningTimeStart?.value = "${pad(hour)}:${pad(minute)}"
-//                        viewModel?.isSearch()?.let {
-//                            if (it) viewModel?.cleaners?.value = getByCondition()
-//                        }
-//                    },
-//                    calendar.get(Calendar.HOUR),
-//                    calendar.get(Calendar.MINUTE),
-//                    false
-//                ).show()
-//            }
-
-            // 結束時間
-//            spinner3.setOnClickListener {
-//                val calendar = Calendar.getInstance()
-//                TimePickerDialog(
-//                    requireContext(),
-//                    { _, hour, minute ->
-//                        this@CleanerFrontFragment.endHour = hour
-//                        this@CleanerFrontFragment.endMin = minute
-//                        viewModel?.chooseCleaningTimeEnd?.value = "${pad(hour)}:${pad(minute)}"
-//                        viewModel?.isSearch()?.let {
-//                            if (it) viewModel?.cleaners?.value = getByCondition()
-//                        }
-//                    },
-//                    calendar.get(Calendar.HOUR),
-//                    calendar.get(Calendar.MINUTE),
-//                    false
-//                ).show()
-//            }
         }
     }
 
@@ -624,35 +582,7 @@ class CleanerFrontFragment : Fragment() {
     private fun getByCondition(): List<SearchOrder.ApplingOrders> {
         val jobs = viewModel.cleanerList
         val searchedJobs = mutableListOf<SearchOrder.ApplingOrders>()
-//        val startDateTime = Calendar.getInstance()
-//        startDateTime.set(this.year, this.month, this.day, this.startHour, this.startMin)
-//        val endDateTime = Calendar.getInstance()
-//        endDateTime.set(this.year, this.month, this.day, this.endHour, this.endMin)
-//        val orderStartTime = Calendar.getInstance()
-//        val orderEndTime = Calendar.getInstance()
         for (job in jobs) {
-            val startCalendar = job.order.orderStartDate
-            val endCalendar = job.order.orderEndDate
-//            orderStartTime.set(
-//                startCalendar.get(Calendar.YEAR),
-//                startCalendar.get(Calendar.MONTH) + 1,
-//                startCalendar.get(Calendar.DAY_OF_MONTH),
-//                startCalendar.get(Calendar.HOUR_OF_DAY),
-//                startCalendar.get(Calendar.MINUTE) + 1
-//            )
-//            orderEndTime.set(
-//                endCalendar.get(Calendar.YEAR),
-//                endCalendar.get(Calendar.MONTH) + 1,
-//                endCalendar.get(Calendar.DAY_OF_MONTH),
-//                endCalendar.get(Calendar.HOUR_OF_DAY),
-//                endCalendar.get(Calendar.MINUTE) - 1
-//            )
-//            if (isBetween(orderStartTime, startDateTime, endDateTime)
-//                && isBetween(orderEndTime, startDateTime, endDateTime)
-//                && job.order.areaCity == this.county && job.order.areaDistrict == this.district
-//            ) {
-//                searchedJobs.add(job)
-//            }
             Log.d("areaCity", job.order.areaDistrict)
             Log.d("aa", this.district)
             if (job.order.dateOrdered.toString() == "$year-0$month-$day" && job.order.areaCity == this.county && job.order.areaDistrict == this.district
@@ -661,14 +591,6 @@ class CleanerFrontFragment : Fragment() {
             }
         }
         return searchedJobs
-    }
-
-    private fun isBetween(
-        dateTime: Calendar,
-        startDateTime: Calendar,
-        endDateTime: Calendar
-    ): Boolean {
-        return dateTime.after(startDateTime) && dateTime.before(endDateTime)
     }
 }
 

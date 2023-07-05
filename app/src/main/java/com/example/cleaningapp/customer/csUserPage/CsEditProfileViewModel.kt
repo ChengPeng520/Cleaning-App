@@ -22,7 +22,7 @@ class CsEditProfileViewModel : ViewModel() {
         if (profile.value?.name?.isNotEmpty() == true && profile.value?.phone?.isNotEmpty() == true) {
             val profile = CustomerSharePreferencesUtils.anyToApiCustomerModel(profile.value!!)
             requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer",
+                "AccountCustomer",
                 "PUT",
                 profile
             )?.let {

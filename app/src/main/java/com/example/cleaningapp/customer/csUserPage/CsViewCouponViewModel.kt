@@ -22,7 +22,7 @@ class CsViewCouponViewModel : ViewModel() {
 
     fun fetchCustomerCoupons() {
         requestTask<List<Coupon>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            "customerCoupon/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<Coupon>>() {}.type
         )?.let {

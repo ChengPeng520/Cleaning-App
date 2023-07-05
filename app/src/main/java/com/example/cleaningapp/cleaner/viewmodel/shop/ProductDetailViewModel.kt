@@ -22,7 +22,7 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
 
     fun fetchProductDetail(productId: Int) {
         requestTask<ProductDetailUiState>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/product/$productId",
+            path = "product/$productId",
             method = "GET"
         )?.let {
             _uiState.value = it
@@ -56,7 +56,7 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
     fun putProductToCart(view: View) {
         if (uiState.value.count > 0) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/",
+                path = "ShopOrderList/",
                 method = "POST",
                 reqBody = ShopOrderList(
                     shopOrderId = shopOrderId,

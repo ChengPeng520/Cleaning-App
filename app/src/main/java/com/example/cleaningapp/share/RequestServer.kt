@@ -7,42 +7,26 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import java.io.InputStreamReader
 import java.lang.reflect.Type
-import java.net.CookieHandler
-import java.net.CookieManager
-import java.net.HttpURLConnection
-import java.net.URL
 import java.sql.Time
 import java.text.SimpleDateFormat
+import kotlin.system.measureTimeMillis
 
 inline fun <reified T> requestTask(
-    url: String,
+    path: String,
     method: String = "GET",
     reqBody: Any? = null,
     respBodyType: Type = T::class.java,
 ): T? = runBlocking {
-    withContext(Dispatchers.IO) {
-        val client = OkHttp.getClient()
-        val request = Request.Builder()
-            .url(url)
-            .apply {
-                reqBody?.let {
-                    val requestBody =
-                        RequestBody.create(
-                            MediaType.parse("application/json"),
-                            GSON.toJson(reqBody)
-                        )
-                    method(method, requestBody)
-                } ?: run {
-                    method(method, null)
-                }
-            }
-            .build()
-        val response = client.newCall(request).execute()
-        response.body()?.byteStream().use { inputStream ->
-            val reader = InputStreamReader(inputStream)
-            GSON.fromJson(reader, respBodyType)
+    var result: T? = null
+    val elapsedTime = measureTimeMillis {
+        val deferred: Deferred<T?> = async(Dispatchers.IO) {
+            request(path, method, reqBody, respBodyType)
         }
+        deferred.join()
+        result = deferred.await()
     }
+    println("执行时间: $elapsedTime 毫秒")
+    result
 //    val deferred: Deferred<T?> = coroutineScope {
 //        async(Dispatchers.IO) {
 //            if (CookieHandler.getDefault() == null) {
@@ -54,12 +38,33 @@ inline fun <reified T> requestTask(
 //    deferred.await()
 }
 
-//inline fun <reified T> request(
-//    url: String,
-//    method: String = "GET",
-//    reqBody: Any? = null,
-//    respBodyType: Type = T::class.java,
-//): T? {
+suspend inline fun <reified T> request(
+    path: String,
+    method: String = "GET",
+    reqBody: Any? = null,
+    respBodyType: Type = T::class.java,
+): T? = coroutineScope {
+    val client = OkHttp.getClient()
+    val request = Request.Builder()
+        .url("${Constants.BASE_URL}$path")
+        .apply {
+            reqBody?.let {
+                val requestBody =
+                    RequestBody.create(
+                        MediaType.parse("application/json"),
+                        GSON.toJson(reqBody)
+                    )
+                method(method, requestBody)
+            } ?: run {
+                method(method, null)
+            }
+        }
+        .build()
+    val response = client.newCall(request).execute()
+    response.body()?.byteStream().use { inputStream ->
+        val reader = InputStreamReader(inputStream)
+        GSON.fromJson(reader, respBodyType)
+    }
 //    var conn: HttpURLConnection? = null
 //    var result: T? = null
 //    try {
@@ -87,7 +92,7 @@ inline fun <reified T> requestTask(
 //        conn?.disconnect()
 //    }
 //    return result
-//}
+}
 
 val GSON: Gson = GsonBuilder()
     .registerTypeAdapter(Time::class.java, TimeAdapter())

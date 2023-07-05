@@ -1,6 +1,5 @@
 package com.example.cleaningapp.customer.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,7 +17,7 @@ class ClnChatViewModel : ViewModel() {
 
     fun fetchOrderChatRoomTalkList() {
         requestTask<List<ClnChatMessage>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/$cleanerId",
+            path = "ChatCustCln/${CustomerSharePreferencesUtils.getCurrentCustomerId()}/$cleanerId",
             method = "GET",
             respBodyType = object : TypeToken<List<ClnChatMessage>>() {}.type
         )?.let {
@@ -29,7 +28,7 @@ class ClnChatViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatCustCln/",
+                path = "ChatCustCln/",
                 method = "POST",
                 reqBody = ClnChatMessage(
                     customerId = CustomerSharePreferencesUtils.getCurrentCustomerId(),

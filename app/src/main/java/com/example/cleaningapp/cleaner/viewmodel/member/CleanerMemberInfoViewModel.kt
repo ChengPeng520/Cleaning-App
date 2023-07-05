@@ -25,7 +25,7 @@ class CleanerMemberInfoViewModel : ViewModel() {
         if (uiState.value?.name?.isNotEmpty() == true && uiState.value?.identifyNumber?.isNotEmpty() == true && uiState.value?.phone?.isNotEmpty() == true) {
             val uiState = CleanerSharedPreferencesUtils.anyToApiCleanerModel(uiState.value!!)
             val result = requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner",
+                "AccountCleaner",
                 "PUT",
                 uiState
             )

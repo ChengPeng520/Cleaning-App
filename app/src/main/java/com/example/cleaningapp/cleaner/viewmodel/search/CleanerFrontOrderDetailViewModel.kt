@@ -20,7 +20,7 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
     // 訂單詳情
     fun fetchOrderAccept(orderId: Int) {
         requestTask<SearchOrderPhotos>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/info0/$orderId",
+            "clnOrder/info0/$orderId",
             "GET",
         )?.let {
             job.value = SearchOrder(
@@ -46,7 +46,7 @@ class CleanerFrontOrderDetailViewModel : ViewModel() {
     // 確定接單
     fun fetchOrderConfirm(view: View) {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/orderApplied/",
+            "orderApplied/",
             "POST",
             reqBody = SearchOrder(
                 orderId = job.value?.orderId!!,

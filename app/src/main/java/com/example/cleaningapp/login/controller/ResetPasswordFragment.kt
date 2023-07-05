@@ -75,7 +75,7 @@ class ResetPasswordFragment : Fragment() {
     fun resetPassword(): Boolean? {
         // bundle手機號碼帶到這頁
         val phoneNumber = arguments?.getString("phoneNumber")
-        val url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCustomer/"
+        val url = "AccountCustomer/"
         requestTask<JsonObject>(
             "$url${phoneNumber}/${binding.viewModel?.password?.value}",
             "DELETE"

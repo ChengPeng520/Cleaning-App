@@ -1,7 +1,6 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
@@ -25,7 +24,7 @@ class BsUserMainDetailViewModel : ViewModel() {
         when (member.status) {
             1 -> {
                 requestTask<AccountCustomer>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/1/${member.id}",
+                    path = "AccountBackstage/1/${member.id}",
                     method = "GET"
                 )?.let {
                     user.value = User(
@@ -52,7 +51,7 @@ class BsUserMainDetailViewModel : ViewModel() {
             }
             2 -> {
                 requestTask<AccountCleaner>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/2/${member.id}",
+                    path = "AccountBackstage/2/${member.id}",
                     method = "GET"
                 )?.let {
                     user.value = User(
@@ -79,7 +78,7 @@ class BsUserMainDetailViewModel : ViewModel() {
             }
             3 -> {
                 requestTask<AccountBackstage>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/3/${member.id}",
+                    path = "AccountBackstage/3/${member.id}",
                     method = "GET"
                 )?.let {
                     user.value = User(
@@ -114,7 +113,7 @@ class BsUserMainDetailViewModel : ViewModel() {
         user.value?.let {
             if (it.customerId != null) {
                 requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    path = "AccountBackstage",
                     method = "PUT",
                     reqBody = CustomerSharePreferencesUtils.ApiCustomerModel(
                         customerId = it.customerId!!,
@@ -133,7 +132,7 @@ class BsUserMainDetailViewModel : ViewModel() {
             }
             if (it.cleanerId != null) {
                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    path = "AccountBackstage",
                     method = "PUT",
                     reqBody = CleanerSharedPreferencesUtils.ApiCleanerModel(
                         cleanerId = it.cleanerId!!,
@@ -157,7 +156,7 @@ class BsUserMainDetailViewModel : ViewModel() {
             }
             if (it.backstageId != null) {
                 requestTask<BackstageSharedPreferencesUtils.ApiBackstageModel>(
-                    url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                    path = "AccountBackstage",
                     method = "PUT",
                     reqBody = BackstageSharedPreferencesUtils.ApiBackstageModel(
                         backstageId = it.backstageId!!,

@@ -42,7 +42,7 @@ class BsUserSuspendViewModel : ViewModel() {
     /** 連線後端取得資料 */
     private fun loadUsers() {
         requestTask<List<Member>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            "AccountBackstage/",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
             val suspendUsers = mutableListOf<Member>()
@@ -75,7 +75,7 @@ class BsUserSuspendViewModel : ViewModel() {
                     else -> {}
                 }
             requestTask<User>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage",
+                path = "AccountBackstage",
                 method = "PUT",
                 reqBody = member
             )?.let {

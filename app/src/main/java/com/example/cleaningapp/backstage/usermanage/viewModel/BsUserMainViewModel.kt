@@ -23,7 +23,7 @@ class BsUserMainViewModel : ViewModel() {
     /** 連線後端取得資料 */
     private fun loadUsers() {
         requestTask<List<Member>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            "AccountBackstage/",
             "GET",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {

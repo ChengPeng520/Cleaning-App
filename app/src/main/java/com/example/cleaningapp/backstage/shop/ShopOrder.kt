@@ -25,7 +25,5 @@ data class ShopOrder(
             val dateFormat = SimpleDateFormat("yyyy-MM-dd")
             return dateFormat.format(it)
         }
-
     }
-
 }

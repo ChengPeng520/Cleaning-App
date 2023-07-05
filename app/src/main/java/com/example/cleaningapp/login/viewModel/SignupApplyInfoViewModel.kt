@@ -58,7 +58,7 @@ class SignupApplyInfoViewModel(application: Application) : AndroidViewModel(appl
             )
         val apiCleanerModel = CleanerSharedPreferencesUtils.anyToApiCleanerModel(member)
         return requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountCleaner/",
+            "AccountCleaner/",
             "POST",
             apiCleanerModel
         )?.let {

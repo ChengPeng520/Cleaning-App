@@ -23,7 +23,7 @@ class BsUserVerifyViewModel : ViewModel() {
     /** 連線後端取得資料 */
     private fun loadUsers() {
         requestTask<List<Member>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/AccountBackstage/",
+            "AccountBackstage/",
             respBodyType = object : TypeToken<List<Member>>() {}.type
         )?.let {
             val unverifiedUsers = mutableListOf<Member>()

@@ -25,7 +25,7 @@ class CsOrderConfirmedViewModel : ViewModel() {
         val orderCreated = orderCreated.value
         orderCreated?.customerId = CustomerSharePreferencesUtils.getCurrentCustomerId()
         requestTask<EstablishOrder>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder",
+            path = "csOrder",
             method = "POST",
             reqBody = orderCreated?.let { EstablishOrder(it, sendPhotos(photo.value!!)) }
         )?.let {

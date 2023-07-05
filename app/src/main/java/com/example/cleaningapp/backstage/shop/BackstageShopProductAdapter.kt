@@ -50,9 +50,6 @@ class BackstageShopProductAdapter(private var products: List<Product>) :
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsShopMainFragment_to_bsShopProductModifyFragment, bundle)
             }
-
         }
-
-
     }
 }

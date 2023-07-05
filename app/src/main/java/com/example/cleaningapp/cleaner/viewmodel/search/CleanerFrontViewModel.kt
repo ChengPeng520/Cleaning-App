@@ -28,7 +28,7 @@ class CleanerFrontViewModel : ViewModel() {
 
     private fun fetchOrderJob() {
         requestTask<List<SearchOrder.ApplingOrders>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            "clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             "GET",
             respBodyType = object : TypeToken<List<SearchOrder.ApplingOrders>>() {}.type
         )?.let {

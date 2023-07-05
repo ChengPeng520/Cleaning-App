@@ -10,7 +10,7 @@ class BackstageCouponCreateViewModel : ViewModel() {
 
     fun couponAdd(): Boolean {
         requestTask<JsonObject>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsCoupon/",
+            "bsCoupon/",
             "POST",
             coupon.value
         )?.let {

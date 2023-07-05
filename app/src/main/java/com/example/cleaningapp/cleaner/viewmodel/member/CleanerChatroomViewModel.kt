@@ -22,7 +22,7 @@ class CleanerChatroomViewModel : ViewModel() {
 
     fun fetchChatRoomTalkList() {
         requestTask<List<ChatroomItemUiState>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
+            path = "ChatClnBack/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatroomItemUiState>>() {}.type
         )?.let {
@@ -33,7 +33,7 @@ class CleanerChatroomViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+                path = "ChatClnBack",
                 method = "POST",
                 reqBody = ChatroomItemUiState(
                     cleanerId = CleanerSharedPreferencesUtils.getCurrentCleanerId(),

@@ -20,7 +20,7 @@ class OrderListViewModel : ViewModel() {
     /** 模擬取得遠端資料 */
     private fun loadOrders() {
         requestTask<List<Order>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/bsOrder/",
+            "bsOrder/",
             "GET",
             respBodyType = object : TypeToken<List<Order>>() {}.type
         )?.let {

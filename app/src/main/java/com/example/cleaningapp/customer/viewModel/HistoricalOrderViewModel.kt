@@ -31,7 +31,7 @@ class HistoricalOrderViewModel : ViewModel() {
 
     fun fetchOrdersInfo() {
         requestTask<List<Order>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/csOrder/1/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
+            path = "csOrder/1/${CustomerSharePreferencesUtils.getCurrentCustomerId()}",
             method = "GET",
             respBodyType = object : TypeToken<List<Order>>() {}.type
         )?.let {

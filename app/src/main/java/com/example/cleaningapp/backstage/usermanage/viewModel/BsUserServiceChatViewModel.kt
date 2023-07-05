@@ -1,16 +1,9 @@
 package com.example.cleaningapp.backstage.usermanage.viewModel
 
-import android.provider.ContactsContract.Data
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.*
-import com.example.cleaningapp.cleaner.uistate.ChatroomItemUiState
-import com.example.cleaningapp.cleaner.uistate.ChatroomUiState
-import com.example.cleaningapp.share.BackstageSharedPreferencesUtils
-import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -33,7 +26,7 @@ class BsUserServiceChatViewModel : ViewModel() {
 
     fun fetchChatRoomTalkList() {
         requestTask<List<ChatItem>>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack/$cleanerId",
+            path = "ChatClnBack/$cleanerId",
             method = "GET",
             respBodyType = object : TypeToken<List<ChatItem>>() {}.type
         )?.let {
@@ -44,7 +37,7 @@ class BsUserServiceChatViewModel : ViewModel() {
     fun commitText() {
         if (commitText.value.toString().isNotEmpty()) {
             requestTask<JsonObject>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/ChatClnBack",
+                path = "ChatClnBack",
                 method = "POST",
                 reqBody = ChatItem(
                     id = 1,

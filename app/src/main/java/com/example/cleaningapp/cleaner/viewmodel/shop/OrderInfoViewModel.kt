@@ -17,7 +17,7 @@ class OrderInfoViewModel : ViewModel() {
     fun fetchOrderInfo(shopOrderId: Int?) {
         shopOrderId?.let {
             requestTask<List<OrderInfoItemUiState>>(
-                url = "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/shopInfo/${orderHistoryItem.id}",
+                path = "clShopOrder/shopInfo/${orderHistoryItem.id}",
                 method = "GET",
                 respBodyType = object : TypeToken<List<OrderInfoItemUiState>>() {}.type
             )?.let {

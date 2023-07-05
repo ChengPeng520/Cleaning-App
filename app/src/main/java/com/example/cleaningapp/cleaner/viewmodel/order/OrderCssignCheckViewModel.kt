@@ -13,7 +13,7 @@ class OrderCssignCheckViewModel : ViewModel() {
     fun sendSignature(): Boolean {
         Log.d("xxx", "orderId: $orderId")
         requestTask<JsonObject>(
-            url = "http://10.0.2.2:8080/javaweb-cleaningapp/clnOrder/",
+            path = "clnOrder/",
             method = "PUT",
             reqBody = OrderUtil.OrderStatus(
                 OrderUtil.Order(
