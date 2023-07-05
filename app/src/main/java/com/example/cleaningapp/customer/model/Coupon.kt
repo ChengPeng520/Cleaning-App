@@ -3,19 +3,15 @@ package com.example.cleaningapp.customer.model
 import java.io.Serializable
 
 data class Coupon(
-    var couponId: Int,
-    var couponName: String,
-    var discount: Double,
-    var discountType: Boolean,
-    var minPrice: Int,
-    var expiredDate: String = "",
-    var isOnUsed: Boolean = true
+    val customerCouponId: Int,
+    val couponId: Int,
+    val couponName: String,
+    val discount: Double,
+    val discountType: Boolean,
+    val minPrice: Int,
+    val expiredDate: String = "",
+    val isOnUsed: Boolean = true
 ) : Serializable {
-    var _discount = if (discountType) {
-        discount.toInt().toString()
-    } else {
-        discount.toInt().toString()
-    }
     val discountString: String
         get() = (discount * 10).toInt().toString()
     val discountMoney: Int

@@ -3,7 +3,9 @@ package com.example.cleaningapp.backstage.complaint.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.backstage.complaint.model.*
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrder
+import com.example.cleaningapp.backstage.complaint.model.BSCompOrderInfo
+import com.example.cleaningapp.backstage.complaint.model.OrderPhotos
 import com.example.cleaningapp.share.requestTask
 
 class BsCompDealingViewModel : ViewModel() {

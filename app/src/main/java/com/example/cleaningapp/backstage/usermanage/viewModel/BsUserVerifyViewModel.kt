@@ -2,9 +2,7 @@ package com.example.cleaningapp.backstage.usermanage.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cleaningapp.R
 import com.example.cleaningapp.backstage.usermanage.model.Member
-import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 

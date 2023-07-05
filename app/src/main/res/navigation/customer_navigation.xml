@@ -87,7 +87,11 @@
         android:id="@+id/csViewCvFragment"
         android:name="com.example.cleaningapp.customer.csCreateOrder.CsViewCvFragment"
         android:label="fragment_cs_view_cv"
-        tools:layout="@layout/fragment_cs_view_cv" />
+        tools:layout="@layout/fragment_cs_view_cv" >
+        <action
+            android:id="@+id/action_csViewCvFragment_to_csOrderPaymentDoneFragment"
+            app:destination="@id/csOrderPaymentDoneFragment" />
+    </fragment>
     <fragment
         android:id="@+id/csEditProfileFragment"
         android:name="com.example.cleaningapp.customer.csUserPage.CsEditProfileFragment"
@@ -229,4 +233,13 @@
         android:name="com.example.cleaningapp.customer.fragment.ClnChatFragment"
         android:label="ClnChatFragment"
         tools:layout="@layout/fragment_victor_cln_chat" />
+    <fragment
+        android:id="@+id/csOrderPaymentDoneFragment"
+        android:name="com.example.cleaningapp.customer.csCreateOrder.CsOrderPaymentDoneFragment"
+        android:label="CsOrderPaymentDoneFragment"
+        tools:layout="@layout/fragment_cs_order_payment_done">
+        <action
+            android:id="@+id/action_csOrderPaymentDoneFragment_to_historicalorderFragment"
+            app:destination="@id/historicalorderFragment" />
+    </fragment>
 </navigation>

@@ -9,8 +9,5 @@ data class Customer(
     var phone: String = "",
     var gender: Int = 0,
     var introduction: String = "",
-): Serializable {
-
-
-}
+) : Serializable
 

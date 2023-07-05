@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.cleaningapp.R
-import com.example.cleaningapp.backstage.usermanage.model.*
+import com.example.cleaningapp.backstage.usermanage.model.AccountCleaner
+import com.example.cleaningapp.backstage.usermanage.model.Member
+import com.example.cleaningapp.backstage.usermanage.model.User
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
 import com.example.cleaningapp.share.requestTask
 

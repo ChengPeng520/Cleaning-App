@@ -38,7 +38,6 @@ class ApplycomplaintViewModel : ViewModel() {
             method = "GET",
         )?.let {
             order.value = it
-//            Log.d("OrderList", "Fetched orders: $it")
         }
     }
 
@@ -53,7 +52,7 @@ class ApplycomplaintViewModel : ViewModel() {
                     cleanerId = order.value!!.cleanerId,
                     commentCleaner = order.value!!.commentCleaner,
                     stars = order.value!!.stars,
-                    status = 7
+                    status = 5
                 ), sendPhotos()
             )
         )?.let {

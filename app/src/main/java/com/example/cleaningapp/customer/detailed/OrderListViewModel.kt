@@ -2,6 +2,7 @@ package com.example.cleaningapp.customer.detailed
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class OrderListViewModel : ViewModel() {
@@ -13,7 +14,6 @@ class OrderListViewModel : ViewModel() {
             method = "GET",
         )?.let {
             orderItem.value = it
-//            Log.d("OrderList", "Fetched orders: $it")
         }
     }
 }

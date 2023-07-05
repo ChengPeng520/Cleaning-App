@@ -30,7 +30,7 @@ class OrderAdapter(private var orders: List<Order>) :
                     )
                     itemBinding.statusTextView.setBackgroundResource(R.drawable.victor_order_status_black)
                 }
-                1, 2, 3, 4, 5, 6, 7 -> {
+                1, 2, 3, 4, 5, 6, 7, 8 -> {
                     // 状态为1、2、3、4、5、6、7，表示其他状态
                     itemBinding.statusTextView.text = getStatusText(order.status)
                     itemBinding.statusTextView.setTextColor(
@@ -67,9 +67,10 @@ class OrderAdapter(private var orders: List<Order>) :
                 2 -> "正進行中"
                 3 -> "顧客確認"
                 4 -> "打掃結束"
-                5 -> "已完成"
+                5 -> "申請客訴"
                 6 -> "已取消"
                 7 -> "客訴完成"
+                8 -> "訂單完成"
                 else -> "未知状态"
             }
         }
@@ -115,11 +116,9 @@ class OrderAdapter(private var orders: List<Order>) :
                 2 -> navController.navigate(R.id.orderingFragment, bundle)
                 3 -> navController.navigate(R.id.ordercompletedFragment, bundle)
                 4 -> navController.navigate(R.id.orderdoneFragment, bundle)
-                5 -> navController.navigate(
-                    R.id.action_historicalorderFragment_to_detailedOrderFragment, bundle
-                )
-                6 -> navController.navigate(R.id.orderChatroomFragment, bundle)
+                5 -> navController.navigate(R.id.orderChatroomFragment, bundle)
                 7 -> navController.navigate(R.id.complaintdetailsFragment, bundle)
+                8 -> navController.navigate(R.id.action_historicalorderFragment_to_detailedOrderFragment, bundle)
             }
         }
     }

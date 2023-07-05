@@ -1,11 +1,11 @@
 package com.example.cleaningapp.cleaner.view.shop
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleaningapp.R
@@ -28,7 +28,7 @@ class OrderInfoFragment : Fragment() {
         viewModel.orderHistoryItem =
             arguments?.getSerializable("orderHistoryItem") as OrderHistoryItemUiState
         binding.tvOrderInfoState.text =
-            if (viewModel.orderHistoryItem.isDelivered) "已送達" else if (viewModel.orderHistoryItem.isShipped) "已出貨" else "以結帳"
+            if (viewModel.orderHistoryItem.isDelivered) "已送達" else if (viewModel.orderHistoryItem.isShipped) "已出貨" else "已結帳"
         viewModel.fetchOrderInfo(arguments?.getInt("shopOrderId"))
         return binding.root
     }

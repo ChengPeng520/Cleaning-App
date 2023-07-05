@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
@@ -48,6 +49,9 @@ class LoginFragment : Fragment() {
             .requestEmail()
             .build()
         client = GoogleSignIn.getClient(requireActivity(), options)
+
+        // 讓輸入欄在鍵盤跳出時移動到鍵盤上方
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
     }
 
 
@@ -77,8 +81,7 @@ class LoginFragment : Fragment() {
                     if (task.isSuccessful) {
                         task.result?.let { token ->
                             if (position == 0) {
-                                val url =
-                                    "AccountCustomer/login/"
+                                val url = "AccountCustomer/login/"
                                 requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -96,8 +99,7 @@ class LoginFragment : Fragment() {
                                 }
                                 tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                             } else if (position == 1) {
-                                val url =
-                                    "AccountCleaner/login/"
+                                val url = "AccountCleaner/login/"
                                 requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -117,8 +119,7 @@ class LoginFragment : Fragment() {
                                 }
                                 tvLoginErrMsg.text = "使用者帳號或密碼不正確"
                             } else {
-                                val url =
-                                    "AccountBackstage/"
+                                val url = "AccountBackstage/"
                                 requestTask<AccountBackstage>(
                                     "$url${viewModel?.account?.value}/${viewModel?.password?.value}/$token"
                                 )?.let {
@@ -171,6 +172,7 @@ class LoginFragment : Fragment() {
         }
 
     // 使用Google帳號完成Firebase驗證
+    @SuppressLint("SetTextI18n")
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
         // get the unique ID for the Google account
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
@@ -180,16 +182,15 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // 需根據選擇身分跳頁(Customer &　Cleaner)
                     // 將UID(firebaseId)與Email儲存(insert?)至mySQL，方便記錄該使用者交易
-                    //取得GoogleEmail & FCM token
+                    // 取得GoogleEmail & FCM token
                     val user = task.result.user
                     val position = binding.spnLoginStatus.selectedItemPosition
                     val email = user?.email
-                    FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
+                    FirebaseMessaging.getInstance().token.addOnCompleteListener { it ->
+                        if (it.isSuccessful) {
                             task.result?.let { token ->
                                 if (position == 0) {
-                                    val url =
-                                        "AccountCustomer/google/"
+                                    val url = "AccountCustomer/google/"
                                     requestTask<CustomerSharePreferencesUtils.ApiCustomerModel>(
                                         "$url$email/$token"
                                     )?.let {
@@ -206,11 +207,11 @@ class LoginFragment : Fragment() {
                                             )
                                             requireContext().startActivity(intent)
                                         }
+                                        return@addOnCompleteListener
                                     }
+                                    binding.tvLoginErrMsg.text = "此google帳號未註冊"
                                 } else if (position == 1) {
-                                    val token = FirebaseMessaging.getInstance().token
-                                    val url =
-                                        "AccountCleaner/google/"
+                                    val url = "AccountCleaner/google/"
                                     requestTask<CleanerSharedPreferencesUtils.ApiCleanerModel>(
                                         "$url$email/$token"
                                     )?.let {
@@ -229,13 +230,15 @@ class LoginFragment : Fragment() {
                                             )
                                             requireContext().startActivity(intent)
                                         }
+                                        return@addOnCompleteListener
                                     }
+                                    binding.tvLoginErrMsg.text = "此google帳號未註冊"
                                 } else {
                                     Toast.makeText(context, "管理員無google登入服務", Toast.LENGTH_SHORT)
                                         .show()
                                 }
                             }
-                        }else {
+                        } else {
                             binding.tvLoginErrMsg.text = task.exception?.message
                                 ?: "google登入失敗"  // getString(R.string.tv_login_fail)
                         }

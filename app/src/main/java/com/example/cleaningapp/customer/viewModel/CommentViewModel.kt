@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.detailed.OrderInfo
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 
 class CommentViewModel : ViewModel() {
@@ -25,7 +26,7 @@ class CommentViewModel : ViewModel() {
                 Order(
                     stars = stars.value!!,
                     commentCleaner = content.value!!,
-                    status = 5
+                    status = 8
                 ), emptyList()
             )
         )?.let {

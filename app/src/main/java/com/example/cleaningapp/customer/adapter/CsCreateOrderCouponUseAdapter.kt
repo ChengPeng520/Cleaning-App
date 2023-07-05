@@ -1,18 +1,15 @@
 package com.example.cleaningapp.customer.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.csCreateOrder.CsCouponPickerViewModel
-import com.example.cleaningapp.customer.csCreateOrder.CsCreateOrderViewModel
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.ItemCsPickCouponBinding
 
-class CsCreateOrderCouponUseAdapter (private var coupons: List<Coupon>) :
+class CsCreateOrderCouponUseAdapter(private var coupons: List<Coupon>) :
     RecyclerView.Adapter<CsCreateOrderCouponUseAdapter.CsCouponUserViewHolder>() {
 
     /**
@@ -46,7 +43,10 @@ class CsCreateOrderCouponUseAdapter (private var coupons: List<Coupon>) :
         with(holder) {
             itemViewBinding.viewModel?.coupon?.value = coupon
             itemViewBinding.btCusCouponPick.setOnClickListener {
-                Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set("coupon", coupon)
+                Navigation.findNavController(it).previousBackStackEntry?.savedStateHandle?.set(
+                    "coupon",
+                    coupon
+                )
                 Navigation.findNavController(it).popBackStack()
             }
         }

@@ -38,6 +38,5 @@ class BsShopMainViewModel : ViewModel() {
             }
             products.value = searchProduct
         }
-
     }
 }

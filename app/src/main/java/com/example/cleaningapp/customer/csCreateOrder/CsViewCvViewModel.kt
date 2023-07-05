@@ -7,6 +7,7 @@ import com.example.cleaningapp.customer.detailed.Order
 import com.example.cleaningapp.customer.model.Cleaner
 import com.example.cleaningapp.customer.model.Comment
 import com.example.cleaningapp.customer.model.OrderEstablished
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken

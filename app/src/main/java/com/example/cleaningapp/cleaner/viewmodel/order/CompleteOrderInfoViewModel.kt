@@ -14,7 +14,7 @@ class CompleteOrderInfoViewModel : ViewModel() {
     val uiState: LiveData<CompleteOrderInfoUiState> by lazy { _uiState }
     val uiPhoto: LiveData<CompleteOrderPhotos> by lazy { _uiPhoto }
 
-    fun fetchOrderInfo(orderId : Int) {
+    fun fetchOrderInfo(orderId: Int) {
         requestTask<OrderUtil.InsertOrder>(
             "clnOrder/info2/$orderId",
             "GET"

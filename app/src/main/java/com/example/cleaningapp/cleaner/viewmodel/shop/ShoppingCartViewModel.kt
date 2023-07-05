@@ -68,7 +68,7 @@ class ShoppingCartViewModel : ViewModel() {
         }
     }
 
-    fun checkout(context: Context) : Boolean {
+    fun checkout(context: Context): Boolean {
         requestTask<ShopOrder>(
             path = "clShopOrder/",
             method = "PUT",

@@ -5,8 +5,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.requestTask
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 
 
 class BackstageCouponModifyViewModel : ViewModel() {
@@ -29,7 +27,7 @@ class BackstageCouponModifyViewModel : ViewModel() {
             "GET"
         )?.let {
             coupon.value = it
-            Log.d("TAG","回傳資料:$it")
+            Log.d("TAG", "回傳資料:$it")
         }
     }
 }

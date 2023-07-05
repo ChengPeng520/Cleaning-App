@@ -48,8 +48,8 @@ class ShopOrderAdapter(private var shopOrders: List<ShopOrder>) :
             itemViewBinding.viewModel?.shopOrder?.value = order
             val bundle = Bundle()
             order.shopOrderId?.let { bundle.putInt("shopOrderId", it) }
-            itemView.setOnClickListener() {
-//                order.shopOrderId?.let { it1 -> listener.onItemClick(it1) }
+
+            itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_bsShopOrderFragment_to_bsShopOrderDetailFragment, bundle)
             }

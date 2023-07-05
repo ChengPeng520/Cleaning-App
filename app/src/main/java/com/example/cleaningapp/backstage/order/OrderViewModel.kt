@@ -15,7 +15,7 @@ class OrderViewModel : ViewModel() {
     val orderPhotos: MutableLiveData<com.example.cleaningapp.backstage.order.OrderPhotos> by lazy { MutableLiveData<com.example.cleaningapp.backstage.order.OrderPhotos>() }
     val cleaningPhotos: MutableLiveData<CleaningPhotos> by lazy { MutableLiveData<CleaningPhotos>() }
 
-    fun fetchBackstageOrderInfo(orderId : Int) {
+    fun fetchBackstageOrderInfo(orderId: Int) {
         requestTask<BackstageOrderInfo>(
             "bsOrder/order/$orderId",
             "GET"

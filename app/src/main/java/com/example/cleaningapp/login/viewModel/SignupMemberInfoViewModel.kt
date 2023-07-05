@@ -40,9 +40,7 @@ class SignupMemberInfoViewModel : ViewModel() {
             )
         val apiCustomerModel = CustomerSharePreferencesUtils.anyToApiCustomerModel(customer)
         requestTask<JsonObject>(
-            "AccountCustomer/",
-            "POST",
-            apiCustomerModel
+            "AccountCustomer/", "POST", apiCustomerModel
         )?.let {
             return it.get("result").toString().toBoolean()
         }

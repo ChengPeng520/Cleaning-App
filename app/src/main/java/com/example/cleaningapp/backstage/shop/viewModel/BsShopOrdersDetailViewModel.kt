@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.backstage.shop.OrderDetail
 import com.example.cleaningapp.backstage.shop.Product
 import com.example.cleaningapp.backstage.shop.ShopOrder
+import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 
@@ -20,7 +21,7 @@ class BsShopOrdersDetailViewModel : ViewModel() {
 
     fun loadShopOrderList(shopOrderId: Int?) {
         requestTask<ShopOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/info/$shopOrderId",
+            "${Constants.BASE_URL}/ShopOrder/info/$shopOrderId",
             "GET",
         )?.let {
             shopOrder.value = it
@@ -29,7 +30,7 @@ class BsShopOrdersDetailViewModel : ViewModel() {
 
     fun shopOrderModify(): Boolean {
         requestTask<ShopOrder>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrder/",
+            "${Constants.BASE_URL}/ShopOrder/",
             "PUT",
             shopOrder.value
         )?.let {
@@ -41,7 +42,7 @@ class BsShopOrdersDetailViewModel : ViewModel() {
 
     fun loadOrdersDetailList(shopOrderId: Int) {
         requestTask<List<OrderDetail>>(
-            "http://10.0.2.2:8080/javaweb-cleaningapp/ShopOrderList/$shopOrderId",
+            "http://10.0.2.2:8080/javaweb-cleaningapp/clShopOrder/shopInfo/$shopOrderId",
             "GET",
             respBodyType = object : TypeToken<List<OrderDetail>>() {}.type
         )?.let {

@@ -15,7 +15,7 @@ class BackstageShopProductAdapter(private var products: List<Product>) :
     RecyclerView.Adapter<BackstageShopProductAdapter.ProductViewHolder>() {
 
 
-    class ProductViewHolder(val ItemViewBinding:ItemAlbBsShopDataboxBinding) :
+    class ProductViewHolder(val ItemViewBinding: ItemAlbBsShopDataboxBinding) :
         ViewHolder(ItemViewBinding.root)
 
 

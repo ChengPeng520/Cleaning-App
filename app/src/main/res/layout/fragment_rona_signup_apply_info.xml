@@ -141,7 +141,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/spn_suInfo_gender"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -338,17 +338,6 @@
                     app:layout_constraintStart_toStartOf="@+id/iv_suInfo_id1"
                     app:layout_constraintTop_toBottomOf="@+id/textView58" />
 
-                <TextView
-                    android:id="@+id/tv_suInfo_goodPerson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="良民證.jpg"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_suInfo_goodPerson"
-                    app:layout_constraintTop_toTopOf="parent" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -366,7 +355,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_back" />
 
-
         <TextView
             android:id="@+id/tv_suInfo_done"
             android:layout_width="wrap_content"
@@ -379,6 +367,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

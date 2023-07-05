@@ -7,14 +7,16 @@ import com.example.cleaningapp.cleaner.uistate.CreateOrderPhotos
 import com.example.cleaningapp.cleaner.uistate.OrderPhotos
 import com.example.cleaningapp.cleaner.uistate.SearchOrderPhotos
 import com.example.cleaningapp.share.requestTask
-import com.google.gson.reflect.TypeToken
 
 class ClearPhotoViewModel : ViewModel() {
     val photos: MutableList<Bitmap?> = MutableList(3) { null }
     val cleanerPhoto: MutableLiveData<SearchOrderPhotos> by lazy { MutableLiveData<SearchOrderPhotos>() }
     val orderPhotos: MutableLiveData<OrderPhotos> by lazy { MutableLiveData<OrderPhotos>() }
-    val photo: MutableLiveData<CreateOrderPhotos>by lazy { MutableLiveData<CreateOrderPhotos>(CreateOrderPhotos())}
-
+    val photo: MutableLiveData<CreateOrderPhotos> by lazy {
+        MutableLiveData<CreateOrderPhotos>(
+            CreateOrderPhotos()
+        )
+    }
 
     fun cleanerBeforePhoto(orderId: Int) {
         requestTask<SearchOrderPhotos>(
@@ -23,10 +25,6 @@ class ClearPhotoViewModel : ViewModel() {
         )?.let {
             orderPhotos.value = OrderPhotos(it.photos)
         }
-    }
-
-    fun isPhotoExists(){
-
     }
 
     fun addCapturedPhoto(photo: Bitmap?) {

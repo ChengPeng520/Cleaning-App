@@ -47,7 +47,8 @@ class ChatRoomFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_customerService)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_customerService)
     }
 
     private fun initRecyclerView() {
@@ -80,5 +81,7 @@ class ChatRoomFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+        requireActivity().findViewById<BottomNavigationView>(R.id.bvn_customer).visibility =
+            View.VISIBLE
     }
 }

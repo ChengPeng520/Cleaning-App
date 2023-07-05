@@ -22,7 +22,6 @@ class BsUserMainModifyViewModel : ViewModel() {
      */
     fun fetchMemberInfo(userFetch: User) {
         if (userFetch.customerId != null) {
-            Log.d("1", "1")
             requestTask<AccountCustomer>(
                 path = "AccountBackstage/1/${userFetch.customerId}",
                 method = "GET"
@@ -106,6 +105,7 @@ class BsUserMainModifyViewModel : ViewModel() {
                         gender = it.gender,
                         introduction = it.introduction,
                         photo = null,
+                        suspend = it.suspend,
                         password = null
                     )
                 )?.let {
@@ -127,7 +127,9 @@ class BsUserMainModifyViewModel : ViewModel() {
                         photo = null,
                         password = null,
                         identifyNumber = it.identifyNumber,
+                        verify = it.verify,
                         idCardFront = null,
+                        suspend = it.suspend,
                         idCardBack = null,
                         crc = null
                     )

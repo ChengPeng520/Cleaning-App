@@ -39,7 +39,10 @@ class MallViewModel(application: Application) : AndroidViewModel(application) {
             path = "clShopOrder/fetchCartId/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
             method = "GET"
         )?.let {
-            getApplication<Application>().getSharedPreferences("AccountCleaner", Context.MODE_PRIVATE).edit()
+            getApplication<Application>().getSharedPreferences(
+                "AccountCleaner",
+                Context.MODE_PRIVATE
+            ).edit()
                 .putInt("ShopOrderId", it)
                 .apply()
         }

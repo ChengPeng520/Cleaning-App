@@ -1,12 +1,9 @@
 package com.example.cleaningapp.backstage.shop
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.JsonObject
-import java.lang.reflect.GenericArrayType
-
 
 open class BsShopProductViewModel : ViewModel() {
     val product: MutableLiveData<Product> by lazy { MutableLiveData<Product>(Product()) }

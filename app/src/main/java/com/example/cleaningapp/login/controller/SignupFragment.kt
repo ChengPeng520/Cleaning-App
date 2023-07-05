@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
@@ -46,6 +47,9 @@ class SignupFragment : Fragment() {
             .requestEmail()
             .build()
         client = GoogleSignIn.getClient(requireActivity(), options)
+
+        // 讓輸入欄在鍵盤跳出時移動到鍵盤上方
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
     }
 
     override fun onCreateView(

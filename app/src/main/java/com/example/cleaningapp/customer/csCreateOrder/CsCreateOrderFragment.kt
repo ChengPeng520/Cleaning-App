@@ -7,15 +7,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.AdapterView
+import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,7 +23,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleaningapp.R
 import com.example.cleaningapp.customer.model.Coupon
 import com.example.cleaningapp.databinding.FragmentCsCreateOrderBinding
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -475,6 +473,7 @@ class CsCreateOrderFragment : Fragment() {
         setSpinnerOnclick()
         setTimeOnclick()
         setOnclick()
+        setTextWatcher()
     }
 
     private fun setSpinnerOnclick() {
@@ -494,24 +493,43 @@ class CsCreateOrderFragment : Fragment() {
                     val order = viewModel.order.value
                     order?.areaCity = countyList[position]
                     viewModel.order.value = order
-                    val districtArray = districtMap[countyList[position]]
-                    val districtAdapter = ArrayAdapter(
-                        requireContext(),
-                        android.R.layout.simple_spinner_item,
-                        districtArray!!
-                    )
-                    districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    binding.spnCsCreateOrderDistrict.adapter = districtAdapter
+                    viewModel.countyPosition.value = position
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     // 不執行任何操作
                 }
             }
+
+        viewModel.countyPosition.observe(viewLifecycleOwner) {
+            val districtArray = districtMap[countyList[it]]
+            val districtAdapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                districtArray!!
+            )
+            districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spnCsCreateOrderDistrict.adapter = districtAdapter
+            binding.spnCsCreateOrderDistrict.setSelection(viewModel.districtPosition.value!!)
+        }
+
+        binding.spnCsCreateOrderDistrict.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val order = viewModel.order.value
+                order?.areaDistrict = districtMap[order?.areaCity]?.get(p2)!!
+                viewModel.order.value = order
+                viewModel.districtPosition.value = p2
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
     }
 
     private fun setTimeOnclick() {
-        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text = getString(R.string.csTitle_createOrder)
+        requireActivity().findViewById<TextView>(R.id.customer_toolbar_title).text =
+            getString(R.string.csTitle_createOrder)
         with(binding) {
             //  選擇日期
             llDatePicker.setOnClickListener {
@@ -600,7 +618,6 @@ class CsCreateOrderFragment : Fragment() {
             }
 
             //  跳轉下一頁
-            //  新增判斷式!!
             btnCsCreateOrderNext.setOnClickListener {
                 val livingRoom =
                     if (binding.edtTxtCsCreateOrderLivingroomSize.text.toString().isNotBlank()) {
@@ -645,7 +662,10 @@ class CsCreateOrderFragment : Fragment() {
                         saveCreateOrderInfo()
                         val bundle = Bundle()
                         bundle.putSerializable("order", it)
-                        bundle.putSerializable("photos", viewModel?.photo?.value)
+                        bundle.putParcelable("photos", viewModel?.photo?.value)
+                        viewModel?.coupon?.value?.let { coupon ->
+                            bundle.putInt("customerCouponId", coupon.customerCouponId)
+                        }
                         findNavController().navigate(
                             R.id.action_csCreateOrderFragment_to_csOrderConfirmedFragment,
                             bundle
@@ -653,6 +673,15 @@ class CsCreateOrderFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun setTextWatcher() {
+        with(binding) {
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderLivingroomSize, chkCsCreateOrderLivingroom)
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderKitchenSize, chkCsCreateOrderKitchen)
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderBathroomSize, chkCsCreateOrderBathroom)
+            setupSizeEditTextWatcher(edtTxtCsCreateOrderRoomSize, chkCsCreateOrderBedroom)
         }
     }
 
@@ -701,33 +730,49 @@ class CsCreateOrderFragment : Fragment() {
         with(binding) {
             val order = viewModel?.order?.value
             order?.let {
-                it.areaDistrict =
-                    districtMap[viewModel?.order?.value?.areaCity]?.get(spnCsCreateOrderDistrict.selectedItemPosition)
-                        ?: ""
-                it.livingRoomSize = if (binding.edtTxtCsCreateOrderLivingroomSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
-                } else {
-                    0
-                }
-                it.kitchenSize = if (binding.edtTxtCsCreateOrderKitchenSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
-                } else {
-                    0
-                }
-                it.bathRoomSize = if (binding.edtTxtCsCreateOrderBathroomSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
-                } else {
-                    0
-                }
-                it.roomSize = if (binding.edtTxtCsCreateOrderRoomSize.text.toString().isNotBlank()) {
-                    binding.edtTxtCsCreateOrderRoomSize.text.toString().toInt()
-                } else {
-                    0
-                }
+                it.livingRoomSize =
+                    if (binding.edtTxtCsCreateOrderLivingroomSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderLivingroomSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
+                it.kitchenSize =
+                    if (binding.edtTxtCsCreateOrderKitchenSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderKitchenSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
+                it.bathRoomSize =
+                    if (binding.edtTxtCsCreateOrderBathroomSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderBathroomSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
+                it.roomSize =
+                    if (binding.edtTxtCsCreateOrderRoomSize.text.toString().isNotBlank()) {
+                        binding.edtTxtCsCreateOrderRoomSize.text.toString().toInt()
+                    } else {
+                        0
+                    }
                 it.originalPrice = edtTxtCost.text.toString().toInt()
             }
             viewModel?.order?.value = order
         }
+    }
+
+    private fun setupSizeEditTextWatcher(editText: EditText, checkBox: CheckBox) {
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                checkBox.isChecked = p0.toString().isNotEmpty() && p0.toString() != "0"
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        }
+        editText.addTextChangedListener(textWatcher)
     }
 
     override fun onDestroyView() {
@@ -741,12 +786,5 @@ class CsCreateOrderFragment : Fragment() {
         } else {
             "0$number"
         }
-    }
-
-    private fun isTimeBefore(timeBegin: String, timeEnd: String): Boolean {
-        val format = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-        val timeBegin = format.parse(timeBegin)
-        val timeEnd = format.parse(timeEnd)
-        return timeBegin?.before(timeEnd) ?: false
     }
 }
