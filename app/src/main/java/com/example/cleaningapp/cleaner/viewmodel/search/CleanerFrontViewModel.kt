@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cleaningapp.cleaner.uistate.SearchOrder
 import com.example.cleaningapp.share.CleanerSharedPreferencesUtils
-import com.example.cleaningapp.share.Constants
 import com.example.cleaningapp.share.requestTask
 import com.google.gson.reflect.TypeToken
 import kotlin.time.ExperimentalTime
@@ -39,11 +38,7 @@ class CleanerFrontViewModel : ViewModel() {
     private fun fetchOrderJob() {
         println("Current start test time: $formattedDateTime")
         requestTask<List<SearchOrder.ApplingOrders>>(
-<<<<<<< HEAD
             "clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
-=======
-            "${Constants.BASE_URL}/clnOrder/select/${CleanerSharedPreferencesUtils.getCurrentCleanerId()}",
->>>>>>> origin/victor
             "GET",
             respBodyType = object : TypeToken<List<SearchOrder.ApplingOrders>>() {}.type
         )?.let {

@@ -8,6 +8,8 @@ import android.util.Base64
 import com.example.cleaningapp.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 
 @SuppressLint("StaticFieldLeak")
 object CustomerSharePreferencesUtils {
@@ -63,8 +65,8 @@ object CustomerSharePreferencesUtils {
         val introduction: String?
     )
 
-    fun saveCustomerInfoFromPreferences(any: Any): Boolean {
-        return try {
+    fun saveCustomerInfoFromPreferences(any: Any): Boolean = runBlocking(Dispatchers.IO) {
+        try {
             val apiCustomerModel = Gson().fromJson(Gson().toJson(any), ApiCustomerModel::class.java)
             sharedPreferences.edit()
                 .putInt("customerId", apiCustomerModel.customerId)
@@ -89,7 +91,7 @@ object CustomerSharePreferencesUtils {
         }
     }
 
-    inline fun <reified T> fetchCustomerInfoFromPreferences(): T {
+    inline fun <reified T> fetchCustomerInfoFromPreferences(): T = runBlocking(Dispatchers.IO) {
         with(sharedPreferences) {
             val customer =
                 Customer(
@@ -108,7 +110,7 @@ object CustomerSharePreferencesUtils {
                     gender = getInt("gender", 0),
                     introduction = getString("introduction", "")
                 )
-            return Gson().fromJson(Gson().toJson(customer), object : TypeToken<T>() {}.type)
+            Gson().fromJson(Gson().toJson(customer), object : TypeToken<T>() {}.type)
         }
     }
 

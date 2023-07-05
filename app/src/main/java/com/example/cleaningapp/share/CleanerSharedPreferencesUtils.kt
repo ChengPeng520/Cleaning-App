@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.util.Base64
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 
 object CleanerSharedPreferencesUtils {
     private const val PREF_NAME = "AccountCleaner"
@@ -78,8 +80,8 @@ object CleanerSharedPreferencesUtils {
         val crc: Bitmap?
     )
 
-    fun saveCleanerInfoFromPreferences(any: Any): Boolean {
-        return try {
+    fun saveCleanerInfoFromPreferences(any: Any): Boolean = runBlocking(Dispatchers.IO) {
+        try {
             val apiCleanerModel = Gson().fromJson(Gson().toJson(any), ApiCleanerModel::class.java)
             sharedPreferences.edit()
                 .putInt(
@@ -132,7 +134,7 @@ object CleanerSharedPreferencesUtils {
         }
     }
 
-    inline fun <reified T> fetchCleanerInfoFromPreferences(): T {
+    inline fun <reified T> fetchCleanerInfoFromPreferences(): T = runBlocking(Dispatchers.IO) {
         with(sharedPreferences) {
             val cleaner =
                 Cleaner(
@@ -172,7 +174,7 @@ object CleanerSharedPreferencesUtils {
                             Base64.decode(it, Base64.DEFAULT)
                         )
                     })
-            return Gson().fromJson(Gson().toJson(cleaner), object : TypeToken<T>() {}.type)
+            Gson().fromJson(Gson().toJson(cleaner), object : TypeToken<T>() {}.type)
         }
     }
 
